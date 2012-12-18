@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+
+<AIX_VPN
+     Version="2.0">
+
+<!-- Search this file for '#' delimited fields.  The #-# delimited fields
+     MUST be modified to contain values applicable to your specific tunnels.
+     All other fields in this file may be either modified or left as-is;
+     they currently contain values that will work for most scenarios.
+
+     If any #s are left in fields below, this XML file will fail.
+-->
+
+<!-- Element "IKETunnel" defines the phase 1 SA endpoints and
+     the IKEProtection to be used for the negotiation.
+     It is called a "Key Management tunnel" in WebSM.
+-->
+
+<!--
+     "MakeRuleWithOptionalIP" specifies whether you
+     wish to put another entry in the rules list using the optional
+     IP address specified in the IKERemoteIdentity.  If set to No,
+     you can have more than one tunnel defined using the same
+     optional IP address; however, you will not be able to act as
+     a responder in a main mode negotiation with this tunnel.
+-->
+<IKETunnel
+     IKE_TunnelName="#phase1_template#"
+     IKE_ProtectionRef="#phase1_tunnel_policy#"
+
+     IKE_Flags_MakeRuleWithOptionalIP="No"
+     IKE_Flags_AutoStart="No">
+
+     <!--
+     Definition for the tunnel's local and remote IDs.
+     The possible ID types are: IPV4_Address, FQDN,
+     User_FQDN, ASN1, IPV6_Address, KEYID, or IKEGroup.
+     In a main mode negotiation, you need to specify the
+     associated IP address for a non-IP-address ID.
+     -->
+     <IKELocalIdentity>
+         <IPV4_Address
+             Value="#192.168.100.1#"/>
+     </IKELocalIdentity>
+     <IKERemoteIdentity>
+         <IPV4_Address
+             Value="#192.168.100.2#"/>
+     </IKERemoteIdentity>
+</IKETunnel>
+
+<!-- Define the policy for the above tunnel -->
+<IKEProtection
+      IKE_ProtectionName="#phase1_tunnel_policy#"
+      IKE_Role="Both"
+      IKE_XCHGMode="Main"
+      IKE_KeyOverlap="5"
+      IKE_Flags_UseCRL="No"
+      IKE_ResponderKeyRefreshMaxMinutes="480"
+      IKE_ResponderKeyRefreshMinMinutes="15">
+   <IKETransform
+         IKE_AuthenticationMethod="Preshared_key"
+         IKE_Encryption="3DES-CBC"
+         IKE_Hash="SHA"
+         IKE_DHGroup="2"
+         IKE_KeyRefreshMinutes="480"/>
+</IKEProtection>
+
+<!--Element "IKEPresharedKey" contains the preshared key definition for
+    the IKETunnel.
+    Note: If this preshared key is used by a tunnel that negotiates in
+    main mode, and the tunnel's remote identity is not an IP address,
+    you must create two IKEPresharedKey entries, both with the same
+    key; the first must use the non-IP remote ID, and the second must
+    use the IP address.  (The first is used when this machine is the
+    initiator, and the second when it is the responder.)
+-->
+<IKEPresharedKey
+     Format="ASCII"
+     Value="#preshared_key_value#">
+     <IKEPresharedRemoteID>
+        <PK_IPV4_Address
+             Value="#192.168.100.2#"/>
+     </IKEPresharedRemoteID>
+</IKEPresharedKey>
+
+<!-- The following IKEPresharedKey is not needed by this machine.  However,
+     if you use this exact XML file on the peer machine (using the -s option
+     of ikedb) to set up the other endpoint, it may be easier to specify
+     an IKEPresharedKey for both endpoints in the same file, since the "-s"
+     option does not affect the IKEPresharedKey element.
+
+     The entry below, containing the tunnel's local ID in the
+     "IKEPresharedRemoteID" field, makes sure the IKEPresharedKey is defined
+     correctly on the peer as well.  This element should be deleted if you
+     do not need it.
+-->
+<IKEPresharedKey
+     Format="ASCII"
+     Value="#preshared_key_value#">
+     <IKEPresharedRemoteID>
+        <PK_IPV4_Address
+             Value="#192.168.100.1#"/>
+     </IKEPresharedRemoteID>
+</IKEPresharedKey>
+
+
+
+
+<!-- Element "IPSecTunnel" defines the phase 2 endpoints and IPSecProtection
+     to be used for the negotiation.  It is called the "Data Management
+     tunnel" in WebSM.
+-->
+<IPSecTunnel
+      IPSec_TunnelName="#phase2_template#"
+      IKE_TunnelName="#phase1_template#"
+      IPSec_ProtectionRef="#phase2_tunnel_policy#"
+      IPSec_Flags_AutoStart="No"
+      IPSec_Flags_OnDemand="No">
+
+      <!--
+      Definition for the tunnel's local and remote IDs.
+      The possible ID types are: IPV4_Address, IPV4_Subnet,
+      IPV4_Address_Range, IPV6_Address, IPV6_Subnet,
+      IPV6_Address_Range, or IKEGroup.
+
+      Some of the most commonly used protocols are:
+      Protocol Name      Protocol Number
+        IP                  0
+        ICMP                1
+        IGMP                2
+        TCP                 6
+        UDP                17
+
+      The value "0" in the Protocol or Port attribute acts as a wildcard,
+      meaning "any protocol" or "any port."
+      -->
+      <IPSecLocalIdentity
+         Protocol="0"
+         Port="0">
+         <IPV4_Address
+            Value="#192.168.100.1#"/>
+      </IPSecLocalIdentity>
+      <IPSecRemoteIdentity
+         Protocol="0"
+         Port="0">
+         <IPV4_Address
+            Value="#192.168.100.2#"/>
+      </IPSecRemoteIdentity>
+</IPSecTunnel>
+
+<!-- Define the policy for the Data Management (phase 2) tunnel -->
+<!-- InitiatorDHGroup="0" means the initiator doesn't propose PFS -->
+<IPSecProtection
+      IPSec_ProtectionName="#phase2_tunnel_policy#"
+      IPSec_ProposalRefs="#phase2_tunnel_proposal#"
+      IPSec_Role="Both"
+      IPSec_KeyOverlap="5"
+      IPSec_Flags_UseCommitBit="No"
+      IPSec_Flags_UseLifeSize="No"
+      IPSec_InitiatorDHGroup="0"
+      IPSec_ResponderDHGroup="NO_PFS GROUP_1 GROUP_2 GROUP_5"
+      IPSec_ResponderKeyRefreshMaxMinutes="120"
+      IPSec_ResponderKeyRefreshMinMinutes="1"/>
+
+<!-- Define the proposal for the Data Management (phase 2) policy.
+     It can contain a list of ESP and/or AH protocols
+-->
+<IPSecProposal
+      IPSec_ProposalName="#phase2_tunnel_proposal#">
+      <!-- IPSec ESP Protocol -->
+      <IPSecESPProtocol
+           ESP_Encryption="ESP_DES"
+           ESP_Authentication="HMAC-SHA"
+           ESP_EncapsulationMode="Tunnel"
+           ESP_KeyRefreshMinutes="60"/>
+      <!-- IPSec AH Protocol -->
+      <IPSecAHProtocol
+           AH_Authentication="AH_SHA"
+           AH_EncapsulationMode="Tunnel"
+           AH_KeyRefreshMinutes="60"/>
+</IPSecProposal>
+
+</AIX_VPN>

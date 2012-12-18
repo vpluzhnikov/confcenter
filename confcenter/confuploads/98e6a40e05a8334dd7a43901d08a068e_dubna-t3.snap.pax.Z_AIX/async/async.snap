@@ -1,0 +1,79 @@
+
+.....
+.....    creation date
+.....
+
+Tue Nov 27 15:06:01 MSK 2012
+
+.....
+.....    Note: If you want the /var/adm/ras/trcfile, snap -g will get it
+.....
+
+
+.....
+.....    Slip Interface Configs
+.....
+
+
+.....
+.....    pdisable
+.....
+
+
+.....
+.....    penable
+.....
+
+console
+
+.....
+.....    pdelay
+.....
+
+
+.....
+.....    pshare
+.....
+
+
+.....
+.....    phold
+.....
+
+
+.....
+.....    lsattr -El vty0
+.....
+
+autoconfig available                                                                                            STATUS of device at BOOT time              True
+bpc        8                                                                                                    BITS per character                         True
+csmap      sbcs                                                                                                 CODESET map file                           True
+discard    ^o                                                                                                   DISCARD character                          True
+dsusp      ^y                                                                                                   DELAY SUSPEND PROCESS character            True
+eof        ^d                                                                                                   END OF FILE character                      True
+eol        ^@                                                                                                   END OF LINE character                      True
+eol2       ^?                                                                                                   2nd END OF LINE character                  True
+erase      ^h                                                                                                   ERASE character                            True
+flow_disp  xon                                                                                                  FLOW CONTROL to be used                    True
+imap       none                                                                                                 INPUT map file                             True
+intr       ^c                                                                                                   INTERRUPT character                        True
+kill       ^u                                                                                                   KILL character                             True
+lnext      ^v                                                                                                   LITERAL NEXT character                     True
+logger                                                                                                          LOGGER name                                True
+login      disable                                                                                              Enable LOGIN                               True
+logmodes   hupcl,cread,echoe,cs8                                                                                STTY attributes for LOGIN                  True
+modules    ldterm                                                                                               STREAMS modules to be pushed at OPEN time  True
+omap       none                                                                                                 OUTPUT map file                            True
+open_disp  dtropen                                                                                              OPEN DISCIPLINE to be used                 True
+parity     none                                                                                                 PARITY                                     True
+quit       ^\                                                                                                   QUIT character                             True
+reprint    ^r                                                                                                   REPRINT LINE character                     True
+runmodes   hupcl,cread,brkint,icrnl,opost,tab3,onlcr,isig,icanon,echo,echoe,echok,echoctl,echoke,imaxbel,iexten STTY attributes for RUN time               True
+speed      19200                                                                                                N/A                                        True
+start      ^q                                                                                                   START character                            True
+stop       ^s                                                                                                   STOP character                             True
+stops      1                                                                                                    Number of STOP BITS                        True
+susp       ^z                                                                                                   SUSPEND PROCESS character                  True
+term       vt220                                                                                                TERMINAL type                              True
+timeout    0                                                                                                    TIME before advancing to next port setting True
+werase     ^w                                                                                                   WORD ERASE character                       True

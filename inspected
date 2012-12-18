@@ -1,0 +1,79 @@
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#     * Rearrange models' order
+#     * Make sure each model has one field with primary_key=True
+# Feel free to rename the models, but don't rename db_table values or field names.
+#
+# Also note: You'll have to insert the output of 'django-admin.py sqlcustom [appname]'
+# into your database.
+
+from django.db import models
+
+class Contacts(models.Model):
+    id = models.IntegerField(primary_key=True, db_column='ID') # Field name made lowercase.
+    name = models.CharField(max_length=135, db_column='Name', blank=True) # Field name made lowercase.
+    surname = models.CharField(max_length=300, db_column='Surname', blank=True) # Field name made lowercase.
+    sec_name = models.CharField(max_length=300, db_column='Sec_name', blank=True) # Field name made lowercase.
+    orgs = models.ForeignKey(Orgs, db_column='orgs_ID') # Field name made lowercase.
+    class Meta:
+        db_table = u'contacts'
+
+class Orgs(models.Model):
+    id = models.IntegerField(primary_key=True, db_column='ID') # Field name made lowercase.
+    name = models.CharField(max_length=135, blank=True)
+    fullname = models.CharField(max_length=750, blank=True)
+    adress = models.CharField(max_length=135, blank=True)
+    city = models.CharField(max_length=135, blank=True)
+    class Meta:
+        db_table = u'orgs'
+
+class OsTypes(models.Model):
+    id = models.IntegerField(primary_key=True, db_column='ID') # Field name made lowercase.
+    os_name = models.CharField(max_length=135, blank=True)
+    os_level = models.CharField(max_length=135, blank=True)
+    comment = models.CharField(max_length=135, blank=True)
+    class Meta:
+        db_table = u'os_types'
+
+class OsTypesHasPartRules(models.Model):
+    os_types = models.ForeignKey(OsTypes, db_column='os_types_ID') # Field name made lowercase.
+    part_rules = models.ForeignKey(PartRules, db_column='part_rules_ID') # Field name made lowercase.
+    platform_types = models.ForeignKey(PlatformTypes, db_column='platform_types_ID') # Field name made lowercase.
+    class Meta:
+        db_table = u'os_types_has_part_rules'
+
+class PartParams(models.Model):
+    id = models.IntegerField(primary_key=True, db_column='ID') # Field name made lowercase.
+    param = models.CharField(max_length=750, blank=True)
+    value = models.CharField(max_length=750, blank=True)
+    parts = models.ForeignKey(Parts, db_column='parts_ID') # Field name made lowercase.
+    class Meta:
+        db_table = u'part_params'
+
+class PartRules(models.Model):
+    id = models.IntegerField(primary_key=True, db_column='ID') # Field name made lowercase.
+    param = models.CharField(max_length=750, blank=True)
+    value = models.CharField(max_length=750, blank=True)
+    condition = models.IntegerField(null=True, blank=True)
+    class Meta:
+        db_table = u'part_rules'
+
+class Parts(models.Model):
+    id = models.IntegerField(primary_key=True, db_column='ID') # Field name made lowercase.
+    hostname = models.CharField(max_length=135, blank=True)
+    orgs = models.ForeignKey(Orgs, db_column='orgs_ID') # Field name made lowercase.
+    conf_output_name = models.CharField(max_length=765, blank=True)
+    os_types = models.ForeignKey(OsTypes, db_column='os_types_ID') # Field name made lowercase.
+    platform_types = models.ForeignKey(PlatformTypes, db_column='platform_types_ID') # Field name made lowercase.
+    class Meta:
+        db_table = u'parts'
+
+class PlatformTypes(models.Model):
+    id = models.IntegerField(primary_key=True, db_column='ID') # Field name made lowercase.
+    type_name = models.CharField(max_length=135, blank=True)
+    model_name = models.CharField(max_length=135, blank=True)
+    vendor_name = models.CharField(max_length=135, blank=True)
+    comments = models.CharField(max_length=750, blank=True)
+    class Meta:
+        db_table = u'platform_types'
+

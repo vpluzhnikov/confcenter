@@ -1,0 +1,23 @@
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/usr/sbin/dacinet/acl 1.4 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 1998 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)28	1.4  src/bos/usr/sbin/dacinet/acl, cmdsadm, bos610 8/24/98 14:02:34
+# IBM_PROLOG_END_TAG 
+#  
+# <service/port>  <host|addr>[/prefix_length]  [u:<user|uid>|g:<group|gid>]
+#
+sunrpc			::/0		u:root
+2049			::/0		u:root
+9090			::/0		u:root

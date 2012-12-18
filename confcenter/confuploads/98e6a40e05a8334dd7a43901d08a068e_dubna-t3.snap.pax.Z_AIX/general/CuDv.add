@@ -1,0 +1,7240 @@
+
+CuDv:
+	name = "rootvg"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "logical_volume/vgsubclass/vgtype"
+
+CuDv:
+	name = "hd5"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "hd6"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "hd8"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "hd4"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "hd2"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "hd9var"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "hd3"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "hd1"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "hd10opt"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "hd11admin"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "lg_dumplv"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "livedump"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "inst"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "rootvg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "sys0"
+	status = 1
+	chgstatus = 1
+	ddins = "planar_pal_chrp"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "sys/node/chrp"
+
+CuDv:
+	name = "sysplanar0"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = ""
+	parent = "sys0"
+	connwhere = "0"
+	PdDvLn = "planar/sys/sysplanar_rspc"
+
+CuDv:
+	name = "mem0"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "M"
+	PdDvLn = "memory/sys/totmem"
+
+CuDv:
+	name = "L2cache0"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "L"
+	PdDvLn = "memory/sys/L2cache_rspc"
+
+CuDv:
+	name = "proc0"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-00"
+	parent = "sysplanar0"
+	connwhere = "P0"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc4"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-04"
+	parent = "sysplanar0"
+	connwhere = "P4"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc8"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-08"
+	parent = "sysplanar0"
+	connwhere = "P8"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc12"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-12"
+	parent = "sysplanar0"
+	connwhere = "P12"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc16"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-16"
+	parent = "sysplanar0"
+	connwhere = "P16"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc20"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-20"
+	parent = "sysplanar0"
+	connwhere = "P20"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc24"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-24"
+	parent = "sysplanar0"
+	connwhere = "P24"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc28"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-28"
+	parent = "sysplanar0"
+	connwhere = "P28"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc32"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-32"
+	parent = "sysplanar0"
+	connwhere = "P32"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc36"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-36"
+	parent = "sysplanar0"
+	connwhere = "P36"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc40"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-40"
+	parent = "sysplanar0"
+	connwhere = "P40"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc44"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-44"
+	parent = "sysplanar0"
+	connwhere = "P44"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc48"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-48"
+	parent = "sysplanar0"
+	connwhere = "P48"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc52"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-52"
+	parent = "sysplanar0"
+	connwhere = "P52"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc56"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-56"
+	parent = "sysplanar0"
+	connwhere = "P56"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc60"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-60"
+	parent = "sysplanar0"
+	connwhere = "P60"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc64"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-64"
+	parent = "sysplanar0"
+	connwhere = "P64"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc68"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-68"
+	parent = "sysplanar0"
+	connwhere = "P68"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc72"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-72"
+	parent = "sysplanar0"
+	connwhere = "P72"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc76"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-76"
+	parent = "sysplanar0"
+	connwhere = "P76"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc80"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-80"
+	parent = "sysplanar0"
+	connwhere = "P80"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc84"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-84"
+	parent = "sysplanar0"
+	connwhere = "P84"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc88"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-88"
+	parent = "sysplanar0"
+	connwhere = "P88"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc92"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-92"
+	parent = "sysplanar0"
+	connwhere = "P92"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc96"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-96"
+	parent = "sysplanar0"
+	connwhere = "P96"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc100"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-100"
+	parent = "sysplanar0"
+	connwhere = "P100"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc104"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-104"
+	parent = "sysplanar0"
+	connwhere = "P104"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc108"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-108"
+	parent = "sysplanar0"
+	connwhere = "P108"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc112"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-112"
+	parent = "sysplanar0"
+	connwhere = "P112"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc116"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-116"
+	parent = "sysplanar0"
+	connwhere = "P116"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc120"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-120"
+	parent = "sysplanar0"
+	connwhere = "P120"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc124"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-124"
+	parent = "sysplanar0"
+	connwhere = "P124"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc128"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-128"
+	parent = "sysplanar0"
+	connwhere = "P128"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc132"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-132"
+	parent = "sysplanar0"
+	connwhere = "P132"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc136"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-136"
+	parent = "sysplanar0"
+	connwhere = "P136"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc140"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-140"
+	parent = "sysplanar0"
+	connwhere = "P140"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc144"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-144"
+	parent = "sysplanar0"
+	connwhere = "P144"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc148"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-148"
+	parent = "sysplanar0"
+	connwhere = "P148"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc152"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-152"
+	parent = "sysplanar0"
+	connwhere = "P152"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc156"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-156"
+	parent = "sysplanar0"
+	connwhere = "P156"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc160"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-160"
+	parent = "sysplanar0"
+	connwhere = "P160"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc164"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-164"
+	parent = "sysplanar0"
+	connwhere = "P164"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc168"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-168"
+	parent = "sysplanar0"
+	connwhere = "P168"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc172"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-172"
+	parent = "sysplanar0"
+	connwhere = "P172"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc176"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-176"
+	parent = "sysplanar0"
+	connwhere = "P176"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc180"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-180"
+	parent = "sysplanar0"
+	connwhere = "P180"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc184"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-184"
+	parent = "sysplanar0"
+	connwhere = "P184"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc188"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-188"
+	parent = "sysplanar0"
+	connwhere = "P188"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc192"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-192"
+	parent = "sysplanar0"
+	connwhere = "P192"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc196"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-196"
+	parent = "sysplanar0"
+	connwhere = "P196"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc200"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-200"
+	parent = "sysplanar0"
+	connwhere = "P200"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc204"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-204"
+	parent = "sysplanar0"
+	connwhere = "P204"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc208"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-208"
+	parent = "sysplanar0"
+	connwhere = "P208"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc212"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-212"
+	parent = "sysplanar0"
+	connwhere = "P212"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc216"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-216"
+	parent = "sysplanar0"
+	connwhere = "P216"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc220"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-220"
+	parent = "sysplanar0"
+	connwhere = "P220"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc224"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-224"
+	parent = "sysplanar0"
+	connwhere = "P224"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc228"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-228"
+	parent = "sysplanar0"
+	connwhere = "P228"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc232"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-232"
+	parent = "sysplanar0"
+	connwhere = "P232"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc236"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-236"
+	parent = "sysplanar0"
+	connwhere = "P236"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc240"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-240"
+	parent = "sysplanar0"
+	connwhere = "P240"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc244"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-244"
+	parent = "sysplanar0"
+	connwhere = "P244"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc248"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-248"
+	parent = "sysplanar0"
+	connwhere = "P248"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc252"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-252"
+	parent = "sysplanar0"
+	connwhere = "P252"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc256"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-256"
+	parent = "sysplanar0"
+	connwhere = "P256"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc260"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-260"
+	parent = "sysplanar0"
+	connwhere = "P260"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc264"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-264"
+	parent = "sysplanar0"
+	connwhere = "P264"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc268"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-268"
+	parent = "sysplanar0"
+	connwhere = "P268"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc272"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-272"
+	parent = "sysplanar0"
+	connwhere = "P272"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc276"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-276"
+	parent = "sysplanar0"
+	connwhere = "P276"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc280"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-280"
+	parent = "sysplanar0"
+	connwhere = "P280"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc284"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-284"
+	parent = "sysplanar0"
+	connwhere = "P284"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc288"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-288"
+	parent = "sysplanar0"
+	connwhere = "P288"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc292"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-292"
+	parent = "sysplanar0"
+	connwhere = "P292"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc296"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-296"
+	parent = "sysplanar0"
+	connwhere = "P296"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc300"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-300"
+	parent = "sysplanar0"
+	connwhere = "P300"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc304"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-304"
+	parent = "sysplanar0"
+	connwhere = "P304"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc308"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-308"
+	parent = "sysplanar0"
+	connwhere = "P308"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc312"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-312"
+	parent = "sysplanar0"
+	connwhere = "P312"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc316"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-316"
+	parent = "sysplanar0"
+	connwhere = "P316"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc320"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-320"
+	parent = "sysplanar0"
+	connwhere = "P320"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc324"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-324"
+	parent = "sysplanar0"
+	connwhere = "P324"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc328"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-328"
+	parent = "sysplanar0"
+	connwhere = "P328"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc332"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-332"
+	parent = "sysplanar0"
+	connwhere = "P332"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc336"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-336"
+	parent = "sysplanar0"
+	connwhere = "P336"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc340"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-340"
+	parent = "sysplanar0"
+	connwhere = "P340"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc344"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-344"
+	parent = "sysplanar0"
+	connwhere = "P344"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc348"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-348"
+	parent = "sysplanar0"
+	connwhere = "P348"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc352"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-352"
+	parent = "sysplanar0"
+	connwhere = "P352"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc356"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-356"
+	parent = "sysplanar0"
+	connwhere = "P356"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc360"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-360"
+	parent = "sysplanar0"
+	connwhere = "P360"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc364"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-364"
+	parent = "sysplanar0"
+	connwhere = "P364"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc368"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-368"
+	parent = "sysplanar0"
+	connwhere = "P368"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc372"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-372"
+	parent = "sysplanar0"
+	connwhere = "P372"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc376"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-376"
+	parent = "sysplanar0"
+	connwhere = "P376"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc380"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-380"
+	parent = "sysplanar0"
+	connwhere = "P380"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc384"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-384"
+	parent = "sysplanar0"
+	connwhere = "P384"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc388"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-388"
+	parent = "sysplanar0"
+	connwhere = "P388"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc392"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-392"
+	parent = "sysplanar0"
+	connwhere = "P392"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc396"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-396"
+	parent = "sysplanar0"
+	connwhere = "P396"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc400"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-400"
+	parent = "sysplanar0"
+	connwhere = "P400"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc404"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-404"
+	parent = "sysplanar0"
+	connwhere = "P404"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc408"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-408"
+	parent = "sysplanar0"
+	connwhere = "P408"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc412"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-412"
+	parent = "sysplanar0"
+	connwhere = "P412"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc416"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-416"
+	parent = "sysplanar0"
+	connwhere = "P416"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc420"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-420"
+	parent = "sysplanar0"
+	connwhere = "P420"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc424"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-424"
+	parent = "sysplanar0"
+	connwhere = "P424"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc428"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-428"
+	parent = "sysplanar0"
+	connwhere = "P428"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc432"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-432"
+	parent = "sysplanar0"
+	connwhere = "P432"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc436"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-436"
+	parent = "sysplanar0"
+	connwhere = "P436"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc440"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-440"
+	parent = "sysplanar0"
+	connwhere = "P440"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc444"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-444"
+	parent = "sysplanar0"
+	connwhere = "P444"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc448"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-448"
+	parent = "sysplanar0"
+	connwhere = "P448"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc452"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-452"
+	parent = "sysplanar0"
+	connwhere = "P452"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc456"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-456"
+	parent = "sysplanar0"
+	connwhere = "P456"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc460"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-460"
+	parent = "sysplanar0"
+	connwhere = "P460"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc464"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-464"
+	parent = "sysplanar0"
+	connwhere = "P464"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc468"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-468"
+	parent = "sysplanar0"
+	connwhere = "P468"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc472"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-472"
+	parent = "sysplanar0"
+	connwhere = "P472"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc476"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-476"
+	parent = "sysplanar0"
+	connwhere = "P476"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc480"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-480"
+	parent = "sysplanar0"
+	connwhere = "P480"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc484"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-484"
+	parent = "sysplanar0"
+	connwhere = "P484"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc488"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-488"
+	parent = "sysplanar0"
+	connwhere = "P488"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc492"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-492"
+	parent = "sysplanar0"
+	connwhere = "P492"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc496"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-496"
+	parent = "sysplanar0"
+	connwhere = "P496"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc500"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-500"
+	parent = "sysplanar0"
+	connwhere = "P500"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc504"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-504"
+	parent = "sysplanar0"
+	connwhere = "P504"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "proc508"
+	status = 1
+	chgstatus = 2
+	ddins = ""
+	location = "00-508"
+	parent = "sysplanar0"
+	connwhere = "P508"
+	PdDvLn = "processor/sys/proc_rspc"
+
+CuDv:
+	name = "pci0"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/pci_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "800000020000200"
+	PdDvLn = "bus/chrp/pciex"
+
+CuDv:
+	name = "pci1"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/pci_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "800000020000202"
+	PdDvLn = "bus/chrp/pciex"
+
+CuDv:
+	name = "pci2"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/pci_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "800000020000209"
+	PdDvLn = "bus/chrp/pciex"
+
+CuDv:
+	name = "pci3"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/pci_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "80000002000020a"
+	PdDvLn = "bus/chrp/pciex"
+
+CuDv:
+	name = "pci4"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/pci_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "800000020000380"
+	PdDvLn = "bus/chrp/pciex"
+
+CuDv:
+	name = "pci5"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/pci_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "800000020000382"
+	PdDvLn = "bus/chrp/pciex"
+
+CuDv:
+	name = "pci6"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/pci_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "800000020000389"
+	PdDvLn = "bus/chrp/pciex"
+
+CuDv:
+	name = "pci7"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/pci_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "80000002000038a"
+	PdDvLn = "bus/chrp/pciex"
+
+CuDv:
+	name = "vio0"
+	status = 1
+	chgstatus = 2
+	ddins = "vdev_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "vdevice"
+	PdDvLn = "bus/chrp/vdevice"
+
+CuDv:
+	name = "sissas0"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/sissas_dd"
+	location = "02-00"
+	parent = "pci0"
+	connwhere = "0"
+	PdDvLn = "adapter/pciex/14103a03"
+
+CuDv:
+	name = "ent0"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/goentdd"
+	location = "00-00"
+	parent = "pci1"
+	connwhere = "0"
+	PdDvLn = "adapter/pciex/14104003"
+
+CuDv:
+	name = "ent1"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/goentdd"
+	location = "00-01"
+	parent = "pci1"
+	connwhere = "1"
+	PdDvLn = "adapter/pciex/14104003"
+
+CuDv:
+	name = "fcs0"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/efcdd"
+	location = "01-00"
+	parent = "pci2"
+	connwhere = "0"
+	PdDvLn = "adapter/pciex/df1000f114108a0"
+
+CuDv:
+	name = "fcs1"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/efcdd"
+	location = "01-01"
+	parent = "pci2"
+	connwhere = "1"
+	PdDvLn = "adapter/pciex/df1000f114108a0"
+
+CuDv:
+	name = "fcs2"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/efcdd"
+	location = "04-00"
+	parent = "pci3"
+	connwhere = "0"
+	PdDvLn = "adapter/pciex/df1000f114108a0"
+
+CuDv:
+	name = "fcs3"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/efcdd"
+	location = "04-01"
+	parent = "pci3"
+	connwhere = "1"
+	PdDvLn = "adapter/pciex/df1000f114108a0"
+
+CuDv:
+	name = "sissas1"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/sissas_dd"
+	location = "03-00"
+	parent = "pci4"
+	connwhere = "0"
+	PdDvLn = "adapter/pciex/14103a03"
+
+CuDv:
+	name = "ent2"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/goentdd"
+	location = "06-00"
+	parent = "pci5"
+	connwhere = "0"
+	PdDvLn = "adapter/pciex/14104003"
+
+CuDv:
+	name = "ent3"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/goentdd"
+	location = "06-01"
+	parent = "pci5"
+	connwhere = "1"
+	PdDvLn = "adapter/pciex/14104003"
+
+CuDv:
+	name = "fcs4"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/efcdd"
+	location = "05-00"
+	parent = "pci6"
+	connwhere = "0"
+	PdDvLn = "adapter/pciex/df1000f114108a0"
+
+CuDv:
+	name = "fcs5"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/efcdd"
+	location = "05-01"
+	parent = "pci6"
+	connwhere = "1"
+	PdDvLn = "adapter/pciex/df1000f114108a0"
+
+CuDv:
+	name = "fcs6"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/efcdd"
+	location = "07-00"
+	parent = "pci7"
+	connwhere = "0"
+	PdDvLn = "adapter/pciex/df1000f114108a0"
+
+CuDv:
+	name = "fcs7"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/efcdd"
+	location = "07-01"
+	parent = "pci7"
+	connwhere = "1"
+	PdDvLn = "adapter/pciex/df1000f114108a0"
+
+CuDv:
+	name = "vsa0"
+	status = 1
+	chgstatus = 1
+	ddins = "vconsdd"
+	location = ""
+	parent = "vio0"
+	connwhere = "30000000"
+	PdDvLn = "adapter/vdevice/hvterm1"
+
+CuDv:
+	name = "sas0"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/sissas_dd"
+	location = "02-00-00"
+	parent = "sissas0"
+	connwhere = "sas"
+	PdDvLn = "driver/sis_protocol/sas"
+
+CuDv:
+	name = "sata0"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/sissas_dd"
+	location = "02-00-00"
+	parent = "sissas0"
+	connwhere = "sata"
+	PdDvLn = "driver/sis_protocol/sata"
+
+CuDv:
+	name = "fcnet0"
+	status = 0
+	chgstatus = 1
+	ddins = "efcndd"
+	location = "01-00-01"
+	parent = "fcs0"
+	connwhere = "1"
+	PdDvLn = "driver/iocb/efcndd"
+
+CuDv:
+	name = "fscsi0"
+	status = 1
+	chgstatus = 2
+	ddins = "efscsidd"
+	location = "01-00-02"
+	parent = "fcs0"
+	connwhere = "2"
+	PdDvLn = "driver/iocb/efscsi"
+
+CuDv:
+	name = "fcnet1"
+	status = 0
+	chgstatus = 1
+	ddins = "efcndd"
+	location = "01-01-01"
+	parent = "fcs1"
+	connwhere = "1"
+	PdDvLn = "driver/iocb/efcndd"
+
+CuDv:
+	name = "fscsi1"
+	status = 1
+	chgstatus = 2
+	ddins = "efscsidd"
+	location = "01-01-02"
+	parent = "fcs1"
+	connwhere = "2"
+	PdDvLn = "driver/iocb/efscsi"
+
+CuDv:
+	name = "fcnet2"
+	status = 0
+	chgstatus = 1
+	ddins = "efcndd"
+	location = "04-00-01"
+	parent = "fcs2"
+	connwhere = "1"
+	PdDvLn = "driver/iocb/efcndd"
+
+CuDv:
+	name = "fscsi2"
+	status = 1
+	chgstatus = 2
+	ddins = "efscsidd"
+	location = "04-00-02"
+	parent = "fcs2"
+	connwhere = "2"
+	PdDvLn = "driver/iocb/efscsi"
+
+CuDv:
+	name = "fcnet3"
+	status = 0
+	chgstatus = 1
+	ddins = "efcndd"
+	location = "04-01-01"
+	parent = "fcs3"
+	connwhere = "1"
+	PdDvLn = "driver/iocb/efcndd"
+
+CuDv:
+	name = "fscsi3"
+	status = 1
+	chgstatus = 2
+	ddins = "efscsidd"
+	location = "04-01-02"
+	parent = "fcs3"
+	connwhere = "2"
+	PdDvLn = "driver/iocb/efscsi"
+
+CuDv:
+	name = "sas1"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/sissas_dd"
+	location = "03-00-00"
+	parent = "sissas1"
+	connwhere = "sas"
+	PdDvLn = "driver/sis_protocol/sas"
+
+CuDv:
+	name = "sata1"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/sissas_dd"
+	location = "03-00-00"
+	parent = "sissas1"
+	connwhere = "sata"
+	PdDvLn = "driver/sis_protocol/sata"
+
+CuDv:
+	name = "fcnet4"
+	status = 0
+	chgstatus = 1
+	ddins = "efcndd"
+	location = "05-00-01"
+	parent = "fcs4"
+	connwhere = "1"
+	PdDvLn = "driver/iocb/efcndd"
+
+CuDv:
+	name = "fscsi4"
+	status = 1
+	chgstatus = 2
+	ddins = "efscsidd"
+	location = "05-00-02"
+	parent = "fcs4"
+	connwhere = "2"
+	PdDvLn = "driver/iocb/efscsi"
+
+CuDv:
+	name = "fcnet5"
+	status = 0
+	chgstatus = 1
+	ddins = "efcndd"
+	location = "05-01-01"
+	parent = "fcs5"
+	connwhere = "1"
+	PdDvLn = "driver/iocb/efcndd"
+
+CuDv:
+	name = "fscsi5"
+	status = 1
+	chgstatus = 2
+	ddins = "efscsidd"
+	location = "05-01-02"
+	parent = "fcs5"
+	connwhere = "2"
+	PdDvLn = "driver/iocb/efscsi"
+
+CuDv:
+	name = "fcnet6"
+	status = 0
+	chgstatus = 1
+	ddins = "efcndd"
+	location = "07-00-01"
+	parent = "fcs6"
+	connwhere = "1"
+	PdDvLn = "driver/iocb/efcndd"
+
+CuDv:
+	name = "fscsi6"
+	status = 1
+	chgstatus = 2
+	ddins = "efscsidd"
+	location = "07-00-02"
+	parent = "fcs6"
+	connwhere = "2"
+	PdDvLn = "driver/iocb/efscsi"
+
+CuDv:
+	name = "fcnet7"
+	status = 0
+	chgstatus = 1
+	ddins = "efcndd"
+	location = "07-01-01"
+	parent = "fcs7"
+	connwhere = "1"
+	PdDvLn = "driver/iocb/efcndd"
+
+CuDv:
+	name = "fscsi7"
+	status = 1
+	chgstatus = 2
+	ddins = "efscsidd"
+	location = "07-01-02"
+	parent = "fcs7"
+	connwhere = "2"
+	PdDvLn = "driver/iocb/efscsi"
+
+CuDv:
+	name = "hdisk0"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "02-00-00"
+	parent = "sas0"
+	connwhere = "W_0"
+	PdDvLn = "disk/sas/scsd"
+
+CuDv:
+	name = "hdisk1"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "02-00-00"
+	parent = "sas0"
+	connwhere = "W_0"
+	PdDvLn = "disk/sas/scsd"
+
+CuDv:
+	name = "ses0"
+	status = 1
+	chgstatus = 2
+	ddins = "scsisesdd"
+	location = "02-00-00"
+	parent = "sas0"
+	connwhere = "W_0"
+	PdDvLn = "container/sas/ses"
+
+CuDv:
+	name = "ses1"
+	status = 1
+	chgstatus = 2
+	ddins = "scsisesdd"
+	location = "02-00-00"
+	parent = "sas0"
+	connwhere = "W_0"
+	PdDvLn = "container/sas/ses"
+
+CuDv:
+	name = "hdisk2"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "03-00-00"
+	parent = "sas1"
+	connwhere = "W_0"
+	PdDvLn = "disk/sas/scsd"
+
+CuDv:
+	name = "hdisk3"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "03-00-00"
+	parent = "sas1"
+	connwhere = "W_0"
+	PdDvLn = "disk/sas/scsd"
+
+CuDv:
+	name = "othervg"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "logical_volume/vgsubclass/vgtype"
+
+CuDv:
+	name = "hdisk5"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "111"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "ses2"
+	status = 1
+	chgstatus = 2
+	ddins = "scsisesdd"
+	location = "03-00-00"
+	parent = "sas1"
+	connwhere = "W_0"
+	PdDvLn = "container/sas/ses"
+
+CuDv:
+	name = "ses3"
+	status = 1
+	chgstatus = 2
+	ddins = "scsisesdd"
+	location = "03-00-00"
+	parent = "sas1"
+	connwhere = "W_0"
+	PdDvLn = "container/sas/ses"
+
+CuDv:
+	name = "lvdd"
+	status = 1
+	chgstatus = 1
+	ddins = "hd_pin"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "lvm/lvm/lvdd"
+
+CuDv:
+	name = "sfw0"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "driver/storfwork/module"
+
+CuDv:
+	name = "sfwcomm0"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = "01-00-02-FF"
+	parent = "fscsi0"
+	connwhere = "1"
+	PdDvLn = "driver/fcp/storfwork"
+
+CuDv:
+	name = "sfwcomm1"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = "01-01-02-FF"
+	parent = "fscsi1"
+	connwhere = "1"
+	PdDvLn = "driver/fcp/storfwork"
+
+CuDv:
+	name = "sfwcomm2"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = "04-00-02-FF"
+	parent = "fscsi2"
+	connwhere = "1"
+	PdDvLn = "driver/fcp/storfwork"
+
+CuDv:
+	name = "sfwcomm3"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = "04-01-02-FF"
+	parent = "fscsi3"
+	connwhere = "1"
+	PdDvLn = "driver/fcp/storfwork"
+
+CuDv:
+	name = "sfwcomm4"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = "05-00-02-FF"
+	parent = "fscsi4"
+	connwhere = "1"
+	PdDvLn = "driver/fcp/storfwork"
+
+CuDv:
+	name = "sfwcomm5"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = "05-01-02-FF"
+	parent = "fscsi5"
+	connwhere = "1"
+	PdDvLn = "driver/fcp/storfwork"
+
+CuDv:
+	name = "sfwcomm6"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = "07-00-02-FF"
+	parent = "fscsi6"
+	connwhere = "1"
+	PdDvLn = "driver/fcp/storfwork"
+
+CuDv:
+	name = "sfwcomm7"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = "07-01-02-FF"
+	parent = "fscsi7"
+	connwhere = "1"
+	PdDvLn = "driver/fcp/storfwork"
+
+CuDv:
+	name = "sfwcomm8"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = "02-00-00-FF"
+	parent = "sas0"
+	connwhere = "1"
+	PdDvLn = "driver/sas/storfwork"
+
+CuDv:
+	name = "sfwcomm9"
+	status = 1
+	chgstatus = 2
+	ddins = "storfwork"
+	location = "03-00-00-FF"
+	parent = "sas1"
+	connwhere = "1"
+	PdDvLn = "driver/sas/storfwork"
+
+CuDv:
+	name = "vty0"
+	status = 1
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "vsa0"
+	connwhere = "0"
+	PdDvLn = "tty/vcon/tty"
+
+CuDv:
+	name = "inet0"
+	status = 1
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "tcpip/TCPIP/inet"
+
+CuDv:
+	name = "en0"
+	status = 0
+	chgstatus = 1
+	ddins = "if_en"
+	location = "00-00"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/en"
+
+CuDv:
+	name = "en1"
+	status = 0
+	chgstatus = 1
+	ddins = "if_en"
+	location = "00-01"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/en"
+
+CuDv:
+	name = "en2"
+	status = 0
+	chgstatus = 1
+	ddins = "if_en"
+	location = "06-00"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/en"
+
+CuDv:
+	name = "en3"
+	status = 0
+	chgstatus = 1
+	ddins = "if_en"
+	location = "06-01"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/en"
+
+CuDv:
+	name = "et0"
+	status = 0
+	chgstatus = 1
+	ddins = "if_ie3"
+	location = "00-00"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/ie3"
+
+CuDv:
+	name = "et1"
+	status = 0
+	chgstatus = 1
+	ddins = "if_ie3"
+	location = "00-01"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/ie3"
+
+CuDv:
+	name = "et2"
+	status = 0
+	chgstatus = 1
+	ddins = "if_ie3"
+	location = "06-00"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/ie3"
+
+CuDv:
+	name = "et3"
+	status = 0
+	chgstatus = 1
+	ddins = "if_ie3"
+	location = "06-01"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/ie3"
+
+CuDv:
+	name = "lo0"
+	status = 1
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/LO/lo"
+
+CuDv:
+	name = "pty0"
+	status = 1
+	chgstatus = 1
+	ddins = "ptydd"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "pty/pty/pty"
+
+CuDv:
+	name = "iscsi0"
+	status = 1
+	chgstatus = 2
+	ddins = "iscsidd"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "driver/node/iscsi"
+
+CuDv:
+	name = "vxglm0"
+	status = 1
+	chgstatus = 1
+	ddins = "vxglm.ext"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "vxdrv/node/vxglm"
+
+CuDv:
+	name = "rcm0"
+	status = 0
+	chgstatus = 1
+	ddins = "rcm_load"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "rcm/node/rcm"
+
+CuDv:
+	name = "hdisk4"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "2"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "vxqio0"
+	status = 1
+	chgstatus = 1
+	ddins = "vxqio.ext"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "vxdrv/node/vxqio"
+
+CuDv:
+	name = "vxportal0"
+	status = 1
+	chgstatus = 1
+	ddins = "vxportal.ext"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "vxdrv/node/vxportal"
+
+CuDv:
+	name = "vcsmm"
+	status = 1
+	chgstatus = 1
+	ddins = "vcsmm"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "vcsmm/node/vcsmm"
+
+CuDv:
+	name = "hdisk6"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "3"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "vxfend"
+	status = 1
+	chgstatus = 1
+	ddins = "vxfen"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "vxfend/node/vxfend"
+
+CuDv:
+	name = "hdisk7"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "4"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "vxgms0"
+	status = 1
+	chgstatus = 1
+	ddins = "vxgms.ext"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "vxdrv/node/vxgms"
+
+CuDv:
+	name = "iocp0"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "iocp/node/iocp"
+
+CuDv:
+	name = "cluster0"
+	status = 1
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "pseudo/node/cluster"
+
+CuDv:
+	name = "vxdmp"
+	status = 1
+	chgstatus = 1
+	ddins = "vxdmp"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "vxdrv/node/vxdmp"
+
+CuDv:
+	name = "vxio"
+	status = 1
+	chgstatus = 1
+	ddins = "vxio"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "vxdrv/node/vxio"
+
+CuDv:
+	name = "vxspec"
+	status = 1
+	chgstatus = 1
+	ddins = "vxspec"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "vxdrv/node/vxspec"
+
+CuDv:
+	name = "nsmb0"
+	status = 1
+	chgstatus = 2
+	ddins = "nsmbdd"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "network/pseudo/smb"
+
+CuDv:
+	name = "ent4"
+	status = 1
+	chgstatus = 1
+	ddins = "ethchandd"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "adapter/pseudo/ibm_ech"
+
+CuDv:
+	name = "en4"
+	status = 1
+	chgstatus = 1
+	ddins = "if_en"
+	location = ""
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/en"
+
+CuDv:
+	name = "et4"
+	status = 0
+	chgstatus = 1
+	ddins = "if_ie3"
+	location = ""
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/ie3"
+
+CuDv:
+	name = "pci8"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/pci_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "800000020000201"
+	PdDvLn = "bus/chrp/pciex"
+
+CuDv:
+	name = "hba0"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/rrhbadd"
+	location = "08-00"
+	parent = "pci8"
+	connwhere = "0"
+	PdDvLn = "adapter/pciex/251430008c03000"
+
+CuDv:
+	name = "pci9"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/pci_busdd"
+	location = ""
+	parent = "sysplanar0"
+	connwhere = "800000020000381"
+	PdDvLn = "bus/chrp/pciex"
+
+CuDv:
+	name = "hba1"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/rrhbadd"
+	location = "09-00"
+	parent = "pci9"
+	connwhere = "0"
+	PdDvLn = "adapter/pciex/251430008c03000"
+
+CuDv:
+	name = "ent10"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/rrentdd"
+	location = "08-00-00"
+	parent = "hba0"
+	connwhere = "0"
+	PdDvLn = "adapter/ct3/ethernet"
+
+CuDv:
+	name = "ent11"
+	status = 1
+	chgstatus = 2
+	ddins = "pci/rrentdd"
+	location = "09-00-00"
+	parent = "hba1"
+	connwhere = "0"
+	PdDvLn = "adapter/ct3/ethernet"
+
+CuDv:
+	name = "en10"
+	status = 0
+	chgstatus = 1
+	ddins = "if_en"
+	location = "08-00-00"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/en"
+
+CuDv:
+	name = "en11"
+	status = 0
+	chgstatus = 1
+	ddins = "if_en"
+	location = "09-00-00"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/en"
+
+CuDv:
+	name = "et10"
+	status = 0
+	chgstatus = 1
+	ddins = "if_ie3"
+	location = "08-00-00"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/ie3"
+
+CuDv:
+	name = "et11"
+	status = 0
+	chgstatus = 1
+	ddins = "if_ie3"
+	location = "09-00-00"
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/ie3"
+
+CuDv:
+	name = "ent9"
+	status = 1
+	chgstatus = 1
+	ddins = "ethchandd"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "adapter/pseudo/ibm_ech"
+
+CuDv:
+	name = "en9"
+	status = 1
+	chgstatus = 1
+	ddins = "if_en"
+	location = ""
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/en"
+
+CuDv:
+	name = "et9"
+	status = 0
+	chgstatus = 1
+	ddins = "if_ie3"
+	location = ""
+	parent = "inet0"
+	connwhere = ""
+	PdDvLn = "if/EN/ie3"
+
+CuDv:
+	name = "hdisk8"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "5"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk9"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "6"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk10"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "7"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk11"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "8"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk12"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "9"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk13"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "10"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk14"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "11"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk15"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "12"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk16"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "13"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk17"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "14"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk18"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "15"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk19"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "16"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk20"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "17"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk22"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "18"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk23"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "19"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk24"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "20"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk25"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "21"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk26"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "22"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk27"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "23"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk28"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "24"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk29"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "25"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk30"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "26"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk31"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "27"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk32"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "28"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk33"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "29"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk34"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "30"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk35"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "31"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk36"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "32"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk37"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "33"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk38"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "34"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk39"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "35"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk40"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "36"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk41"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "37"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk42"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "38"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk43"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "39"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk44"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "40"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk45"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "41"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk46"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "42"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk47"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "43"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk48"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "44"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk49"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "45"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk50"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "46"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk51"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "47"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk52"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "48"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk53"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "49"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk54"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "50"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk55"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "51"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk56"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "52"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk57"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "53"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk58"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "54"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk59"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "55"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk60"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "56"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk61"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "57"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk62"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "58"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk63"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "59"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk64"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "60"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk65"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "61"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk66"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "62"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk67"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "63"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk68"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "64"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk69"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "65"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk70"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "66"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk71"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "67"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk72"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "68"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk73"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "69"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk74"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "70"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk75"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "71"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk76"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "72"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk77"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "73"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk78"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "74"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk79"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "75"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk80"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "76"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk81"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "77"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk82"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "78"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk83"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "79"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk84"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "80"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk85"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "81"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk86"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "82"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk87"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "83"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk88"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "84"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk89"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "85"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk90"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "86"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk91"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "87"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk92"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "88"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk93"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "89"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk94"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "90"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk95"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "91"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk96"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "92"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk97"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "93"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk98"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "94"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk99"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "95"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk100"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "96"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk101"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "97"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk102"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "98"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk103"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "99"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk104"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "100"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk105"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "101"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk106"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "102"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk107"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "103"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk108"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "104"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk109"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "105"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk110"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "106"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk111"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "107"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk112"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "108"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk113"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "109"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk114"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "110"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk21"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "2"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk115"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "3"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk116"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "4"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk117"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "5"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk118"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "6"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk119"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "7"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk120"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "8"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk121"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "9"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk122"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "10"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk123"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "11"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk124"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "12"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk125"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "13"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk126"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "14"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk127"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "15"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk128"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "16"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk129"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "17"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk131"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "18"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk132"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "19"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk133"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "20"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk134"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "21"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk135"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "22"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk136"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "23"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk137"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "24"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk138"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "25"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk139"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "26"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk140"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "27"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk141"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "28"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk142"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "29"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk143"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "30"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk144"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "31"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk145"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "32"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk146"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "33"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk147"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "34"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk148"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "35"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk149"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "36"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk150"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "37"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk151"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "38"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk152"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "39"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk153"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "40"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk154"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "41"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk155"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "42"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk156"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "43"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk157"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "44"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk158"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "45"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk159"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "46"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk160"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "47"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk161"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "48"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk162"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "49"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk163"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "50"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk164"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "51"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk165"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "52"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk166"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "53"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk167"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "54"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk168"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "55"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk169"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "56"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk170"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "57"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk171"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "58"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk172"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "59"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk173"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "60"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk174"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "61"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk175"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "62"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk176"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "63"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk177"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "64"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk178"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "65"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk179"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "66"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk180"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "67"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk181"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "68"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk182"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "69"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk183"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "70"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk184"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "71"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk185"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "72"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk186"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "73"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk187"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "74"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk188"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "75"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk189"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "76"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk190"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "77"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk191"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "78"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk192"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "79"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk193"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "80"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk194"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "81"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk195"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "82"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk196"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "83"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk197"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "84"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk198"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "85"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk199"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "86"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk200"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "87"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk201"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "88"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk202"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "89"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk203"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "90"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk204"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "91"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk205"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "92"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk206"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "93"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk207"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "94"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk208"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "95"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk209"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "96"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk210"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "97"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk211"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "98"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk212"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "99"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk213"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "100"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk214"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "101"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk215"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "102"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk216"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "103"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk217"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "104"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk218"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "105"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk219"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "106"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk220"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "107"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk221"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "108"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk222"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "109"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk223"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "110"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk130"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "2"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk224"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "3"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk225"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "4"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk226"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "5"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk227"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "6"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk228"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "7"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk229"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "8"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk230"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "9"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk231"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "10"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk232"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "11"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk233"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "12"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk234"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "13"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk235"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "14"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk236"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "15"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk237"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "16"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk238"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "17"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk240"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "18"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk241"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "19"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk242"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "20"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk243"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "21"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk244"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "22"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk245"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "23"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk246"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "24"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk247"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "25"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk248"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "26"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk249"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "27"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk250"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "28"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk251"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "29"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk252"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "30"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk253"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "31"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk254"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "32"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk255"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "33"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk256"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "34"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk257"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "35"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk258"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "36"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk259"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "37"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk260"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "38"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk261"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "39"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk262"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "40"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk263"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "41"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk264"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "42"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk265"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "43"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk266"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "44"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk267"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "45"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk268"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "46"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk269"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "47"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk270"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "48"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk271"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "49"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk272"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "50"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk273"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "51"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk274"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "52"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk275"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "53"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk276"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "54"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk277"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "55"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk278"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "56"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk279"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "57"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk280"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "58"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk281"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "59"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk282"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "60"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk283"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "61"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk284"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "62"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk285"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "63"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk286"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "64"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk287"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "65"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk288"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "66"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk289"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "67"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk290"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "68"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk291"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "69"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk292"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "70"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk293"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "71"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk294"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "72"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk295"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "73"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk296"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "74"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk297"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "75"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk298"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "76"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk299"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "77"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk300"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "78"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk301"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "79"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk302"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "80"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk303"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "81"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk304"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "82"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk305"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "83"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk306"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "84"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk307"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "85"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk308"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "86"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk309"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "87"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk310"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "88"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk311"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "89"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk312"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "90"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk313"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "91"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk314"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "92"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk315"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "93"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk316"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "94"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk317"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "95"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk318"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "96"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk319"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "97"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk320"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "98"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk321"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "99"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk322"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "100"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk323"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "101"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk324"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "102"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk325"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "103"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk326"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "104"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk327"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "105"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk328"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "106"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk329"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "107"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk330"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "108"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk331"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "109"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk332"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "110"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk239"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "2"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk333"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "3"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk334"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "4"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk335"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "5"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk336"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "6"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk337"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "7"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk338"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "8"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk339"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "9"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk340"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "10"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk341"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "11"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk342"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "12"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk343"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "13"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk344"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "14"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk345"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "15"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk346"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "16"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk347"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "17"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk349"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "18"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk350"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "19"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk351"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "20"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk352"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "21"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk353"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "22"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk354"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "23"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk355"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "24"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk356"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "25"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk357"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "26"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk358"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "27"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk359"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "28"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk360"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "29"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk361"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "30"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk362"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "31"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk363"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "32"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk364"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "33"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk365"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "34"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk366"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "35"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk367"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "36"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk368"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "37"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk369"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "38"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk370"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "39"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk371"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "40"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk372"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "41"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk373"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "42"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk374"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "43"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk375"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "44"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk376"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "45"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk377"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "46"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk378"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "47"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk379"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "48"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk380"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "49"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk381"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "50"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk382"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "51"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk383"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "52"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk384"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "53"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk385"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "54"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk386"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "55"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk387"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "56"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk388"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "57"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk389"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "58"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk390"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "59"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk391"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "60"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk392"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "61"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk393"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "62"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk394"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "63"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk395"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "64"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk396"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "65"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk397"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "66"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk398"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "67"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk399"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "68"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk400"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "69"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk401"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "70"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk402"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "71"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk403"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "72"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk404"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "73"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk405"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "74"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk406"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "75"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk407"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "76"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk408"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "77"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk409"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "78"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk410"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "79"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk411"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "80"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk412"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "81"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk413"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "82"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk414"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "83"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk415"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "84"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk416"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "85"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk417"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "86"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk418"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "87"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk419"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "88"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk420"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "89"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk421"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "90"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk422"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "91"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk423"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "92"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk424"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "93"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk425"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "94"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk426"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "95"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk427"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "96"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk428"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "97"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk429"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "98"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk430"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "99"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk431"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "100"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk432"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "101"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk433"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "102"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk434"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "103"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk435"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "104"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk436"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "105"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk437"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "106"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk438"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "107"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk439"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "108"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk440"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "109"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk441"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "110"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "gab"
+	status = 1
+	chgstatus = 1
+	ddins = "gab"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "gab/node/gab"
+
+CuDv:
+	name = "vxfen"
+	status = 1
+	chgstatus = 1
+	ddins = "vxfen"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "vxfen/node/vxfen"
+
+CuDv:
+	name = "lmx"
+	status = 1
+	chgstatus = 1
+	ddins = "lmx"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "lmx/node/lmx"
+
+CuDv:
+	name = "hdisk442"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "112"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk443"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "113"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk444"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "114"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk445"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "111"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk446"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "112"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk447"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "113"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk448"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "114"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk449"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "111"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk450"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "112"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk451"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "113"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk452"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "114"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk453"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "111"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk454"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "112"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk455"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "113"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk456"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "114"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "oralv"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "othervg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "perflv"
+	status = 0
+	chgstatus = 1
+	ddins = ""
+	location = ""
+	parent = "othervg"
+	connwhere = ""
+	PdDvLn = "logical_volume/lvsubclass/lvtype"
+
+CuDv:
+	name = "hdisk348"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "115"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk457"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "116"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk458"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "01-00-02"
+	parent = "fscsi0"
+	connwhere = "117"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk459"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "115"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk460"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "116"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk461"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "04-00-02"
+	parent = "fscsi2"
+	connwhere = "117"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk462"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "115"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk463"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "116"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk464"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "05-00-02"
+	parent = "fscsi4"
+	connwhere = "117"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk465"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "115"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk466"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "116"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "hdisk467"
+	status = 1
+	chgstatus = 2
+	ddins = "scsidisk"
+	location = "07-00-02"
+	parent = "fscsi6"
+	connwhere = "117"
+	PdDvLn = "disk/fcp/HP"
+
+CuDv:
+	name = "advmctl"
+	status = 1
+	chgstatus = 1
+	ddins = "oracleadvm.ext"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "driver/advm/advmctl"
+
+CuDv:
+	name = "ofsctl"
+	status = 1
+	chgstatus = 1
+	ddins = "oracleacfs.ext"
+	location = ""
+	parent = ""
+	connwhere = ""
+	PdDvLn = "driver/acfs/acfsctl"
