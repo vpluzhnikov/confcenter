@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="trustchkParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="1">Administration of the Trusted Execution function.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="2">Enable or disable the runtime integrity-verification function that is responsible for verifying of a file's cryptographic hash before being started. Enable or disable different security policies that are used with the Trusted Execution mechanism.</NLSCatalog></Description>
+ 
+ <ConstraintDef id="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="3">Check that the clic.rte kernel extension is installed.</NLSCatalog></Description>
+
+  <PreOp>lslpp -l "clic*"</PreOp>
+ </ConstraintDef>
+
+ <CfgMethod id="TEpolicies">
+  <Get type="nextboot">
+   <Command>lslpp -l "clic*"; if [[ $? -eq 0 ]]; then /usr/sbin/trustchk -p 2&gt;&amp;1; else return 0; fi</Command>
+   <Filter>awk -F= '{ if ($2 == "ON") VAL = "1"; else VAL = "0"; print $1 " = " VAL }'</Filter>
+   <Mask name="1" value="2">(.*) = (.*)</Mask>
+  </Get>
+
+  <Get type="current">
+   <Command>lslpp -l "clic*"; if [[ $? -eq 0 ]]; then /usr/sbin/trustchk -p 2&gt;&amp;1; else return 0; fi</Command>
+   <Filter>awk -F= '{ if ($2 == "ON") VAL = "1"; else VAL = "0"; print $1 " = " VAL }'</Filter>
+   <Mask name="1" value="2">(.*) = (.*)</Mask>
+  </Get>
+
+  <Set type="permanent">
+   <Command>/usr/sbin/trustchk -p%a</Command>
+   <Argument> %p=`if [ %v1 == "1" ]; then print ON;else print OFF; fi`</Argument>
+  </Set>
+ </CfgMethod>
+
+ <ParameterDef name="TE" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="4">Trusted Execution. Policies can only be activated when the TE option is set to ON.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="CHKEXEC" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="5">Checks the integrity of executable file that belongs to the TSD before starting it.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="CHKSHLIB" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="6">Checks the integrity of shared libraries that belong to the TSD before loading them.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="CHKSCRIPT" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="7">Checks the integrity of shell scripts that belong to the TSD before starting them.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="CHKKERNEXT" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="8">Checks the integrity of the kernel extensions that belong to the TSD before loading them.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="STOP_UNTRUSTD" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="9">Stops the loading of files that do not belong to the TSD.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="STOP_ON_CHKFAIL" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="10">Stops the loading of files whose integrity check fails.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="LOCK_KERN_POLICIES" type="boolean" cfgmethod="TEpolicies" reboot="true" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="11">Lock current policies.</NLSCatalog></Description>
+
+  <Set type="nextboot">
+   <Command>/usr/sbin/trustchk -p%a</Command>
+   <Argument> %p=`if [ %v1 == "1" ]; then print ON;else print OFF; fi`</Argument>
+  </Set>
+
+ </ParameterDef>
+
+ <ParameterDef name="TSD_FILES_LOCK" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="12">Disables opening of files belonging to the TSD in write mode. You cannot make any change to any TSD files.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="TSD_LOCK" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="13">Disallows opening of a TSD file (/etc/security/tsd/tsd.dat) in write mode to disable editing of the TSD.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="TEP" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="14">The Trusted Execution path consists of a list of colon-separated absolute paths, for example, the /usr/bin:/usr/sbin. The files belonging to only these directory paths are allowed to be started. If an executable program that does not belong to the TEP is to be loaded, the program is blocked.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="TLP" type="boolean" cfgmethod="TEpolicies" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="15">The Trusted Library Path consists of a list of colon-separated absolute paths, for example, the /usr/lib:/usr/ccs/lib. The libraries belonging to only these directory paths can be loaded. If a program tries to load a library that does not belong to the TLP, the program is blocked.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="hash_algorithm" type="string" constraint="clic">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="48" msgNum="16">Hashing algorithm used to compute the hash_value field of the file definitions included in the TSD.</NLSCatalog></Description>
+
+  <Get type="current">
+   <Command>/usr/sbin/trustchk -g 2&gt;&amp;1</Command>
+   <Mask name="1" value="2">(.*) = (.*)</Mask>
+  </Get>
+
+  <Get type="nextboot">
+   <Command>/usr/sbin/trustchk -g 2&gt;&amp;1</Command>
+   <Mask name="1" value="2">(.*) = (.*)</Mask>
+  </Get>
+
+  <Set type="permanent">
+   <Command>/usr/sbin/trustchk -g %a</Command>
+   <Argument>%v1</Argument>
+  </Set>
+ </ParameterDef>
+</Catalog>

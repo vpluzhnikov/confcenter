@@ -1,0 +1,26 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/usr/lib/security/aixpert/scripts/audit_report.sh 1.1 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2007 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)52        1.1  src/bos/usr/lib/security/aixpert/scripts/audit_report.sh, aixpert, bos610 3/27/07 11:36:42
+# IBM_PROLOG_END_TAG 
+ls=`nl -ba /etc/security/aixpert/check_report.txt|grep "\*\*\*\*\*"|tail -1|awk '{print $1}'`
+tl=`nl -ba /etc/security/aixpert/check_report.txt|tail -1|awk '{print $1}'`
+ll=`expr $tl - $ls`
+if [ $ll -ge 0 ]
+then
+	tail -$ll /etc/security/aixpert/check_report.txt
+fi
+

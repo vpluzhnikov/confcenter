@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile origin="reference" readOnly="true" version="2.0.0">
+ <Catalog id="probevueParam" version="2.0">
+
+  <Parameter name="ProbevueFeatures" />
+
+  <Parameter name="MAXpinnedmemoryforProbevueframeworkinMB" />
+
+  <Parameter name="DefaultperCPUtracebuffersizeinKB" />
+
+  <Parameter name="Defaulttracebufferreadrateinms" />
+
+  <Parameter name="SizeofperCPUcomputationstackinKB" />
+
+  <Parameter name="MAXconcurrentsessionsallowedforregularuser" />
+
+  <Parameter name="MAXpinnedmemoryforregularusersessionsinMB" />
+
+  <Parameter name="MINtracebufferreadrateforregularuserinms" />
+
+  <Parameter name="SizeofperCPUlocaltablesizeinKB"/>
+
+  <Parameter name="Numberofpagefaultstobehandled" />
+
+  <Parameter name="Numberofthreadstobetraced" />
+ </Catalog>
+</Profile>

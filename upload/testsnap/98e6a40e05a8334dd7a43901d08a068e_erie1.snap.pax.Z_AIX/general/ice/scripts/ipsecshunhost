@@ -1,0 +1,413 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/ipsecshunhost.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/ipsecshunhost.sh, libice, aix710, 1010A_710 2010-03-02T17:21:56-06:00$
+#
+# IBM_PROLOG_END_TAG
+#       COMPONENT_NAME: (ICE) ipsecshunhost.sh
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax:
+#               ipsecshunhost -{c|e|p}[v] rulename secs
+#       Parameters:
+#               -c       - Check mode
+#               -e       - Enforce mode
+#               -p       - Preview mode
+#               -v       - verbose mode
+#               rulename - ice_name. 
+#		secs	 - Number of Seconds to shun the host 
+#			   when the seconds are zero, filters are OFF
+#
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#		This script shuns hosts for certain amount secsonds, 
+#		which tries to connect to unused ports.
+#		This script should be run with superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+exec 2>&1
+
+###
+#Print Usage
+###
+Usage() {
+	ice_status=1
+        print "usage: \n
+   ipsecshunhost -{c|e|p}[v] rulename secs" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+	print -n "$cur_val%$ice_status%"
+	cat log_msg
+	print
+}
+	
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=
+ice_status=0
+print -n > log_msg 2>&1
+
+
+while getopts :cevp OPT
+do
+        case $OPT in
+                c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+                p)      pflag=1;;
+                ?|:)    Usage
+			Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+	set -x
+fi
+
+#Need 2 arguments
+if [[ $# -ne 2 ]];
+then
+        Usage
+	Script_Output
+        exit 1
+fi
+
+RULE_NAME=$1
+SECS=$2
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+        Usage
+	Script_Output
+        exit 1
+fi
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+        ECHOPREFIX="echo"
+else
+        ECHOPREFIX=""
+fi
+
+PREREQ=/etc/security/ice/scripts/chkprereq
+PREREQ_LIST="bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.net.ipsec.keymgt,bos.net.ipsec.rte,bos.net.tcp.client"
+
+#checking prereq
+$ECHOPREFIX $PREREQ $PREREQ_LIST
+
+if [ $? -ne 0 ]
+then
+        print "Prereq missing..." >> log_msg 2>&1 
+	print "Prereqs needed: " $PREREQ_LIST >> log_msg 2>&1
+	ice_status=1
+	Script_Output
+        exit 0
+fi
+
+#
+#Get the filter list to process when seconds = 0
+#
+
+listfs=$(lsfilt -v4 -O|awk -v x="ICE:IPv4:ShunHost" -F "|"\
+	'{ if (match($22, x)!=0) print $1}')
+
+listfs6=$(lsfilt -v6 -O|awk -v x="ICE:IPv6:ShunHost" -F "|"\
+	'{ if (match($22, x)!=0) print $1}')
+
+
+#
+# Case when seconds is 0(Shun Host OFF), and monitoring
+#
+
+if [ $SECS -le 0 ] && [ cflag -eq 1 ]
+then
+	if [ -z "$listfs" ] && [ -z "$listfs6" ]
+	then
+		cur_val=0
+		ice_status=0
+		Script_Output
+		exit 0
+	else
+		print "IPSec version 4 or 6 ShunHost filters are turned on" >> log_msg 2>&1
+		filtlist=$(lsfilt -v4 -O|awk -v x="ICE:IPv4:ShunHost" -F "|" \
+			'{ if (match($22, x)!=0) print $19}')
+		cur_val=`echo $filtlist | cut -d' ' -f1`
+		ice_status=2
+		Script_Output
+		exit 0
+	fi
+fi
+
+
+#
+# Case when seconds is 0, and enforcing. Remove the previously added filters
+#
+if [ $SECS -le 0 ]  && [ cflag -ne 1 ]
+then
+
+	# Remove all the IPSec version 4 rules added earlier
+	for i in $listfs
+	do
+		rmfilt -v4 -n `lsfilt -v4 -O|awk -v x="ICE:IPv4:ShunHost" -F "|"\
+		'{ if (match($22, x)!=0) print $1}'` >> log_msg 2>&1
+		if [ $? -ne 0 ]
+		then
+			print "rmfilt failed to remove the IPSec ver 4 filter for ShunHost rule" >> log_msg 2>&1
+	fi
+	done
+
+	# Remove all the IPSec version 6 rules added earlier
+	for i in $listfs6
+	do
+		rmfilt -v6 -n `lsfilt -v6 -O|awk -v x="ICE:IPv6:ShunHost" -F "|"\
+		'{ if (match($22, x)!=0) print $1}'` >> log_msg 2>&1
+		if [ $? -ne 0 ]
+		then
+			print "rmfilt failed to remove the IPSec ver 6 filter for ShunHost rule" >> log_msg 2>&1
+		fi
+	done
+
+	ice_status=0
+	Script_Output
+	exit 0
+fi
+
+# Determine whether IPSec is enabled or not.
+ipv4=`lsdev -Cc ipsec|grep ipsec_v4|awk '{print $2}'`
+ipv6=`lsdev -Cc ipsec|grep ipsec_v6|awk '{print $2}'`
+
+# Checking
+if [[ cflag -eq 1 ]];
+then
+        if [ "$ipv4" != "Available" ] && [ "$ipv6" != "Available" ]
+        then
+                print "ipsecshunhost: Failed to turn on IPSec" >> log_msg 2>&1
+		cur_val=0
+		ice_status=2
+		Script_Output
+                exit 0
+        elif [ "$ipv4" = "Available" ]
+        then
+                spv=`lsfilt -v4 -O |awk -F '|' '{print $22}'|egrep "ShunHost"`
+                if [ $? -ne 0 ] && [ -z "$spv" ]
+                then
+                        print "ipsecshunhost: IPSec v4 shun host rules\
+ are not turned on" >> log_msg 2>&1
+			cur_val=0
+			ice_status=2
+			Script_Output
+                        exit 0
+                fi
+        else
+                spv=`lsfilt -v6 -O |awk -F '|' '{print $22}'|egrep "ShunHost"`
+                if [ $? -ne 0 ] && [ -z "$spv" ]
+                then
+                        print "ipsecshunhost: IPSec v6 shun host rules\
+ are not turned on\n" >> log_msg 2>&1
+			cur_val=0
+			ice_status=2
+			Script_Output
+                	exit 0
+                fi
+        fi
+
+	# Get the number of seconds that the host is shunned. 
+	filtlist=$(lsfilt -v4 -O|awk -v x="ICE:IPv4:ShunHost" -F "|" \
+		'{ if (match($22, x)!=0) print $19}')
+	cur_val=`echo $filtlist | cut -d' ' -f1`
+	if [ "$cur_val" -ne "$SECS" ]
+	then
+		ice_status=2
+		print "Host is shunned for $cur_val seconds instead of $SECS" >> log_msg 2>&1
+	else
+		ice_status=0
+	fi
+	Script_Output
+        exit 0
+fi
+
+if  [ "$ipv4" != "Available" ]
+then
+	/usr/sbin/mkdev -c ipsec -t 4
+	# Failed to enable IPSec for version 4
+	if [ $? -ne 0 ]
+	then
+		print "Failed to enable IPSec for version 4\n" >> log_msg 2>&1
+	else
+		print "IPSec for version 4 enabled\n" >> log_msg 2>&1
+	fi
+	ipv4=`lsdev -Cc ipsec|grep ipsec_v4|awk '{print $2}'`
+fi
+
+
+if  [ "$ipv6" != "Available" ]
+then
+	/usr/sbin/mkdev -c ipsec -t 6
+	# Failed to enable IPSec for version 6
+	if [ $? -ne 0 ]
+	then
+		print "Failed to enable IPSec for version 6\n" >> log_msg 2>&1
+	else
+		print "IPSec for version 6 enabled\n" >> log_msg 2>&1
+	fi
+	ipv6=`lsdev -Cc ipsec|grep ipsec_v6|awk '{print $2}'`
+fi
+
+if [ "$ipv6" = "Available" ]
+then
+	autoconf6
+fi
+
+if [ "$ipv4" != "Available" ] && [ "$ipv6" != "Available" ]
+then
+	print "ipsecshunhost: Failed to turn on IPSec" >> log_msg 2>&1
+	ice_status=1
+	Script_Output
+	exit 0
+fi
+
+# Get the source ip(version 4) address of the host
+# Sometimes this address might have more than one entry, when we have multiple interfaces
+hostipv4=`ifconfig -a|grep "inet "|awk '{print $2}'|grep -v -w "127.0.0.1"`
+
+# Get the source ip(version 6) address of the host
+hostipv6=`ifconfig -a|grep "inet6 "|awk '{print $2}'|awk -F "/" '{print $1}'|\
+ grep -v -w "::1"`
+
+# Get the list of open ports in LISTEN mode
+openports=`netstat -an|grep -i listen|awk '{print $4}' | grep ^* | cut -d . -f2`  
+
+# List of unused ports, when a host tries to connect to these ports,
+# Shun that particular host for 5 minutes
+uusdports="11 13 19 25 43 67 69"
+
+
+# All these filter rules will be added before the existing rules in the filter rule table
+if [ "$ipv4" = "Available" ]
+then
+	# Add filter rules to shun hosts which tries to send packets to
+	# unused ports on $hostipv4
+	for i in ${hostipv4}
+	do
+		for j in ${uusdports}
+		do
+			# Check whether port specified by $j is in listen mode
+			x=`echo $openports|grep -w $j`
+
+			if [ $? -ne 0 ]		# The port $j is not in listen mode
+			then
+				# Shun all the hosts which tries to access this port
+				$ECHOPREFIX genfilt -v4 -n 3 -a H -s 0.0.0.0 -m 0.0.0.0 -d $i\
+ 				-M 255.255.255.255 -O eq -P $j -w I -D "ICE:IPv4:ShunHost$i:$j" -e $SECS >> log_msg 2>&1
+				if [ $? -ne 0 ]
+				then
+				print \	
+ "ipsecshunhost: genfilt failed to add filter for IPSec Version 4\n" >> log_msg 2>&1
+					ice_status=1
+					Script_Output
+					exit 0
+				fi
+			fi
+		done
+	done
+
+	# Activate the IPSec v4 filters added.
+	$ECHOPREFIX mkfilt -v4 -u
+	if [ $? -ne 0 ]
+	then
+		print "ipsecshunhost:\
+ mkfilt failed to activate filter rules for IPSec Version 4\n" >> log_msg 2>&1
+		ice_status=1
+		Script_Output
+		exit 0
+	fi
+fi
+
+if [ "$ipv6" = "Available" ]
+then
+	# Add filter rules to shun hosts which tries to send packets
+	# to unused ports on $hostipv6
+	for i in ${hostipv6}
+	do
+		for j in ${uusdports}
+		do
+			# Check whether port specified by $j is in listen mode
+			x=`echo $openports|grep -w $j` 
+
+			if [ $? -ne 0 ]		# The port $j is not in listen mode
+			then
+				# Shun all the hosts which tries to access this port
+				$ECHOPREFIX genfilt -v6 -n 1 -a H -s 0:0:0:0:0:0:0:0\
+ -m 0 -d $i -M 128 -O eq -P $j -w I -D "ICE:IPv6:ShunHost$i:$j" -e $SECS >> log_msg 2>&1
+				if [ $? -ne 0 ]
+				then
+					print \
+ "ipsecshunhost: genfilt failed to add filter for IPSec Version 6\n" >> log_msg 2>&1
+					ice_status=1
+					Script_Output
+					exit 0
+				fi
+			fi
+		done
+	done
+
+	# Activate the IPSec v6 filters added.
+	$ECHOPREFIX mkfilt -v6 -u
+	if [ $? -ne 0 ]
+	then
+		print "ipsecshunhost:\
+ mkfilt failed to activate filter rules for IPSec Version 6\n" >> log_msg 2>&1
+		ice_status=1
+		Script_Output
+		exit 0
+	fi
+fi
+
+ice_status=0
+Script_Output
+exit 0

@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="noParam" version="2.1">
+
+  <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="33" msgNum="1">no parameters</NLSCatalog></ShortDescription>
+ 
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="33" msgNum="2">Parameter definition for the 'no' command</NLSCatalog></Description>
+ 
+  <CfgMethod id="no">
+  
+    <Get type="current">
+      <Command>/usr/sbin/no -aF</Command>
+      <Filter>/usr/bin/grep -v '= n/a$'</Filter>
+      <Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+    </Get>
+
+    <Get type="nextboot">
+      <Command>/usr/sbin/no -r -aF</Command>
+      <Filter>/usr/bin/grep -v '= n/a$'</Filter>
+      <Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+    </Get>
+  
+    <Set type="permanent">
+      <Command>%a { [[ -n $RESTRICTED ]] &amp;&amp; echo "yes"; [[ -n $BOSBOOT ]] &amp;&amp; echo "no"; } | no -p ${CMDLINE}</Command>
+      <Argument>CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Command>%a { [[ -n $RESTRICTED ]] &amp;&amp; echo "yes"; [[ -n $BOSBOOT ]] &amp;&amp; echo "no"; } | no -r ${CMDLINE}</Command>
+      <Argument>CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+    </Set>
+  </CfgMethod>
+
+  <SubCat id="general_network">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="33" msgNum="3">General network parameters</NLSCatalog></Description>
+
+    <ParameterDef name="fasttimo" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h fasttimo | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="nbc_limit" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h nbc_limit | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="nbc_max_cache" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h nbc_max_cache | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="nbc_min_cache" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h nbc_min_cache | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+ 
+    <ParameterDef name="nbc_ofile_hashsz" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h nbc_ofile_hashsz | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+ 
+    <ParameterDef name="nbc_pseg" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h nbc_pseg | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+ 
+    <ParameterDef name="nbc_pseg_limit" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h nbc_pseg_limit | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ndd_event_name" type="string" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ndd_event_name | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ndd_event_tracing" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ndd_event_tracing | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="net_buf_size" type="string" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h net_buf_size | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="net_buf_type" type="string" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h net_buf_type | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="net_malloc_frag_mask" type="string" cfgmethod="no">
+	<Description><NLSCommand command="/usr/sbin/no -h net_malloc_frag_mask | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="netm_page_promote" type="integer" cfgmethod="no">
+	<Description><NLSCommand command="/usr/sbin/no -h netm_page_promote | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="poolbuckets" type="integer" cfgmethod="no"/>
+
+    <ParameterDef name="sb_max" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h sb_max | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="send_file_duration" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h send_file_duration | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="sockthresh" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h sockthresh | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="sodebug" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h sodebug | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="sodebug_env" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h sodebug_env | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="somaxconn" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h somaxconn | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_inpcb_hashtab_siz" type="integer" reboot="true" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_inpcb_hashtab_siz | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcptr_enable" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcptr_enable | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="thewall" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h thewall | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="udp_inpcb_hashtab_siz" type="integer" reboot="true" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h udp_inpcb_hashtab_siz | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="use_sndbufpool" type="boolean" reboot="true" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h use_sndbufpool | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+  </SubCat>
+
+  <SubCat id="tcp_network">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="33" msgNum="4">TCP network tunable parameters</NLSCatalog></Description>
+
+    <ParameterDef name="clean_partial_conns" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h clean_partial_conns | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="delayack" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h delayack | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="delayackports" type="string" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h delayackports | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="rfc1323" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h rfc1323 | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="rfc2414" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h rfc2414 | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="rto_high" type="integer-bi" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h rto_high | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="rto_length" type="integer" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h rto_length | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="rto_limit" type="integer" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h rto_limit | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="rto_low" type="integer" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h rto_low | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="sack" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h sack | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_bad_port_limit" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_bad_port_limit | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_ecn" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_ecn | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_ephemeral_high" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_ephemeral_high | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_ephemeral_low" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_ephemeral_low | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_fastlo" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_fastlo | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_fastlo_crosswpar" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_fastlo_crosswpar | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_finwait2" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_finwait2 | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_icmpsecure" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_icmpsecure | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_init_window" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_init_window | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_keepcnt" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_keepcnt | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_keepidle" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_keepidle | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_keepinit" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_keepinit | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_keepintvl" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_keepintvl | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_limited_transmit" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_limited_transmit | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_low_rto" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_low_rto | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_maxburst" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_maxburst | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_mssdflt" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_mssdflt | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_nagle_limit" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_nagle_limit | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_nagleoverride" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_nagleoverride | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_ndebug" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_ndebug | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_newreno" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_newreno | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_nodelayack" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_nodelayack | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_recvspace" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_recvspace | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_sendspace" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_sendspace | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_tcpsecure" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_tcpsecure | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_timewait" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_timewait | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_ttl" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_ttl | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcprexmtthresh" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcprexmtthresh | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="timer_wheel_tick" type="integer" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h timer_wheel_tick | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+  </SubCat>
+
+  <SubCat id="udp_network">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="33" msgNum="5">UDP Network Tunable Parameters</NLSCatalog></Description>   
+
+    <ParameterDef name="udp_bad_port_limit" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h udp_bad_port_limit | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="udp_ephemeral_high" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h udp_ephemeral_high | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="udp_ephemeral_low" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h udp_ephemeral_low | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="udp_recvspace" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h udp_recvspace | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="udp_sendspace" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h udp_sendspace | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="udp_ttl" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h udp_ttl | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="udpcksum" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h udpcksum | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+  </SubCat>
+
+  <SubCat id="ip_network">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="33" msgNum="6">IP Network Tunable Parameters.</NLSCatalog></Description>
+
+    <ParameterDef name="directed_broadcast" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h directed_broadcast | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ie5_old_multicast_mapping" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ie5_old_multicast_mapping | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ip6_defttl" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ip6_defttl | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ip6_prune" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ip6_prune | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ip6forwarding" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ip6forwarding | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ip6srcrouteforward" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ip6srcrouteforward | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ip_ifdelete_notify" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ip_ifdelete_notify | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ip_nfrag" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ip_nfrag | /usr/bin/tail -n +2"/></Description>
+</ParameterDef>
+
+    <ParameterDef name="ipforwarding" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ipforwarding | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ipfragttl" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ipfragttl | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ipignoreredirects" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ipignoreredirects | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ipqmaxlen" type="integer-bi" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h ipqmaxlen | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ipsendredirects" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ipsendredirects | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ipsrcrouteforward" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ipsrcrouteforward | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ipsrcrouterecv" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ipsrcrouterecv | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ipsrcroutesend" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ipsrcroutesend | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="lo_perf" type="boolean" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h lo_perf | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="maxnip6q" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h maxnip6q | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="multi_homed" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h multi_homed | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="nonlocsrcroute" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h nonlocsrcroute | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="subnetsarelocal" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h subnetsarelocal | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tn_filter" type="boolean" cfgmethod="no"/>
+  </SubCat>
+
+  <SubCat id="arp_network">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="33" msgNum="7">ARP/NDP Network Tunable Parameters</NLSCatalog></Description>
+
+    <ParameterDef name="arpqsize" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h arpqsize | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="arpt_killc" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h arpt_killc | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="arptab_bsiz" type="integer-bi" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h arptab_bsiz | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="arptab_nb" type="integer-bi" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h arptab_nb | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="dgd_packets_lost" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h dgd_packets_lost | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="dgd_ping_time" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h dgd_ping_time | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="dgd_retry_time" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h dgd_retry_time | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ndp_mmaxtries" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ndp_mmaxtries | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ndp_umaxtries" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ndp_umaxtries | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ndpqsize" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ndpqsize | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ndpt_down" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ndpt_down | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ndpt_keep" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ndpt_keep | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ndpt_probe" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ndpt_probe | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ndpt_reachable" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ndpt_reachable | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ndpt_retrans" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h ndpt_retrans | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="passive_dgd" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h passive_dgd | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="rfc1122addrchk" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h rfc1122addrchk | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+  </SubCat>
+
+  <SubCat id="stream">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="33" msgNum="8">Stream Header Tunable Parameters</NLSCatalog></Description>
+    
+    <ParameterDef name="lowthresh" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h lowthresh | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="medthresh" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h medthresh | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="nstrpush" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h nstrpush | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="psebufcalls" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h psebufcalls | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="psecache" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h psecache | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="psetimers" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h psetimers | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="strctlsz" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h strctlsz | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="strmsgsz" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h strmsgsz | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="strthresh" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h strthresh | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="strturncnt" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h strturncnt | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+  </SubCat>
+
+  <SubCat id="others">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="33" msgNum="9">Other Network Tunable Parameters</NLSCatalog></Description>
+
+    <ParameterDef name="bcastping" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h bcastping | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="dgd_flush_cached_route" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h dgd_flush_cached_route | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="icmp6_errmsg_rate" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h icmp6_errmsg_rate | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="icmpaddressmask" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h icmpaddressmask | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="ifsize" type="integer-bi" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h ifsize | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="igmpv2_deliver" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h igmpv2_deliver | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="llsleep_timeout" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h llsleep_timeout | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="main_if6" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h main_if6 | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="main_site6" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h main_site6 | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="maxttl" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h maxttl | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="mpr_policy" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h mpr_policy | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="pmtu_default_age" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h pmtu_default_age | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="pmtu_expire" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h pmtu_expire | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="pmtu_rediscover_interval" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h pmtu_rediscover_interval | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="route_expire" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h route_expire | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="routerevalidate" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h routerevalidate | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="rtentry_lock_complex" type="boolean" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h rtentry_lock_complex | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="site6_index" type="integer-bi" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h site6_index | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="tcp_pmtu_discover" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h tcp_pmtu_discover | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+
+    <ParameterDef name="udp_pmtu_discover" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h udp_pmtu_discover | /usr/bin/tail -n +2"/></Description>
+    </ParameterDef>
+  </SubCat>
+
+  <SubCat id="restricted">
+
+    <ParameterDef name="extendednetstats" type="boolean" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h extendednetstats | /usr/bin/tail -n +2"/></Description>
+      <Set type="permanent">
+        <Argument>RESTRICTED=yes;CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+      </Set>
+      <Set type="nextboot">
+        <Argument>RESTRICTED=yes;CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+      </Set>
+    </ParameterDef>
+
+    <ParameterDef name="inet_stack_size" type="integer" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h inet_stack_size | /usr/bin/tail -n +2"/></Description>
+      <Set type="permanent">
+        <Argument>RESTRICTED=yes;CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+      </Set>
+      <Set type="nextboot">
+        <Argument>RESTRICTED=yes;CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+      </Set>
+    </ParameterDef>
+
+    <ParameterDef name="net_malloc_police" type="integer" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h net_malloc_police | /usr/bin/tail -n +2"/></Description>
+      <Set type="permanent">
+        <Argument>RESTRICTED=yes;CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+      </Set>
+      <Set type="nextboot">
+        <Argument>RESTRICTED=yes;CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+      </Set>
+    </ParameterDef>
+
+    <ParameterDef name="netm_affinity" type="boolean" cfgmethod="no" reboot="true">
+      <Description><NLSCommand command="/usr/sbin/no -h netm_affinity | /usr/bin/tail -n +2"/></Description>
+
+      <Set type="permanent">
+        <Argument>BOSBOOT=yes;RESTRICTED=yes;CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+      </Set>
+      <Set type="nextboot">
+        <Argument>BOSBOOT=yes;RESTRICTED=yes;CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+      </Set>
+
+      <ConstraintDef>
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="38" msgNum="3">bosboot</NLSCatalog></Description>
+	<BuiltIn>bosboot</BuiltIn>
+      </ConstraintDef>
+    </ParameterDef>
+
+    <ParameterDef name="pseintrstack" type="integer">
+      <Description><NLSCommand command="/usr/sbin/no -h pseintrstack | /usr/bin/tail -n +2"/></Description>
+      <Get type="current">
+        <Command>/usr/sbin/no -aF</Command>
+        <Filter>/usr/bin/grep -v '= n/a$'</Filter>
+        <Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+      </Get>
+
+      <Get type="nextboot">
+        <Command>/usr/sbin/no -r -aF</Command>
+        <Filter>/usr/bin/grep -v '= n/a$'</Filter>
+        <Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+      </Get>
+    </ParameterDef>
+
+    <ParameterDef name="use_isno" type="boolean" cfgmethod="no">
+      <Description><NLSCommand command="/usr/sbin/no -h use_isno | /usr/bin/tail -n +2"/></Description>
+      <Set type="permanent">
+        <Argument>BOSBOOT=yes;RESTRICTED=yes;CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+      </Set>
+      <Set type="nextboot">
+        <Argument>BOSBOOT=yes;RESTRICTED=yes;CMDLINE="$CMDLINE -o "%p"="%v1;</Argument>
+      </Set>
+    </ParameterDef>
+
+  </SubCat>
+</Catalog>

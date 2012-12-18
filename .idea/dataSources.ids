@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="e522fd68-0629-4b2a-8022-87f3b4e64b8d">
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://127.0.0.1/confcenter</jdbc-url>
+    <user-name>vs</user-name>
+    <user-password>dfdcdfd9dfcfdfdcdfc5dfc6dfc5dfce</user-password>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/Library/Preferences/PyCharm20/jdbc-drivers/mysql-connector-license.txt</url>
+      </library>
+      <library>
+        <url>jar://$USER_HOME$/Library/Preferences/PyCharm20/jdbc-drivers/mysql-connector-java-5.1.18-bin.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+  <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="3a84a1ff-1385-4d3b-afd2-595b97184c1b">
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://127.0.0.1/confcenter</jdbc-url>
+    <user-name>vs</user-name>
+    <user-password>dfdcdfd9dfcfdfdcdfc5dfc6dfc5dfce</user-password>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/Library/Preferences/PyCharm20/jdbc-drivers/mysql-connector-license.txt</url>
+      </library>
+      <library>
+        <url>jar://$USER_HOME$/Library/Preferences/PyCharm20/jdbc-drivers/mysql-connector-java-5.1.18-bin.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+</component>

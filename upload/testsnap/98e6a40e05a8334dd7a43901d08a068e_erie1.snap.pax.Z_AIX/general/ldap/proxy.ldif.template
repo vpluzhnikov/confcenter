@@ -1,0 +1,98 @@
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/etc/security/ldap/proxy.ldif.template 1.3 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2003 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)62		 1.3  src/bos/etc/security/ldap/proxy.ldif.template, cmdsadm, bos610 11/7/03 14:25:13
+# IBM_PROLOG_END_TAG 
+#
+# Proxy LDIF template used by mksecldap
+#
+# This file contains LDIF entries that will be read in by mksecldap when it 
+# is invoked to setup a server with a proxy user account (-x option). 
+# By default the file contains entries to create a proxy user and set the ACL 
+# that will be applied to the base DN on the server. 
+#
+# The keywords listed below are dynamically replaced by mksecldap as described:
+#
+# Note: Keywords are case sensitive.
+#
+# Keyword substitutions:
+#
+#	{baseDN}	- All instances replaced with base distinguished name
+#			  specified by the -d option of mksecldap.
+# 	{proxyDN}	- All instances replaced with proxy user distinguished
+# 			  name specified by the -x option of mksecldap.
+# 	{proxyUser}	- All instances replaced with proxy user name 
+#			  (proxyDN stripped of suffix and prefix).
+# 	{proxyPWD}	- All instances replaced with proxy user password
+#			  specified by the -X option of mksecldap.
+#
+# The default ACL allows all users to write to their userPassword attribute.  
+# The proxy user is denied search, compare and write access to users passwords, 
+# Additionally, the proxy user is granted read, search and compare rights to 
+# all other attributes and granted write access to a limited set of attributes. 
+#
+# LDIF entries may be altered or added in this file to customize the server
+# setup through the mksecldap command.  Use of defined keywords is recommended
+# since all instances of keywords will be replaced by the mksecldap command.
+#
+# If manual setup of an LDAP server is being performed, this file can still
+# be used to setup the proxy user and ACL. Copy this template to a separate
+# file, replace the keywords as desired and use the ldapmodify command to
+# add the LDIF entries to the server.
+#
+
+# Create the proxy user
+dn: {proxyDN}
+changetype: add
+cn: {proxyUser}
+sn: {proxyUser}
+userpassword: {proxyPWD}
+objectclass: person
+
+# Modify proxy user password if previously existed (create above will fail).
+dn: {proxyDN}
+changetype: modify
+replace: userpassword
+userpassword: {proxyPWD}
+
+# Set the baseDN ACL
+dn: {baseDN}
+changetype: modify
+replace: aclentry
+aclentry: access-id:cn=this:at.userPassword:grant:w
+aclentry: access-id:{proxyDN}:at.userPassword:grant:r
+aclentry: access-id:{proxyDN}:at.passwordchar:grant:r
+aclentry: access-id:{proxyDN}:at.gecos:grant:rscw
+aclentry: access-id:{proxyDN}:at.hostlastlogin:grant:rscw
+aclentry: access-id:{proxyDN}:at.hostlastunsuccessfullogin:grant:rscw
+aclentry: access-id:{proxyDN}:at.ixtimelastlogin:grant:rscw
+aclentry: access-id:{proxyDN}:at.ixtimelastunsuccessfullogin:grant:rscw
+aclentry: access-id:{proxyDN}:at.loginshell:grant:rscw
+aclentry: access-id:{proxyDN}:at.passwordflags:grant:rw
+aclentry: access-id:{proxyDN}:at.passwordhistlist:grant:rscw
+aclentry: access-id:{proxyDN}:at.shadowlastchange:grant:rw
+aclentry: access-id:{proxyDN}:at.ixlastupdate:grant:rw
+aclentry: access-id:{proxyDN}:at.terminallastlogin:grant:rscw
+aclentry: access-id:{proxyDN}:at.terminallastunsuccessfullogin:grant:rscw
+aclentry: access-id:{proxyDN}:at.unsuccessfullogincount:grant:rscw
+aclentry: access-id:{proxyDN}:normal:grant:rsc
+aclentry: access-id:{proxyDN}:critical:grant:rsc
+aclentry: access-id:{proxyDN}:sensitive:grant:rsc
+aclentry: access-id:{proxyDN}:object:deny:ad
+
+# Propagate the ACL from the baseDN
+dn: {baseDN}
+changetype: modify
+replace: aclpropagate
+aclpropagate: TRUE
+

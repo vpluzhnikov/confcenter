@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile readOnly="true" origin="reference" version="2.0.0">
+ <Catalog id="trustchkParam" version="2.0">
+
+  <Parameter name="TE" />
+
+  <Parameter name="CHKEXEC" />
+
+  <Parameter name="CHKSHLIB" />
+
+  <Parameter name="CHKSCRIPT" />
+
+  <Parameter name="CHKKERNEXT" />
+
+  <Parameter name="STOP_UNTRUSTD" />
+
+  <Parameter name="STOP_ON_CHKFAIL" />
+
+  <Parameter name="LOCK_KERN_POLICIES" applyType="nextboot" reboot="true" />
+
+  <Parameter name="TSD_FILES_LOCK" />
+
+  <Parameter name="TSD_LOCK" />
+
+  <Parameter name="TEP" />
+
+  <Parameter name="TLP" />
+
+  <Parameter name="hash_algorithm" />
+ </Catalog>
+</Profile>

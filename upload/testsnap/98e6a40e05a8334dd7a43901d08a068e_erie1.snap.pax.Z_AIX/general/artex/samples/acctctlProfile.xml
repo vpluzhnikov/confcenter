@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile origin="reference" version="2.0.0" readOnly="true">
+ <Catalog id="acctctlParam" version="2.0">
+  <Parameter name="acctctl">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="transaction">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="email"/>
+  <Parameter name="email_addr"/>
+  <Parameter name="iprocess"/>
+  <Parameter name="isystem"/>
+  <Parameter name="agproc"/>
+  <Parameter name="agke"/>
+  <Parameter name="agarm"/>
+  <Parameter name="turacct"/>
+ </Catalog>
+</Profile>

@@ -1,0 +1,3478 @@
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos61F src/bos/etc/security/ldap/aixSchemaForAD.ldif 1.1 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2008 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)80	1.1  src/bos/etc/security/ldap/aixSchemaForAD.ldif, cmdsadm, bos61F, 0833A_61F 5/21/08 13:14:49
+# IBM_PROLOG_END_TAG 
+# The aixSchemaForAD.ldif file contains AIX LDAP extended schema
+# for Active Directory servers.
+
+dn: CN=adminGroupNames,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: adminGroupNames
+attributeID: 1.3.18.0.2.4.810
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: adminGroupNames
+schemaIDGUID:: b9Kvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 2048
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: adminGroupNames
+adminDescription: list of groups a user adminstrates
+distinguishedName: CN=adminGroupNames,CN=Schema,CN=Configuration,{Forest Root}
+name: adminGroupNames
+
+dn: CN=AIXAdminGroupId,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXAdminGroupId
+attributeID: 1.3.18.0.2.4.756
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: aIXAdminGroupId
+schemaIDGUID:: cNKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXAdminGroupId
+adminDescription: AIX new admin group id storage
+distinguishedName: CN=AIXAdminGroupId,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXAdminGroupId
+
+dn: CN=AIXAdminUserId,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXAdminUserId
+attributeID: 1.3.18.0.2.4.776
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: aIXAdminUserId
+schemaIDGUID:: cdKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXAdminUserId
+adminDescription: AIX new admin user id storage
+distinguishedName: CN=AIXAdminUserId,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXAdminUserId
+
+dn: CN=AIXDefaultMACLevel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXDefaultMACLevel
+attributeID: 1.3.18.0.2.4.793
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: aIXDefaultMACLevel
+schemaIDGUID:: ctKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXDefaultMACLevel
+adminDescription: AIX default level mac
+distinguishedName: CN=AIXDefaultMACLevel,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXDefaultMACLevel
+
+dn: CN=AIXFuncMode,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXFuncMode
+attributeID: 1.3.18.0.2.4.766
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: aIXFuncMode
+schemaIDGUID:: c9Kvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 15
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXFuncMode
+adminDescription: AIX smit acl function modes
+distinguishedName: CN=AIXFuncMode,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXFuncMode
+
+dn: CN=AIXGroupAdminList,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXGroupAdminList
+attributeID: 1.3.18.0.2.4.768
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: aIXGroupAdminList
+schemaIDGUID:: dNKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 2048
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXGroupAdminList
+adminDescription: list of administrators
+distinguishedName: CN=AIXGroupAdminList,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXGroupAdminList
+
+dn: CN=AIXGroupID,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXGroupID
+attributeID: 1.3.18.0.2.4.782
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: aIXGroupID
+schemaIDGUID:: ddKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXGroupID
+adminDescription: AIX new group id storage
+distinguishedName: CN=AIXGroupID,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXGroupID
+
+dn: CN=AIXisDCEExport,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXisDCEExport
+attributeID: 1.3.18.0.2.4.797
+attributeSyntax: 2.5.5.8
+isSingleValued: TRUE
+oMSyntax: 1
+lDAPDisplayName: aIXisDCEExport
+schemaIDGUID:: dtKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXisDCEExport
+adminDescription: DCE integration flag
+distinguishedName: CN=AIXisDCEExport,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXisDCEExport
+
+dn: CN=AIXLowMACLevel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXLowMACLevel
+attributeID: 1.3.18.0.2.4.778
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: aIXLowMACLevel
+schemaIDGUID:: d9Kvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXLowMACLevel
+adminDescription: AIX low level mac
+distinguishedName: CN=AIXLowMACLevel,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXLowMACLevel
+
+dn: CN=AIXPromptMAC,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXPromptMAC
+attributeID: 1.3.18.0.2.4.777
+attributeSyntax: 2.5.5.8
+isSingleValued: TRUE
+oMSyntax: 1
+lDAPDisplayName: aIXPromptMAC
+schemaIDGUID:: eNKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXPromptMAC
+adminDescription: prompt MAC, Mandatory Access Control, or not
+distinguishedName: CN=AIXPromptMAC,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXPromptMAC
+
+dn: CN=AIXScreens,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXScreens
+attributeID: 1.3.18.0.2.4.752
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: aIXScreens
+schemaIDGUID:: edKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1024
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXScreens
+adminDescription: AIX  SMIT screen access list
+distinguishedName: CN=AIXScreens,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXScreens
+
+dn: CN=AIXUpperMACLevel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXUpperMACLevel
+attributeID: 1.3.18.0.2.4.746
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: aIXUpperMACLevel
+schemaIDGUID:: etKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXUpperMACLevel
+adminDescription: AIX upper level mac
+distinguishedName: CN=AIXUpperMACLevel,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXUpperMACLevel
+
+dn: CN=AIXUserID,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: AIXUserID
+attributeID: 1.3.18.0.2.4.770
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: aIXUserID
+schemaIDGUID:: e9Kvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: AIXUserID
+adminDescription: Aix new user id storage attribute
+distinguishedName: CN=AIXUserID,CN=Schema,CN=Configuration,{Forest Root}
+name: AIXUserID
+
+dn: CN=auditClasses,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: auditClasses
+attributeID: 1.3.18.0.2.4.812
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: auditClasses
+schemaIDGUID:: ltKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 512
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: auditClasses
+adminDescription: classes, events, a user will be audited on
+distinguishedName: CN=auditClasses,CN=Schema,CN=Configuration,{Forest Root}
+name: auditClasses
+
+dn: CN=authMethod1,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: authMethod1
+attributeID: 1.3.18.0.2.4.762
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: authMethod1
+schemaIDGUID:: mtKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 16
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: authMethod1
+adminDescription: the primary method for authenticating a user
+distinguishedName: CN=authMethod1,CN=Schema,CN=Configuration,{Forest Root}
+name: authMethod1
+
+dn: CN=authMethod2,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: authMethod2
+attributeID: 1.3.18.0.2.4.780
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: authMethod2
+schemaIDGUID:: m9Kvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 16
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: authMethod2
+adminDescription: secondary method for authenticating a user
+distinguishedName: CN=authMethod2,CN=Schema,CN=Configuration,{Forest Root}
+name: authMethod2
+
+dn: CN=authorizationLevel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: authorizationLevel
+attributeID: 1.3.18.0.2.4.755
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: authorizationLevel
+schemaIDGUID:: ndKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 512
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: authorizationLevel
+adminDescription: authorization level associated with a role
+distinguishedName: CN=authorizationLevel,CN=Schema,CN=Configuration,{Forest Root}
+name: authorizationLevel
+
+dn: CN=capability,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: capability
+attributeID: 1.3.18.0.2.4.145
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: capability
+schemaIDGUID:: yNKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 128
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: capability
+adminDescription: Indicates the capabilities this GSO Target Service Type allows.
+distinguishedName: CN=capability,CN=Schema,CN=Configuration,{Forest Root}
+name: capability
+
+dn: CN=coreSizeLimit,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: coreSizeLimit
+attributeID: 1.3.18.0.2.4.751
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: coreSizeLimit
+schemaIDGUID:: 7tKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: coreSizeLimit
+adminDescription: core file size limit
+distinguishedName: CN=coreSizeLimit,CN=Schema,CN=Configuration,{Forest Root}
+name: coreSizeLimit
+
+dn: CN=coreSizeLimitHard,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: coreSizeLimitHard
+attributeID: 1.3.18.0.2.4.798
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: coreSizeLimitHard
+schemaIDGUID:: 79Kvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: coreSizeLimitHard
+adminDescription: hard core file size limit
+distinguishedName: CN=coreSizeLimitHard,CN=Schema,CN=Configuration,{Forest Root}
+name: coreSizeLimitHard
+
+dn: CN=cpuSize,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: cpuSize
+attributeID: 1.3.18.0.2.4.805
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: cpuSize
+schemaIDGUID:: /dKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: cpuSize
+adminDescription: limit of system units a process can use
+distinguishedName: CN=cpuSize,CN=Schema,CN=Configuration,{Forest Root}
+name: cpuSize
+
+dn: CN=cpuSizeHard,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: cpuSizeHard
+attributeID: 1.3.18.0.2.4.789
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: cpuSizeHard
+schemaIDGUID:: /tKvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: cpuSizeHard
+adminDescription: largest amount of system time process can use
+distinguishedName: CN=cpuSizeHard,CN=Schema,CN=Configuration,{Forest Root}
+name: cpuSizeHard
+
+dn: CN=dataSegSize,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: dataSegSize
+attributeID: 1.3.18.0.2.4.763
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: dataSegSize
+schemaIDGUID:: EtOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: dataSegSize
+adminDescription: size for data segment
+distinguishedName: CN=dataSegSize,CN=Schema,CN=Configuration,{Forest Root}
+name: dataSegSize
+
+dn: CN=dataSegSizeHard,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: dataSegSizeHard
+attributeID: 1.3.18.0.2.4.758
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: dataSegSizeHard
+schemaIDGUID:: E9Ovs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: dataSegSizeHard
+adminDescription: largest size of data segment
+distinguishedName: CN=dataSegSizeHard,CN=Schema,CN=Configuration,{Forest Root}
+name: dataSegSizeHard
+
+dn: CN=filePermMask,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: filePermMask
+attributeID: 1.3.18.0.2.4.757
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: filePermMask
+schemaIDGUID:: d9Ovs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: filePermMask
+adminDescription: mask to set file permission
+distinguishedName: CN=filePermMask,CN=Schema,CN=Configuration,{Forest Root}
+name: filePermMask
+
+dn: CN=fileSizeLimit,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: fileSizeLimit
+attributeID: 1.3.18.0.2.4.785
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: fileSizeLimit
+schemaIDGUID:: eNOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: fileSizeLimit
+adminDescription: file size limit
+distinguishedName: CN=fileSizeLimit,CN=Schema,CN=Configuration,{Forest Root}
+name: fileSizeLimit
+
+dn: CN=fileSizeLimitHard,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: fileSizeLimitHard
+attributeID: 1.3.18.0.2.4.779
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: fileSizeLimitHard
+schemaIDGUID:: edOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: fileSizeLimitHard
+adminDescription: file size limit
+distinguishedName: CN=fileSizeLimitHard,CN=Schema,CN=Configuration,{Forest Root}
+name: fileSizeLimitHard
+
+dn: CN=gidNumber,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: gidNumber
+attributeID: 1.3.6.1.1.1.1.1
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: gidNumber
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: gidNumber
+adminDescription: An integer uniquely identifying a group in an administrative domain.
+distinguishedName: CN=gidNumber,CN=Schema,CN=Configuration,{Forest Root}
+name: gidNumber
+
+dn: CN=groupList,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: groupList
+attributeID: 1.3.18.0.2.4.803
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: groupList
+schemaIDGUID:: htOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 2048
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: groupList
+adminDescription: list of groups a user or role can belong to
+distinguishedName: CN=groupList,CN=Schema,CN=Configuration,{Forest Root}
+name: groupList
+
+dn: CN=groupPassword,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: groupPassword
+attributeID: 1.3.18.0.2.4.765
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: groupPassword
+schemaIDGUID:: iNOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: groupPassword
+adminDescription: Group Password
+distinguishedName: CN=groupPassword,CN=Schema,CN=Configuration,{Forest Root}
+name: groupPassword
+
+dn: CN=groupSwitchUserAllowed,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: groupSwitchUserAllowed
+attributeID: 1.3.18.0.2.4.773
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: groupSwitchUserAllowed
+schemaIDGUID:: itOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1024
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: groupSwitchUserAllowed
+adminDescription: list of groups that can switch user to this user
+distinguishedName: CN=groupSwitchUserAllowed,CN=Schema,CN=Configuration,{Forest Root}
+name: groupSwitchUserAllowed
+
+dn: CN=hostLastLogin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: hostLastLogin
+attributeID: 1.3.18.0.2.4.787
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: hostLastLogin
+schemaIDGUID:: m9Ovs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: hostLastLogin
+adminDescription: host name of the last successful login
+distinguishedName: CN=hostLastLogin,CN=Schema,CN=Configuration,{Forest Root}
+name: hostLastLogin
+
+dn: CN=hostLastUnsuccessfulLogin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: hostLastUnsuccessfulLogin
+attributeID: 1.3.18.0.2.4.748
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: hostLastUnsuccessfulLogin
+schemaIDGUID:: nNOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: hostLastUnsuccessfulLogin
+adminDescription: host name of last unsuccessful login
+distinguishedName: CN=hostLastUnsuccessfulLogin,CN=Schema,CN=Configuration,{Forest Root}
+name: hostLastUnsuccessfulLogin
+
+dn: CN=hostsAllowedLogin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: hostsAllowedLogin
+attributeID: 1.3.18.0.2.4.2321
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: hostsAllowedLogin
+schemaIDGUID:: g23c7kP6gU6Q+KNG3+YoTw==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 255
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: hostsAllowedLogin
+adminDescription: The names or addresses of computer systems or networks to which a user is allowed to login.
+distinguishedName: CN=hostsAllowedLogin,CN=Schema,CN=Configuration,{Forest Root}
+name: hostsAllowedLogin
+
+dn: CN=hostsDeniedLogin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: hostsDeniedLogin
+attributeID: 1.3.18.0.2.4.2322
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: hostsDeniedLogin
+schemaIDGUID:: E9YHOSLzjU6xC70+OsRWeQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 255
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: hostsDeniedLogin
+adminDescription: The names or addresses of a computer systems or networks to which a user is not allowed to login.
+distinguishedName: CN=hostsDeniedLogin,CN=Schema,CN=Configuration,{Forest Root}
+name: hostsDeniedLogin
+
+dn: CN=ibm-accessAuths,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-accessAuths
+attributeID: 1.3.18.0.2.4.3359
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-AccessAuths
+schemaIDGUID:: /lgw4BEVgkWtUWRciFhnhw==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 64
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-accessAuths
+adminDescription: Access authorizations
+distinguishedName: CN=ibm-accessAuths,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-accessAuths
+
+dn: CN=ibm-aixAdminPolicyEntry,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-aixAdminPolicyEntry
+attributeID: 1.3.18.0.2.4.3233
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-AixAdminPolicyEntry
+schemaIDGUID:: WplZM+h/F0GBrTPpEjLMrw==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1152
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-aixAdminPolicyEntry
+adminDescription: Advanced accounting, admin policy rule
+distinguishedName: CN=ibm-aixAdminPolicyEntry,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-aixAdminPolicyEntry
+
+dn: CN=ibm-aixAdminPolicyName,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-aixAdminPolicyName
+attributeID: 1.3.18.0.2.4.3234
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-AixAdminPolicyName
+schemaIDGUID:: /TnIJG+wkUSsiPtVhAmsfA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-aixAdminPolicyName
+adminDescription: Advanced accounting, name of admin policy
+distinguishedName: CN=ibm-aixAdminPolicyName,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-aixAdminPolicyName
+
+dn: CN=ibm-aixpertLabel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-aixpertLabel
+attributeID: 1.3.18.0.2.4.3340
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-AixpertLabel
+schemaIDGUID:: bwnSq2e7A0yxpadzac+2Kg==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-aixpertLabel
+adminDescription: An unique label for a XML file
+distinguishedName: CN=ibm-aixpertLabel,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-aixpertLabel
+
+dn: CN=ibm-aixpertXmlConfigFile,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-aixpertXmlConfigFile
+attributeID: 1.3.18.0.2.4.3341
+attributeSyntax: 2.5.5.10
+isSingleValued: TRUE
+oMSyntax: 4
+lDAPDisplayName: ibm-AixpertXmlConfigFile
+schemaIDGUID:: Vnx1PqR/r02KVzO4RKPf8g==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-aixpertXmlConfigFile
+adminDescription: Aixpert XML configuration file
+distinguishedName: CN=ibm-aixpertXmlConfigFile,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-aixpertXmlConfigFile
+
+dn: CN=ibm-aixProjectDefinition,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-aixProjectDefinition
+attributeID: 1.3.18.0.2.4.3235
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-AixProjectDefinition
+schemaIDGUID:: pR1lMJBcmkGF/ikrhvsQCQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1152
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-aixProjectDefinition
+adminDescription: Advanced accounting, project definition entry
+distinguishedName: CN=ibm-aixProjectDefinition,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-aixProjectDefinition
+
+dn: CN=ibm-aixProjectName,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-aixProjectName
+attributeID: 1.3.18.0.2.4.3236
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-AixProjectName
+schemaIDGUID:: uoOs7f430Eq/8mON+LFItA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-aixProjectName
+adminDescription: Advanced accounting, name of project definition file
+distinguishedName: CN=ibm-aixProjectName,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-aixProjectName
+
+dn: CN=ibm-aixProjectNameList,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-aixProjectNameList
+attributeID: 1.3.18.0.2.4.3237
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-AixProjectNameList
+schemaIDGUID:: NuskfLWJ+k2WIcLE4fTl3w==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-aixProjectNameList
+adminDescription: Advanced accounting, list of project names
+distinguishedName: CN=ibm-aixProjectNameList,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-aixProjectNameList
+
+dn: CN=ibm-aixTEPDefinition,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-aixTEPDefinition
+attributeID: 1.3.18.0.2.4.3532
+attributeSyntax: 2.5.5.10
+isSingleValued: TRUE
+oMSyntax: 4
+lDAPDisplayName: ibm-AixTEPDefinition
+schemaIDGUID:: 3cuEBFBi40e5RMjp6INQTQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-aixTEPDefinition
+adminDescription: Trusted Execution Policy Definition Entry
+distinguishedName: CN=ibm-aixTEPDefinition,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-aixTEPDefinition
+
+dn: CN=ibm-aixTSDEntry,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-aixTSDEntry
+attributeID: 1.3.18.0.2.4.3533
+attributeSyntax: 2.5.5.10
+isSingleValued: TRUE
+oMSyntax: 4
+lDAPDisplayName: ibm-AixTSDEntry
+schemaIDGUID:: UarwDBGJGEKH4YU1EqcEvQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-aixTSDEntry
+adminDescription: Trusted Signature Database Entry
+distinguishedName: CN=ibm-aixTSDEntry,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-aixTSDEntry
+
+dn: CN=ibm-artexProfileDate,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-artexProfileDate
+attributeID: 1.3.18.0.2.4.3534
+attributeSyntax: 2.5.5.11
+isSingleValued: TRUE
+oMSyntax: 24
+lDAPDisplayName: ibm-ArtexProfileDate
+schemaIDGUID:: sPoWJmYqkUq3/ZHbGHL5gA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-artexProfileDate
+adminDescription: Date of the ARTEX profile
+distinguishedName: CN=ibm-artexProfileDate,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-artexProfileDate
+
+dn: CN=ibm-artexProfileName,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-artexProfileName
+attributeID: 1.3.18.0.2.4.3531
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-ArtexProfileName
+schemaIDGUID:: utscAaB4lE2q4ljSGQW/HQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1024
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-artexProfileName
+adminDescription: Name of the ARTEX profile
+distinguishedName: CN=ibm-artexProfileName,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-artexProfileName
+
+dn: CN=ibm-artexProfileOrigin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-artexProfileOrigin
+attributeID: 1.3.18.0.2.4.3535
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-ArtexProfileOrigin
+schemaIDGUID:: NjHNx1cSD0+0UAkrp/maHA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1024
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-artexProfileOrigin
+adminDescription: Origin of the ARTEX profile
+distinguishedName: CN=ibm-artexProfileOrigin,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-artexProfileOrigin
+
+dn: CN=ibm-artexProfileXMLData,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-artexProfileXMLData
+attributeID: 1.3.18.0.2.4.3536
+attributeSyntax: 2.5.5.10
+isSingleValued: TRUE
+oMSyntax: 4
+lDAPDisplayName: ibm-ArtexProfileXMLData
+schemaIDGUID:: LNHVAKoCEUGSZo+Uao9CEQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-artexProfileXMLData
+adminDescription: XML content of the ARTEX profile
+distinguishedName: CN=ibm-artexProfileXMLData,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-artexProfileXMLData
+
+dn: CN=ibm-authorizationID,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-authorizationID
+attributeID: 1.3.18.0.2.4.3363
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-AuthorizationID
+schemaIDGUID:: mUj6DUXkbk+JftX5DkHtsw==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-authorizationID
+adminDescription: authorization numeric ID
+distinguishedName: CN=ibm-authorizationID,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-authorizationID
+
+dn: CN=ibm-authorizations,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-authorizations
+attributeID: 1.3.18.0.2.4.3350
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-Authorizations
+schemaIDGUID:: kZLkarHF6kaC4bCh4BcUow==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 64
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-authorizations
+adminDescription: authorization names
+distinguishedName: CN=ibm-authorizations,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-authorizations
+
+dn: CN=ibm-authPrivs,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-authPrivs
+attributeID: 1.3.18.0.2.4.3354
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-AuthPrivs
+schemaIDGUID:: pjwztvJfnUSChCWZGFz2rw==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 512
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-authPrivs
+adminDescription: Authorized privieges
+distinguishedName: CN=ibm-authPrivs,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-authPrivs
+
+dn: CN=ibm-authRoles,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-authRoles
+attributeID: 1.3.18.0.2.4.3537
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-AuthRoles
+schemaIDGUID:: UXgb3JZLTEeZIpnIUyDydA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 128
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-authRoles
+adminDescription: List of Authenticated Roles
+distinguishedName: CN=ibm-authRoles,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-authRoles
+
+dn: CN=ibm-coreCompressionEnable,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-coreCompressionEnable
+attributeID: 1.3.18.0.2.4.3336
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-CoreCompressionEnable
+schemaIDGUID:: QISAeV6aEkKInZThtLsz7g==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 16
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-coreCompressionEnable
+adminDescription: Enable or disable corefile compression
+distinguishedName: CN=ibm-coreCompressionEnable,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-coreCompressionEnable
+
+dn: CN=ibm-coreNamingPolicy,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-coreNamingPolicy
+attributeID: 1.3.18.0.2.4.3337
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-CoreNamingPolicy
+schemaIDGUID:: Y5H6f4CaNEm+QcYgjnBGfA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 16
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-coreNamingPolicy
+adminDescription: Specifies core file naming policy
+distinguishedName: CN=ibm-coreNamingPolicy,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-coreNamingPolicy
+
+dn: CN=ibm-corePathEnable,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-corePathEnable
+attributeID: 1.3.18.0.2.4.3338
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-CorePathEnable
+schemaIDGUID:: Y1wCT35B90GCj20FCOdj8w==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 16
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-corePathEnable
+adminDescription: Enable or disable core file path specification.
+distinguishedName: CN=ibm-corePathEnable,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-corePathEnable
+
+dn: CN=ibm-corePathName,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-corePathName
+attributeID: 1.3.18.0.2.4.3339
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-CorePathName
+schemaIDGUID:: vWZT3CUptEq0Mfjwb65zxQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-corePathName
+adminDescription: Specifies a location for core files
+distinguishedName: CN=ibm-corePathName,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-corePathName
+
+dn: CN=ibm-defaultRoles,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-defaultRoles
+attributeID: 1.3.18.0.2.4.3349
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-DefaultRoles
+schemaIDGUID:: /QOEiKTRZ0e97QkbZisLhA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 64
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-defaultRoles
+adminDescription: List of default roles
+distinguishedName: CN=ibm-defaultRoles,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-defaultRoles
+
+dn: CN=ibm-defIntegrityLabel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-defIntegrityLabel
+attributeID: 1.3.18.0.2.4.3367
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-DefIntegrityLabel
+schemaIDGUID:: DdxLE0Mr/kiQWFMv4no07g==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-defIntegrityLabel
+adminDescription: Default integrity clearance label, the effective integrity level assigned to a user
+distinguishedName: CN=ibm-defIntegrityLabel,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-defIntegrityLabel
+
+dn: CN=ibm-defSensitivityLabel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-defSensitivityLabel
+attributeID: 1.3.18.0.2.4.3372
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-DefSensitivityLabel
+schemaIDGUID:: fLdZOJKnv0iQAAxameNTFQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-defSensitivityLabel
+adminDescription: Default sensitivity clearance label, the effective sensitivity level assigned to a user.
+distinguishedName: CN=ibm-defSensitivityLabel,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-defSensitivityLabel
+
+dn: CN=ibm-efsAdminKSAccess,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-efsAdminKSAccess
+attributeID: 1.3.18.0.2.4.3538
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-EfsAdminKSAccess
+schemaIDGUID:: Wgg8DvAXBU+FvPmrOGp5OA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-efsAdminKSAccess
+adminDescription: Defines the efs_admin keystore location
+distinguishedName: CN=ibm-efsAdminKSAccess,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-efsAdminKSAccess
+
+dn: CN=ibm-efsAllowKSModeChangeByUser,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-efsAllowKSModeChangeByUser
+attributeID: 1.3.18.0.2.4.3539
+attributeSyntax: 2.5.5.8
+isSingleValued: TRUE
+oMSyntax: 1
+lDAPDisplayName: ibm-EfsAllowKSModeChangeByUser
+schemaIDGUID:: Z47dM4mGgE2axOXtwHFhqQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-efsAllowKSModeChangeByUser
+adminDescription: Defines whether the user can change the mode or not
+distinguishedName: CN=ibm-efsAllowKSModeChangeByUser,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-efsAllowKSModeChangeByUser
+
+dn: CN=ibm-efsCookie,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-efsCookie
+attributeID: 1.3.18.0.2.4.3540
+attributeSyntax: 2.5.5.10
+isSingleValued: TRUE
+oMSyntax: 4
+lDAPDisplayName: ibm-EfsCookie
+schemaIDGUID:: 786ciQ5nkkS/cQq5QeIjIg==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-efsCookie
+adminDescription: EFS Keystore cookie
+distinguishedName: CN=ibm-efsCookie,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-efsCookie
+
+dn: CN=ibm-efsFileAlgo,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-efsFileAlgo
+attributeID: 1.3.18.0.2.4.3541
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-EfsFileAlgo
+schemaIDGUID:: k6EWpMUnFUKKFfkY/ZC5VQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 64
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-efsFileAlgo
+adminDescription: Defines the algorithm that is used to generate the file protection key
+distinguishedName: CN=ibm-efsFileAlgo,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-efsFileAlgo
+
+dn: CN=ibm-efsInitialKSMode,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-efsInitialKSMode
+attributeID: 1.3.18.0.2.4.3542
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-EfsInitialKSMode
+schemaIDGUID:: MPSA8cobP0S5ll+wi4aNqw==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 10
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-efsInitialKSMode
+adminDescription: Initial mode of the user keystore
+distinguishedName: CN=ibm-efsInitialKSMode,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-efsInitialKSMode
+
+dn: CN=ibm-efsKeystoreAccess,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-efsKeystoreAccess
+attributeID: 1.3.18.0.2.4.3543
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-EfsKeystoreAccess
+schemaIDGUID:: J+40oqAHMkSZzJGyZaqNDg==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-efsKeystoreAccess
+adminDescription: Defines the user keystore location
+distinguishedName: CN=ibm-efsKeystoreAccess,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-efsKeystoreAccess
+
+dn: CN=ibm-efsKeystoreAlgo,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-efsKeystoreAlgo
+attributeID: 1.3.18.0.2.4.3544
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-EfsKeystoreAlgo
+schemaIDGUID:: lMQ1G2uKxkGS6U5iywRIzQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 64
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-efsKeystoreAlgo
+adminDescription: Algorithm that is used to generate the user private key
+distinguishedName: CN=ibm-efsKeystoreAlgo,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-efsKeystoreAlgo
+
+dn: CN=ibm-egid,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-egid
+attributeID: 1.3.18.0.2.4.3361
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-Egid
+schemaIDGUID:: YCNCvRkkhEygBjAE27SA4w==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-egid
+adminDescription: The effective group id
+distinguishedName: CN=ibm-egid,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-egid
+
+dn: CN=ibm-euid,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-euid
+attributeID: 1.3.18.0.2.4.3362
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-Euid
+schemaIDGUID:: jrgUzF3k2EaX4lS/l5gmvg==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-euid
+adminDescription: The effective user id
+distinguishedName: CN=ibm-euid,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-euid
+
+dn: CN=ibm-inheritPrivs,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-inheritPrivs
+attributeID: 1.3.18.0.2.4.3365
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-InheritPrivs
+schemaIDGUID:: DPRptHuSxUKhd6iIbZdigw==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-inheritPrivs
+adminDescription: Inheritable privileges
+distinguishedName: CN=ibm-inheritPrivs,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-inheritPrivs
+
+dn: CN=ibm-innatePrivs,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-innatePrivs
+attributeID: 1.3.18.0.2.4.3358
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-InnatePrivs
+schemaIDGUID:: I3gwVh2Mb0iAtHVk6o5g5g==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-innatePrivs
+adminDescription: Innate privileges
+distinguishedName: CN=ibm-innatePrivs,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-innatePrivs
+
+dn: CN=ibm-maxIntegrityLabel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-maxIntegrityLabel
+attributeID: 1.3.18.0.2.4.3370
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-MaxIntegrityLabel
+schemaIDGUID:: srvsiSrc8EeP6wXBCxzGNw==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-maxIntegrityLabel
+adminDescription: Maximum integrity clearance label, the highest integrity level that can be assigned to a user on the system.
+distinguishedName: CN=ibm-maxIntegrityLabel,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-maxIntegrityLabel
+
+dn: CN=ibm-maxSensitivityLabel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-maxSensitivityLabel
+attributeID: 1.3.18.0.2.4.3369
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-MaxSensitivityLabel
+schemaIDGUID:: FLPPNxQ+yke7BML/9+errA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-maxSensitivityLabel
+adminDescription: Maximum sensitivity clearance label, the highest sensitivity level that can be assigned to a user on the system.
+distinguishedName: CN=ibm-maxSensitivityLabel,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-maxSensitivityLabel
+
+dn: CN=ibm-minIntegrityLabel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-minIntegrityLabel
+attributeID: 1.3.18.0.2.4.3371
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-MinIntegrityLabel
+schemaIDGUID:: jQSKR5eDeky40wdrIUQH0g==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-minIntegrityLabel
+adminDescription: Minimum integrity clearance label, the lowest integrity level that can be assigned to a user on the system.
+distinguishedName: CN=ibm-minIntegrityLabel,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-minIntegrityLabel
+
+dn: CN=ibm-minSensitivityLabel,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-minSensitivityLabel
+attributeID: 1.3.18.0.2.4.3368
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-MinSensitivityLabel
+schemaIDGUID:: Mv6J1n4WykyQbZXGqzaDPg==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-minSensitivityLabel
+adminDescription: Minimum sensitivity clearance label, the lowest sensitivity level that can be assigned to a user on the system.
+distinguishedName: CN=ibm-minSensitivityLabel,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-minSensitivityLabel
+
+dn: CN=ibm-msgSet,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-msgSet
+attributeID: 1.3.18.0.2.4.3364
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-MsgSet
+schemaIDGUID:: 3sYqdr6cU0q3B7PrvfFiOw==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-msgSet
+adminDescription: Message set
+distinguishedName: CN=ibm-msgSet,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-msgSet
+
+dn: CN=ibm-passwordmindigit,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-passwordmindigit
+attributeID: 1.3.18.0.2.4.3561
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-Passwordmindigit
+schemaIDGUID:: afgQ0KV6LUiYN5dE5DQi5g==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-passwordmindigit
+adminDescription: Specifies the minimum number of digits in a password.
+distinguishedName: CN=ibm-passwordmindigit,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-passwordmindigit
+
+dn: CN=ibm-passwordminloweralphachars,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-passwordminloweralphachars
+attributeID: 1.3.18.0.2.4.3562
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-Passwordminloweralphachars
+schemaIDGUID:: 4yhTAO3MQEGv2q+/b65ofg==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-passwordminloweralphachars
+adminDescription: Specifies the minimum number of lower-case alphabetic characters in a password.
+distinguishedName: CN=ibm-passwordminloweralphachars,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-passwordminloweralphachars
+
+dn: CN=ibm-passwordminspecialchar,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-passwordminspecialchar
+attributeID: 1.3.18.0.2.4.3563
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-Passwordminspecialchar
+schemaIDGUID:: EdQsGGH/3Ei+8jfENNTxDA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-passwordminspecialchar
+adminDescription: Specifies the minimum number of special characters in a password.
+distinguishedName: CN=ibm-passwordminspecialchar,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-passwordminspecialchar
+
+dn: CN=ibm-passwordminupperalphachars,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-passwordminupperalphachars
+attributeID: 1.3.18.0.2.4.3564
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-Passwordminupperalphachars
+schemaIDGUID:: cV10wpdPvU68xxEqirEa9A==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-passwordminupperalphachars
+adminDescription: Specifies the minimum number of upper-case alphabetic characters in a password.
+distinguishedName: CN=ibm-passwordminupperalphachars,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-passwordminupperalphachars
+
+dn: CN=ibm-readAuths,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-readAuths
+attributeID: 1.3.18.0.2.4.3353
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-ReadAuths
+schemaIDGUID:: cMeRDKxed0emfyar98Fz9Q==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 64
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-readAuths
+adminDescription: Authorizations required to read an object
+distinguishedName: CN=ibm-readAuths,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-readAuths
+
+dn: CN=ibm-readPrivs,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-readPrivs
+attributeID: 1.3.18.0.2.4.3356
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-ReadPrivs
+schemaIDGUID:: KELp1HsEJUScgQSfVs0Cog==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-readPrivs
+adminDescription: Privileges required to read an object
+distinguishedName: CN=ibm-readPrivs,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-readPrivs
+
+dn: CN=ibm-roleAuthMode,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-roleAuthMode
+attributeID: 1.3.18.0.2.4.3351
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: ibm-RoleAuthMode
+schemaIDGUID:: 5Goz4WJbwUihRTi+HD+EOA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 16
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-roleAuthMode
+adminDescription: Authentication method for assuming a role
+distinguishedName: CN=ibm-roleAuthMode,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-roleAuthMode
+
+dn: CN=ibm-roleID,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-roleID
+attributeID: 1.3.18.0.2.4.3360
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-RoleID
+schemaIDGUID:: CKoIvozGG06uKFyeYYTcEQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-roleID
+adminDescription: Role ID
+distinguishedName: CN=ibm-roleID,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-roleID
+
+dn: CN=ibm-ruid,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-ruid
+attributeID: 1.3.18.0.2.4.3545
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-Ruid
+schemaIDGUID:: m79SbEQ0t0Od5NO2qBiBOg==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-ruid
+adminDescription: The real user id
+distinguishedName: CN=ibm-ruid,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-ruid
+
+dn: CN=ibm-secFlags,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-secFlags
+attributeID: 1.3.18.0.2.4.3357
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-SecFlags
+schemaIDGUID:: ooC3hIafYkafJFJq4cwNzA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-secFlags
+adminDescription: Security flags
+distinguishedName: CN=ibm-secFlags,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-secFlags
+
+dn: CN=ibm-threadsPerProcess,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-threadsPerProcess
+attributeID: 1.3.18.0.2.4.3366
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ibm-ThreadsPerProcess
+schemaIDGUID:: IA4a/ueB6UOTUcsDvb9IJg==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-threadsPerProcess
+adminDescription: Maximum number of threads per process allowed
+distinguishedName: CN=ibm-threadsPerProcess,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-threadsPerProcess
+
+dn: CN=ibm-writeAuths,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-writeAuths
+attributeID: 1.3.18.0.2.4.3352
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-WriteAuths
+schemaIDGUID:: 3e14Ne/a20mtKMl/orQx7A==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 64
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-writeAuths
+adminDescription: Authorizations requried to write to an object
+distinguishedName: CN=ibm-writeAuths,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-writeAuths
+
+dn: CN=ibm-writePrivs,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ibm-writePrivs
+attributeID: 1.3.18.0.2.4.3355
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: ibm-WritePrivs
+schemaIDGUID:: Af8oSc7ZYkqGxitTMqGrBQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ibm-writePrivs
+adminDescription: Privileges required to write to an object
+distinguishedName: CN=ibm-writePrivs,CN=Schema,CN=Configuration,{Forest Root}
+name: ibm-writePrivs
+
+dn: CN=isAccountEnabled,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: isAccountEnabled
+attributeID: 1.3.18.0.2.4.726
+attributeSyntax: 2.5.5.8
+isSingleValued: TRUE
+oMSyntax: 1
+lDAPDisplayName: isAccountEnabled
+schemaIDGUID:: udOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: isAccountEnabled
+adminDescription: indicates whether users are allowed to login using an account (true) or not (false)
+distinguishedName: CN=isAccountEnabled,CN=Schema,CN=Configuration,{Forest Root}
+name: isAccountEnabled
+
+dn: CN=isAdministrator,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: isAdministrator
+attributeID: 1.3.18.0.2.4.728
+attributeSyntax: 2.5.5.8
+isSingleValued: TRUE
+oMSyntax: 1
+lDAPDisplayName: isAdministrator
+schemaIDGUID:: utOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: isAdministrator
+adminDescription: indicates whether an account has administrative authority
+distinguishedName: CN=isAdministrator,CN=Schema,CN=Configuration,{Forest Root}
+name: isAdministrator
+
+dn: CN=isDaemon,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: isDaemon
+attributeID: 1.3.18.0.2.4.761
+attributeSyntax: 2.5.5.8
+isSingleValued: TRUE
+oMSyntax: 1
+lDAPDisplayName: isDaemon
+schemaIDGUID:: vNOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: isDaemon
+adminDescription: AIX indicator whether a user can run programs under cron or src
+distinguishedName: CN=isDaemon,CN=Schema,CN=Configuration,{Forest Root}
+name: isDaemon
+
+dn: CN=isLoginAllowed,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: isLoginAllowed
+attributeID: 1.3.18.0.2.4.743
+attributeSyntax: 2.5.5.8
+isSingleValued: TRUE
+oMSyntax: 1
+lDAPDisplayName: isLoginAllowed
+schemaIDGUID:: vtOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: isLoginAllowed
+adminDescription: indicate wheter a user can login
+distinguishedName: CN=isLoginAllowed,CN=Schema,CN=Configuration,{Forest Root}
+name: isLoginAllowed
+
+dn: CN=isRemoteAccessAllowed,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: isRemoteAccessAllowed
+attributeID: 1.3.18.0.2.4.799
+attributeSyntax: 2.5.5.8
+isSingleValued: TRUE
+oMSyntax: 1
+lDAPDisplayName: isRemoteAccessAllowed
+schemaIDGUID:: v9Ovs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: isRemoteAccessAllowed
+adminDescription: permits access from a remote system
+distinguishedName: CN=isRemoteAccessAllowed,CN=Schema,CN=Configuration,{Forest Root}
+name: isRemoteAccessAllowed
+
+dn: CN=isSwitchUserAllowed,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: isSwitchUserAllowed
+attributeID: 1.3.18.0.2.4.808
+attributeSyntax: 2.5.5.8
+isSingleValued: TRUE
+oMSyntax: 1
+lDAPDisplayName: isSwitchUserAllowed
+schemaIDGUID:: wNOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: isSwitchUserAllowed
+adminDescription: indicate whether a user can switch to this users account
+distinguishedName: CN=isSwitchUserAllowed,CN=Schema,CN=Configuration,{Forest Root}
+name: isSwitchUserAllowed
+
+dn: CN=ixTimeLastLogin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ixTimeLastLogin
+attributeID: 1.3.18.0.2.4.771
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ixTimeLastLogin
+schemaIDGUID:: wtOvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ixTimeLastLogin
+adminDescription: time of users last login
+distinguishedName: CN=ixTimeLastLogin,CN=Schema,CN=Configuration,{Forest Root}
+name: ixTimeLastLogin
+
+dn: CN=ixTimeLastUnsuccessfulLogin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: ixTimeLastUnsuccessfulLogin
+attributeID: 1.3.18.0.2.4.749
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: ixTimeLastUnsuccessfulLogin
+schemaIDGUID:: w9Ovs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: ixTimeLastUnsuccessfulLogin
+adminDescription: user time of last unsuccessful
+distinguishedName: CN=ixTimeLastUnsuccessfulLogin,CN=Schema,CN=Configuration,{Forest Root}
+name: ixTimeLastUnsuccessfulLogin
+
+dn: CN=loginTimes,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: loginTimes
+attributeID: 1.3.18.0.2.4.801
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: loginTimes
+schemaIDGUID:: 69Ovs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1024
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: loginTimes
+adminDescription: valid times a user is allowed to login
+distinguishedName: CN=loginTimes,CN=Schema,CN=Configuration,{Forest Root}
+name: loginTimes
+
+dn: CN=maxFailedLogins,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: maxFailedLogins
+attributeID: 1.3.18.0.2.4.710
+attributeSyntax: 2.5.5.9
+isSingleValued: FALSE
+oMSyntax: 2
+lDAPDisplayName: maxFailedLogins
+schemaIDGUID:: FtSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: maxFailedLogins
+adminDescription: Maximum number of failed login before the account is locked.
+distinguishedName: CN=maxFailedLogins,CN=Schema,CN=Configuration,{Forest Root}
+name: maxFailedLogins
+
+dn: CN=maxLogin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: maxLogin
+attributeID: 1.3.18.0.2.4.807
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: maxLogin
+schemaIDGUID:: GNSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: maxLogin
+adminDescription: maximum number of logins
+distinguishedName: CN=maxLogin,CN=Schema,CN=Configuration,{Forest Root}
+name: maxLogin
+
+dn: CN=msgFileName,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: msgFileName
+attributeID: 1.3.18.0.2.4.332
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: msgFileName
+schemaIDGUID:: ONSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 256
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: msgFileName
+adminDescription: This attribute is used to indicate a message file name which contains displayable/translatable strings for those attributes which are displayable.
+distinguishedName: CN=msgFileName,CN=Schema,CN=Configuration,{Forest Root}
+name: msgFileName
+
+dn: CN=msgNumber,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: msgNumber
+attributeID: 1.3.18.0.2.4.774
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: msgNumber
+schemaIDGUID:: OdSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: msgNumber
+adminDescription: index into a message catalog
+distinguishedName: CN=msgNumber,CN=Schema,CN=Configuration,{Forest Root}
+name: msgNumber
+
+dn: CN=openFileLimit,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: openFileLimit
+attributeID: 1.3.18.0.2.4.781
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: openFileLimit
+schemaIDGUID:: ktSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: openFileLimit
+adminDescription: limit for number of open files
+distinguishedName: CN=openFileLimit,CN=Schema,CN=Configuration,{Forest Root}
+name: openFileLimit
+
+dn: CN=openFileLimitHard,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: openFileLimitHard
+attributeID: 1.3.18.0.2.4.784
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: openFileLimitHard
+schemaIDGUID:: k9Svs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: openFileLimitHard
+adminDescription: maximun number of open files
+distinguishedName: CN=openFileLimitHard,CN=Schema,CN=Configuration,{Forest Root}
+name: openFileLimitHard
+
+dn: CN=passwordChar,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordChar
+attributeID: 1.3.18.0.2.4.802
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: passwordChar
+schemaIDGUID:: tNSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 8
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordChar
+adminDescription: password existance character
+distinguishedName: CN=passwordChar,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordChar
+
+dn: CN=passwordCheckMethods,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordCheckMethods
+attributeID: 1.3.18.0.2.4.458
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: passwordCheckMethods
+schemaIDGUID:: tdSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1024
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordCheckMethods
+adminDescription: Methods for checking passwords.
+distinguishedName: CN=passwordCheckMethods,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordCheckMethods
+
+dn: CN=passwordDictFiles,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordDictFiles
+attributeID: 1.3.18.0.2.4.463
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: passwordDictFiles
+schemaIDGUID:: ttSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1024
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordDictFiles
+adminDescription: Password dictionary files.
+distinguishedName: CN=passwordDictFiles,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordDictFiles
+
+dn: CN=passwordExpireTime,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordExpireTime
+attributeID: 1.3.18.0.2.4.485
+attributeSyntax: 2.5.5.11
+isSingleValued: FALSE
+oMSyntax: 24
+lDAPDisplayName: passwordExpireTime
+schemaIDGUID:: uNSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordExpireTime
+adminDescription: Defines, in YYYYMMDDHHMMSS format, the date and time when a user password expires.
+distinguishedName: CN=passwordExpireTime,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordExpireTime
+
+dn: CN=passwordFlags,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordFlags
+attributeID: 1.3.18.0.2.4.753
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: passwordFlags
+schemaIDGUID:: udSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 25
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordFlags
+adminDescription: password flags
+distinguishedName: CN=passwordFlags,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordFlags
+
+dn: CN=passwordHistExpire,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordHistExpire
+attributeID: 1.3.18.0.2.4.2504
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: passwordHistExpire
+schemaIDGUID:: /6/gBRfD6U20O2FOGv/1DA==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordHistExpire
+adminDescription: defines the period of time in weeks that a user cannot reuse a password
+distinguishedName: CN=passwordHistExpire,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordHistExpire
+
+dn: CN=passwordHistList,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordHistList
+attributeID: 1.3.18.0.2.4.1101
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: passwordHistList
+schemaIDGUID:: hY8ncTgQPUyTwnnf6bjJ9Q==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1024
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordHistList
+adminDescription: list of user passwords
+distinguishedName: CN=passwordHistList,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordHistList
+
+dn: CN=passwordHistSize,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordHistSize
+attributeID: 1.3.18.0.2.4.772
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: passwordHistSize
+schemaIDGUID:: u9Svs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordHistSize
+adminDescription: number of previous passwords that can be stored in password history
+distinguishedName: CN=passwordHistSize,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordHistSize
+
+dn: CN=passwordMaxConsecutiveRepeatedChars,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordMaxConsecutiveRepeatedChars
+attributeID: 1.3.18.0.2.4.3396
+attributeSyntax: 2.5.5.9
+isSingleValued: FALSE
+oMSyntax: 2
+lDAPDisplayName: passwordMaxConsecutiveRepeatedChars
+schemaIDGUID:: NZWmUxETJUWy2wOdGDTXfw==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordMaxConsecutiveRepeatedChars
+adminDescription: Attribute used to impose the maximum number of consecutive repeated characters in the password field.
+distinguishedName: CN=passwordMaxConsecutiveRepeatedChars,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordMaxConsecutiveRepeatedChars
+
+dn: CN=passwordMaxRepeatedChars,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordMaxRepeatedChars
+attributeID: 1.3.18.0.2.4.454
+attributeSyntax: 2.5.5.9
+isSingleValued: FALSE
+oMSyntax: 2
+lDAPDisplayName: passwordMaxRepeatedChars
+schemaIDGUID:: vdSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordMaxRepeatedChars
+adminDescription: Maximum repeated characters allowed.
+distinguishedName: CN=passwordMaxRepeatedChars,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordMaxRepeatedChars
+
+dn: CN=passwordMinAlphaChars,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordMinAlphaChars
+attributeID: 1.3.18.0.2.4.473
+attributeSyntax: 2.5.5.9
+isSingleValued: FALSE
+oMSyntax: 2
+lDAPDisplayName: passwordMinAlphaChars
+schemaIDGUID:: v9Svs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordMinAlphaChars
+adminDescription: Specifies the minimum number of characters required for a users password.
+distinguishedName: CN=passwordMinAlphaChars,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordMinAlphaChars
+
+dn: CN=passwordMinDiffChars,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordMinDiffChars
+attributeID: 1.3.18.0.2.4.499
+attributeSyntax: 2.5.5.9
+isSingleValued: FALSE
+oMSyntax: 2
+lDAPDisplayName: passwordMinDiffChars
+schemaIDGUID:: wNSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordMinDiffChars
+adminDescription: Specifies the minimum number of different (unique) characters required for a users password.
+distinguishedName: CN=passwordMinDiffChars,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordMinDiffChars
+
+dn: CN=passwordMinLength,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordMinLength
+attributeID: 2.16.840.1.113730.3.1.99
+attributeSyntax: 2.5.5.9
+isSingleValued: FALSE
+oMSyntax: 2
+lDAPDisplayName: passwordMinLength
+schemaIDGUID:: wdSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordMinLength
+adminDescription: Specifies the minimum number of characters required for a user¡¯s password.
+distinguishedName: CN=passwordMinLength,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordMinLength
+
+dn: CN=passwordMinOtherChars,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: passwordMinOtherChars
+attributeID: 1.3.18.0.2.4.469
+attributeSyntax: 2.5.5.9
+isSingleValued: FALSE
+oMSyntax: 2
+lDAPDisplayName: passwordMinOtherChars
+schemaIDGUID:: wtSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: passwordMinOtherChars
+adminDescription: Specifies the minimum number of other characters required.
+distinguishedName: CN=passwordMinOtherChars,CN=Schema,CN=Configuration,{Forest Root}
+name: passwordMinOtherChars
+
+dn: CN=physicalMemLimit,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: physicalMemLimit
+attributeID: 1.3.18.0.2.4.790
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: physicalMemLimit
+schemaIDGUID:: zdSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: physicalMemLimit
+adminDescription: limit for the amount fo physical memory that can be allocated
+distinguishedName: CN=physicalMemLimit,CN=Schema,CN=Configuration,{Forest Root}
+name: physicalMemLimit
+
+dn: CN=physicalMemLimitHard,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: physicalMemLimitHard
+attributeID: 1.3.18.0.2.4.744
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: physicalMemLimitHard
+schemaIDGUID:: ztSvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: physicalMemLimitHard
+adminDescription: largest amount of physical memory that can be allocated
+distinguishedName: CN=physicalMemLimitHard,CN=Schema,CN=Configuration,{Forest Root}
+name: physicalMemLimitHard
+
+dn: CN=rcmds,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: rcmds
+attributeID: 1.3.18.0.2.4.3107
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: rcmds
+schemaIDGUID:: SaEoyDhaRkasN1YDmSoQBg==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: rcmds
+adminDescription: allow, deny, hostlogincontrol. Specifies whether a user is allowed to run remote commands.
+distinguishedName: CN=rcmds,CN=Schema,CN=Configuration,{Forest Root}
+name: rcmds
+
+dn: CN=roleList,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: roleList
+attributeID: 1.3.18.0.2.4.786
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: roleList
+schemaIDGUID:: ZNWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 2048
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: roleList
+adminDescription: list of roles a user or role may belong to
+distinguishedName: CN=roleList,CN=Schema,CN=Configuration,{Forest Root}
+name: roleList
+
+dn: CN=roleName,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: roleName
+attributeID: 1.3.18.0.2.4.745
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: roleName
+schemaIDGUID:: ZdWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 32
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: roleName
+adminDescription: role name
+distinguishedName: CN=roleName,CN=Schema,CN=Configuration,{Forest Root}
+name: roleName
+
+dn: CN=roleVisibility,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: roleVisibility
+attributeID: 1.3.18.0.2.4.794
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: roleVisibility
+schemaIDGUID:: Z9Wvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: roleVisibility
+adminDescription: role visibility to the system
+distinguishedName: CN=roleVisibility,CN=Schema,CN=Configuration,{Forest Root}
+name: roleVisibility
+
+dn: CN=stackSizeLimit,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: stackSizeLimit
+attributeID: 1.3.18.0.2.4.759
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: stackSizeLimit
+schemaIDGUID:: rdWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: stackSizeLimit
+adminDescription: size limit for process stack
+distinguishedName: CN=stackSizeLimit,CN=Schema,CN=Configuration,{Forest Root}
+name: stackSizeLimit
+
+dn: CN=stackSizeLimitHard,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: stackSizeLimitHard
+attributeID: 1.3.18.0.2.4.754
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: stackSizeLimitHard
+schemaIDGUID:: rtWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: stackSizeLimitHard
+adminDescription: largest stack segment for a process
+distinguishedName: CN=stackSizeLimitHard,CN=Schema,CN=Configuration,{Forest Root}
+name: stackSizeLimitHard
+
+dn: CN=systemEnvironment,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: systemEnvironment
+attributeID: 1.3.18.0.2.4.804
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: systemEnvironment
+schemaIDGUID:: xdWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 2048
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: systemEnvironment
+adminDescription: protect environment
+distinguishedName: CN=systemEnvironment,CN=Schema,CN=Configuration,{Forest Root}
+name: systemEnvironment
+
+dn: CN=terminalAccess,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: terminalAccess
+attributeID: 1.3.18.0.2.4.809
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: terminalAccess
+schemaIDGUID:: 0dWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 2048
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: terminalAccess
+adminDescription: list of terminals that can access users account
+distinguishedName: CN=terminalAccess,CN=Schema,CN=Configuration,{Forest Root}
+name: terminalAccess
+
+dn: CN=terminalLastLogin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: terminalLastLogin
+attributeID: 1.3.18.0.2.4.767
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: terminalLastLogin
+schemaIDGUID:: 0tWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1023
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: terminalLastLogin
+adminDescription: terminal users last successfully login
+distinguishedName: CN=terminalLastLogin,CN=Schema,CN=Configuration,{Forest Root}
+name: terminalLastLogin
+
+dn: CN=terminalLastUnsuccessfulLogin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: terminalLastUnsuccessfulLogin
+attributeID: 1.3.18.0.2.4.769
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: terminalLastUnsuccessfulLogin
+schemaIDGUID:: 09Wvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 1023
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: terminalLastUnsuccessfulLogin
+adminDescription: terminal of users last unsuccessful login
+distinguishedName: CN=terminalLastUnsuccessfulLogin,CN=Schema,CN=Configuration,{Forest Root}
+name: terminalLastUnsuccessfulLogin
+
+dn: CN=timeExpiredLogout,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: timeExpiredLogout
+attributeID: 1.3.18.0.2.4.806
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: timeExpiredLogout
+schemaIDGUID:: 19Wvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: timeExpiredLogout
+adminDescription: inactivity time out
+distinguishedName: CN=timeExpiredLogout,CN=Schema,CN=Configuration,{Forest Root}
+name: timeExpiredLogout
+
+dn: CN=timeExpireLockout,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: timeExpireLockout
+attributeID: 1.3.18.0.2.4.474
+attributeSyntax: 2.5.5.9
+isSingleValued: FALSE
+oMSyntax: 2
+lDAPDisplayName: timeExpireLockout
+schemaIDGUID:: 2NWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: timeExpireLockout
+adminDescription: Specifies the time of password expire after which the account is locked.
+distinguishedName: CN=timeExpireLockout,CN=Schema,CN=Configuration,{Forest Root}
+name: timeExpireLockout
+
+dn: CN=trustedPathStatus,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: trustedPathStatus
+attributeID: 1.3.18.0.2.4.800
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: trustedPathStatus
+schemaIDGUID:: 4tWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 7
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: trustedPathStatus
+adminDescription: indicates the users trusted path status
+distinguishedName: CN=trustedPathStatus,CN=Schema,CN=Configuration,{Forest Root}
+name: trustedPathStatus
+
+dn: CN=uidNumber,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: uidNumber
+attributeID: 1.3.6.1.1.1.1.0
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: uidNumber
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: uidNumber
+adminDescription: An integer uniquely identifying a user in an administrative domain.
+distinguishedName: CN=uidNumber,CN=Schema,CN=Configuration,{Forest Root}
+name: uidNumber
+
+dn: CN=unsuccessfulLoginCount,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: unsuccessfulLoginCount
+attributeID: 1.3.18.0.2.4.811
+attributeSyntax: 2.5.5.9
+isSingleValued: TRUE
+oMSyntax: 2
+lDAPDisplayName: unsuccessfulLoginCount
+schemaIDGUID:: 7tWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: unsuccessfulLoginCount
+adminDescription: count of unsuccessful logins
+distinguishedName: CN=unsuccessfulLoginCount,CN=Schema,CN=Configuration,{Forest Root}
+name: unsuccessfulLoginCount
+
+dn: CN=userEnvironment,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: userEnvironment
+attributeID: 1.3.18.0.2.4.795
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+oMSyntax: 64
+lDAPDisplayName: userEnvironment
+schemaIDGUID:: 9dWvs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 2048
+searchFlags: 1
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: userEnvironment
+adminDescription: user public environment
+distinguishedName: CN=userEnvironment,CN=Schema,CN=Configuration,{Forest Root}
+name: userEnvironment
+
+dn: CN=version,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: attributeSchema
+cn: version
+attributeID: 1.3.18.0.2.4.479
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+oMSyntax: 64
+lDAPDisplayName: version
+schemaIDGUID:: A9avs1tc0xG4GAAgNVWRUQ==
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,{Forest Root}
+rangeUpper: 64
+searchFlags: 0
+isMemberOfPartialAttributeSet: FALSE
+adminDisplayName: version
+adminDescription: CIM-derived attribute for version and release
+distinguishedName: CN=version,CN=Schema,CN=Configuration,{Forest Root}
+name: version
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=AIXAccessRoles,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: AIXAccessRoles
+subClassOf: top
+governsID: 1.3.18.0.2.6.168
+objectClassCategory: 1
+schemaIDGUID:: GNavs1tc0xG4GAAgNVWRUQ==
+defaultObjectCategory: CN=AIXAccessRoles,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=AIXAccessRoles,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: AIX role information
+mustContain: roleName
+mayContain: AIXScreens
+mayContain: authorizationLevel
+mayContain: groupList
+mayContain: msgFileName
+mayContain: msgNumber
+mayContain: roleList
+mayContain: roleVisibility
+mayContain: ibm-roleID
+mayContain: ibm-roleAuthMode
+mayContain: ibm-msgSet
+mayContain: ibm-authorizations
+mayContain: description
+lDAPDisplayName: aIXAccessRoles
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: AIXAccessRoles
+name: AIXAccessRoles
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=AIXAdmin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: AIXAdmin
+subClassOf: top
+governsID: 1.3.18.0.2.6.169
+objectClassCategory: 1
+schemaIDGUID:: Gtavs1tc0xG4GAAgNVWRUQ==
+defaultObjectCategory: CN=AIXAdmin,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=AIXAdmin,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: AIX class to store user/group administration attributes
+mayContain: AIXAdminGroupId
+mayContain: AIXAdminUserId
+mayContain: AIXGroupID
+mayContain: AIXUserID
+mayContain: cn
+mayContain: ibm-authorizationID
+mayContain: ibm-roleID
+lDAPDisplayName: aIXAdmin
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: AIXAdmin
+name: AIXAdmin
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=aixAuxAccount,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: aixAuxAccount
+subClassOf: top
+governsID: 1.3.18.0.2.6.472
+objectClassCategory: 3
+schemaIDGUID:: 0Eo+otQC8UqLhM8kvdCX4A==
+defaultObjectCategory: CN=aixAuxAccount,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=aixAuxAccount,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Auxiliary AIX user information objectclass, for use with posixaccount and shadowaccount objectclasses
+mayContain: passwordChar
+mayContain: adminGroupNames
+mayContain: aIXDefaultMACLevel
+mayContain: aIXFuncMode
+mayContain: aIXisDCEExport
+mayContain: aIXLowMACLevel
+mayContain: aIXPromptMAC
+mayContain: aIXScreens
+mayContain: aIXUpperMACLevel
+mayContain: auditClasses
+mayContain: authMethod1
+mayContain: authMethod2
+mayContain: coreSizeLimit
+mayContain: coreSizeLimitHard
+mayContain: cPuSize
+mayContain: cPuSizeHard
+mayContain: dataSegSize
+mayContain: dataSegSizeHard
+mayContain: filePermMask
+mayContain: fileSizeLimit
+mayContain: fileSizeLimitHard
+mayContain: groupList
+mayContain: groupSwitchUserAllowed
+mayContain: hostLastLogin
+mayContain: hostLastUnsuccessfulLogin
+mayContain: hostsAllowedLogin
+mayContain: hostsDeniedLogin
+mayContain: isAdministrator
+mayContain: isAccountEnabled
+mayContain: isDaemon
+mayContain: isLoginAllowed
+mayContain: isRemoteAccessAllowed
+mayContain: isSwitchUserAllowed
+mayContain: ixTimeLastLogin
+mayContain: ixTimeLastUnsuccessfulLogin
+mayContain: loginTimes
+mayContain: maxFailedLogins
+mayContain: maxLogin
+mayContain: openFileLimit
+mayContain: openFileLimitHard
+mayContain: passwordCheckMethods
+mayContain: passwordDictFiles
+mayContain: passwordExpireTime
+mayContain: passwordHistSize
+mayContain: passwordMaxRepeatedChars
+mayContain: passwordMinAlphaChars
+mayContain: passwordMinDiffChars
+mayContain: passwordMinLength
+mayContain: passwordMinOtherChars
+mayContain: physicalMemLimit
+mayContain: physicalMemLimitHard
+mayContain: roleList
+mayContain: StackSizeLimit
+mayContain: StackSizeLimitHard
+mayContain: SystemEnvironment
+mayContain: terminalAccess
+mayContain: terminalLastLogin
+mayContain: terminalLastUnsuccessfulLogin
+mayContain: timeExpiredLogout
+mayContain: timeExpireLockout
+mayContain: trustedPathStatus
+mayContain: unsuccessfulLoginCount
+mayContain: userEnvironment
+mayContain: passwordFlags
+mayContain: capability
+mayContain: passwordHistExpire
+mayContain: passwordHistList
+mayContain: rcmds
+mayContain: ibm-aixProjectNameList
+mayContain: ibm-defaultRoles
+mayContain: ibm-coreNamingPolicy
+mayContain: ibm-coreCompressionEnable
+mayContain: ibm-corePathEnable
+mayContain: ibm-corePathName
+mayContain: passwordMaxConsecutiveRepeatedChars
+mayContain: ibm-efsInitialKSMode
+mayContain: ibm-efsKeystoreAlgo
+mayContain: ibm-efsKeystoreAccess
+mayContain: ibm-efsAdminKSAccess
+mayContain: ibm-efsAllowKSModeChangeByUser
+mayContain: ibm-efsFileAlgo
+mayContain: ibm-minSensitivityLabel
+mayContain: ibm-maxSensitivityLabel
+mayContain: ibm-minIntegrityLabel
+mayContain: ibm-maxIntegrityLabel
+mayContain: ibm-defSensitivityLabel
+mayContain: ibm-defIntegrityLabel
+mayContain: ibm-passwordmindigit
+mayContain: ibm-passwordminloweralphachars
+mayContain: ibm-passwordminspecialchar
+mayContain: ibm-passwordminupperalphachars
+lDAPDisplayName: aixAuxAccount
+defaultHidingValue: TRUE
+adminDisplayName: aixAuxAccount
+name: aixAuxAccount
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=aixAuxGroup,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: aixAuxGroup
+subClassOf: top
+governsID: 1.3.18.0.2.6.473
+objectClassCategory: 3
+schemaIDGUID:: zzn7FvA27EyElzK9AZ9ftw==
+defaultObjectCategory: CN=aixAuxGroup,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=aixAuxGroup,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Auxiliary AIX group information objectclass, for use with the posixgroup objectclass.
+mayContain: aIXGroupAdminList
+mayContain: aIXisDCEExport
+mayContain: aIXScreens
+mayContain: groupPassword
+mayContain: isAdministrator
+mayContain: ibm-aixProjectNameList
+mayContain: ibm-efsInitialKSMode
+mayContain: ibm-efsKeystoreAlgo
+mayContain: ibm-efsKeystoreAccess
+lDAPDisplayName: aixAuxGroup
+defaultHidingValue: TRUE
+adminDisplayName: aixAuxGroup
+name: aixAuxGroup
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-aixAccountingAdminPolicy,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-aixAccountingAdminPolicy
+subClassOf: top
+governsID: 1.3.18.0.2.6.620
+objectClassCategory: 1
+schemaIDGUID:: ibSjIUKVbEqSzt4FSvJWBg==
+defaultObjectCategory: CN=ibm-aixAccountingAdminPolicy,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-aixAccountingAdminPolicy,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Advanced Accounting admin policy object
+mustContain: ibm-aixAdminPolicyEntry
+mustContain: ibm-aixAdminPolicyName
+lDAPDisplayName: ibm-AixAccountingAdminPolicy
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-aixAccountingAdminPolicy
+name: ibm-aixAccountingAdminPolicy
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-aixAccountingProject,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-aixAccountingProject
+subClassOf: top
+governsID: 1.3.18.0.2.6.621
+objectClassCategory: 1
+schemaIDGUID:: D79P9xHGNkmddhRO4HUopQ==
+defaultObjectCategory: CN=ibm-aixAccountingProject,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-aixAccountingProject,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Advanced Accounting project defintion object
+mustContain: ibm-aixProjectDefinition
+mustContain: ibm-aixProjectName
+lDAPDisplayName: ibm-AixAccountingProject
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-aixAccountingProject
+name: ibm-aixAccountingProject
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-aixAixpert,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-aixAixpert
+subClassOf: top
+governsID: 1.3.18.0.2.6.637
+objectClassCategory: 1
+schemaIDGUID:: g5+eLELOLEGRVQOZpUF7Kw==
+defaultObjectCategory: CN=ibm-aixAixpert,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-aixAixpert,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: For storing Aixpert specific data
+mustContain: ibm-aixpertLabel
+mustContain: ibm-aixpertXmlConfigFile
+lDAPDisplayName: ibm-AixAixpert
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-aixAixpert
+name: ibm-aixAixpert
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-aixTEPolicy,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-aixTEPolicy
+subClassOf: top
+governsID: 1.3.18.0.2.6.658
+objectClassCategory: 1
+schemaIDGUID:: +ytp2cufGUiyJmaVZKRFww==
+defaultObjectCategory: CN=ibm-aixTEPolicy,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-aixTEPolicy,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Trusted Execution Security policies Configuration
+mustContain: cn
+mustContain: ibm-aixTEPDefinition
+lDAPDisplayName: ibm-AixTEPolicy
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-aixTEPolicy
+name: ibm-aixTEPolicy
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-aixTSDatabase,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-aixTSDatabase
+subClassOf: top
+governsID: 1.3.18.0.2.6.659
+objectClassCategory: 1
+schemaIDGUID:: 5wudcGnF20Cv7D2MHkCa3A==
+defaultObjectCategory: CN=ibm-aixTSDatabase,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-aixTSDatabase,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Trusted Signature Database Management
+mustContain: cn
+mustContain: ibm-aixTSDEntry
+lDAPDisplayName: ibm-AixTSDatabase
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-aixTSDatabase
+name: ibm-aixTSDatabase
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-artexProfile,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-artexProfile
+subClassOf: top
+governsID: 1.3.18.0.2.6.660
+objectClassCategory: 1
+schemaIDGUID:: XeEtREc+tE6A4YqNMKm7ZA==
+defaultObjectCategory: CN=ibm-artexProfile,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-artexProfile,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: For storing ARTEX profile
+mustContain: ibm-artexProfileName
+mustContain: ibm-artexProfileXMLData
+mayContain: ibm-artexProfileDate
+mayContain: ibm-artexProfileOrigin
+mayContain: description
+mayContain: version
+lDAPDisplayName: ibm-ArtexProfile
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-artexProfile
+name: ibm-artexProfile
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-authorization,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-authorization
+subClassOf: top
+governsID: 1.3.18.0.2.6.640
+objectClassCategory: 1
+schemaIDGUID:: MzNB3gPKEUWnuiCg9WFPAQ==
+defaultObjectCategory: CN=ibm-authorization,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-authorization,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Contains authorization definition
+mustContain: cn
+mustContain: ibm-authorizationID
+mayContain: msgFileName
+mayContain: msgNumber
+mayContain: ibm-msgSet
+mayContain: description
+lDAPDisplayName: ibm-Authorization
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-authorization
+name: ibm-authorization
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-efskscookie,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-efskscookie
+subClassOf: top
+governsID: 1.3.18.0.2.6.661
+objectClassCategory: 1
+schemaIDGUID:: vgLueG+3JkObSSPLpAtePg==
+defaultObjectCategory: CN=ibm-efskscookie,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-efskscookie,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: EFS Keystore Cookie definition
+mustContain: cn
+mustContain: ibm-efsCookie
+lDAPDisplayName: ibm-Efskscookie
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-efskscookie
+name: ibm-efskscookie
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-grpkeystore,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-grpkeystore
+subClassOf: top
+governsID: 1.3.18.0.2.6.662
+objectClassCategory: 1
+schemaIDGUID:: Zk7qiOXf9UGrdgQvnEOikA==
+defaultObjectCategory: CN=ibm-grpkeystore,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-grpkeystore,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: EFS Group keystore definition
+mustContain: cn
+mustContain: gidNumber
+mayContain: userPKCS12
+lDAPDisplayName: ibm-Grpkeystore
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-grpkeystore
+name: ibm-grpkeystore
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-privcmd,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-privcmd
+subClassOf: top
+governsID: 1.3.18.0.2.6.642
+objectClassCategory: 1
+schemaIDGUID:: plpcCw9p9kivBWjgTB7imw==
+defaultObjectCategory: CN=ibm-privcmd,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-privcmd,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Contains privileged command definition
+mustContain: cn
+mayContain: ibm-accessAuths
+mayContain: ibm-authPrivs
+mayContain: ibm-egid
+mayContain: ibm-euid
+mayContain: ibm-innatePrivs
+mayContain: ibm-inheritPrivs
+mayContain: ibm-secFlags
+mayContain: description
+mayContain: ibm-ruid
+mayContain: ibm-authRoles
+lDAPDisplayName: ibm-Privcmd
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-privcmd
+name: ibm-privcmd
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-privdev,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-privdev
+subClassOf: top
+governsID: 1.3.18.0.2.6.641
+objectClassCategory: 1
+schemaIDGUID:: 3DoMBUBcREeVBi3FwLL+5g==
+defaultObjectCategory: CN=ibm-privdev,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-privdev,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Contains privileged device definition
+mustContain: cn
+mayContain: ibm-readPrivs
+mayContain: ibm-writePrivs
+mayContain: description
+lDAPDisplayName: ibm-Privdev
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-privdev
+name: ibm-privdev
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-privfile,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-privfile
+subClassOf: top
+governsID: 1.3.18.0.2.6.639
+objectClassCategory: 1
+schemaIDGUID:: br03oYwi9Ee5iqK21Z8Cyg==
+defaultObjectCategory: CN=ibm-privfile,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-privfile,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Trusted configruation files
+mustContain: cn
+mayContain: ibm-readAuths
+mayContain: ibm-writeAuths
+mayContain: description
+lDAPDisplayName: ibm-Privfile
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-privfile
+name: ibm-privfile
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-SecurityIdentities,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-SecurityIdentities
+subClassOf: top
+governsID: 1.3.18.0.2.6.241
+objectClassCategory: 3
+schemaIDGUID:: lOQwY+l6LEWtBUCu22fTkA==
+defaultObjectCategory: CN=ibm-SecurityIdentities,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-SecurityIdentities,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: Defines the security identities of a user.  The user could be a person or a service.
+mayContain: altSecurityIdentities
+mayContain: userPrincipalName
+lDAPDisplayName: ibm-SecurityIdentities
+defaultHidingValue: TRUE
+adminDisplayName: ibm-SecurityIdentities
+name: ibm-SecurityIdentities
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-usrkeystore,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaAdd
+objectClass: classSchema
+cn: ibm-usrkeystore
+subClassOf: top
+governsID: 1.3.18.0.2.6.663
+objectClassCategory: 1
+schemaIDGUID:: sT/ocRO6VEKhF05u1bwyWw==
+defaultObjectCategory: CN=ibm-usrkeystore,CN=Schema,CN=Configuration,{Forest Root}
+objectCategory: CN=Class-Schema,CN=Schema,CN=Configuration,{Forest Root}
+distinguishedName: CN=ibm-usrkeystore,CN=Schema,CN=Configuration,{Forest Root}
+adminDescription: EFS User keystore definition
+mustContain: cn
+mustContain: uidNumber
+mayContain: userPKCS12
+lDAPDisplayName: ibm-Usrkeystore
+showInAdvancedViewOnly: FALSE
+defaultHidingValue: FALSE
+adminDisplayName: ibm-usrkeystore
+name: ibm-usrkeystore
+defaultSecurityDescriptor:
+ D: (A;;RPLCLORC;;;AU)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;BA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;DA)
+ (A;;RPWPCRCCDCLCLORCWOWDSDDTSW;;;SY)
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=AIXAccessRoles,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=AIXAdmin,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=aixAuxAccount,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=aixAuxGroup,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-aixAccountingAdminPolicy,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-aixAccountingProject,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-aixAixpert,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-aixTEPolicy,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-aixTSDatabase,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-artexProfile,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-authorization,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-efskscookie,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-grpkeystore,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-privcmd,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-privdev,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-privfile,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=ibm-usrkeystore,CN=Schema,CN=Configuration,{Forest Root}
+changetype: ntdsSchemaModify
+add: possSuperiors
+possSuperiors: container
+possSuperiors: organizationalUnit
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile origin="reference" readOnly="true" version="2.0.0">
+        <Catalog id="rasoParam" version="2.1">
+
+                <Parameter name="biostat"/>
+                <Parameter name="kern_heap_noexec" reboot="true" applyType="nextboot"/>
+                <Parameter name="kernel_noexec" reboot="true" applyType="nextboot"/>
+                <Parameter name="mbuf_heap_noexec" reboot="true" applyType="nextboot"/>
+                <Parameter name="mtrc_commonbufsize"/>
+                <Parameter name="mtrc_enabled" reboot="true" applyType="nextboot"/>
+                <Parameter name="mtrc_rarebufsize"/>
+                <Parameter name="tprof_cyc_mult"/>
+                <Parameter name="tprof_evt_mult"/>
+                <Parameter name="tprof_evt_system"/>
+                <Parameter name="tprof_inst_threshold"/>
+
+            <SubCat id="restricted">
+                <Parameter name="recovery_action" readOnly="true"/>
+                <Parameter name="recovery_average_threshold" readOnly="true"/>
+                <Parameter name="recovery_debugger" readOnly="true"/>
+                <Parameter name="recovery_framework" reboot="true" applyType="nextboot" readOnly="true"/>
+            </SubCat>
+
+        </Catalog>
+</Profile>

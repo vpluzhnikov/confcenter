@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="acctctlParam" version="2.0">
+
+	<ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="1">acctctl parameters</NLSCatalog></ShortDescription>
+
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="2">Parameter definition for the 'acctctl' command</NLSCatalog></Description>
+ 
+	<CfgMethod id="acctctl">  
+		<Get type="current">
+			<Command>LANG=C /usr/bin/acctctl</Command>
+			<Filter>/usr/bin/sed -e 's/Advanced Accounting is not running/accounting=0/' \
+			-e 's/Advanced Accounting is running/accounting=1/' \
+			-e 's/Email notification is /email=/' \
+			-e 's/The current email address to be used is /email_addr=/' \
+			-e 's/Process Interval Accounting every \([0-9]*\) minutes/iprocess=\1/' \
+			-e 's/System Interval Accounting every \([0-9]*\) minutes/isystem=\1/' \
+			-e 's/System-wide aggregation of process data is /agproc=/' \
+			-e 's/System-wide aggregation of third party kernel extension data is /agke=/' \
+			-e 's/System-wide aggregation of ARM transactions is /agarm=/' \
+			-e 's/Process Interval Accounting is off/iprocess=0/' \
+			-e 's/System Interval Accounting is off/isystem=0/' \
+			-e 's/Recover CPU accounting time in turbo mode is True/turacct=1/' \
+			-e 's/Recover CPU accounting time in turbo mode is False/turacct=0/' \
+			-e 's/\.$//;s/on/1/;s/off/0/;s/not set//'</Filter>
+			<Mask name="1" value="2">(.*)=(.*)</Mask>
+		</Get>
+		
+		<Get type="nextboot">
+			<Command>LANG=C /usr/bin/acctctl</Command>
+			<Filter>/usr/bin/sed -e 's/Advanced Accounting is not running/accounting=0/' \
+			-e 's/Advanced Accounting is running/accounting=1/' \
+			-e 's/Email notification is /email=/' \
+			-e 's/The current email address to be used is /email_addr=/' \
+			-e 's/Process Interval Accounting every \([0-9]*\) minutes/iprocess=\1/' \
+			-e 's/System Interval Accounting every \([0-9]*\) minutes/isystem=\1/' \
+			-e 's/System-wide aggregation of process data is /agproc=/' \
+			-e 's/System-wide aggregation of third party kernel extension data is /agke=/' \
+			-e 's/System-wide aggregation of ARM transactions is /agarm=/' \
+			-e 's/Process Interval Accounting is off/iprocess=0/' \
+			-e 's/System Interval Accounting is off/isystem=0/' \
+			-e 's/Recover CPU accounting time in turbo mode is True/turacct=1/' \
+			-e 's/Recover CPU accounting time in turbo mode is False/turacct=0/' \
+			-e 's/\.$//;s/on/1/;s/off/0/;s/not set//'</Filter>
+			<Mask name="1" value="2">(.*)=(.*)</Mask>
+		</Get>
+  
+		<Set type="permanent">
+			<Command>LANG=C /usr/bin/acctctl %p `if [ ''%v1 = '0' ]; then echo 'off'; else echo 'on'; fi`</Command>
+		</Set>
+	</CfgMethod>
+ 
+ 	<!-- Some parameters cannot be set if Advanced Accounting was never started since the last reboot, so we start and stop it to allow setting all parameters -->
+	<ConstraintDef id="start_stop">    
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="3">Start and stop advanced accounting if it is not running</NLSCatalog></Description>      
+		<PreOp>if [ `/usr/bin/acctctl | grep -c "Advanced Accounting is running."` = 0 ]; then  { /usr/bin/acctctl on ; /usr/bin/acctctl off ; }; fi</PreOp>
+	</ConstraintDef>
+
+
+	<ParameterDef name="acctctl" type="boolean" reboot="false" targetClass="wpar" constraint="start_stop">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="4">Starts or stops advanced Accounting.</NLSCatalog></Description>
+		<Get type="current">
+			<Command>LANG=C /usr/bin/acctctl `if [ ''%t[wpar] != '' ]; then echo ' -@ %t[wpar]'; fi`</Command>
+			<Filter>/usr/bin/grep -c 'Advanced Accounting is running.' ; true</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+		<Get type="nextboot">
+			<Command>LANG=C /usr/bin/acctctl `if [ ''%t[wpar] != '' ]; then echo ' -@ %t[wpar]'; fi`</Command>
+			<Filter>/usr/bin/grep -c 'Advanced Accounting is running.' ; true</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+		<Set type="permanent">
+			<Command>LANG=C /usr/bin/acctctl `if [ ''%v1 = '0' ]; then echo 'off'; else echo 'on'; fi; if [ ''%t[wpar] != '' ]; then echo ' -@ %t[wpar]'; fi`</Command>
+		</Set>
+                <Discover>
+                        <Command>echo "none;" ; /usr/sbin/lswpar -a Name -c | grep -v "#name" | sed -e 's/^/wpar=/;s/$/;/'</Command>
+                </Discover>
+	</ParameterDef>
+
+	<ParameterDef name="transaction" type="boolean" reboot="false" targetClass="tr,wpar" constraint="start_stop"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="5">Manages the transactions to control the type of accounting data that is produced</NLSCatalog></Description>
+		<Get type="current">
+			<Command>if [ ''%t[tr] = '' ]; then false; else LANG=C /usr/bin/acctctl trquery `if [ ''%t[wpar] = '' ]; then echo %t[tr]; else echo '%t[tr] -@ %t[wpar]'; fi`; fi</Command>
+			<Filter>/usr/bin/sed -e 's/disabled/0/;s/enabled/1/'</Filter>
+			<Mask value="1">[0-9]*[ ]+([0-1])[ ]+.*</Mask>
+		</Get>
+		<Get type="nextboot">
+			<Command>if [ ''%t[tr] = '' ]; then false; else LANG=C /usr/bin/acctctl trquery `if [ ''%t[wpar] = '' ]; then echo %t[tr]; else echo '%t[tr] -@ %t[wpar]'; fi`; fi</Command>
+			<Filter>/usr/bin/sed -e 's/disabled/0/;s/enabled/1/'</Filter>
+			<Mask value="1">[0-9]*[ ]+([0-1])[ ]+.*</Mask>
+		</Get>
+		<Set type="permanent">
+			<Command>LANG=C /usr/bin/acctctl `if [ ''%v1 = 0 ]; then echo 'troff'; else echo 'tron'; fi; if [ ''%t[wpar] = '' ]; then echo ' %t[tr]'; else echo ' %t[tr] -@ %t[wpar]'; fi`</Command>
+		</Set>
+                <Discover>
+                        <Command>for wpar in `/usr/sbin/lswpar -a Name -c | grep -v "#name"`;
+do
+  for tr in `/usr/bin/acctctl trquery -@ $wpar | cut -d " " -f 1 | grep -v "NUMBER"`;
+  do
+    echo "wpar=$wpar;tr=$tr;";
+  done
+done
+
+#filter transaction with 'wpar-*' names, which cannot be enabled/disabled
+for tr in `/usr/bin/acctctl trquery | grep -v wpar- | cut -d " " -f 1 | grep -v "NUMBER"`;
+do
+  echo "tr=$tr;";
+done</Command>
+                </Discover>
+	</ParameterDef>
+	
+	<ParameterDef name="email" type="boolean" cfgmethod="acctctl" reboot="false" constraint="start_stop">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="6">Enable or disable e-mail notifications. Mail must be configured for e-mail notification to function.</NLSCatalog></Description>
+	</ParameterDef>
+	
+	<ParameterDef name="email_addr" type="string" cfgmethod="acctctl" reboot="false" constraint="start_stop">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="7">Sets the e-mail address for the notifications.</NLSCatalog></Description>
+		<!-- The acctctl command automatically activates mail notification when setting the email adress.
+		To avoid conflict with the above email parameter, the state of the email notification is retrieved before setting the adress, and restored after settinf. 
+		If value="", command is silentely skipped, to be consistent between artexget and artexset.
+                If value="on"||"off", error is returned to the user
+		-->
+		<Set type="permanent">
+			<Command>tmp=`/usr/bin/acctctl | grep -c 'Email notification is on.'`; if [ ''%v1 = 'on' -o ''%v1 = 'off' ]; then false; elif [ ''%v1 = '']; then true; else LANG=C /usr/bin/acctctl email %v1 ; if [ $tmp = 0 ]; then /usr/bin/acctctl email off; fi; fi</Command>
+		</Set>
+	</ParameterDef>
+	
+	<ParameterDef name="iprocess" type="integer" cfgmethod="acctctl" reboot="false" constraint="start_stop">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="8">Enables process interval accounting every n minutes or disables process interval accounting entirely.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Command>LANG=C /usr/bin/acctctl iprocess `if [ ''%v1 = '0' ]; then echo 'off'; else echo '%v1'; fi`</Command>
+		</Set>
+	</ParameterDef>
+	
+	<ParameterDef name="isystem" type="integer" cfgmethod="acctctl" reboot="false" constraint="start_stop">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="9">Enables system interval accounting every n minutes or disables system interval accounting entirely.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Command>LANG=C /usr/bin/acctctl isystem `if [ ''%v1 = '0' ]; then echo 'off'; else echo %v1; fi`</Command>
+		</Set>
+	</ParameterDef>
+	
+	<ParameterDef name="agproc" type="boolean" cfgmethod="acctctl" reboot="false" constraint="start_stop">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="10">Enables or disables system-wide aggregation for processes.</NLSCatalog></Description>
+	</ParameterDef>
+	
+	<ParameterDef name="agke" type="boolean" cfgmethod="acctctl" reboot="false" constraint="start_stop">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="11">Enables or disables system-wide aggregation for third party kernel extensions.</NLSCatalog></Description>
+	</ParameterDef>
+	
+	<ParameterDef name="agarm" type="boolean" cfgmethod="acctctl" reboot="false" constraint="start_stop">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="12">Enables or disables system-wide aggregation for ARM transactions.</NLSCatalog></Description>
+	</ParameterDef>
+	
+	<ParameterDef name="turacct" type="boolean" cfgmethod="acctctl" reboot="false" constraint="start_stop">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="1" msgNum="13">Enables or disables the accounting based on Scaled Performance Utilization Resources Register (SPURR) in turbo mode.</NLSCatalog></Description>
+	</ParameterDef>
+
+</Catalog>

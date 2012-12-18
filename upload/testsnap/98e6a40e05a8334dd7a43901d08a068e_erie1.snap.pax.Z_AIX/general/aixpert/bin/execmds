@@ -1,0 +1,70 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos61B src/bos/usr/lib/security/aixpert/scripts/execmds.sh 1.2 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006,2007 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)88	1.2  src/bos/usr/lib/security/aixpert/scripts/execmds.sh, aixpert, bos61B, b2007_38A8 8/28/07 06:30:42
+# IBM_PROLOG_END_TAG 
+#	COMPONENT_NAME		: (AIXPERT) execmds.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: The script expects atleast one argument. Each argument should
+#				have command name along with its arguments, if any.
+#				For Eg: /etc/security/aixpert/bin/execmds "ls -l" 
+#				/etc/security/aixpert/bin/execmds "ls -l; ps -elf" 
+#				/etc/security/aixpert/bin/execmds "ls -l" "ps -elf"
+#
+#	OUTPUT			: None
+#
+#	Description		: This script executes the commands specified on the command line.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+# Initialize variables LOG, REPORT, SCPTDIR and UNDOXML
+. /etc/security/aixpert/bin/initialize_variables
+
+#Log output and errors to /etc/security/aixpert/log/aixpert.log
+exec 1>>$LOG
+exec 2>&1
+
+if [ $# -lt 1 ] 
+then
+        dspmsg -s 10 aixpert.cat 1 "Usage : execmds {cmds&args ...}\n"
+        exit 1
+fi
+
+report=`echo $AIXPERT_CHECK_REPORT`
+if [ "$report" = "1" ]
+then
+	exit 0
+fi
+
+# echo all the commands and the current time and date to the AIXpert log
+set -x
+date
+echo $0
+
+# Execute all the commands specified as arguments to the script
+for arg
+do
+	eval $arg
+	if [ $? -ne 0 ]
+	then
+		dspmsg -s 10 aixpert.cat 2 "execmds.sh: Failed to execute %s\n" $arg 
+		exit 1
+	fi
+done
+
+exit 0

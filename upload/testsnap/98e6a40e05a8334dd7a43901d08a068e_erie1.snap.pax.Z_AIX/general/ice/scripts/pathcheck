@@ -1,0 +1,124 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/pathcheck.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) adlai_SW015241_aix71B_dev/1 bos/usr/lib/security/ice/scripts/pathcheck.sh, libice, aix71B, _BASELINE_, 2010-06-22T10:35:25-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+#GEN001840
+#If the global initialization files' PATH variable contains a . or a ::, 
+#or starts or ends with a :, this is a finding.
+
+INSTALLDIR=/etc/security/ice/scripts
+. $INSTALLDIR/iceInit
+
+PREREQ_LIST="bos.rte.security,bos.rte.date,bos.rte.ILS"
+checkPrereq
+
+FILELIST="/etc/profile /etc/bashrc /etc/environment /etc/secruity/environ /etc/.login"
+
+exist=1
+checkPath()
+{
+	if [ -s $curFile ]
+	then
+		if [ `cat $curFile | egrep -v "^#" | egrep "^PATH=" | egrep -c "=\:|\.\:|\:\.|\:\:|\:$"` -gt 0 ] 
+		then
+			curval=1
+		else
+			curval=0
+			if [ `cat $curFile | egrep -v "^#" | egrep -c "^PATH="` -eq 0 ]
+			then
+				exist=0
+			fi
+		fi
+	else
+		exist=0
+	fi
+}
+
+###########
+# Checking
+###########
+if [[ cflag -eq 1 ]];
+then
+	for curFile in $FILELIST
+	do
+		curval=0
+		exist=1
+		checkPath
+		if [ $curval -eq 1 ] && [ $exist -eq 1 ]
+		then
+			if [ "$STATUS_ARG" = "true" ]
+			then
+				print "The PATH in $curFile file contains a '.' or a '::', or starts or ends with a ':'." >> log_msg 2>&1
+				ice_status=2 
+			fi
+		else
+			if [ "$STATUS_ARG" = "false" ] && [ $exist -eq 1 ]
+			then
+				print "The PATH in $curFile file does not contain a '.' or a '::', or starts or ends with a ':'." >> log_msg 2>&1
+				ice_status=2
+			fi
+		fi
+	done
+	Script_Output
+	exit 0
+fi
+
+####################
+# Preview/Enforcing
+####################
+cur_val=
+
+if [ "$STATUS_ARG" = "true" ]
+then
+	for curFile in $FILELIST
+	do
+		cur_val=0
+		exist=1
+		checkPath
+		if [ $curval -eq 1 ] && [ $exist -eq 1 ]
+		then
+			#remove characters
+			cat $curFile | sed -e '/^PATH=/ s/=:/=/' -e '/^PATH=/ s/\:\:/\:/' -e '/^PATH=/ s/:$//' -e '/^PATH=/ s/:.:/:/' -e '/^PATH=/ s/:.$//' > $TMPF1
+			if [ -s $TMPF1 ]
+			then
+				mv $TMPF1 $curFile
+			fi
+		fi
+	done
+else
+	for curFile in $FILELIST
+	do
+		cur_val=0
+		exist=1
+		checkPath
+		if [ $curval -eq 0 ] && [ $exist -eq 1 ]
+		then
+			#add :. to end of path
+			sed "/^PATH=/s|$|\:\.|" $curFile > $TMPF1
+			if [ -s $TMPF1 ]
+			then
+				mv $TMPF1 $curFile
+			fi
+		fi
+	done
+fi
+Script_Output
+exit 0

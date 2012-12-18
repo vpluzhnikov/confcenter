@@ -1,0 +1,174 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/iceInit.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/iceInit.sh, libice, aix71B, 1028A_71B 2010-06-24T16:57:28-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+#       COMPONENT_NAME: (ICE) 
+#       FUNCTIONS:     	ICE template  
+#       ORIGINS:        27
+#
+#       Syntax:
+#               <command> -{c|e|p}[v] rulename toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode (unimplemented)
+#               lname   - rule_name
+#               toggle  - Boolean
+#                         false => Disable 
+#                         true  => Enable
+
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#		This is the template for writing ICE scripts.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+exec 2>&1
+
+###
+#Print Usage
+###
+Usage() {
+        ice_status=1
+        print "usage: \n
+   $0 -{c|e|p}[v] rulename toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+		if [ ! -z "$cur_val" ]
+		then
+			if [ $cur_val -eq 0 ]
+			then
+				cur_val="false"
+			elif [ $cur_val -eq 1 ]
+			then
+				cur_val="true"
+			fi
+		fi
+
+        print -n "$cur_val%$ice_status%"
+        cat log_msg
+        print
+		rm log_msg
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=0
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+        case $OPT in
+                c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+                p)      pflag=1;;
+                ?|:)    Usage
+                        Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+        set -x
+fi
+
+#Need 1 argument
+if [[ $# -lt 2 ]];
+then
+        Usage
+        Script_Output
+        exit 1
+fi
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+        Usage
+        Script_Output
+        exit 1
+fi
+
+RULE_NAME=$1
+STATUS_ARG=$2
+#Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+        print "Toggle must be true or false" >> log_msg 2>&1
+        Usage
+        Script_Output
+        exit 1
+fi
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+        ECHOPREFIX="echo"
+else
+        ECHOPREFIX=""
+fi
+
+PID=$$
+TMPDIR=/etc/security/ice/tmp
+TMPF1=/etc/security/ice/tmp/f1$PID
+TMPF2=/etc/security/ice/tmp/f2$PID
+TMPF3=/etc/security/ice/tmp/f3$PID
+TMPF4=/etc/security/ice/tmp/f4$PID
+PREREQ=/etc/security/ice/scripts/chkprereq
+
+checkPrereq() {
+	$ECHOPREFIX $PREREQ $PREREQ_LIST
+	if [ $? -ne 0 ]
+	then
+		print "prereq missing... " >> log_msg 2>&1
+		print "Prereqs needed: " $PREREQ_LIST >> log_msg 2>&1
+		ice_status=1
+		Script_Output
+		exit 0
+	fi
+}
+

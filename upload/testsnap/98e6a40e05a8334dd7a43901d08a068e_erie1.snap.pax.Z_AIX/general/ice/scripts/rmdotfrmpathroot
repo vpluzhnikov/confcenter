@@ -1,0 +1,256 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/rmdotfrmpathroot.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/rmdotfrmpathroot.sh, libice, aix710, 1010A_710 2010-03-02T17:21:18-06:00$
+#
+# IBM_PROLOG_END_TAG
+#       COMPONENT_NAME: (ICE) rmdotfrmpathroot.sh
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax:
+#               rmdotfrmpathroot -{c|e|p}[v] lname toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode (unimplemented)
+#		lname	- rule_name
+#
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#		This script will scan files .profile, .kshrc, .cshrc
+#		and .login from root's home directory and removes dots,
+#		if any in PATH environment variable. This scipt should be
+#		run with superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+###
+#Print Usage
+###
+Usage() {
+	ice_status=1
+        print "usage: \n
+  rmdotfrmpathroot -{c|e|p}[v] lname toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+        print -n "$cur_val%$ice_status%"
+        cat log_msg
+        print
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=
+ice_status=0
+print -n > log_msg 2>&1
+
+
+while getopts :cevp OPT
+do
+        case $OPT in
+                c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+                p)      pflag=1;;
+                ?|:)    Usage
+			Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+        set -x
+fi
+
+
+#Need 2 arguments
+if [[ $# -lt 2 ]];
+then
+        Usage
+	Script_Output
+        exit 1
+fi
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+        Usage
+	Script_Output
+        exit 1
+fi
+
+RULE_NAME=$1
+STATUS_ARG=$2
+#Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+        print "Toggle must be true or false" >> log_msg 2>&1
+        Usage
+        Script_Output
+        exit 1
+fi
+
+
+#
+# When the toggle is False do nothing and return
+#
+if [ "$STATUS_ARG" == "false" ]
+then
+	print "This rule is only applicable for Enable/True setting" >> log_msg 2>&1
+	cur_val=0
+        Script_Output
+        exit 0
+fi
+
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+        ECHOPREFIX="echo"
+else
+        ECHOPREFIX=""
+fi
+
+TMP1=/etc/security/ice/tmp/rmdotfrmpathrt
+PID=$$
+
+PREREQ=/etc/security/ice/scripts/chkprereq
+PREREQ_LIST="bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.rte.security"
+
+$ECHOPREFIX $PREREQ $PREREQ_LIST
+
+if [ $? -ne 0 ]
+then
+        print "prereq missing... \n"
+	print "Prereqs needed: " $PREREQ_LIST >> log_msg 2>&1
+	ice_status=1
+	Script_Output
+        exit 0
+fi
+
+
+# Determine whether "." exists in PATH environment variable of the specified file
+# PATH env variable can be of type
+# PATH=".:/home/userx:/home/me/..:/usr/sbin/:.:/usr/bin:."
+# PATH= .:/home/guest:/usr/bin
+# set PATH=/usr/bin:$PATH
+dotexists()
+{
+$ECHOPREFIX awk -F ";" '{
+	for(i=1;i<=NF;i++) {
+		if(match($i,"^[\t ]*(set)*[\t ]*PATH[\t ]*=") != 0){
+			if( (match($i,"[\t ]*PATH[\t ]*=\\.:") != 0) ||\
+ (match($i,"[\t ]*PATH[\t ]*=\"\\.:") != 0) || (match($i,":\\.$") != 0) ||\
+ (match($i,":\\.\"$") != 0) || (match($i,":\\.:") != 0) )
+				exit 1
+		}
+	}
+}' $1
+}
+
+# Remove "." from the PATH environment variable, for the specified file
+removedot()
+{
+$ECHOPREFIX awk -F ";" '{
+	for(i=1;i<=NF;i++){
+		if(match($i,"^[\t ]*(set)*[\t ]*PATH[\t ]*=") != 0){
+			gsub("PATH[\t ]*=[\t ]*\\.:","PATH=");
+			gsub("PATH[\t ]*=[\t ]*\"\\.:","PATH=");
+			gsub(":\\.:",":");
+			gsub(":\\.\"$","");
+			gsub(":\\.$","");
+			print $i;
+		}
+		else {
+			print $i;
+		}
+	}
+}' $1 >$TMP1$PID
+$ECHOPREFIX mv $TMP1$PID $1
+}
+
+list=".profile .kshrc .cshrc .login"
+rhome=`lsuser -a home root|awk -F "=" '{print $2}'`
+
+# Counter to determine the number of failures in Dynamic Security Check
+counter=0
+
+for i in $list
+do
+	y=0
+	if [ -e "$rhome/$i" ]
+	then
+		$ECHOPREFIX dotexists "$rhome/$i"
+		y=$?
+
+		if [ $y -eq 1 ]
+		then
+			# Dynamic Security Check
+			if [[ cflag -eq 1 ]];
+			then
+				counter=`expr $counter + 1`
+				print "rmdotfrmpathroot:\
+ A dot exists in PATH environment variable, in file $rhome/$i" >> log_msg 2>&1 
+			else
+				$ECHOPREFIX removedot "$rhome/$i"
+			fi
+		fi
+	fi
+done
+
+# Exit for Dynamic Security Check
+if [[ cflag -eq 1 ]]; 
+then
+	if [ $counter -ne 0 ]
+	then
+		cur_val=0
+		ice_status=2
+	else
+		cur_val=1
+	fi
+fi
+
+Script_Output
+exit 0

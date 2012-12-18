@@ -1,0 +1,25 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/usr/lib/security/aixpert/scripts/initialize_variables.sh 1.3 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006,2007 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)89	1.3  src/bos/usr/lib/security/aixpert/scripts/initialize_variables.sh, aixpert, bos610 2/20/07 02:11:57
+# IBM_PROLOG_END_TAG 
+LOG=/etc/security/aixpert/log/aixpert.log
+REPORT=/etc/security/aixpert/check_report.txt
+SAVE=/etc/security/aixpert/undo/data
+SCPTDIR=/etc/security/aixpert/undo
+UNDOXML=/etc/security/aixpert/core/undo.xml
+AIXPERT_FIFO=/etc/security/aixpert/tmp/AIXPERT
+TMPDIR=/etc/security/aixpert/tmp

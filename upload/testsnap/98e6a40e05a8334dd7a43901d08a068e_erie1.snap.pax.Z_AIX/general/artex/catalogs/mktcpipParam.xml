@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="mktcpipParam" version="2.0">
+
+  <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="1">Sets the required values for starting TCP/IP on a host.</NLSCatalog></ShortDescription>
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="2">The mktcpip command sets the required minimal values required for using TCP/IP on a host machine. These values are written to the configuration database.
+       Note: The mktcpip command currently supports IPv4 only.
+
+       The basic functions of the mktcpip command include:
+       *    Setting the host name in both the configuration database and the running machine.
+       *    Setting the IP address of the interface in the configuration database.
+       *    Making entries in the /etc/hosts file for the host name and IP address.
+       *    Setting the domain name and IP address of the nameserver, if applicable.
+       *    Setting the subnetwork mask, if applicable.
+       *    Adding a static route to both the configuration database and the running machine, if applicable.
+       *    Starting the specified TCP/IP daemons.
+
+       You can use the Network application in Web-based System Manager (wsm) to change network characteristics. You could also use the System Management
+       Interface Tool (SMIT) smit mktcpip fast path to run this command.</NLSCatalog></Description>
+
+  <CfgMethod id="mktcpip">
+
+    <Get type="current">
+      <Command>export LANG=C; /usr/sbin/mktcpip -S %t[interface] 2&gt;&amp;1</Command>
+      <Filter>/usr/bin/awk -F: '{ N = split(substr($0, 2), NAME); getline; split($0, VALUE) } END { for (i=1; i&lt;=N; i++) { print NAME[i] " = " VALUE[i] } }'</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+
+    <Get type="nextboot">
+      <Command>export LANG=C; /usr/sbin/mktcpip -S %t[interface] 2&lt;&amp;1</Command>
+      <Filter>/usr/bin/awk -F: '{ N = split(substr($0, 2), NAME); getline; split($0, VALUE) } END { for (i=1; i&lt;=N; i++) { print NAME[i] " = " VALUE[i] } }'</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+
+    <Set type="permanent">
+      <Command>/usr/sbin/mktcpip `if [ %v1[addr] ]; then echo -h %v1[host] -a %v1[addr] -i %t[interface]; else echo -S %t[interface]; fi`%a</Command>
+    </Set>
+    
+    <Discover>
+      <Command>/usr/sbin/lsdev -C -c if -F "name" | /usr/bin/sed -e 's/^/interface=/;s/$/;/'</Command>
+    </Discover>
+  </CfgMethod>
+
+  <ParameterDef name="host" type="string" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="3">The name of the host. If using a domain naming system, the domain and any subdomains must be specified.</NLSCatalog></Description>
+   <Set type="permanent">
+    <Argument> `echo ''`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="addr" type="string" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="4">The Internet address of the host. Specify the address in dotted decimal notation. Each network interface on the host should have a unique Internet address.</NLSCatalog></Description>
+   <Set type="permanent">
+    <Argument> `echo ''`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="mask" type="string" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="5">Specifies the mask the gateway should use in determining the appropriate subnetwork for routing. The subnet mask is a set of 4 bytes, as in the Internet address. The subnet mask consists of high bits (1s) corresponding to the bit positions of the network and subnetwork address, and low bits (0s) corresponding to the bit positions of the host address.</NLSCatalog></Description>
+
+   <Set type="permanent">
+    <Argument> `if [ %v1 ]; then echo -m %v1; fi`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="nameserv" type="string" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="6">Specifies the Internet address of the name server the host uses for name resolution, if applicable. The address should be entered in dotted decimal.</NLSCatalog></Description>
+
+   <Set type="permanent">
+    <Argument> `if [ %v1 ]; then echo -n %v1; fi`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="domain" type="string" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="7">Specifies the domain name of the name server the host should use for name resolution, if any.</NLSCatalog></Description>
+
+   <Set type="permanent">
+    <Argument> `if [ %v1 ]; then echo -d %v1; fi`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="gateway" type="string" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="8">The default gateway address to the routing table. Specify the address in dotted decimal notation.</NLSCatalog></Description>
+
+   <Set type="permanent">
+    <Argument> `if [ %v1 ]; then echo -g %v1; fi`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="cost" type="integer" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="9">Cost for default route</NLSCatalog></Description>
+
+   <Set type="permanent">
+    <Argument> `if [ %v1 ]; then echo -C %v1; fi`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="activedgd" type="boolean" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="10">Active dead gateway detection on default route</NLSCatalog></Description>
+    <Get type="current">
+      <Filter>/usr/bin/awk -F: '{ N = split(substr($0, 2), NAME); getline; split($0, VALUE) } END { for (i=1; i&lt;=N; i++) { print NAME[i] " = " VALUE[i] } }' | /usr/bin/sed -e "s/yes/1/" | /usr/bin/sed -e "s/no/0/"</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Filter>/usr/bin/awk -F: '{ N = split(substr($0, 2), NAME); getline; split($0, VALUE) } END { for (i=1; i&lt;=N; i++) { print NAME[i] " = " VALUE[i] } }' | /usr/bin/sed -e "s/yes/1/" | /usr/bin/sed -e "s/no/0/"</Filter>
+    </Get>
+
+   <Set type="permanent">
+    <Argument> -A `if [ %v1 = 0 ]; then echo no; else echo yes; fi`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="type" type="string" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="11">Specifies cable size for Standard Ethernet or IEEE 802.3 Ethernet networks. Valid values for the CableType variable are dix for thick cable, bnc for thin cable, or N/A for Not Applicable.</NLSCatalog></Description>
+
+   <Set type="permanent">
+    <Argument> `if [ %v1 ]; then echo -t %v1; fi`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="speed" type="string" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="12">Specifies the ring speed for a token-ring adapter. Valid values for the RingSpeed variable are either 4- or 16-Mbps.</NLSCatalog></Description>
+
+   <Set type="permanent">
+    <Argument> `if [ %v1 ]; then echo -r %v1; fi`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="subchannel" type="string" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="13">Specifies the subchannel address for a System/370 channel adapter.</NLSCatalog></Description>
+
+   <Set type="permanent">
+    <Argument> `if [ %v1 ]; then echo -c %v1; fi`</Argument>
+   </Set>
+  </ParameterDef>
+
+  <ParameterDef name="dest" type="string" cfgmethod="mktcpip" targetClass="interface">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="26" msgNum="14">The destination address for a static route. Specify the address in dotted decimal notation. Routes can be viewed</NLSCatalog></Description>
+
+   <Set type="permanent">
+    <Argument> `if [ %v1 ]; then echo -D %v1; fi`</Argument>
+   </Set>
+  </ParameterDef>
+
+</Catalog>

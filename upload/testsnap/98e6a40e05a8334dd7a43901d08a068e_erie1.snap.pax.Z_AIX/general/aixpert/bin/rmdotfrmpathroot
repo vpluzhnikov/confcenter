@@ -1,0 +1,197 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos61H src/bos/usr/lib/security/aixpert/scripts/rmdotfrmpathroot.sh 1.6 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006,2009 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)12	1.6  src/bos/usr/lib/security/aixpert/scripts/rmdotfrmpathroot.sh, aixpert, bos61H, 0904A_61H 1/15/09 08:14:42
+# IBM_PROLOG_END_TAG 
+#	COMPONENT_NAME		: (AIXPERT) rmdotfrmpathroot.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: This script expects one commandline arguement.
+#				And it should be the rulename.
+#				Syntax: rmdotfrmpathroot rulename
+#
+#	OUTPUT			: None
+#
+#	Description		: This script will scan files .profile, .kshrc,
+#				.cshrc and .login from root's home directory and
+#				removes dots, if any in PATH environment variable.
+#				It dynamically generates an Undo script.
+#				This script should be run with superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+# Initialize variables AIXPERT_FIFO, LOG, REPORT, SAVE, SCPTDIR and UNDOXML
+. /etc/security/aixpert/bin/initialize_variables
+
+TMP=/etc/security/aixpert/tmp/rmdotfrmpathroot
+TMP1=/etc/security/aixpert/tmp/rmdotfrmpathrt
+PID=$$
+
+# Determine whether "." exists in PATH environment variable of the specified file
+# PATH env variable can be of type
+# PATH=".:/home/userx:/home/me/..:/usr/sbin/:.:/usr/bin:."
+# PATH= .:/home/guest:/usr/bin
+# set PATH=/usr/bin:$PATH
+dotexists()
+{
+awk -F ";" '{
+	for(i=1;i<=NF;i++) {
+		if(match($i,"^[\t ]*(set)*[\t ]*PATH[\t ]*=") != 0){
+			if( (match($i,"[\t ]*PATH[\t ]*=\\.:") != 0) ||\
+ (match($i,"[\t ]*PATH[\t ]*=\"\\.:") != 0) || (match($i,":\\.$") != 0) ||\
+ (match($i,":\\.\"$") != 0) || (match($i,":\\.:") != 0) )
+				exit 1
+		}
+	}
+}' $1
+}
+
+# Remove "." from the PATH environment variable, for the specified file
+removedot()
+{
+awk  '	{
+	if(match($0,"^[\t ]*(set)*[\t ]*PATH[\t ]*=") != 0){
+		gsub("PATH[\t ]*=[\t ]*\\.:","PATH=");
+		gsub("PATH[\t ]*=[\t ]*\"\\.:","PATH=");
+		gsub(":\\.:",":");
+		gsub(":\\.\"$","");
+		gsub(":\\.$","");
+		print $0;
+	}
+	else {
+		print $0;
+	}
+}' $1 >$TMP1$PID
+mv $TMP1$PID $1
+}
+
+# Log output and errors to /etc/security/aixpert/log/aixpert.log
+exec 1>>$LOG
+exec 2>&1
+
+if [ $# -ne 1 ]
+then
+	dspmsg -s 23 aixpert.cat 1 "Usage: rmdotfrmpathroot rulename\n"
+	exit 1
+fi
+
+# echo all the commands and the current time and date to the AIXpert log
+set -x
+date
+echo $0
+
+# A value of 0 indicates that Undo rule need not be created. This variable
+# will be set later in the script if there is anything to be undone
+undo=0
+
+list=".profile .kshrc .cshrc .login"
+rhome=`lsuser -a home root|awk -F "=" '{print $2}'`
+
+# Check whether AIXPERT_CHECK_REPORT environment variable is set or not.
+report=`echo $AIXPERT_CHECK_REPORT`
+
+# Counter to determine the number of failures in Dynamic Security Check
+counter=0
+
+for i in $list
+do
+	y=0
+	if [ -e "$rhome/$i" ]
+	then
+		dotexists "$rhome/$i"
+		y=$?
+
+		if [ $y -eq 1 ]
+		then
+			# Dynamic Security Check
+			if [ "$report" = "1" ]
+			then
+				counter=`expr $counter + 1`
+				dspmsg -s 23 aixpert.cat 2 "rmdotfrmpathroot.sh:\
+ A dot exists in PATH environment variable, in file %s\n" $rhome/$i >>$REPORT
+				dspmsg -s 23 aixpert.cat 2 "rmdotfrmpathroot.sh:\
+ A dot exists in PATH environment variable, in file %s\n" $rhome/$i >>$AIXPERT_FIFO
+			else
+				time=`date +%s`
+				cp $rhome/$i $SAVE/rmdotfrmpathroot_$i.$time
+				echo "mv $SAVE/rmdotfrmpathroot_$i.$time\
+ $rhome/$i" >>$TMP$PID
+
+				undo=1
+				removedot "$rhome/$i"
+			fi
+		else
+			# for undo consistency
+			if [ "$report" != "1" ]
+			then
+				# should have an undo rule to get back to normal state
+				undo=1
+				time=`date +%s`
+				cp $rhome/$i $SAVE/rmdotfrmpathroot_$i.$time
+				echo "mv $SAVE/rmdotfrmpathroot_$i.$time\
+ $rhome/$i" >>$TMP$PID
+			fi
+		fi
+	fi
+done
+
+# Exit for Dynamic Security Check
+if [ "$report" = "1" ]
+then
+	if [ $counter -ne 0 ]
+	then
+		exit 1
+	else
+		exit 0
+	fi
+fi
+
+if [ $undo -eq 1 ]
+then
+	time=`date +%s`
+	# Create Undo script $SCPTDIR/Undo$1$time
+	echo "#!/usr/bin/ksh\nexport PATH=/usr/bin:/usr/sbin:\$PATH\n" >$SCPTDIR/Undo$1$time
+	echo "exec 1>>$LOG\nexec 2>&1\nset -x\ndate\necho" '$0' >>$SCPTDIR/Undo$1$time
+	cat $TMP$PID >>$SCPTDIR/Undo$1$time
+	rm $TMP$PID
+	chmod ug+x $SCPTDIR/Undo$1$time
+
+	# Check if UNDOXML file has <AIXPertUndo> tag or not
+	empty=`grep "^<AIXPertUndo>" $UNDOXML`
+	if [ "$empty" = "" ]
+	then
+		echo "\n<AIXPertUndo>\n</AIXPertUndo>" >> $UNDOXML
+	fi
+
+	# Get the rulename and put it in undo rule
+	name=`echo $AIXPERT_NAME`
+	# Get the rule description & pass it to undo rule
+	desc=`echo $AIXPERT_DESC`
+
+	# Add an undo XML rule to the file $UNDOXML
+	awk -v rulehalf1="\t<AIXPertEntry name=\"$name\">\n\
+\t\t<AIXPertRuleType type=\"Undo\"/>\n\
+\t\t<AIXPertDescription>Undo action for \"$desc\"</AIXPertDescription>\n\
+\t\t<AIXPertPrereqList/>\n"\
+ -v rulehalf2="\t\t<AIXPertCommand>$SCPTDIR/Undo$1$time</AIXPertCommand>\n\
+\t\t<AIXPertArgs/>\n\t\t<AIXPertGroup>Miscellaneous Rules</AIXPertGroup>\n\
+\t</AIXPertEntry>" '{if(match($0,"^[\t ]*</AIXPertUndo>")==0) print $0;\
+ else print rulehalf1 rulehalf2 "\n" $0}' $UNDOXML >>$TMP$PID
+	mv $TMP$PID $UNDOXML
+fi
+
+exit 0

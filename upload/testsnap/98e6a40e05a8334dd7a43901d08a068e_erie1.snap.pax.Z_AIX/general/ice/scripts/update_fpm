@@ -1,0 +1,40 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/update_fpm.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/update_fpm.sh, libice, aix71B, 1026A_71B 2010-06-11T20:56:38-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+odmget PdAt | grep tcb_enabled > /dev/null 2>&1
+
+if [ $? -eq 0 ]
+then
+	#disable TCB in ODM
+	odmget -q attribute=TCB_STATE PdAt | sed 's/tcb_enabled/tcb_disabled/'\
+ | odmchange -o PdAt -q attribute=TCB_STATE
+	#run FPM
+	fpm -l default -f $FPMFILE
+	#enable TCB in ODM
+	odmget -q attribute=TCB_STATE PdAt | sed 's/tcb_disabled/tcb_enabled/'\
+ | odmchange -o PdAt -q attribute=TCB_STATE
+	list=`cat $FPMFILE | awk '{ print $2 }'`
+	. $update_tcb $list
+else
+	# run FPM
+	fpm -l default -f $FPMFILE
+fi

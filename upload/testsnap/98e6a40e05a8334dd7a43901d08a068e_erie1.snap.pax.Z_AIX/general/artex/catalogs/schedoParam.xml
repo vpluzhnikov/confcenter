@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="schedoParam" version="2.1">
+
+	<ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="41" msgNum="1">schedo parameters</NLSCatalog></ShortDescription>
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="41" msgNum="2">Parameter definition for the schedo command</NLSCatalog></Description>
+
+	<CfgMethod id="schedo">
+		<Get type="current">
+			<Command>/usr/sbin/schedo -aF</Command>
+			<Filter>/usr/bin/grep -v '= n/a$'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>/usr/sbin/schedo -r -aF</Command>
+			<Filter>/usr/bin/grep -v '= n/a$'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+		</Get>
+
+		<Set type="permanent">
+			<!--do not set parameter if value is 'n/a' -->
+			<!-- echo yes is to answer prompt to set restricted variables if required
+                             change if a parameter is ever introduced that requires a bosboot -->
+			<Command>TMP_SET_ARGS=%a; if [[ -n $TMP_SET_ARGS ]]; then echo yes | /usr/sbin/schedo -p $TMP_SET_ARGS; fi</Command>
+			<Argument>`if [ %v1 != 'n/a' ]; then echo ' -o '%p=%v1; fi`</Argument>
+		</Set>
+
+		<Set type="nextboot">
+			<!--do not set parameter if value is 'n/a' -->
+			<Command>TMP_SET_ARGS=%a; if [[ -n $TMP_SET_ARGS ]]; then echo yes | /usr/sbin/schedo -r $TMP_SET_ARGS; fi</Command>
+			<Argument>`if [ %v1 != 'n/a' ]; then echo ' -o '%p=%v1; fi`</Argument>
+		</Set>
+	</CfgMethod>
+
+	<ParameterDef name="affinity_lim" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h affinity_lim | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="big_tick_size" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h big_tick_size | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="ded_cpu_donate_thresh" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h ded_cpu_donate_thresh | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="fixed_pri_global" cfgmethod="schedo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/schedo -h fixed_pri_global | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="force_grq" cfgmethod="schedo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/schedo -h force_grq | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="maxspin" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h maxspin | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="pacefork" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h pacefork | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="proc_disk_stats" cfgmethod="schedo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/schedo -h proc_disk_stats | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="sched_D" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h sched_D | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="sched_R" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h sched_R | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="tb_balance_S0" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h tb_balance_S0 | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="tb_balance_S1" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h tb_balance_S1 | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="tb_threshold" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h tb_threshold | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="timeslice" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h timeslice | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="vpm_fold_policy" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h vpm_fold_policy | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="vpm_xvcpus" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h vpm_xvcpus | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+    <SubCat id="restricted"> 	
+
+	<ParameterDef name="%usDelta" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h %usDelta | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="allowMCMmigrate" cfgmethod="schedo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/schedo -h allowMCMmigrate | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="clk_transition" cfgmethod="schedo" type="integer">
+                <Description><NLSCommand command="/usr/sbin/schedo -h clk_transition | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+	<ParameterDef name="hotlocks_enable" cfgmethod="schedo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/schedo -h hotlocks_enable | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="idle_migration_barrier" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h idle_migration_barrier | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="intr_stealing" cfgmethod="schedo" type="boolean">
+                <Description><NLSCommand command="/usr/sbin/schedo -h intr_stealing | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+	<ParameterDef name="jitter_control" cfgmethod="schedo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/schedo -h jitter_control | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="krlock_confer2self" cfgmethod="schedo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/schedo -h krlock_confer2self | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="krlock_conferb4alloc" cfgmethod="schedo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/schedo -h krlock_conferb4alloc | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="krlock_enable" cfgmethod="schedo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/schedo -h krlock_enable | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="krlock_spinb4alloc" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h krlock_spinb4alloc | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="krlock_spinb4confer" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h krlock_spinb4confer | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="n_idle_loop_vlopri" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h n_idle_loop_vlopri | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="search_globalrq_mload" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h search_globalrq_mload | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="search_smtrunq_mload" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h search_smtrunq_mload | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="setnewrq_sidle_mload" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h setnewrq_sidle_mload | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="shed_primrunq_mload" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h shed_primrunq_mload | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="sidle_S1runq_mload" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h sidle_S1runq_mload | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="sidle_S2runq_mload" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h sidle_S2runq_mload | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="sidle_S3runq_mload" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h sidle_S3runq_mload | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="sidle_S4runq_mload" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h sidle_S4runq_mload | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="slock_spinb4confer" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h slock_spinb4confer | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="smt_option_flags" cfgmethod="schedo" type="integer">
+                <Description><NLSCommand command="/usr/sbin/schedo -h smt_option_flags | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+	<ParameterDef name="smt_snooze_delay" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h smt_snooze_delay | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="smt_tertiary_snooze_delay" cfgmethod="schedo" type="integer">
+                <Description><NLSCommand command="/usr/sbin/schedo -h smt_tertiary_snooze_delay | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+	<ParameterDef name="smtrunq_load_diff" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h smtrunq_load_diff | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="tertiary_barrier_load" cfgmethod="schedo" type="integer">
+                <Description><NLSCommand command="/usr/sbin/schedo -h tertiary_barrier_load | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+	<ParameterDef name="tick_sync" cfgmethod="schedo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/schedo -h tick_sync | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="v_exempt_secs" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h v_exempt_secs | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="v_min_process" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h v_min_process | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="v_repage_hi" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h v_repage_hi | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="v_repage_proc" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h v_repage_proc | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="v_sec_wait" cfgmethod="schedo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/schedo -h v_sec_wait | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+        <ParameterDef name="vpm_fold_threshold" cfgmethod="schedo" type="integer">
+                <Description><NLSCommand command="/usr/sbin/schedo -h vpm_fold_threshold | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+        <ParameterDef name="vpm_min_sleep" cfgmethod="schedo" type="integer">
+                <Description><NLSCommand command="/usr/sbin/schedo -h vpm_min_sleep | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+    </SubCat>
+</Catalog>

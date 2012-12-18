@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="smtctlParam" version="2.0">
+	
+	<ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="43" msgNum="1">smtctl parameters</NLSCatalog></ShortDescription>
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="43" msgNum="2">Parameter definition for the 'smtctl' command</NLSCatalog></Description>
+
+	<ParameterDef name="enableSMT" type="boolean">
+		
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="43" msgNum="3">This parameter enable or disable the simultaneous multi-threading mode</NLSCatalog></Description>
+
+		<Get type="current">
+			<Command>LANG=C;/usr/sbin/smtctl</Command>
+			<Filter>awk '/SMT is currently/ {if ($NF ~ "enabled") printf("%d",1); else printf("%d",0)}'</Filter>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>LANG=C;/usr/sbin/smtctl</Command>
+			<Filter>awk '/SMT boot mode is set to/ {if ($NF ~ "enabled") printf("%d",1); else printf("%d",0)}'</Filter>
+		</Get>
+
+		<Set type="permanent">
+			<Command>/usr/sbin/smtctl -w now%a</Command>
+			<Argument> `if [ %v1 = 1 ]; then echo " -m on"; else echo " -m off"; fi`</Argument>
+		</Set>
+
+		<Set type="nextboot">
+			<Command>/usr/sbin/smtctl -w boot%a</Command>
+			<Argument> `if [ %v1 = 1 ]; then echo " -m on"; else echo " -m off"; fi`</Argument>
+		</Set>
+
+		<ConstraintDef>    
+			<Description><NLSCatalog catalog="artexcat.cat" setNum="43" msgNum="4">bosboot</NLSCatalog></Description>       
+			<BuiltIn>bosboot</BuiltIn>
+		</ConstraintDef>
+
+	</ParameterDef>
+
+</Catalog>

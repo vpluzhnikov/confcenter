@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- @(#)22     1.3.1.2  src/artex/etc/security/artex/catalogs/alogParam.xml, artex, artex61L 3/25/10 08:14:38 -->
+<Catalog id="alogParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="3" msgNum="1">alog Command</NLSCatalog></ShortDescription> 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="3" msgNum="2">Creates and maintains fixed-size log files created from standard input</NLSCatalog></Description>
+
+ <CfgMethod id="alog">
+  <Get type="current">
+   <Command>/usr/bin/alog -L -t %t[logType]</Command>
+   <Filter>export LANG=C;awk -F: '{ N = split(substr($0, 2), NAME); getline; split($0, VALUE) } END { for (i=1; i&lt;=N; i++) { print NAME[i] " = " VALUE[i] } }'</Filter>
+   <Mask name="1" value="2">(.*) = (.*)</Mask>
+  </Get>
+  
+  <Get type="nextboot">
+   <Command>/usr/bin/alog -L -t %t[logType]</Command>
+   <Filter>export LANG=C;awk -F: '{ N = split(substr($0, 2), NAME); getline; split($0, VALUE) } END { for (i=1; i&lt;=N; i++) { print NAME[i] " = " VALUE[i] } }'</Filter>
+   <Mask name="1" value="2">(.*) = (.*)</Mask>
+  </Get>
+  
+  <Discover>
+   <Command>/usr/bin/odmget -q attribute="alog_type" SWservAt | grep deflt | sed -e 's/.*deflt = \"\(.*\)\"/logType=\1;/'</Command>
+  </Discover>
+ </CfgMethod>
+
+
+ <ParameterDef name="file" type="string" targetClass="logType" cfgmethod="alog">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="3" msgNum="3">Name of a log file</NLSCatalog></Description>
+  <Set type="permanent">
+   <Command>/usr/bin/alog -C -t %t[logType] -f %v1</Command>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="size" type="integer" targetClass="logType" cfgmethod="alog">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="3" msgNum="4">Size limit of the log file in bytes</NLSCatalog></Description>
+  <Set type="permanent">
+   <Command>/usr/bin/alog -C -t %t[logType] -s %v1</Command>  
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="verbosity" type="integer" targetClass="logType" cfgmethod="alog">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="3" msgNum="5">Verbosity attribute for LogType defined in the alog configuration database. Verbosity attribute can have a value from 0 to 9</NLSCatalog></Description>
+  <Set type="permanent">
+   <Command>/usr/bin/alog -C -t %t[logType] -w %v1</Command>
+  </Set>
+ </ParameterDef>
+
+</Catalog>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="coreParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="14" msgNum="1">Core file settings.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="14" msgNum="2">The settings for the core file can either be set by default for the whole system or for a given user.</NLSCatalog></Description>
+
+ <CfgMethod id="coremgt">
+  <Get type="current">
+   <Command>/usr/bin/lscore `if [ %t[registry] ]; then echo '-R %t[registry] ';fi; if [ %t[user] ]; then echo %t[user]; else echo '-d'; fi`</Command>
+   <Filter>awk -F: '{ gsub(" ","",$1); print $1 " = " $2 }'</Filter>
+   <Mask name="1" value="2">(.*) = (.*)</Mask>
+  </Get>
+
+  <Get type="nextboot">
+   <Command>/usr/bin/lscore `if [ %t[registry] ]; then echo '-R %t[registry] ';fi; if [ %t[user] ]; then echo %t[user]; else echo '-d'; fi`</Command>
+   <Filter>awk -F: '{gsub(" ","",$1); print $1 " = " $2 }'</Filter>
+   <Mask name="1" value="2">(.*) = (.*)</Mask>
+  </Get>
+  
+  <Discover>
+   <Command>/usr/sbin/lsuser -a registry ALL | sed -e "s/\(.*\) registry=\(.*\)/user=\1;registry=\2;/g"</Command>
+  </Discover>
+ </CfgMethod>
+
+ <ParameterDef name="compression" type="string" reboot="true" targetClass="user,registry" cfgmethod="coremgt">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="14" msgNum="3">Setting for core file location.</NLSCatalog></Description>
+
+  <Set type="nextboot">
+   <Command>/usr/bin/chcore %a </Command>
+   <Argument>`if [ %t[registry] ]; then echo '-R %t[registry] ';fi;` -c `if [ %t[user] ]; then echo %v1 %t[user]; else echo %v1 '-d'; fi`</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="pathspecification" type="string" reboot="true" targetClass="user,registry" cfgmethod="coremgt">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="14" msgNum="4">Setting for core file location.</NLSCatalog></Description>
+
+  <Set type="nextboot">
+   <Command>/usr/bin/chcore %a </Command>
+   <Argument>`if [ %t[registry] ]; then echo '-R %t[registry] ';fi;` -p `if [ %t[user] ]; then echo %v1 %t[user]; else echo %v1 '-d'; fi`</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="corefilelocation" type="string" reboot="true" targetClass="user,registry" cfgmethod="coremgt">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="14" msgNum="5">Setting for core file location.</NLSCatalog></Description>
+
+  <Set type="nextboot">
+   <Command>if [ ''%v1 != ' not set' ]; then /usr/bin/chcore %a; else true; fi</Command>
+   <Argument>`if [ %t[registry] ]; then echo '-R %t[registry] ';fi;echo ' -l'; if [ %t[user] ]; then echo %v1 %t[user]; else echo %v1 '-d'; fi`</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="namingspecification" type="string" reboot="true" targetClass="user,registry" cfgmethod="coremgt">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="14" msgNum="6">Setting for core file location.</NLSCatalog></Description>
+
+  <Set type="nextboot">
+   <Command>/usr/bin/chcore %a </Command>
+   <Argument>`if [ %t[registry] ]; then echo '-R %t[registry] ';fi;` -n `if [ %t[user] ]; then echo %v1 %t[user]; else echo %v1 '-d'; fi`</Argument>
+  </Set>
+ </ParameterDef>
+</Catalog>

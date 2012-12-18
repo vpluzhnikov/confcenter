@@ -1,0 +1,256 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/usr/lib/security/aixpert/scripts/rootcrnjobck.sh 1.3 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006,2007 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)16	1.3  src/bos/usr/lib/security/aixpert/scripts/rootcrnjobck.sh, aixpert, bos610 2/3/07 13:18:07
+# IBM_PROLOG_END_TAG 
+#	COMPONENT_NAME		: (AIXPERT) rootcrnjobck.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: The script expects rulename as the argument,
+#				i.e., rule name.
+#
+#	OUTPUT			: None
+#
+#	Description		: This script ensures that the root cronjobs are
+#				owned and writable only by root. This script
+#				generates undo XML rule and the undo script dynamically.
+#				This script should be run with superuser privileges
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+# Initialize variables AIXPERT_FIFO, LOG, REPORT, SCPTDIR and UNDOXML
+. /etc/security/aixpert/bin/initialize_variables
+
+TMP=/etc/security/aixpert/tmp/rootcronjobck
+PID=$$
+
+# Log output and errors to /etc/security/aixpert/log/aixpert.log
+exec 1>>$LOG
+exec 2>&1
+
+if [ $# -ne 1 ]
+then
+        dspmsg -s 27 aixpert.cat 1 "Usage : rootcrnjobck rulename\n"
+        exit 1
+fi
+
+# echo all the commands and the current time and date to the AIXpert log
+set -x
+date
+echo $0
+
+if [ -f /var/spool/cron/crontabs/root ]
+then
+
+# A value of 0 indicates that Undo rule need not be created. This variable
+# will be set later in the script if there is anything to be undone
+undo=0
+
+# Counter to determine the number of failures in Dynamic Security Check
+counter=0
+
+# Undo script to be run
+echo "#!/usr/bin/ksh\nexport PATH=/usr/bin:/usr/sbin:\$PATH\n" >$TMP$PID
+echo "exec 1>>$LOG\nexec 2>&1\nset -x\ndate\necho" '$0' >>$TMP$PID
+
+# The sixth field in the crontab file will be the name of a script/command.
+# Also, the user can specify more than one script/command per line by using ";" like
+#30 4 * * 0  backup -1 -u -f /backup/sb1.bkup /sb ;  gzip -f /backup/sb1.bkup
+#30 4 * * 1  backup -2 -u -f /backup/sb2.bkup /sb ;  gzip -f /backup/sb2.bkup
+#30 4 * * 2  backup -3 -u -f /backup/sb3.bkup /sb ;  gzip -f /backup/sb3.bkup
+#30 4 * * 3  backup -4 -u -f /backup/sb4.bkup /sb ;  gzip -f /backup/sb4.bkup
+#
+#The following series of awk command will get the name of the scripts/commands
+#in the crontab file
+
+for cronjob in `awk '$0 !~ /^#/{ print $0}' /var/spool/cron/crontabs/root |\
+ awk -F ";" '{for(i=1;i<=NF;i++) print i " " $i}' | awk  '{if($1 == 1) print $7;\
+ else print $2}' | awk -F '\\\\%' '{print $1}'`
+do
+	
+	path=`whereis $cronjob | awk -F ":" '{print $2}' | awk '{print $1}'`
+	if [ "$path" = "" ]
+	then	
+		# Check whether AIXPERT_CHECK_REPORT environment variable is set.
+		report=`echo $AIXPERT_CHECK_REPORT`
+
+		# If the script is not in standard location
+		opofcrnj=`ls -l $cronjob`
+		# ls on the cronjob failed, i.e., there is no binary/script
+		# associated with the cron job
+		if [ $? -eq 0 ]
+		then
+			owner=`echo "$opofcrnj" | awk '{print $3}'`
+			if [ "$owner" != "root" ]
+			then
+				if [ "$report" = "1" ]
+				then
+					counter=`expr $counter + 1`
+					dspmsg -s 27 aixpert.cat 2 "rootcrnjobck.sh:\
+ Cronjob %s is not owned by root\n" $cronjob >>$REPORT
+					dspmsg -s 27 aixpert.cat 2 "rootcrnjobck.sh:\
+ Cronjob %s is not owned by root\n" $cronjob >>$AIXPERT_FIFO
+					continue;
+				else
+					# If DSR feature is not set, set root as owner of cronjob
+					undo=1
+					chown root $cronjob
+					echo "chown $owner $cronjob" >>$TMP$PID
+				fi
+			else
+				# for undo consistency
+				# this undo action should be echoed to $TMP$PID
+				# even when the owner is root
+				if [ "$report" != "1" ]
+				then
+					undo=1
+					echo "chown $owner $cronjob" >>$TMP$PID
+				fi
+			fi
+		
+			uwrite=0;gwrite=0;owrite=0;
+		
+			# Determine whether write permissions is provided
+			# for user/group/others
+			echo "$opofcrnj" | awk '{str=$1;ind=0;\
+ while(x=index(str,"w")) { ind+=x; print ind; str=substr(str, x+1)}}'\
+ | while read perm
+			do
+				if [ $perm -eq 3 ]
+				then
+					uwrite=1;
+				fi
+				
+				if [ $perm -eq 6 ]
+				then
+					gwrite=1;
+				fi
+				
+				if [ $perm -eq 9 ]
+				then
+					owrite=1;
+				fi
+			done
+
+			if [ "$report" = "1" ]
+			then
+				if [ $gwrite -eq 1 ] || [ $owrite -eq 1 ] || [ $uwrite -ne 1 ] 
+				then
+					counter=`expr $counter + 1`
+					dspmsg -s 27 aixpert.cat 3 "rootcrnjobck.sh:\
+ Root cron job %s has write permissions for owner:%s, group:%s and others: %s\n"\
+ $cronjob $uwrite $gwrite $owrite >>$REPORT
+					dspmsg -s 27 aixpert.cat 3 "rootcrnjobck.sh:\
+ Root cron job %s has write permissions for owner:%s, group:%s and others: %s\n"\
+ $cronjob $uwrite $gwrite $owrite >>$AIXPERT_FIFO
+				fi
+			else
+				# for undo consistency
+				# undo action should be echoed to $TMP$PID
+				# even when the access perms are proper
+				undo=1
+				if [ $uwrite -ne 1 ]
+				then
+					chmod u+w $cronjob
+				fi
+				echo "chmod u-w $cronjob" >>$TMP$PID
+
+				if [ $gwrite -eq 1 ]
+				then
+					chmod g-w $cronjob
+				fi
+				echo "chmod g+w $cronjob" >>$TMP$PID
+				
+				if [ $owrite -eq 1 ]
+				then
+					chmod o-w $cronjob
+				fi
+				echo "chmod o+w $cronjob" >>$TMP$PID
+			fi
+		else
+			if [ "$report" = "1" ]
+			then
+				counter=`expr $counter + 1`
+				dspmsg -s 27 aixpert.cat 4 "rootcrnjobck.sh:\
+ Cronjob %s do not have a binary/script associated with it\n" $cronjob >>$REPORT
+				dspmsg -s 27 aixpert.cat 4 "rootcrnjobck.sh:\
+ Cronjob %s do not have a binary/script associated with it\n" $cronjob >>$AIXPERT_FIFO
+			else
+				counter=`expr $counter + 1`
+				dspmsg -s 27 aixpert.cat 4 "rootcrnjobck.sh:\
+ Cronjob %s do not have a binary/script associated with it\n" $cronjob
+			fi
+		fi
+	fi
+done
+
+# Exit for Dynamic Security Check
+if [ "$report" = "1" ]
+then
+	if [ $counter -ne 0 ]
+	then
+		exit 1
+	else
+		exit 0
+	fi
+else
+	if [ $counter -ne 0 ]
+	then
+		if [ $undo -eq 1 ]
+		then
+			chmod u+x $TMP$PID
+			. $TMP$PID
+		fi
+		rm $TMP$PID
+		exit 1
+	fi
+fi
+
+if [ $undo -eq 1 ]
+then
+	# move the temporary script to undo/data directory
+	mv $TMP$PID $SCPTDIR/Undo$1$time
+	chmod ug+x $SCPTDIR/Undo$1$time
+
+	empty=`grep "^<AIXPertUndo>" $UNDOXML`
+	if [ "$empty" = "" ]
+	then
+		echo "\n<AIXPertUndo>\n</AIXPertUndo>" >> $UNDOXML
+	fi
+
+	# Get the rulename and put it in undo rule
+	name=`echo $AIXPERT_NAME`
+	# Get the rule description & pass it to undo rule
+	desc=`echo $AIXPERT_DESC`
+
+	# Add an undo XML rule to the file $UNDOXML
+	awk -v rulehalf1="\t<AIXPertEntry name=\"$name\">\n\
+\t\t<AIXPertRuleType type=\"Undo\"/>\n\
+\t\t<AIXPertDescription>Undo action for \"$desc\"</AIXPertDescription>\n\
+\t\t<AIXPertPrereqList/>\n"\
+ -v rulehalf2="\t\t<AIXPertCommand>$SCPTDIR/Undo$1$time</AIXPertCommand>\n\
+\t\t<AIXPertArgs/>\n\t\t<AIXPertGroup>Miscellaneous Rules</AIXPertGroup>\n\
+\t</AIXPertEntry>" '{if(match($0,"^[\t ]*</AIXPertUndo>")==0) print $0;\
+ else print rulehalf1 rulehalf2 "\n" $0}' $UNDOXML >$TMP$PID
+	mv $TMP$PID $UNDOXML
+else
+	rm $TMP$PID
+fi
+
+fi
+
+exit 0

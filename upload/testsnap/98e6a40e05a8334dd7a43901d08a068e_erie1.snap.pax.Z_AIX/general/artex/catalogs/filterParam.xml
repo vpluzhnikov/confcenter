@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="filterParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="20" msgNum="1">Definition of IP Security filter rules.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="20" msgNum="2">Network traffic will be filtered through the filter rules list from top (rule # 0) to bottom, and the first matching rule will determine what tunnel, if any, the network traffic will use. Filtering can also be used without tunnels, to deny or permit traffic on specific criteria such as IP address, protocol or interface.</NLSCatalog></Description>
+ 
+ <CfgMethod id="cat">
+  <Get type="nextboot">
+   <Command>/usr/sbin/expfilt -f /tmp -l all;/usr/bin/cat /tmp/ipsec_fltr_rule.exp; rm -rf /tmp/ipsec_fltr_rule.exp</Command>
+  </Get>
+
+  <Get type="current">
+   <Command>/usr/sbin/expfilt -f /tmp -l all;/usr/bin/cat /tmp/ipsec_fltr_rule.exp; rm -rf /tmp/ipsec_fltr_rule.exp</Command>
+  </Get>
+
+  <Set type="permanent">
+   <Command>/usr/bin/cat &gt; /tmp/ipsec_fltr_rule.exp; /usr/sbin/impfilt -f /tmp; rm -rf /tmp/ipsec_fltr_rule.exp</Command>
+   <Stdin>%v1</Stdin>
+  </Set>
+
+  <Diff>
+   <Command>/usr/bin/diff -w %f1 %f2; echo $?</Command>
+  </Diff>
+ </CfgMethod>
+
+ <ParameterDef name="filterruletable" cfgmethod="cat" type="binary">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="20" msgNum="3">The IP filter rules table contains the list of predefined and manual filter rules. A collection of rules determine what packets are accepted in and out of the machine and how they are directed. Filter rules can control many aspects of communications, including source and destination addresses and masks, protocol, port number, direction, fragment control, source routing, tunnel, and interface type.</NLSCatalog></Description>
+ </ParameterDef>
+</Catalog>

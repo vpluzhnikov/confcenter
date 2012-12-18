@@ -1,0 +1,354 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/daemon_inetd.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/daemon_inetd.sh, libice, aix710, 1010A_710 2010-03-02T17:22:23-06:00$
+#
+# IBM_PROLOG_END_TAG
+#       COMPONENT_NAME: (ICE) daemon_inetd
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax: 
+#               daemon_inetd -{c|e|p}[v] service protocol daemon toggle
+#                                        
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode (unimplemented)
+#               service	- Service name
+#		protocol- Protocol name
+#		daemon	- Daemon name
+#               toggle	- false=disable, true=enable
+#
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#               This script toggles daemons/scripts by commenting or 
+#               uncommenting an entry in /etc/inetd.conf. 
+#               It will also attempt to activate or deactivate a daemon 
+#               using the System Resource Controller (SRC).
+#               This script should be run with superuser privileges.
+
+umask 077
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+###
+#Print Usage
+###
+Usage() {
+        ice_status=1
+	print "usage: \n
+   daemon_inetd.sh -{c|e|p}[v] service protocol [daemon] toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+	     print -n "$cur_val%$ice_status%" 
+	     cat log_msg
+	     print
+}
+
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=
+ice_status=0
+print -n > log_msg 2>&1
+
+
+while getopts :cevp OPT
+do
+        case $OPT in
+                c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+		p)	pflag=1;;
+                ?|:)    Usage
+			Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+if [[ vflag -eq 1 ]];
+then
+	set -x
+fi
+
+#Need 3 or 4 arguments
+if  [[ $# -eq 3 ]] ;
+then
+	SERV_ARG=$1
+	PROTO_ARG=$2
+	DAEMON_ARG=
+	STATUS_ARG=$3
+elif [[ $# -eq 4 ]] ;
+then
+	SERV_ARG=$1
+	PROTO_ARG=$2
+	DAEMON_ARG=$3
+	STATUS_ARG=$4
+else
+	Usage
+        Script_Output
+	exit 1
+fi
+
+FILE="/etc/inetd.conf"
+COMMENT='#'
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+	Usage
+	Script_output
+	exit 1
+fi
+
+
+# Check whether inetd exists or not.
+if ( ! [[ -f $FILE ]] )
+then
+	print "$FILE is not a regular file." >> log_msg 2>&1
+	Usage
+	Script_Output
+	exit 1
+fi
+
+#Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+	print "Toggle must be true or false" >> log_msg 2>&1
+	Usage
+	Script_Output
+	exit 1
+fi
+
+
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+	ECHOPREFIX="echo"
+else
+	ECHOPREFIX=""
+fi
+
+TMP=/etc/security/ice/tmp/daemon_inetd
+PID=$$
+
+
+# Check whether the service entry exists and whether it is enabled or disabled
+# Status value 'true' states that the service is uncommented in /etc/inetd.conf.
+# Value 'false' states that the service is commented, and value 'n' specifies
+# that the service entry doesnt exist in the configuration file.
+status=`awk -v serv=$SERV_ARG -v proto=$PROTO_ARG -v exist="n" '
+	BEGIN {
+	format=sprintf("^[\t ]*%s.*%s",serv,proto);
+	comformat=sprintf("^[\t ]*#[\t ]*%s.*%s",serv,proto);
+	}
+	{
+	if(match($0,format))
+	{
+		exist="true";
+	}
+	else if(match($0,comformat))
+	{
+		exist="false";
+	}
+	}
+	END {
+	printf("%s",exist)
+	}' $FILE`
+
+
+#checking
+if [[ cflag -eq 1 ]];
+then
+	# if the line is not found
+	if ( [ "$status" = "n" ] )
+	then
+		# check succeeds if toggle off requested
+		if ( [ "$STATUS_ARG" = "false" ] )
+		then
+			cur_val=false
+			ice_status=0
+			Script_Output
+			exit 0
+		else
+			cur_val=false
+			ice_status=2
+			print "Entry $SERV_ARG for protocol $PROTO_ARG not found in file $FILE." >> log_msg 2>&1
+			Script_Output
+			exit 0
+		fi
+	#if the line is found
+	else
+		#the statuses need to match to succeed
+		if ( [ "$STATUS_ARG" != "$status" ] )
+		then
+			cur_val=$status
+			ice_status=2
+			if ( [ "$STATUS_ARG" = "false" ] )
+			then
+			   print "Entry $SERV_ARG for protocol $PROTO_ARG is enabled, but it should be disabled." >> log_msg 2>&1
+			else
+			   print "Entry $SERV_ARG for protocol $PROTO_ARG is disabled, but it should be enabled." >> log_msg 2>&1
+			fi
+			Script_Output
+			exit 0
+		else
+			cur_val=$status
+			ice_status=0
+			Script_Output
+			exit 0
+		fi
+	fi
+fi
+
+###
+#Preview/Enforcing
+###
+
+# If the entry exists and the status doesn't 
+# match the requested state, change it.
+if ( [ "$status" != "n" ] && [ "$STATUS_ARG" != "$status" ] )
+then
+	# Construct the regular expression string to be
+	# search using the arguments.
+	# when a match is found comment/uncomment the line 
+	# Store the output of awk in $TMP$PID
+
+	if [ "$STATUS_ARG" = "false" ]
+	then
+		awk -v serv=$SERV_ARG -v proto=$PROTO_ARG -v cmt=$COMMENT '
+		BEGIN {
+			format=sprintf("^[\t ]*%s.*%s",serv,proto);
+		}
+		{
+			if(match($0,format))
+			{
+				print cmt $0
+			}
+			else
+			{
+				print $0
+			}
+		}' $FILE >> $TMP$PID
+
+	else
+		awk -v serv=$SERV_ARG -v proto=$PROTO_ARG -v cmt=$COMMENT '
+		BEGIN {
+			format=sprintf("^[\t ]*#[\t ]*%s.*%s",serv,proto);
+		}
+		{
+			if(match($0,format))
+			{
+			# replace the first occurence of comment in the record
+				sub(cmt,"",$0)
+			}
+			print $0
+		}' $FILE >> $TMP$PID
+	fi
+
+	#Copy the modified temp file back over the original file
+	$ECHOPREFIX mv $TMP$PID $FILE
+
+# If entry not found, and request was to enable, fail
+elif ( [ "$status" = "n" ] && [ "$STATUS_ARG" = "true" ] )
+then
+	print "Entry $SERV_ARG for protocol $PROTO_ARG not found in file $FILE." >> log_msg 2>&1
+	# Set the current value to false
+	cur_val=false
+	ice_status=1
+	Script_Output
+	exit 0
+fi
+
+# The current value is now STATUS_ARG
+cur_val=$STATUS_ARG
+
+# Now that we have fixed the file, we check to see if the daemon needs to be
+# started or stopped.
+
+# if we didn't get a daemon argument, exit
+if [[ -z $DAEMON_ARG ]] ;
+then
+	# Refresh the server to use the new settings from the inetd file
+	refresh -s inetd >> log_msg 2>&1
+	Script_Output
+	exit 0
+fi
+
+daemon=`echo $DAEMON_ARG|awk -F ":" '{print $1}'`
+# Check whether  is a daemon or not
+lssrc -s $daemon 2>&1 > /dev/null
+if [ $? -eq 0 ]
+then
+	# If requested status is to disable, check if the daemon is
+	# active.  If it is, stop the daemon.
+	if [ "$STATUS_ARG" = "false" ]
+	then 
+		lssrc -s $daemon|grep active 2>&1 > /dev/null
+		if [ $? -eq 0 ]
+		then
+			$ECHOPREFIX stopsrc -s $daemon  >> log_msg 2>&1
+		fi
+	# Otherwise, requested status was to enable.  Check if the daemon
+	# is inoperative and start it if so.
+	else
+		lssrc -s $daemon|grep inoperative 2>&1 > /dev/null
+		if [ $? -eq 0 ]
+		then
+			$ECHOPREFIX startsrc -s $daemon  >> log_msg 2>&1
+		fi
+	fi
+
+	Script_Output
+	exit 0
+fi
+
+# If we didn't find an SRC listing for the daemon, we need to
+# print some kind of warning.
+
+refresh -s inetd >> log_msg 2>&1
+print -n "Warning, $DAEMON_ARG is not managed by the SRC system.The server has been refreshed to use the new settings from $FILE" >> log_msg 2>&1
+ice_status=0
+Script_Output
+exit 0
+

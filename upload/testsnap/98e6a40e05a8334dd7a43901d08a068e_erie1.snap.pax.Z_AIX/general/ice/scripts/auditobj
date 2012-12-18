@@ -1,0 +1,132 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/auditobj.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/auditobj.sh, libice, aix71B, 1035A_71B 2010-07-27T10:06:59-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+#audit SOX/COBIT
+#object auditing for files listed in /etc/security/ice/scripts/auditobjfiles
+
+INSTALLDIR=/etc/security/ice/scripts
+. $INSTALLDIR/iceInit
+
+OBJLIST=/etc/security/ice/scripts/auditobjfiles
+OBJFILE=/etc/security/audit/objects
+EVENTFILE=/etc/security/audit/events
+
+cat $OBJLIST | grep -v "^#" > $TMPF1
+#remove all empty lines
+sed '/^$/d' $TMPF1 > $TMPF2 
+rm $TMPF1
+
+###########
+# Checking
+###########
+if [[ cflag -eq 1 ]];
+then
+
+	if [ `audit query | grep -c "auditing off"` -gt 0 ]
+	then
+		cur_val=0
+		if [ "$STATUS_ARG" = "true" ]
+		then
+			print "Audit is not enabled." >> log_msg 2>&1 
+			ice_status=2
+		fi
+	fi
+
+	while read line
+	do
+		if [ `cat $OBJFILE | grep -v "^*" | egrep -c "$line"` -gt 0 ]
+		then
+			if [ "$STATUS_ARG" = "false" ]
+			then
+				cur_val=1
+				print "File $line is configured for object auditing." >> log_msg 2>&1 
+				cur_val=1
+				ice_status=2
+			fi
+		else
+			if [ "$STATUS_ARG" = "true" ]
+			then
+				print "File $line is not configured for object auditing." >> log_msg 2>&1 
+				cur_val=0
+				ice_status=2
+			fi
+		fi
+	done < $TMPF2
+	rm $TMPF2
+
+	Script_Output
+	exit 0
+fi
+
+####################
+# Preview/Enforcing
+####################
+cur_val=
+tmp=_WRITE
+if [ "$STATUS_ARG" = "true" ]
+then
+	while read line
+	do
+		if [ `cat $OBJFILE | grep -v "^*" | egrep -c "$line"` -eq 0 ]
+		then
+			#insert this file in objects file
+			echo "\n$line:" >> $OBJFILE
+			echo "\tw = \"$line$tmp\"" >> $OBJFILE
+		fi
+		if [ `cat $EVENTFILE | grep -v "^*" | egrep -c "$line$tmp"` -eq 0 ]
+		then
+			#insert this file in events file
+			echo "\n*\t$line" >> $EVENTFILE
+			echo "\t$line$tmp = printf \"%s\"" >> $EVENTFILE
+		fi
+	done < $TMPF2
+	rm $TMPF2
+	audit shut >/dev/null 2>&1
+	audit start
+else
+	while read line
+	do
+		#remove from objects file
+		if [ `cat $OBJFILE | grep -v "^*" | egrep -c "$line"` -gt 0 ]
+		then
+			cat $OBJFILE | grep -v -p "$line" > $TMPF1
+			if [ -s $TMPF1 ]
+			then
+				mv $TMPF1 $OBJFILE
+			fi
+		fi
+		#remove from events file
+		if [ `cat $EVENTFILE | grep -v "^*" | egrep -c "$line$tmp"` -gt 0 ]
+		then
+			cat $EVENTFILE | grep -v -p "$line$tmp" > $TMPF1
+			if [ -s $TMPF1 ]
+			then
+				mv $TMPF1 $EVENTFILE
+			fi
+		fi
+	done < $TMPF2
+	rm $TMPF2
+	audit shut >/dev/null 2>&1
+	audit start
+fi
+Script_Output
+exit 0

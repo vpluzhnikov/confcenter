@@ -1,0 +1,55 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/usr/lib/security/aixpert/scripts/prereqlh.sh 1.1 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)03	1.1  src/bos/usr/lib/security/aixpert/scripts/prereqlh.sh, aixpert, bos610 3/15/06 08:09:30
+# IBM_PROLOG_END_TAG 
+#	COMPONENT_NAME		: (AIXPERT) prereqlh.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: None, This script checks whether the login herald value
+#				is Null on English locale.
+#
+#	OUTPUT			: None
+#
+#	Description		: This script checks the herald value in the default stanza 
+#				of /etc/security/login.cfg file, if it's not been set and
+#				the current locale is English it returns Success
+#				else it returns Failure.
+#				This script should be run with superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+# Get the current herald value
+herald=`lssec -f /etc/security/login.cfg -s default -a herald|awk -F '=' '{print $2}'`
+
+# Check whether the current locale is English or not
+curloc=`grep "[ \t]*LANG[ \t]*=" /etc/environment|awk -F '=' '{ print $2 }'`
+eng=`expr match "$curloc" "en_"`
+
+if [ $eng -eq 3 ]
+then
+	isloceng=1	# curernt locale is English
+else
+	isloceng=0	# current locale is not English
+fi
+
+if [ $isloceng -eq 1 ] && [ -z "$herald" ]
+then
+	exit 0		# Return success
+else
+	exit 1		# Return failure
+fi

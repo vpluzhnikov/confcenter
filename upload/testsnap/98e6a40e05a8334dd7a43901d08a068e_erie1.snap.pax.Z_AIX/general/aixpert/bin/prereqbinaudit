@@ -1,0 +1,108 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/usr/lib/security/aixpert/scripts/prereqbinaudit.sh 1.2 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006,2007 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)98	1.2  src/bos/usr/lib/security/aixpert/scripts/prereqbinaudit.sh, aixpert, bos610 2/2/07 11:49:08
+# IBM_PROLOG_END_TAG 
+#	COMPONENT_NAME		: (AIXPERT) prereqbinaudit.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: None.
+#
+#	OUTPUT			: None
+#	Description		: This script checks if there exists
+#				  a file system with 100MB free space.
+#
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+LOG=/etc/security/aixpert/log/aixpert.log
+
+# Log output and errors to /etc/security/aixpert/log/aixpert.log
+exec 1>>$LOG
+exec 2>&1
+
+# echo all the commands and the current time and date to the AIXpert log
+set -x
+date
+echo $0
+
+# Check whether /audit filesystem exists. If the file system exists then get the size of it.
+size=`lsfs | grep /audit | awk '{print $5}'`
+
+if [ "$size" = "" ]
+then
+	# If the /audit filesystem doesn't exist, then check whether
+	# we can create it in an active volume group
+	exist=false
+	lsvg -o | while read vg
+	do
+		freespace=`lsvg $vg | grep "FREE PPs:" | awk '{ print $7}'|awk \
+-F "(" '{print $2}'`
+	
+		if [ $freespace -ge 100 ]
+		then	
+			exist=true	# A file system exists with free space  > 100MB
+			break
+		fi
+	done
+
+	if [ "$exist" = "false" ]
+	then
+		dspmsg -s 28 aixpert.cat 2 "prereqbinaudit: Cannot create /audit\
+ filesystem in any active volume groups, because there is no active VG with file\
+ system space >= 100MB \n"
+		exit 1
+	fi
+else
+	# Check whether the freespace available + /audit/bin1 + /audit/bin2 +
+	# /audit/trail + /audit/trailOneLevelBack  is >= 100MB
+	
+	tot=`df | grep "/audit" | awk '{print $3}'`
+	tot=` expr $tot \* 512 `
+	
+	if [ -f /audit/bin1 ]
+	then
+		size=`ls -l /audit/bin1 | awk '{print $5}'`
+		tot=` expr $tot + $size `
+	fi
+	
+	if [ -f /audit/bin2 ]
+	then
+		size=`ls -l /audit/bin2 | awk '{print $5}'`
+		tot=` expr $tot + $size `
+	fi
+	
+	if [ -f /audit/trail ]
+	then
+		size=`ls -l /audit/trail | awk '{print $5}'`
+		tot=` expr $tot + $size `
+	fi
+	
+	if [ -f /audit/trailOneLevelBack ]
+	then
+		size=`ls -l /audit/trailOneLevelBack | awk '{print $5}'`
+		tot=` expr $tot + $size `
+	fi
+	
+	if [ $tot -lt 104857600 ]
+	then
+		dspmsg -s 28 aixpert.cat 3 "prereqbinaudit: The size of the\
+ /audit filesystem should be atleast 100 MB\n"
+		exit 1
+	fi
+fi
+
+exit 0

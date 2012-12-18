@@ -1,0 +1,44 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/auditobjfiles.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) adlai_SW015241_aix71B_dev/1 bos/usr/lib/security/ice/scripts/auditobjfiles.sh, libice, aix71B, _BASELINE_, 2010-06-22T10:35:11-05:00$
+#
+# IBM_PROLOG_END_TAG
+/etc/environment
+/etc/group
+/etc/inetd.conf
+/etc/inittab
+/etc/isakmpd.conf
+/etc/methods.cfg
+/etc/passwd
+/etc/ports
+/etc/profile
+/etc/rc.nfs
+/etc/rc.tcpip
+/etc/security/.profile
+/etc/security/audit/config
+/etc/security/audit/events
+/etc/security/environ
+/etc/security/group
+/etc/security/login.cfg
+/etc/security/passwd
+/etc/security/privcmds
+/etc/security/privdevs
+/etc/security/privfiles
+/etc/security/user
+/etc/services
+/etc/shells

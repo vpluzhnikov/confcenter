@@ -1,0 +1,387 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/anonymousftp.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/anonymousftp.sh, libice, aix710, 1020A_710 2010-05-12T16:23:59-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+#GEN004820 
+#GEN005020
+
+INSTALLDIR=/etc/security/ice/scripts
+. $INSTALLDIR/iceInit
+
+PREREQ_LIST="bos.rte.security,bos.rte.date,bos.rte.ILS"
+
+checkPrereq
+
+lib="ld.so.1 libc.so.1 libdl.so.1 libmp.so.2 libnsl.so.1 libsocket.so.1 nss_compat.so.1 nss_dns.so.1 nss_files.so.1 nss_nis.so.1 nss_nisplus.so.1"
+
+mustOwnedByRoot() {
+	if [ "$owner" = "root" ]
+	then
+		if [ "$STATUS_ARG" = "false" ]
+		then
+			print "$filename is owned by root." >> log_msg 2>&1
+			ice_status=2
+		fi
+	else
+		if [ "$STATUS_ARG" = "true" ]
+		then
+			print "$filename is not owned by root." >> log_msg 2>&1
+			ice_status=2
+		fi	
+	fi
+}
+
+noWritePermission() {
+	if [ `echo $per | grep -c "w"` -eq  0 ]
+	then
+		if [ "$STATUS_ARG" = "false" ]
+		then
+			print "File $filename does not have write permission." >> log_msg 2>&1
+			ice_status=2
+		else
+			if [ "$STATUS_ARG" = "true" ]
+			then
+				print "File $filename has write permission." >> log_msg 2>&1
+				ice_status=2
+			fi
+		fi
+	fi
+}
+
+###########
+# Checking
+###########
+if [[ cflag -eq 1 ]];
+then
+	if [ `grep -c "^ftp" /etc/passwd` -gt 0 ]
+	then
+		#anonymous ftp is setup
+		cur_val=1
+		fcnt=0
+		print "Anonymous ftp is set up on the machine.  This needs to be documented in AIO." >> log_msg 2>&1
+
+		homeperm=`ls -ld ~ftp | tr -s " " "," | cut -d "," -f1`
+		if [ `echo $homeperm | grep -c "w"` -eq 0 ]
+		then
+			if [ "$STATUS_ARG" = "false" ]
+			then
+				print "~ftp does not have write permission." >> log_msg 2>&1
+				ice_status=2
+			fi
+		else
+			if [ "$STATUS_ARG" = "true" ]
+			then
+				print "~ftp has write permission." >> log_msg 2>&1
+				ice_status=2
+			fi
+		fi
+
+		ls -l ~ftp | grep -v "^total" | tr -s " " "," > $TMPF1
+		#BEGIN ~ftp directory
+		while read line
+		do
+			filename=`echo $line | cut -d "," -f9`
+			owner=`echo $line | cut -d "," -f3`
+			per=`echo $line | cut -d "," -f1`
+
+			if [ "$filename" = "pub" -o "$filename" = "dev" ]
+			then
+				if [ ! -d $filename ]
+				then
+					print "$filename must be a directory." >> log_msg 2>&1
+					ice_status=2
+					Script_Output
+					exit 0
+				fi
+
+				mustOwnedByRoot
+
+				if [ "$filename" = "pub" ]
+				then
+					#must have 755
+					if [ "$per" = "drwxr-xr-x" ]
+					then
+						if [ "$STATUS_ARG" = "false" ]	
+						then
+							print "$filename has 755 permission." >> log_msg 2>&1
+							ice_status=2
+						fi
+					else
+						if [ "$STATUS_ARG" = "true" ]
+						then
+							print "$filename does not have 755 permission." >> log_msg 2>&1
+							ice_status=2
+						fi
+					fi
+				fi
+
+				if [ "$filename" = "dev" ]
+				then
+					noWritePermission
+					ls -l ~ftp/dev | grep -v "^total" | tr -s " " "," > $TMPF2
+					flist="zero tcp udp ticotsord"
+					#These files in flist should have 666 permission
+					while read line4
+					do
+						fname4=`echo $line4 | cut -d "," -f9`
+						perm4=`echo $line4 | cut -d "," -f1`
+						for i in $flist
+						do
+							if [ "$fname4" = "$i" ] 
+							then
+								if [ "$perm4" = "-rw-rw-rw-" ]
+								then
+									if [ "$STATUS_ARG" = "false" ]	
+									then
+										print "$fname4 has 666 permission." >> log_msg 2>&1
+										ice_status=2
+									fi
+								else
+									if [ "$STATUS_ARG" = "true" ]
+									then
+										print "$fname4 does not have 666 permission." >> log_msg 2>&1 
+										ice_status=2
+									fi
+								fi
+							fi
+						done
+					done < $TMPF2
+					rm $TMPF2
+				fi
+			fi
+
+			if [ "$filename" = "usr" ]
+			then
+				if [ ! -d ~ftp/usr/lib ]
+				then
+					print "~ftp/usr/lib directory does not exit." >> log_msg 2>&1
+					ice_status=2
+					Script_Output
+					exit 0
+				fi
+
+				tmp=`ls -ld ~ftp/usr/lib | tr -s " " ","`
+				perm=`echo $tmp | cut -d "," -f1`
+				owner=`echo $tmp | cut -d "," -f3`
+				if [ `echo $perm | grep -c "w"` -eq 0 ] && [ "$owner" = "root" ]
+				then
+					if [ "$STATUS_ARG" = "false" ]
+					then
+						print "~ftp/usr/lib directory has $perm permission and owned by root." >> log_msg 2>&1
+						ice_status=2
+					fi
+				else
+					if [ "$STATUS_ARG" = "true" ]
+					then
+						print "~ftp/usr/lib directory must not allow write permission to anyone and must owned by root." >> log_msg 2>&1
+						ice_status=2
+					fi
+				fi
+
+				ls -l ~ftp/usr/lib | grep -v "^total" | tr -s " " "," > $TMPF3
+				while read line1
+				do
+					perm1=`echo $line1 | cut -d "," -f1`
+					fname=`echo $line1 | cut -d "," -f9`
+					for i in $lib 
+					do
+						if [ "$fname" = "$i" ]
+						then
+							if [ `echo $perm1 | grep -c "w"` -eq 0 ]
+							then
+								if [ "$STATUS_ARG" = "false" ]
+								then
+									print "$fname file in ~ftp/usr/lib does not have write permission." >> log_msg 2>&1
+									ice_status=2
+								fi
+							else
+								if [ "$STATUS_ARG" = "true" ]
+								then
+									print "$fname file in ~ftp/usr/lib has write permission." >> log_msg 2>&1
+									ice_status=2
+								fi
+							fi
+						fi
+					done
+				done < $TMPF3
+				rm $TMPF3
+			fi
+
+			if [ "$filename" = "etc" -o "$filename" = "bin" ]
+			then
+				fcnt=$((fcnt+1))
+				if [ ! -d ~ftp/$filename ]
+				then
+						print "File $filename must be a directory." >> log_msg 2>&1
+						ice_status=2
+						Script_Output
+						exit 0
+				fi
+
+				ls -l ~ftp/$filename | grep -v "^total" | tr -s " " ","  > $TMPF2
+				if [ "$filename" = "etc" ]
+				then
+					mustOwedByRoot
+					noWritePermission
+
+					while read line2
+					do
+						filename1=`echo $line2 | cut -d "," -f9`
+						perm2=`echo $line2 | cut -d "," -f1`
+						if [ "$filename1" = "password" -o "$filename1" = "group" -o "$filename1" = "netgroup" -o "$filename1" = "netconfig" ]
+						then
+							if [ "$STATUS_ARG" = "false" ]
+							then
+								print "File $line2 is valid for anonymous ftp." >> log_msg 2>&1
+								ice_status=2
+							fi
+						else
+							if [ "$STATUS_ARG" = "true" ]
+							then
+								print "File $line2 does not belong to etc directory for anonymous ftp." >> log_msg 2>&1
+								ice_status=2
+							fi
+						fi
+
+						if [ "$perm2" = "-r--r--r--" ]
+						then
+							if [ "$STATUS_ARG" = "false" ]
+							then
+								print "File $filename1 has 444 permission." >> log_msg 2>&1
+								ice_status=2
+							fi
+						else
+							if [ "$STATUS_ARG" = "true" ]
+							then
+								print "File $filename1 does not have 444 permission." >> log_msg 2>&1
+								ice_status=2
+							fi
+						fi
+
+					done < $TMPF2
+					rm $TMPF2
+				elif [ "$filename" = "bin" ]
+				then
+					if [ "$per" = "---x--x--x" ]
+					then
+						if [ "$STATUS_ARG" = "false" ]
+						then
+							print "File $filename has permission ---x--x--x.." >> log_msg 2>&1
+							ice_status=2
+						else
+							if [ "$STATUS_ARG" = "true" ]
+							then
+								print "File $filename has permission $per. The permission must be ---x--x--x." >> log_msg 2>&1
+								ice_status=2
+							fi
+						fi
+					fi
+
+					per1=`ls -ld ~ftp/usr/bin | tr -s " " "," | cut -d "," -f1`
+					if [ `echo $per | grep -c l` -gt 0 -o `echo $per1 | grep -c l` -gt 0 ]
+					then
+						if [ "$STATUS_ARG" = "false" ]
+						then
+							print "bin is a symbolic link to usr/bin under ftp home directory." >> log_msg 2>&1
+							ice_status=2
+						fi
+					else
+						if [ "$STATUS_ARG" = "true" ]
+						then
+							print "bin is not a symbolic link to usr/bin under ftp home directory." >> log_msg 2>&1
+							ice_status=2
+						fi
+					fi
+
+					if [ `ls ~ftp/bin | grep -c "ls"` -eq 1 ] && [ `ls ~ftp/bin | wc -l ` -eq 1 ]
+					then
+						if [ "$STATUS_ARG" = "false" ]
+						then
+							print "bin directory under ftp home directory must only contain ls" >> log_msg 2>&1
+							ice_status=2
+						fi
+					else
+						if [ "$STATUS_ARG" = "true" ]
+						then
+							print "bin directory under ftp home directory must only contain ls" >> log_msg 2>&1
+							ice_status=2
+						fi
+					fi
+				fi
+			fi
+		done < $TMPF1
+		rm $TMPF1
+
+		if [ $fcnt -eq 2 ]
+		then
+			if [ "$STATUS_ARG" = "false" ]
+			then
+				print "Directory etc and bin in ftp home directory exist." >> log_msg 2>&1
+				ice_status=2
+			else
+				print "Directory etc and/or bin does not exist in ftp home directory." >> log_msg 2>&1
+				ice_status=2
+			fi
+		fi
+
+		if [ -f ~ftp/usr/share/lib/zoneinfo ]
+		then
+			tmp=`ls -l ~ftp/usr/share/lib/zoneinfo | tr -s " " ","`
+			owner=`echo $line | cut -d "," -f3`
+			per=`echo $line | cut -d "," -f1`
+			mustOwnedByRoot
+			noWritePermission
+			diff ~ftp/usr/share/lib/zoneinfo /usr/share/lib/zoneinfo >/dev/null 2>&1
+			if [ $? -eq 0 ]
+			then
+				if [ "$STATUS_ARG" = "false" ]
+				then
+					print "File ~ftp/usr/share/lib/zoneinfo and /usr/share/lib/zoneinfo are identical." >> log_msg 2>&1
+					ice_status=2
+				fi
+			else
+				if [ "$STATUS_ARG" = "true" ]
+				then
+					print "File ~ftp/usr/share/lib/zoneinfo and /usr/share/lib/zoneinfo are not identical." >> log_msg 2>&1
+					ice_status=2
+				fi
+			fi
+		fi
+	else
+		if [ "$STATUS_ARG" = "false" ]
+		then
+			print "Anonymous ftp is not set up on the machine." >> log_msg 2>&1
+			ice_status=2
+		fi
+	fi
+	Script_Output
+	exit 0
+fi
+
+####################
+# Preview/Enforcing
+####################
+cur_val=
+#Cannot support remediate because it requires some libraries in 
+#/<ftp home directory>/usr/lib directory.
+print "This rule does not support -e option." >> log_msg 2>&1
+Script_Output
+exit 0

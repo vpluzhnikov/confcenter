@@ -1,0 +1,277 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/rmsuidfrmrcmds.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/rmsuidfrmrcmds.sh, libice, aix710, 1010A_710 2010-03-02T17:21:02-06:00$
+#
+# IBM_PROLOG_END_TAG
+#	COMPONENT_NAME: (ICE) rmsuidfrmrcmds.sh
+#	FUNCTIONS: None
+#	ORIGINS: 27
+#
+#	Syntax:
+#		rmsuidfrmcmds -{c|e|p}[v] rulename toggle
+#	Parameters:
+#		-c	- Check mode
+#		-e	- Enforce mode
+#		-p	- Preview mode
+#		-v	- verbose mode
+#		toggle	- Boolean
+#			  false => Disable
+#			  true  => Enable		
+#
+#	OUTPUT:
+#		0	- success
+#		1	- usage/enforce failure 
+#		2	- Non-compliant error
+#
+#	Description: 
+#		This script removes the SUID bit from the r-commands,
+#		when true is passed as second argument. When false is passed
+#		as second argument, it sets SUID bit of the r-commands.
+#		This script should be run with superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+exec 2>&1
+
+
+###
+#Print Usage
+###
+Usage() {
+	ice_status=1
+	print "usage: \n
+   rmsuidfrmcmds -{c|e|p}[v] rulename toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+	print -n "$cur_val%$ice_status%"
+	cat log_msg
+	print
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+	case $OPT in
+		c)	cflag=1;;
+		e)	eflag=1;;
+		v)	vflag=1;;
+		p)	pflag=1;;
+		?|:)	Usage
+			Script_Output
+			exit 1;;
+	esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+	set -x
+fi
+
+#Need 2 arguments
+if [[ $# -lt 2 ]];
+then
+	Usage
+	Script_Output
+	exit 1
+fi
+
+# -c, -e, and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+	Usage
+	Script_Output
+	exit 1
+fi
+
+RULE_NAME=$1
+STATUS_ARG=$2
+
+#Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+	print "Toggle must be true or false" >> log_msg 2>&1
+	Usage
+	Script_Output
+	exit 1
+fi
+
+PREREQ=/etc/security/ice/scripts/chkprereq
+PREREQ_LIST="bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.rte.control"
+
+$ECHOPREFIX $PREREQ $PREREQ_LIST
+
+if [ $? -ne 0 ]
+then
+	print "Prereqs are missing..." >> log_msg 2>&1
+	print "Prereqs needed: " $PREREQ_LIST >> log_msg 2>&1
+	ice_status=1
+	Script_Output
+	exit 0
+fi
+
+# Preview mode set-up 
+if [[ pflag -eq 1 ]];
+then
+	ECHOPREFIX="echo"
+else
+	ECHOPREFIX=""
+fi
+
+# Determine the mode of the specified file in sysck.cfg
+detmode() {
+	awk -F ":" -v file=$1 '  BEGIN {x=0} {
+		if (NF > 1) {
+			if(match($0,file) != 0)
+				x=1;
+			else
+				x=0
+		}
+		else {
+			if(x) {
+				if(match($0,"mode") != 0) {
+					print $0	
+					exit 1
+				}
+			}
+		}
+	}' /etc/security/sysck.cfg
+}
+
+# Counter to determine the number of failures in Dynamic Security Check
+counter=0
+
+# List of remote commands
+list="/usr/bin/rsh /usr/bin/rexec /usr/bin/remsh\
+ /usr/bin/rlogin /usr/bin/rcp"
+
+# remove the SUID from r-commands.
+if [ "$STATUS_ARG" == "true" ]
+then	
+	for i in $list
+	do
+		# If SUID bit is set on the binary $i
+		if [ -u $i ]
+		then
+			# Dynamic Security Report
+			if [[ cflag -eq 1 ]];
+			then
+				counter=`expr $counter + 1`
+				print "\
+ File $i has SUID bit set" >> log_msg 2>&1
+			else
+				modecal=`detmode "$i:"`
+				rc=$?
+				curmode=`echo $modecal | awk '{ print $NF}'`
+				if [ $rc -eq 1 ] && [ "$curmode" != "" ]
+				then
+					nosuidmod=`echo $curmodel | awk '/SUID/\
+ {gsub("^SUID,",""); gsub(",SUID,",","); gsub(",SUID$",""); print $0}'`
+
+					$ECHOPREFIX chmod u-s $i
+					$ECHOPREFIX /bin/sysck -a $i mode
+					$ECHOPREFIX /bin/sysck -y $i
+				else
+					$ECHOPREFIX chmod u-s $i
+				fi
+			fi
+		fi
+	done
+	if [ $counter -ne 0 ]
+	then
+		print " SUID bit is set for file(s) " >> log_msg 2>&1
+		ice_status=2
+		cur_val=0
+	elif [ cflag -eq 1 ]
+	then
+		cur_val=1 
+	fi
+elif [ "$STATUS_ARG" = "false" ]
+then
+	for i in $list
+	do
+		# If SUID bit is not set on the binary $i
+		if [ ! -u $i ]
+		then
+			# Dynamic Security Report
+			if [[ cflag -eq 1 ]];
+			then
+				counter=`expr $counter + 1`
+				print "\
+ SUID bit is not set for file $i" >> log_msg 2>&1
+			else
+				modecal=`detmode "$i:"`
+				rc=$?
+				curmode=`echo $modecal|awk '{print $NF}'`
+				
+				if [ $rc -eq 1 ] && [ "$curmode" != "" ]
+				then
+					suide=`echo $curmode|grep SUID`
+					if [ -z "$suide" ]
+					then
+						suidmode="SUID,$curmode"
+					else
+						suidmod=$curmode
+					fi
+					$ECHOPREFIX chmod u+s $i
+					$ECHOPREFIX /bin/sysck -a $i mode
+					$ECHOPREFIX /bin/sysck -y $i
+				else
+					$ECHOPREFIX chmod u+s $i
+				fi
+			fi
+		fi
+	done
+	if [ $counter -ne 0 ]
+	then
+		print " SUID bit is not set for file(s)" >> log_msg 2>&1
+		ice_status=2
+		cur_val=1
+	elif [ cflag -eq 1 ]
+	then
+		cur_val=0
+	fi
+fi
+
+Script_Output
+exit 0

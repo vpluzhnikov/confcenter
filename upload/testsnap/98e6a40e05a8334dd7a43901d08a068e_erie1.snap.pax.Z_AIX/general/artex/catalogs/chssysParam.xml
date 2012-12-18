@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="chssysParam" version="2.0">
+
+	<ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="1">subsystems definitions</NLSCatalog></ShortDescription>
+
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="2">Changes a subsystem definition in the subsystem object class.</NLSCatalog></Description>
+ 
+	<CfgMethod id="chssys">  
+		<Get type="current">
+			<Command>if [ `/usr/bin/odmget -q subsysname=%t[ssys] SRCsubsys | grep -c %t[ssys]` = 0 ] ; then false; else LANG=C /usr/bin/odmget -q subsysname=%t[ssys] SRCsubsys; fi</Command>
+			<Filter>/usr/bin/sed -e 's/action = 2/action = 0/'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = [\"]?([^"]*)[\"]?</Mask>
+		</Get>
+		
+		<Get type="nextboot">
+			<Command>if [ `/usr/bin/odmget -q subsysname=%t[ssys] SRCsubsys | grep -c %t[ssys]` = 0 ] ; then false; else LANG=C /usr/bin/odmget -q subsysname=%t[ssys] SRCsubsys; fi</Command>
+			<Filter>/usr/bin/sed -e 's/action = 2/action = 0/'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = [\"]?([^"]*)[\"]?</Mask>
+		</Get>
+  
+		<Set type="permanent">
+			<Command>LANG=C /usr/bin/chssys -s %t[ssys] `if [ ''%v1[contact] = 'sockets' ]; then echo '-K'; elif [ ''%v1[contact] = 'signals' ]; then echo '-S -n %v1[signorm] -f %v1[sigforce]'; elif [ ''%v1[contact] != '' ]; then echo '-I %v1[contact] -m %v1[svrmtype]'; fi;` %a; /usr/bin/sleep 1</Command>
+		</Set>
+                
+                <Discover>
+                        <Command>/usr/bin/lssrc -S | grep -v "#subsysname" | cut -d ":" -f 1 | sed -e 's/^/ssys=/;s/$/;/'</Command>
+                </Discover>
+	 </CfgMethod>
+ 
+	<ParameterDef name="cmdargs" type="string" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="3">Specifies any arguments that must be passed to the program executed as the subsystem. These command Arguments are passed by the SRC to the subsystem according to the same rules used by the shell. Quoted strings are passed as a single argument, and blanks outside a quoted string delimit arguments. Single and double quotes can be used.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -a %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="display" type="boolean" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="4">Specifies if an inactive subsystem is displayed or not when the lssrc -a command request (status all) or the lssrc -g command request (status group) is made.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> `if [ ''%v1 = '0' ]; then echo '-D'; else echo '-d'; fi;`</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="standerr" type="string" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="5">Specifies where the subsystem standard error data is placed.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -e %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="priority" type="integer" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="6">Specifies the Nice value. The Nice parameter changes the execution priority of the subsystem. The valid values are 0 through 39 (ordinary Nice values mapped to all positive numbers).</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -E %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="sigforce" type="integer" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="7">Specifies the signal sent to the subsystem when a forced stop of the subsystem is requested. Use only when the subsystem uses signals for communication. The chssys command is unsuccessful if the StopForce parameter specifies an invalid signal. If you set this parameter, you must also set StopNormal and set the communication method to signals.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -f %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="grpname" type="string" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="8">Specifies that the subsystem belongs to the group specified by the Group parameter and responds to all group actions on the group.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -G %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="standin" type="string" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="9">Specifies where the subsystem StandardInput is routed. This field is ignored when the subsystem uses sockets for communication.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -i %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="svrmtype" type="integer" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="10">Specifies the MessageMtype key that the subsystem expects on packets sent to the subsystem by the SRC. Use only when the subsystem uses message queues for communication. The MessageMtype must be greater than 0.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -m %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="signorm" type="integer" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="11">Specifies the signal sent to the subsystem when a normal stop of the subsystem is requested. Use only when the subsystem uses signals for communication. The chssys command is unsuccessful if the StopNormal parameter specifies an invalid signal. If you set this parameter, you must also set StopForce and set the communication method to signals.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -n %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="standout" type="string" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="12">Specifies where the subsystem StandardOutput is placed.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -o %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="path" type="string" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="13">Specifies the absolute Path to the subsystem program.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -p %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="multi" type="boolean" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="14">Specifies if the subsystem can or cannot have multiple instances running at the same time.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> `if [ ''%v1 = '0' ]; then echo '-Q'; elif [ ''%v1 = '1' ]; then echo '-q'; fi;`</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="subsysname" type="string" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="15">Specifies the new name that uniquely identifies the subsystem. Any subservers or notify methods defined for the old subsystem's name are redefined for the NewSubsystem name. The chssys command is unsuccessful if the NewSubsystem name is already known in the subsystem object class.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -s %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="synonym" type="string" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="16">Specifies an alternate name for the subsystem. The chssys command is unsuccessful if the Synonym name is already known in the subsystem object class.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -t %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="uid" type="integer" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="17">Specifies the user ID for the subsystem. The UserID that creates the subsystem is used for security auditing of that subsystem.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -u %v1</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="waittime" type="integer" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="18">Specifies the time, in seconds, allowed to elapse between a stop cancel (SIGTERM) signal and a subsequent SIGKILL signal. Also used as the time limit for restart actions. If the subsystem stops abnormally more than twice in the time limit specified by the Wait value, it is not automatically restarted.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -w %v1</Argument>
+		</Set>
+	</ParameterDef>
+	
+	<ParameterDef name="action" type="boolean" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="19">Specifies if the subsystem is restarted or not if it stops abnormally.</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> `if [ ''%v1 = '0' ]; then echo '-O'; elif [ ''%v1 = '1' ]; then echo '-R'; fi;`</Argument>
+		</Set>
+	</ParameterDef>
+ 
+	<ParameterDef name="contact" type="string" reboot="false" targetClass="ssys" cfgmethod="chssys">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="10" msgNum="20">Specifies if the subsystem uses sockets, signals or a message queue as its communication method. You cannot define subservers for the subsystem name when your communication method is signals. If a subserver is defined for the subsystem, the subserver definitions are deleted from the subserver object class. When using signals, you must set StopForce and StopNormal. When using message queue, you must set MessageType. Possible values are 'sockets', 'signals' or a message queue key.</NLSCatalog></Description>
+		<Get type="current">
+			<Command>if [ `/usr/bin/odmget -q subsysname=%t[ssys] SRCsubsys | grep -c %t[ssys]` = 0 ] ; then false; else LANG=C tmp=`/usr/bin/odmget -q subsysname=%t[ssys] SRCsubsys`; if [ $? = 1 ]; then false; elif [ `echo $tmp | grep -c "contact = 3"` = 1 ]; then echo "sockets"; elif [ `echo $tmp | grep -c "contact = 2"` = 1 ]; then echo "signals"; else echo $tmp | sed -e 's/.*svrkey = \([0-9]*\).*/\1/'; fi;fi;</Command>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+		<Get type="nextboot">
+			<Command>if [ `/usr/bin/odmget -q subsysname=%t[ssys] SRCsubsys | grep -c %t[ssys]` = 0 ] ; then false; else LANG=C tmp=`/usr/bin/odmget -q subsysname=%t[ssys] SRCsubsys`; if [ $? = 1 ]; then false; elif [ `echo $tmp | grep -c "contact = 3"` = 1 ]; then echo "sockets"; elif [ `echo $tmp | grep -c "contact = 2"` = 1 ]; then echo "signals"; else echo $tmp | sed -e 's/.*svrkey = \([0-9]*\).*/\1/'; fi;fi;</Command>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+		<Set type="permanent">
+			<Argument> `echo ''`</Argument>
+		</Set>
+	</ParameterDef>
+</Catalog>

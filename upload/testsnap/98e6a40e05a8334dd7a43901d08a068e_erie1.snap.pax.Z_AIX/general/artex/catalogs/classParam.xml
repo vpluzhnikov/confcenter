@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="classParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="1">Workload Management (WLM) classes.</NLSCatalog></ShortDescription>
+
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="2">WLM classes and their set of attributes and resource limits or defined by system administrators.
+The processes are assigned to classes based on criteria provided by the system administrator. The resource entitlements and limits are enforced at the class level. This method of defining classes of service and regulating the resource utilization of each class of applications prevents applications with very different resource use patterns from interfering with each other when they share a single server.</NLSCatalog></Description>
+
+ <CfgMethod id="classmgt">
+  <Get type="current">
+   <Command>LANG=C;/usr/sbin/lsclass -C %t[class]</Command>
+   <Filter>awk -F: '{ N = split(substr($0,2), NAME); getline; split($0, VALUE) } END { for (i=1; i&lt;=N; i++) { INT = NAME[i]; sub("hardmax", "unit", INT); if ((NAME[i+1] == NAME[i] "unit") OR (INT == NAME[i+1])) { if (VALUE[i] == "-") { print NAME[i] " = " VALUE[i]; i++  } else { print NAME[i] " = " VALUE[i] VALUE[i+1]; i++} } else { if ((NAME[i] == "inheritance") OR (NAME[i] == "localshm") OR (NAME[i] == "delshm")) { if (VALUE[i] == "no") VALUE[i] = "0"; else VALUE[i] = "1" } ; print NAME[i] " = " VALUE[i] } } } '</Filter>
+   <Mask name="1" value="2">(.*) = (.*)</Mask>
+  </Get>
+
+  <Get type="nextboot">
+   <Command>LANG=C;/usr/sbin/lsclass -C %t[class]</Command>
+   <Filter>awk -F: '{ N = split(substr($0,2), NAME); getline; split($0, VALUE) } END { for (i=1; i&lt;=N; i++) { INT = NAME[i]; sub("hardmax", "unit", INT); if ((NAME[i+1] == NAME[i] "unit") OR (INT == NAME[i+1])) { if (VALUE[i] == "-") { print NAME[i] " = " VALUE[i]; i++  } else { print NAME[i] " = " VALUE[i] VALUE[i+1]; i++} } else { if ((NAME[i] == "inheritance") OR (NAME[i] == "localshm") OR (NAME[i] == "delshm")) { if (VALUE[i] == "no") VALUE[i] = "0"; else VALUE[i] = "1" } ; print NAME[i] " = " VALUE[i] } } } '</Filter>
+   <Mask name="1" value="2">(.*) = (.*)</Mask>
+  </Get>
+
+  <Set type="permanent">
+   <Command>/usr/sbin/chclass %a %t[class]</Command>
+   <Argument> -a %p=%v1</Argument>
+  </Set>
+  
+  <Discover>
+   <Command>/usr/sbin/lsclass -r | sed -e 's/^/class=/;s/ $/;/'</Command>
+  </Discover>
+ </CfgMethod>
+
+ <ConstraintDef id="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="3">Updates the WLM. A single update operation can change the attributes, limits and shares of existing classes. If the running configuration is a set, this operation refreshes the set description along with the content of all configurations of the set.</NLSCatalog></Description>
+  <PostOp>/usr/sbin/wlmcntrl -q &gt;/dev/null;if [ $? -ne 1 ]; then /usr/sbin/wlmcntrl -u; fi</PostOp>
+ </ConstraintDef>
+
+ <ParameterDef name="description" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="4">Description of the class.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="tier" type="integer" targetClass="class" cfgmethod="classmgt" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="5">A number between 0 and 9 used to prioritize resource allocation between classes.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="inheritance" type="boolean" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="6">Specifies whether a child process inherits the class assignment from its parent.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -a %p=`if [ %v1 = '0' ]; then echo 'no'; else echo 'yes'; fi`</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="authuser" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="7">Delegates the right to manually assign a process to a class.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="authgroup" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="8">Delegates the right to manually assign a process to a class.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="adminuser" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="9">Delegates the administration of a superclass.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="admingroup" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="10">Delegates the administration of a superclass.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="rset" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="11">Limits the set of resources a given class has access to in terms of CPUs (processor set).</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="CPUshares" type="string" targetClass="class" cfgmethod="classmgt" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="12">The CPU consumption shares for a class represent how much total CPU cycles all the threads belonging to a class should get, relative to the other classes in its tier.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -c shares=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="CPUmin" type="integer" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="13">Minimum amount of CPU that should be made available to the class. If the actual class consumption is below this value, the class will be given highest priority access to the CPU.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -c min=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="CPUsoftmax" type="integer" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="14">Maximum amount of CPU that a class can consume when there is contention for CPU. If the class consumption exceeds this value, the class will be given the lowest priority in its tier. If there is no contention for CPU (from other classes in the same tier), the class will be allowed to consume as much as it wants.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -c softmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="CPUhardmax" type="integer" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="15">Maximum amount of CPU that a class can consume, even when there is no contention. If
+the class reaches this limit, it will not be allowed to consume any more CPU until its consumption p
+ercentage falls below the limit.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -c hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="memoryshares" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="16">The physical memory utilization shares for a class represent how much memory pages all the processes belonging to a class should get, relative to the other classes in its tier.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -m shares=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="memorymin" type="integer" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="17">Minimum amount of memory that should be made available to the class. If the actual class consumption is below this value, the class will be given highest priority access to the memory.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -m min=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="memorysoftmax" type="integer" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="18">Maximum amount of memory that a class can consume when there is contention for memory. If the class consumption exceeds this value, the class will be given the lowest priority in its tier. If there is no contention for memory resource (from other classes in the same tier), the class will be allowed to consume as much as it wants.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -m softmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="memoryhardmax" type="integer" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="19">Maximum amount of memory that a class can consume, even when there is no contention. If the class reaches this limit, it will not be allowed to consume any more memory until its consumption percentage falls below the limit.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -m hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="diskIOshares" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="20">The disk I/O bandwidth shares for a class represent how much bandwidth on each disk device accessed by the class the I/Os started by threads belonging to a class should get, relative to the other classes in its tier.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -b shares=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="diskIOmin" type="integer" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="21">Minimum amount of disk I/O bandwidth that should be made available to the class. If the actual class consumption is below this value, the class will be given highest priority access to
+bandwidth.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -b min=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="diskIOsoftmax" type="integer" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="22">Maximum amount of disk I/O bandwidth that a class can consume when there is contention. If the class consumption exceeds this value, the class will be given the lowest priority in its tier. If there is no contention for bandwidth (from other classes in the same tier), the class will be allowed to consume as much as it wants.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -b softmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="diskIOhardmax" type="integer" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="23">Maximum amount of disk I/O bandwidth that a class can consume, even when there is no contention. If the class reaches this limit, it will not be allowed to consume any more bandwidth until its consumption percentage falls below the limit.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -b hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="totalCPUhardmax" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="24">Cumulative total amount of CPU that can be consumed during the lifetime of any individual process belonging to the class. Once the process exceeds this amount, the process is terminated.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -C hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="totalDiskIOhardmax" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="25">Cumulative total amount of blocks of disk I/O that can be transmitted during the lifetime of any individual process belonging to the class. Once the process exceeds this amount, the process is terminated.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -B hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="totalConnecttimehardmax" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="26">Cumulative total amount of connect time by a login session that can be used during the lifetime of any individual process belonging to the class. Once the process exceeds this amount, the process is terminated.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -A hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="totalProcesseshardmax" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="27">Maximum absolute number of processes that can exist in a class at any given moment.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -P hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="totalThreadshardmax" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="28">Maximum absolute number of threads that can exist in a class at any given moment.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -T hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="totalLoginshardmax" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="29">Maximum absolute number of login sessions that can exist in a class at any given moment.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -L hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="classVirtMem" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="30">Total amount of virtual memory that the processes belonging to a class can use. In the case where this amount is exceeded, either all the processes in the class or only the offending process is terminated, depending on the value of the vmenforce parameter.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -V hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="procVirtMem" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="31">Total amount of virtual memory that a processe belonging to a class can use. In the case where this amount is exceeded, the process is terminated.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -v hardmax=%v1</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="localshm" type="boolean" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="32">Prevents memory segments belonging to one class from migrating to Shared class.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -a %p=`if [ %v1 = '0' ]; then echo 'no'; else echo 'yes'; fi`</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="vmenforce" type="string" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="33">Indicates whether to kill all processes in a class ("class"), or only the offending process ("proc"), when a class reaches its virtual memory limit.</NLSCatalog></Description>
+ </ParameterDef>
+
+ <ParameterDef name="delshm" type="boolean" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="34">Deletes the shared memory segments if the last referencing process is killed due to the virtual memory limit.</NLSCatalog></Description>
+
+  <Set type="permanent">
+   <Argument> -a %p=`if [ %v1 = '0' ]; then echo 'no'; else echo 'yes'; fi`</Argument>
+  </Set>
+ </ParameterDef>
+
+ <ParameterDef name="iopriority" type="integer" cfgmethod="classmgt" targetClass="class" constraint="wlmcntrl">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="13" msgNum="35">Specifies the priority assigned to I/O requests issued by the threads classified to the class. This priority is used to prioritize I/O buffers at the device level.</NLSCatalog></Description>
+ </ParameterDef>
+
+</Catalog>

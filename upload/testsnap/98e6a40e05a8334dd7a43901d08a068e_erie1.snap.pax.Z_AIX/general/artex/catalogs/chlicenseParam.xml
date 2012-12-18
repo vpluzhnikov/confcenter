@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="chlicenseParam" version="2.0">
+	
+	<ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="8" msgNum="1">chlicense parameters</NLSCatalog></ShortDescription>
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="8" msgNum="2">Parameter definition for the 'chlicense' command</NLSCatalog></Description>
+
+	<CfgMethod id="chlicense">
+		
+		<Get type="current">
+			<Command>lslicense -c -A</Command>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>lslicense -c -A</Command>
+		</Get>
+
+		<Set type="permanent">
+			<Command>/usr/bin/chlicense -I%a</Command>
+		</Set>
+
+		<Set type="nextboot">
+			<Command>/usr/bin/chlicense -D%a</Command>
+		</Set>
+
+	</CfgMethod>
+
+	<ParameterDef name="fixed" cfgmethod="chlicense" type="integer">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="8" msgNum="3">Changes the number of fixed licenses on a system</NLSCatalog></Description>
+		
+		<Get type="current">
+			<Filter>tail -n 1 | cut -d: -f1</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+
+		<Get type="nextboot">
+			<Filter>tail -n 1 | cut -d: -f1</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+		
+		<Set type="permanent">
+			<Argument> -u %v1</Argument>
+		</Set>
+
+		<Set type="nextboot">
+			<Argument> -u %v1</Argument>
+		</Set>
+
+	</ParameterDef>
+
+	<ParameterDef name="floating" cfgmethod="chlicense" type="boolean">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="8" msgNum="4">Changes the status of the floating licensing of the system</NLSCatalog></Description>
+		
+		<Get type="current">
+			<Filter>tail -n 1 | cut -d: -f2 | sed -e 's/on/1/' -e 's/off/0/'</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+
+		<Get type="nextboot">
+			<Filter>tail -n 1 | cut -d: -f2 | sed -e 's/on/1/' -e 's/off/0/'</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+
+		<Set type="permanent">
+			<Argument> `if [ %v1 = 1 ]; then echo ' -f on'; else echo ' -f off'; fi`</Argument>
+		</Set>
+
+		<Set type="nextboot">
+			<Argument> `if [ %v1 = 1 ]; then echo ' -f on'; else echo ' -f off'; fi`</Argument>
+		</Set>
+
+	</ParameterDef>
+
+</Catalog>

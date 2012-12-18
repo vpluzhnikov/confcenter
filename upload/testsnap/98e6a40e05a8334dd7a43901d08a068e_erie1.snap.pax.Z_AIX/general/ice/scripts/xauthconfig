@@ -1,0 +1,223 @@
+#/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/xauthconfig.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/xauthconfig.sh, libice, aix710, _BASELINE_, 2010-05-18T13:56:16-05:00$
+#
+# IBM_PROLOG_END_TAG
+#       COMPONENT_NAME: (ICE) configrbac.sh
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax:
+#               xauthconfig -{c|e|p}[v] rulename toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode
+#		 lname 	- rule_name
+#		 toggle	- Boolean
+#		 		false => Disable
+#		 		true  => Enable
+#
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#		This script checks the home directories for each user
+#		with id greater than 199 and checks for a .Xauthority file.
+#GEN005160
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+exec 2>&1
+
+###
+#Print Usage
+###
+Usage() {
+	ice_status=1
+        print "usage: \n 
+		xauthconfig -{c|e|p}[v] rulename toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+        print -n "$cur_val%$ice_status%\n"
+        cat log_msg
+	print
+}
+
+###
+#Perform the .Xauthority check on all home directories
+#of users with id 200 and greater
+###
+check_home_directories() {
+
+	# Loop through all the users
+	for i in `cat /etc/passwd |
+			# Print home attributes for id >= uid_min
+			awk -F ':' '{
+					if ($3 >= '$uid_min')
+						print $6
+			    	    }'`
+	do
+		# Check current users home dir for .Xauthority
+		$ECHOPREFIX ls -la $i/.Xauthority >> log_msg 2>&1
+		if [ $? -ne 0 ]
+		then
+			# Increment the no xauth count
+			no_xauth_cnt=$(( $no_xauth_cnt + 1 ))
+		fi
+		# Increment the total directory count
+		total_cnt=$(( $total_cnt + 1 ))
+	done
+
+	if [ $no_xauth_cnt -ne 0 ]
+	then 
+		print "\n$no_xauth_cnt of $total_cnt home directories checked do not have a .Xauthority file." >> log_msg 2>&1
+		ice_status=1
+		cur_val=1
+		Script_Output
+	else
+		ice_status=0
+		cur_val=0
+		Script_Output
+	fi
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+# Count for directories that do not contain a .Xauthority file
+no_xauth_cnt=0
+total_cnt=0
+# Minimum id to search for a .Xauthority file
+uid_min=200
+
+###
+#Initialize the Script Output variables
+###
+cur_val=0
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+        case $OPT in
+		c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+                p)      pflag=1;;
+                ?|:)    Usage
+			Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+        set -x
+fi
+
+#Need 1 arguments
+if [[ $# -lt 1 ]];
+then
+        Usage
+		 Script_Output
+        exit 1
+fi
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+        Usage
+	Script_Output
+        exit 1
+fi
+
+RULE_NAME=$1
+STATUS_ARG=$2
+#Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+        print "Toggle must be true or false" >> log_msg 2>&1
+        Usage
+        Script_Output
+        exit 1
+fi
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+        ECHOPREFIX="echo"
+else
+        ECHOPREFIX=""
+fi
+
+#checking
+if [[ cflag -eq 1 ]];
+then
+	# Default case
+	if [ "$STATUS_ARG" = "false" ]
+	then
+		ice_status=0
+		cur_val=false
+		print "Home directory .Xauthority file checking is ignored" >> log_msg 2>&1
+		Script_Output
+	# true case
+	else
+		#Check home directories for .Xauthority file
+		check_home_directories
+	fi
+
+exit 0
+fi
+
+###
+#Preview/Enforcing
+###
+
+if [ "$STATUS_ARG" = "true" ]
+then
+	#Check home directories for .Xauthority file
+	check_home_directories
+# false case
+else
+	ice_status=0
+	cur_val=false
+	print "Home directory .Xauthority file checking is ignored" >> log_msg 2>&1
+	Script_Output
+fi
+
+exit 0

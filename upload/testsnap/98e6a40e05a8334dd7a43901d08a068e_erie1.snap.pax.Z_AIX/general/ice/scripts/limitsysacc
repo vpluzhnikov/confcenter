@@ -1,0 +1,254 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/limitsysacc.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/limitsysacc.sh, libice, aix710, 1010A_710 2010-03-02T17:21:46-06:00$
+#
+# IBM_PROLOG_END_TAG
+#	COMPONENT_NAME: (ICE) limitsysacc.sh
+#	FUNCTIONS:	None
+#	ORIGINS: 	27
+#
+#	Syntax: 
+#		limitsysacc.sh -{c|e|p}[v] attribute value
+#	Parameters:
+#		-c	- Check mode
+#		-e	- Enforce mode
+#		-p	- Preview mode
+#		-v	- verbose mode (unimplemented)
+#		rule_name	- Rule Name
+#		toggle		- Boolean
+#				  false => default level security 
+#				  true => For high level security
+#
+#	OUTPUT:
+#		0	- success
+#		1	- check/enforce failure
+#		2	- usage error
+#
+#	Description:
+#		When the value argument is "false" then the script
+#               makes root the only user account in cron.allow
+#               file and removes cron.deny file. If the value
+#               argument is "true", the script removes cron.allow
+#               and deletes all entries in cron.deny file.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+###
+#Print Usage
+###
+Usage() {
+	print "usage: \n
+   limitsysacc.sh -{c|e|p}[v] rulename toggle" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+	print -n "$cur_val%$ice_status%"
+	cat log_msg
+	print
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=0
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+        case $OPT in
+                c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+		p)	pflag=1;;
+                ?|:)    Usage
+			Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+	set -x
+fi
+
+#Need atleast arguments
+if [[ $# -ne 2 ]];
+then
+	Usage
+	Script_Output
+	exit 1 
+fi
+
+RULE_NAME=$1
+STATUS_ARG=$2
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+	Usage
+	Script_Output
+	exit 1 
+fi
+
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+	ECHOPREFIX="echo"
+else
+	ECHOPREFIX=""
+fi
+
+PREREQ=/etc/security/ice/scripts/chkprereq
+PREREQ_LIST="bos.rte.date,bos.rte.commands,bos.rte.shell,bos.rte.ILS"
+
+$ECHOPREFIX $PREREQ $PREREQ_LIST
+
+if [ $? -ne 0 ]
+then
+	print "prereq missing... \n"
+	print "Prereqs needed: " $PREREQ_LIST >> log_msg 2>&1
+	ice_status=1
+	Script_Output
+	exit 0
+fi
+
+ALLOW=/var/adm/cron/cron.allow
+DENY=/var/adm/cron/cron.deny
+
+#checking
+if [[ cflag -eq 1 ]];
+then
+	if [ "$STATUS_ARG" = "true" ]
+	then
+		if [ ! -e $DENY ] && [ -e $ALLOW ]
+		then
+			$ECHOPREFIX grep root $ALLOW >/dev/null 2>&1
+			rc=$?
+			$ECHOPREFIX grep -v root $ALLOW >/dev/null 2>&1
+			rc2=$?
+			if [ $rc2 -eq 0 ] || [ $rc -ne 0 ] 
+			then
+				ice_status=2
+				print " File $ALLOW has entries other than root" >> log_msg 2>&1
+			else
+				cur_val=1
+			fi
+		elif [ -e $DENY ]
+		then
+			print " File $DENY exists" >> log_msg 2>&1
+			ice_status=2
+		else
+			print " File $ALLOW doesn't exist" >> log_msg 2>&1
+			ice_status=2
+		fi
+	else
+		if [ ! -e $ALLOW ] && [ -e $DENY ]
+		then
+			cur_val=1
+			entr=`cat $DENY`
+			if [ ! -z "$entr" ]
+			then
+				ice_status=2
+				print " File $DENY has entries" >> log_msg 2>&1
+			fi
+		elif [ -e $ALLOW ]
+		then
+			ice_status=2
+			print " File $ALLOW exists" >> log_msg 2>&1
+			cur_val=1
+		fi
+	fi
+
+	Script_Output
+	exit 0
+fi
+
+
+###
+#Preview/Enforcing
+###
+
+time=`date +%s`
+
+
+if [ "$STATUS_ARG" = "true" ]
+then
+	if [ -f $DENY ]
+	then
+		$ECHOPREFIX rm -f $DENY 
+	fi
+
+	# If $ALLOW file exists, check whether there is an entry for root.
+
+	if [ -f $ALLOW ]
+	then
+		$ECHOPREFIX grep root $ALLOW 2>&1 >/dev/null
+		rt=$?
+		$ECHOPREFIX grep -v root $ALLOW 2>&1 >/dev/null
+		nrt=$?
+		if [ $rt -eq 0 ] && [ $nrt -ne 0 ]
+		then
+			# Everything is fine, root entry exists
+			Script_Output
+			exit 0
+		else
+			# Remove the $ALLOW filetince it has other entries.
+			$ECHOPREFIX rm -f $ALLOW
+		fi
+	fi
+
+	# Make root the only user account in the cron.allow file
+
+	echo "root" >$ALLOW
+	cur_val=1
+
+else
+	# If $ALLOW file exists, Remove it
+	
+	if [ -f $ALLOW ]
+	then
+		$ECHOPREFIX rm -f $ALLOW
+	fi
+
+	echo "" > $DENY
+fi
+
+Script_Output
+exit 0

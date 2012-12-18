@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="syscorepathParam" version="2.0">
+
+	<ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="44" msgNum="1">syscorepath parameters</NLSCatalog></ShortDescription>
+ 
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="44" msgNum="2">Parameter definition for the 'syscorepath' command</NLSCatalog></Description>
+ 
+	<CfgMethod id="syscorepath">  
+		<Get type="current">
+			<Command>/usr/bin/syscorepath -g</Command>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+
+  		<Get type="nextboot">
+   		<Command>/usr/bin/lscore -d</Command>
+   			<Filter>awk -F: '{gsub(" ","",$1); print $1 " =" $2 }'</Filter>
+   			<Mask name="1" value="2">(.*) = (.*)</Mask>
+  		</Get>
+  
+		<Set type="current">
+			<Command>/usr/bin/syscorepath `if [ ''%v1 = '' ]; then echo '-c'; else echo '-p %v1'; fi`</Command>
+		</Set>
+  
+		<Set type="nextboot">
+			<Command>`if [ ''%v1 = '' ]; then /usr/bin/chcore -p off -d; else if [ ''%v1 != ' not set' ]; then /usr/bin/chcore -l %v1 -d; else true; fi; fi`</Command>
+		</Set>
+	</CfgMethod>
+
+	<ParameterDef name="corefilelocation" type="string" cfgmethod="syscorepath" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="44" msgNum="3">Specifies a single system-wide directory where all core files of any processes will be dumped.</NLSCatalog></Description>
+	</ParameterDef>
+
+</Catalog>

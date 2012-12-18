@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="chservicesParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="9" msgNum="1">Changes the contents of the /etc/services file.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="9" msgNum="2">Changes the contents of the /etc/services file: the chservices command adds, deletes, or changes entries in the /etc/services file.</NLSCatalog></Description>
+ 
+ <CfgMethod id="servicesmgt">
+  <Get type="nextboot">
+   <Command>/usr/bin/cat /etc/services</Command>
+  </Get>
+
+  <Get type="current">
+   <Command>/usr/bin/cat /etc/services</Command>
+  </Get>
+
+  <Set type="permanent">
+   <Command>/usr/bin/cat &gt; /etc/services</Command>
+   <Stdin>%v1</Stdin>
+  </Set>
+
+  <Diff>
+   <Command>/usr/bin/diff -w %f1 %f2; echo $?</Command>
+  </Diff>
+ </CfgMethod>
+
+ <ParameterDef name="services" type="binary" cfgmethod="servicesmgt">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="9" msgNum="3">The entries in the /etc/services file are related to known services used in the DARPA Internet and also related to information used by the inetd server. The entries for the inetd server determine how the system handles Internet service requests.</NLSCatalog></Description>
+ </ParameterDef>
+</Catalog>

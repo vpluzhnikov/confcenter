@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="roleParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="39" msgNum="1">RBAC (Role-Based Access Control) Roles.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="39" msgNum="2">Roles are the mechanism used to assign roles to a user and to group a set of system administration tasks together. An AIX role is primarily a container for a collection of authorizations.
+Assigning a role to a user allows the user to access the role and use the roles that are contained in the role.</NLSCatalog></Description>
+ 
+ <CfgMethod id="rolemgt">
+  <Get type="nextboot">
+   <Command>/usr/bin/cat /etc/security/roles</Command>
+  </Get>
+
+  <Get type="current">
+   <Command>/usr/bin/cat /etc/security/roles</Command>
+  </Get>
+
+  <Set type="permanent">
+   <Command>/usr/bin/cat &gt; /etc/security/roles</Command>
+   <Stdin>%v1</Stdin>
+  </Set>
+
+  <Diff>
+   <Command>/usr/bin/diff -w %f1 %f2; echo $?</Command>
+  </Diff>
+ </CfgMethod>
+
+ <ConstraintDef id="setkst">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="39" msgNum="3">Send the role database to the KST (Kernel Security Tables)</NLSCatalog></Description>
+  <PostOp>/usr/sbin/setkst -t role &gt;/dev/null</PostOp>
+ </ConstraintDef>
+
+ <ParameterDef name="roles" type="binary" cfgmethod="rolemgt" constraint="setkst">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="39" msgNum="4">Roles consist of authorizations that allow a user to run functions that normally would require root-user permission. The /etc/security/roles file contains the list of valid roles.</NLSCatalog></Description>
+ </ParameterDef>
+</Catalog>

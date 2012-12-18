@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="authParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="5" msgNum="1">RBAC (Role-Based Access Control) user-defined Authorizations.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="5" msgNum="2">The operating system uses authorization strings to determine eligibility before performing a privileged operation. Related checks can be performed from within the code explicitly or can be done by the loader when running protected privileged executables.
+In addition to system-defined and non-modifiable authorizations, RBAC allows system administrators to define their own custom authorizations in the authorization database (/etc/security/authorizations). These are known as user-defined authorizations.</NLSCatalog></Description>
+ 
+ <CfgMethod id="cat">
+  <Get type="nextboot">
+   <Command>/usr/bin/cat /etc/security/authorizations</Command>
+  </Get>
+
+  <Get type="current">
+   <Command>/usr/bin/cat /etc/security/authorizations</Command>
+  </Get>
+
+  <Set type="permanent">
+   <Command>/usr/bin/cat &gt; /etc/security/authorizations</Command>
+   <Stdin>%v1</Stdin>
+  </Set>
+
+  <Diff>
+   <Command>/usr/bin/diff -w %f1 %f2; echo $?</Command>
+  </Diff>
+ </CfgMethod>
+
+ <ConstraintDef id="setkst">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="5" msgNum="3">Send the authorizations database to the KST (Kernel Security Tables)</NLSCatalog></Description>
+  <PostOp>/usr/sbin/setkst -t auth &gt;/dev/null</PostOp>
+ </ConstraintDef>
+
+ <ParameterDef name="authorizations" cfgmethod="cat" constraint="setkst" type="string">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="5" msgNum="4">The /etc/security/authorizations file stores the list of valid, user-defined authorizations available on a system. An authorization administrator can modify user-defined authorizations. System-defined authorizations do not appear in this file.</NLSCatalog></Description>
+ </ParameterDef>
+</Catalog>

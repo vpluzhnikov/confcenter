@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="envParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="16" msgNum="1">Handling of environment variables</NLSCatalog></ShortDescription>
+
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="16" msgNum="2">This catalog allows to get and modify environment variables existing in the /etc/environment profile (as individual variables), and of the file /etc/profile taken as a whole. The new environement variables will be taken into account at next reboot, or if the user re-executes the file in his session (. /etc/environment and . /etc/profile)</NLSCatalog></Description>
+
+ <ParameterDef name="environment" type="string" targetClass="variable">
+
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="16" msgNum="3">/etc/environment file</NLSCatalog></Description>
+
+  <Get type="current">
+   <Command>/usr/bin/awk -F= '/^[[:space:]]*'%t[variable]'=/ { ORS=""; print $2; exit }' /etc/environment</Command>
+  </Get>
+
+  <Get type="nextboot">
+   <Command>/usr/bin/awk -F= '/^[[:space:]]*'%t[variable]'=/ { ORS=""; print $2; exit }' /etc/environment</Command>
+  </Get>
+
+  <Set type="permanent">
+   <!-- Awk doesn't support strings longer that 399 bytes on AIX, so we use system("echo $VAR") to print the value -->
+   <Command>export VAR=%t[variable] VAL=%v1; /usr/bin/awk -F= '/^[[:space:]]*'$VAR'=/ { printf("%%s=", $1); system("echo $VAL"); found=1; next } { print } END { if (!found) { printf("%%s=", "'$VAR'"); system("echo $VAL") } }' /etc/environment &gt; /tmp/catenv_$$ &amp;&amp; /usr/bin/mv /tmp/catenv_$$ /etc/environment</Command>
+  </Set>
+
+  <Set type="nextboot">
+   <!-- Awk doesn't support strings longer that 399 bytes on AIX, so we use system("echo $VAR") to print the value -->
+   <Command>export VAR=%t[variable] VAL=%v1; /usr/bin/awk -F= '/^[[:space:]]*'$VAR'=/ { printf("%%s=", $1); system("echo $VAL"); found=1; next } { print } END { if (!found) { printf("%%s=", "'$VAR'"); system("echo $VAL") } }' /etc/environment &gt; /tmp/catenv_$$ &amp;&amp; /usr/bin/mv /tmp/catenv_$$ /etc/environment</Command>
+  </Set>
+
+  <Discover>
+   <Command>/usr/bin/cat /etc/environment | /usr/bin/sed '/^#/d' | awk -F= '{ if ($1 != "") print "variable="$1 }' | sort -u</Command>
+  </Discover>
+ </ParameterDef>
+
+ <ParameterDef name="profile" type="string">
+
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="16" msgNum="4">/etc/profile file</NLSCatalog></Description>
+
+  <Get type="nextboot">
+   <Command>/usr/bin/cat /etc/profile</Command>
+  </Get>
+
+  <Get type="current">
+   <Command>/usr/bin/cat /etc/profile</Command>
+  </Get>
+
+  <Set type="permanent">
+   <Command>/usr/bin/cat &gt; /etc/profile</Command>
+   <Stdin>%v1</Stdin>
+  </Set>
+
+  <Set type="nextboot">
+   <Command>/usr/bin/cat &gt; /etc/profile</Command>
+   <Stdin>%v1</Stdin>
+  </Set>
+
+  <Diff>
+   <Command>/usr/bin/diff -w %f1 %f2; echo $?</Command>
+  </Diff>
+ </ParameterDef>
+
+</Catalog>

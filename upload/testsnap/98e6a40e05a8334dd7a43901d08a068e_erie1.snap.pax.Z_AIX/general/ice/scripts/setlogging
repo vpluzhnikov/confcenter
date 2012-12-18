@@ -1,0 +1,318 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/setlogging.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/setlogging.sh, libice, aix710, _BASELINE_, 2010-05-18T13:56:38-05:00$
+#
+# IBM_PROLOG_END_TAG
+#       COMPONENT_NAME: (ICE) setlogging.sh
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax:
+#               setlogging -{c|e|p}[v] rulename toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode (unimplemented)
+#               rulename (ignore)
+#               toggle  - Boolean
+#                       false => Disable
+#                       true  => Enable
+#
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#       enable/disable critical logging
+#
+#
+#       When set to FALSE: This script comment out GEN entries from /etc/syslog.conf file
+#       When set to TRUE: This script uncomment existing entries, and/or add new GEN entries to enable logging
+#       Restart syslogd daemon everytime syslog.conf file is modified
+#
+#       GEN items requirements are as following:
+#
+#   GEN003660 – Authentication Data Logging
+#   Check /etc/syslog.conf and verify the auth facility is logging info level messages by:
+#   # grep “auth.info” /etc/syslog.conf OR
+#   # grep “*.info” /etc/syslog.conf
+#   If the “.info” entry is not found, this is a finding.
+#
+#
+#   GEN004460 – Critical Level Sendmail Messages Logging
+#   Enter the command:
+#   # more /etc/syslog.conf
+#   Ensure the configuration file logs mail.crit, mail.debug, mail.*, or *.crit. If
+#   the system is not logging critical sendmail messages, this is a finding.
+#
+#
+#   GEN006600 – Access Control Program Logging
+#   Normally tcpd logs to the mail or daemon facility in /etc/syslog.conf. Perform the
+#   following command to determine if syslog is configured to log events by tcpd.
+#   # more /etc/syslog.conf
+#   Look for entries similar to the following:
+#   mail.debug /var/adm/maillog
+#   mail.none /var/adm/maillog
+#   mail.* /var/log/mail
+#   auth.info /var/log/messages
+#   daemon.* /var/log/messages
+#   The above entries would indicate mail alerts are being logged. If no entries for mail exist, tcpd is
+#   not logging and this is a finding.
+#
+#       More info about syslog.conf can be found at:
+#       http://fengnet.com/book/Solaris_admin/ch11lev1sec5.html
+#       
+#       cur_val     reflects current value of current state of system. (0-false-disable, 1-true-enable)
+#       ice_status  reflects compliance status (0 - Compliant, 1 - Error, 2 - Non-compliant)
+#
+######################################################################################################
+
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+###
+#Print Usage
+###
+Usage() {
+    ice_status=1
+    print "usage: \n
+            setlogging -{c|e|p}[v] rulename toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+    print -n "$cur_val%$ice_status%"
+    cat log_msg
+    print
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=0
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+    case $OPT in
+        c)      cflag=1;;
+        e)      eflag=1;;
+        v)      vflag=1;;
+        p)      pflag=1;;
+        ?|:)    Usage
+                Script_Output
+                exit 1;;
+    esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+    set -x
+fi
+
+#Need 1 argument(s)
+if [[ $# -ne 2 ]];
+then
+    Usage
+    Script_Output
+    exit 1 
+fi
+
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+    Usage
+    Script_Output
+    exit 1 
+fi
+
+RULE_NAME="$1"
+STATUS_ARG="$2"
+PID=$$
+FILENAME="/etc/syslog.conf"
+TMP=/etc/security/ice/tmp/setlogging
+
+# Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+    print "Toggle must be 'true' or 'false'" >> log_msg 2>&1
+    Usage
+    Script_Output
+    exit 1
+fi
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+        ECHOPREFIX="echo"
+else
+        ECHOPREFIX=""
+fi
+
+# Check the existing GEN entries
+# pass in filename $1
+checkEntries() {
+    filename=$1
+    # GEN003660 – Authentication Data Logging - auth.info
+    awk 'BEGIN { count=0 } { if ($0 ~ /^[ \t]*auth\.info[ \t]+/) {   count = 1  } } END { print count }' $filename | read GEN003660
+
+    # GEN004460 – Crit Level Sendmail Logging - mail.crit
+    # GEN004460 – Crit Level Sendmail Logging - mail.debug
+    # GEN004460 – Crit Level Sendmail Logging - mail.*
+    # GEN004460 – Crit Level Sendmail Logging - *.crit - QUESTIONABLE
+    awk 'BEGIN { count=0 } 
+    {
+        if ($0 ~ /^[ \t]*mail\.crit[ \t]+/ || 
+            $0 ~ /^[ \t]*mail\.debug[ \t]+/ || 
+            $0 ~ /^[ \t]*mail\.\*[ \t]+/ || 
+            $0 ~ /^[ \t]*\*\.crit[ \t]+/ ) 
+        {   count = 1  }
+    } END { print count }' $filename | read GEN004460
+
+    # GEN006600 – Access Control Program Logging - mail.debug /var/adm/maillog
+    # GEN006600 – Access Control Program Logging - mail.none /var/adm/maillog
+    # GEN006600 – Access Control Program Logging - mail.* /var/log/mail
+    # GEN006600 – Access Control Program Logging - auth.info /var/log/messages
+    # GEN006600 – Access Control Program Logging - daemon.* /var/log/messages
+    awk 'BEGIN { count=0 } 
+    {
+        if ($0 ~ /^[ \t]*mail\.debug[ \t]+/ || 
+            $0 ~ /^[ \t]*mail\.\*[ \t]+/ || 
+            $0 ~ /^[ \t]*mail\.none[ \t]+/ ||
+            $0 ~ /^[ \t]*auth\.info[ \t]+/ ||
+            $0 ~ /^[ \t]*daemon\.\*[ \t]+/ ) 
+        {   count = 1  }
+    } END { print count }' $filename | read GEN006600
+}
+
+if  [ -e $FILENAME ] ;
+then
+    entries=`awk '{ if ($0 !~ /^[\t ]*#/ && $0 !~ /^$/) print $0 }' $FILENAME`
+
+    # Take backup of the file
+    cp $FILENAME ${TMP%/*}/setlogging_syslog.conf
+
+    GEN003660=0
+    GEN004460=0
+    GEN006600=0
+    checkEntries $FILENAME
+    (( totalEntries = $GEN003660 + $GEN004460 + $GEN006600 ))
+    #echo "$GEN003660 $GEN004460 $GEN006600 -- TOTAL $totalEntries"
+
+    if [[ $totalEntries -gt 0 ]] ; then cur_val=1 ; fi
+    
+    # toggle == false
+    if [[ "$STATUS_ARG" == "false" && $totalEntries -gt 0 ]] ;
+    then
+        # checking for GEN entries
+        if [[ cflag -eq 1 ]] ;
+        then
+            print "$FILENAME file contains entries" >> log_msg 2>&1
+            ice_status=2
+        # enforcing
+        elif [[ eflag -eq 1 ]] ;
+        then
+            # Comment out GEN entries in the file
+            awk '{ if ($0 ~ /^[ \t]*auth\.info[ \t]+|^[ \t]*mail\.crit[ \t]+|^[ \t]*mail\.debug[ \t]+|^[ \t]*mail\.\*[ \t]+|^[ \t]*\*\.crit[ \t]+|^[ \t]*mail\.none[ \t]+|^[ \t]*daemon\.\*[ \t]+/ ) { sub(/^[ \t]*/,"") ; print "#"$0 } else print $0 }' $FILENAME > $TMP$PID
+            /usr/bin/mv $TMP$PID $FILENAME
+            /usr/bin/refresh -s syslogd >> log_msg 2>&1
+            cur_val=0
+            ice_status=0
+        # previewing
+        elif [[ pflag -eq 1 ]] ;
+        then
+            echo "awk '{ if (\$0 ~ /^[ \\\t]*auth\.info[ \\\t]+|^[ \\\t]*mail\.crit[ \\\t]+|^[ \\\t]*mail\.debug[ \\\t]+|^[ \\\t]*mail\.\*[ \\\t]+|^[ \\\t]*\*\.crit[ \\\t]+|^[ \\\t]*mail\.none[ \\\t]+|^[ \\\t]*daemon\.\*[ \\\t]+/ ) { sub(/^[ \\\t]*/,"") ; print \"#\"\$0 } else print \$0 }' $FILENAME > $TMP$PID"
+            echo "/usr/bin/mv $TMP$PID $FILENAME"
+            echo "/usr/bin/refresh -s syslogd"
+        fi
+    # toggle == true
+    elif [[ "$STATUS_ARG" == "true" && $totalEntries -lt 3 ]] ;
+    then
+        # checking for GEN entries
+        if [[ cflag -eq 1 ]] ;
+        then
+            print "$FILENAME is missing some entries" >> log_msg 2>&1
+            ice_status=2
+        # enforcing
+        elif [[ eflag -eq 1 ]] ;
+        then
+            # Comment out GEN entries in the file
+            awk '{ if ($0 ~ /^[#]+auth\.info[ \t]+|^[#]+mail\.crit[ \t]+|^[#]+mail\.debug[ \t]+|^[#]+mail\.\*[ \t]+|^[#]+\*\.crit[ \t]+|^[#]+mail\.none[ \t]+|^[#]+daemon\.\*[ \t]+/ ) { sub(/#*/,"") } print $0 }' $FILENAME > $TMP$PID
+            # Check to see if there're still missing entries
+            checkEntries $TMP$PID
+            # Add missing entries
+            if [[ $GEN003660 -eq 0 ]] ; then echo "auth.info\t/var/adm/auth.log" >> $TMP$PID ; fi
+            if [[ $GEN004460 -eq 0 ]] ; then echo "mail.debug\t/var/adm/mail.log" >> $TMP$PID ; fi
+            if [[ $GEN006600 -eq 0 ]] ; then echo "mail.none\t/var/adm/mail.log" >> $TMP$PID ; fi
+            # Copy tmp file to real file
+            /usr/bin/mv $TMP$PID $FILENAME
+            # Make sure those logfiles exist
+            touch /var/adm/auth.log /var/adm/mail.log
+            # Refresh daemon
+            /usr/bin/refresh -s syslogd >> log_msg 2>&1
+            ice_status=0
+            cur_val=1
+        elif [[ pflag -eq 1 ]] ; 
+        then
+            # Comment out GEN entries in the file
+            echo "awk '{ if (\$0 ~ /^[#]+auth\.info[ \\\t]+|^[#]+mail\.crit[ \\\t]+|^[#]+mail\.debug[ \\\t]+|^[#]+mail\.\*[ \\\t]+|^[#]+\*\.crit[ \\\t]+|^[#]+mail\.none[ \\\t]+|^[#]+daemon\.\*[ \\\t]+/ ) { sub(/#*/,\"\") } print \$0 }' $FILENAME > $TMP$PID"
+            # Check to see if there're still missing entries
+            awk '{ if ($0 ~ /^[#]+auth\.info[ \t]+|^[#]+mail\.crit[ \t]+|^[#]+mail\.debug[ \t]+|^[#]+mail\.\*[ \t]+|^[#]+\*\.crit[ \t]+|^[#]+mail\.none[ \t]+|^[#]+daemon\.\*[ \t]+/ ) { sub(/#*/,"") } print $0 }' $FILENAME > $TMP$PID
+            checkEntries $TMP$PID
+            rm $TMP$PID
+            # Add missing entries
+            if [[ $GEN003660 -eq 0 ]] ; then echo "echo \"auth.info\\\t/var/adm/auth.log\" >> $TMP$PID" ; fi
+            if [[ $GEN004460 -eq 0 ]] ; then echo "echo \"mail.debug\\\t/var/adm/mail.log\" >> $TMP$PID" ; fi
+            if [[ $GEN006600 -eq 0 ]] ; then echo "echo \"mail.none\\\t/var/adm/mail.log\" >> $TMP$PID" ; fi
+            # Copy tmp file to real file
+            echo "/usr/bin/mv $TMP$PID $FILENAME"
+            # Make sure those logfiles exist
+            echo "touch /var/adm/auth.log /var/adm/mail.log"
+            # Refresh daemon
+            echo "/usr/bin/refresh -s syslogd"
+        fi
+    fi
+else
+    print "$FILENAME does not exist" >> log_msg 2>&1
+    ice_status=1
+fi
+
+Script_Output
+exit 0

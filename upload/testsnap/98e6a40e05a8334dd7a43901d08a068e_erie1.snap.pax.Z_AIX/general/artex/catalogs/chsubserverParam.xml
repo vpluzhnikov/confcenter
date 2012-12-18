@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="chsubserverParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="11" msgNum="1">Changes the contents of the /etc/inetd.conf file or similar system configuration file.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="11" msgNum="2">Adds, deletes, or changes entries in the /etc/inetd.conf system configuration file, which is the default, or a similar configuration file.</NLSCatalog></Description>
+
+ <CfgMethod id="subservermgt">
+  <Get type="nextboot">
+   <Command>/usr/bin/cat /etc/inetd.conf</Command>
+  </Get>
+
+  <Get type="current">
+   <Command>/usr/bin/cat /etc/inetd.conf</Command>
+  </Get>
+
+  <Set type="permanent">
+   <Command>/usr/bin/cat &gt; /etc/inetd.conf</Command>
+   <Stdin>%v1</Stdin>
+  </Set>
+
+  <Diff>
+   <Command>/usr/bin/diff -w %f1 %f2; echo $?</Command>
+  </Diff>
+ </CfgMethod>
+
+ <ParameterDef name="confinetd" type="string" cfgmethod="subservermgt">
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="11" msgNum="3">The entries in the /etc/inetd.conf are related to known services used in the DARPA Internet and also related to information used by the inetd server. The entries for the inetd server determine how the system handles Internet service requests.</NLSCatalog></Description>
+ </ParameterDef>
+</Catalog>

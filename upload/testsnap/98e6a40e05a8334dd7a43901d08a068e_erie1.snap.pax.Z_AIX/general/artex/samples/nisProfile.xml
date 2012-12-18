@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile origin="reference" readOnly="true" version="2.0.0">
+ <Catalog id="nisParam" version="2.0">
+  <Parameter name="NISserver"/>
+  <Parameter name="NISdomain"/>
+ </Catalog>
+</Profile>

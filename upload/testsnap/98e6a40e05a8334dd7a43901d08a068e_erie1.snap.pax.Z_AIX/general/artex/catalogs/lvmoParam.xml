@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="lvmoParam" version="2.0">
+	
+	<ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="25" msgNum="1">lvmo parameters</NLSCatalog></ShortDescription>
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="25" msgNum="2">Parameter definition for the 'lvmo' command</NLSCatalog></Description>
+
+	<CfgMethod id="lvmo">
+		<Get type="current">
+			<Command>if [ ''%t[vg] = '' ]; then true; else /usr/sbin/lvmo -v %t[vg] -a; fi</Command>
+			<Mask name="1" value="2">(.*) = (.*)</Mask>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>if [ ''%t[vg] = '' ]; then true; else /usr/sbin/lvmo -v %t[vg] -a; fi</Command>
+			<Mask name="1" value="2">(.*) = (.*)</Mask>
+		</Get>
+
+		<Set type="permanent">
+			<Command>/usr/sbin/lvmo -v %t[vg] -o %p=%v1</Command>
+		</Set>
+		
+		<Discover>
+			<Command>/usr/sbin/lsvg -o | sed -e 's/^/vg=/;s/$/;/'</Command>
+		</Discover>
+	</CfgMethod>
+
+	<ParameterDef name="pv_pbuf_count" cfgmethod="lvmo" type="integer" targetClass="vg">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="25" msgNum="3">The number of pbufs that will be added when a physical volume is added to the volume group</NLSCatalog></Description>
+	</ParameterDef>
+	
+	<ParameterDef name="total_vg_pbufs" cfgmethod="lvmo" type="integer" targetClass="vg">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="25" msgNum="5">The current total number of pbufs available for the volume group</NLSCatalog></Description>
+	</ParameterDef>
+	
+        <ParameterDef name="max_vg_pbufs_for_rootvg" type="integer">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="25" msgNum="6">The maximum number of pbufs that can be allocated for the rootvg volume group.</NLSCatalog></Description>
+                <Get type="current">
+                        <Command>/usr/sbin/lvmo -v rootvg -a</Command>
+                        <Filter>grep max_vg_pbufs | cut -d " " -f 3</Filter>
+                        <Mask value="1">(.*)</Mask>
+                </Get>
+
+                <Get type="nextboot">
+                        <Command>/usr/sbin/lvmo -v rootvg -a</Command>
+                        <Filter>grep max_vg_pbufs | cut -d " " -f 3</Filter>
+                        <Mask value="1">(.*)</Mask>
+                </Get>
+        </ParameterDef>
+
+	<ParameterDef name="max_vg_pbufs" cfgmethod="lvmo" type="integer" targetClass="vg" reboot="true">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="25" msgNum="4">The maximum number of pbufs that can be allocated for the volume group. This parameter does not affect the rootvg volume group. The volume group must be varied off and varied on again for the value to take effect</NLSCatalog></Description>
+
+                <Get type="nextboot">
+                        <Command>if [ ''%t[vg] = '' ]; then true; else /usr/sbin/lvmo -v %t[vg] -a; fi</Command>
+                        <Filter>awk ' {if ($1=="max_vg_pbuf_count") result=$3; if ($1=="max_vg_pbufs") current=$3} END {if (result==0) print current; else print result} '</Filter>
+                        <Mask value="1">(.*)</Mask>
+                </Get>
+
+		<Set type="permanent">
+			<Command>if [ ''%t[vg] = '' ]; then true; else if [ %v1 -ne 0 ]; then /usr/sbin/lvmo -v %t[vg] -o max_vf_pbuf_count=%v1; fi; fi</Command>
+		</Set>
+
+		<Discover>
+			<Command>/usr/sbin/lsvg -o | sed -e 's/^/vg=/;s/$/;/' | grep -v rootvg ; if [ `/usr/sbin/lsvg -o | wc -l` = '1' ]; then echo "none;"; fi; true</Command>
+		</Discover>
+	</ParameterDef>
+
+	<!-- 
+	The lvmo documentation advice to use the ioo command 
+	to change the pv_min_pbuf parameter  
+
+	<ParameterDef name="pv_min_pbuf" cfgmethod="lvmo" />
+	-->
+</Catalog>

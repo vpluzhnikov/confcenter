@@ -1,0 +1,205 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/rmetcshostsequiv.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/rmetcshostsequiv.sh, libice, aix710, _BASELINE_, 2010-05-18T13:56:30-05:00$
+#
+# IBM_PROLOG_END_TAG
+#       COMPONENT_NAME: (ICE) rmetcshostsequiv.sh
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax:
+#               rmetcshostsequiv -{c|e|p}[v] rulename toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode (unimplemented)
+#               rulename (ignore)
+#               toggle  - Boolean
+#                      false => Disable
+#                       true  => Enable
+#
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#       enable/disable .shosts and shosts.equiv files
+#
+#
+#        This script removes the entries from
+#        /etc/shosts.equiv file. This script should be
+#        run with superuser privileges.
+#       
+#       cur_val     reflects current value of current state of system. (0-false-disable, 1-true-enable)
+#       ice_status  reflects compliance status (0 - Compliant, 1 - Error, 2 - Non-compliant)
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+###
+#Print Usage
+###
+Usage() {
+    ice_status=1
+    print "usage: \n
+            rmetcshostsequiv -{c|e|p}[v] rulename toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+    print -n "$cur_val%$ice_status%"
+    cat log_msg
+    print
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=0
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+    case $OPT in
+        c)      cflag=1;;
+        e)      eflag=1;;
+        v)      vflag=1;;
+        p)      pflag=1;;
+        ?|:)    Usage
+                Script_Output
+                exit 1;;
+    esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+    set -x
+fi
+
+#Need 1 argument(s)
+if [[ $# -ne 2 ]];
+then
+    Usage
+    Script_Output
+    exit 1 
+fi
+
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+    Usage
+    Script_Output
+    exit 1 
+fi
+
+RULE_NAME=$1
+STATUS_ARG=$2
+TMP=/etc/security/ice/tmp/rmetcshostsequiv
+PID=$$
+
+# Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+    print "Toggle must be true or false" >> log_msg 2>&1
+    Usage
+    Script_Output
+    exit 1
+fi
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+        ECHOPREFIX="echo"
+else
+        ECHOPREFIX=""
+fi
+
+###
+#Preview/Enforcing
+###
+if  [ -e /etc/shosts.equiv ]
+then
+    entries=`awk '{ if ($0 !~ /^[\t ]*#/ && $0 !~ /^$/) print $0 }' /etc/shosts.equiv`
+    if [ -n "$entries" ] ;
+    then
+        cur_val=1
+    fi
+    if [ -n "$entries" ] && [ "$STATUS_ARG" == "false" ]
+    then
+        if [[ cflag -eq 1 ]];
+        then
+            print "/etc/shosts.equiv file contains entries" >> log_msg 2>&1
+            ice_status=2
+        elif [[ eflag -eq 1 ]] ;
+        then
+            # Take backup of the file
+            cp /etc/shosts.equiv ${TMP%/*}/rmetcshostsequiv_hosts.equiv
+            # Removes the entries from the file
+            awk '$0 ~ /^[\t ]*#/ {print $0}' /etc/shosts.equiv > $TMP$PID
+            mv $TMP$PID /etc/shosts.equiv
+            cur_val=0
+        elif [[ pflag -eq 1 ]] ;
+        then
+            # Removes the entries from the file
+            echo "awk '\$0 ~ /^[\\\t ]*#/ {print \$0}' /etc/shosts.equiv > $TMP$PID"
+            echo "mv $TMP$PID /etc/shosts.equiv"
+            cur_val=0
+        fi
+
+    fi
+    if [ "$STATUS_ARG" == "true" ] && [ -e ${TMP%/*}/rmetcshostsequiv_hosts.equiv ]
+    then
+        if [ -z "$entries" ]
+        then
+            if [[ cflag -eq 1 ]];
+            then
+                print "/etc/shosts.equiv file may be missing some entries" >> log_msg 2>&1
+                ice_status=2
+            else
+                $ECHOPREFIX mv ${TMP%/*}/rmetcshostsequiv_hosts.equiv  /etc/shosts.equiv
+                cur_val=1
+            fi
+        else
+            $ECHOPREFIX mv ${TMP%/*}/rmetcshostsequiv_hosts.equiv /etc/shosts.equiv
+        fi     
+    fi    
+fi
+
+Script_Output
+exit 0

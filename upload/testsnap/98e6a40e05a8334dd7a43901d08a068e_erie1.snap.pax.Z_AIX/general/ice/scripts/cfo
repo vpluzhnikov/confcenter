@@ -1,0 +1,109 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/cfo.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/cfo.sh, libice, aix71B, 1026A_71B 2010-06-11T20:56:59-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+#       Description:
+#               Appx. 50 GEN Items covered 
+#               This script changes file ownerships for DoD Compliance
+#               This script should be run with superuser privileges.
+
+INSTALLDIR=/etc/security/ice/scripts
+. $INSTALLDIR/iceInit
+
+PREREQ_LIST="bos.rte.security,bos.rte.date,bos.rte.ILS,perl.rte"
+checkPrereq
+
+TMPDIR=/etc/security/ice/tmp
+GENSOWNS=$TMPDIR/gensowns
+CFOERROR=$TMPDIR/CFOERROR
+DODOWNS=$TMPDIR/dodowns
+SYSCK=/etc/security/sysck.cfg
+findownfiles=$INSTALLDIR/findownfiles
+update_fo=$INSTALLDIR/update_fo
+update_tcb=$INSTALLDIR/update_tcb
+FindLs=$INSTALLDIR/FindLs
+
+if [ "$STATUS_ARG" = "true" ] ; then
+	######################################
+	## Generate listing of wrong owners ##
+	#####################################
+	. $findownfiles
+	if [[ cflag -eq 1 ]] ; then
+		if [ -s $GENSOWNS ] ; then
+			print "cfo.sh:\
+ inadequate ownerships:\n\
+current \texpected \tfile" >> log_msg 2>&1
+			cat $GENSOWNS | awk '{ print $5":"$6 "\t\t\t" $2 "\t\t\t" $11 }' >> log_msg 2>&1
+
+			ice_status=2
+			if [ `egrep -cv "NA|unowned|check" $GENSOWNS` -eq 0 ] ; then	
+				cur_val=1
+			fi
+		else
+			cur_val=1
+		fi
+	else
+                cat $GENSOWNS | awk '{ print $1 " " $2 " " $11 }' > $DODOWNS
+		############################
+		## UPDATE OWNERSHIPS      ##
+		## UPDATE TCB DATABASE    ##
+		## UPDATE TE DATABASE     ##
+		############################
+		. $update_fo
+                cat $GENSOWNS | awk '{ print $1 " " $5":"$6 " " $11 }' > $DODOWNS
+	fi
+else
+	if [[ cflag -eq 1 ]] ; then
+		if [ -s $DODOWNS ] ; then
+			list=`cat $DODOWNS | awk '{ print $2";"$3 }'`
+			for i in $list
+			do
+				file=`echo $i | awk -F ';' '{ print $2 }'`
+				defmod=`echo $i | awk -F ';' '{ print $1 }'`
+				if [ -f $file ] ; then
+					curmode=`ls -l $file | awk '{ print $3":"$4 }'`
+				else
+					curmode=`ls -ld $file | awk '{ print $3":"$4 }'`
+				fi
+				if [ "$curmode" != "$defmod" ] ; then
+					out="$out\n$curmode\t  $defmod\t$file"
+					ice_status=2
+				fi
+			done	
+		fi
+	else
+		############################
+		## UPDATE OWNERSHIPS      ##
+		## UPDATE TCB DATABASE    ##
+		## UPDATE TE DATABASE     ##
+		############################
+		. $update_fo
+	fi
+fi  
+if [[ cflag -eq 1 ]] && [ "$STATUS_ARG" = "false" ] && [ $ice_status -eq 2 ] ; then
+	cur_val=1
+	echo "cfp.sh:\
+ inadequate ownerships:\n\
+curr\texpected\tfile$out" >> log_msg 2>&1
+fi
+Script_Output
+exit 0
+

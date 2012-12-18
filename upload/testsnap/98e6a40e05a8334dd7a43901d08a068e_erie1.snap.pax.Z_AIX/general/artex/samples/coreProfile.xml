@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile origin="reference" version="2.0.0" readOnly="true">
+ <Catalog id="coreParam" version="2.0">
+  <Parameter name="compression" reboot="true" applyType="nextboot">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="pathspecification" reboot="true" applyType="nextboot">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="corefilelocation" reboot="true" applyType="nextboot">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="namingspecification" reboot="true" applyType="nextboot">
+   <Target class="" instance=""/>
+  </Parameter>
+ </Catalog>
+</Profile>

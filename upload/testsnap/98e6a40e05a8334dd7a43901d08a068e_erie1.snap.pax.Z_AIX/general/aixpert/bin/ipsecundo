@@ -1,0 +1,103 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/usr/lib/security/aixpert/scripts/ipsecundo.sh 1.1 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)93	1.1  src/bos/usr/lib/security/aixpert/scripts/ipsecundo.sh, aixpert, bos610 3/15/06 08:09:16
+# IBM_PROLOG_END_TAG 
+#	COMPONENT_NAME		: (AIXPERT) ipsecundo.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: This script expects one command line argument,
+#				the filter rule	description, can be one of the
+#				below: "NoSyn", "ShunHost" or "ShunPort"
+#				Syntax - ipsecundo filterdescription
+#
+#	OUTPUT			: None
+#
+#	Description		: This script removes all new filter rules added by
+#				IPSec NoSyn/ShunHost/ShunPort scripts.
+#				This script should be run with superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+LOG=/etc/security/aixpert/log/aixpert.log
+
+# Log output and errors to /etc/security/aixpert/log/aixpert.log
+exec 1>>$LOG
+exec 2>&1
+
+if [ $# -ne 1 ]
+then
+	dspmsg -s 14 aixpert.cat 1 "Usage ipsecundo filterdescription\n"
+	exit 1
+fi
+
+# echo all the commands and the current time and date to the AIXpert log
+set -x
+date
+echo $0
+
+# Get the number of filter rules added by IPSec ver 4 NoSyn HLS rule
+listfs=$(lsfilt -v4 -O|awk -v x="AIXpert:IPv4:"$1 -F "|"\
+ '{ if (match($22, x)!=0) print $1}')
+
+# Remove all the IPSec version 4 rules, added by IPSec scripts
+for i in $listfs
+do
+	rmfilt -v4 -n `lsfilt -v4 -O|awk -v x="AIXpert:IPv4:"$1 -F "|"\
+ '{ if (match($22, x)!=0) print $1}'`
+	if [ $? -ne 0 ]
+	then
+		dspmsg -s 14 aixpert.cat 2 "ipsecundo.sh:\
+ rmfilt failed to remove the IPSec ver 4 filter for %s rule\n" $1
+		exit 1
+	fi
+done
+
+# Get the number of filter rules added by IPSec ver 6 NoSyn HLS rule
+listfs6=$(lsfilt -v6 -O|awk -v x="AIXpert:IPv6:"$1 -F "|"\
+ '{ if (match($22, x)!=0) print $1}')
+
+# Remove all the IPSec version 6 rules, added by IPSec scripts
+for i in $listfs6
+do
+	rmfilt -v6 -n `lsfilt -v6 -O|awk -v x="AIXpert:IPv6:"$1 -F "|"\
+ '{ if (match($22, x)!=0) print $1}'`
+	if [ $? -ne 0 ]
+	then
+		dspmsg -s 14 aixpert.cat 3 "ipsecundo.sh:\
+ rmfilt failed to remove the IPSec ver 6 filter for %s rule\n" $1
+		exit 1
+	fi
+done
+
+# Activate the remaining filter rules
+mkfilt -v4 -u
+if [ $? -ne 0 ]
+then
+	dspmsg -s 14 aixpert.cat 4 "ipsecundo.sh:\
+ mkfilt failed to activate filter rules for IPSec Version 4\n"
+	exit 1
+fi
+
+mkfilt -v6 -u
+if [ $? -ne 0 ]
+then
+	dspmsg -s 14 aixpert.cat 5 "ipsecundo.sh:\
+ mkfilt failed to activate filter rules for IPSec Version 6\n"
+	exit 1
+fi
+
+exit 0

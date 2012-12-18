@@ -1,0 +1,1677 @@
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos61J src/bos/etc/security/ldap/sec.ldif 1.11 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2003,2009 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)04	1.11  src/bos/etc/security/ldap/sec.ldif, cmdsadm, bos61J, 0931A_61J 7/17/09 01:13:16
+# IBM_PROLOG_END_TAG 
+# 
+#########################################################################
+#
+# ldif file used to update the LDAP schema with ldapmodify command
+# This file contains schema that AIX needs but may not be available
+# to the ldap server.
+#
+#########################################################################
+
+# RBAC Attributes 
+#########################################################################
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3359
+  NAME 'ibm-accessAuths'
+  DESC 'Access authorizations'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3359
+  DBNAME( 'accessAuths'  'accessAuths' )
+  ACCESS-CLASS normal
+  LENGTH 64
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3363
+  NAME 'ibm-authorizationID'
+  DESC 'authorization numeric ID'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3363
+  DBNAME( 'authorizationID'  'authorizationID' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3350
+  NAME 'ibm-authorizations'
+  DESC 'authorization names'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3350
+  DBNAME( 'authorizations'  'authorizations' )
+  ACCESS-CLASS normal
+  LENGTH 64
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3354
+  NAME 'ibm-authPrivs'
+  DESC 'Authorized privieges'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3354
+  DBNAME( 'authPrivs'  'authPrivs' )
+  ACCESS-CLASS normal
+  LENGTH 512
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3349
+  NAME 'ibm-defaultRoles'
+  DESC 'List of default roles'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3349
+  DBNAME( 'defaultRoles'  'defaultRoles' )
+  ACCESS-CLASS normal
+  LENGTH 64
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3361
+  NAME 'ibm-egid'
+  DESC 'The effective group id'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3361
+  DBNAME( 'egid'  'egid' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3362
+  NAME 'ibm-euid'
+  DESC 'The effective user id'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3362
+  DBNAME( 'euid'  'euid' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3365
+  NAME 'ibm-inheritPrivs'
+  DESC 'Inheritable privileges'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3365
+  DBNAME( 'inheritPrivs'  'inheritPrivs' )
+  ACCESS-CLASS normal
+  LENGTH 32
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3358
+  NAME 'ibm-innatePrivs'
+  DESC 'Innate privileges'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3358
+  DBNAME( 'innatePrivs'  'innatePrivs' )
+  ACCESS-CLASS normal
+  LENGTH 32
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3364
+  NAME 'ibm-msgSet'
+  DESC 'Message set'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3364
+  DBNAME( 'msgSet'  'msgSet' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3353
+  NAME 'ibm-readAuths'
+  DESC 'Authorizations required to read an object'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3353
+  DBNAME( 'readAuths'  'readAuths' )
+  ACCESS-CLASS normal
+  LENGTH 64
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3356
+  NAME 'ibm-readPrivs'
+  DESC 'Privileges required to read an object'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3356
+  DBNAME( 'readPrivs'  'readPrivs' )
+  ACCESS-CLASS normal
+  LENGTH 32
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3351
+  NAME 'ibm-roleAuthMode'
+  DESC 'Authentication method for assuming a role'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3351
+  DBNAME( 'roleAuthMode'  'roleAuthMode' )
+  ACCESS-CLASS normal
+  LENGTH 16
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3360
+  NAME 'ibm-roleID'
+  DESC 'Role ID'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3360
+  DBNAME( 'roleID'  'roleID' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3357
+  NAME 'ibm-secFlags'
+  DESC 'Security flags'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3357
+  DBNAME( 'secFlags'  'secFlags' )
+  ACCESS-CLASS normal
+  LENGTH 32
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3366
+  NAME 'ibm-threadsPerProcess'
+  DESC 'Maximum number of threads per process allowed'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3366
+  DBNAME( 'threadsPerProcess'  'threadsPerProcess' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3352
+  NAME 'ibm-writeAuths'
+  DESC 'Authorizations requried to write to an object'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3352
+  DBNAME( 'writeAuths'  'writeAuths' )
+  ACCESS-CLASS normal
+  LENGTH 64
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3355
+  NAME 'ibm-writePrivs'
+  DESC 'Privileges required to write to an object'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3355
+  DBNAME( 'writePrivs'  'writePrivs' )
+  ACCESS-CLASS normal
+  LENGTH 32
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3545
+  NAME 'ibm-ruid'
+  DESC 'The real user id'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3545
+  DBNAME( 'ruid'  'ruid' )
+  ACCESS-CLASS critical
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3537
+  NAME 'ibm-authRoles'
+  DESC 'List of Authenticated Roles'
+  EQUALITY caseExactMatch
+  ORDERING caseExactOrderingMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3537
+  DBNAME( 'authRoles'  'authRoles' )
+  ACCESS-CLASS critical
+  LENGTH 128
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.640
+  NAME 'ibm-authorization'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.640
+  NAME 'ibm-authorization'
+  DESC 'Contains authorization definition'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ ibm-authorizationID )
+  MAY ( msgFileName $ msgNumber $ ibm-msgSet $ description )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.642
+  NAME 'ibm-privcmd'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.642
+  NAME 'ibm-privcmd'
+  DESC 'Contains privileged command definition'
+  SUP top
+  STRUCTURAL
+  MUST cn
+  MAY ( ibm-accessAuths $ ibm-authPrivs $ ibm-egid $ ibm-euid $ ibm-innatePrivs $ ibm-inheritPrivs $ ibm-secFlags $ description $ ibm-ruid $ ibm-authRoles )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.641
+  NAME 'ibm-privdev'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.641
+  NAME 'ibm-privdev'
+  DESC 'Contains privileged device definition'
+  SUP top
+  STRUCTURAL
+  MUST cn
+  MAY ( ibm-readPrivs $ ibm-writePrivs $ description )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.639
+  NAME 'ibm-privfile'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.639
+  NAME 'ibm-privfile'
+  DESC 'Trusted configruation files'
+  SUP top
+  STRUCTURAL
+  MUST cn
+  MAY ( ibm-readAuths $ ibm-writeAuths $ description )
+  )
+
+# RBAC attributes ends here. With additional changes below in the 
+# aixaccount, aixauxaccount, and aixaccessroles objectclasses
+#########################################################################
+
+# Accounting schema
+#########################################################################
+
+dn:cn=schema 
+changetype: modify 
+add: attributetypes 
+attributetypes: ( 
+  1.3.18.0.2.4.3233 
+  NAME 'ibm-aixAdminPolicyEntry' 
+  DESC 'Advanced accounting, admin policy rule' 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+  USAGE userApplications 
+  ) 
+-
+add: ibmattributetypes
+ibmattributetypes: ( 
+  1.3.18.0.2.4.3233 
+  DBNAME( 'aixAdminPolicyEnt'  'aixAdminPolicyEnt' ) 
+  ACCESS-CLASS critical 
+  LENGTH 1152 
+  ) 
+
+dn:cn=schema 
+changetype: modify 
+add: attributetypes 
+attributetypes: ( 
+  1.3.18.0.2.4.3234 
+  NAME 'ibm-aixAdminPolicyName' 
+  DESC 'Advanced accounting, name of admin policy' 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+  SINGLE-VALUE 
+  USAGE userApplications 
+  ) 
+-
+add: ibmattributetypes
+ibmattributetypes: ( 
+  1.3.18.0.2.4.3234 
+  DBNAME( 'aixAdminPolicyNam'  'aixAdminPolicyNam' ) 
+  ACCESS-CLASS critical 
+  LENGTH 32 
+  ) 
+
+dn:cn=schema 
+changetype: modify 
+add: attributetypes 
+attributetypes: ( 
+  1.3.18.0.2.4.3235 
+  NAME 'ibm-aixProjectDefinition' 
+  DESC 'Advanced accounting, project definition entry' 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+  USAGE userApplications 
+  ) 
+-
+add: ibmattributetypes
+ibmattributetypes: ( 
+  1.3.18.0.2.4.3235 
+  DBNAME( 'aixProjectDefinit'  'aixProjectDefinit' ) 
+  ACCESS-CLASS critical 
+  LENGTH 1152 
+  ) 
+
+dn:cn=schema 
+changetype: modify 
+add: attributetypes 
+attributetypes: ( 
+  1.3.18.0.2.4.3236 
+  NAME 'ibm-aixProjectName' 
+  DESC 'Advanced accounting, name of project definition file' 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+  SINGLE-VALUE 
+  USAGE userApplications 
+  ) 
+-
+add: ibmattributetypes
+ibmattributetypes: ( 
+  1.3.18.0.2.4.3236 
+  DBNAME( 'aixProjectName'  'aixProjectName' ) 
+  ACCESS-CLASS critical 
+  LENGTH 32 
+  ) 
+
+dn:cn=schema 
+changetype: modify 
+add: attributetypes 
+attributetypes: ( 
+  1.3.18.0.2.4.3237 
+  NAME 'ibm-aixProjectNameList' 
+  DESC 'Advanced accounting, list of project names' 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+  USAGE userApplications 
+  ) 
+-
+add: ibmattributetypes
+ibmattributetypes: ( 
+  1.3.18.0.2.4.3237 
+  DBNAME( 'aixProjectNameLis'  'aixProjectNameLis' ) 
+  ACCESS-CLASS critical 
+  LENGTH 32 
+  ) 
+
+dn:cn=schema 
+changetype: modify 
+add: objectclasses 
+objectclasses: ( 
+  1.3.18.0.2.6.620 
+  NAME 'ibm-aixAccountingAdminPolicy' 
+  DESC 'Advanced Accounting admin policy object' 
+  SUP top 
+  STRUCTURAL 
+  MUST ( ibm-aixAdminPolicyEntry $ ibm-aixAdminPolicyName ) 
+  ) 
+
+dn:cn=schema 
+changetype: modify 
+add: objectclasses 
+objectclasses: ( 
+  1.3.18.0.2.6.621 
+  NAME 'ibm-aixAccountingProject' 
+  DESC 'Advanced Accounting project defintion object' 
+  SUP top 
+  STRUCTURAL 
+  MUST ( ibm-aixProjectDefinition $ ibm-aixProjectName ) 
+  ) 
+
+# Accounting schema ends here. With additional changes below in the 
+# aixaccount, aixauxaccount, and aixaccessroles objectclasses
+#########################################################################
+
+# MLS Attributes 
+#########################################################################
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3371
+  NAME 'ibm-minIntegrityLabel'
+  DESC 'Minimum integrity clearance label, the lowest integrity level that can be assigned to a user on the system.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3371
+  DBNAME( 'minIntegrityLabel'  'minIntegrityLabel' )
+  ACCESS-CLASS normal
+  LENGTH 256
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3370
+  NAME 'ibm-maxIntegrityLabel'
+  DESC 'Maximum integrity clearance label, the highest integrity level that can be assigned to a user on the system.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3370
+  DBNAME( 'maxIntegrityLabel'  'maxIntegrityLabel' )
+  ACCESS-CLASS normal
+  LENGTH 256
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3367
+  NAME 'ibm-defIntegrityLabel'
+  DESC 'Default integrity clearance label, the effective integrity level assigned to a user'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3367
+  DBNAME( 'defIntegrityLabel'  'defIntegrityLabel' )
+  ACCESS-CLASS normal
+  LENGTH 256
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3368
+  NAME 'ibm-minSensitivityLabel'
+  DESC 'Minimum sensitivity clearance label, the lowest sensitivity level that can be assigned to a user on the system.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3368
+  DBNAME( 'minSenLabel'  'minSenLabel' )
+  ACCESS-CLASS normal
+  LENGTH 256
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3369
+  NAME 'ibm-maxSensitivityLabel'
+  DESC 'Maximum sensitivity clearance label, the highest sensitivity level that can be assigned to a user on the system.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3369
+  DBNAME( 'maxSenLabel'  'maxSenLabel' )
+  ACCESS-CLASS normal
+  LENGTH 256
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3372
+  NAME 'ibm-defSensitivityLabel'
+  DESC 'Default sensitivity clearance label, the effective sensitivity level assigned to a user.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3372
+  DBNAME( 'defSenLabel'  'defSenLabel' )
+  ACCESS-CLASS normal
+  LENGTH 256
+  )
+
+# MLS schema ends here. With additional changes below in the
+# aixaccount, aixauxaccount, aixaccessgroup, aixauxgroup objectclasses
+#########################################################################
+
+# Other AIX attributes
+#########################################################################
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3336
+  NAME 'ibm-coreCompressionEnable'
+  DESC 'Enable or disable corefile compression'
+  EQUALITY caseIgnoreMatch
+  ORDERING caseIgnoreOrderingMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3336
+  DBNAME( 'coreCompEnable'  'coreCompEnable' )
+  ACCESS-CLASS normal
+  LENGTH 16
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3337
+  NAME 'ibm-coreNamingPolicy'
+  DESC 'Specifies core file naming policy'
+  EQUALITY caseIgnoreMatch
+  ORDERING caseIgnoreOrderingMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3337
+  DBNAME( 'coreNamingPolicy'  'coreNamingPolicy' )
+  ACCESS-CLASS normal
+  LENGTH 16
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3338
+  NAME 'ibm-corePathEnable'
+  DESC 'Enable or disable core file path specification.'
+  EQUALITY caseIgnoreMatch
+  ORDERING caseIgnoreOrderingMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3338
+  DBNAME( 'corePathEnable'  'corePathEnable' )
+  ACCESS-CLASS normal
+  LENGTH 16
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3339
+  NAME 'ibm-corePathName'
+  DESC 'Specifies a location for core files'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3339
+  DBNAME( 'corePathName'  'corePathName' )
+  ACCESS-CLASS normal
+  LENGTH 256
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3107
+  NAME 'rcmds'
+  DESC 'allow, deny, hostlogincontrol. Specifies whether a user is allowed to run remote commands.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3107
+  DBNAME( 'rcmds'  'rcmds' )
+  ACCESS-CLASS normal
+  LENGTH 32
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.2504
+  NAME 'passwordHistExpire'
+  DESC 'defines the period of time in weeks that a user cannot reuse a password'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.2504
+  DBNAME( 'passwdHistExpire'  'passwdHistExpire' )
+  ACCESS-CLASS critical
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3396
+  NAME 'passwordMaxConsecutiveRepeatedChars'
+  DESC 'Attribute used to impose the maximum number of consecutive repeated characters in the password field.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3396
+  DBNAME( 'pwMaxConRepChars'  'pwMaxConRepChars' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  ibm-passwordminupperalphachars-oid
+  NAME 'ibm-passwordminupperalphachars'
+  DESC 'Specifies the minimum number of upper-case alphabetic characters in a password.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  ibm-passwordminupperalphachars-oid
+  DBNAME( 'passwordminuppera'  'passwordminuppera' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  ibm-passwordminloweralphachars-oid
+  NAME 'ibm-passwordminloweralphachars'
+  DESC 'Specifies the minimum number of lower-case alphabetic characters in a password.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  ibm-passwordminloweralphachars-oid
+  DBNAME( 'passwordminlowera'  'passwordminlowera' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  ibm-passwordminspecialchar-oid
+  NAME 'ibm-passwordminspecialchar'
+  DESC 'Specifies the minimum number of special characters in a password.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  ibm-passwordminspecialchar-oid
+  DBNAME( 'passwordminspecia'  'passwordminspecia' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  ibm-passwordmindigit-oid
+  NAME 'ibm-passwordmindigit'
+  DESC 'Specifies the minimum number of digits in a password.'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  ibm-passwordmindigit-oid
+  DBNAME( 'mindigit'  'mindigit' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+# EFS schema
+#########################################################################
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3538
+  NAME 'ibm-efsAdminKSAccess'
+  DESC 'Defines the efs_admin keystore location'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3538
+  DBNAME( 'efsAdminksAccess'  'efsAdminksAccess' )
+  ACCESS-CLASS critical
+  LENGTH 32
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3539
+  NAME 'ibm-efsAllowKSModeChangeByUser'
+  DESC 'Defines whether the user can change the mode or not'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3539
+  DBNAME( 'efsAllowksmodecha'  'efsAllowksmodecha' )
+  ACCESS-CLASS critical
+  LENGTH 5
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3540
+  NAME 'ibm-efsCookie'
+  DESC 'EFS Keystore cookie'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.5
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3540
+  DBNAME( 'efsCookie'  'efsCookie' )
+  ACCESS-CLASS critical
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3541
+  NAME 'ibm-efsFileAlgo'
+  DESC 'Defines the algorithm that is used to generate the file protection key'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3541
+  DBNAME( 'efsFileAlgo'  'efsFileAlgo' )
+  ACCESS-CLASS critical
+  LENGTH 64
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3542
+  NAME 'ibm-efsInitialKSMode'
+  DESC 'Initial mode of the user keystore'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3542
+  DBNAME( 'efsInitialksMode'  'efsInitialksMode' )
+  ACCESS-CLASS critical
+  LENGTH 10
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3543
+  NAME 'ibm-efsKeystoreAccess'
+  DESC 'Defines the user keystore location'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3543
+  DBNAME( 'efsKeystoreAccess'  'efsKeystoreAccess' )
+  ACCESS-CLASS critical
+  LENGTH 32
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3544
+  NAME 'ibm-efsKeystoreAlgo'
+  DESC 'Algorithm that is used to generate the user private key'
+  EQUALITY caseExactMatch
+  ORDERING caseExactOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3544
+  DBNAME( 'efsKeystoreAlgo'  'efsKeystoreAlgo' )
+  ACCESS-CLASS critical
+  LENGTH 64
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.661
+  NAME 'ibm-efskscookie'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.661
+  NAME 'ibm-efskscookie'
+  DESC 'EFS Keystore Cookie definition'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ ibm-efsCookie )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.662
+  NAME 'ibm-grpkeystore'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.662
+  NAME 'ibm-grpkeystore'
+  DESC 'EFS Group keystore definition'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ gidNumber )
+  MAY userPKCS12
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.663
+  NAME 'ibm-usrkeystore'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.663
+  NAME 'ibm-usrkeystore'
+  DESC 'EFS User keystore definition'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ uidNumber )
+  MAY userPKCS12
+  )
+
+# Trusted Execution schema
+#########################################################################
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3532
+  NAME 'ibm-aixTEPDefinition'
+  DESC 'Trusted Execution Policy Definition Entry'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.5
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3532
+  DBNAME( 'aixTEPDefinition'  'aixTEPDefinition' )
+  ACCESS-CLASS critical
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3533
+  NAME 'ibm-aixTSDEntry'
+  DESC 'Trusted Signature Database Entry'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.5
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3533
+  DBNAME( 'aixTSDEntry'  'aixTSDEntry' )
+  ACCESS-CLASS critical
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.658
+  NAME 'ibm-aixTEPolicy'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.658
+  NAME 'ibm-aixTEPolicy'
+  DESC 'Trusted Execution Security policies Configuration'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ ibm-aixTEPDefinition )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.659
+  NAME 'ibm-aixTSDatabase'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.659
+  NAME 'ibm-aixTSDatabase'
+  DESC 'Trusted Signature Database Management'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ ibm-aixTSDEntry )
+  )
+
+# Artex schema
+#########################################################################
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3534
+  NAME 'ibm-artexProfileDate'
+  DESC 'Date of the ARTEX profile'
+  EQUALITY generalizedTimeMatch
+  ORDERING generalizedTimeOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3534
+  DBNAME( 'artexProfileDate'  'artexProfileDate' )
+  ACCESS-CLASS critical
+  LENGTH 30
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3531
+  NAME 'ibm-artexProfileName'
+  DESC 'Name of the ARTEX profile'
+  EQUALITY caseExactMatch
+  ORDERING caseExactOrderingMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3531
+  DBNAME( 'artexProfileName'  'artexProfileName' )
+  ACCESS-CLASS critical
+  LENGTH 1024
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3535
+  NAME 'ibm-artexProfileOrigin'
+  DESC 'Origin of the ARTEX profile'
+  EQUALITY caseExactMatch
+  ORDERING caseExactOrderingMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3535
+  DBNAME( 'artexProfileOrigi'  'artexProfileOrigi' )
+  ACCESS-CLASS critical
+  LENGTH 1024
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3536
+  NAME 'ibm-artexProfileXMLData'
+  DESC 'XML content of the ARTEX profile'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.5
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3536
+  DBNAME( 'artexProfileXMLDa'  'artexProfileXMLDa' )
+  ACCESS-CLASS critical
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.660
+  NAME 'ibm-artexProfile'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.660
+  NAME 'ibm-artexProfile'
+  DESC 'For storing ARTEX profile'
+  SUP top
+  STRUCTURAL
+  MUST ( ibm-artexProfileName $ ibm-artexProfileXMLData )
+  MAY ( ibm-artexProfileDate $ ibm-artexProfileOrigin $ description $ version )
+  )
+
+# End of other AIX attributes
+#########################################################################
+
+# AIX objectclasses
+#########################################################################
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.167
+  NAME 'AIXAccount'
+  DESC 'AIX user information object class'
+  SUP eAccount
+  STRUCTURAL
+  MUST ( gid $ passwordChar $ userName )
+  MAY ( adminGroupNames $ AIXDefaultMACLevel $ AIXFuncMode $ AIXisDCEExport $ AIXLowMACLevel $ AIXPromptMAC $ AIXScreens $ AIXUpperMACLevel $ auditClasses $ authMethod1 $ authMethod2 $ coreSizeLimit $ coreSizeLimitHard $ cpuSize $ cpuSizeHard $ dataSegSize $ dataSegSizeHard $ filePermMask $ fileSizeLimit $ fileSizeLimitHard $ gecos $ groupList $ groupSwitchUserAllowed $ homeDirectory $ hostLastLogin $ hostLastUnsuccessfulLogin $ isAccountEnabled $ isAdministrator $ isDaemon $ isLoginAllowed $ isRemoteAccessAllowed $ isSwitchUserAllowed $ ixLastUpdate $ ixTimeLastLogin $ ixTimeLastUnsuccessfulLogin $ loginShell $ loginTimes $ maxFailedLogins $ maxLogin $ numberWarnDays $ openFileLimit $ openFileLimitHard $ passwordCheckMethods $ passwordDictFiles $ passwordExpiredWeeks $ passwordExpireTime $ passwordFlags $ passwordHistSize $ passwordMaxAge $ passwordMaxRepeatedChars $ passwordMinAge $ passwordMinAlphaChars $ passwordMinDiffChars $ passwordMinLength $ passwordMinOtherChars $ physicalMemLimit $ physicalMemLimitHard $ roleList $ stackSizeLimit $ stackSizeLimitHard $ systemEnvironment $ terminalAccess $ terminalLastLogin $ terminalLastUnsuccessfulLogin $ timeExpiredLogout $ timeExpireLockout $ trustedPathStatus $ unsuccessfulLoginCount $ userEnvironment $ userPassword $ passwordHistList $ hostsAllowedLogin $ hostsDeniedLogin $ passwordHistExpire $ capability $ rcmds $ ibm-aixProjectNameList $ ibm-defaultRoles $ ibm-coreNamingPolicy $ ibm-coreCompressionEnable $ ibm-corePathEnable $ ibm-corePathName $ passwordMaxConsecutiveRepeatedChars $ ibm-minIntegrityLabel $ ibm-maxIntegrityLabel $ ibm-defIntegrityLabel $ ibm-minSensitivityLabel $ ibm-maxSensitivityLabel $ ibm-defSensitivityLabel $ ibm-efsInitialKSMode $ ibm-efsKeystoreAlgo $ ibm-efsKeystoreAccess $ ibm-efsAdminKSAccess $ ibm-efsAllowKSModeChangeByUser $ ibm-efsFileAlgo $ ibm-passwordminupperalphachars $ ibm-passwordminloweralphachars $ ibm-passwordminspecialchar $ ibm-passwordmindigit )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.472
+  NAME 'aixAuxAccount'
+  DESC 'Auxiliary AIX user information objectclass, for use with posixaccount and shadowaccount objectclasses'
+  SUP top
+  AUXILIARY
+  MAY ( passwordChar $ adminGroupNames $ aIXDefaultMACLevel $ aIXFuncMode $ aIXisDCEExport $ aIXLowMACLevel $ aIXPromptMAC $ aIXScreens $ aIXUpperMACLevel $ auditClasses $ authMethod1 $ authMethod2 $ coreSizeLimit $ coreSizeLimitHard $ cPuSize $ cPuSizeHard $ dataSegSize $ dataSegSizeHard $ filePermMask $ fileSizeLimit $ fileSizeLimitHard $ groupList $ groupSwitchUserAllowed $ hostLastLogin $ hostLastUnsuccessfulLogin $ hostsAllowedLogin $ hostsDeniedLogin $ isAdministrator $ isAccountEnabled $ isDaemon $ isLoginAllowed $ isRemoteAccessAllowed $ isSwitchUserAllowed $ ixTimeLastLogin $ ixTimeLastUnsuccessfulLogin $ loginTimes $ maxFailedLogins $ maxLogin $ openFileLimit $ openFileLimitHard $ passwordCheckMethods $ passwordDictFiles $ passwordExpireTime $ passwordHistSize $ passwordMaxRepeatedChars $ passwordMinAlphaChars $ passwordMinDiffChars $ passwordMinLength $ passwordMinOtherChars $ physicalMemLimit $ physicalMemLimitHard $ roleList $ StackSizeLimit $ StackSizeLimitHard $ SystemEnvironment $ terminalAccess $ terminalLastLogin $ terminalLastUnsuccessfulLogin $ timeExpiredLogout $ timeExpireLockout $ trustedPathStatus $ unsuccessfulLoginCount $ userEnvironment $ userPassword $ passwordFlags $ capability $ passwordHistExpire $ passwordHistList $ rcmds $ ibm-aixProjectNameList $ ibm-defaultRoles $ ibm-coreNamingPolicy $ ibm-coreCompressionEnable $ ibm-corePathEnable $ ibm-corePathname $ passwordMaxConsecutiveRepeatedChars $ ibm-minIntegrityLabel $ ibm-maxIntegrityLabel $ ibm-defIntegrityLabel $ ibm-minSensitivityLabel $ ibm-maxSensitivityLabel $ ibm-defSensitivityLabel $ ibm-efsInitialKSMode $ ibm-efsKeystoreAlgo $ ibm-efsKeystoreAccess $ ibm-efsAdminKSAccess $ ibm-efsAllowKSModeChangeByUser $ ibm-efsFileAlgo $ ibm-passwordminupperalphachars $ ibm-passwordminloweralphachars $ ibm-passwordminspecialchar $ ibm-passwordmindigit )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.170
+  NAME 'AIXaccessGroup'
+  DESC 'AIX  group information'
+  SUP top
+  STRUCTURAL
+  MUST ( gid $ GroupName )
+  MAY ( AIXGroupAdminList $ AIXisDCEExport $ AIXScreens $ groupPassword $ isAdministrator $ member $ ibm-aixProjectNameList $ ibm-efsInitialKSMode $ ibm-efsKeystoreAlgo $ ibm-efsKeystoreAccess )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.168
+  NAME 'AIXAccessRoles'
+  DESC 'AIX role information'
+  SUP top
+  STRUCTURAL
+  MUST roleName
+  MAY ( AIXScreens $ authorizationLevel $ groupList $ msgFileName $ msgNumber $ roleList $ roleVisibility $ ibm-roleID $ ibm-roleAuthMode $ ibm-msgSet $ ibm-authorizations $ description )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.473
+  NAME 'aixAuxGroup'
+  DESC 'Auxiliary AIX group information objectclass, for use with the posixgroup objectclass.'
+  SUP top
+  AUXILIARY
+  MAY ( aIXGroupAdminList $ aIXisDCEExport $ aIXScreens $ groupPassword $ isAdministrator $ ibm-aixProjectNameList $ ibm-efsInitialKSMode $ ibm-efsKeystoreAlgo $ ibm-efsKeystoreAccess )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.169
+  NAME 'AIXAdmin'
+  DESC 'AIX class to store user/group administration attributes'
+  SUP top
+  STRUCTURAL
+  MAY ( AIXAdminGroupId $ AIXAdminUserId $ AIXGroupID $ AIXUserID $ cn $ ibm-authorizationID $ ibm-roleID )
+  )
+
+# automount attributes and objectclasses
+#########################################################################
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.31
+  NAME 'automountMapName'
+  DESC 'automount Map Name'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.31
+  DBNAME( 'automountMapName'  'automountMapName' )
+  ACCESS-CLASS normal
+  LENGTH 1000
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.33
+  NAME 'automountInformation'
+  DESC 'Automount information'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.33
+  DBNAME( 'automountInformat'  'automountInformat' )
+  ACCESS-CLASS normal
+  LENGTH 1024
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.32
+  NAME 'automountKey'
+  DESC 'Automount Key value'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.32
+  DBNAME( 'automountKey'  'automountKey' )
+  ACCESS-CLASS normal
+  LENGTH 1000
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.16
+  NAME 'automountMap'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.16
+  NAME 'automountMap'
+  DESC 'automountMap'
+  SUP top
+  STRUCTURAL
+  MUST automountMapName
+  MAY description
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.17
+  NAME 'automount'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.17
+  NAME 'automount'
+  DESC 'Automount information'
+  SUP top
+  STRUCTURAL
+  MUST ( automountInformation $ automountKey )
+  MAY description
+  )
+
+# AIXpert schema
+#########################################################################
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3340
+  NAME 'ibm-aixpertLabel'
+  DESC 'An unique label for a XML file'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3340
+  DBNAME( 'aixpertLabel'  'aixpertLabel' )
+  ACCESS-CLASS normal
+  LENGTH 256
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.3341
+  NAME 'ibm-aixpertXmlConfigFile'
+  DESC 'Aixpert XML configuration file'
+  EQUALITY octetStringMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.5
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.3341
+  DBNAME( 'aixpertXmlConfigF'  'aixpertXmlConfigF' )
+  ACCESS-CLASS normal
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.637
+  NAME 'ibm-aixAixpert'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.637
+  NAME 'ibm-aixAixpert'
+  DESC 'For storing Aixpert specific data'
+  SUP top
+  STRUCTURAL
+  MUST ( ibm-aixpertLabel $ ibm-aixpertXmlConfigFile )
+  )

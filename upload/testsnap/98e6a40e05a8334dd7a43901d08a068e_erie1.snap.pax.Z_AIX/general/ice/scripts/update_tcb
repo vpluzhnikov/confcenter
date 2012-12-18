@@ -1,0 +1,30 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/update_tcb.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/update_tcb.sh, libice, aix71B, 1026A_71B 2010-06-11T20:56:35-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+list=$1
+for i in $list
+do
+	if [ `grep -c "$i" $SYSCK` -ne 0 ] ; then
+		tcbck -a $i owner group mode
+	fi
+done
+

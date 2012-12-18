@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Profile origin="reference" readOnly="true" version="2.0.0">
+ <Catalog id="shconfParam" version="2.0">
+  <Parameter name="lio_reboot"/>
+  <Parameter name="lio_wterm"/>
+  <Parameter name="lio_warning"/>
+  <Parameter name="lio_to"/>
+  <Parameter name="sh_lio"/>
+  <Parameter name="pp_rprio"/>
+  <Parameter name="pp_rto"/>
+  <Parameter name="pp_reboot"/>
+  <Parameter name="pp_cpath"/>
+  <Parameter name="pp_cprio"/>
+  <Parameter name="pp_cto"/>
+  <Parameter name="pp_cmd"/>
+  <Parameter name="pp_lprio"/>
+  <Parameter name="pp_lto"/>
+  <Parameter name="pp_login"/>
+  <Parameter name="pp_wterm"/>
+  <Parameter name="pp_wprio"/>
+  <Parameter name="pp_wto"/>
+  <Parameter name="pp_warning"/>
+  <Parameter name="pp_eprio"/>
+  <Parameter name="pp_eto"/>
+  <Parameter name="pp_errlog"/>
+  <Parameter name="sh_pp"/>
+ </Catalog>
+</Profile>

@@ -1,0 +1,1082 @@
+*******************************************************************************
+* This file provides a mapping between ICE rule ids and platform-specific
+* information, such as a local attribute name and script location.  Each stanza
+* name should be an ICE rule id.
+*
+* VALID ATTRIBUTES FOR /ETC/SECURITY/ICE/ICERULES
+*
+* 
+* local_name    Specifies the name of this rule as used by this platform. 
+*               Used as first argument to script invocations.
+* script        Specifies the path to the script associated with setting and
+*               checking this attribute.  Builtin rule types use one of the
+*               following keywords instead of a path: SEC_USER, SEC_SYSTEM,
+*		or SEC_ROOT_USER.
+* default_value Specifies a default value for this rule.
+* type		Specifies the type for builtin AIX security rules.  This
+*		field will be ignored for rules that provide a path to
+*		a script instead of builtin keyword in the script
+*		attribute.
+*
+*******************************************************************************
+
+* IBM_PROLOG_BEGIN_TAG 
+* This is an automatically generated prolog. 
+*  
+* bos61L src/bos/usr/lib/security/ice/scripts/icerules 1.9 
+*  
+* Licensed Materials - Property of IBM 
+*  
+* Restricted Materials of IBM 
+*  
+* COPYRIGHT International Business Machines Corp. 2010 
+* All Rights Reserved 
+*  
+* US Government Users Restricted Rights - Use, duplication or 
+* disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+*  
+* IBM_PROLOG_END_TAG 
+
+*******************************************************************************
+* This file provides a mapping between ICE rule ids and platform-specific
+* information, such as a local attribute name and script location.  Each stanza
+* name should be an ICE rule id.
+*
+* VALID ATTRIBUTES FOR /ETC/SECURITY/ICE/ICERULES
+*
+* 
+* local_name    Specifies the name of this rule as used by this platform. 
+*               Used as first argument to script invocations.
+* script        Specifies the path to the script associated with setting and
+*               checking this attribute.  Builtin rule types use one of the
+*               following keywords instead of a path: SEC_USER, SEC_SYSTEM,
+*		or SEC_ROOT_USER.
+* default_value Specifies a default value for this rule.
+* type		Specifies the type for builtin AIX security rules.  This
+*		field will be ignored for rules that provide a path to
+*		a script instead of builtin keyword in the script
+*		attribute.
+*
+*******************************************************************************
+
+security.password.minlen:
+	local_name = minlen
+	type = SEC_INT
+	script = SEC_USER          
+	default_value = 0
+
+security.password.minalpha:
+        local_name = minalpha
+        type = SEC_INT
+        script = SEC_USER 
+        default_value = 0
+
+security.password.minother:
+        local_name = minother
+        type = SEC_INT
+        script = SEC_USER 
+        default_value = 0
+
+security.password.maxage:
+        local_name = maxage
+        type = SEC_INT
+        script = SEC_USER 
+        default_value = 0	
+
+security.password.minage:
+	local_name = minage
+	type = SEC_INT
+	script = SEC_USER
+	default_value = 0
+
+security.password.histsize:
+	local_name = histsize
+	type = SEC_INT
+	script = SEC_USER
+	default_value = 0
+
+security.password.maxexpired:
+	local_name = maxexpired
+	type = SEC_INT
+	script = SEC_USER
+	default_value = -1
+
+security.password.maxrepeats:
+	local_name = maxrepeats
+	type = SEC_INT
+	script = SEC_USER
+	default_value = 8
+
+security.password.warntime:
+	local_name = pwdwarntime
+	type = SEC_INT
+	script = SEC_USER
+	default_value = 0
+
+security.password.histexpire:
+	local_name = histexpire
+	type = SEC_INT
+	script = SEC_USER
+	default_value = 0
+
+security.password.mindiff:
+	local_name = mindiff
+	type = SEC_INT
+	script = SEC_USER
+	default_value = 0
+
+security.login.retries:
+	local_name = loginretries
+	type = SEC_INT
+	script = SEC_USER
+	default_value = 0
+
+security.login.rootlogin:
+	local_name = login
+	type = SEC_BOOL
+	script = SEC_ROOT_USER
+	default_value = true
+
+security.login.rootrlogin:
+	local_name = rlogin
+	type = SEC_BOOL
+	script = SEC_ROOT_USER
+	default_value = true
+
+security.login.interval:
+	local_name = logininterval
+	type = SEC_INT
+	script = SEC_PORT
+	default_value = 0
+
+security.login.disable:
+	local_name = logindisable
+	type = SEC_INT
+	script = SEC_PORT
+	default_value = 0
+
+security.login.delay:
+	local_name = logindelay
+	type = SEC_INT
+	script = SEC_PORT
+	default_value = 0
+
+security.login.reenable:
+	local_name = loginreenable
+	type = SEC_INT
+	script = SEC_PORT
+	default_value = 0
+
+security.login.timeout:
+	local_name = logintimeout
+	type = SEC_INT
+	script = /etc/security/ice/scripts/setlogintimeout
+	default_value = 60
+
+services.desktop.gui:
+	local_name = dt
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inittab
+	default_value = true
+
+services.desktop.dtspc:
+	local_name = "dtspc tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.desktop.ttdbserver:
+	local_name = "ttdbserver tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.desktop.cmsd:
+	local_name = "cmsd udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.printer.server:
+	local_name = lpd
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.printer.io:
+	local_name = piobe
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inittab
+	default_value = true
+
+services.printer.qdaemon:
+	local_name = qdaemon
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inittab
+	default_value = true
+
+services.network.mail:
+	local_name = sendmail
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = true
+
+services.network.mail.pop3d:
+	local_name = "pop3 tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.mail.imapd:
+	local_name = "imap2 tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.mail.comsat:
+	local_name = "comsat udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.rexec.rexecd:
+	local_name = "exec tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.rexec.rshd:
+	local_name = "shell tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.rexec.krshd:
+	local_name = "kshell tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.rexec.rlogin:
+	local_name = "login tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.rexec.krlogind:
+	local_name = "klogin tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.rexec.rwho:
+	local_name = rwhod
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.network.rpc.rexd:
+	local_name = "rexd tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.rpc.rusersd:
+	local_name = "rusersd udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.rpc.rwalld:
+	local_name = "rwalld udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.rpc.rstatd:
+	local_name = "rstatd udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.rpc.rquotad:
+	local_name = "rquotad udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.rpc.sprayd:
+	local_name = "sprayd udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.rpc.pcnfsd:
+	local_name = "pcnfsd udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.snmp.dpid:
+	local_name = dpid2
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.network.snmp.snmpd:
+	local_name = snmpd
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = true
+
+services.network.dhcp.agent:
+	local_name = dhcprd
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.network.dhcp.client:
+	local_name = dhcpcd
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.network.dhcp.server:
+	local_name = dhcpsd
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.network.mrouted:
+	local_name = mrouted
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.network.routed:
+	local_name = routed
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.network.netstat:
+	local_name = "netstat tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.systat:
+	local_name = "systat tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.fingerd:
+	local_name = "finger tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.dns.server:
+	local_name = named
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.network.timed:
+	local_name = timed
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.network.ntp:
+	local_name = xntpd
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+services.network.time.tcp:
+	local_name = "time tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.time.udp:
+	local_name = "time udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.daytime.tcp:
+	local_name = "daytime tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.daytime.udp:
+	local_name = "daytime udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.chargen.udp:
+	local_name = "chargen udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.chargen.tcp:
+	local_name = "chargen tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.discard.tcp:
+	local_name = "discard tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.discard.udp:
+	local_name = "discard udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.echo.tcp:
+	local_name = "echo tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.echo.udp:
+	local_name = "echo udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.telnetd:
+	local_name = "telnet tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.ftpd:
+	local_name = "ftp tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.tftp:
+	local_name = "tftp udp tftpd"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.uucpd:
+	local_name = "uucp tcp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.talk:
+	local_name = "talk udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = true
+
+services.network.bootpd:
+	local_name = "bootps udp"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.ipv6.conf:
+	local_name = autoconf6
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+security.validate.password:
+	local_name = pwdck
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/validate_check
+	default_value = false
+
+security.validate.user:
+	local_name = usrck
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/validate_check
+	default_value = false
+
+security.validate.group:
+	local_name = grpck
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/validate_check
+	default_value = false
+
+security.validate.files:
+	local_name = tcbck
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/validate_check
+	default_value = false
+
+security.network.port.shun:
+	local_name = ipsecshunports
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/ipsecshunports
+	default_value = 0
+
+security.network.port.guard:
+	local_name = ipsecshunhost
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/ipsecshunhost
+	default_value = 0
+
+security.networkoption.ipsendredirects:
+	local_name = ipsendredirects
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = true
+
+security.networkoption.nonlocsrcroute:
+	local_name = nonlocsrcroute
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = false
+
+security.networkoption.tcp_pmtu_discover:
+	local_name = tcp_pmtu_discover
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = true
+
+security.networkoption.tcp_tcpsecure:
+	local_name = tcp_tcpsecure
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = false
+
+security.networkoption.clean_partial_conns:
+	local_name = clean_partial_conns
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = false
+
+security.networkoption.directed_broadcast:
+	local_name = directed_broadcast
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = false
+
+security.networkoption.ipsrcrouteforward:
+	local_name = ipsrcrouteforward
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = true
+
+security.networkoption.rfc1323:
+	local_name = rfc1323
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = false
+
+security.networkoption.ip6srcrouteforward:
+	local_name = ip6srcrouteforward
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = true
+
+security.networkoption.udp_pmtu_discover:
+	local_name = udp_pmtu_discover
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = true
+
+security.networkoption.ipforwarding:
+	local_name = ipforwarding
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = false
+
+security.networkoption.icmpaddressmask:
+	local_name = icmpaddressmask
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = false
+
+security.networkoption.ipsrcroutesend:
+	local_name = ipsrcroutesend
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = true
+
+security.networkoption.ipignoreredirects:
+	local_name = ipignoreredirects
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = false
+
+security.networkoption.tcp_mssdflt:
+	local_name = tcp_mssdflt
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = 1460
+
+security.networkoption.sb_max:
+	local_name = sb_max
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = 1048576
+
+security.networkoption.tcp_recvspace:
+	local_name = tcp_recvspace
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = 16384
+
+security.networkoption.tcp_sendspace:
+	local_name = tcp_sendspace
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = 16384
+
+security.networkoption.sockthresh:
+	local_name = sockthresh
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = 85
+
+security.networkoption.bcastping:
+	local_name = bcastping
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = false
+
+security.networkoption.ipsrcrouterecv:
+	local_name = ipsrcrouterecv
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/network_op
+	default_value = false
+
+security.remoteaccess.rhosts:
+    local_name = rhosts
+    type = SEC_CHAR
+    script = /etc/security/ice/scripts/rmrhostsnetrc
+    default_value = true
+
+security.remoteaccess.netrc:
+    local_name = netrc
+    type = SEC_CHAR
+    script = /etc/security/ice/scripts/rmrhostsnetrc
+    default_value = true
+
+security.remoteaccess.hosts.equiv:
+	local_name = hostsequiv
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/rmetchostsequiv
+	default_value = true
+
+security.remote.daemons:
+    local_name = rmtdmn
+    type = SEC_CHAR
+    script = /etc/security/ice/scripts/disablermtdmns
+    default_value = true
+
+security.remote.commands:
+        local_name = rmtcmd
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/disablermtcmds
+        default_value = true
+
+security.nfs.daemons:
+        local_name = nfsconfig
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/nfsconfig
+        default_value = true
+
+security.priv.rmsuidfrmrmtcmd:
+        local_name = rmsuid
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/rmsuidfrmrcmds
+        default_value = false
+
+security.priv.fileperm:
+        local_name = fileperm
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/filepermgr
+        default_value = default
+
+security.misc.ftpusers:
+        local_name = ftpusers
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/chetcftpusers
+        default_value = true
+
+security.misc.sed:
+        local_name = sed
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/sedconfig
+        default_value = false
+
+security.misc.limitsysacc:
+        local_name = limitsysacc
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/limitsysacc
+        default_value = false
+
+security.misc.crontab:
+        local_name = crontab
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/rootcrnjobck
+        default_value = false
+
+security.misc.rootpwdintegrity:
+        local_name = dictionlist
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/passwd_integrity
+        default_value = false
+
+security.misc.umask:
+        local_name = umask
+        type = SEC_INT
+        script = SEC_USER
+        default_value = 022
+
+security.misc.rmdotnroot:
+        local_name = rmdotnroot
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/rmdotfrmpathnroot
+        default_value = true
+
+security.misc.rmdotroot:
+        local_name = rmdotroot
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/rmdotfrmpathroot
+        default_value = true
+
+security.misc.coresize:
+        local_name = core
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/chcoresize
+        default_value = 2097151
+
+security.misc.rmguest:
+        local_name = rmguest
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/remove_guest
+        default_value = false
+
+security.system.sshd:
+        local_name = setupsshd
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/setup_ssh
+        default_value = false
+
+security.password.idletime:
+        local_name = autologoff
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/autologoff
+        default_value = 0
+
+security.remoteaccess.configureacl:
+        local_name = chetchostsfiles 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/chetchostsfiles
+        default_value = false 
+
+security.logging.cron:
+        local_name = genlogging 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/genlogging
+        default_value = false 
+
+security.logging.rootlogins:
+        local_name = rootlogging 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/rootlogging
+        default_value = false 
+	
+security.logging.access:
+        local_name = log_inetd 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/log_inetd
+        default_value = false 
+
+services.network.nfsmonitor:
+        local_name = nfsportcheck 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/nfsportcheck
+        default_value = false 
+
+security.login.removeinvalidshells:
+        local_name = shellsValidate 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/shellsValidate
+        default_value = false 
+
+security.misc.cronaccess:
+        local_name =  cron
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/sysacct
+        default_value = false 
+
+security.network.tcpwrapper:
+        local_name = tcpwrapper 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/tcpwrapper
+        default_value = false 
+
+security.remoteaccess.ftpanonymous:
+        local_name = anonymousftp
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/anonymousftp
+        default_value = false 
+
+services.audit:
+        local_name = audit 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/audit
+        default_value = 0 
+
+security.network.defaultaccounts:
+        local_name = dissysacct
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/dissysacct
+        default_value = false 
+
+services.nfs.access:
+        local_name = nfsaccess
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/nfsaccess
+        default_value = false 
+
+services.nfs.client:
+        local_name = nfsclient 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/nfsclient
+        default_value = false 
+
+services.nfs.ownership:
+        local_name = nfsownership  
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/nfsownership
+        default_value = false 
+
+services.nfs.permission:
+        local_name = nfspermission 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/nfspermission
+        default_value = false 
+
+services.network.sendmailrestrict:
+        local_name = sendmail 
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/sendmail
+        default_value = false 
+
+security.network.portallow:
+        local_name = ipsecallowports
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/ipsecallowports
+        default_value = 0
+
+security.network.ipallow:
+        local_name = ipsecallowhosts
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/ipsecallowhosts
+        default_value = 0
+
+security.priv.rbac:
+        local_name = rbac
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/configrbac
+        default_value = true
+
+security.logging.syslog:
+        local_name = syslogconf
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/setlogging
+        default_value = 0
+
+services.network.systemacl:
+        local_name = shosts.equiv
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/rmetcshostsequiv
+        default_value = 0
+
+
+security.misc.trustedexec:
+        local_name = trustchk
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/trustchkTE
+        default_value = 0
+
+services.printer.nis:
+        local_name = netgroup
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/disablehostslpd
+        default_value = false
+
+security.misc.xhost:
+        local_name = xhost
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/disablexhost
+        default_value = 0
+
+security.misc.xserver:
+        local_name = X11
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/xauthconfig
+        default_value = false
+
+security.remoteaccess.pamrhosts:
+        local_name = "rlogin auth"
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/rmrloginfrmpam
+        default_value = true
+
+services.network.analysistools:
+        local_name = tcpdump
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/nateconfig
+        default_value = false
+
+security.network.sshrootlogin:
+        local_name = ssh
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/sshd_confprl
+        default_value = false
+
+security.network.sshversion:
+        local_name = ssh
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/sshd_confproto
+        default_value = false
+
+security.network.ignorerhosts:
+        local_name = ssh
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/sshd_ignorerhosts
+        default_value = false
+
+security.network.ignoreuserknownhosts:
+        local_name = ssh
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/sshd_ignoreusrhosts
+        default_value = false
+
+security.login.hostbasedauth:
+        local_name = ssh
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/sshd_confhost
+        default_value = false
+
+security.misc.x11forwarding:
+        local_name = ssh
+        type = SEC_CHAR
+        script = /etc/security/ice/scripts/sshd_confX11
+        default_value = false
+
+security.network.ftprestrict:
+	local_name = ftpusers
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/sysacct
+	default_value = false
+
+security.misc.ataccess:
+	local_name = at
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/sysacct
+	default_value = false
+
+services.network.utftp:
+	local_name = "utftp udp utftpd"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.fsp:
+	local_name = "fsp udp fspd"
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_inetd
+	default_value = false
+
+services.network.ntpcheck:
+	local_name = xntpd
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/daemon_rctab
+	default_value = false
+
+security.misc.loginherald:
+	local_name = true
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/loginherald
+	default_value = false
+
+security.misc.rmdotpathroot:
+	local_name = pathcheck 
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/pathcheck
+	default_value = false
+
+services.network.samba:
+	local_name = true
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/sambaconfig
+	default_value = no
+
+security.misc.dataintegrity:
+	local_name = true
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/trustchkMonitor
+	default_value = no
+
+security.login.disableinactive:
+	local_name = disableinactive
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/disable_user
+	default_value = 0
+
+security.login.authmethod:
+	local_name = SYSTEM
+    type = SEC_CHAR
+    script = SEC_USER
+    default_value = 0
+
+security.priv.fileown:
+    local_name = cfo
+    type = SEC_CHAR
+    script = /etc/security/ice/scripts/cfo
+    default_value = false 
+
+services.network.snmpcommunitynames:
+    local_name = chksnmpd
+    type = SEC_CHAR
+    script = /etc/security/ice/scripts/chksnmpd
+    default_value = false 
+
+security.logging.errors:
+    local_name = chkerrlog
+    type = SEC_CHAR
+    script = /etc/security/ice/scripts/chkerrlog
+    default_value = false 
+
+security.network.auditobj:
+	local_name = auditobj
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/auditobj
+	default_value = false
+
+services.network.efskeystore:
+	local_name = efs
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/efsKSonLDAP
+	default_value = false
+
+security.misc.trustedexecconfig:
+	local_name = TE
+	type = SEC_CHAR
+	script = /etc/security/ice/scripts/trustchkTESOX
+	default_value = false
+

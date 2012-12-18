@@ -1,0 +1,77 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/nfsclient.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/nfsclient.sh, libice, aix71B, 1028A_71B 2010-06-24T16:57:19-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+#GEN005900		check to make sure nfs clients enable nosuid and nosgid
+
+INSTALLDIR=/etc/security/ice/scripts
+. $INSTALLDIR/iceInit
+
+PREREQ_LIST="bos.rte.security,bos.rte.date,bos.rte.ILS"
+
+checkPrereq
+
+###########
+# Checking
+###########
+if [[ cflag -eq 1 ]];
+then
+	#GEN005900
+	#AIX does not support nosgid option with mount command.  The nosuid 
+	#option in AIX will ensure that execution of setuid and setgid 
+	#programs by way of this mount is not allowed. 
+	mount | grep nfs | tr -s " " "," 1> $TMPF1
+	while read line
+	do
+		vfstype=`echo $line | cut -d "," -f4`
+		fs=`echo $line | cut -d "," -f3`
+		if [ `echo $vfstype | grep -c nfs` -gt 0 ]
+		then
+			if [ `echo $line | grep -c "nosuid"` -gt 0 ]
+			then
+				if [ "$STATUS_ARG" = "false" ]
+				then
+					cur_val=1
+					print "$fs is mounted with nosuid option." >> log_msg 2>&1
+					ice_status=2
+				fi
+			else
+				if [ "$STATUS_ARG" = "true" ]
+				then
+					print "$fs is mounted without nosuid option.  This needs to be documented in IAO." >> log_msg 2>&1
+					ice_status=2
+				fi
+			fi
+		fi
+	done < $TMPF1
+	rm $TMPF1
+	Script_Output
+	exit 0
+fi
+
+####################
+# Preview/Enforcing
+####################
+cur_val=
+print "This rule does not support -e option." >> log_msg 2>&1
+Script_Output
+exit 0
+

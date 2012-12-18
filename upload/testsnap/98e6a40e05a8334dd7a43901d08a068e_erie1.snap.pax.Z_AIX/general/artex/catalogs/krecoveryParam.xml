@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="krecoveryParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="23" msgNum="1">Management of Kernel Recovery state.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="23" msgNum="2">The kernel may optionally recover from errors in selected routines, avoiding an unplanned system outage. The system might pause for a short time (generally less than two seconds) before a kernel recovery action. Immediately after a kernel recovery action, the system console displays a warning message; an entry is added to the error log; and AIX generates a live dump.</NLSCatalog></Description>
+
+  <ConstraintDef id="bosboot">
+   <Description><NLSCatalog catalog="artexcat.cat" setNum="23" msgNum="3">Bosboot required</NLSCatalog></Description>
+   <BuiltIn>bosboot</BuiltIn>
+  </ConstraintDef>
+
+ <ParameterDef name="krecovery" type="boolean" reboot="true" constraint="bosboot">
+
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="23" msgNum="4">Enablement of Kernel Recovery State.</NLSCatalog></Description>
+
+  <Get type="current">
+   <Command>LANG=C;/usr/lib/ras/rasctrl -q k_recovery</Command>
+   <Filter>sed "2,2d" | awk '{ if ($NF == "enabled.") print 1; else print 0; }' | tr -d '\n'</Filter>
+  </Get>
+
+  <Get type="nextboot">
+   <Command>LANG=C;/usr/lib/ras/rasctrl -q k_recovery</Command>
+   <Filter>sed "1,1d" | awk '{ if ($NF == "enabled.") print 1; else print 0; }' | tr -d '\n'</Filter>
+  </Get>
+
+  <Set type="nextboot">
+   <Command>LANG=C;/usr/lib/ras/rasctrl -o bosboot=no -o k_recovery:nextboot=%a</Command>
+   <Argument>`if [ %v1 = '1' ]; then echo 'enabled'; else echo 'disabled'; fi`</Argument>
+  </Set>
+
+ </ParameterDef>
+
+</Catalog>

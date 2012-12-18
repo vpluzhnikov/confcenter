@@ -1,0 +1,246 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/usr/lib/security/aixpert/scripts/limitsysacc.sh 1.5 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006,2007 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)94	1.5  src/bos/usr/lib/security/aixpert/scripts/limitsysacc.sh, aixpert, bos610 3/15/07 06:08:14
+# IBM_PROLOG_END_TAG 
+#	COMPONENT_NAME		: (AIXPERT) limitsysacc.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: The script takes two command line arguments.
+#				The first argument should be either "h" or "d"
+#				indicating that the script is being invoked
+#				for high level or default level security.
+#				The second argument should be the rulename.
+#				Syntax - limitsysacc {h|d} rulename
+#				
+#	OUTPUT			: None
+#
+#	Description		: When the first argument is "h" then the script
+#				makes root the only user account in cron.allow
+#				file and removes cron.deny file. If the first
+#				argument is "d", the script removes cron.allow
+#				and deletes all entries in cron.deny file.
+#				This script generates undo XML rule and the
+#				script for undo dynamically. The script should
+#				be run with superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+# Initialize variables AIXPERT_FIFO, LOG, REPORT, SAVE, SCPTDIR and UNDOXML
+. /etc/security/aixpert/bin/initialize_variables
+
+TMP=/etc/security/aixpert/tmp/limitsysacc
+TMP2=/etc/security/aixpert/tmp/limitsysacc2
+PID=$$
+ALLOW=/var/adm/cron/cron.allow
+DENY=/var/adm/cron/cron.deny
+
+# Log output and errors to /etc/security/aixpert/log/aixpert.log
+exec 1>>$LOG
+exec 2>&1
+
+if [ $# -ne 2 ] || ( [ "$1" != "h" ] && [ "$1" != "d" ] )
+then
+        dspmsg -s 15 aixpert.cat 1 "Usage : limitsysacc {h|d} rulename\n"
+        exit 1
+fi
+
+# echo all the commands and the current time and date to the AIXpert log
+set -x
+date
+echo $0
+
+# Check whether AIXPERT_CHECK_REPORT environment variable is set or not.
+report=`echo $AIXPERT_CHECK_REPORT`
+
+if [ "$1" = "h" ]
+then
+	# Dynamic Security check
+	if [ "$report" = "1" ]
+	then		
+		if [ ! -e $DENY ] && [ -e $ALLOW ]
+		then
+			grep root $ALLOW
+			rt=$?
+			grep -v root $ALLOW
+			nrt=$?
+			if [ $rt -eq 0 ] && [ $nrt -ne 0 ] 
+			then
+				exit 0
+			else
+				dspmsg -s 15 aixpert.cat 2 "limitsysacc.sh:\
+ File %s has entries other than root\n" $ALLOW >>$REPORT
+				dspmsg -s 15 aixpert.cat 2 "limitsysacc.sh:\
+ File %s has entries other than root\n" $ALLOW >>$AIXPERT_FIFO
+				exit 1
+			fi
+		elif [ -e $DENY ]
+		then
+			dspmsg -s 15 aixpert.cat 3 "limitsysacc.sh:\
+ File %s exists\n" $DENY >>$REPORT
+			dspmsg -s 15 aixpert.cat 3 "limitsysacc.sh:\
+ File %s exists\n" $DENY >>$AIXPERT_FIFO
+			exit 1
+		else
+			dspmsg -s 15 aixpert.cat 4 "limitsysacc.sh:\
+ File %s doesn't exist\n" $ALLOW >>$REPORT
+			dspmsg -s 15 aixpert.cat 4 "limitsysacc.sh:\
+ File %s doesn't exist\n" $ALLOW >>$AIXPERT_FIFO
+			exit 1
+		fi
+	fi
+
+	echo "#!/usr/bin/ksh\nexport PATH=/usr/bin:/usr/sbin:\$PATH\n" >$TMP2$PID
+	echo "exec 1>>$LOG\nexec 2>&1\nset -x\ndate\necho" '$0' >>$TMP2$PID
+
+	time=`date +%s`
+
+	# If $DENY file exists, save it for Undo, then remove it
+	if [ -f $DENY ]
+	then
+		mv $DENY $SAVE/limitsysacc_DENY.$time
+		echo "mv $SAVE/limitsysacc_DENY.$time $DENY" >>$TMP2$PID
+	fi
+
+	# If $ALLOW file exists, check whether there exits root entry in it,
+	# if anyother users also exist, save the file for Undo, and make sure
+	# that the cron.allow file only has "root" entry.
+	if [ -f $ALLOW ]
+	then
+		grep root $ALLOW
+		rt=$?
+		grep -v root $ALLOW
+		nrt=$?
+		if [ $rt -eq 0 ] && [ $nrt -ne 0 ]
+		then
+			# Everything is fine, but take backup of
+			# ALLOW file to ensure undo consistency
+			cp $ALLOW $SAVE/limitsysacc_ALLOW.$time
+			echo "mv $SAVE/limitsysacc_ALLOW.$time $ALLOW" >>$TMP2$PID
+		else
+			mv $ALLOW $SAVE/limitsysacc_ALLOW.$time
+			echo "mv $SAVE/limitsysacc_ALLOW.$time $ALLOW" >>$TMP2$PID
+		fi
+	else
+		# During Undo, $ALLOW should be removed
+		echo "rm $ALLOW" >>$TMP2$PID
+	fi
+
+	# Make root the only user account in the cron.allow file
+	echo "root" >$ALLOW	
+elif [ "$1" = "d" ]
+then
+	# Dynamic Security check
+	if [ "$report" = "1" ]
+	then
+		if [ ! -e $ALLOW ] && [ -e $DENY ]
+		then
+			entr=`cat $DENY`
+			if [ -z "$entr" ]
+			then
+				exit 0
+			else
+				dspmsg -s 15 aixpert.cat 5 "limitsysacc.sh:\
+ File %s has entries\n" $DENY >>$REPORT
+				dspmsg -s 15 aixpert.cat 5 "limitsysacc.sh:\
+ File %s has entries\n" $DENY >>$AIXPERT_FIFO
+				exit 1
+			fi
+		elif [ -e $ALLOW ]
+		then
+			dspmsg -s 15 aixpert.cat 3 "limitsysacc.sh:\
+ File %s exists\n" $ALLOW >>$REPORT
+			dspmsg -s 15 aixpert.cat 3 "limitsysacc.sh:\
+ File %s exists\n" $ALLOW >>$AIXPERT_FIFO
+			exit 1
+		else
+			dspmsg -s 15 aixpert.cat 4 "limitsysacc.sh:\
+ File %s doesn't exists\n" $DENY >>$REPORT
+			dspmsg -s 15 aixpert.cat 4 "limitsysacc.sh:\
+ File %s doesn't exists\n" $DENY >>$AIXPERT_FIFO
+			exit 1			
+		fi
+	fi
+
+	echo "#!/usr/bin/ksh\nexport PATH=/usr/bin:/usr/sbin:\$PATH\n" >$TMP2$PID
+	echo "exec 1>>$LOG\nexec 2>&1\nset -x\ndate\necho" '$0' >>$TMP2$PID
+	time=`date +%s`
+
+	# If $ALLOW file exists, save it for Undo
+	if [ -f $ALLOW ]
+	then
+		mv $ALLOW $SAVE/limitsysacc_ALLOW.$time
+		echo "mv $SAVE/limitsysacc_ALLOW.$time $ALLOW" >>$TMP2$PID
+	fi
+	
+	# If $DENY file exists, save it for Undo, then remove it
+	if [ -f $DENY ]
+	then
+		entr=`cat $DENY`
+		if [ -z "$entr" ]
+		then
+			# Everything is fine, but take backup of
+			# DENY file to ensure undo consistency
+			cp $DENY $SAVE/limitsysacc_DENY.$time
+			echo "mv $SAVE/limitsysacc_DENY.$time $DENY" >>$TMP2$PID
+		else
+			mv $DENY $SAVE/limitsysacc_DENY.$time
+			echo "mv $SAVE/limitsysacc_DENY.$time $DENY" >>$TMP2$PID
+		fi
+	else
+		# During Undo, $DENY should be removed
+		echo "rm $DENY" >>$TMP2$PID
+	fi
+	
+	# Empty the $DENY file
+	echo "" > $DENY
+	
+fi
+
+time=`date +%s`
+
+mv $TMP2$PID $SCPTDIR/Undo$2$time
+chmod ug+x $SCPTDIR/Undo$2$time
+
+# Check whether the $UNDOXML file is empty
+empty=`grep "^<AIXPertUndo>" $UNDOXML`
+
+# If empty, add the start and end tags to $UNDOXML
+if [ "$empty" = "" ]
+then
+	echo "\n<AIXPertUndo>\n</AIXPertUndo>" >> $UNDOXML
+fi
+
+# Get the rulename and put it in undo rule
+name=`echo $AIXPERT_NAME`
+# Get the rule description & pass it to undo rule
+desc=`echo $AIXPERT_DESC`
+
+# Add an undo XML rule to the file $UNDOXML
+awk -v rulehalf1="\t<AIXPertEntry name=\"$name\">\n\
+\t\t<AIXPertRuleType type=\"Undo\"/>\n\
+\t\t<AIXPertDescription>Undo action for \"$desc\"</AIXPertDescription>\n\
+\t\t<AIXPertPrereqList/>\n"\
+ -v rulehalf2="\t\t<AIXPertCommand>$SCPTDIR/Undo$2$time</AIXPertCommand>\n\
+\t\t<AIXPertArgs/>\n\t\t<AIXPertGroup>Miscellaneous Rules\
+</AIXPertGroup>\n\t</AIXPertEntry>"\
+ '{if(match($0,"^[\t ]*</AIXPertUndo>")==0) print $0;\
+ else print rulehalf1 rulehalf2 "\n" $0}' $UNDOXML >$TMP$PID
+
+mv $TMP$PID $UNDOXML
+
+exit 0

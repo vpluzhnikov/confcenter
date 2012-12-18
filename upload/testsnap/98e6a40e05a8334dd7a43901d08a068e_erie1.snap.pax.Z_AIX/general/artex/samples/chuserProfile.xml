@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Profile origin="reference" version="2.0.0" readOnly="true">
+
+ <Catalog id="chuserParam" version="2.0">
+
+  <Parameter name="account_locked">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="admin">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="admgroups">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="auditclasses">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="auth1">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="auth2">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="capabilities">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="core">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="core_compress">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="core_hard">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="core_naming">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="core_path">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="core_pathname">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="cpu">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="cpu_hard">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="daemon">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="data">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="data_hard">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="default_roles">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="dictionlist">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="expires">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="fsize">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="fsize_hard">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="gecos">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="groups">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="histexpire">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="histsize">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="home">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="id" readOnly="true">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="login">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="loginretries">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="logintimes">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="maxage">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="maxexpired">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="maxrepeats">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="maxulogs">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="minage">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="minalpha">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="mindiff">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="minlen">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="minother">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="nofiles">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="nofiles_hard">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="nproc">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="nproc_hard">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="pgrp">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="projects">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="pwdchecks">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="pwdwarntime">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="rcmds">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="rlogin">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="roles">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="rss">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="rss_hard">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="shell">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="stack">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="stack_hard">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="su">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="sugroups">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="sysenv">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="threads">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="threads_hard">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="tpath">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="ttys">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="umask">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="usrenv">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="efs_keystore_access">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="efs_adminks_access">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="efs_initialks_mode">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="efs_allowksmodechangebyuser">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="efs_keystore_algo">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="efs_file_algo">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="minsl">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="maxsl">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="defsl">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="mintl">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="maxtl">
+   <Target class="" instance=""/>
+  </Parameter>
+  <Parameter name="deftl">
+   <Target class="" instance=""/>
+  </Parameter>
+
+ </Catalog>
+</Profile>

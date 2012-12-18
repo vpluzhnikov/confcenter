@@ -1,0 +1,73 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/usr/lib/security/aixpert/scripts/prereqnosyn.sh 1.1 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)04	1.1  src/bos/usr/lib/security/aixpert/scripts/prereqnosyn.sh, aixpert, bos610 3/15/06 08:09:31
+# IBM_PROLOG_END_TAG 
+#	COMPONENT_NAME		: (AIXPERT) prereqnosyn.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: None
+#
+#	OUTPUT			: None
+#	Description		: This script checks whether IPSec is enabled
+#				or not on the machine, if its not, then enable it.
+#
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+# Determine whether IPSec is enabled or not.
+ipv4=`lsdev -Cc ipsec|grep ipsec_v4|awk '{print $2}'`
+ipv6=`lsdev -Cc ipsec|grep ipsec_v6|awk '{print $2}'`
+
+# Can be used to report errors, if any, while enabling IPSec
+errflg=0
+
+if  [ "$ipv4" != "Available" ]
+then
+	/usr/sbin/mkdev -c ipsec -t 4	# Enable IPSec for version 4
+	if [ $? -ne 0 ]
+	then
+		errflg=1		# Failed to enable IPSec for version 4
+	fi
+	# Set up default filters, permit the packets for default filter rule
+	/usr/sbin/mkfilt -v 4 -u -z P
+fi
+
+# Run autoconf6, which enables IPv6 addresses
+autoconf6
+if [ $? -ne 0 ]
+then
+	errflg=1	# Failed to activate IPv6 addressing
+fi
+
+if  [ "$ipv6" != "Available" ]
+then
+	/usr/sbin/mkdev -c ipsec -t 6	# Enable IPSec for version 6
+	if [ $? -ne 0 ]
+	then
+		errflg=1		# Failed to enable IPSec for version 6
+	fi
+	# Set up default filters, permit the packets for default filter rule
+	/usr/sbin/mkfilt -v 6 -u -z P
+fi
+
+if [ $errflg -eq 1 ]
+then
+	exit 1		# Failed to setup IPSec for ver 4/ver 6
+else
+	exit 0		# Success
+fi

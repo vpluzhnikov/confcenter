@@ -1,0 +1,64 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos61B src/bos/usr/lib/security/aixpert/scripts/chk_report.sh 1.4 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006,2007 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+#@(#)99        1.4  src/bos/usr/lib/security/aixpert/scripts/chk_report.sh, aixpert, bos61B, b2007_38B2 9/14/07 12:38:25
+# IBM_PROLOG_END_TAG 
+#set -x
+
+
+if [ -f /etc/security/aixpert/core/appliedaixpert.xml ]
+then
+fgrep AIXPertRuleType /etc/security/aixpert/core/appliedaixpert.xml >> /etc/security/aixpert/tmp/str
+head -1 /etc/security/aixpert/tmp/str >> /etc/security/aixpert/tmp/str1
+awk '{
+            if (match ($0, "HLS") != 0)
+            {
+                print "HLS"
+            }
+            else if (match ($0, "MLS") != 0)
+            {
+                print "MLS"
+            }
+            else if (match ($0, "LLS") != 0)
+            {
+                print "LLS"
+            }
+            else if (match ($0, "DLS") != 0)
+            {
+                print "DLS"
+            }
+            else if (match ($0, "ALS") != 0)
+            {
+                print "ALS"
+            }
+            else if (match ($0, "SCBPS") != 0)
+            {
+                print "SCBPS"
+            }
+            else 
+            {
+                print "DLS"
+            }
+      }' /etc/security/aixpert/tmp/str1 >> /etc/security/aixpert/tmp/str2
+cat /etc/security/aixpert/tmp/str2 | while read line
+do
+ val=$line
+ echo $val
+done
+rm /etc/security/aixpert/tmp/str2
+rm /etc/security/aixpert/tmp/str1
+rm /etc/security/aixpert/tmp/str
+fi

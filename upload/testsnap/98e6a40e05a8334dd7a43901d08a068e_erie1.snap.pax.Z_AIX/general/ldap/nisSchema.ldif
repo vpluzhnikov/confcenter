@@ -1,0 +1,1240 @@
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos61D src/bos/etc/security/ldap/nisSchema.ldif 1.3 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2002,2008 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# IBM_PROLOG_END_TAG 
+# File generated at 4:47:55 PM on 5/2/2002 from IBM LDAP schema version 1.5
+#
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.24
+  NAME 'bootFile'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.24
+  DBNAME( 'bootFile'  'bootFile' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.24
+  NAME 'bootFile'
+  DESC 'Boot image name'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.24
+  DBNAME( 'bootFile'  'bootFile' )
+  ACCESS-CLASS normal
+  LENGTH 4000
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.23
+  NAME 'bootParameter'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.23
+  DBNAME( 'bootParameter'  'bootParameter' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.23
+  NAME 'bootParameter'
+  DESC 'rpc.bootparamd parameter, uses bootParameterSyntax'
+  EQUALITY caseIgnoreMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.23
+  DBNAME( 'bootParameter'  'bootParameter' )
+  ACCESS-CLASS normal
+  LENGTH 4000
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.1
+  NAME 'gidNumber'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.1
+  DBNAME( 'gidNumber'  'gidNumber' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.1
+  NAME 'gidNumber'
+  DESC 'An integer uniquely identifying a group in an administrative domain.'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.1
+  DBNAME( 'gidNumber'  'gidNumber' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.19
+  NAME 'ipHostNumber'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.19
+  DBNAME( 'ipHostNumber'  'ipHostNumber' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.19
+  NAME 'ipHostNumber'
+  DESC 'IP address as a dotted decimal, eg. 192.168.1.1, omitting leading zeros'
+  EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.19
+  DBNAME( 'ipHostNumber'  'ipHostNumber' )
+  ACCESS-CLASS normal
+  LENGTH 128
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.21
+  NAME 'ipNetmaskNumber'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.21
+  DBNAME( 'ipNetmaskNumber'  'ipNetmaskNumber' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.21
+  NAME 'ipNetmaskNumber'
+  DESC 'IP netmask as a dotted decimal, eg. 255.255.255.0, omitting leading zeros'
+  EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.21
+  DBNAME( 'ipNetmaskNumber'  'ipNetmaskNumber' )
+  ACCESS-CLASS normal
+  LENGTH 128
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.20
+  NAME 'ipNetworkNumber'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.20
+  DBNAME( 'ipNetworkNumber'  'ipNetworkNumber' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.20
+  NAME 'ipNetworkNumber'
+  DESC 'IP network as a dotted decimal, eg. 192.168, omitting leading zeros'
+  EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.20
+  DBNAME( 'ipNetworkNumber'  'ipNetworkNumber' )
+  ACCESS-CLASS normal
+  LENGTH 128
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.17
+  NAME 'ipProtocolNumber'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.17
+  DBNAME( 'ipProtocolNumber'  'ipProtocolNumber' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.17
+  NAME 'ipProtocolNumber'
+  DESC '  '
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.17
+  DBNAME( 'ipProtocolNumber'  'ipProtocolNumber' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.16
+  NAME 'ipServiceProtocol'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.16
+  DBNAME( 'ipServiceProtocol'  'ipServiceProtocol' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.16
+  NAME 'ipServiceProtocol'
+  DESC 'Ip service protocol.'
+  SUP name
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.16
+  DBNAME( 'ipServiceProtocol'  'ipServiceProtocol' )
+  ACCESS-CLASS normal
+  LENGTH 4000
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.22
+  NAME 'macAddress'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.22
+  DBNAME( 'macAddress'  'macAddress' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.22
+  NAME 'macAddress'
+  DESC 'MAC address in maximal, colon separated hex notation, eg. 00:00:92:90:ee:e2'
+  EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.22
+  DBNAME( 'macAddress'  'macAddress' )
+  ACCESS-CLASS normal
+  LENGTH 128
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.13
+  NAME 'memberNisNetgroup'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.13
+  DBNAME( 'memberNisNetgroup'  'memberNisNetgroup' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.13
+  NAME 'memberNisNetgroup'
+  DESC 'Member NIS netgroup.'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.13
+  DBNAME( 'memberNisNetgroup'  'memberNisNetgroup' )
+  ACCESS-CLASS normal
+  LENGTH 240
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.12
+  NAME 'memberUid'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.12
+  DBNAME( 'memberUid'  'memberUid' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.12
+  NAME 'memberUid'
+  DESC 'Member uid.'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.12
+  DBNAME( 'memberUid'  'memberUid' )
+  ACCESS-CLASS normal
+  LENGTH 240
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.27
+  NAME 'nisMapEntry'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.27
+  DBNAME( 'nisMapEntry'  'nisMapEntry' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.27
+  NAME 'nisMapEntry'
+  DESC 'NIS map entry.'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.27
+  DBNAME( 'nisMapEntry'  'nisMapEntry' )
+  ACCESS-CLASS normal
+  LENGTH 1024
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.26
+  NAME 'nisMapName'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.26
+  DBNAME( 'nisMapName'  'nisMapName' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.26
+  NAME 'nisMapName'
+  DESC 'NIS map name.'
+  SUP name
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.26
+  DBNAME( 'nisMapName'  'nisMapName' )
+  ACCESS-CLASS normal
+  LENGTH 4000
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.14
+  NAME 'nisNetgroupTriple'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.14
+  DBNAME( 'nisNetgroupTriple'  'nisNetgroupTriple' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.14
+  NAME 'nisNetgroupTriple'
+  DESC 'Netgroup triple, uses nisNetgroupTripleSyntax.'
+  EQUALITY caseIgnoreMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.14
+  DBNAME( 'nisNetgroupTriple'  'nisNetgroupTriple' )
+  ACCESS-CLASS normal
+  LENGTH 4000
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.18
+  NAME 'oncRpcNumber'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.18
+  DBNAME( 'oncRpcNumber'  'oncRpcNumber' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.18
+  NAME 'oncRpcNumber'
+  DESC '  '
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.18
+  DBNAME( 'oncRpcNumber'  'oncRpcNumber' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.10
+  NAME 'shadowExpire'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.10
+  DBNAME( 'shadowExpire'  'shadowExpire' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.10
+  NAME 'shadowExpire'
+  DESC '  '
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.10
+  DBNAME( 'shadowExpire'  'shadowExpire' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.11
+  NAME 'shadowFlag'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.11
+  DBNAME( 'shadowFlag'  'shadowFlag' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.11
+  NAME 'shadowFlag'
+  DESC '  '
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.11
+  DBNAME( 'shadowFlag'  'shadowFlag' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.9
+  NAME 'shadowInactive'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.9
+  DBNAME( 'shadowInactive'  'shadowInactive' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.9
+  NAME 'shadowInactive'
+  DESC '  '
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.9
+  DBNAME( 'shadowInactive'  'shadowInactive' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.5
+  NAME 'shadowLastChange'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.5
+  DBNAME( 'shadowLastChange'  'shadowLastChange' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.5
+  NAME 'shadowLastChange'
+  DESC '  '
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.5
+  DBNAME( 'shadowLastChange'  'shadowLastChange' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.7
+  NAME 'shadowMax'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.7
+  DBNAME( 'shadowMax'  'shadowMax' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.7
+  NAME 'shadowMax'
+  DESC '  '
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.7
+  DBNAME( 'shadowMax'  'shadowMax' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.6
+  NAME 'shadowMin'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.6
+  DBNAME( 'shadowMin'  'shadowMin' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.6
+  NAME 'shadowMin'
+  DESC '  '
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.6
+  DBNAME( 'shadowMin'  'shadowMin' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.8
+  NAME 'shadowWarning'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.8
+  DBNAME( 'shadowWarning'  'shadowWarning' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.8
+  NAME 'shadowWarning'
+  DESC '  '
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.8
+  DBNAME( 'shadowWarning'  'shadowWarning' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.0
+  NAME 'uidNumber'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.0
+  DBNAME( 'uidNumber'  'uidNumber' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.6.1.1.1.1.0
+  NAME 'uidNumber'
+  DESC 'An integer uniquely identifying a user in an administrative domain.'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.6.1.1.1.1.0
+  DBNAME( 'uidNumber'  'uidNumber' )
+  ACCESS-CLASS normal
+  LENGTH 11
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.12
+  NAME 'bootableDevice'
+  AUXILIARY
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.12
+  NAME 'bootableDevice'
+  DESC 'A device with boot parameters; device SHOULD be used as a structural class'
+  SUP top
+  AUXILIARY
+  MAY ( bootFile $ bootParameter )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.11
+  NAME 'ieee802Device'
+  AUXILIARY
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.11
+  NAME 'ieee802Device'
+  DESC 'A device with a MAC address; device SHOULD be used as a structural class'
+  SUP top
+  AUXILIARY
+  MAY macAddress
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.6
+  NAME 'ipHost'
+  AUXILIARY
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.6
+  NAME 'ipHost'
+  DESC 'Abstraction of a host, an IP device.  The distinguished value of the cn attribute denotes the hosts canonical name.  Device SHOULD be used as a structural class'
+  SUP top
+  AUXILIARY
+  MUST ( cn $ ipHostNumber )
+  MAY ( l $ description $ manager )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.7
+  NAME 'ipNetwork'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.7
+  NAME 'ipNetwork'
+  DESC 'Abstraction of a network.  The distinguished value of the cn attribute denotes the networks canonical name'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ ipNetworkNumber )
+  MAY ( ipNetmaskNumber $ l $ description $ manager )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.4
+  NAME 'ipProtocol'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.4
+  NAME 'ipProtocol'
+  DESC 'Abstraction of an IP protocol.  Maps a protocol number to one or more names.  The distinguished value of the cn attribute denotes the protocols canonical name.'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ ipProtocolNumber $ description )
+  MAY description
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.3
+  NAME 'ipService'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.3
+  NAME 'ipService'
+  DESC 'Abstraction an Internet Protocol service.  Maps an IP port and protocol (such as tcp or udp) to one or more names; the distinguished value of the cn attribute denotes the services canonical name'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ ipServicePort $ ipServiceProtocol )
+  MAY description
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.9
+  NAME 'nisMap'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.9
+  NAME 'nisMap'
+  DESC 'A generic abstraction of a NIS map'
+  SUP top
+  STRUCTURAL
+  MUST nisMapName
+  MAY description
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.8
+  NAME 'nisNetgroup'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.8
+  NAME 'nisNetgroup'
+  DESC 'Abstraction of a netgroup.  May refer to other netgroups'
+  SUP top
+  STRUCTURAL
+  MUST cn
+  MAY ( nisNetgroupTriple $ memberNisNetgroup $ description )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.10
+  NAME 'nisObject'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.10
+  NAME 'nisObject'
+  DESC 'An entry in a NIS map'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ nisMapEntry $ nisMapName )
+  MAY description
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.5
+  NAME 'oncRpc'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.5
+  NAME 'oncRpc'
+  DESC 'Abstraction of an Open Network Computing (ONC) [RFC1057] Remote Procedure Call (RPC) binding.  This class maps an ONC RPC number to a name.  The distinguished value of the cn attribute denotes the RPC services canonical name'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ oncRpcNumber $ description )
+  MAY description
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.0
+  NAME 'posixAccount'
+  AUXILIARY
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.0
+  NAME 'posixAccount'
+  DESC 'Abstraction of an account with POSIX attributes'
+  SUP top
+  AUXILIARY
+  MUST ( cn $ uid $ uidNumber $ gidNumber $ homeDirectory )
+  MAY ( userPassword $ loginShell $ gecos $ description )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.2
+  NAME 'posixGroup'
+  STRUCTURAL
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.2
+  NAME 'posixGroup'
+  DESC 'Abstraction of a group of accounts'
+  SUP top
+  STRUCTURAL
+  MUST ( cn $ gidNumber )
+  MAY ( userPassword $ memberUid $ description )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.1
+  NAME 'shadowAccount'
+  AUXILIARY
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.6.1.1.1.2.1
+  NAME 'shadowAccount'
+  DESC 'Additional attributes of shadow passwords'
+  SUP top
+  AUXILIARY
+  MUST uid
+  MAY ( userPassword $ shadowLastChange $ shadowMin $ shadowMax $ shadowWarning $ shadowInactive $ shadowExpire $ shadowFlag $ description )
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.2321
+  NAME 'hostsAllowedLogin'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.2321
+  DBNAME( 'hostsAllowedLogin'  'hostsAllowedLogin' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.2321
+  NAME 'hostsAllowedLogin'
+  DESC 'The names or addresses of computer systems or networks to which a user is allowed to login.'
+  EQUALITY caseIgnoreMatch
+  ORDERING caseIgnoreOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.2321
+  DBNAME( 'hostsAllowedLogin'  'hostsAllowedLogin' )
+  ACCESS-CLASS critical
+  LENGTH 255
+  )
+
+dn:cn=schema
+changetype: modify
+add: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.2322
+  NAME 'hostsDeniedLogin'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  )
+-
+add: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.2322
+  DBNAME( 'hostsDeniedLogin'  'hostsDeniedLogin' )
+  )
+
+dn:cn=schema
+changetype: modify
+replace: attributetypes
+attributetypes: (
+  1.3.18.0.2.4.2322
+  NAME 'hostsDeniedLogin'
+  DESC 'The names or addresses of a computer systems or networks to which a user is not allowed to login.'
+  EQUALITY caseIgnoreMatch
+  ORDERING caseIgnoreOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  USAGE userApplications
+  )
+-
+replace: ibmattributetypes
+ibmattributetypes: (
+  1.3.18.0.2.4.2322
+  DBNAME( 'hostsDeniedLogin'  'hostsDeniedLogin' )
+  ACCESS-CLASS critical
+  LENGTH 255
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.472
+  NAME 'aixAuxAccount'
+  AUXILIARY
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.472
+  NAME 'aixAuxAccount'
+  DESC 'Auxiliary AIX user information objectclass, for use with posixaccount and shadowaccount objectclasses'
+  SUP top
+  AUXILIARY
+  MAY ( passwordChar $ adminGroupNames $ aIXDefaultMACLevel $ aIXFuncMode $ aIXisDCEExport $ aIXLowMACLevel $ aIXPromptMAC $ aIXScreens $ aIXUpperMACLevel $ auditClasses $ authMethod1 $ authMethod2 $ coreSizeLimit $ coreSizeLimitHard $ cPuSize $ cPuSizeHard $ dataSegSize $ dataSegSizeHard $ filePermMask $ fileSizeLimit $ fileSizeLimitHard $ groupList $ groupSwitchUserAllowed $ hostLastLogin $ hostLastUnsuccessfulLogin $ hostsAllowedLogin $ hostsDeniedLogin $ isAdministrator $ isAccountEnabled $ isDaemon $ isLoginAllowed $ isRemoteAccessAllowed $ isSwitchUserAllowed $ ixTimeLastLogin $ ixTimeLastUnsuccessfulLogin $ loginTimes $ maxFailedLogins $ maxLogin $ openFileLimit $ openFileLimitHard $ passwordCheckMethods $ passwordDictFiles $ passwordExpireTime $ passwordHistSize $ passwordMaxRepeatedChars $ passwordMinAlphaChars $ passwordMinDiffChars $ passwordMinLength $ passwordMinOtherChars $ physicalMemLimit $ physicalMemLimitHard $ roleList $ StackSizeLimit $ StackSizeLimitHard $ SystemEnvironment $ terminalAccess $ terminalLastLogin $ terminalLastUnsuccessfulLogin $ timeExpiredLogout $ timeExpireLockout $ trustedPathStatus $ unsuccessfulLoginCount $ userEnvironment $ passwordFlags )
+  )
+
+dn:cn=schema
+changetype: modify
+add: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.473
+  NAME 'aixAuxGroup'
+  AUXILIARY
+  )
+
+dn:cn=schema
+changetype: modify
+replace: objectclasses
+objectclasses: (
+  1.3.18.0.2.6.473
+  NAME 'aixAuxGroup'
+  DESC 'Auxiliary AIX group information objectclass, for use with the posixgroup objectclass.'
+  SUP top
+  AUXILIARY
+  MAY ( aIXGroupAdminList $ aIXisDCEExport $ aIXScreens $ groupPassword $ isAdministrator )
+  )
+

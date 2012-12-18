@@ -1,0 +1,73 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/chksnmpd.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/chksnmpd.sh, libice, aix71B, 1026A_71B 2010-06-11T20:56:26-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+#       COMPONENT_NAME: (ICE) 
+#       FUNCTIONS:      ICE template  
+#       ORIGINS:        27
+#
+#       Syntax:
+#               <command> -{c|e|p}[v] rulename toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode (unimplemented)
+#               -p      - Preview mode (unimplemented)
+#               -v      - verbose mode (unimplemented)
+#               lname   - rule_name
+#               toggle  - Boolean
+#                         false => Disable 
+#                         true  => Enable
+#
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#               This script checks to ensure SNMP community name
+#		has been changed from default. This is a check only.
+#
+#	GEN005300 CAT I
+
+INSTALLDIR=/etc/security/ice/scripts
+. $INSTALLDIR/iceInit
+
+PREREQ_LIST="bos.rte.security,bos.rte.date,bos.rte.ILS"
+checkPrereq
+
+CONF='/etc/snmpd.conf'
+list=`awk '{ if ($1 ~ /^[ \t]*community/ && ($2 ~ /public/ || $2  ~ /private/ || $2  ~ /snmp-trap/ || $2  ~ /password/)) print $1" "$2 }' $CONF`
+
+case ${cflag} in
+	1)	case ${STATUS_ARG} in
+		        true)	case ${list} in	
+					 "")	cur_val=1 ;;	
+
+					*)	print "community name(s) non-compliant: \n $list" >> log_msg 2>&1
+						ice_status=2 ;;
+				esac ;;
+			false)	print "This script does not check default case" >> log_msg 2>&1
+				ice_status=1 ;;
+		esac ;;
+	*)	print "This script does not support -e option." >> log_msg 2>&1
+		ice_status=1 ;;
+esac
+
+Script_Output
+exit 0

@@ -1,0 +1,262 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/network_op.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/network_op.sh, libice, aix710, 1010A_710 2010-03-02T17:21:42-06:00$
+#
+# IBM_PROLOG_END_TAG
+#	COMPONENT_NAME: (ICE) network_op.sh
+#	FUNCTIONS:	None
+#	ORIGINS: 	27
+#
+#	Syntax: 
+#		network_op -{c|e|p}[v] attribute value 
+#	Parameters:
+#		-c	- Check mode
+#		-e	- Enforce mode
+#		-p	- Preview mode
+#		-v	- verbose mode (unimplemented)
+#		attribute	- The network option attribute to set/check
+#		value		- The value to which the attribute is set/checked
+#				  If the value is -2, it means default value has
+#				  to be checked/enforced.
+#
+#	OUTPUT:
+#		0	- success
+#		1	- check/enforce failure
+#
+#	Description:
+#		This script sets/checks the network options attribute to
+#		the given value.When the check mode is used the input value
+#		is checked against the value on the system(end point) 
+
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+###
+#Print Usage
+###
+Usage() {
+	ice_status=1
+	print "usage: \n
+   network_op -{c|e|p}[v] attribute value\n"
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+	print -n "$cur_val%$ice_status%"
+	cat log_msg
+	print
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=
+ice_status=0
+print -n > log_msg 2>&1
+
+
+while getopts :cevp OPT
+do
+        case $OPT in
+                c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+		p)	pflag=1;;
+                ?|:)    Usage
+			Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+	set -x
+fi
+
+#Need atleast 2 arguments
+if [[ $# -lt 2 ]];
+then
+	Usage
+	Script_Output
+	exit 1
+fi
+
+ATTR_ARG=$1
+ATTR_VALUE_ARG=$2
+
+# Some ofthe attributes for network option are 1 or 0. These are
+# represented as booleans in the UI and are sent as true or false.
+# so in those cases the bolean values should be converted to 1 or
+# 0.
+
+if [ "$ATTR_VALUE_ARG" == "true" ]
+then
+	VALUE_ARG=1
+elif [ "$ATTR_VALUE_ARG" == "false" ]
+then
+	VALUE_ARG=0
+else
+	VALUE_ARG=$2
+fi
+
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+	Usage
+	Script_Output
+	exit 1
+fi
+
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+	ECHOPREFIX="echo"
+else
+	ECHOPREFIX=""
+fi
+
+# Check prereqs
+PREREQ=/etc/security/ice/scripts/chkprereq
+
+PREREQ_LIST="bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date"
+
+$ECHOPREFIX $PREREQ $PREREQ_LIST
+
+if [ $? -ne 0  ]
+then
+	print "Prereqs are missing..." >> log_msg 2>&1
+	print "Prereqs needed: " $PREREQ_LIST >> log_msg 2>&1
+	ice_status=1
+	Script_Output
+	exit 0
+fi
+
+# Get the type of $netopt before changing the value.
+type=`no -x $ATTR_ARG|awk -F ',' '{print $(NF-1)}'`
+
+if [ $? -ne 0 ]
+then
+        print "Failed to get network option $ATTR_ARG" >> log_msg 2>&1
+	ice_status=1
+	Script_Output
+        exit 0
+fi
+
+#checking
+if [[ cflag -eq 1 ]];
+then
+        curvalue=`no -o $ATTR_ARG | awk '{print $NF}'`
+	cur_val=$curvalue
+
+	if [ "$VALUE_ARG" == "-2" ]
+	then
+		defvalue=`no -d $ATTR_ARG | awk '{print $NF}'` >> log_msg 2>&1
+
+		# Set back the $ATTR_ARG attribute's value to the current value,
+		# because, the above statement sets $netopt's value to default value.
+		no -o $ATTR_ARG="$curvalue" >> log_msg 2>&1
+
+		if [ "$curvalue" != "$defvalue" ]
+		then
+			print "Network option $ATTR_ARG value should be default but it is $curvalue." >> log_msg 2>&1
+			ice_status=2
+		else
+			cur_val=$defvalue
+		fi
+	elif  [ "$curvalue" != "$VALUE_ARG"  ]
+	then
+                print "Network option $ATTR_ARG value should be $VALUE_ARG but it is $curvalue." >> log_msg 2>&1 
+		ice_status=2
+	fi
+
+	Script_Output
+        exit 0
+fi
+
+###
+#Preview/Enforcing
+###
+
+if [ "$ATTR_ARG" == "tcptr_enable" ] && [ "$VALUE_ARG" == "1" ]
+then
+	$ECHOPREFIX /usr/sbin/tcptr -add 1 12 256 1 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 13 13 256 1 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 14 20 256 1 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 21 21 256 1 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 22 25 256 1 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 26 36 256 1 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 37 37 256 1 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 38 110 512 1 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 111 111 256 1 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 112 9089 512 1 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 9090 9090 10 3 > /dev/null 2>&1
+	$ECHOPREFIX /usr/sbin/tcptr -add 9091 65535 512 1 > /dev/null 2>&1
+fi
+
+# Based on type, set the appropriate argument to network options
+if [ "$type" == "R" ]
+then
+	# This option is to tune n/w options which can be changed
+	# only on a reboot
+
+	opt="-r"
+else
+	# This option is to tune n/w options which can be changed
+	# dynamically
+
+	opt="-p"
+fi
+
+# Set the network options value
+
+if [ "$VALUE_ARG" == "-2" ]
+then
+	$ECHOPREFIX no $opt -d $ATTR_ARG >> log_msg 2>&1
+else
+	$ECHOPREFIX no $opt -o $ATTR_ARG=$VALUE_ARG >> log_msg 2>&1
+fi
+
+if [ $? -ne 0 ]
+then
+	print "Failed to set network option $ATTR_ARG to $VALUE_ARG" >> log_msg 2>&1
+	ice_status=1
+fi
+	
+Script_Output
+exit 0

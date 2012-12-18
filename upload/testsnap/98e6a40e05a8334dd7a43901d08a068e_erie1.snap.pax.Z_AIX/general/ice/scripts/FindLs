@@ -1,0 +1,43 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/FindLs.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/FindLs.sh, libice, aix71B, 1026A_71B 2010-06-11T20:57:02-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+##################################
+## wwwrite : rm world write bit ##
+## susgid : remove suid sgid    ##
+## devwrite : g-w o-w dev files ##
+## sticky : add sticky bit      ##
+##################################
+
+case ${2} in
+	wwwrite)	octalperms=`perl -e 'printf "%o\n",(stat shift)[2] & 07775' ${3}`
+			echo ${1} ${octalperms} `ls -dlL ${3}` ;;
+	susgid)		octalperms=`perl -e 'printf "%o\n",(stat shift)[2] & 00777' ${3}`
+			echo ${1} ${octalperms} `ls -dlL ${3}` ;;
+	devwrite)	octalperms=`perl -e 'printf "%o\n",(stat shift)[2] & 07555' ${3}`
+			echo ${1} ${octalperms} `ls -dlL ${3}` ;;
+	sticky)		octalperms=`perl -e 'printf "%o\n", (stat shift)[2] & 07777 | 1000' ${3}`
+			echo ${1} ${octalperms} `ls -dlL ${3}` ;;
+
+	*)		echo ${1} ${2} `ls -dlL ${3}` ;;
+esac
+
+exit 0

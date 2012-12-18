@@ -1,0 +1,191 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/chetchostsfiles.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/chetchostsfiles.sh, libice, aix710, 1020A_710 2010-05-03T14:26:21-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+#GEN006620
+#GEN005540
+
+INSTALLDIR=/etc/security/ice/scripts
+. $INSTALLDIR/iceInit
+
+PREREQ_LIST="bos.rte.date,bos.rte.commands,bos.rte.shell,bos.rte.ILS"
+
+checkPrereq
+
+##########
+#checking
+##########
+DENYFILE=/etc/hosts.deny
+DENY=hosts.deny
+ALLOWFILE=/etc/hosts.allow
+ALLOW=hosts.allow
+SSHDFILE=/etc/ssh/sshd_config
+if [[ cflag -eq 1 ]];
+then
+	if [ ! -s $DENYFILE -o ! -s $ALLOWFILE ]
+	then
+		cur_val=0
+		if [ "$STATUS_ARG" = "true" ]
+		then
+			print "$DENYFILE or $ALLOWFILE either does not exist or empty.  $DENY and $ALLOW must be used to deny or grant system access to specific hosts." >> log_msg 2>&1
+			ice_status=2
+			Script_Output
+			exit 0
+		fi
+	else
+		cur_val=1
+		if [ "$STATUS_ARG" = "false" ]
+		then
+			print "$DENYFILE or $ALLOWFILE exists.  $DENY and $ALLOW must not be used to deny or grant system access to specific hosts." >> log_msg 2>&1
+			ice_status=2
+			Script_Output
+			exit 0
+		else
+			if [ -s $DENYFILE ]
+			then
+				if [ `grep -c "ALL\:ALL" $DENYFILE` -eq 0 ]
+				then
+					print "$DENYFILE does not have ALL:ALL entry in it." >> log_msg 2>&1
+					#GEN005540 no need to check for sshd because GEN006620
+					#requires ALL:ALL
+					ice_status=2
+					Script_Output
+					exit 0
+				fi
+			fi
+		fi
+	fi
+
+	#GEN005540
+	if [ `grep -v "^#" $SSHDFILE | grep -i -c "banner"` -gt 0 ]
+	then
+		if [ "$STATUS_ARG" = "false" ]
+		then
+			cur_val=1
+			print "banner entry exists in $SSHDFILE." >> log_msg 2>&1
+			ice_status=2
+			Script_Output
+			exit 0
+		fi
+	else
+		if [ "$STATUS_ARG" = "true" ]
+		then
+			cur_val=0
+			print "banner entry does not exist in $SSHDFILE." >> log_msg 2>&1
+			ice_status=2
+			Script_Output
+			exit 0
+		fi
+	fi
+
+	Script_Output
+	exit 0
+fi
+
+###
+#Preview/Enforcing
+###
+
+cur_val=
+if [ ! -s $DENYFILE -o ! -s $ALLOWFILE ]
+then
+	if [ "$STATUS_ARG" = "true" ]
+	then
+		if [ -s $DENYFILE ]
+		then
+			if [ -d $TMPDIR ]
+			then
+				if [ ! -e $TMPDIR/$DENY ]
+				then
+					$ECHOPREFIX mv $DENYFILE $TMPDIR >> log_msg 2>&1
+				fi
+			fi
+		fi
+		echo "ALL:ALL" > $DENYFILE
+		if [ $? -ne 0 ]
+		then
+			ice_status=1
+			print "Error in setting $DENYFILE file." >> log_msg 2>&1
+		fi
+
+		if [ -s $ALLOWFILE ]
+		then
+			if [ -d $TMPDIR ]
+			then
+				if [ ! -e $TMPDIR/$ALLOW ]
+				then
+					$ECHOPREFIX mv $ALLOWFILE $TMPDIR >> log_msg 2>&1
+				fi
+			fi
+		fi
+		echo "#" > $ALLOWFILE
+		if [ $? -ne 0 ]
+		then
+			ice_status=1
+			print "Error in setting $DENYFILE file." >> log_msg 2>&1
+		fi
+	fi
+else
+	if [ "$STATUS_ARG" = "false" ]
+	then
+		if [ -s $DENYFILE ]
+		then
+			if [ -d $TMPDIR ]
+			then
+				if [ ! -e $TMPDIR/$DENY ]
+				then
+					$ECHOPREFIX mv $DENYFILE $TMPDIR >> log_msg 2>&1
+				fi
+			fi
+		fi
+		if [ -e $DENYFILE ]
+		then
+			rm $DENYFILE
+			if [ $? -ne 0 ]
+			then
+				ice_status=1
+				print "Error in removing $DENYFILE." >> log_msg 2>&1
+			fi
+		fi
+
+		if [ -s $ALLOWFILE ]
+		then
+			if [ -d $TMPDIR ]
+			then
+				if [ ! -e $TMPDIR/$ALLOW ]
+				then
+					$ECHOPREFIX mv $ALLOWFILE $TMPDIR >> log_msg 2>&1
+				fi
+			fi
+		fi
+		if [ -e $ALLOWFILE ]
+		then
+			rm $ALLOWFILE
+			if [ $? -ne 0 ]
+			then
+				ice_status=1
+				print "Error in removing $ALLOWFILE." >> log_msg 2>&1
+			fi
+		fi
+	fi
+fi
+Script_Output
+exit 0

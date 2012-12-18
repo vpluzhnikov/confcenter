@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="iooParam" version="2.1">
+
+	<ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="22" msgNum="1">ioo parameters</NLSCatalog></ShortDescription>
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="22" msgNum="2">Parameter definition for the ioo command</NLSCatalog></Description>
+
+	<CfgMethod id="ioo">
+		<Get type="current">
+			<Command>/usr/sbin/ioo -aF</Command>
+			<Filter>/usr/bin/grep -v '= n/a$'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>/usr/sbin/ioo -r -aF</Command>
+			<Filter>/usr/bin/grep -v '= n/a$'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+		</Get>
+
+		<Set type="permanent">
+			<!-- echo yes is to answer prompt to set restricted variables if required
+			     change if a parameter is ever introduced that requires a bosboot -->
+			<Command>TMP_SET_ARGS=%a; if [[ -n $TMP_SET_ARGS ]]; then echo yes | /usr/sbin/ioo -p $TMP_SET_ARGS; fi</Command>
+			<Argument>`if [ %v1 != 'n/a' ]; then echo ' -o '%p=%v1; fi`</Argument>
+		</Set>
+
+		<Set type="nextboot">
+			<Command>TMP_SET_ARGS=%a; if [[ -n $TMP_SET_ARGS ]]; then echo yes | /usr/sbin/ioo -r $TMP_SET_ARGS; fi</Command>
+			<Argument>`if [ %v1 != 'n/a' ]; then echo ' -o '%p=%v1; fi`</Argument>
+
+		</Set>
+	</CfgMethod>
+
+	<ParameterDef name="aio_active" type="boolean">
+		<!-- static parameter: do not reference a config method with set commands -->
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_active | /usr/bin/tail -n +2"/></Description>
+		<Get type="current">
+			<Command>/usr/sbin/ioo -aF</Command>
+			<Filter>/usr/bin/grep -v '= n/a$'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>/usr/sbin/ioo -r -aF</Command>
+			<Filter>/usr/bin/grep -v '= n/a$'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+		</Get>
+	</ParameterDef>
+
+	<ParameterDef name="aio_maxreqs" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_maxreqs | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="aio_maxservers" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_maxservers | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="aio_minservers" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_minservers | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="aio_server_inactivity" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_server_inactivity | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_atimeUpdateSymlink" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_atimeUpdateSymlink | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_dynamicBufferPreallocation" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_dynamicBufferPreallocation | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_inodeCacheSize" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_inodeCacheSize | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_maxPageReadAhead" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_maxPageReadAhead | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_maxRandomWrite" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_maxRandomWrite | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_metadataCacheSize" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_metadataCacheSize | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_minPageReadAhead" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_minPageReadAhead | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_nPagesPerWriteBehindCluster" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_nPagesPerWriteBehindCluster | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_nRandomCluster" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_nRandomCluster | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_syncPageCount" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_syncPageCount | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="j2_syncPageLimit" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_syncPageLimit | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="lvm_bufcnt" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h lvm_bufcnt | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="maxpgahead" cfgmethod="ioo" type="integer">
+	    <Description><NLSCommand command="/usr/sbin/ioo -h maxpgahead | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+	<ParameterDef name="maxrandwrt" cfgmethod="ioo" type="integer">
+	    <Description><NLSCommand command="/usr/sbin/ioo -h maxrandwrt | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+	<ParameterDef name="numclust" cfgmethod="ioo" type="integer">
+	    <Description><NLSCommand command="/usr/sbin/ioo -h numclust | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+	<ParameterDef name="numfsbufs" cfgmethod="ioo" type="integer">
+	    <Description><NLSCommand command="/usr/sbin/ioo -h numfsbufs | /usr/bin/tail -n +2"/></Description>
+        </ParameterDef>
+
+	<ParameterDef name="pd_npages" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h pd_npages | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="posix_aio_active" type="boolean">
+		<!-- static parameter: do not reference a config method with set commands -->
+                <Description><NLSCommand command="/usr/sbin/ioo -h posix_aio_active | /usr/bin/tail -n +2"/></Description>
+		<Get type="current">
+			<Command>/usr/sbin/ioo -aF</Command>
+			<Filter>/usr/bin/grep -v '= n/a$'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>/usr/sbin/ioo -r -aF</Command>
+			<Filter>/usr/bin/grep -v '= n/a$'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+		</Get>
+        </ParameterDef>
+
+	<ParameterDef name="posix_aio_maxreqs" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h posix_aio_maxreqs | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="posix_aio_maxservers" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h posix_aio_maxservers | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="posix_aio_minservers" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h posix_aio_minservers | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="posix_aio_server_inactivity" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h posix_aio_server_inactivity | /usr/bin/tail -n +2"/></Description>
+	</ParameterDef>
+
+	<SubCat id="restricted">
+	    <ParameterDef name="aio_fastpath" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_fastpath | /usr/bin/tail -n +2"/></Description>
+	    </ParameterDef>
+
+	    <ParameterDef name="aio_fsfastpath" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_fsfastpath | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="aio_kprocprio" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_kprocprio | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="aio_multitidsusp" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_multitidsusp | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="aio_sample_rate" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_sample_rate | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="aio_samples_per_cycle" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h aio_samples_per_cycle | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="j2_maxUsableMaxTransfer" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_maxUsableMaxTransfer | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="j2_nBufferPerPagerDevice" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_nBufferPerPagerDevice | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="j2_nonFatalCrashesSystem" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_nonFatalCrashesSystem | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="j2_syncModifiedMapped" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_syncModifiedMapped | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="j2_syncdLogSyncInterval" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_syncdLogSyncInterval | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="j2_unmarkComp" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h j2_unmarkComp | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="jfs_clread_enabled" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h jfs_clread_enabled | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="jfs_use_read_lock" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h jfs_use_read_lock | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="memory_frames" type="integer">
+		<!-- static parameter: do not reference a config method with set commands -->
+		<Description><NLSCommand command="/usr/sbin/ioo -h memory_frames | /usr/bin/tail -n +2"/></Description>
+		<Get type="current">
+			<Command>/usr/sbin/ioo -aF</Command>
+			<Filter>/usr/bin/grep -v '= n/a$'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>/usr/sbin/ioo -r -aF</Command>
+			<Filter>/usr/bin/grep -v '= n/a$'</Filter>
+			<Mask name="1" value="2">[[:space:]]*(.*) = (.*)</Mask>
+		</Get>
+            </ParameterDef>
+
+	    <ParameterDef name="minpgahead" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h minpgahead | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="pcibus_dma_memory_protect" cfgmethod="ioo" type="boolean">
+                <Description><NLSCommand command="/usr/sbin/ioo -h pcibus_dma_memory_protect | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="pgahd_scale_thresh" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h pgahd_scale_thresh | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="posix_aio_fastpath" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h posix_aio_fastpath | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="posix_aio_fsfastpath" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h posix_aio_fsfastpath | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="posix_aio_kprocprio" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h posix_aio_kprocprio | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="posix_aio_sample_rate" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h posix_aio_sample_rate | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="posix_aio_samples_per_cycle" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h posix_aio_samples_per_cycle | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="pv_min_pbuf" cfgmethod="ioo" type="integer">
+		<Description><NLSCommand command="/usr/sbin/ioo -h pv_min_pbuf | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+
+	    <ParameterDef name="sync_release_ilock" cfgmethod="ioo" type="boolean">
+		<Description><NLSCommand command="/usr/sbin/ioo -h sync_release_ilock | /usr/bin/tail -n +2"/></Description>
+            </ParameterDef>
+	</SubCat>
+</Catalog>

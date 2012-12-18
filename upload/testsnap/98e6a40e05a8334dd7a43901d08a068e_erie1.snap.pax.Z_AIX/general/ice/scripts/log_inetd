@@ -1,0 +1,126 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/log_inetd.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/log_inetd.sh, libice, aix710, 1020A_710 2010-05-03T14:26:08-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+#
+#       Description:
+#		GEN003800: CAT III
+#               This script enables/disables inetd with -d option.
+#		-d option sends debugging messages to syslog.
+#		This script should be run with superuser privileges.
+
+INSTALLDIR=/etc/security/ice/scripts
+. $INSTALLDIR/iceInit
+
+PREREQ_LIST="bos.rte.security,bos.rte.date,bos.rte.ILS"
+
+checkPrereq
+
+#check to see if inetd is running
+inetdRunning=`ps -ef | grep -v grep | egrep inetd`
+if [ `ps -e | grep -v grep | egrep -c inetd` -eq 0 ]
+then 
+	print "inetd is not running." >> log_msg 2>&1
+	ice_status=1
+	Script_Output
+	exit 0
+fi
+
+INETDFILE=/etc/inetd.conf
+LOGOPT=d
+
+logEnable=`ps -ef | grep -v grep | egrep inetd | tr -s ' ' | cut -d' ' -f8- | grep -c "\-$LOGOPT"`
+
+#checking
+if [[ cflag -eq 1 ]];
+then
+	#check if inetd -d is there
+	if [ $logEnable -eq 0 ]
+	then
+		#no -d
+		cur_val=0
+		if [ "$STATUS_ARG" = "true" ]
+		then
+			print "inetd logging is disabled and logging should be enabled." >> log_msg 2>&1
+			ice_status=2
+		fi
+	else
+		#-d is there
+		cur_val=1
+		if [ "$STATUS_ARG" = "false" ]
+		then
+			print "inetd logging is enabled and logging should be disabled." >> log_msg 2>&1
+			ice_status=2
+		fi
+	fi
+	Script_Output
+	exit 0
+fi
+
+###
+#Preview/Enforcing
+###
+
+cur_val=
+if [ $logEnable -eq 0 ]
+then
+	#no -d
+	if [ "$STATUS_ARG" = "true" ]
+	then
+		#stop inetd
+		$ECHOPREFIX stopsrc -s inetd >> log_msg 2>&1
+		if [ $? -ne 0 ]
+		then
+			ice_status=1
+			print "Error in stopping inetd." log_msg 2>&1
+		fi
+
+		#start inetd
+		$ECHOPREFIX startsrc -a -d -s inetd >> log_msg 2>&1
+		if [ $? -ne 0 ]
+		then
+			ice_status=1
+			print "Error in starting inetd." log_msg 2>&1
+		fi
+	fi
+else
+	#-d is there
+	if [ "$STATUS_ARG" = "false" ]
+	then
+		#stop inetd
+		$ECHOPREFIX stopsrc -s inetd >> log_msg 2>&1
+		if [ $? -ne 0 ]
+		then
+			ice_status=1
+			print "Error in stopping inetd." log_msg 2>&1
+		fi
+
+		#start inetd
+		$ECHOPREFIX startsrc -s inetd >> log_msg 2>&1
+		if [ $? -ne 0 ]
+		then
+			ice_status=1
+			print "Error in starting inetd." log_msg 2>&1
+		fi
+	fi
+fi
+
+Script_Output
+exit 0

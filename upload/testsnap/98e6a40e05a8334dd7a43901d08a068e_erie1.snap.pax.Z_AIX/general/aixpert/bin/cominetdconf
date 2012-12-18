@@ -1,0 +1,361 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos61F src/bos/usr/lib/security/aixpert/scripts/cominetdconf.sh 1.8 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006,2008 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)83	1.8  src/bos/usr/lib/security/aixpert/scripts/cominetdconf.sh, aixpert, bos61F, 0835A_61F 8/1/08 17:07:38
+# IBM_PROLOG_END_TAG 
+#	COMPONENT_NAME		: (AIXPERT) cominetdconf.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: The script takes 3/4 command line arguments.
+#				The first argument specifies the service in
+#				/etc/inetd.conf to be disabled/enabled. 
+#				The Second argument mentions the protocol used
+#				by the service specified by the first argument.
+#				The third argument mentions whether the service
+#				has to be disabled/enabled. Value 'a' indicates
+#				that the service should be enabled and value 'd'
+#				indicates that the service has to be disabled.
+#				Fourth argument is optional and if provided
+#				indicates that the undo xml rule has to be
+#				generated dynamically.
+#				Syntax - cominetdconf service protocol {d|a} [rulename]
+#
+#	OUTPUT			: None
+#
+#	Description		: This script activates/deactivates an entry in
+#				the configuration file /etc/inetd.conf
+#				It generates an undo XML rule with shortname
+#				as "Undo$4 <timestamp>", if the fourth argument
+#				is provided. This script should be run with
+#				superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+# Initialize variables AIXPERT_FIFO, LOG, REPORT and UNDOXML
+. /etc/security/aixpert/bin/initialize_variables
+
+TMP=/etc/security/aixpert/tmp/cominetdconf
+INETD=/etc/inetd.conf
+PID=$$
+
+# This function disables/enables the service specified by $1,
+# depending on argument $3
+disable_or_enable_service()
+{
+# When the service is disabled, kill all the instances of it
+# Get the server program name associated with service specified by $1
+dmnorproc=`grep -w "^[ \t]*[#]*$1[ \t]*.*$2" $INETD|awk '{print $7}'`
+
+if [ -n "$dmnorproc" ]
+then
+	# Check whether string specified by argument $1 is a daemon or not.
+	lssrc -t $1
+	if [ $? -eq 0 ]
+	then
+		stat=`lssrc -t $1|tail -1|awk '{print $NF}'`
+		# Status specified by $3 is "disable"
+		if [ "$3" = "d" ]
+		then
+			if [ "$stat" = "active" ]
+			then
+				if [ "$report" = "1" ]
+				then
+					counter=`expr $counter + 1`
+					dspmsg -s 5 aixpert.cat 4\
+ "cominetdconf.sh: Daemon %s is in active state now, however it should\
+ be inoperative\n" $dmnorproc >>$REPORT
+					dspmsg -s 5 aixpert.cat 4\
+ "cominetdconf.sh: Daemon %s is in active state now, however it should\
+ be inoperative\n" $dmnorproc >>$AIXPERT_FIFO
+				else
+# Get the pid of the daemon
+# there can be multiple instances of the service, kill them all
+ps -eo pid,comm|grep -w $dmnorproc|awk '{print $1}'|while read pid
+					do
+						# Check whether the current script is
+						# a descendant of $pid
+						rmtexe=`ps -o pid -T $pid | grep $PID`
+						if [ -z "$rmtexe" ]
+						then
+							kill -9 $pid
+						fi
+					done
+				fi
+			fi
+		# Status specified by $3 is "enable"
+		else
+			if [ "$stat" = "inoperative" ]
+			then
+				if [ "$report" = "1" ]
+				then
+					counter=`expr $counter + 1`
+					dspmsg -s 5 aixpert.cat 5\
+ "cominetdconf.sh: Daemon %s is in inoperative state now, however it should\
+ be active\n" $dmnorproc >>$REPORT
+					dspmsg -s 5 aixpert.cat 5\
+ "cominetdconf.sh: Daemon %s is in inoperative state now, however it should\
+ be active\n" $dmnorproc >>$AIXPERT_FIFO
+				else
+					startsrc -t $1
+				fi
+			fi
+		fi
+	else
+		# Status specified by $3 is "disable"
+		if [ "$3" = "d" ]
+		then
+			# Get the instances of the service,
+			# which are currently running
+			ps -eo pid,comm | grep -w $dmnorproc |\
+ awk '{print $1}' | while read pid
+			do
+				# Dynamic Security Check
+				if [ "$report" = "1" ]
+				then
+					if [ "$dmnorproc" = "ps" ]
+					then
+						break;
+					fi
+					counter=`expr $counter + 1`
+					dspmsg -s 5 aixpert.cat 6\
+ "cominetdconf.sh: Process %s is still running\n" $dmnorproc >>$REPORT
+					dspmsg -s 5 aixpert.cat 6\
+ "cominetdconf.sh: Process %s is still running\n" $dmnorproc >>$AIXPERT_FIFO
+				else
+					# Check whether the current script is
+					# a descendant of $pid
+					rmtexe=`ps -o pid -T $pid | grep $PID`
+					if [ -z "$rmtexe" ]
+					then
+						kill -9 $pid
+					fi
+				fi
+			done
+		# Status specified by $3 is "enable"
+		else
+			pexists=`ps -eo pid,comm | grep -w $dmnorproc |\
+ awk '{print $1}'`
+			if [ -z "$pexists" ]
+			then
+				if [ "$report" = "1" ]
+				then
+					counter=`expr $counter + 1`
+					dspmsg -s 5 aixpert.cat 7\
+ "cominetdconf.sh: Process %s is not running\n" $dmnorproc >>$REPORT
+					dspmsg -s 5 aixpert.cat 7\
+ "cominetdconf.sh: Process %s is not running\n" $dmnorproc >>$AIXPERT_FIFO
+				else
+					# Get the command to be run for enabling
+					# service specified by command line argument 3.
+					runcmd=`grep -w "^[ \t]*[#]*$1[ \t]*.*$2"\
+ $INETD | awk '{ list=list" "$6; for (i=8;i<=NF;i++) list=list" "$i} END {print list}'`
+					# Run the command to enable the service
+					${runcmd} &
+					if [ $? -ne 0 ]
+					then
+						dspmsg -s 5 aixpert.cat 8\
+ "cominetdconf.sh: Command %s failed with return code %s\n" "$runcmd" "$?"
+						exit 1
+					fi
+				fi
+			fi
+		fi
+	fi
+fi
+
+# Exit for Dynamic Security Check
+if [ "$report" = "1" ]
+then
+	if [ $counter -ne 0 ]
+	then
+		exit 1
+	else
+		exit 0
+	fi
+fi
+}
+
+# Log output and errors to /etc/security/aixpert/log/aixpert.log
+exec 1>>$LOG
+exec 2>&1
+
+if [ $# -lt 3 ] || [ $# -gt 4 ] || ( [ "$3" != "d" ] && [ "$3" != "a" ] )
+then
+        dspmsg -s 5 aixpert.cat 1 "Usage :\
+ cominetdconf service protocol {d|a} [rulename]\n"
+        exit 1
+fi
+
+# echo all the commands and the current time and date to the AIXpert log
+set -x
+date
+echo $0
+
+# Check whether the service entry exists and whether it is enabled or disabled
+# Status value 'a' states that the service is uncommented in /etc/inetd.conf.
+# Value 'd' states that the service is commented, and value 'n' specifies
+# that the service entry doesnt exist in the configuration file.
+status=`awk -v serv=$1 -v proto=$2 -v exist="n" '
+	BEGIN {
+	format=sprintf("^[\t ]*%s.*%s",serv,proto);
+	comformat=sprintf("^[\t ]*#[\t ]*%s.*%s",serv,proto);
+	}
+	{
+	if(match($0,format))
+	{
+		exist="a";
+	}
+	else if(match($0,comformat))
+	{
+		exist="d";
+	}
+	}
+	END {
+	printf("%s",exist)
+	}' $INETD`
+
+# Check whether AIXPERT_CHECK_REPORT environment variable is set or not
+report=`echo $AIXPERT_CHECK_REPORT`
+
+# Counter to determine the number of failures in Dynamic Security Check
+counter=0
+
+# This script dynamically generates undo XML rule, if argument count is 4,
+# else it serves as undo script
+if [ $# -eq 4 ]
+then
+	if ( [ "$status" != "n" ] && [ "$status" != "$3" ] )
+	then
+		# Dynamic Security Check
+		if [ "$report" = "1" ]
+		then
+			if [ "$status" = "a" ]
+			then
+				curstat="enabled"
+				desstat="disabled"
+			else
+				curstat="disabled"
+				desstat="enabled"
+			fi
+			counter=`expr $counter + 1`
+			dspmsg -s 5 aixpert.cat 2 "cominetdconf.sh:\
+ Service %s using protocol %s should be %s, however it is %s now\n"\
+ $1 $2 $desstat $curstat >>$REPORT
+			dspmsg -s 5 aixpert.cat 2 "cominetdconf.sh:\
+ Service %s using protocol %s should be %s, however it is %s now\n"\
+ $1 $2 $desstat $curstat >>$AIXPERT_FIFO
+		else
+			# Activate/Deactivate the service specified by $1 by
+			# commenting the entry in /etc/inetd.conf and refresh
+			# the inetd daemon to read the new configuration settings
+			chsubserver -$3 -v $1 -p $2 -r inetd
+
+			if [ $? -ne 0 ]
+			then
+				dspmsg -s 5 aixpert.cat 3 "cominetdconf.sh:\
+ chsubserver command failed with return code %s\n" "$?"
+				exit 1
+			fi
+		fi
+
+		# Disable/enable the service specified by $1, depending on argument $3 
+		disable_or_enable_service $1 $2 $3
+
+	elif [ "$status" = "$3" ]
+	then
+		# Disable/enable the service specified by $1, depending on argument $3
+		disable_or_enable_service $1 $2 $3
+	else
+	# i.e., status==n
+		if [ "$report" = "1" ]
+		then
+			if [ "$3" = "a" ]
+			then
+				desstat="enabled"
+			else
+				desstat="disabled"
+			fi
+			dspmsg -s 5 aixpert.cat 9 "cominetdconf.sh:\
+ Service %s should have status %s, however its entry is missing\
+ from /etc/inetd.conf\n" $1 $3 >>$REPORT
+			dspmsg -s 5 aixpert.cat 9 "cominetdconf.sh:\
+ Service %s should have status %s, however its entry is missing\
+ from /etc/inetd.conf\n" $1 $3 >>$AIXPERT_FIFO
+
+			#Line doesn't exist:
+			# if disable, disable the service and succeed
+			# else, fail
+			if [ "$3" = "d" ]
+			then 
+				disable_or_enable_service $1 $2 $3
+				exit 0
+			else
+				exit 1
+			fi
+		fi
+		dspmsg -s 5 aixpert.cat 10 "cominetdconf.sh:\
+ Service %s's entry missing in /etc/inetd.conf\n" $1
+
+		#Line doesn't exist:
+		# if disable, disable the service and continue
+		# else, fail
+		if [ "$3" = "d" ]
+		then 
+			disable_or_enable_service $1 $2 $3
+		else
+			exit 1
+		fi
+	fi
+	# Echo undo rule to undo.xml	
+	empty=`grep "^<AIXPertUndo>" $UNDOXML`
+	if [ "$empty" = "" ]
+	then
+		echo "\n<AIXPertUndo>\n</AIXPertUndo>" >> $UNDOXML
+	fi		
+
+	# Get the rulename and put it in undo rule
+	name=`echo $AIXPERT_NAME`
+	# Get the rule description & pass it to undo rule
+	desc=`echo $AIXPERT_DESC`
+
+	#Add an undo XML rule to the file $UNDOXML
+	awk -v rulehalf1="\t<AIXPertEntry name=\"$name\">\n\
+\t\t<AIXPertRuleType type=\"Undo\"/>\n\
+\t\t<AIXPertDescription>Undo action for \"$desc\"</AIXPertDescription>\n\
+\t\t<AIXPertPrereqList/>\n"\
+ -v rulehalf2="\t\t<AIXPertCommand>/etc/security/aixpert/bin/cominetdconf\
+</AIXPertCommand>\n\t\t<AIXPertArgs>$1 $2 $status</AIXPertArgs>\n\
+\t\t<AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>\n\
+\t</AIXPertEntry>" '{if(match($0,"^[\t ]*</AIXPertUndo>")==0) print $0;\
+ else print rulehalf1 rulehalf2 "\n" $0}' $UNDOXML >$TMP$PID
+	mv $TMP$PID $UNDOXML
+else
+	# Deactivate/activate the service specified by $1 by commenting
+	# or uncommenting the entry in /etc/inetd.conf and
+	# refresh the inetd daemon to read the new configuration settings
+	chsubserver -$3 -v $1 -p $2 -r inetd
+	if [ $? -ne 0 ]
+	then
+		dspmsg -s 5 aixpert.cat 3 "cominetdconf.sh:\
+ chsubserver command failed with return code %s\n" "$?"
+		exit 1
+	fi
+	# Disable/enable the service specified by $1, depending on argument $3
+	disable_or_enable_service $1 $2 $3
+fi
+
+exit 0

@@ -1,0 +1,47 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/update_te.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/update_te.sh, libice, aix71B, 1026A_71B 2010-06-11T20:56:32-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+which trustchk > /dev/null 2>&1
+
+if [ $? -eq 0 ] ; then
+	list=`cat $FPMFILE | sed "s/ /:/g"`
+	for i in $list
+	do
+		file=`echo $i | awk -F ':' '{ print $2 }'`
+		trustchk -q $file > /dev/null 2>&1
+		if [ $? -eq 0 ] ; then
+			Mode=`echo $i | awk -F ':' '{ print $1 }'`
+			if [ ${#Mode} -eq 4 ] ; then
+				Mode=`echo $Mode | cut -c234`
+			 	sid=`echo $Mode | cut -c1`
+				case ${sid} in
+					4)	trustchk -u $file mode=$Mode,SUID >> log_msg 2>&1 ;;
+					2)	trustchk -u $file mode=$Mode,SGID >> log_msg 2>&1 ;;
+					6)	trustchk -u $file mode=$Mode,SUID,SGID >> log_msg 2>&1 ;;
+					*)	trustchk -u $file mode=$Mode >> log_msg 2>&1 ;;
+				esac
+			else
+				trustchk -u $file mode=$Mode >> log_msg 2>&1
+			fi
+		fi
+	done
+fi

@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--	@(#)77	1.5  src/bos/usr/lib/security/aixpert/msg/ko_KR/SbD.xml, aixpert, bos61J, 0935A_61J 8/21/09 12:43:15	
+
+	COMPONENT_NAME:   (AIXPERT) SbD.xml
+	                          
+	FUNCTIONS:
+	
+	ORIGINS: 27				-->
+			
+	
+<!--	RuleType HLS represents High Level Security Rules
+
+	RuleType Prereq represents Analysis Rules
+
+	Rulenames begin with hls for High Level Security rules
+
+	Specifies all the HLS rules to be applied on firstboot -->
+
+<!--    Please do not Translate the contents of <AIXPertGroup> tag. 
+        Only <AIXPertDescription> tag contents should be translated. -->
+
+
+<AIXPertSecurityHardening>
+  <AIXPertEntry name="prereqbinaudit" function="prereqbinaudit">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>binaudit에 대한 전제조건 규칙: 감사가 실행 중인지 여부를 검사합니다.</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqbinaudit</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqgated" function="prereqgated">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>gated에 대한 전제조건 규칙: 시스템이 라우터로 구성설정되는지 여부를 검사합니다.</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqgated</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqlh" function="prereqlh">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>loginherald에 대한 전제조건 규칙: 헤럴드 값이 설정되는지 여부를 검사합니다.</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqlh</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqnosyn" function="prereqnosyn">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>NoSyn에 대한 전제조건 규칙: IPSec 사용 가능 여부를 검사하고 사용 불가능한 경우, 사용 가능하게 합니다.</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqnosyn</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqrl" function="prereqrl">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>루트 로그인에 대한 전제조건 규칙: 로그인 특권이 있는 비루트 사용자가 있는지 여부를 검사합니다. </AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqrl</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqrrl" function="prereqrrl">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>원격 루트 로그인에 대한 전제조건 규칙: 원격 로그인 특권이 있는 비루트 사용자가 있는지 여부를 검사합니다.</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqrrl</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqtcb" function="prereqtcb">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>TCB에 대한 전제조건 규칙: TCB 사용 가능 여부를 검사합니다.</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqtcb</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqsed" function="prereqsed">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>SED에 대한 전제조건 규칙: 기계가 64비트 커널을 지원하는지 여부를 검사합니다.</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqsed</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqnontcb" function="prereqnontcb">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>비TCB에 대한 전제조건 규칙: 시스템이 비TCB인지 여부를 검사합니다.</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqnontcb</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_minage" function="minage">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>최소 암호 유효 기간: 암호를 변경할 수 있기 전의 최소 기간(주)을 1주로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>minage=1 ALL hls_minage</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_maxage" function="maxage">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>최대 암호 유효 기간: 암호가 유효한 최대 기간(13주)을 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>maxage=13 ALL hls_maxage</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_maxexpired" function="maxexpired">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>만기 후 암호 변경 시간: 만기된 암호를 사용자가 변경할 수 있는 maxage 이후 최대 시간을 2주로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>maxexpired=2 ALL hls_maxexpired</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_minlen" function="minlen">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>최소 암호 길이: 최소 암호 길이를 8로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>minlen=8 ALL hls_minlen</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_minalpha" function="minalpha">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>최소 영문자 수: 암호의 최소 영문자 수를 2로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>minalpha=2 ALL hls_minalpha</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_minother" function="minother">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>최소 비영문자 수: 암호의 최소 비영문자 수를 2로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>minother=2 ALL hls_minother</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_maxrepeats" function="maxrepeats">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>한 문자가 암호에 나타날 수 있는 최대 횟수: 한 문자가 암호에 나타날 수 있는 최대 횟수를 2로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>maxrepeats=2 ALL hls_maxrepeats</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_mindiff" function="mindiff">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>최소 문자 수: 이전 암호에는 없고 새로운 암호에서 필요한 최소 문자 수를 4로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>mindiff=4 ALL hls_mindiff</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_histexpire" function="histexpire">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>암호 재설정 시간: 암호를 재사용할 수 있기 전의 시간(주)을 13주로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>histexpire=13 ALL hls_histexpire</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_histsize" function="histsize">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>암호 재사용 시간: 사용자가 재사용할 수 없는 이전 암호 수를 20으로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>histsize=20 ALL hls_histsize</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_pwdwarntime" function="pwdwarntime">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>암호 만기 경고 시간: 시스템이 암호 변경이 필요하다는 경고를 발행하기 전의 일 수를 5일로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>pwdwarntime=5 ALL hls_pwdwarntime</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_loginretries" function="loginretries">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>계정을 잠그기 전 로그인 시도 횟수: 계정이 사용 불가능하게 되기 전에 각 비루트 사용자 계정에 대한 연속 로그인 시도 실패 횟수를 3으로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>loginretries=3 NONROOT hls_loginretries</AIXPertArgs>
+    <AIXPertGroup>Login policy recommendations</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_logindelay" function="logindelay">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>로그인 실패 간 지연: 로그인 실패 사이의 지연을 10초로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chdefstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/login.cfg logindelay=10 default hls_logindelay</AIXPertArgs>
+    <AIXPertGroup>Login policy recommendations</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_logindisable" function="logindisable">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>로그인 시도 실패 후 로그인 사용 불가능: 포트를 잠그기 전에 포트에서의 로그인 시도 실패 횟수를 10으로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chdefstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/login.cfg logindisable=10 default hls_logindisable</AIXPertArgs>
+    <AIXPertGroup>Login policy recommendations</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_logininterval" function="logininterval">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>로그인 실패 간 간격: 포트가 사용 불가능하게 되기 전에 로그인 시도 실패가 발생해야 하는 포트에 해당하는 시간 간격(300초)을 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chdefstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/login.cfg logininterval=300 default hls_logininterval</AIXPertArgs>
+    <AIXPertGroup>Login policy recommendations</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_loginreenable" function="loginreenable">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>잠금 후 로그인 재사용가능: logindisable에 의해 사용 불가능하게 된 후 포트가 잠금 해제되는 시간 간격(360분)을 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chdefstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/login.cfg loginreenable=360 default hls_loginreenable</AIXPertArgs>
+    <AIXPertGroup>Login policy recommendations</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_logintimeout" function="logintimeout">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>로그인 시간종료: 암호를 입력할 시간 간격(30초)을 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chdefstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/login.cfg logintimeout=30 usw hls_logintimeout</AIXPertArgs>
+    <AIXPertGroup>Login policy recommendations</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_binaudit" function="binaudit">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>binaudit 사용 가능: HLS에 대한 바이너리 감사를 사용 가능하게 합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte,prereqbinaudit</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/binaudit</AIXPertCommand>
+    <AIXPertArgs>h hls_binaudit</AIXPertArgs>
+    <AIXPertGroup>Audit policy recommendations</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disqdaemon" function="disqdaemon">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>qdaemon 사용 불가능: qdaemon을 정지하고 /etc/inittab에 qdaemon 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/comntrows</AIXPertCommand>
+    <AIXPertArgs>qdaemon: /etc/inittab : d hls_disqdaemon</AIXPertArgs>
+    <AIXPertGroup>Rules for /etc/inittab</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_dispiobe" function="dispiobe">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>piobe 디먼 사용 불가능: piobe 디먼을 정지하고 /etc/inittab에서 piobe 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/comntrows</AIXPertCommand>
+    <AIXPertArgs>piobe: /etc/inittab : d hls_dispiobe</AIXPertArgs>
+    <AIXPertGroup>Rules for /etc/inittab</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_dislpd" function="dislpd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>lpd 디먼 사용 불가능: lpd 디먼을 정지하고 /etc/inittab에서 lpd 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/comntrows</AIXPertCommand>
+    <AIXPertArgs>lpd: /etc/inittab : d hls_dislpd</AIXPertArgs>
+    <AIXPertGroup>Rules for /etc/inittab</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disrtngdmn" function="disrtngdmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>라우팅 디먼 사용 불가능: routed 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>routed d hls_disrtngdmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_distimedmn" function="distimedmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>timed 디먼 사용 불가능: timed 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>timed d hls_distimedmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disntpdmn" function="disntpdmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>NTP 디먼 사용 불가능: NTP 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>xntpd d hls_disntpdmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disrwhoddmn" function="disrwhoddmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>rwhod 디먼 사용 불가능: rwhod 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>rwhod d hls_disrwhoddmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_dissnmpdmn" function="dissnmpdmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>SNMP 디먼 사용 불가능: SNMP 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>snmpd d hls_dissnmpdmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disdpid2dmn" function="disdpid2dmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>DPID2 디먼 사용 불가능: DPID2 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>dpid2 d hls_disdpid2dmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_dismrouteddmn" function="dismrouteddmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>mrouted 디먼 사용 불가능: mrouted 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>mrouted d hls_dismrouteddmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disprintdmn" function="disprintdmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>인쇄 디먼 사용 불가능: 인쇄 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>lpd d hls_disprintdmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disdnsdmn" function="disdnsdmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>DNS 디먼 사용 불가능: DNS 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>named d hls_disdnsdmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_dismaildmn" function="dismaildmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>메일 클라이언트 사용 불가능: Sendmail 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>sendmail d hls_dismaildmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disdhcpserv" function="disdhcpserv">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>DHCP 서버 정지: DHCP 서버 디먼을 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>dhcpsd d hls_disdhcpserv</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disdhcpagent" function="disdhcpagent">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>DHCP 에이전트 정지: DHCP 릴레이 에이전트를 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>dhcprd d hls_disdhcpagent</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disdhcpclient" function="disdhcpclient">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>DHCP 클라이언트 정지: DHCP 클라이언트를 정지하고 /etc/rc.tcpip에서 해당 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>dhcpcd d hls_disdhcpclient</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disgateddmn" function="disgateddmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>gated 디먼 사용 불가능: 시스템이 라우터로 구성설정되지 않은 경우, gated 디먼을 정지하고 /etc/rc.tcpip에서 gated 디먼 항목을 주석 처리합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.shell,bos.net.tcp.smit,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,prereqgated</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>gated d hls_disgateddmn</AIXPertArgs>
+    <AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_shell" function="shell">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>rshd 디먼 사용 불가능: /etc/inetd.conf에서 rshd 디먼 항목을 주석 처리하고 모든 rshd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>shell tcp d hls_shell</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_kshell" function="kshell">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>krshd 디먼 사용 불가능: /etc/inetd.conf에서 krshd 디먼 항목을 주석 처리하고 모든 krshd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>kshell tcp d hls_kshell</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rlogin" function="rlogin">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 rlogin 사용 불가능: /etc/inetd.conf에서 rlogind 디먼 항목을 주석 처리하고 모든 rlogind 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>login tcp d hls_rlogin</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_krlogin" function="krlogin">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 krlogind 사용 불가능: /etc/inetd.conf에서 krlogind 디먼 항목을 주석 처리하고 모든 krlogind 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>klogin tcp d hls_krlogin</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rexecd" function="rexecd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 rexecd 사용 불가능: /etc/inetd.conf에서 rexecd 디먼 항목을 주석 처리하고 모든 rexecd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>exec tcp d hls_rexecd</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_comsat" function="comsat">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 comsat 사용 불가능: /etc/inetd.conf에서 comsat 디먼 항목을 주석 처리하고 모든 comsat 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>comsat udp d hls_comsat</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_uucp" function="uucp">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 uucpd 사용 가능: /etc/inetd.conf에서 uucpd 디먼 항목을 주석 처리하고 모든 uucpd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>uucp tcp d hls_uucp</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_bootps" function="bootps">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 bootpd 사용 불가능: /etc/inetd.conf에서 bootpd 디먼 항목을 주석 처리하고 모든 bootpd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>bootps udp d hls_bootps</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_fingerd" function="fingerd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 fingerd 사용 불가능: /etc/inetd.conf에서 fingerd 디먼 항목을 주석 처리하고 모든 fingerd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>finger tcp d hls_fingerd</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_systat" function="systat">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 sysstat 사용 불가능: /etc/inetd.conf에서 sysstat 디먼 항목을 주석 처리하고 모든 sysstat 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>systat tcp d hls_systat</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_netstat" function="netstat">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 netstat 사용 불가능: /etc/inetd.conf에서 netstat 디먼 항목을 주석 처리하고 모든 netstat 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>netstat tcp d hls_netstat</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tftp" function="tftp">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 tftp 사용 불가능: /etc/inetd.conf에서 tftp 디먼 항목을 주석 처리하고 모든 tftpd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>tftp udp d hls_tftp</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_talk" function="talk">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 talk 사용 불가능: /etc/inetd.conf에서 talk 디먼 항목을 주석 처리하고 모든 talkd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>talk udp d hls_talk</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rquotad" function="rquotad">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 rquotad 사용 불가능: /etc/inetd.conf에서 rquotad 디먼 항목을 주석 처리하고 모든 rquotad 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>rquotad udp d hls_rquotad</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rexd" function="rexd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 rexd 사용 불가능: /etc/inetd.conf에서 rexd 디먼 항목을 주석 처리하고 모든 rexecd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>rexd tcp d hls_rexd</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rstatd" function="rstatd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 rstatd 사용 불가능: /etc/inetd.conf에서 rstatd 디먼 항목을 주석 처리하고 모든 rstatd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>rstatd udp d hls_rstatd</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rusersd" function="rusersd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 ruserd 사용 불가능: /etc/inetd.conf에서 ruserd 디먼 항목을 주석 처리하고 모든 ruserd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>rusersd udp d hls_rusersd</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rwalld" function="rwalld">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 rwalld 사용 불가능: /etc/inetd.conf에서 rwalld 디먼 항목을 주석 처리하고 모든 rwalld 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>rwalld udp d hls_rwalld</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_sprayd" function="sprayd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 sprayd 사용 불가능: /etc/inetd.conf에서 sprayd 디먼 항목을 주석 처리하고 모든 sprayd 인스턴스를 종료합니다.</AIXPertDescription> <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>sprayd udp d hls_sprayd</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_pcnfsd" function="pcnfsd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 pcnfsd 사용 불가능: /etc/inetd.conf에서 pcnfsd 디먼 항목을 주석 처리하고 모든 pcnfsd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>pcnfsd udp d hls_pcnfsd</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcpecho" function="tcpecho">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 TCP 반향 서비스 사용 불가능: /etc/inetd.conf에서 TCP 반향 서비스 항목을 주석 처리하고 모든 반향(tcp) 인스턴스를 종료합니다.</AIXPertDescription>  <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>echo tcp d hls_tcpecho</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcpdiscard" function="tcpdiscard">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 TCP 버리기 서비스 사용 불가능: /etc/inetd.conf에서 TCP 버리기 서비스 항목을 주석 처리하고 모든 버리기(tcp) 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>discard tcp d hls_tcpdiscard</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcpchargen" function="tcpchargen">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 TCP Chargen 서비스 사용 불가능: /etc/inetd.conf에서 TCP chargen 서비스 항목을 주석 처리하고 모든 chargen(tcp) 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>chargen tcp d hls_tcpchargen</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcpdaytime" function="tcpdaytime">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 TCP daytime 서비스 사용 불가능: /etc/inetd.conf에서 TCP Daytime 서비스 항목을 주석 처리하고 모든 daytime(tcp) 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>daytime tcp d hls_tcpdaytime</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcptime" function="tcptime">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 TCP 시간 서비스 사용 불가능: /etc/inetd.conf에서 TCP 시간 서비스 항목을 주석 처리하고 모든 timed(tcp) 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>time tcp d hls_tcptime</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udpecho" function="udpecho">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 UDP 반향 서비스 사용 불가능: /etc/inetd.conf에서 UDP 반향 서비스 항목을 주석 처리하고 모든 UDP 반향 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>echo udp d hls_udpecho</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udpdiscard" function="udpdiscard">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 UDP 버리기 서비스 사용 불가능: /etc/inetd.conf에서 UDP 버리기 서비스 항목을 주석 처리하고 모든 UDP 버리기 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>discard udp d hls_udpdiscard</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udpchargen" function="udpchargen">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 UDP chargen 서비스 사용 불가능: /etc/inetd.conf에서 UDP Chargen 서비스 항목을 주석 처리하고 모든 chargen 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>chargen udp d hls_udpchargen</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udpdaytime" function="udpdaytime">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 UDP daytime 서비스 사용 불가능: /etc/inetd.conf에서 UDP Daytime 서비스 항목을 주석 처리하고 모든 daytime 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>daytime udp d hls_udpdaytime</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udptime" function="udptime">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/inetd.conf에서 UDP 시간 서비스 사용 불가능: /etc/inetd.conf에서 UDP 시간 서비스 항목을 주석 처리하고 모든 시간 서비스(udp) 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>time udp d hls_udptime</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ftp" function="ftp">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>FTP 사용 불가능: /etc/inetd.conf에서 ftpd 디먼 항목을 주석 처리하고 모든 ftpd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>ftp tcp d hls_ftp</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_telnet" function="telnet">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Telnet 사용 불가능: /etc/inetd.conf에서 telnetd 디먼 항목을 주석 처리하고 모든 telnetd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>telnet tcp d hls_telnet</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_imapd" function="imapd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>IMAPD 사용 불가능: /etc/inetd.conf에서 imapd 디먼 항목을 주석 처리하고 모든 imapd 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>imap2 tcp d hls_imapd</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_pop3d" function="pop3d">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>POP3D 사용 불가능: /etc/inetd.conf에서 pop3d 디먼 항목을 주석 처리하고 모든 pop3d 인스턴스를 종료합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>pop3 tcp d hls_pop3d</AIXPertArgs>
+    <AIXPertGroup>/etc/inetd.conf Settings</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rmsuidfrmrcmds" function="rmsuidfrmrcmds">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>원격 명령에서 SUID 제거: 원격 명령 rcp, rdist, rexec, remsh, rlogin 및 rsh에서 SUID를 제거합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.rte.control</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rmsuidfrmrcmds</AIXPertCommand>
+    <AIXPertArgs>r hls_rmsuidfrmrcmds</AIXPertArgs>
+    <AIXPertGroup>Disable SUID of commands</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_filepermgr" function="filepermgr">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>파일 사용 권한 관리자: fpm 명령을 높은 옵션으로 실행하여 특권 명령에서 setuid, setgid를 제거합니다.</AIXPertDescription>
+    <AIXPertPrereqList>prereqnontcb,bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/filepermgr</AIXPertCommand>
+    <AIXPertArgs>h hls_filepermgr</AIXPertArgs>
+    <AIXPertGroup>Disable SUID of commands</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disablenfs" function="disablenfs">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>NFS 디먼 정지: NFS 마운트를 제거하고 NFS 디먼을 정지하고 시작부터 NFS를 제거합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte,bos.net.nfs.client</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/nfsconfig</AIXPertCommand>
+    <AIXPertArgs>d hls_disablenfs</AIXPertArgs>
+    <AIXPertGroup>Disable remote services</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disrmtcmds" function="disrmtcmds">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>비보안 명령 사용 불가능: 비보안 명령 rlogin, rsh, rcp 및 tftp를 사용 불가능하게 합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.commands,bos.rte.shell,bos.rte.security,bos.rte.ILS,bos.rte.odm,bos.rte.install,bos.rte.control</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/disrmtcmds</AIXPertCommand>
+    <AIXPertArgs>d hls_disrmtcmds</AIXPertArgs>
+    <AIXPertGroup>Disable remote services</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disrmtdmns" function="disrmtdmns">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>비보안 디먼 사용 불가능: 비보안 디먼 rlogind, rshd 및 tftpd를 사용 불가능하게 합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.commands,bos.rte.shell,bos.rte.security,bos.rte.ILS,bos.rte.odm,bos.rte.install,bos.rte.control</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/disrmtdmns</AIXPertCommand>
+    <AIXPertArgs>d hls_disrmtdmns</AIXPertArgs>
+    <AIXPertGroup>Disable remote services</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rmrhostsnetrc" function="rmrhostsnetrc">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>rhosts 및 netrc 서비스 제거: 사용자 홈 디렉토리에서 .rhosts 및 .netrc 파일을 제거합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rmrhostsnetrc</AIXPertCommand>
+    <AIXPertArgs>h hls_rmrhostsnetrc</AIXPertArgs>
+    <AIXPertGroup>Remove unauthorized access</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rmetchostsequiv" function="rmetchostsequiv">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/hosts.equiv 파일에서 항목 제거: /etc/hosts.equiv 파일에서 항목을 제거합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.net.tcp.client</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rmetchostsequiv</AIXPertCommand>
+    <AIXPertArgs>hls_rmetchostsequiv</AIXPertArgs>
+    <AIXPertGroup>Remove unauthorized access</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_bcastping" function="bcastping">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 bcastping: 네트워크 옵션 bcastping 값을 0으로 설정합니다.</AIXPertDescription>
+	<AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>bcastping=0 s hls_bcastping</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_clean_partial_conns" function="clean_partial_conns">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 clean_partial_conns: 네트워크 옵션 clean_partial_conns 값을 1로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>clean_partial_conns=1 s hls_clean_partial_conns</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_directed_broadcast" function="directed_broadcast">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 directed_broadcast: 네트워크 옵션 directed_broadcast 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>directed_broadcast=0 s hls_directed_broadcast</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_icmpaddressmask" function="icmpaddressmask">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 icmpaddressmask: 네트워크 옵션 icmpaddressmask 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>icmpaddressmask=0 s hls_icmpaddressmask</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipforwarding" function="ipforwarding">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 ipforwarding: 네트워크 옵션 ipforwarding 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipforwarding=0 s hls_ipforwarding</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipignoreredirects" function="ipignoreredirects">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 ipignoreredirects: 네트워크 옵션 ipignoreredirects 값을 1로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipignoreredirects=1 s hls_ipignoreredirects</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsendredirects" function="ipsendredirects">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 ipsendredirects: 네트워크 옵션 ipsendredirects 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipsendredirects=0 s hls_ipsendredirects</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsrcrouteforward" function="ipsrcrouteforward">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 ipsrcrouteforward: 네트워크 옵션 ipsrcrouteforward 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipsrcrouteforward=0 s hls_ipsrcrouteforward</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsrcrouterecv" function="ipsrcrouterecv">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 ipsrcrouterecv: 네트워크 옵션 ipsrcrouterecv 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipsrcrouterecv=0 s hls_ipsrcrouterecv</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsrcroutesend" function="ipsrcroutesend">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 ipsrcroutesend: 네트워크 옵션 ipsrcroutesend 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipsrcroutesend=0 s hls_ipsrcroutesend</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ip6srcrouteforward" function="ip6srcrouteforward">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 ip6srcrouteforward: 네트워크 옵션 ip6srcrouteforward 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ip6srcrouteforward=0 s hls_ip6srcrouteforward</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_nonlocsrcroute" function="nonlocsrcroute">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 nonlocsrcroute: 네트워크 옵션 nonlocsrcroute 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>nonlocsrcroute=0 s hls_nonlocsrcroute</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcp_pmtu_discover" function="tcp_pmtu_discover">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 tcp_pmtu_discover: 네트워크 옵션 tcp_pmtu_discover 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>tcp_pmtu_discover=0 s hls_tcp_pmtu_discover</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udp_pmtu_discover" function="udp_pmtu_discover">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 udp_pmtu_discover: 네트워크 옵션 udp_pmtu_discover 값을 0으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>udp_pmtu_discover=0 s hls_udp_pmtu_discover</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcp_sendspace" function="tcp_sendspace">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 tcp_sendspace: 네트워크 옵션 tcp_sendspace 값을 262144로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>tcp_sendspace=262144 s hls_tcp_sendspace</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcp_recvspace" function="tcp_recvspace">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 tcp_recvspace: 네트워크 옵션 tcp_recvspace 값을 262144로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>tcp_recvspace=262144 s hls_tcp_recvspace</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rfc1323" function="rfc1323">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 rfc1323: 네트워크 옵션 rfc1323 값을 1로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>rfc1323=1 s hls_rfc1323</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcp_mssdflt" function="tcp_mssdflt">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 tcp_mssdflt: 네트워크 옵션 tcp_mssdflt 값을 1448로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>tcp_mssdflt=1448 s hls_tcp_mssdflt</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_sb_max" function="sb_max">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 sb_max: 네트워크 옵션 sb_max 값을 1MB로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>sb_max=1048576 s hls_sb_max</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsecshunhost" function="ipsecshunhost">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>5분 동안 호스트 피하기: 사용하지 않는 포트에 액세스하려는 호스트를 5분 동안 피합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.net.ipsec.keymgt,bos.net.ipsec.rte,bos.net.tcp.client,prereqnosyn</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ipsecshunhosthls</AIXPertCommand>
+    <AIXPertArgs>hls_ipsecshunhost</AIXPertArgs>
+    <AIXPertGroup>IPSec Filter Rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsecshunports" function="ipsecshunports">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>scans 포트로부터 호스트 보호: scans 포트로부터 호스트를 보호하기 위해 5분 동안 취약한 포트를 피합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.net.ipsec.keymgt,bos.net.ipsec.rte,bos.net.tcp.client,prereqnosyn</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ipsecshunports</AIXPertCommand>
+    <AIXPertArgs>hls_ipsecshunports</AIXPertArgs>
+    <AIXPertGroup>IPSec Filter Rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_umask" function="umask">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>오브젝트 작성 사용 권한: 디폴트 오브젝트 작성 사용 권한을 077로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>umask=77 ALL hls_umask</AIXPertArgs>
+    <AIXPertGroup>Miscellaneous Rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_core" function="core">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>코어 파일 크기 설정: 루트의 코어 파일 크기를 0으로 지정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chuserstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/limits core=0 root hls_core</AIXPertArgs>
+    <AIXPertGroup>Miscellaneous Rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_limitsysacc" function="limitsysacc">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>시스템 액세스 제한: 루트를 cron.allow 파일에서 유일한 사용자로 만들고 cron.deny 파일을 제거합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.shell,bos.rte.commands,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/limitsysacc</AIXPertCommand>
+    <AIXPertArgs>h hls_limitsysacc</AIXPertArgs>
+    <AIXPertGroup>Miscellaneous Rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_loginherald" function="loginherald">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>로그인 헤럴드 설정: 로그인 헤럴드를 디폴트 스탠자에 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.rte.commands,prereqlh</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/loginherald</AIXPertCommand>
+    <AIXPertArgs>a hls_loginherald</AIXPertArgs>
+    <AIXPertGroup>Miscellaneous Rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_chetcftpusers" function="chetcftpusers">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>/etc/ftpusers 파일에 루트 사용자 추가: /etc/ftpusers 파일에 루트 사용자 이름을 추가합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chetcftpusers</AIXPertCommand>
+    <AIXPertArgs>a hls_chetcftpusers</AIXPertArgs>
+    <AIXPertGroup>Miscellaneous Rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_removeguest" function="removeguest">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>게스트 계정 제거: 게스트 계정과 해당 파일을 제거합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/execmds</AIXPertCommand>
+    <AIXPertArgs>"rmuser guest; rm -rf /home/guest; ODMDIR=/etc/objrepos odmdelete -qloc0=/home/guest -o inventory"</AIXPertArgs>
+    <AIXPertGroup>Miscellaneous Rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_sedconfig" function="sedconfig">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>SED 기능 사용 가능: SED(Stack Execution Disable) 기능을 사용 가능하게 합니다.</AIXPertDescription>
+    <AIXPertPrereqList>prereqsed,bos.rte.date,bos.rte.commands,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/sedconfig</AIXPertCommand>
+    <AIXPertArgs>hls_sedconfig</AIXPertArgs>
+    <AIXPertGroup>Miscellaneous Rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rootpwdintchk" function="rootpwdintchk">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>루트 암호 무결성 검사: 설정되는 루트 암호가 취약하지 않은지 확인합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chuserstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/user dictionlist=/etc/security/aixpert/dictionary/English root hls_rootpwdintchk</AIXPertArgs>
+    <AIXPertGroup>Miscellaneous Rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcp_tcpsecure" function="tcp_tcpsecure">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 tcp_tcpsecure: 네트워크 옵션 tcp_tcpsecure 값을 7로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>tcp_tcpsecure=7 s hls_tcp_tcpsecure</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_sockthresh" function="sockthresh">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>네트워크 옵션 sockthresh: 네트워크 옵션 sockthresh 값을 60으로 설정합니다.</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>sockthresh=60 s hls_sockthresh</AIXPertArgs>
+    <AIXPertGroup>Tune network options</AIXPertGroup>
+  </AIXPertEntry>
+</AIXPertSecurityHardening>
+
+<!-- ENGL1SH_VERS10N 1.10.1.1 DO NOT REMOVE OR CHANGE THIS LINE -->

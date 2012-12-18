@@ -1,0 +1,206 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/disablehostslpd.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/disablehostslpd.sh, libice, aix710, _BASELINE_, 2010-05-18T13:56:48-05:00$
+#
+# IBM_PROLOG_END_TAG
+#       COMPONENT_NAME: (ICE) disablehostslpd.sh
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax:
+#               disablehostslpd -{c|e|p}[v] rulename toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode (unimplemented)
+#               lname   - rule_name
+#               toggle  - Boolean
+#                         false => Disable 
+#                         true  => Enable
+
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#               This script comments out netgroup entry in /etc/hosts.lpd 
+#               This script should be run with superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+exec 2>&1
+
+###
+#Print Usage
+###
+Usage() {
+        ice_status=1
+        print "usage: \n
+   disablehostslpd -{c|e|p}[v] rulename toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+        print -n "$cur_val%$ice_status%"
+        cat log_msg
+        print
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=0
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+        case $OPT in
+                c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+                p)      pflag=1;;
+                ?|:)    Usage
+                        Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+        set -x
+fi
+
+#Need 1 argument
+if [[ $# -lt 2 ]];
+then
+        Usage
+        Script_Output
+        exit 1
+fi
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+        Usage
+        Script_Output
+        exit 1
+fi
+
+RULE_NAME=$1
+STATUS_ARG=$2
+FILE1=/etc/hosts.lpd
+#Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+        print "Toggle must be true or false" >> log_msg 2>&1
+        Usage
+        Script_Output
+        exit 1
+fi
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+        ECHOPREFIX="echo"
+else
+        ECHOPREFIX=""
+fi
+
+
+#checking
+if [[ cflag -eq 1 ]];
+then
+	if [ "$STATUS_ARG" = "true" ]
+	then
+		awk '$0 !~ /^#/' /etc/hosts.lpd | egrep "\+\@netgroup|\-\@netgroup"
+		if [ $? -eq 0 ]
+		then
+			ice_stauts=2
+			cur_val=false
+			print "Uncommented netgroup entry exists." >> log_msg 2>&1
+		else
+			ice_status=0
+			cur_val=true
+			print "Netgroup entry is commented out." >> log_msg 2>&1
+		fi
+	else
+		ice_status=0
+		cur_value=false
+		print "Netgroup entry is ignored." >> log_msg 2>&1
+	fi	
+	Script_Output
+	exit 0
+fi
+
+###
+#Preview/Enforcing
+###
+	if [ "$STATUS_ARG" = "true" ]
+	then
+        $ECHOPREFIX awk -v ng="netgroup" '{
+	if(match($0, ng))
+	{
+		ngstmt=sprintf("%s",$0);
+		outbuf=sprintf("%s", "");
+		if (match(ngstmt, "#"))
+		{
+			outbuf=sprintf("%s", ngstmt);
+		}
+		else
+		{
+			outbuf=sprintf("#%s", ngstmt);
+		}
+                printf("%s\n", outbuf);
+	}
+	else print $0
+}' /etc/hosts.lpd  > inputfile1
+	mv inputfile1 /etc/hosts.lpd
+	print "netgroup entry commented out in /etc/hosts.lpd file." >> log_msg 2>&1
+	ice_status=0
+	cur_val=true
+	else 
+		if [ "$STATUS_ARG" = "false" ]
+		then
+			ice_status=0
+			cur_val=false
+			print "netgroup entry is ignored in /etc/hosts.lpd file." >> log_msg 2>&1
+		fi
+	fi
+
+Script_Output
+exit 0

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="sysdumpdevParam" version="2.1">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="45" msgNum="1">Changes the primary or secondary dump device designation in a running system.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="45" msgNum="2">Changes the primary or secondary dump device designation in a running system.</NLSCatalog></Description>
+
+  <CfgMethod id="sysdumpdev">
+    <Get type="current">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -l</Command>
+      <Filter>awk -F"  " '{gsub(" ","_",$1);gsub(" ","",$NF);print $1,"=",$NF}' | sed -e "s/TRUE/1/" | sed -e "s/FALSE/0/"</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+    <Get type="nextboot">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -l</Command>
+      <Filter>awk -F"  " '{gsub(" ","_",$1);gsub(" ","",$NF);print $1,"=",$NF}' | sed -e "s/TRUE/1/" | sed -e "s/FALSE/0/"</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+  </CfgMethod>
+
+  <CfgMethod id="copy">
+    <Get type="current">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -l</Command>
+      <Filter>awk -F"  " '{gsub(" ","_",$1);gsub(" ","",$NF);print $1,"=",$NF}' | sed -e "s/TRUE/1/" | sed -e "s/FALSE/0/"</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+    <Get type="nextboot">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -l</Command>
+      <Filter>awk -F"  " '{gsub(" ","_",$1);gsub(" ","",$NF);print $1,"=",$NF}' | sed -e "s/TRUE/1/" | sed -e "s/FALSE/0/"</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+    <Set type="permanent">
+      <Command>export LANG=C; /usr/bin/sysdumpdev `if [ %v1[forced_copy_flag] = '1' ]; then echo " -D"; else echo " -d"; fi` %v1[copy_directory]</Command>
+    </Set>
+    <Set type="nextboot">
+      <Command>export LANG=C; /usr/bin/sysdumpdev `if [ %v1[forced_copy_flag] = '1' ]; then echo " -D"; else echo " -d"; fi` %v1[copy_directory]</Command>
+    </Set>
+  </CfgMethod>
+
+  <ParameterDef name="primary" type="string" cfgmethod="sysdumpdev">
+    <Set type="permanent">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -p %v1</Command>
+    </Set>
+    <Set type="nextboot">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -P -p %v1</Command>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="secondary" type="string" cfgmethod="sysdumpdev">
+    <Set type="permanent">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -s %v1</Command>
+    </Set>
+    <Set type="nextboot">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -P -s %v1</Command>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="copy_directory" type="string" cfgmethod="copy">
+  </ParameterDef>
+
+  <ParameterDef name="forced_copy_flag" type="boolean" cfgmethod="copy">
+  </ParameterDef>
+
+  <ParameterDef name="always_allow_dump" type="boolean" cfgmethod="sysdumpdev">
+    <Set type="permanent">
+      <Command>export LANG=C; /usr/bin/sysdumpdev%a</Command>
+      <Argument>`if [ %v1 = '0' ]; then echo " -k"; else echo " -K"; fi`</Argument>
+    </Set>
+    <Set type="nextboot">
+      <Command>export LANG=C; /usr/bin/sysdumpdev %a</Command>
+      <Argument>`if [ %v1 = '0' ]; then echo " -k"; else echo " -K"; fi`</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="type_of_dump" type="string" reboot="true">
+    <Get type="current">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -l</Command>
+      <Filter>awk -F"  " '{gsub(" ","_",$1);gsub(" ","",$NF);print $1,"=",$NF}' | sed -e "s/TRUE/1/" | sed -e "s/FALSE/0/"</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+    <Get type="nextboot">
+      <Command>export LANG=C; /usr/bin/odmget -q attribute=force_system_dump SWservAt</Command>
+      <Filter>grep value | sed -e "s/TRUE/traditional/" | sed -e "s/FALSE/fw-assisted/"</Filter>
+      <Mask value="1">value = \"(.*)\"</Mask>
+    </Get>
+    <Set type="permanent">
+      <Command>/usr/bin/sysdumpdev -t %v1</Command>
+    </Set>
+    <Set type="nextboot">
+      <Command>/usr/bin/sysdumpdev -t %v1</Command>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="full_memory_dump" type="string" cfgmethod="sysdumpdev">
+    <Set type="permanent">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -f %v1</Command>
+    </Set>
+    <Set type="nextboot">
+      <Command>export LANG=C; /usr/bin/sysdumpdev -f %v1</Command>
+    </Set>
+  </ParameterDef>
+</Catalog>

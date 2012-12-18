@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--	@(#)33	1.7  src/bos/usr/lib/security/aixpert/msg/fr_FR/SbD.xml, aixpert, bos61J, 0933A_61J 7/30/09 13:53:00	
+
+	COMPONENT_NAME:   (AIXPERT) SbD.xml
+	                          
+	FUNCTIONS:
+	
+	ORIGINS: 27				-->
+			
+	
+<!--	RuleType HLS represents High Level Security Rules
+
+	RuleType Prereq represents Analysis Rules
+
+	Rulenames begin with hls for High Level Security rules
+
+	Specifies all the HLS rules to be applied on firstboot -->
+
+<!--    Please do not Translate the contents of <AIXPertGroup> tag. 
+        Only <AIXPertDescription> tag contents should be translated. -->
+
+
+<AIXPertSecurityHardening>
+  <AIXPertEntry name="prereqbinaudit" function="prereqbinaudit">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>Règle préalable à l'audit bin : vérifie si l'audit est en service ou non</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqbinaudit</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqgated" function="prereqgated">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>Règle préalable au mode gated : vérifie si le système est configuré en tant que routeur ou non</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqgated</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqlh" function="prereqlh">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>Règle préalable au message de connexion : vérifie si la valeur de message est définie ou non</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqlh</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqnosyn" function="prereqnosyn">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>Règle préalable à NoSyn : vérifie si le protocole de sécurité IP est activé, et dans la négative, l'active</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqnosyn</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqrl" function="prereqrl">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>Règle préalable à la connexion racine : vérifie s'il existe un non superutilisateur disposant de privilèges de connexion </AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqrl</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqrrl" function="prereqrrl">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>Règle préalable à la connexion racine distante : vérifie s'il existe un non superutilisateur disposant de privilèges de connexion  distante</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqrrl</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqtcb" function="prereqtcb">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>Règle préalable à TCB : vérifie si TCB est activé ou non</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqtcb</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqsed" function="prereqsed">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>Règle préalable à SED : vérifie si la machine gère ou non le noyau 64 bits</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqsed</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="prereqnontcb" function="prereqnontcb">
+    <AIXPertRuleType type="Prereq"/>
+    <AIXPertDescription>Règle préalable au non TCB : vérifie si le système est non TCB ou pas</AIXPertDescription>
+    <AIXPertPrereqList/>
+    <AIXPertCommand>/etc/security/aixpert/bin/prereqnontcb</AIXPertCommand>
+    <AIXPertArgs/>
+    <AIXPertGroup/>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_minage" function="minage">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Age minimum du mot de passe : indique le nombre minimal de semaines (jusqu'à 1) avant qu'un mot de passe ne puisse être modifié</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>minage = 1 ALL hls_minage</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_maxage" function="maxage">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Age maximum du mot de passe : indique le nombre maximal de semaines (13) pendant lesquelles un mot de passe est valide</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>maxage = 13 ALL hls_maxage</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_maxexpired" function="maxexpired">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Délai de modification d'un mot de passe après expiration : indique le nombre maximal de semaines (jusqu'à 2) après maxage pendant lesquelles un mot de passe expiré peut être modifié par l'utilisateur</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>maxexpired = 2 ALL hls_maxexpired</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_minlen" function="minlen">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Longueur minimum de mot de passe : règle la longueur minimale d'un mot de passe sur 8</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>minlen = 8 ALL hls_minlen</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_minalpha" function="minalpha">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Nombre minimal de caractères alphabétiques : règle sur 2 le nombre minimal de caractères alphabétiques d'un mot de passe</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>minalpha = 2 ALL hls_minalpha</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_minother" function="minother">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Nombre minimal de caractères non alphabétiques : règle sur 2 le nombre minimal de caractères non alphabétiques d'un mot de passe</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>minother = 2 ALL hls_minother</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_maxrepeats" function="maxrepeats">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Nombre maximum de fois où un caractère peut apparaître dans un mot de passe : règle sur 2 le nombre maximal d'occurrences d'un caractère dans un mot de passe</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>maxrepeats = 2 ALL hls_maxrepeats</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_mindiff" function="mindiff">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Nombre minimal de caractères : règle sur 4 le nombre minimal de caractères d'un mot de passe qui ne figuraient pas dans l'ancien mot de passe</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>mindiff = 4 ALL hls_mindiff</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_histexpire" function="histexpire">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Délai avant réutilisation d'un mot de passe : règle sur 13 le nombre de semaines avant qu'un mot de passe ne puisse être réutilisé</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>histexpire = 13 ALL hls_histexpire</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_histsize" function="histsize">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Mots de passe non réutilisables : règle sur 20 le nombre d'anciens mots de passe qu'un utilisateur ne peut pas réutiliser</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>histsize = 20 ALL hls_histsize</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_pwdwarntime" function="pwdwarntime">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Délai d'avertissement avant expiration de mot de passe : règle sur 5 le nombre de jours avant que le système n'affiche un avertissement indiquant qu'il faut modifier un mot de passe</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>pwdwarntime = 5 ALL hls_pwdwarntime</AIXPertArgs>
+    <AIXPertGroup>Password policy rules</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_loginretries" function="loginretries">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Nombre de tentatives de connexion avant verrouillage du compte : règle sur 3 le nombre de tentatives de connexion infructueuses consécutives pour les utilisateurs non root, avant désactivation de leur compte</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>loginretries = 3 NONROOT hls_loginretries</AIXPertArgs>
+    <AIXPertGroup>Conseils pour la règle d'administration de connexion</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_logindelay" function="logindelay">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Délai entre connexions infructueuses : règle sur 10 secondes le délai entre connexions infructueuses</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chdefstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/login.cfg logindelay = 10 default hls_logindelay</AIXPertArgs>
+    <AIXPertGroup>Conseils pour la règle d'administration de connexion</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_logindisable" function="logindisable">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le port après des tentatives de connexion infructueuses : règle sur 10 le nombre de tentatives de connexion infructueuses sur un port avant que celui-ci ne soit verrouillé</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chdefstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/login.cfg logindisable = 10 default hls_logindisable</AIXPertArgs>
+    <AIXPertGroup>Conseils pour la règle d'administration de connexion</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_logininterval" function="logininterval">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Intervalle entre connexions infructueuses : indique le délai (300 secondes) pendant lequel les tentatives de connexion infructueuses sur un port doivent se produire avant que ce port ne soit désactivé</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chdefstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/login.cfg logininterval = 300 default hls_logininterval</AIXPertArgs>
+    <AIXPertGroup>Conseils pour la règle d'administration de connexion</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_loginreenable" function="loginreenable">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Réactiver le port après verrouillage : indique le délai (360 minutes) au bout duquel un port est déverrouillé après avoir été désactivé par logindisable</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chdefstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/login.cfg loginreenable = 360 default hls_loginreenable</AIXPertArgs>
+    <AIXPertGroup>Conseils pour la règle d'administration de connexion</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_logintimeout" function="logintimeout">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Délai de connexion : indique le délai (30 secondes) de saisie d'un mot de passe</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chdefstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/login.cfg logintimeout = 30 usw hls_logintimeout</AIXPertArgs>
+    <AIXPertGroup>Conseils pour la règle d'administration de connexion</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_binaudit" function="binaudit">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Activer l'audit bin : active l'audit bin pour HLS</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte,prereqbinaudit</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/binaudit</AIXPertCommand>
+    <AIXPertArgs>h hls_binaudit</AIXPertArgs>
+    <AIXPertGroup>Conseils pour la règle d'administration d'audit</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disqdaemon" function="disqdaemon">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver qdaemon : arrête qdaemon et met en commentaire l'entrée qdaemon dans /etc/inittab</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/comntrows</AIXPertCommand>
+    <AIXPertArgs>qdaemon: /etc/inittab : d hls_disqdaemon</AIXPertArgs>
+    <AIXPertGroup>Règles s'appliquant à /etc/inittab</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_dispiobe" function="dispiobe">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon piobe : arrête le démon piobe et met en commentaire l'entrée piobe dans /etc/inittab</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/comntrows</AIXPertCommand>
+    <AIXPertArgs>piobe: /etc/inittab : d hls_dispiobe</AIXPertArgs>
+    <AIXPertGroup>Règles s'appliquant à /etc/inittab</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_dislpd" function="dislpd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon lpd : arrête le démon lpd et met en commentaire l'entrée lpd dans /etc/inittab</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/comntrows</AIXPertCommand>
+    <AIXPertArgs>lpd: /etc/inittab : d hls_dislpd</AIXPertArgs>
+    <AIXPertGroup>Règles s'appliquant à /etc/inittab</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disrtngdmn" function="disrtngdmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon de routage : arrête le démon routed et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>routed d hls_disrtngdmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_distimedmn" function="distimedmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon timed : arrête le démon timed et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>timed d hls_distimedmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disntpdmn" function="disntpdmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon NTP : arrête le démon NTP et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>xntpd d hls_disntpdmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disrwhoddmn" function="disrwhoddmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon rwhod : arrête le démon rwhod et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>rwhod d hls_disrwhoddmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_dissnmpdmn" function="dissnmpdmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon SNMP : arrête le démon SNMP et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>snmpd d hls_dissnmpdmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disdpid2dmn" function="disdpid2dmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon DPID2 : arrête le démon DPID2 et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>dpid2 d hls_disdpid2dmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_dismrouteddmn" function="dismrouteddmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon mrouted : arrête le démon mrouted et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>mrouted d hls_dismrouteddmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disprintdmn" function="disprintdmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon print : arrête le démon print et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>lpd d hls_disprintdmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disdnsdmn" function="disdnsdmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon DNS : arrête le démon DNS et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>named d hls_disdnsdmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_dismaildmn" function="dismaildmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le client de messagerie : arrête le démon Sendmail et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>sendmail d hls_dismaildmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disdhcpserv" function="disdhcpserv">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Arrêter le serveur DHCP : arrête le démon DHCP et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>dhcpsd d hls_disdhcpserv</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disdhcpagent" function="disdhcpagent">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Arrêter l'agent DHCP : arrête l'agent de relais DHCP et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>dhcprd d hls_disdhcpagent</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disdhcpclient" function="disdhcpclient">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Arrêter le client DHCP : arrête le client DHCP et met en commentaire l'entrée associée dans /etc/rc.tcpip</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.smit,bos.rte.shell,bos.rte.date,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>dhcpcd d hls_disdhcpclient</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disgateddmn" function="disgateddmn">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon gated : arrête les démons gated et met en commentaire l'entrée du démon gated dans /etc/rc.tcpip si le système n'est pas configuré en tant que routeur</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.shell,bos.net.tcp.smit,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,prereqgated</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>
+    <AIXPertArgs>gated d hls_disgateddmn</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/rc.tcpip</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_shell" function="shell">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon rshd : met en commentaire l'entrée du démon rshd dans /etc/inetd.conf et détruit toutes les instances de rshd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>shell tcp d hls_shell</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_kshell" function="kshell">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon krshd : met en commentaire l'entrée du démon krshd dans /etc/inetd.conf et détruit toutes les instances de krshd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>kshell tcp d hls_kshell</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rlogin" function="rlogin">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon rlogin dans /etc/inetd.conf : met en commentaire l'entrée du démon rlogind dans /etc/inetd.conf et détruit toutes les instances de rlogind</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>login tcp d hls_rlogin</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_krlogin" function="krlogin">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon krlogind dans /etc/inetd.conf : met en commentaire l'entrée du démon krlogind dans /etc/inetd.conf et détruit toutes les instances de krlogind</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>klogin tcp d hls_krlogin</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rexecd" function="rexecd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon rexecd dans /etc/inetd.conf : met en commentaire l'entrée du démon rexecd dans /etc/inetd.conf et détruit toutes les instances de rexecd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>exec tcp d hls_rexecd</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_comsat" function="comsat">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon comsat dans /etc/inetd.conf : met en commentaire l'entrée du démon comsat dans /etc/inetd.conf et détruit toutes les instances de comsat</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>comsat udp d hls_comsat</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_uucp" function="uucp">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Activer le démon uucpd dans /etc/inetd.conf : met en commentaire l'entrée du démon uucpd dans /etc/inetd.conf et détruit toutes les instances de uucpd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>uucp tcp d hls_uucp</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_bootps" function="bootps">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon bootpd dans /etc/inetd.conf : met en commentaire l'entrée du démon bootpd dans /etc/inetd.conf et détruit toutes les instances de bootpsd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>bootps udp d hls_bootps</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_fingerd" function="fingerd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon fingerd dans /etc/inetd.conf : met en commentaire l'entrée du démon fingerd dans /etc/inetd.conf et détruit toutes les instances de fingerd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>finger tcp d hls_fingerd</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_systat" function="systat">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon sysstat dans /etc/inetd.conf : met en commentaire l'entrée du démon systat dans /etc/inetd.conf et détruit toutes les instances de systat</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>systat tcp d hls_systat</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_netstat" function="netstat">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon netstat dans /etc/inetd.conf : met en commentaire l'entrée du démon netstat dans /etc/inetd.conf et détruit toutes les instances de netstat</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>netstat tcp d hls_netstat</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tftp" function="tftp">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon tftp dans /etc/inetd.conf : met en commentaire l'entrée du démon tftp dans /etc/inetd.conf et détruit toutes les instances de tftpd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>tftp udp d hls_tftp</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_talk" function="talk">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon talk dans /etc/inetd.conf : met en commentaire l'entrée du démon talk dans /etc/inetd.conf et détruit toutes les instances de talkd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>talk udp d hls_talk</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rquotad" function="rquotad">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon rquotad dans /etc/inetd.conf : met en commentaire l'entrée du démon rquotad dans /etc/inetd.conf et détruit toutes les instances de rquotad</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>rquotad udp d hls_rquotad</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rexd" function="rexd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon rexd dans /etc/inetd.conf : met en commentaire l'entrée du démon rexd dans /etc/inetd.conf et détruit toutes les instances de rexecd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>rexd tcp d hls_rexd</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rstatd" function="rstatd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon rstatd dans /etc/inetd.conf : met en commentaire l'entrée du démon rstatd dans /etc/inetd.conf et détruit toutes les instances de rstatd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>rstatd udp d hls_rstatd</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rusersd" function="rusersd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon ruserd dans /etc/inetd.conf : met en commentaire l'entrée du démon rusersd dans /etc/inetd.conf et détruit toutes les instances de rusersd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>rusersd udp d hls_rusersd</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rwalld" function="rwalld">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon rwalld dans /etc/inetd.conf : met en commentaire l'entrée du démon rwalld dans /etc/inetd.conf et détruit toutes les instances de rwalld</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>rwalld udp d hls_rwalld</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_sprayd" function="sprayd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon sprayd dans /etc/inetd.conf : met en commentaire l'entrée du démon sprayd dans /etc/inetd.conf et détruit toutes les instances de sprayd</AIXPertDescription> <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>sprayd udp d hls_sprayd</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_pcnfsd" function="pcnfsd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon pcnfsd dans /etc/inetd.conf : met en commentaire l'entrée du démon pcnfsd dans /etc/inetd.conf et détruit toutes les instances de pcnfsd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>pcnfsd udp d hls_pcnfsd</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcpecho" function="tcpecho">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le service TCP Echo dans /etc/inetd.conf : met en commentaire l'entrée du service TCP Echo dans /etc/inetd.confand et détruit toutes les instances de echo(tcp)</AIXPertDescription>  <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>echo tcp d hls_tcpecho</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcpdiscard" function="tcpdiscard">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le service TCP Discard dans /etc/inetd.conf : met en commentaire l'entrée du service TCP Discard dans /etc/inetd.conf et détruit toutes les instances de discard(tcp)</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>discard tcp d hls_tcpdiscard</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcpchargen" function="tcpchargen">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le service TCP Chargen dans /etc/inetd.conf : met en commentaire l'entrée du service TCP chargen dans /etc/inetd.conf et détruit toutes les instances de chargen(tcp)</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>chargen tcp d hls_tcpchargen</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcpdaytime" function="tcpdaytime">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le service TCP Daytime dans /etc/inetd.conf : met en commentaire l'entrée du service TCP Daytime dans /etc/inetd.confand et détruit toutes les instances de daytime(tcp)</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>daytime tcp d hls_tcpdaytime</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcptime" function="tcptime">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le service TCP Time dans /etc/inetd.conf : met en commentaire l'entrée du service TCP Time dans /etc/inetd.conf et détruit toutes les instances de timed(tcp)</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>time tcp d hls_tcptime</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udpecho" function="udpecho">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le service UDP Echo dans /etc/inetd.conf : met en commentaire l'entrée du service UDP Echo dans /etc/inetd.conf et détruit toutes les instances de UDP Echo</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>echo udp d hls_udpecho</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udpdiscard" function="udpdiscard">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le service UDP Discard dans /etc/inetd.conf : met en commentaire l'entrée du service UDP Discard dans /etc/inetd.conf et détruit toutes les instances de UDP Discard</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>discard udp d hls_udpdiscard</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udpchargen" function="udpchargen">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le service UDP Chargen dans /etc/inetd.conf : met en commentaire l'entrée du service UDP Chargen dans /etc/inetd.conf et détruit toutes les instances de Chargen</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>chargen udp d hls_udpchargen</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udpdaytime" function="udpdaytime">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le service UDP Daytime dans /etc/inetd.conf : met en commentaire l'entrée du service UDP Daytime dans /etc/inetd.conf et détruit toutes les instances de Daytime</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>daytime udp d hls_udpdaytime</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udptime" function="udptime">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le service UDP Time dans /etc/inetd.conf : met en commentaire l'entrée du service UDP Time dans /etc/inetd.conf et détruit toutes les instances de Time (udp)</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>time udp d hls_udptime</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ftp" function="ftp">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon FTP : met en commentaire l'entrée du démon ftpd dans /etc/inetd.conf et détruit toutes les instances de ftpd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>ftp tcp d hls_ftp</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_telnet" function="telnet">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon telnet : met en commentaire l'entrée du démon telnetd dans /etc/inetd.conf et détruit toutes les instances de telnetd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>telnet tcp d hls_telnet</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_imapd" function="imapd">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon IMAPD : met en commentaire l'entrée du démon imapd dans /etc/inetd.conf et détruit toutes les instances de imapd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>imap2 tcp d hls_imapd</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_pop3d" function="pop3d">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver le démon POP3D : met en commentaire l'entrée du démon pop3d dans /etc/inetd.conf et détruit toutes les instances de pop3d</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.net.tcp.client,bos.rte.SRC,bos.rte.date,bos.rte.shell,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/cominetdconf</AIXPertCommand>
+    <AIXPertArgs>pop3 tcp d hls_pop3d</AIXPertArgs>
+    <AIXPertGroup>Paramètres /etc/inetd.conf</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rmsuidfrmrcmds" function="rmsuidfrmrcmds">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Supprimer SUID des commandes distantes : supprime SUID des commandes distantes rcp, rdist, rexec, remsh, rlogin et rsh</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.rte.control</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rmsuidfrmrcmds</AIXPertCommand>
+    <AIXPertArgs>r hls_rmsuidfrmrcmds</AIXPertArgs>
+    <AIXPertGroup>Désactiver SUID pour les commandes</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_filepermgr" function="filepermgr">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Gestionnaire de droits d'accès aux fichiers : exécute la commande fpm avec l'option élevée de suppression de setuid et de setgid des commandes privilégiées</AIXPertDescription>
+    <AIXPertPrereqList>prereqnontcb,bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/filepermgr</AIXPertCommand>
+    <AIXPertArgs>h hls_filepermgr</AIXPertArgs>
+    <AIXPertGroup>Désactiver SUID pour les commandes</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disablenfs" function="disablenfs">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Arrêter le démon NFS : supprime les montages NFS, arrête les démons NFS et exclut NFS du démarrage</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte,bos.net.nfs.client</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/nfsconfig</AIXPertCommand>
+    <AIXPertArgs>d hls_disablenfs</AIXPertArgs>
+    <AIXPertGroup>Désactiver les services distants</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disrmtcmds" function="disrmtcmds">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver les commandes non sécurisées : désactive les commandes non sécurisées rlogin, rsh, rcp et tftp</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.commands,bos.rte.shell,bos.rte.security,bos.rte.ILS,bos.rte.odm,bos.rte.install,bos.rte.control</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/disrmtcmds</AIXPertCommand>
+    <AIXPertArgs>d hls_disrmtcmds</AIXPertArgs>
+    <AIXPertGroup>Désactiver les services distants</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_disrmtdmns" function="disrmtdmns">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Désactiver les démons non sécurisés : désactive les démons non sécurisés rlogind, rshd et tftpd</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.commands,bos.rte.shell,bos.rte.security,bos.rte.ILS,bos.rte.odm,bos.rte.install,bos.rte.control</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/disrmtdmns</AIXPertCommand>
+    <AIXPertArgs>d hls_disrmtdmns</AIXPertArgs>
+    <AIXPertGroup>Désactiver les services distants</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rmrhostsnetrc" function="rmrhostsnetrc">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Supprimer les services rhosts et netrc : supprime les fichiers .rhosts et .netrc du répertoire personnel de l'utilisateur</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.rte.commands</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rmrhostsnetrc</AIXPertCommand>
+    <AIXPertArgs>h hls_rmrhostsnetrc</AIXPertArgs>
+    <AIXPertGroup>Supprimer l'accès non autorisé</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rmetchostsequiv" function="rmetchostsequiv">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Supprimer les entrées du fichier /etc/hosts.equiv : supprime les entrées du fichier /etc/hosts.equiv</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.net.tcp.client</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/rmetchostsequiv</AIXPertCommand>
+    <AIXPertArgs>hls_rmetchostsequiv</AIXPertArgs>
+    <AIXPertGroup>Supprimer l'accès non autorisé</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_bcastping" function="bcastping">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau bcastping : règle la valeur de l'option de réseau bcastping sur 0</AIXPertDescription>
+	<AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>bcastping = 0 s hls_bcastping</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_clean_partial_conns" function="clean_partial_conns">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau clean_partial_conns : règle la valeur de l'option de réseau clean_partial_conns sur 1</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>clean_partial_conns = 1 s hls_clean_partial_conns</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_directed_broadcast" function="directed_broadcast">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau directed_broadcast : règle la valeur de l'option de réseau directed_broadcast sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>directed_broadcast = 0 s hls_directed_broadcast</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_icmpaddressmask" function="icmpaddressmask">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau icmpaddressmask : règle la valeur de l'option de réseau icmpaddressmask sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>icmpaddressmask = 0 s hls_icmpaddressmask</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipforwarding" function="ipforwarding">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau ipforwarding : règle la valeur de l'option de réseau ipforwarding sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipforwarding = 0 s hls_ipforwarding</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipignoreredirects" function="ipignoreredirects">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau ipignoreredirects : règle la valeur de l'option de réseau ipignoreredirects sur 1</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipignoreredirects = 1 s hls_ipignoreredirects</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsendredirects" function="ipsendredirects">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau ipsendredirects : règle la valeur de l'option de réseau ipsendredirects sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipsendredirects = 0 s hls_ipsendredirects</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsrcrouteforward" function="ipsrcrouteforward">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau ipsrcrouteforward : règle la valeur de l'option de réseau ipsrcrouteforward sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipsrcrouteforward = 0 s hls_ipsrcrouteforward</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsrcrouterecv" function="ipsrcrouterecv">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau ipsrcrouterecv : règle la valeur de l'option de réseau ipsrcrouterecv sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipsrcrouterecv = 0 s hls_ipsrcrouterecv</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsrcroutesend" function="ipsrcroutesend">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau ipsrcroutesend : règle la valeur de l'option de réseau ipsrcroutesend sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ipsrcroutesend = 0 s hls_ipsrcroutesend</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ip6srcrouteforward" function="ip6srcrouteforward">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau ip6srcrouteforward : règle la valeur de l'option de réseau ip6srcrouteforward sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>ip6srcrouteforward = 0 s hls_ip6srcrouteforward</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_nonlocsrcroute" function="nonlocsrcroute">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau nonlocsrcroute : règle la valeur de l'option de réseau nonlocsrcroute sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>nonlocsrcroute = 0 s hls_nonlocsrcroute</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcp_pmtu_discover" function="tcp_pmtu_discover">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau tcp_pmtu_discover : règle la valeur de l'option de réseau tcp_pmtu_discover sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>tcp_pmtu_discover = 0 s hls_tcp_pmtu_discover</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_udp_pmtu_discover" function="udp_pmtu_discover">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau udp_pmtu_discover : règle la valeur de l'option de réseau udp_pmtu_discover sur 0</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>udp_pmtu_discover = 0 s hls_udp_pmtu_discover</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcp_sendspace" function="tcp_sendspace">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau tcp_sendspace : règle la valeur de l'option de réseau tcp_sendspace sur 262144</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>tcp_sendspace = 262144 s hls_tcp_sendspace</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcp_recvspace" function="tcp_recvspace">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau tcp_recvspace : règle la valeur de l'option de réseau tcp_recvspace sur 262144</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>tcp_recvspace = 262144 s hls_tcp_recvspace</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rfc1323" function="rfc1323">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau rfc1323 : règle la valeur de l'option de réseau rfc1323 sur 1</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>rfc1323 = 1 s hls_rfc1323</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcp_mssdflt" function="tcp_mssdflt">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau tcp_mssdflt : règle la valeur de l'option de réseau tcp_mssdflt sur 1448</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>tcp_mssdflt = 1448 s hls_tcp_mssdflt</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_sb_max" function="sb_max">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau sb_max : règle la valeur de l'option de réseau sb_max sur 1 Mo</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>sb_max = 1048576 s hls_sb_max</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsecshunhost" function="ipsecshunhost">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Exécuter shun sur l'hôte pendant 5 minutes: exécute shun sur les hôtes qui tentent d'accéder aux ports inutilisés, pendant 5 minutes</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.net.ipsec.keymgt,bos.net.ipsec.rte,bos.net.tcp.client,prereqnosyn</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ipsecshunhosthls</AIXPertCommand>
+    <AIXPertArgs>hls_ipsecshunhost</AIXPertArgs>
+    <AIXPertGroup>Règles de filtrage du protocole de sécurité IP</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_ipsecshunports" function="ipsecshunports">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Protéger l'hôte contre les balayages de port : exécute shun sur les ports vulnérables pendant 5 minutes pour protéger l'hôte contre les balayages de port</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.net.ipsec.keymgt,bos.net.ipsec.rte,bos.net.tcp.client,prereqnosyn</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ipsecshunports</AIXPertCommand>
+    <AIXPertArgs>hls_ipsecshunports</AIXPertArgs>
+    <AIXPertGroup>Règles de filtrage du protocole de sécurité IP</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_umask" function="umask">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Droits de création d'objets : règle sur 077 les droits de création d'objets par défaut</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chusrattr</AIXPertCommand>
+    <AIXPertArgs>umask = 77 ALL hls_umask</AIXPertArgs>
+    <AIXPertGroup>Règles diverses</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_core" function="core">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Définir la taille du fichier core : règle sur 0 la taille du fichier core pour root</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chuserstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/limits core = 0 root hls_core</AIXPertArgs>
+    <AIXPertGroup>Règles diverses</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_limitsysacc" function="limitsysacc">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Limiter l'accès au système : désigne root comme seul utilisateur dans le fichier cron.allow et supprime le fichier cron.deny</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.shell,bos.rte.commands,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/limitsysacc</AIXPertCommand>
+    <AIXPertArgs>h hls_limitsysacc</AIXPertArgs>
+    <AIXPertGroup>Règles diverses</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_loginherald" function="loginherald">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Définir le message de connexion : définir le message de connexion dans la strophe par défaut</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.rte.commands,prereqlh</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/loginherald</AIXPertCommand>
+    <AIXPertArgs>a hls_loginherald</AIXPertArgs>
+    <AIXPertGroup>Règles diverses</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_chetcftpusers" function="chetcftpusers">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Ajouter l'utilisateur root dans le fichier /etc/ftpusers : ajoute le nom d'utilisateur root dans le fichier /etc/ftpusers</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chetcftpusers</AIXPertCommand>
+    <AIXPertArgs>a hls_chetcftpusers</AIXPertArgs>
+    <AIXPertGroup>Règles diverses</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_removeguest" function="removeguest">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Supprimer le compte invité : supprime le compte invité et ses fichiers</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/execmds</AIXPertCommand>
+    <AIXPertArgs>"rmuser guest; rm -rf /home/guest; ODMDIR=/etc/objrepos odmdelete -qloc0=/home/guest -o inventory"</AIXPertArgs>
+    <AIXPertGroup>Règles diverses</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_sedconfig" function="sedconfig">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Activer la fonction SED : active la fonction SED (Stack Execution Disable)</AIXPertDescription>
+    <AIXPertPrereqList>prereqsed,bos.rte.date,bos.rte.commands,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/sedconfig</AIXPertCommand>
+    <AIXPertArgs>hls_sedconfig</AIXPertArgs>
+    <AIXPertGroup>Règles diverses</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_rootpwdintchk" function="rootpwdintchk">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Vérification de l'intégrité du mot de passe root : s'assure que le mot de passe root en cours de désignation n'est pas trop faible</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.date,bos.rte.commands,bos.rte.security,bos.rte.shell,bos.rte.ILS</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/chuserstanza</AIXPertCommand>
+    <AIXPertArgs>/etc/security/user dictionlist = /etc/security/aixpert/dictionary/English root hls_rootpwdintchk</AIXPertArgs>
+    <AIXPertGroup>Règles diverses</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_tcp_tcpsecure" function="tcp_tcpsecure">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau tcp_tcpsecure : règle la valeur de l'option de réseau tcp_tcpsecure sur 7</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>tcp_tcpsecure = 7 s hls_tcp_tcpsecure</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+  <AIXPertEntry name="hls_sockthresh" function="sockthresh">
+    <AIXPertRuleType type="HLS"/>
+    <AIXPertDescription>Option de réseau sockthresh : règle la valeur de l'option de réseau sockthresh sur 60</AIXPertDescription>
+    <AIXPertPrereqList>bos.rte.security,bos.rte.shell,bos.rte.ILS,bos.net.tcp.client,bos.rte.commands,bos.rte.date</AIXPertPrereqList>
+    <AIXPertCommand>/etc/security/aixpert/bin/ntwkopts</AIXPertCommand>
+    <AIXPertArgs>sockthresh = 60 s hls_sockthresh</AIXPertArgs>
+    <AIXPertGroup>Ajuster les options de réseau</AIXPertGroup>
+  </AIXPertEntry>
+</AIXPertSecurityHardening>
+
+<!-- ENGL1SH_VERS10N 1.10.1.1 DO NOT REMOVE OR CHANGE THIS LINE -->

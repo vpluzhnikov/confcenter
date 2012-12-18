@@ -1,0 +1,176 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos610 src/bos/usr/lib/security/aixpert/scripts/secactreport.sh 1.4 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2007 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)01	1.4  src/bos/usr/lib/security/aixpert/scripts/secactreport.sh, aixpert, bos610 2/22/07 03:30:29
+# IBM_PROLOG_END_TAG 
+#       COMPONENT_NAME          : (AIXPERT) secactreport.sh
+#       FUNCTIONS               : None
+#       ORIGINS                 : 27
+#
+#       Command Line Arguments  : None
+#
+#       OUTPUT                  : None
+#
+#       Description             : This script enables auditing,
+#				  disables direct root logins.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+# Initialize variables AIXPERT_FIFO, LOG, REPORT, SCPTDIR and UNDOXML
+. /etc/security/aixpert/bin/initialize_variables
+
+BINAUDIT=/etc/security/aixpert/bin/binaudit
+CHUSRSTANZA=/etc/security/aixpert/bin/chuserstanza
+
+# Log output and errors to /etc/security/aixpert/log/aixpert.log
+exec 1>>$LOG
+exec 2>&1
+
+if [ $# -ne 0 ]
+then
+	dspmsg -s 35 aixpert.cat 1 "Usage: secactreport\n"
+	exit 1
+fi
+
+set -x
+date
+echo $0
+
+AIXPERT=/usr/sbin/aixpert
+TMP=/etc/security/aixpert/tmp/secactreport
+TMP1=/etc/security/aixpert/tmp/undoxmlsar
+PID=$$
+
+report=`echo $AIXPERT_CHECK_REPORT`
+if [ "$report" != "1" ]
+then
+	# Take backup of undo.xml file
+	# the undo rules of BINAUDIT & CHUSRSTANZA will be written
+	# in a newly created undo.xml filE
+	mv $UNDOXML $TMP1$PID.xml
+
+	# Enable binauditing for tracking AIXpert events
+	$BINAUDIT h scbps_binaudit
+	rc1=$?
+
+	# Disable local root login
+	$CHUSRSTANZA /etc/security/user login=false root scbps_rootlogin
+	rc2=$?
+
+	# store the temporaty undo file generated in $SAVE/undo.sar.xml
+	mv $UNDOXML $SAVE/undo.sar.xml
+
+	# replace the original undo.xml in place
+	mv $TMP1$PID.xml $UNDOXML
+
+	# $SAVE/sar.xml will have the undo action to be taken
+	# Have all these actions in one script, so that they can be
+	# undone at one stretch
+	echo "#!/usr/bin/ksh\nexport PATH=/usr/bin:/usr/sbin:\$PATH\n"\
+ >$SCPTDIR/Undosecactreport$PID
+	echo "exec 1>>$LOG\nexec 2>&1\nset -x\ndate\necho" '$0'\
+ >>$SCPTDIR/Undosecactreport$PID
+
+	# the below awk script reads the undo rules frm tmp undo.xml to get the
+	# AIXPertCommand and AIXPertArgs together
+
+	awk -F '>' 'BEGIN {x=0}\
+	{\
+	if(match($1,"<AIXPertCommand")!=0){\
+		x=1;\
+		gsub("</AIXPertCommand", "", $2);\
+		cmd=$2;\
+	}\
+	else{\
+		if(x)\
+		{\
+			if(match($1,"<AIXPertArgs")!=0){\
+				if(NF<2){\
+					print $cmd;\
+				}\
+				else {\
+					gsub("</AIXPertArgs","",$2);\
+					print cmd " " $2;\
+				}\
+			}\
+			else {\
+				print $cmd;\
+			}\
+			x=0;\
+		}\
+	}\
+	}' $SAVE/undo.sar.xml >>$SCPTDIR/Undosecactreport$PID
+
+	# Grant execute perms on $SCPTDIR/Undosecactreport$PID
+	chmod ug+x $SCPTDIR/Undosecactreport$PID
+	# remove the temporary undo xml file
+	rm $SAVE/undo.sar.xml
+
+	# check if the security settings are appllied properly or not
+	if [ $rc1 -ne 0 ] || [ $rc2 -ne 0 ]
+	then
+		dspmsg -s 35 aixpert.cat 2 "secactreport.sh: Failed\
+ to enforce security activity report control objective of SOX\n"
+		. $SCPTDIR/Undosecactreport$PID
+		rm $SCPTDIR/Undosecactreport$PID
+		exit 1
+	fi
+
+	# write the undo rule for "security activity report" SOX objective
+	# this undo rule will be appended to original undo.xml 
+	# Check if UNDOXML file has <AIXPertUndo> tag or not
+	empty=`grep "^<AIXPertUndo>" $UNDOXML`
+	if [ "$empty" = "" ]
+	then
+		echo "\n<AIXPertUndo>\n</AIXPertUndo>" >> $UNDOXML
+	fi
+
+	# Get the rulename and put it in undo rule
+	name=`echo $AIXPERT_NAME`
+	# Get the rule description & pass it to undo rule
+	desc=`echo $AIXPERT_DESC`
+
+	# Add an undo XML rule to the file $UNDOXML
+	awk -v rulepart1="\t<AIXPertEntry name=\"$name\">\n\
+\t\t<AIXPertRuleType type=\"Undo\"/>\n\
+\t\t<AIXPertDescription>Undo action for \"$desc\"</AIXPertDescription>\n\
+\t\t<AIXPertPrereqList/>\n"\
+ -v rulepart2="\t\t<AIXPertCommand>$SCPTDIR/Undosecactreport$PID\
+</AIXPertCommand>\n\t\t<AIXPertArgs/>\n"\
+ -v rulepart3="\t\t<AIXPertGroup>SOX-COBIT Best Practices Security</AIXPertGroup>\n\
+\t</AIXPertEntry>" '{if(match($0,"^[\t ]*</AIXPertUndo>")==0) print $0;\
+ else print rulepart1 rulepart2 rulepart3 "\n" $0}' $UNDOXML >$TMP$PID
+	mv $TMP$PID $UNDOXML
+
+else
+	#run check report for all rules
+	AIXPERT_CHECK_REPORT=1 $BINAUDIT h scbps_binaudit
+	rc1=$?
+	AIXPERT_CHECK_REPORT=1 $CHUSRSTANZA /etc/security/user\
+ login=false root scbps_rootlogin
+	rc2=$?
+	if [ $rc1 -ne 0 ] || [ $rc2 -ne 0 ]
+	then
+		dspmsg -s 35 aixpert.cat 2 "secactreport.sh: Failed\
+ to enforce security activity report control objective of SOX\n" >>$REPORT
+		dspmsg -s 35 aixpert.cat 2 "secactreport.sh: Failed\
+ to enforce security activity report control objective of SOX\n" >>$AIXPERT_FIFO
+		exit 1
+	fi
+fi
+
+exit 0
+

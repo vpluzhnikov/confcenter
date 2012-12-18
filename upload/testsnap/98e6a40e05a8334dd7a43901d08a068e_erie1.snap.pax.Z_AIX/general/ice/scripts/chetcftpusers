@@ -1,0 +1,122 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/chetcftpusers.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/chetcftpusers.sh, libice, aix71B, 1026A_71B 2010-06-11T20:57:10-05:00$
+#
+# IBM_PROLOG_END_TAG
+#       COMPONENT_NAME: (ICE) chetcftpusers.sh
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax:
+#               chetcftpusers.sh -{c|e|p}[v] rulename toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode (unimplemented)
+#		rulename	- Defines the ftp access to be disabled for only "root" user
+#		toggle		- Boolean
+#			       	  false => Disable
+#			          true  => Enable
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#               2       - usage error
+#
+#       Description:
+#		GEN004880: CATII
+#		GEN004900: CATII 
+#		This script adds/removes the "root" entry to
+#		/etc/ftpusers file. This script should be run
+#		with superuser privileges.
+
+INSTALLDIR=/etc/security/ice/scripts
+. $INSTALLDIR/iceInit
+
+TMP=/etc/security/ice/tmp/chetcftpusers
+PREREQ_LIST="bos.rte.date,bos.rte.commands,bos.rte.shell,bos.rte.ILS"
+
+checkPrereq
+
+if [ "$STATUS_ARG" = "true" ]
+then
+	if [ -e /etc/ftpusers ]
+	then
+		# Dynamic Security Check
+		if [[ cflag -eq 1  ]]; 
+		then
+			if [ `grep -c "root" /etc/ftpusers` -eq 0 ]
+			then
+				print "chetcftpusers.sh:\
+ /etc/ftpusers file does not have root entry in it" >> log_msg 2>&1
+				ice_status=2
+			else
+				cur_val=1
+			fi #endif grep
+		else
+			$ECHOPREFIX rm /etc/ftpusers
+			if [[ pflag -eq 1 ]];
+			then
+				print "echo root >>/etc/ftpusers\n"
+			else
+				echo root >>/etc/ftpusers
+			fi
+			cur_val=1
+		fi #endif cflag
+	else
+		# Dynamic Security Check
+		if [[ cflag -eq 1 ]]; 
+		then
+			print "chetcftpuesrs.sh:\
+ /etc/ftpusers file does not exist" >> log_msg 2>&1
+			cur_val=0
+			ice_status=2
+		else
+			if [[ pflag -eq 1 ]];
+			then
+				print "echo root >> /etc/ftpusers\n"
+			else
+				echo root >> /etc/ftpusers
+			fi #endif pflag
+			cur_val=1
+		fi #endif cflag
+	fi #endif ftpusers
+else
+	if [ -e /etc/ftpusers ]
+	then
+		grep root /etc/ftpusers > /dev/null 2>&1
+		if [ $? -eq 0 ]
+		then
+			# Dynamic Security Check
+			if [[ cflag -eq 1 ]]; 
+			then
+				print "chetcftpusers.sh:\
+ /etc/ftpusers file does have root entry" >> log_msg 2>&1
+				ice_status=2
+				cur_val=1
+			else
+				$ECHOPREFIX grep -v root /etc/ftpusers > $TMP
+				$ECHOPREFIX mv $TMP /etc/ftpusers
+			fi
+		fi
+	fi
+fi
+
+Script_Output
+exit 0

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="ffdcParam" version="2.0" priority="-900">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="19" msgNum="1">First Failure Data Capture (FFDC) features management.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="19" msgNum="2">The First Failure Data Captures features include the following:
+Lightweight Memory Trace (LMT).
+Run-time Error Checking (RTEC).
+Component Trace (CT).
+Live Dump</NLSCatalog></Description>
+
+  <ConstraintDef id="bosboot">
+   <Description><NLSCatalog catalog="artexcat.cat" setNum="19" msgNum="3">Bosboot required</NLSCatalog></Description>
+   <BuiltIn>bosboot</BuiltIn>
+  </ConstraintDef>
+
+ <ParameterDef name="ffdc" type="boolean" reboot="true" constraint="bosboot">
+
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="19" msgNum="4">Enablement of FFDC features.</NLSCatalog></Description>
+
+  <Get type="current">
+   <Command>LANG=c;/usr/lib/ras/ffdcctrl -q </Command>
+   <Filter>awk '{ if ($1 == "enabled") print 1; else print 0; }' | tr -d '\n'</Filter>
+  </Get>
+
+  <Get type="nextboot">
+   <Command>LANG=c;/usr/lib/ras/ffdcctrl -q </Command>
+   <Filter>awk '{ if ($1 == "enabled") print 1; else print 0; }' | tr -d '\n'</Filter>
+  </Get>
+
+  <Set type="nextboot">
+   <Command>LANG=C;/usr/lib/ras/ffdcctrl -o ffdc=%a</Command>
+   <Argument>`if [ %v1 == '1' ]; then echo 'enabled'; else echo 'disabled'; fi`</Argument>
+  </Set>
+
+ </ParameterDef>
+
+</Catalog>

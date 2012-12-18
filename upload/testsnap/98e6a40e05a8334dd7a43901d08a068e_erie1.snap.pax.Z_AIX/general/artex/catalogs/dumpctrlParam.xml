@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="dumpctrlParam" version="2.0">
+
+  <CfgMethod id="systemdumpmgt">
+    <Get type="current">
+      <Command>export LANG=C;/usr/sbin/dumpctrl -qs</Command>
+      <Filter>awk ' BEGIN {FS=":"} {gsub(" ","",$1); gsub("\t","",$2);print $1 " = " $2} ' | sed -e 's/yes/1/' | sed -e 's/no/0/'</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+    <Get type="nextboot">
+      <Command>export LANG=C;/usr/sbin/dumpctrl -qs</Command>
+      <Filter>awk ' BEGIN {FS=":"} {gsub(" ","",$1); gsub("\t","",$2);print $1 " = " $2} ' | sed -e 's/yes/1/' | sed -e 's/no/0/'</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+    <Set type="permanent">
+      <Command>export LANG=C; /usr/sbin/dumpctrl -P %a</Command>
+    </Set>
+  </CfgMethod>
+
+  <CfgMethod id="livedumpmgt">
+    <Get type="current">
+      <Command>export LANG=C;/usr/sbin/dumpctrl -ql</Command>
+      <Filter>awk ' BEGIN {FS=":"} {gsub(" ","",$1); gsub("\t","",$2);print $1 " = " $2} ' | sed -e 's/yes/1/' | sed -e 's/no/0/'</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+    <Get type="nextboot">
+      <Command>export LANG=C;/usr/sbin/dumpctrl -ql</Command>
+      <Filter>awk ' BEGIN {FS=":"} {gsub(" ","",$1); gsub("\t","",$2);print $1 " = " $2} ' | sed -e 's/yes/1/' | sed -e 's/no/0/'</Filter>
+      <Mask name="1" value="2">(.*) = (.*)</Mask>
+    </Get>
+    <Set type="permanent">
+      <Command>export LANG=C; /usr/sbin/dumpctrl -n -P `if [ %t[component] ]; then echo "-c %t[component]"; fi` %a</Command>
+    </Set>
+  </CfgMethod>
+
+  <ConstraintDef id="bosboot">
+   <BuiltIn>bosboot</BuiltIn>
+  </ConstraintDef>
+
+  <!-- GLOBAL ATTRIBUTES -->
+
+  <ParameterDef name="DumpLegacyComponents" type="boolean" cfgmethod="systemdumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="1">Specifies whether dump legacy components are enabled.</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> legacyenable=`if [ %v1 = 1 ]; then echo yes; else echo no; fi`</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="SystemDumpGlobalLevel" type="integer" cfgmethod="systemdumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="2">Specifies the system dump level using a decimal value from 0 to 9.</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> sdmplevel=%v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="SystemDumpCopyDirectory" type="string" cfgmethod="systemdumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="3">Specifies a copy directory path name.</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> copydir=%v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="DisplayBootTimeMenuonDumpFailure" type="boolean" cfgmethod="systemdumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="4">If a dump must be copied from paging space at boot time, and there is not enough space in the copy directory, you are prompted to copy the dump to removable media if the forcecopy value is yes. If the value is no, the dump is not copied and the system boots normally, although the dump might be lost.</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> forcecopy=`if [ %v1 = 1 ]; then echo yes; else echo no; fi`</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="AllowDumponKeyboardSequence" type="boolean" cfgmethod="systemdumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="5">Specifies whether the key sequences always cause a dump.</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> keyseq=`if [ %v1 = 1 ]; then echo yes; else echo no; fi`</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="PrimaryDumpDevice" type="string" cfgmethod="systemdumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="6">Specifies the primary dump device path name.</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> primary=%v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="SecondaryDumpDevice" type="string" cfgmethod="systemdumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="7">Specifies the secondary dump device path name.</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> secondary=%v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="LiveDumpEnabled" type="boolean" cfgmethod="livedumpmgt" constraint="bosboot">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="8">Specifies whether live dump is enabled.</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> ldmpenable=`if [ %v1 = 1 ]; then echo yes; else echo no; fi`</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="LiveDumpDirectory" type="string" cfgmethod="livedumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="9">Specifies a live dump directory name.</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> dir=%v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="LiveDumpFreeSpaceThreshold" type="integer" cfgmethod="livedumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="10">Specifies live dump free space threshold using a decimal value from 0 to 99.</NLSCatalog></Description>
+    <Get type="current">
+      <Filter>awk ' BEGIN {FS=":"} {gsub(" ","",$1); gsub("\t","",$2);print $1 " = " $2} ' | sed -e 's/%//'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Filter>awk ' BEGIN {FS=":"} {gsub(" ","",$1); gsub("\t","",$2);print $1 " = " $2} ' | sed -e 's/%//'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> freespc=%v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="LiveDumpGlobalLevel" type="integer" cfgmethod="livedumpmgt" constraint="bosboot">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="11">Specifies the live dump level using a decimal value from 0 to 9.</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> ldmplevel=%v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="LiveDumpHeapSize" type="integer" cfgmethod="livedumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="12">Specifies live dump heap size using a decimal value in megabytes.</NLSCatalog></Description>
+    <Get type="current">
+      <Filter>awk ' BEGIN {FS=":"} {gsub(" ","",$1); gsub("\t","",$2);print $1 " = " $2} ' | cut -d" " -f 1-3</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Filter>awk ' BEGIN {FS=":"} {gsub(" ","",$1); gsub("\t","",$2);print $1 " = " $2} ' | cut -d" " -f 1-3</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> heapsz=%v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="LiveDumpDuplicateSuppressionType" type="string" cfgmethod="livedumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="13">Specifies duplicate dump suppression type. The following are the possible values: * all * pre * post * none</NLSCatalog></Description>
+    <Set type="permanent">
+      <Argument> duptype=%v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="LiveDumpMaxSystemFreezeInterval" type="integer" cfgmethod="livedumpmgt">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="15" msgNum="14">Specifies the maximum recommended system freeze interval using a decimal number in milliseconds.</NLSCatalog></Description>
+    <Get type="current">
+      <Filter>awk ' BEGIN {FS=":"} {gsub(" ","",$1); gsub("\t","",$2);print $1 " = " $2} ' | sed -e 's/ms//'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Filter>awk ' BEGIN {FS=":"} {gsub(" ","",$1); gsub("\t","",$2);print $1 " = " $2} ' | sed -e 's/ms//'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> maxfreeze=%v1</Argument>
+    </Set>
+  </ParameterDef>
+</Catalog>

@@ -1,0 +1,366 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/ipsecallowhosts.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/ipsecallowhosts.sh, libice, aix710, _BASELINE_, 2010-05-18T13:56:41-05:00$
+#
+# IBM_PROLOG_END_TAG
+#     COMPONENT_NAME:  (ICE)  ipsecallowhosts
+#     FUNCTIONS:   None
+#     ORIGINS:     27
+#
+#     Syntax:
+#           ipsecallowhosts -{c|e|p}[v] <lname> <value> 
+#
+#     Parameters:
+#           -c		-  Check mode
+#	    -e		-  Enforce mode
+#	    -p		-  Preview mode
+#	    -v		-  verbose mode
+#	    lname       -  ice_name
+#           value       -  A range or set of hosts
+#
+#
+#     Output:
+#	    0		-  success
+#	    1		-  check/enforce failure
+#	    2		-  usage error
+#
+#     Description:
+#           This script allows inbound/outbound traffic for only a range or set of ip addresses, and
+#           denies all other traffic.
+#
+export PATH=/usr/bin:/usr/sbin:$PATH
+set -x
+
+#######
+#Print Usage
+#######
+Usage()  {
+      print "usage: \n
+  	 ipsecallowhosts -{c|e|p}[v] rulename hosts_to_allow\n"
+}
+
+#######
+#Process arguments
+#######
+
+#check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+while getopts :cevp OPT
+do
+	case $OPT in
+		c)	cflag=1;;
+		e)	eflag=1;;
+		v)	vflag=1;;
+		p)	pflag=1;;
+		?|:)	Usage
+			exit 2;;
+	esac
+done
+
+shift $(($OPTIND -1))
+
+#Need 2 arguments
+if [ $# -ne 2 ]
+then
+	Usage	
+	exit 2 
+fi
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+        print -n "$cur_val%$ice_status%"
+        cat log_msg
+        print
+}
+
+
+###
+#Initialize the Script Output variables
+###
+cur_val=
+ice_status=0
+print -n > log_msg 2>&1
+
+
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+	ECHOPREFIX="echo"
+else
+	ECHOPREFIX=""
+fi
+
+TMP=/usr/ice/tmp/ipsecallowhosts
+PID=$$
+PREREQ=/etc/security/ice/scripts/chkprereq
+
+checking prereq
+$ECHOPREFIX $PREREQ "bos.rte.ILS,bos.rte.date,bos.rte.shell,\
+bos.rte.commands,bos.net.ipsec.keymgt,bos.net.ipsec.rte,\
+bos.net.tcp.client"
+
+if [ $? -ne 0 ]
+then
+	print "prereq missing... " >> log_msg 2>&1
+        print "Prereqs needed: " $PREREQ_LIST >> log_msg 2>&1
+        ice_status=1
+        Script_Output
+        exit 0
+
+fi
+
+# Determine whether IPSec is enabled or not.
+ipv4=`lsdev -Cc ipsec|grep ipsec_v4|awk '{print $2}'`
+ipv6=`lsdev -Cc ipsec|grep ipsec_v6|awk '{print $2}'`
+
+#checking
+if [[ cflag -eq 1 ]];
+then
+        if [ "$ipv4" != "Available" ] && [ "$ipv6" != "Available" ]
+        then
+                print "ipsecallowhosts: Failed to turn on IPSec\n" >> log_msg 2>&1
+		cur_val=1
+                ice_status=2
+                Script_Output
+
+        elif [ "$ipv4" = "Available" ]
+        then
+               	spv4=`lsfilt -v4 -O|awk -v x="ICE:IPv4:ipsecallowhosts" -F "|" '{print $22}' | egrep ICE:IPv4:ipsecallowhosts` 
+                if [ $? -ne 0 ] && [ -z "$spv4" ]
+                then
+                        print "ipsecallowhosts: IPSec ICE:IPv4:ipsecallowhosts rules\
+ are not turned on\n" >> log_msg 2>&1
+			 cur_val=1
+                        ice_status=2
+                        Script_Output
+                else
+                        cur_val=0
+                        ice_status=0
+                        Script_Output
+
+                fi
+        else
+               	spv6=`lsfilt -v6 -O -a|awk -v x="ICE:IPv4:ipsecallowhosts" -F "|" '{print $22}' | egrep ICE:IPv4:ipsecallowhosts` 
+                if [ $? -ne 0 ] && [ -z "$spv6" ]
+                then
+                        print "ipsecallowhosts: IPSec ICE:IPv4:ipsecallowhosts rules\
+ are not turned on\n" >> log_msg 2>&1
+			cur_val=1
+                        ice_status=2
+                        Script_Output
+                else
+                        cur_val=0
+                        ice_status=0
+                        Script_Output
+
+                fi
+        fi
+        exit 0
+fi
+
+# Get the source ip(version 4) address of the host, sometimes this address
+# might have more than one entry, when we have multiple interfaces
+hostipv4=`ifconfig -a|grep "inet "|awk '{print $2}'|grep -v -w "127.0.0.1"`
+$ECHOPREFIX autoconf6 >> log_msg 2>&1
+# Get the source ip(version 6) address of the host
+hostipv6=`ifconfig -a|grep "inet6 "|awk '{print $2}'|awk -F "/" '{print $1}'|\
+ grep -v -w "::1"`
+
+# Get the rule name
+rule_name=$1
+# Get the list of hosts to allow
+hosts_to_allow=$2
+if [ "$ipv4" != "Available" ] || [ "$ipv6" != "Available" ]
+then
+	ECHOPREFIX mkdev -c ipsec -t 4 >> log_msg 2>&1
+	ECHOPREFIX mkdev -c ipsec -t 6 >> log_msg 2>&1
+fi
+
+	
+mask[0]="0.0.0.0"
+mask[1]="128.0.0.0"
+mask[2]="192.0.0.0"
+mask[3]="224.0.0.0"
+mask[4]="240.0.0.0"
+mask[5]="248.0.0.0"
+mask[6]="252.0.0.0"
+mask[7]="254.0.0.0"
+mask[8]="255.0.0.0"
+mask[9]="255.128.0.0"
+mask[10]="255.192.0.0"
+mask[11]="255.224.0.0"
+mask[12]="255.240.0.0"
+mask[13]="255.248.0.0"
+mask[14]="255.252.0.0"
+mask[15]="255.254.0.0"
+mask[16]="255.255.0.0"
+mask[17]="255.255.128.0"
+mask[18]="255.255.192.0"
+mask[19]="255.255.224.0"
+mask[20]="255.255.240.0"
+mask[21]="255.255.248.0"
+mask[22]="255.255.252.0"
+mask[23]="255.255.254.0"
+mask[24]="255.255.255.0"
+mask[25]="255.255.255.128"
+mask[26]="255.255.255.192"
+mask[27]="255.255.255.224"
+mask[28]="255.255.255.240"
+mask[29]="255.255.255.248"
+mask[30]="255.255.255.252"
+mask[31]="255.255.255.254"
+mask[32]="255.255.255.255"
+
+IFS=","
+
+
+# All these filter rules will be added before the existing rules in the filter rule table
+if [ "$ipv4" = "Available" ]
+then	
+	# Add filter rules to allow ports on all interfaces
+	for i in ${hostipv4}
+	do
+		for j in $hosts_to_allow 
+		do
+                        format=`echo $j | grep :`
+                        if [ $? -ne 0 ]
+			then
+			range=`echo $j | grep /` 
+			if [ $? -ne 0 ]		
+			then
+				# allow these particular Hosts
+				$ECHOPREFIX genfilt -v4 -a P\
+				 -s $j -m 255.255.255.255 -d 0.0.0.0 -M 0.0.0.0 -c all\
+				 -n 3 -o any -p 0 -O any -P 0 -w I -D "ICE:IPv4:ipsecallowhosts:$j"  >> log_msg 2>&1
+				if [ $? -ne 0 ]
+				then
+ 					print "ipsecallowhosts.sh: genfilt failed to add filter for IPSec Version 4\n" >> log_msg 2>&1
+					ice_status=1
+                                        cur_val=1
+                                        Script_Output
+				fi
+			else #range of ip addresses
+				#Filter out IPaddress portion
+				suffix=`echo $j | sed 's/^[0-9.]*//'`
+				address=`echo $j | sed 's/\/.*//'`
+				# Get number of bits for bitmask
+				
+				bits=`echo ${suffix} | sed 's/^\///'`
+				if [[ ${bits} -ne "" ]]
+				then
+ 				mask=mask[$bits]
+				fi
+				# allow these particular Hosts
+				$ECHOPREFIX genfilt -v4 -a P\
+				 -s $address -m ${mask[$bits]} -d 0.0.0.0 -M 0.0.0.0 -c all\
+				 -n 3 -o any -p 0 -O any -P 0 -w I -D "ICE:IPv4:ipsecallowhosts:$j"  >> log_msg 2>&1
+				if [ $? -ne 0 ]
+				then
+ 					print "ipsecallowhosts.sh: genfilt failed to add filter for IPSec Version 4\n" >> log_msg 2>&1
+					ice_status=1
+                                        cur_val=1
+                                        Script_Output
+	        		fi
+			fi
+		fi	
+                done
+		# Deny these IPv4 addresses 
+		$ECHOPREFIX genfilt -v4 -a H\
+		-s 0.0.0.0 -m 0.0.0.0 -d 0.0.0.0 -M 0.0.0.0\
+ 		-O lt -P 1024 -i all -c all -l N -w I -D "ICE:IPv4:ipsecallowhosts:DenyAll"  >> log_msg 2>&1
+		# Activate the IPSec v4 filters added.
+		$ECHOPREFIX mkfilt -v4 -u
+		if [ $? -ne 0 ]
+		then
+			print "ipsecallowhosts.sh:\
+		 	mkfilt failed to activate filter rules for IPSec Version 4\n" >> log_msg 2>&1
+			cur_val=1
+                	ice_status=1
+                	Script_Output
+        	else
+                	cur_val=0
+                	ice_status=0
+                	Script_Output
+
+		fi
+		#$ECHOPREFIX lsfilt -v4 -a -O 
+	done
+fi
+if [ "$ipv6" = "Available" ]
+then
+	# Add filter rules to allow Hosts on all interfaces
+	for i in ${hostipv6}
+	do
+		for j in $hosts_to_allow 
+		do
+		        format=`echo $j | grep :`
+			if [ $? -eq 0 ]		
+			then
+				#Filter out IPaddress portion
+				suffix=`echo $j | awk -F "/" '{print $2}'`
+				address=`echo $j | sed 's/\/.*//'`
+				
+				# allow these particular Hosts
+				$ECHOPREFIX genfilt -v4 -a P\
+				 -s $adderss -m $suffix -d $i -M 128 -c all\
+				 -n 3 -o any -p 0 -O any -P 0 -w I -D "ICE:IPv4:ipsecallowhosts:$j" >> log_msg 2>&1
+				if [ $? -ne 0 ]
+				then
+ 					print "ipsecallowhosts.sh: genfilt failed to add filter for IPSec Version 4\n" >> log_msg 2>&1
+					 ice_status=1
+                                         cur_val=1
+                                         Script_Output
+
+	        		fi
+			fi
+                done
+
+	# allow these particular hosts
+	$ECHOPREFIX genfilt -v6 -a D\
+	-s 0:0:0:0:0:0:0:0 -m 128 -d $i -M 128 -c tcp\
+ 	-r B -i all -f Y -l N -w O -D "ICE:IPv6:ipsecallowhosts:DenyAllHosts"  >> log_msg 2>&1
+	# Activate the IPSec v6 filters added.
+	mkfilt -v6 -u
+	lsfilt -v6 -a -O	
+	if [ $? -ne 0 ]
+	then
+		print "ipsecallowhosts.sh:\
+		 mkfilt failed to activate filter rules for IPSec Version 6\n" >> log_msg 2>&1
+		 cur_val=1
+                ice_status=1
+                Script_Output
+        else
+                cur_val=0
+                ice_status=0
+                Script_Output
+
+	fi
+done
+fi
+exit 0

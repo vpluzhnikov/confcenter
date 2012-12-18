@@ -1,0 +1,554 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos61H src/bos/usr/lib/security/aixpert/scripts/binaudit.sh 1.10 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006,2009 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)78	1.10  src/bos/usr/lib/security/aixpert/scripts/binaudit.sh, aixpert, bos61H, 0907A_61H 2/4/09 10:46:24
+# IBM_PROLOG_END_TAG 
+#	COMPONENT_NAME		: (AIXPERT) binaudit.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: The script takes 2 command line arguments.
+#				The first argument should be either
+#				"h" or "m" or "l" or "d". The second argument
+#				should be the rule name.
+#
+#	OUTPUT			: None
+#
+#       Description		: When the first argument is 'h' or 'm' or 'l',
+#				the script enables bin auditing	on a separate
+#				file system, enables it on every reboot.
+#				It creates a cronjob to run every hour to monitor
+#				the size of the /audit filesystem.
+#				It appends an Undo XML rule. When the first
+#				argument is 'd', the auditing will be shutdown.
+#				This script should be run with superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+# Initialize variables AIXPERT_FIFO, LOG, REPORT, SCPTDIR and UNDOXML
+. /etc/security/aixpert/bin/initialize_variables
+
+AUDCFG=/etc/security/audit/config
+AUDEVT=/etc/security/audit/events
+ATEMP=/etc/security/aixpert/tmp
+TMP=$ATEMP/binaudit
+TMP2=$ATEMP/binauditcronjobs
+TMP3=$ATEMP/binauditundoxml
+TMP4=$ATEMP/Undobinaudit
+TMP5=$ATEMP/auditconfig
+PID=$$
+
+# Function to the events to be logged for each user
+add_events_to_config_file(){
+dispuid|while read user
+do
+	# Ignore LDAP/NIS user entries
+	echo $user | grep ":" >/dev/null 2>&1
+	if [ $? -eq 0 ]
+	then
+		continue;
+	fi
+	usrval=`awk  -F ":" -v un=$user 'BEGIN{disp=0}
+		{
+		if(NF<=1)
+		 {
+			if(disp==1){
+				frmt=sprintf("[ \t]*%s[ \t]*=",un);
+				if(match($0,frmt)!=0){
+					print $0;
+					exit 0;
+				}
+			}
+		 }
+	         else
+		 {
+			if($1=="users")
+			{
+				disp=1;
+			}
+		 }
+		}' $AUDCFG`
+
+	if [ "$user" = "root" ]
+	then
+		eventstolog="$evts2log4root"
+	else
+		eventstolog="$evts2log4nonroot"
+	fi
+	if [ -z "$usrval" ]
+	then
+		echo "\t$user = $eventstolog" >>$TMP$PID
+	else
+		events=`echo $eventstolog | sed 's/,/ /g'`
+		for i in $events
+		do
+			echo $usrval | grep $i
+			if [ $? -ne 0 ]
+			then
+				usrval="$usrval,$i"
+			fi
+		done
+		echo "$usrval" >>$TMP$PID
+	fi
+done
+}
+# Function to configure config and events file in /etc/security/audit
+# It adds classes and events depending on the security level
+setup_audit_config_files(){
+time=`date +%s`
+# Take back up of /etc/security/audit/events file
+cp $AUDEVT $SAVE/audit.events.$time
+echo "mv $SAVE/audit.events.$time $AUDEVT" >>$TMP4$PID
+
+# Take back up of /etc/security/audit/config file
+cp $AUDCFG $SAVE/audit.config.$time
+echo "mv $SAVE/audit.config.$time $AUDCFG" >>$TMP4$PID
+
+# Configure bin auditing in file $AUDCFG
+echo "start:\n\tbinmode = on\n\tstreammode = off\n" >$TMP$PID
+echo "bin:\n\ttrail = /audit/trail\n\tbin1 =\
+/audit/bin1\n\tbin2 = /audit/bin2\n\tbinsize = 10240\n\
+\tcmds = /etc/security/audit/bincmds\n\tfreespace = 65536\n" >>$TMP$PID 
+
+awk -F ":" 'BEGIN{disp=0;cl=0}
+{if(NF<=1)
+ {
+	if(cl==1){
+		if( (match($0,"^$")!=0) || (match($0,"aixpert")!=0)) printf ""
+		else print $0
+	} else if(disp==1)
+		print $0
+ }else
+ { 
+	if($1=="stream")
+	{
+		disp=1;
+		print $0
+	}
+	else if($1=="classes")
+	{
+		cl=1;
+		print $0
+	}
+	else{
+		disp=0;
+		cl=0;
+	}
+ }
+}' $AUDCFG >>$TMP$PID
+
+# Save the current value for auditclasses attribute in mkuser.default
+lssecval=`lssec -f /usr/lib/security/mkuser.default -s user -a auditclasses\
+|awk -F "=" '{print $2}'`
+
+if [ "$1" = "h" ]
+then
+	# check if an aixpert class entry is already there in config file
+	sed '/aixpert/d' $TMP$PID >$TMP5$PID
+	mv $TMP5$PID $TMP$PID
+	echo "\taixpert = AIXpert_apply,AIXpert_check,AIXpert_undo\n" >>$TMP$PID
+	grep AIXpert_apply $AUDEVT || echo "\tAIXpert_apply = printf \"%s\"" >>$AUDEVT
+	grep AIXpert_check $AUDEVT || echo "\tAIXpert_check = printf \"%s\"" >>$AUDEVT
+	grep AIXpert_undo $AUDEVT || echo "\tAIXpert_undo = printf \"%s\"" >>$AUDEVT
+	echo "users:" >>$TMP$PID
+
+	evts2log4root="general,SRC,mail,cron,tcpip,ipsec,lvm,aixpert"
+	evts2log4nonroot="general,SRC,cron,tcpip"
+
+	add_events_to_config_file
+	
+	chsec -f /usr/lib/security/mkuser.default -s user\
+ -a auditclasses="general,SRC,cron,tcpip"
+	if [ $? -ne 0 ]
+	then
+		dspmsg -s 1 aixpert.cat 8\
+ "binaudit.sh: chsec command failed to set auditclasses of mkuser.default\n"
+		. $TMP4$PID
+		rm $TMP4$PID
+		exit 1
+	fi
+fi
+
+if [ "$1" = "m" ]
+then
+	# check if an aixpert class entry is already there in config file
+	sed '/aixpert/d' $TMP$PID >$TMP5$PID
+	mv $TMP5$PID $TMP$PID
+	echo "\taixpert = AIXpert_apply,AIXpert_check\n" >>$TMP$PID
+	grep AIXpert_apply $AUDEVT || echo "\tAIXpert_apply = printf \"%s\"" >>$AUDEVT
+	grep AIXpert_check $AUDEVT || echo "\tAIXpert_check = printf \"%s\"" >>$AUDEVT
+	echo "users:" >>$TMP$PID
+
+	evts2log4root="general,SRC,tcpip,aixpert"
+	evts2log4nonroot="general,tcpip"
+
+	add_events_to_config_file
+
+	chsec -f /usr/lib/security/mkuser.default -s user\
+ -a auditclasses="general,tcpip"
+	if [ $? -ne 0 ]
+	then
+		dspmsg -s 1 aixpert.cat 8\
+ "binaudit.sh: chsec command failed to set auditclasses of mkuser.default\n"
+		. $TMP4$PID
+		rm $TMP4$PID
+		exit 1
+	fi
+fi
+
+if [ "$1" = "l" ]
+then
+	# check if an aixpert class entry is already there in config file
+	sed '/aixpert/d' $TMP$PID >$TMP5$PID
+	mv $TMP5$PID $TMP$PID
+	echo "\taixpert = AIXpert_check\n" >>$TMP$PID
+	grep AIXpert_check $AUDEVT || echo "\tAIXpert_check = printf \"%s\"" >>$AUDEVT
+	echo "users:" >>$TMP$PID
+
+	evts2log4root="general,tcpip,aixpert"
+	evts2log4nonroot="general"
+
+	add_events_to_config_file
+
+	chsec -f /usr/lib/security/mkuser.default -s user\
+ -a auditclasses="general"
+	if [ $? -ne 0 ]
+	then
+		dspmsg -s 1 aixpert.cat 8\
+ "binaudit.sh: chsec command failed to set auditclasses of mkuser.default\n"
+		. $TMP4$PID
+		rm $TMP4$PID
+		exit 1
+	fi
+fi
+
+# Undo action
+echo "chsec -f /usr/lib/security/mkuser.default -s user\
+ -a auditclasses=" "\"$lssecval\"" >>$TMP4$PID
+
+# Changes to accomidate /e/s/ausit/config file format changes
+# LI 77M added role based auditing and hence a role: stanza
+# is added to /e/s/ausit/config towards the end.
+echo "\n" >>$TMP$PID
+grep -p role: $AUDCFG >>$TMP$PID
+echo "\n" >>$TMP$PID
+
+# Move the contents of $TMP$PID to $AUDCFG
+mv $TMP$PID $AUDCFG
+}
+
+# Log output and errors to /etc/security/aixpert/log/aixpert.log
+exec 1>>$LOG
+exec 2>&1
+
+if [ $# -ne 2 ]
+then
+        dspmsg -s 30 aixpert.cat 1 "Usage :\
+ binaudit {h rulename|m rulename|l rulename |d rulename}\n"
+        exit 1
+fi
+
+if ( [ $# -eq 2 ] && [ "$1" != "h" ] && [ "$1" != "m" ] &&\
+ [ "$1" != "l" ] && [ "$1" != "d" ] )
+then
+	dspmsg -s 30 aixpert.cat 1 "Usage :\
+ binaudit {h rulename|m rulename|l rulename |d rulename}\n"
+        exit 1
+fi
+
+# echo all the commands and the current time and date to the AIXpert log
+set -x 
+date
+echo $0
+
+# create a temporary file to store the undo actions
+echo "#!/usr/bin/ksh\nexport PATH=/usr/bin:/usr/sbin:\$PATH\n" >$TMP4$PID
+echo "exec 1>>$LOG\nexec 2>&1\nset -x\ndate\necho" '$0' >>$TMP4$PID
+
+# A value of 0 indicates that Undo rule need not be created. This variable
+# will be set later in the script if there is anything to be undone.
+undo=0
+
+# Check whether audit is currently running
+auditstatus=`audit query | grep "auditing on"`
+
+# Check whether AIXPERT_CHECK_REPORT environment variable is set or not.
+report=`echo $AIXPERT_CHECK_REPORT`
+
+if [ "$1" != "d" ] 
+then
+	if [ "$auditstatus" = "" ]
+	then
+		# Dynamic Security check
+		if [ "$report" = "1" ]
+		then
+			rm $TMP4$PID
+			dspmsg -s 1 aixpert.cat 2 "binaudit.sh:\
+ Auditing is OFF now, however it should be ON\n" >>$REPORT
+			dspmsg -s 1 aixpert.cat 2 "binaudit.sh:\
+ Auditing is OFF now, however it should be ON\n" >>$AIXPERT_FIFO
+			exit 1
+		fi
+
+		# Check whether /audit filesystem exists.
+		# If the file system exists then get the size of it.
+		size=`lsfs | grep /audit | awk '{print $5}'`
+
+		if [ "$size" = "" ]
+		then
+			# If the /audit filesystem doesn't exist,
+			# then create it in an active volume group
+			exist=false
+			lsvg -o | while read vg
+			do
+				freespace=`lsvg $vg | grep "FREE PPs:" |\
+ awk '{ print $7}'|awk -F "(" '{print $2}'`
+
+				if [ $freespace -ge 100 ]
+				then
+					# Create file system /audit
+					crfs -v jfs2 -m /audit -g $vg -A yes\
+ -p rw -a size=100M
+					mount /audit
+					exist=true
+					break
+				fi
+			done
+
+			if [ "$exist" = "false" ]
+			then
+				dspmsg -s 1 aixpert.cat 3 "binaudit.sh:\
+ Cannot create /audit filesystem of size 100MB in active volume groups\n"
+				exit 1
+			fi
+		else
+
+			# Check whether the freespace available + /audit/bin1 + 
+			# /audit/bin2 + /audit/trail + /audit/trailOneLevelBack >= 100MB
+			
+			tot=`df | grep "/audit" | awk '{print $3}'`
+			tot=` expr $tot \* 512 `
+			
+			if [ -f /audit/bin1 ]
+			then
+				size=`ls -l /audit/bin1 | awk '{print $5}'`
+				tot=` expr $tot + $size `
+			fi
+			
+			if [ -f /audit/bin2 ]
+			then
+				size=`ls -l /audit/bin2 | awk '{print $5}'`
+				tot=` expr $tot + $size `
+			fi
+			
+			if [ -f /audit/trail ]
+			then
+				size=`ls -l /audit/trail | awk '{print $5}'`
+				tot=` expr $tot + $size `
+			fi
+			
+			if [ -f /audit/trailOneLevelBack ]
+			then
+				size=`ls -l /audit/trailOneLevelBack | awk '{print $5}'`
+				tot=` expr $tot + $size `
+			fi
+			
+			if [ $tot -lt 104857600 ]
+			then
+				incsize=`expr 104857600 - $tot`
+				chfs -a size=+$incsize /audit
+				if [ $? -ne 0 ]
+				then
+					dspmsg aixpert.cat 4  "binaudit.sh:\
+ The size of the /audit filesystem should be atleast 100 MB\n"
+					exit 1
+				fi
+			fi
+			
+			# Check whether auto mount is set on the file system
+			automnt=`lsfs | grep /audit | awk '{print $7}'`
+
+			if [ "$automnt" = "no" ]
+			then
+				chfs -A /audit
+				mount /audit
+			fi
+		fi
+
+		undo=1
+		# Set up audit config files
+		setup_audit_config_files $1
+
+		# start new audit
+		audit start >/dev/null 2>&1
+		if [ $? -ne 22 ] && [ $? -ne 0 ]
+		then
+			dspmsg -s 1 aixpert.cat 7\
+ "binaudit.sh: audit %s failed\n" "start"
+			. $TMP4$PID
+			rm $TMP4$PID
+			exit 1
+		fi
+		# Undo action
+		echo "audit shutdown >/dev/null 2>&1" >>$TMP4$PID
+
+	else
+		if [ "$report" = "1" ]
+		then
+			rm $TMP4$PID
+			binau=`audit query | grep "bin processing" |\
+ awk '{print $NF}'`
+			if [ "$binau" = "off" ]
+			then
+				dspmsg -s 1 aixpert.cat 5 "binaudit.sh:\
+ Bin auditing is OFF now, however it should be ON\n" >>$REPORT
+				dspmsg -s 1 aixpert.cat 5 "binaudit.sh:\
+ Bin auditing is OFF now, however it should be ON\n" >>$AIXPERT_FIFO
+				exit 1
+			else
+				exit 0
+			fi
+		fi
+
+		undo=1
+		# Stop auditing
+		audit off >/dev/null 2>&1
+		if [ $? -ne 22 ] && [ $? -ne 0 ]
+		then
+			dspmsg -s 1 aixpert.cat 7\
+ "binaudit.sh: audit %s failed\n" "off"
+			. $TMP4$PID
+			rm $TMP4$PID
+			exit 1
+		fi
+		# Undo action
+		echo "audit off >/dev/null 2>&1" >>$TMP4$PID
+
+		# Set up audit config files
+		setup_audit_config_files $1
+
+		# Restart auditing
+		audit on >/dev/null 2>&1
+		if [ $? -ne 22 ] && [ $? -ne 0 ]
+		then
+			dspmsg -s 1 aixpert.cat 7\
+ "binaudit.sh: audit %s failed\n" "on"
+			. $TMP4$PID
+			rm $TMP4$PID
+			exit 1
+		fi
+		# Undo action
+		echo "audit on >/dev/null 2>&1" >>$TMP4$PID
+	fi
+
+	# Enable audit on every reboot
+	lsitab audit >/dev/null 2>&1
+	if [ $? -ne 0 ]
+	then
+		mkitab "audit:2:once:audit start > /dev/console 2>&1 # Start audit"
+		# Undo action
+		echo "rmitab audit" >>$TMP4$PID
+	fi
+
+	# Enable cronjob to monitor the size of /audit filesystem
+	crontab -l >$TMP2$PID
+	# Check if its not already added by aixpert
+	grep "^[ \t]*[^#].*cronaudit" $TMP2$PID >/dev/null 2>&1
+	if [ $? -ne 0 ]
+	then
+		echo "0 * * * * /etc/security/aixpert/bin/cronaudit" >>$TMP2$PID
+		crontab $TMP2$PID
+	fi
+	rm $TMP2$PID
+
+	# Remove audit cronjob
+	echo "crontab -l | awk '{if(\$6!=\"/etc/security/aixpert/bin/cronaudit\")\
+print \$0}' >" $TMP2$PID >>$TMP4$PID
+	echo "crontab " $TMP2$PID >>$TMP4$PID
+	echo "rm " $TMP2$PID >>$TMP4$PID
+
+else
+# Default action of bin audting
+	if [ "$auditstatus" != "" ]
+	then
+		# Dynamic Security check
+		if [ "$report" = "1" ]
+		then
+			rm $TMP4$PID
+			dspmsg -s 1 aixpert.cat 6 "binaudit.sh:\
+ Auditing is ON now, however it should be OFF\n" >>$REPORT
+			dspmsg -s 1 aixpert.cat 6 "binaudit.sh:\
+ Auditing is ON now, however it should be OFF\n" >>$AIXPERT_FIFO
+			exit 1
+		elif [ $# -eq 2 ]
+		then
+			undo=1
+			echo "audit on >/dev/null 2>&1" >>$TMP4$PID
+			# Shutdown audit
+			audit shutdown >/dev/null 2>&1
+			if [ $? -ne 22 ] && [ $? -ne 0 ]
+			then
+				dspmsg -s 1 aixpert.cat 7\
+ "binaudit.sh: audit %s failed\n" "on"
+				. $TMP4$PID
+				rm $TMP4$PID
+				exit 1
+			fi
+		fi
+	else
+		# for undo consistency
+		if [ "$report" != "1" ]
+		then
+			undo=1
+			echo "audit shutdown >/dev/null 2>&1" >>$TMP4$PID
+		fi
+	fi
+fi
+
+if [ "$undo" = "1" ]
+then
+	time=`date +%s`
+	# move the temporary Undo script to $SCPTDIR/Undo$2$time
+	mv $TMP4$PID $SCPTDIR/Undo$2$time
+	chmod ug+x $SCPTDIR/Undo$2$time
+
+	empty=`grep "^<AIXPertUndo>" $UNDOXML`
+	if [ "$empty" = "" ]
+	then
+		echo "\n<AIXPertUndo>\n</AIXPertUndo>" >> $UNDOXML
+	fi
+	
+	# Get the rulename and put it in undo rule
+	name=`echo $AIXPERT_NAME`
+	# Get the rule description & pass it to undo rule
+	desc=`echo $AIXPERT_DESC`
+
+	# Add an undo XML rule to the file $UNDOXML
+	awk -v rulehalf1="\t<AIXPertEntry name=\"$name\">\n\
+\t\t<AIXPertRuleType type=\"Undo\"/>\n\
+\t\t<AIXPertDescription>Undo action for \"$desc\"</AIXPertDescription>\n\
+\t\t<AIXPertPrereqList/>\n"\
+ -v rulehalf2="\t\t<AIXPertCommand>$SCPTDIR/Undo$2$time\
+</AIXPertCommand>\n\t\t<AIXPertArgs/>\n\
+\t\t<AIXPertGroup>Audit policy recommendations</AIXPertGroup>\n\
+\t</AIXPertEntry>" '{if(match($0,"^[\t ]*</AIXPertUndo>")==0) print $0;\
+ else print rulehalf1 rulehalf2 "\n" $0}' $UNDOXML >$TMP3$PID
+	mv $TMP3$PID $UNDOXML
+fi
+
+exit 0
+
+

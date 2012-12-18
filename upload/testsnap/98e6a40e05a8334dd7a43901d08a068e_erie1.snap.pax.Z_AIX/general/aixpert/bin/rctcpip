@@ -1,0 +1,274 @@
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# bos61F src/bos/usr/lib/security/aixpert/scripts/rctcpip.sh 1.7 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2006,2008 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)09	1.7  src/bos/usr/lib/security/aixpert/scripts/rctcpip.sh, aixpert, bos61F, 0835A_61F 8/1/08 15:07:56
+# IBM_PROLOG_END_TAG 
+
+# COPYRIGHT International Business Machines Corp. 2006,2007 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+#	COMPONENT_NAME		: (AIXPERT) rctcpip.sh
+#	FUNCTIONS		: None
+#	ORIGINS			: 27
+#
+#	Command Line Arguments	: The script takes 2/3 command line arguments.
+#				The first argument specifies the daemon in
+#				/etc/rc.tcpip to be disabled/enabled.
+#				The second argument mentions whether the daemon
+#				has to be disabled/enabled. Value 'a' indicates
+#				that the daemon should be enabled and value 'd'
+#				indicates that the daemon has to be disabled.
+#				Third argument is optional, if provided indicates
+#				that the undo	xml rule has to be generated.
+#				Syntax -  rctcpip daemon {a|d} [rulename]
+#
+#	OUTPUT			: None
+#
+#	Description		: This script activates/deactivates a daemon in
+#				the configuration file /etc/rc.tcpip. It generates
+#				an undo XML rule with shortname as "Undo$3 <timestamp>",
+#				if the third argument is provided.
+#				This script should be run with superuser privileges.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+
+# Initialize variables AIXPERT_FIFO, LOG, REPORT and UNDOXML
+. /etc/security/aixpert/bin/initialize_variables
+
+TMP=/etc/security/aixpert/tmp/rctcpip
+PID=$$
+
+# Check whether AIXPERT_CHECK_REPORT environment variable is set
+report=`echo $AIXPERT_CHECK_REPORT`
+
+stop_start_service()
+{
+# Check whether string specified by argument $1 is a daemon or not.
+# If it is a daemon, reports error, if the daemon is active when
+# the status is "d" or if the daemon is inoperative, when status is "a"
+lssrc -s $1
+if [ $? -eq 0 ]
+then
+	stat=`lssrc -s $1|tail -1|awk '{print $NF}'`
+	if [ "$2" = "d" ]
+	then
+		if [ "$stat" = "active" ]
+		then
+			# Dynamic Security Check
+                        if [ "$report" = "1" ]
+                        then
+                                dspmsg -s 20 aixpert.cat 4 "rctcpip.sh:\
+ Daemon %s's status is active, however it should be inoperative\n" $1 >>$REPORT
+                                dspmsg -s 20 aixpert.cat 4 "rctcpip.sh:\
+ Daemon %s's status is active, however it should be inoperative\n" $1 >>$AIXPERT
+_FIFO
+                        else
+                                stopsrc -s $1
+                        fi
+                fi
+        else
+                if [ "$stat" = "inoperative" ]
+                then
+                        # Dynamic Security Check
+                        if [ "$report" = "1" ]
+                        then
+                                dspmsg -s 20 aixpert.cat 5 "rctcpip.sh:\
+ Daemon %s's status is inoperative, however it should be active\n" $1 >>$REPORT
+                                dspmsg -s 20 aixpert.cat 5 "rctcpip.sh:\
+ Daemon %s's status is inoperative, however it should be active\n" $1 >>$AIXPERT
+_FIFO
+                        else
+				startsrc -s $1
+                        fi
+		fi
+	fi
+fi
+}
+
+
+# Log output and errors to /etc/security/aixpert/log/aixpert.log
+exec 1>>$LOG
+exec 2>&1
+
+if ( [ $# -lt 2 ] || [ $# -gt 3 ] || ( [ "$2" != "a" ] && [ "$2" != "d" ] ) )
+then
+        dspmsg -s 20 aixpert.cat 1 "Usage : rctcpip daemon {a|d} [rulename]\n"
+        exit 1
+fi
+
+# echo all the commands and the current time and date to the AIXpert log
+set -x
+date
+echo $0
+
+# A value of 0 indicates that Undo rule need not be created. This variable
+# will be set later in the script if there is anything to be undone
+undo=0
+
+# Check whether the daemon entry exists and whether it is enabled or disabled
+# Status value 'a' states that the daemon is uncommented in /etc/rc.tcpip.
+# Value 'd' states that the daemon is commented, and value 'n' specifies
+# that the daemon's entry doesnt exist in the configuration file.
+status=`awk -v dmn=$1 -v exist="n" '
+	BEGIN {
+	format=sprintf("^[\t ]*start [^#]*/%s",dmn);
+	comformat=sprintf("^[\t ]*#[\t ]*start [^#]*/%s",dmn);
+	}
+	{
+	if(match($0,format))
+	{
+		exist="a";
+	}
+	else if(match($0,comformat))
+	{
+		exist="d";
+	}
+	}
+	END {
+	printf("%s",exist)
+	}' /etc/rc.tcpip`
+
+
+# If the daemon entry exists and if it is enabled when $2 is "d"
+# or if it is disabled when $2 is "a".
+if ( [ "$status" != "n" ] && [ "$status" != "$2" ] )
+then
+	# If the number of arguments is not equal to 3,
+	# this script works as Undo script.
+	if [ $# -eq 3 ]
+	then
+		# Dynamic Security Check
+		if [ "$report" = "1" ]
+		then
+			if [ "$status" = "a" ]
+			then
+				curstat="enabled"
+				desstat="disabled"
+			else
+				curstat="disabled"
+				desstat="enabled"
+			fi
+			dspmsg -s 20 aixpert.cat 2 "rctcpip.sh:\
+ Daemon %s's status should be %s in /etc/rc.tcpip,\
+ however it is %s now\n" $1 $desstat $curstat >>$REPORT
+			dspmsg -s 20 aixpert.cat 2 "rctcpip.sh:\
+ Daemon %s's status should be %s in /etc/rc.tcpip,\
+ however it is %s now\n" $1 $desstat $curstat >>$AIXPERT_FIFO
+			exit 1
+		fi
+
+		# Activate/Deactivate the daemon specified by $1 by commenting
+		# or uncommenting the entry in /etc/rc.tcpip. It also Starts/Stops
+		# the daemon to ensure that the changes take effect immediately.
+		chrctcp -S -$2 $1
+		if [ $? -ne 0 ]
+		then
+			dspmsg -s 20 aixpert.cat 3 "rctcpip.sh: chrctcp command failed\n"
+			exit 1
+		fi
+		# generate a undo rule dynamically
+		undo=1
+
+	else
+		# Deactivate/activate the daemon specified by $1 by commenting
+		# or uncommenting the entry in /etc/rc.tcpip. It also Starts/Stops
+		# the daemon to ensure that the changes take effect immediately.
+		chrctcp -S -$2 $1
+		if [ $? -ne 0 ]
+		then
+			dspmsg -s 20 aixpert.cat 3 "rctcpip.sh: chrctcp command failed\n"
+			exit 1
+		fi
+	fi
+elif [ "$status" = "$2" ]
+then
+	if [ $# -eq 3 ] && [ "$report" != "1" ]
+	then
+		# for undo consistency
+		undo=1
+	fi
+
+	stop_start_service $1 $2
+else
+	#status=n, i.e., entry not found in /etc/rc.tcpip
+	if [ "$report" = "1" ]
+	then
+		if [ "$2" = "d" ]
+		then
+			desstat="disabled"
+		else
+			desstat="enabled"
+		fi
+		dspmsg -s 20 aixpert.cat 6 "rctcpip.sh:\
+ Daemon %s's status should be %s, however its entry not found in /etc/rc.tcpip\n"\
+ $1 $desstst >>$REPORT
+		dspmsg -s 20 aixpert.cat 6 "rctcpip.sh:\
+ Daemon %s's status should be %s, however its entry not found in /etc/rc.tcpip\n"\
+ $1 $desstst >>$AIXPERT_FIFO
+
+		#if line doesn't exist and we're supposed
+		#to enable, fail
+		if [ "$2" = "d" ]
+		then 
+			stop_start_service $1 $2
+		else
+			exit 1
+		fi
+	else
+		dspmsg -s 20 aixpert.cat 7 "rctcpip.sh:\
+       	Daemon %s's entry not found in /etc/rc.tcpip\n" $1
+		#if line doesn't exist and we're supposed
+		#to enable, fail
+		if [ "$2" = "d" ]
+		then 
+			stop_start_service $1 $2
+		else
+			exit 1
+		fi
+	fi
+fi
+
+if [ "$undo" = "1" ]
+then
+	# Check if UNDOXML file has <AIXPertUndo> tag or not
+	empty=`grep "^<AIXPertUndo>" $UNDOXML`
+	if [ "$empty" = "" ]
+	then
+		echo "\n<AIXPertUndo>\n</AIXPertUndo>" >> $UNDOXML
+	fi
+
+	# Get the rulename and put it in undo rule
+	name=`echo $AIXPERT_NAME`
+	# Get the rule description & pass it to undo rule
+	desc=`echo $AIXPERT_DESC`
+
+	# Add an undo XML rule to the file $UNDOXML
+	awk -v rulehalf1="\t<AIXPertEntry name=\"$name\">\n\
+\t\t<AIXPertRuleType type=\"Undo\"/>\n\
+\t\t<AIXPertDescription>Undo action for \"$desc\"</AIXPertDescription>\n\
+\t\t<AIXPertPrereqList/>\n"\
+ -v rulehalf2="\t\t<AIXPertCommand>/etc/security/aixpert/bin/rctcpip</AIXPertCommand>\n\
+\t\t<AIXPertArgs>$1 $status</AIXPertArgs>\n\
+\t\t<AIXPertGroup>/etc/rc.tcpip Settings</AIXPertGroup>\n\
+\t</AIXPertEntry>" '{if(match($0,"^[\t ]*</AIXPertUndo>")==0) print $0;\
+ else print rulehalf1 rulehalf2 "\n" $0}' $UNDOXML >$TMP$PID
+	mv $TMP$PID $UNDOXML
+fi
+
+exit 0
+

@@ -1,0 +1,225 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/configrbac.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/configrbac.sh, libice, aix710, _BASELINE_, 2010-05-18T13:56:59-05:00$
+#
+# IBM_PROLOG_END_TAG
+#       COMPONENT_NAME: (ICE) configrbac.sh
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax:
+#               sedconfig -{c|e|p}[v] rulename toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode
+#		lname	- rule_name
+#		toggle	- Boolean
+#			  false => Disable
+#			  true  => Enable
+#
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#		Based on the toggle, this script enables/checks the Enhanced RBAC
+#		feature for AIX. If the toggle is false it disabled Enhanced
+#		RBAC.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+exec 2>&1
+
+###
+#Print Usage
+###
+Usage() {
+	ice_status=1
+        print "usage: \n
+   configrbac -{c|e|p}[v] rulename toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+        print -n "$cur_val%$ice_status%"
+        cat log_msg
+        print
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=0
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+        case $OPT in
+                c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+                p)      pflag=1;;
+                ?|:)    Usage
+			Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+        set -x
+fi
+
+#Need 2 arguments
+if [[ $# -lt 2 ]];
+then
+        Usage
+	Script_Output
+        exit 1
+fi
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+        Usage
+	Script_Output
+        exit 1
+fi
+
+RULE_NAME=$1
+STATUS_ARG=$2
+#Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+        print "Toggle must be true or false" >> log_msg 2>&1
+        Usage
+        Script_Output
+        exit 1
+fi
+
+AIXvers=`oslevel | cut -d. -f1`
+        if [ $AIXvers -lt 6 ]
+        then
+		print "This is a 53 system and this rule is not supported on a 53 system" >> log_msg 2 >&1
+		Script_Output
+		exit 1
+        fi
+
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+        ECHOPREFIX="echo"
+else
+        ECHOPREFIX=""
+fi
+
+rbac=`lsattr -El sys0 | grep RBAC | awk -F " " '{print $2}'`
+
+#checking
+if [[ cflag -eq 1 ]];
+then
+	# Default case
+	if [ "$STATUS_ARG" = "false" ] 	
+	then
+		if [ "$rbac" != "false" ]
+		then
+			print "Enhanced RBAC is set to true but it should be false" >> log_msg 2>&1 
+			ice_status=2
+			cur_val=true
+			Script_Output
+		else
+			ice_status=0
+			cur_val=false
+			Script_Output
+		fi
+	else
+		if [ "$rbac" != "true" ]
+		then
+			print "Enhaced RBAC is set to false but it should be true" >> log_msg 2>&1
+			ice_status=2
+			cur_val=false
+			Script_Output
+		else
+			ice_status=0
+			cur_val=true
+			Script_Output
+		fi
+	fi 
+
+	exit 0
+fi
+
+###
+#Preview/Enforcing
+###
+
+if [ "$STATUS_ARG" = "true" ]
+then
+
+	# Enable Enhanced RBAC feature
+	$ECHOPREFIX chdev -l sys0 -a enhanced_RBAC=true >> log_msg 2>&1
+
+	if [ $? -ne 0 ]
+	then
+		print "Failed to start Enhanced RBAC feature"  >> log_msg 2>&1
+		ice_status=1
+		Script_Output
+	else
+		ice_status=0
+		cur_val=1
+		Script_Output
+	fi
+else
+
+	$ECHOPREFIX chdev -l sys0 -a enhanced_RBAC=false >> log_msg 2>&1
+
+	if [ $? -ne 0 ]
+	then
+		print "Failed to stop Enhanced RBAC feature"  >> log_msg 2>&1
+		ice_status=1
+		Script_Output
+	else
+		cur_val=0
+		ice_status=0
+		Script_Output
+	fi
+fi
+
+exit 0

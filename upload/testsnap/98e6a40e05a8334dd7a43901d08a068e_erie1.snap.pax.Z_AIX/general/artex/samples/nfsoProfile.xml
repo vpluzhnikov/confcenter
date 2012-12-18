@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile origin="reference" readOnly="true" version="2.0.0">
+ <Catalog id="nfsoParam" version="2.1">
+  <Parameter name="client_delegation"/>
+  <Parameter name="nfs_max_read_size"/>
+  <Parameter name="nfs_max_write_size"/>
+  <Parameter name="nfs_rfc1323"/>
+  <Parameter name="nfs_securenfs_authtimeout"/>
+  <Parameter name="nfs_server_base_priority"/>
+  <Parameter name="nfs_server_clread"/>
+  <Parameter name="nfs_use_reserved_ports"/>
+  <Parameter name="nfs_v3_server_readdirplus"/>
+  <Parameter name="nfs_v4_fail_over_timeout"/>
+  <Parameter name="portcheck"/>
+  <Parameter name="server_delegation"/>
+  <Parameter name="utf8_validation"/>
+  <SubCat id="restricted">
+   <Parameter name="lockd_debug_level" readOnly="true"/>
+   <Parameter name="nfs_allow_all_signals" readOnly="true"/>
+   <Parameter name="nfs_auto_rbr_trigger" readOnly="true"/>
+   <Parameter name="nfs_dynamic_retrans" readOnly="true"/>
+   <Parameter name="nfs_gather_threshold" readOnly="true"/>
+   <Parameter name="nfs_iopace_pages" readOnly="true"/>
+   <Parameter name="nfs_max_threads" readOnly="true"/>
+   <Parameter name="nfs_repeat_messages" readOnly="true"/>
+   <Parameter name="nfs_socketsize" readOnly="true"/>
+   <Parameter name="nfs_tcp_duplicate_cache_size" readOnly="true"/>
+   <Parameter name="nfs_tcp_socketsize" readOnly="true"/>
+   <Parameter name="nfs_udp_duplicate_cache_size" readOnly="true"/>
+   <Parameter name="nfs_v2_pdts" readOnly="true"/>
+   <Parameter name="nfs_v3_pdts" readOnly="true"/>
+   <Parameter name="nfs_v4_pdts" readOnly="true"/>
+   <Parameter name="nfs_v2_vm_bufs" readOnly="true"/>
+   <Parameter name="nfs_v3_vm_bufs" readOnly="true"/>
+   <Parameter name="nfs_v4_vm_bufs" readOnly="true"/>
+   <Parameter name="statd_debug_level" readOnly="true"/>
+   <Parameter name="statd_max_threads" readOnly="true"/>
+   <Parameter name="udpchecksum" readOnly="true"/>
+  </SubCat>
+ </Catalog>
+</Profile>

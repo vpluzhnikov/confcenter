@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="ruserParam" version="2.0">
+
+ <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="40" msgNum="1">Directly manipulates entries in three separate system databases that control foreign host access to programs.</NLSCatalog></ShortDescription>
+ 
+ <Description><NLSCatalog catalog="artexcat.cat" setNum="40" msgNum="2">The ruser low-level command adds or deletes entries in three separate system databases. Which database you are manipulating is determined by using the -p,
+       -r, or -f flags. In addition, the ruser command can show one or all entries in one of the databases. Each database is a list of names. The three databases
+       are as follows:
+       *    /etc/ftpusers file
+       *    /etc/hosts.equiv file
+       *    /etc/hosts.lpd file Note: The -p and -r options can be used together to add a name to databases at the same time, but the -f option cannot be used
+            with either.</NLSCatalog></Description>
+
+
+ <CfgMethod id="ruser">
+  <!-- Cutomize diff command for comparing list of users  -->
+   <Diff>
+   <Command>
+    
+	FILE1=%f1
+	FILE1_SORT=%f1
+	FILE2=%f2
+	FILE2_SORT=%f2
+    (tr " " "\n" &lt;$FILE1)| sed '/^$/d' | sort &gt; $FILE1_SORT
+    (tr " " "\n" &lt;$FILE2)| sed '/^$/d' | sort &gt; $FILE2_SORT
+    /usr/bin/diff -w $FILE1_SORT $FILE2_SORT; echo $?
+    
+  </Command>
+  </Diff>
+  </CfgMethod>
+
+  
+ <ParameterDef name="ftp" type="string" reboot="false" cfgmethod="ruser">
+   <Description><NLSCatalog catalog="artexcat.cat" setNum="40" msgNum="3">FTP users</NLSCatalog></Description>
+
+   <Get type="current">
+     <Command>export LANG=C; if [[ -f /etc/ftpusers ]]; then if [[ `grep -v ^# /etc/ftpusers | wc -l` -gt 0 ]]; then /usr/bin/ruser -sF; fi; fi</Command>
+     <Filter>if [[ `grep -v ^# /etc/ftpusers | wc -c` -le 80 ]]; then /usr/bin/awk 'BEGIN{USTRING=""} { if (USTRING == "") { USTRING=$0 } else { USTRING=USTRING" "$0 } } END{ print USTRING }' | /usr/bin/tr -d '\n'; else /usr/bin/tr -d '\t'; fi</Filter>
+   </Get>
+
+   <Get type="nextboot">
+     <Command>export LANG=C; if [[ -f /etc/ftpusers ]]; then if [[ `grep -v ^# /etc/ftpusers | wc -l` -gt 0 ]]; then /usr/bin/ruser -sF; fi; fi</Command>
+     <Filter>if [[ `grep -v ^# /etc/ftpusers | wc -c` -le 80 ]]; then /usr/bin/awk 'BEGIN{USTRING=""} { if (USTRING == "") { USTRING=$0 } else { USTRING=USTRING" "$0 } } END{ print USTRING }' | /usr/bin/tr -d '\n'; else /usr/bin/tr -d '\t'; fi</Filter>
+   </Get>
+
+   <Set type="permanent">
+     <Command>export LANG=C; /usr/bin/ruser -X -F; list=%v1; for user in $list; do /usr/bin/ruser -a -f $user; done;</Command>
+   </Set>
+
+   <Set type="nextboot">
+     <Command>export LANG=C; /usr/bin/ruser -X -F; list=%v1; for user in $list; do /usr/bin/ruser -a -f $user; done;</Command>
+   </Set>
+ </ParameterDef>
+
+ <ParameterDef name="lpd" type="string" reboot="false" cfgmethod="ruser">
+   <Description><NLSCatalog catalog="artexcat.cat" setNum="40" msgNum="4">LPD users</NLSCatalog></Description>
+
+   <Get type="current">
+     <Command>export LANG=C; if [[ -f /etc/hosts.lpd ]]; then if [[ `grep -v ^# /etc/hosts.lpd | wc -l` -gt 0 ]]; then /usr/bin/ruser -sP; fi; fi</Command>
+     <Filter>if [[ `grep -v ^# /etc/hosts.lpd | wc -c` -le 80 ]]; then /usr/bin/awk 'BEGIN{USTRING=""} { if (USTRING == "") { USTRING=$0 } else { USTRING=USTRING" "$0 } } END{ print USTRING }' | /usr/bin/tr -d '\n'; else /usr/bin/tr -d '\t'; fi</Filter>
+   </Get>
+
+   <Get type="nextboot">
+     <Command>export LANG=C; if [[ -f /etc/hosts.lpd ]]; then if [[ `grep -v ^# /etc/hosts.lpd | wc -l` -gt 0 ]]; then /usr/bin/ruser -sP; fi; fi</Command>
+     <Filter>if [[ `grep -v ^# /etc/hosts.lpd | wc -c` -le 80 ]]; then /usr/bin/awk 'BEGIN{USTRING=""} { if (USTRING == "") { USTRING=$0 } else { USTRING=USTRING" "$0 } } END{ print USTRING }' | /usr/bin/tr -d '\n'; else /usr/bin/tr -d '\t'; fi</Filter>
+   </Get>
+
+   <Set type="permanent">
+     <Command>export LANG=C; /usr/bin/ruser -X -P; list=%v1; for user in $list; do /usr/bin/ruser -a -p $user; done;</Command>
+   </Set>
+
+   <Set type="nextboot">
+     <Command>export LANG=C; /usr/bin/ruser -X -P; list=%v1; for user in $list; do /usr/bin/ruser -a -p $user; done;</Command>
+   </Set>
+ </ParameterDef>
+
+ <ParameterDef name="remote" type="string" reboot="false" cfgmethod="ruser">
+   <Description><NLSCatalog catalog="artexcat.cat" setNum="40" msgNum="5">Remote users</NLSCatalog></Description>
+
+   <Get type="current">
+     <Command>export LANG=C; if [[ -f /etc/hosts.equiv ]]; then if [[ `grep -v ^# /etc/hosts.equiv | wc -l` -gt 0 ]]; then /usr/bin/ruser -sR; fi; fi</Command>
+     <Filter>if [[ `grep -v ^# /etc/hosts.equiv | wc -c` -le 80 ]]; then /usr/bin/awk 'BEGIN{USTRING=""} { if (USTRING == "") { USTRING=$0 } else { USTRING=USTRING" "$0 } } END{ print USTRING }' | /usr/bin/tr -d '\n'; else /usr/bin/tr -d '\t'; fi</Filter>
+   </Get>
+
+   <Get type="nextboot">
+     <Command>export LANG=C; if [[ -f /etc/hosts.equiv ]]; then if [[ `grep -v ^# /etc/hosts.equiv | wc -l` -gt 0 ]]; then /usr/bin/ruser -sR; fi;fi</Command>
+     <Filter>if [[ `grep -v ^# /etc/hosts.equiv | wc -c` -le 80 ]]; then /usr/bin/awk 'BEGIN{USTRING=""} { if (USTRING == "") { USTRING=$0 } else { USTRING=USTRING" "$0 } } END{ print USTRING }' | /usr/bin/tr -d '\n'; else /usr/bin/tr -d '\t'; fi</Filter>
+   </Get>
+
+   <Set type="permanent">
+     <Command>export LANG=C; /usr/bin/ruser -X -R; list=%v1; for user in $list; do /usr/bin/ruser -a -r $user; done;</Command>
+   </Set>
+
+   <Set type="nextboot">
+     <Command>export LANG=C; /usr/bin/ruser -X -R; list=%v1; for user in $list; do /usr/bin/ruser -a -r $user; done;</Command>
+   </Set>
+ </ParameterDef>
+ 
+</Catalog>

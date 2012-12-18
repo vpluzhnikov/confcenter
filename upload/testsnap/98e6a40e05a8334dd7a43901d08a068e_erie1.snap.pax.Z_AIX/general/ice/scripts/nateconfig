@@ -1,0 +1,224 @@
+#/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/nateconfig.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/nateconfig.sh, libice, aix710, _BASELINE_, 2010-05-18T13:56:20-05:00$
+#
+# IBM_PROLOG_END_TAG
+#       COMPONENT_NAME: (ICE) nateconfig.sh
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax:
+#               nateconfig -{c|e|p}[v] rulename toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode
+#		 lname 	- rule_name
+#		 toggle	- Boolean
+#		 		false => Disable
+#		 		true  => Enable
+#
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#		This script determines if any of the following network
+#		analysis tools are enabled:
+#		
+#		ethereal
+#		wireshark
+#		tshark
+#		netcat
+#		tcpdump
+#		snoop
+#		SUNWrcmdc
+#GEN003865
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+exec 2>&1
+
+###
+#Print Usage
+###
+Usage() {
+	ice_status=1
+        print "usage: \n 
+		nateconfig -{c|e|p}[v] rulename toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+        print -n "$cur_val%$ice_status%\n"
+        cat log_msg
+	print
+}
+
+###
+#Check if any network analysis tools are enabled
+###
+check_nate() {
+	stat=0
+	total_cnt=6
+	# Add new network analysis tools here
+	nate_list="ethereal wireshark tshark netcat tcpdump snoop" 
+
+	# Search for each network analysis tool
+	for i in $nate_list
+	do
+		$ECHOPREFIX find / -name $i >> log_msg 2>&1
+
+		# Check if the tool was found
+		grep $i log_msg > /dev/null 2>&1
+		if [ $? -eq 0 ]
+		then 
+			stat=$(( $stat + 1 ))
+		fi
+	done
+
+	# Check if we found any tools
+	if [ $stat -ne 0 ] && [ $pflag -eq 0 ]
+	then 
+		print "\n$stat of $total_cnt network analysis tools were found." >> log_msg 2>&1
+		ice_status=1
+		cur_val=1
+		Script_Output
+	else
+		ice_status=0
+		cur_val=0
+		Script_Output
+	fi
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+
+###
+#Initialize the Script Output variables
+###
+cur_val=0
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+        case $OPT in
+		c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+                p)      pflag=1;;
+                ?|:)    Usage
+			Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+        set -x
+fi
+
+#Need 1 arguments
+if [[ $# -lt 1 ]];
+then
+        Usage
+		 Script_Output
+        exit 1
+fi
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+        Usage
+	Script_Output
+        exit 1
+fi
+
+RULE_NAME=$1
+STATUS_ARG=$2
+#Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+        print "Toggle must be true or false" >> log_msg 2>&1
+        Usage
+        Script_Output
+        exit 1
+fi
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+        ECHOPREFIX="echo"
+else
+        ECHOPREFIX=""
+fi
+
+#checking
+if [[ cflag -eq 1 ]];
+then
+	# Default case
+	if [ "$STATUS_ARG" = "false" ]
+	then
+		ice_status=0
+		cur_val=false
+		print "Network analysis tools checking is ignored" >> log_msg 2>&1
+		Script_Output
+	# true case
+	else
+		#Check for network analysis tools
+		check_nate
+	fi
+
+exit 0
+fi
+
+###
+#Preview/Enforcing
+###
+
+if [ "$STATUS_ARG" = "true" ]
+then
+	#Check for network analysis tools
+	check_nate
+# false case
+else
+	ice_status=0
+	cur_val=false
+	print "Network analysis tools checking is ignored" >> log_msg 2>&1
+	Script_Output
+fi
+
+exit 0

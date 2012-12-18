@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="viosdevattrParam" version="2.0">
+	
+	<ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="50" msgNum="1">VIOS device attributes</NLSCatalog></ShortDescription>
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="50" msgNum="2">Some attributes of devices fcsX and hdiskX for VIOS</NLSCatalog></Description>
+
+	<CfgMethod id="chdevfcs">
+
+		<Get type="current">
+			<Command>LANG=C /usr/sbin/lsattr -l %t[devfcs] -a %p -F "value" </Command>
+			<Filter> /usr/bin/tr -d '\n'</Filter>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>LANG=C /usr/sbin/lsattr -l %t[devfcs] -a %p -F "value" </Command>
+			<Filter> /usr/bin/tr -d '\n'</Filter>
+		</Get>
+
+		<Set type="permanent">
+			<Command>VAR=%p; VAL=%v1; TAR=%t[devfcs]; LANG=C user_settable=`lsattr -F "user_settable" -l $TAR -a $VAR`; if [ "$user_settable" = "True" ] ; then /usr/sbin/chdev -l $TAR -a $VAR=$VAL; fi</Command>
+		</Set>
+
+		<Set type="nextboot">
+			<Command>VAR=%p; VAL=%v1; TAR=%t[devfcs]; LANG=C user_settable=`lsattr -F "user_settable" -l $TAR -a $VAR`; if [ "$user_settable" = "True" ] ; then /usr/sbin/chdev  -P -l $TAR -a $VAR=$VAL; fi</Command>
+		</Set>
+
+		<Discover>
+			<Command>LANG=C /usr/sbin/lsdev -C -F "name" | grep "^fcs[0-9]" | sed -e 's/^/devfcs=/;s/$/;/'</Command>
+		</Discover>
+	</CfgMethod>
+
+	<CfgMethod id="chdevfscsi">
+
+		<Get type="current">
+			<Command>LANG=C /usr/sbin/lsattr -l %t[devfscsi] -a %p -F "value" </Command>
+			<Filter>/usr/bin/sed -e 's/no/0/' -e 's/yes/1/' | /usr/bin/tr -d '\n'</Filter>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>LANG=C /usr/sbin/lsattr -l %t[devfscsi] -a %p -F "value" </Command>
+			<Filter>/usr/bin/sed -e 's/no/0/' -e 's/yes/1/' | /usr/bin/tr -d '\n'</Filter>
+		</Get>
+
+		<Set type="permanent">
+			<Command> VAR=%p; VAL=%v1; TAR=%t[devfscsi]; LANG=C user_settable=`lsattr -F "user_settable" -l $TAR -a $VAR`; if [ "$user_settable" = "True" ] ; then /usr/sbin/chdev -l $TAR -a $VAR=$VAL; fi</Command>
+		</Set>
+
+		<Set type="nextboot">
+			<Command> VAR=%p; VAL=%v1; TAR=%t[devfscsi]; LANG=C user_settable=`lsattr -F "user_settable" -l $TAR -a $VAR`; if [ "$user_settable" = "True" ] ; then /usr/sbin/chdev -P -l $TAR -a $VAR=$VAL; fi</Command>
+		</Set>
+
+		<Discover>
+			<Command>LANG=C /usr/sbin/lsdev -C -F "name" | grep "^fscsi[0-9]" | sed -e 's/^/devfscsi=/;s/$/;/'</Command>
+		</Discover>
+	</CfgMethod>
+
+	<CfgMethod id="chdevhdisk">
+
+		<Get type="current">
+			<Command>LANG=C /usr/sbin/lsattr -l %t[devhdisk] -a %p -F "value" </Command>
+			<Filter> /usr/bin/tr -d '\n'</Filter>
+		</Get>
+
+		<Get type="nextboot">
+			<Command>LANG=C /usr/sbin/lsattr -l %t[devhdisk] -a %p -F "value" </Command>
+			<Filter> /usr/bin/tr -d '\n'</Filter>
+		</Get>
+
+		<Set type="permanent">
+			<Command> VAR=%p; VAL=%v1; TAR=%t[devhdisk]; LANG=C user_settable=`lsattr -F "user_settable" -l $TAR -a $VAR`; if [ "$user_settable" = "True" ] ; then /usr/sbin/chdev -l $TAR -a $VAR=$VAL; fi</Command>
+		</Set>
+
+		<Set type="nextboot">
+			<Command> VAR=%p; VAL=%v1; TAR=%t[devhdisk]; LANG=C user_settable=`lsattr -F "user_settable" -l $TAR -a $VAR`; if [ "$user_settable" = "True" ] ; then /usr/sbin/chdev -P -l $TAR -a $VAR=$VAL; fi</Command>
+		</Set>
+
+		<Discover>
+			<Command>LANG=C /usr/sbin/lsdev -C -F "name" | grep "^hdisk[0-9]" | sed -e 's/^/devhdisk=/;s/$/;/'</Command>
+		</Discover>
+	</CfgMethod>
+
+	<ParameterDef name="max_xfer_size" type="string" cfgmethod="chdevfcs" targetClass="devfcs">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="50" msgNum="3">Configure FCS Maximum Transfer Size</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="dyntrk" type="boolean" cfgmethod="chdevfscsi" targetClass="devfscsi">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="50" msgNum="4">Dynamic Tracking of FC Devices</NLSCatalog></Description>
+		<Set type="permanent">
+                        <Command> VAR=%p; VAL=`if [ %v1 = 1 ]; then echo "yes"; elif [ %v1 = 0 ]; then echo "no"; fi`; TAR=%t[devfscsi]; LANG=C user_settable=`lsattr -F "user_settable" -l $TAR -a $VAR`; if [ "$user_settable" = "True" ] ; then /usr/sbin/chdev -l $TAR -a $VAR=$VAL; fi</Command>
+		</Set>
+		<Set type="nextboot">
+                        <Command> VAR=%p; VAL=`if [ %v1 = 1 ]; then echo "yes"; elif [ %v1 = 0 ]; then echo "no"; fi`; TAR=%t[devfscsi]; LANG=C user_settable=`lsattr -F "user_settable" -l $TAR -a $VAR`; if [ "$user_settable" = "True" ] ; then /usr/sbin/chdev -P -l $TAR -a $VAR=$VAL; fi</Command>
+		</Set>
+	</ParameterDef>
+
+	<ParameterDef name="fc_err_recov" type="string" cfgmethod="chdevfscsi" targetClass="devfscsi">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="50" msgNum="5">FC Fabric Event Error RECOVERY Policy</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="hcheck_interval" type="integer" cfgmethod="chdevhdisk" targetClass="devhdisk">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="50" msgNum="6">Health Check Interval</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="hcheck_mode" type="string" cfgmethod="chdevhdisk" targetClass="devhdisk">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="50" msgNum="7">Health Check Mode</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="max_transfer" type="string" cfgmethod="chdevhdisk" targetClass="devhdisk">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="50" msgNum="8">Maximum TRANSFER Size</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="queue_depth" type="integer" cfgmethod="chdevhdisk" targetClass="devhdisk">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="50" msgNum="9">Queue DEPTH</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="reserve_policy" type="string" cfgmethod="chdevhdisk" targetClass="devhdisk">
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="50" msgNum="10">Reserve Policy</NLSCatalog></Description>
+	</ParameterDef>
+
+</Catalog>

@@ -1,0 +1,225 @@
+#!/usr/bin/ksh
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix710 bos/usr/lib/security/ice/scripts/filepermgr.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX710_area/1 bos/usr/lib/security/ice/scripts/filepermgr.sh, libice, aix710, 1010A_710 2010-03-02T17:22:02-06:00$
+#
+# IBM_PROLOG_END_TAG
+#	COMPONENT_NAME: (ICE) filepermgr.sh
+#	FUNCTIONS: None
+#	ORIGINS: 27
+#
+#	Syntax:
+#		filepermgr -{c|e|p}[v] lname toggle
+#	Parameters:
+#		-c	- Check mode
+#		-e	- Enforce mode
+#		-p	- Preview mode
+#		-v	- verbose mode
+#		toggle	- Boolean
+#			  false => Disable
+#			  true  => Enable
+#
+#	OUTPUT:
+#		0	- success
+#		1	- usage/enforce failure
+#		2	- Non-compliant error
+#
+#	Description:
+#		This script executes fpm command to remove
+#		suid,sgid from the privileged commands.
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+exec 2>&1
+
+###
+#Print Usage
+###
+Usage() {
+	ice_status=1
+	print "usage: \n
+   filepermgr -{c|e|p}[v] lname toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+	print -n "$cur_val%$ice_status%"
+	cat log_msg
+	print
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+###
+#Initialize the Script Output variables
+###
+cur_val=0
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+	case $OPT in
+		c)	cflag=1;;
+		e)	eflag=1;;
+		v)	vflag=1;;
+		p)	pflag=1;;
+		?|:)	Usage
+			Script_Output
+			exit 1;;
+	esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+	set -x
+fi
+
+#Need 2 arguments
+if [[ $# -ne 2 ]];
+then
+	Usage
+	Script_Output
+	exit 1
+fi
+
+# -c, -e, and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+	Usage
+	Script_Output
+	exit 1
+fi
+
+LNAME=$1
+STATUS_ARG=$2
+
+#Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+	print "Toggle must be true or false" >> log_msg 2>&1
+	Usage
+	Script_Output
+	exit 1
+fi
+
+#LNAME must be high, medium, low, or default
+if ( [ "$LNAME" != "high" ] && [ "$LNAME" != "medium" ] &&\
+   [ "$LNAME" != "low" ] && [ "$LNAME" != "default" ] )
+then
+	print "lname must be high, medium, low, or default" >> log_msg 2>&1
+	Usage
+	Script_Output
+	exit 1
+fi
+
+
+PREREQ=/etc/security/ice/scripts/chkprereq
+PREREQ_LIST="bos.rte.ILS,bos.rte.date,bos.rte.shell,bos.rte.commands,bos.rte.control"
+
+$ECHOPREFIX $PREREQ $PREREQ_LIST
+
+if [ $? -ne 0 ]
+then
+	print "Prereqs are missing..." >> log_msg 2>&1
+	print "Prereqs needed: " $PREREQ_LIST >> log_msg 2>&1
+	ice_status=1
+	Script_Output
+	exit 0
+fi
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+	ECHOPREFIX="echo"
+else
+	ECHOPREFIX=""
+fi
+
+# Query the current fpm status on the machine
+# it'll be High, Medium, Low, Default or Customized
+fpm_status=`fpm -s|awk '{print $1}'`
+# Get the first character of the fpm status, i.e H/M/L/D/C
+fpm_stat=`echo $fpm_status|cut -b1 -n`
+
+case "$fpm_stat"
+in
+	H) fpm_cur_level="high";;
+	M) fpm_cur_level="medium";;
+	L) fpm_cur_level="low";;
+	D) fpm_cur_level="default";;
+	C) fpm_cur_level="custom";;
+esac
+
+case "$1"
+in
+	high) fpm_des_status="hH"
+	   fpm_des_level="high";;
+	medium) fpm_des_status="mM"
+	   fpm_des_level="medium";;
+	low) fpm_des_status="lL"
+	   fpm_des_level="low";;
+	default) fpm_des_status="dD"
+	   fpm_des_level="default";;
+esac
+
+if [[ cflag -eq 1 ]]; 
+then
+	if expr "$fpm_stat" : "[$fpm_des_status]"
+	then
+		Script_Output
+		exit 0
+	else
+		print "\
+ fpm status is $fpm_cur_level, however it should be $fpm_des_level\n" 
+		ice_status=2
+	fi
+else
+	if expr "$fpm_stat" : "[$fpm_des_status]"
+	then
+		Script_Output
+		exit 0
+	else
+		# change the file perms according to the level specified
+		fpm -l $fpm_des_level >/dev/null 2>&1
+		if [ $? -ne 32 ] && [ $? -ne 0 ]
+		then
+			print "\
+ fpm command failed to apply $fpm_des_level level\n"
+			exit 1
+		fi
+	fi
+fi
+
+Script_Output
+exit 0

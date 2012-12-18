@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="shconfParam" version="2.0">
+
+	<ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="1">shconf parameters</NLSCatalog></ShortDescription>
+ 
+	<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="2">Parameter definition for the 'shconf' command</NLSCatalog></Description>
+ 
+	<CfgMethod id="shconf_prio">  
+		<Get type="current">
+			<Command>LANG=C /usr/sbin/shconf -E -l prio</Command>
+			<Filter>/usr/bin/sed -e 's/disable/0/;s/enable/1/'</Filter>
+			<Mask name="1" value="2">([^ ]*)[ ]+([^ ]*)</Mask>
+		</Get>
+		
+		<Get type="nextboot">
+			<Command>LANG=C /usr/sbin/shconf -E -l prio</Command>
+			<Filter>/usr/bin/sed -e 's/disable/0/;s/enable/1/'</Filter>
+			<Mask name="1" value="2">([^ ]*)[ ]+([^ ]*)</Mask>
+		</Get>
+  
+		<Set type="permanent">
+			<Command>LANG=C /usr/sbin/shconf -l prio %a</Command>
+			<Argument> -a %p=%v1</Argument>
+		</Set>
+	</CfgMethod>
+
+	<ParameterDef name="sh_pp" type="boolean" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="3">Enable Process Priority Problem</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -a %p=`if [ ''%v1 = '0' ]; then echo 'disable'; else echo 'enable'; fi`</Argument>
+		</Set>
+	</ParameterDef>
+
+	<ParameterDef name="pp_errlog" type="boolean" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="4">Log Error in the Error Logging</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -a %p=`if [ ''%v1 = '0' ]; then echo 'disable'; else echo 'enable'; fi`</Argument>
+		</Set>
+	</ParameterDef>
+
+	<ParameterDef name="pp_eto" type="integer" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="5">Detection Time-out</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="pp_eprio" type="integer" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="6">Process Priority</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="pp_warning" type="boolean" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="7">Display a warning message on a console</NLSCatalog></Description>
+
+		<Set type="permanent">
+			<Argument> -a %p=`if [ ''%v1 = '0' ]; then echo 'disable'; else echo 'enable'; fi`</Argument>
+		</Set>
+	</ParameterDef>
+
+	<ParameterDef name="pp_wto" type="integer" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="8">Detection Time-out</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="pp_wprio" type="integer" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="9">Process Priority</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="pp_wterm" type="string" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="10">Terminal Device</NLSCatalog></Description>
+		<Get type="current">
+			<Command>LANG=C /usr/sbin/shconf -D -l prio</Command>
+			<Filter>/usr/bin/grep wterm | cut -c 12-80 | cut -d " " -f 1</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+		
+		<Get type="nextboot">
+			<Command>LANG=C /usr/sbin/shconf -D -l prio</Command>
+			<Filter>/usr/bin/grep wterm | cut -c 12-80 | cut -d " " -f 1</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+	</ParameterDef>
+
+	<ParameterDef name="pp_login" type="boolean" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="11">Launch a recovering login on a console</NLSCatalog></Description>
+
+		<Set type="permanent">
+			<Argument> -a %p=`if [ ''%v1 = '0' ]; then echo 'disable'; else echo 'enable'; fi`</Argument>
+		</Set>
+	</ParameterDef>
+
+	<ParameterDef name="pp_lto" type="integer" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="12">Detection Time-out</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="pp_lprio" type="integer" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="13">Process Priority</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="pp_lterm" type="string" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="14">Terminal Device</NLSCatalog></Description>
+		<Get type="current">
+			<Command>LANG=C /usr/sbin/shconf -D -l prio</Command>
+			<Filter>/usr/bin/grep lterm | cut -c 12-80 | cut -d " " -f 1</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+		
+		<Get type="nextboot">
+			<Command>LANG=C /usr/sbin/shconf -D -l prio</Command>
+			<Filter>/usr/bin/grep lterm | cut -c 12-80 | cut -d " " -f 1</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+	</ParameterDef>
+
+	<ParameterDef name="pp_cmd" type="boolean" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="15">Launch a command</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -a %p=`if [ ''%v1 = '0' ]; then echo 'disable'; else echo 'enable'; fi`</Argument>
+		</Set>
+	</ParameterDef>
+
+	<ParameterDef name="pp_cto" type="integer" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="16"/></Description>
+	</ParameterDef>
+
+	<ParameterDef name="pp_cprio" type="integer" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="17">Process Priority</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="pp_cpath" type="string" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="18">Script</NLSCatalog></Description>
+		<Get type="current">
+			<Command>LANG=C /usr/sbin/shconf -D -l prio</Command>
+			<Filter>/usr/bin/grep cpath | cut -c 12-80 | cut -d " " -f 1</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+		
+		<Get type="nextboot">
+			<Command>LANG=C /usr/sbin/shconf -D -l prio</Command>
+			<Filter>/usr/bin/grep cpath | cut -c 12-80 | cut -d " " -f 1</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+	</ParameterDef>
+
+	<ParameterDef name="pp_reboot" type="boolean" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="19">Automatically REBOOT system</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -a %p=`if [ ''%v1 = '0' ]; then echo 'disable'; else echo 'enable'; fi`</Argument>
+		</Set>
+	</ParameterDef>
+
+	<ParameterDef name="pp_rto" type="integer" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="20">Detection Time-out</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="pp_rprio" type="integer" cfgmethod="shconf_prio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="21">Process Priority</NLSCatalog></Description>
+	</ParameterDef>
+ 
+	<CfgMethod id="shconf_lio">  
+		<Get type="current">
+			<Command>LANG=C /usr/sbin/shconf -D -l lio</Command>
+			<Filter>/usr/bin/sed -e 's/disable/0/;s/enable/1/'</Filter>
+			<Mask name="1" value="2">([^ ]*)[ ]+([^ ]*)</Mask>
+		</Get>
+		<Get type="nextboot">
+			<Command>LANG=C /usr/sbin/shconf -D -l lio</Command>
+			<Filter>/usr/bin/sed -e 's/disable/0/;s/enable/1/'</Filter>
+			<Mask name="1" value="2">([^ ]*)[ ]+([^ ]*)</Mask>
+		</Get>
+		<Set type="permanent">
+			<Command>LANG=C /usr/sbin/shconf -l lio %a</Command>
+			<Argument> -a %p=%v1</Argument>
+		</Set>
+	</CfgMethod>
+
+	<ParameterDef name="sh_lio" type="boolean" cfgmethod="shconf_lio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="22">Enable Lost I/O Detection</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -a %p=`if [ ''%v1 = '0' ]; then echo 'disable'; else echo 'enable'; fi`</Argument>
+		</Set>
+	</ParameterDef>
+
+	<ParameterDef name="lio_to" type="integer" cfgmethod="shconf_lio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="23">Detection Time-out</NLSCatalog></Description>
+	</ParameterDef>
+
+	<ParameterDef name="lio_warning" type="boolean" cfgmethod="shconf_lio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="24">Display a warning message on a console</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -a %p=`if [ ''%v1 = '0' ]; then echo 'disable'; else echo 'enable'; fi`</Argument>
+		</Set>
+	</ParameterDef>
+
+	<ParameterDef name="lio_wterm" type="string" cfgmethod="shconf_lio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="25">Terminal Device</NLSCatalog></Description>
+		<Get type="current">
+			<Command>LANG=C /usr/sbin/shconf -D -l prio</Command>
+			<Filter>/usr/bin/grep wterm | cut -c 12-80 | cut -d " " -f 1</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+		
+		<Get type="nextboot">
+			<Command>LANG=C /usr/sbin/shconf -D -l prio</Command>
+			<Filter>/usr/bin/grep wterm | cut -c 12-80 | cut -d " " -f 1</Filter>
+			<Mask value="1">(.*)</Mask>
+		</Get>
+	</ParameterDef>
+
+	<ParameterDef name="lio_reboot" type="boolean" cfgmethod="shconf_lio" reboot="false"> 
+		<Description><NLSCatalog catalog="artexcat.cat" setNum="42" msgNum="26">Automatically REBOOT system</NLSCatalog></Description>
+		<Set type="permanent">
+			<Argument> -a %p=`if [ ''%v1 = '0' ]; then echo 'disable'; else echo 'enable'; fi`</Argument>
+		</Set>
+	</ParameterDef>
+
+</Catalog>

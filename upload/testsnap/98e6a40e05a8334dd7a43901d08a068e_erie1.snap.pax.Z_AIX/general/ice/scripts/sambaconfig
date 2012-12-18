@@ -1,0 +1,325 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/sambaconfig.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/sambaconfig.sh, libice, aix71B, 1035A_71B 2010-07-27T10:06:04-05:00$
+#
+# IBM_PROLOG_END_TAG
+#/usr/bin/ksh
+#       COMPONENT_NAME: (ICE) sambaconfig.sh
+#       FUNCTIONS:      None
+#       ORIGINS:        27
+#
+#       Syntax:
+#               sambaconfig -{c|e|p}[v] rulename toggle
+#       Parameters:
+#               -c      - Check mode
+#               -e      - Enforce mode
+#               -p      - Preview mode
+#               -v      - verbose mode
+#		 lname 	- rule_name
+#		 toggle	- Boolean
+#		 		false => Disable
+#		 		true  => Enable
+#
+#       OUTPUT:
+#               0       - success
+#               1       - check/enforce failure
+#
+#       Description:
+#       	
+#       	GEN006060
+#       	GEN006220
+#       	
+#       	Check only
+#		This script checks the following:
+#			- If the Samba server is running
+#			- If SWAT is being utilized with ssh
+#			- The smb.conf file is not configured to:
+#				- Set the hosts allow option to contain only the
+#				  local network subnet masks and the loopback 
+#				  address.
+#				- Set the security option to user.
+#				- Set the encrypt passwords option to yes.
+#				- Enter the path to the smbpasswd utility in 
+#				  the smb password file option.
+#				- All guest entries in the shares definition 
+#				  section of the smb.conf file will be set to no
+
+
+export PATH=/usr/bin:/usr/sbin:$PATH
+exec 2>&1
+
+###
+#Print Usage
+###
+Usage() {
+	ice_status=1
+        print "usage: \n 
+		sambaconfig -{c|e|p}[v] rulename toggle\n" >> log_msg 2>&1
+}
+
+###
+#Output from Script to the Native Library
+###
+Script_Output() {
+        print -n "$cur_val%$ice_status%\n"
+        cat log_msg
+	print
+}
+
+###
+#Check if Samba server is running
+###
+check_samba_server() {
+        # Check if the Samba server is running
+	ps -ef | grep -v grep | grep smbd >> log_msg 2>&1
+        if [ $? -ne 0 ]
+        then
+               	print "\nThe Samba server is not running." >> log_msg 2>&1
+               	ice_status=0
+               	cur_val=0
+               	Script_Output
+		exit 0
+        fi
+}
+
+###
+#Preview the Samba configuration
+###
+preview_samba_config() {
+	$ECHOPREFIX "ps -ef | grep smbd" >> log_msg 2>&1
+	$ECHOPREFIX "smbconf=\`find / -name smb.conf\`\n" >> log_msg 2>&1
+
+	$ECHOPREFIX "#security option must be set to user" >> log_msg 2>&1
+	$ECHOPREFIX "cat \$smbconf | grep \"^security \" | grep user\n" >> log_msg 2>&1
+
+	$ECHOPREFIX "#encrypt passwords option must be set to yes" >> log_msg 2>&1
+	$ECHOPREFIX "cat \$smbconf | grep \"^encrypt passwords \" | grep yes\n" >> log_msg 2>&1
+
+	$ECHOPREFIX "#smb passwd file option must be set to a specific file" >> log_msg 2>&1
+	$ECHOPREFIX "pwd_file_path=\`cat \$smbconf | grep \"^smb passwd file \" | awk -F \"=\" \'{print \$2}\'\`\n" >> log_msg 2>&1
+
+	$ECHOPREFIX "#guest ok options = yes is not allowed" >> log_msg 2>&1
+	$ECHOPREFIX "cat \$smbconf | grep \"^guest ok \" | grep yes\n" >> log_msg 2>&1
+}
+
+###
+#Check the Samba configuration
+###
+check_samba_config() {
+	smbconf=""
+	pwd_file_path="" 
+
+	################################################
+	# Find the smb.conf file
+	################################################
+	smbconf=`find / -name smb.conf` >/dev/null
+	if [[ $smbconf = "" ]]
+	then
+		print "\nThe smb.conf file not found." >> log_msg 2>&1
+		ice_status=1
+		cur_val=1
+               	Script_Output
+		exit 0
+	else
+		print "The smb.conf file: $smbconf." >> log_msg 2>&1
+	fi
+
+	################################################
+	# Check the security option
+	################################################
+	cat $smbconf | grep "^security " | grep user >> log_msg 2>&1
+	if [ $? -ne 0 ]
+	then
+		print "\nThe smb.conf security option is not set to user." >> log_msg 2>&1
+		ice_status=1
+		cur_val=1
+	else
+		print "The smb.conf security option check: passed." >> log_msg 2>&1
+	fi
+
+	################################################
+	# Check the encrypt passwords option
+	################################################
+	cat $smbconf | grep "^encrypt passwords " | grep yes >> log_msg 2>&1
+	if [ $? -ne 0 ]
+	then
+		print "\nThe smb.conf encrypt passwords option is not set to yes." >> log_msg 2>&1
+		ice_status=1
+		cur_val=1
+	else
+		print "The smb.conf encrypted passwords option check: passed." >> log_msg 2>&1
+	fi
+
+	################################################
+	# Check the smb passwd file option and the path
+	################################################
+	pwd_file_path=`cat $smbconf | grep "^smb passwd file " | awk -F "=" '{print $2}'` >> log_msg 2>&1
+	if [[ $pwd_file_path = "" ]]
+	then
+		print "\nThe smb.conf encrypt passwords option is not set to a specific file." >> log_msg 2>&1
+		ice_status=1
+		cur_val=1
+	else
+		print "passwd file = $pwd_file_path." >> log_msg 2>&1
+		print "The smb.conf passwd file option check: passed." >> log_msg 2>&1
+	fi
+
+	################################################
+	# Check the guest ok options are not set to yes
+	################################################
+	cat $smbconf | grep "guest ok " | grep yes >> log_msg 2>&1
+	if [ $? -eq 0 ]
+	then
+		print "\nThe smb.conf contains a guest ok set to yes." >> log_msg 2>&1
+		ice_status=1
+		cur_val=1
+	else
+		print "\nThe smb.conf guest ok option check: passed." >> log_msg 2>&1
+	fi
+}
+
+###
+#Process arguments
+###
+
+#Check mode
+cflag=0
+#Enforce mode
+eflag=0
+#Preview mode
+pflag=0
+#Verbose mode
+vflag=0
+
+# Count for directories that do not contain a .Xauthority file
+no_xauth_cnt=0
+total_cnt=0
+# Minimum id to search for a .Xauthority file
+uid_min=200
+
+###
+#Initialize the Script Output variables
+###
+cur_val=0
+ice_status=0
+print -n > log_msg 2>&1
+
+while getopts :cevp OPT
+do
+        case $OPT in
+		c)      cflag=1;;
+                e)      eflag=1;;
+                v)      vflag=1;;
+                p)      pflag=1;;
+                ?|:)    Usage
+			Script_Output
+                        exit 1;;
+        esac
+done
+shift $(($OPTIND -1))
+
+#Enable Verbose
+if [[ vflag -eq 1 ]];
+then
+        set -x
+fi
+
+#Need 1 arguments
+if [[ $# -lt 1 ]];
+then
+        Usage
+		 Script_Output
+        exit 1
+fi
+
+# -c, -e and -p mutually exclusive
+((chkflg=cflag+eflag+pflag))
+if [[ chkflg -ne 1 ]];
+then
+        Usage
+	Script_Output
+        exit 1
+fi
+
+RULE_NAME=$1
+STATUS_ARG=$2
+#Toggle argument must be true or false
+if ( [ "$STATUS_ARG" != "true" ] && [ "$STATUS_ARG" != "false" ] )
+then
+        print "Toggle must be true or false" >> log_msg 2>&1
+        Usage
+        Script_Output
+        exit 1
+fi
+
+# Preview mode set-up
+if [[ pflag -eq 1 ]];
+then
+        ECHOPREFIX="echo"
+else
+        ECHOPREFIX=""
+fi
+
+#checking
+if [[ $cflag -eq 1 ]];
+then
+	# Default case
+	if [ "$STATUS_ARG" = "false" ]
+	then
+		ice_status=0
+		cur_val=false
+		print "Samba configuration checking is ignored" >> log_msg 2>&1
+	# true case
+	else
+		#Check if Samba server is running
+		check_samba_server
+
+		#Check Samba configuration
+		check_samba_config
+	fi
+
+	Script_Output
+	# Return error if one occured in one of the function calls
+	exit $ice_status
+fi
+
+###
+#Preview/Enforcing
+###
+
+if [ "$STATUS_ARG" = "true" ]
+then
+	if [ $pflag -eq 1 ]
+	then
+		#Preview Samba configuration
+		preview_samba_config
+	else
+
+		#Check Samba configuration
+		check_samba_config
+	fi
+# false case
+else
+	ice_status=0
+	cur_val=false
+	print "Samba configuration checking is ignored" >> log_msg 2>&1
+fi
+
+Script_Output
+# Return error if one occured in one of the function calls
+exit $ice_status

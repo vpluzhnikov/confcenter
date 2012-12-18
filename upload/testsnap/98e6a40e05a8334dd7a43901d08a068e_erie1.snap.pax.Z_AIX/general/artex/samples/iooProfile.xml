@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile origin="reference" readOnly="true" version="2.0.0">
+	<Catalog id="iooParam" version="2.1">
+
+		<Parameter name="aio_active" readOnly="true"/>
+		<Parameter name="aio_maxreqs"/>
+		<Parameter name="aio_maxservers"/>
+		<Parameter name="aio_minservers"/>
+		<Parameter name="aio_server_inactivity"/>
+		<Parameter name="j2_atimeUpdateSymlink"/>
+		<Parameter name="j2_dynamicBufferPreallocation"/>
+		<Parameter name="j2_inodeCacheSize"/>
+		<Parameter name="j2_maxPageReadAhead"/>
+		<Parameter name="j2_maxRandomWrite"/>
+		<Parameter name="j2_metadataCacheSize"/>
+		<Parameter name="j2_minPageReadAhead"/>
+		<Parameter name="j2_nPagesPerWriteBehindCluster"/>
+		<Parameter name="j2_nRandomCluster"/>
+		<Parameter name="j2_syncPageCount"/>
+		<Parameter name="j2_syncPageLimit"/>
+		<Parameter name="lvm_bufcnt"/>
+		<Parameter name="maxpgahead"/>
+		<Parameter name="maxrandwrt"/>
+		<Parameter name="numclust"/>
+		<Parameter name="numfsbufs"/>
+		<Parameter name="pd_npages"/>
+		<Parameter name="posix_aio_active" readOnly="true"/>
+		<Parameter name="posix_aio_maxreqs"/>
+		<Parameter name="posix_aio_maxservers"/>
+		<Parameter name="posix_aio_minservers"/>
+		<Parameter name="posix_aio_server_inactivity"/>
+
+		<SubCat id="restricted">
+
+			<Parameter name="aio_fastpath" readOnly="true"/>
+			<Parameter name="aio_fsfastpath" readOnly="true"/>
+			<Parameter name="aio_kprocprio" readOnly="true"/>
+			<Parameter name="aio_multitidsusp" readOnly="true"/>
+			<Parameter name="aio_sample_rate" readOnly="true"/>
+			<Parameter name="aio_samples_per_cycle" readOnly="true"/>
+			<Parameter name="j2_maxUsableMaxTransfer" readOnly="true"/>
+			<Parameter name="j2_nBufferPerPagerDevice" readOnly="true"/>
+			<Parameter name="j2_nonFatalCrashesSystem" readOnly="true"/>
+			<Parameter name="j2_syncdLogSyncInterval" readOnly="true"/>
+			<Parameter name="j2_syncModifiedMapped" readOnly="true"/>
+			<Parameter name="j2_unmarkComp" readOnly="true"/>
+			<Parameter name="jfs_clread_enabled" readOnly="true"/>
+			<Parameter name="jfs_use_read_lock" readOnly="true"/>
+			<Parameter name="memory_frames" readOnly="true"/>
+			<Parameter name="minpgahead" readOnly="true"/>
+			<Parameter name="pcibus_dma_memory_protect" readOnly="true"/>
+			<Parameter name="pgahd_scale_thresh" readOnly="true"/>
+			<Parameter name="posix_aio_fastpath" readOnly="true"/>
+			<Parameter name="posix_aio_fsfastpath" readOnly="true"/>
+			<Parameter name="posix_aio_kprocprio" readOnly="true"/>
+			<Parameter name="posix_aio_sample_rate" readOnly="true"/>
+			<Parameter name="posix_aio_samples_per_cycle" readOnly="true"/>
+			<Parameter name="pv_min_pbuf" readOnly="true"/>
+			<Parameter name="sync_release_ilock" readOnly="true"/>
+
+		</SubCat>
+	</Catalog>
+</Profile>

@@ -1,0 +1,66 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/chkerrlog.sh 1$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/1 bos/usr/lib/security/ice/scripts/chkerrlog.sh, libice, aix71B, 1028A_71B 2010-06-22T15:39:52-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+#
+#
+#
+#    Description: Consolidates error logs from trace and hardware failures
+
+INSTALLDIR=/etc/security/ice/scripts
+. $INSTALLDIR/iceInit
+
+PREREQ_LIST="bos.rte.security,bos.rte.date,bos.rte.ILS,bos.sysmgt.trace"
+checkPrereq
+
+#ERRLOG=/etc/security/ice/tmp/errlog
+
+
+case ${cflag} in
+        1)      if [ -e /var/adm/ras/trcfile ] ; then 
+			list1=`trcrpt | grep -i "fatal"`
+		fi
+                #Only H/W errors
+                list2=`errpt -d H`
+                list="$list1$list2"
+                case ${STATUS_ARG} in
+                        true)   case ${list} in
+                                        "")     cur_val=1 ;;
+
+                                        *)      if [ ! -z "$list1" ] ; then
+                                                        print "Fatal errors reported in system trace \n\
+ Please run \"trcrpt\" command with options for more details:\n$list1" >> log_msg 2>&1
+                                                fi
+                                                if [ ! -z "$list2" ] ; then
+                                                        print "Hardware failures reported:\n$list2 "\
+ >> log_msg 2>&1
+                                                fi
+                                                ice_status=2 ;;
+                                esac ;;
+                        false)  print "This script does not check default case" >> log_msg 2>&1
+                                ice_status=1 ;;
+                esac ;;
+        *)      print "This script does not support -e option." >> log_msg 2>&1
+                ice_status=1 ;;
+esac
+
+Script_Output
+exit 0
+

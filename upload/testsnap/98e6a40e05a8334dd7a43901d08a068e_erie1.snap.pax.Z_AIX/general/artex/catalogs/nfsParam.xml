@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Catalog id="nfsParam" version="2.0">
+
+  <ShortDescription><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="1">nfs configuration</NLSCatalog></ShortDescription>
+ 
+  <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="2">Configuration parameter definition for the 'chnfs', 'chnfsdom', 'chnfsim', 'chnfsrtd', 'chnfssec' commands</NLSCatalog></Description>
+ 
+  <CfgMethod id="chnfs">
+  
+    <Get type="current">
+      <Command>true</Command>
+    </Get>
+
+    <Get type="nextboot">
+      <Command>true</Command>
+    </Get>
+
+    <Set type="permanent">
+      <Command>/usr/sbin/chnfs -B %a </Command>
+    </Set>
+
+    <Set type="nextboot">
+      <Command>/usr/sbin/chnfs -I %a </Command>
+    </Set>
+
+  </CfgMethod>
+
+  <CfgMethod id="chnfsdom">
+
+    <Get type="current">
+      <Command>/usr/sbin/chnfsdom</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS=":"; } { gsub(" ","",$NF); if ( $NF != "N/A" ) {print $NF} }' | /usr/bin/tr -d '\n'</Filter>
+    </Get>
+
+    <Get type="nextboot">
+      <Command>/usr/sbin/chnfsdom</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS=":"; } { gsub(" ","",$NF); if ( $NF != "N/A" ) {print $NF} }' | /usr/bin/tr -d '\n'</Filter>
+    </Get>
+
+    <Set type="permanent">
+      <Command>/usr/sbin/chnfsdom %v1</Command>
+    </Set>
+
+    <Set type="nextboot">
+      <Command>/usr/sbin/chnfsdom %v1</Command>
+    </Set>
+
+  </CfgMethod>
+
+
+  <CfgMethod id="chnfsrtd">
+
+    <Get type="current">
+      <Command>/usr/sbin/chnfsrtd</Command>
+      <Filter>/usr/bin/grep %t[rtd_map] | /usr/bin/tr -d '\n'</Filter>
+    </Get>
+
+    <Get type="nextboot">
+      <Command>/usr/sbin/chnfsrtd</Command>
+      <Filter>/usr/bin/grep %t[rtd_map] | /usr/bin/tr -d '\n'</Filter>
+    </Get>
+
+    <Set type="permanent">
+      <Command>/usr/sbin/chnfsrtd -e %t[rtd_map] %v1</Command>
+    </Set>
+
+    <Set type="nextboot">
+      <Command>/usr/sbin/chnfsrtd -e %t[rtd_map] %v1</Command>
+    </Set>
+    
+    <Discover>
+      <Command>if [[ -z /etc/nfs/realm.map ]]; then cat /etc/nfs/realm.map | sed -e 's/^/rtd_map=/;s/$/;/'; else echo "none;"; fi</Command>
+    </Discover>
+  </CfgMethod>
+
+
+  <CfgMethod id="chnfssec">
+
+    <Get type="current">
+      <Command>/usr/sbin/chnfssec</Command>
+      <Filter>/usr/bin/tr -s '\n' ',' | /usr/bin/sed 's/,$//g'</Filter>
+    </Get>
+
+    <Get type="nextboot">
+      <Command>/usr/sbin/chnfssec</Command>
+      <Filter>/usr/bin/tr -s '\n' ',' | /usr/bin/sed 's/,$//g'</Filter>
+    </Get>
+
+    <Set type="permanent">
+      <Command>/usr/sbin/chnfssec -a %v1</Command>
+    </Set>
+
+    <Set type="nextboot">
+      <Command>/usr/sbin/chnfssec -a %v1</Command>
+    </Set>
+
+  </CfgMethod>
+
+<!-- End of config method section -->
+
+  <ParameterDef name="num_biods" cfgmethod="chnfs" type="integer">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="3">Controls the number of biod daemons.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/bin/ps -aeF"%%a"</Command>
+      <Filter>/bin/grep /usr/sbin/biod | /bin/grep -v grep | /bin/awk '{print $NF}' | /usr/bin/tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/odmget -q subsysname=biod SRCsubsys</Command>
+      <Filter>/bin/awk 'BEGIN { FS="\""; } /cmdargs/ { print $2 }' | /usr/bin/tr -d '\n'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> -b %v1</Argument>
+    </Set>
+    <Set type="nextboot">
+      <Argument> -b %v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="num_nfsds" cfgmethod="chnfs" type="integer">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="4">Controls the number of nfsd daemons.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/bin/ps -aeF"%%a"</Command>
+      <Filter>/bin/grep /usr/sbin/nfsd | /bin/egrep -v "(grep)|(-getnodes)|(-getreplicas)" | /bin/awk '{print $NF}' | /usr/bin/tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/bin/awk 'BEGIN { FS="\""; } /cmdargs/ { print $2 }' | /bin/awk ' { split($0, A); printf "%s", A[NF]; }' | /usr/bin/tr -d '\n'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> -n %v1</Argument>
+    </Set>
+    <Set type="nextboot">
+      <Argument> -n %v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="num_lockds" cfgmethod="chnfs" type="integer">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="5">Controls the number of lockd daemons.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/bin/ps -aeF"%%a"</Command>
+      <Filter>/bin/grep /usr/sbin/rpc.lockd | /bin/grep -v grep | /bin/awk 'BEGIN {val=""} {if ($2 == "-d") val=$4; else if ($2 ~ /^-d/) val=$3; else val=$2} END {if (val == "") val="33"; printf "%s", val}' | /usr/bin/tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/odmget -q subsysname=rpc.lockd SRCsubsys</Command>
+      <Filter>/bin/awk 'BEGIN { FS="\""; val=""} /cmdargs/ { split ($2, A); if (A[1] == "-d") val=A[3]; else if (A[1] ~ /^-d/) val=A[2]; else val=A[1]} END {if (val == "") val="33"; printf "%s", val}' | /usr/bin/tr -d '\n'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> -l %v1</Argument>
+    </Set>
+    <Set type="nextboot">
+      <Argument> -l %v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="rpcsec_gss" cfgmethod="chnfs" type="boolean">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="6">Controls (enable/disable) the enhanced security offered by RPCSEC_GSS, such as Kerberos 5.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/usr/bin/grep -q /usr/sbin/gssd /etc/rc.nfs ; if [ $? -ne 0 ] ; then echo 0 ; else grep /usr/sbin/gssd /etc/rc.nfs | grep -q '^#' ; if [ $? -eq 0 ] ; then echo 0 ; else echo 1 ; fi ; fi | tr -d '\n'</Command>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/grep -q /usr/sbin/gssd /etc/rc.nfs ; if [ $? -ne 0 ] ; then echo 0 ; else grep /usr/sbin/gssd /etc/rc.nfs | grep -q '^#' ; if [ $? -eq 0 ] ; then echo 0 ; else echo 1 ; fi ; fi | tr -d '\n'</Command>
+    </Get>
+
+    <Set type="permanent">
+      <Argument> `if [ %v1 = 1 ]; then echo " -S"; elif [ %v1 = 0 ] ; then echo " -s"; fi`</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Argument> `if [ %v1 = 1 ]; then echo " -S"; elif [ %v1 = 0 ] ; then echo " -s"; fi`</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="nfs4" cfgmethod="chnfs" type="boolean">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="7">Enables/Disables NFS Version 4.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/usr/bin/grep -q "nfsrgyd startup" /etc/rc.nfs; if [ $? -eq 0 ] ; then /usr/bin/awk 'BEGIN{ rgyd_lines=0; } /# Begin nfsrgyd/ { rgyd_lines=1 ; next; } /# End nfsrgyd/ { rgyd_lines=0 ; next; } { if ( rgyd_lines ) { if ( $0 !~ /#/ ) print 1 ; else print 0 ; exit 0; } }' &lt; /etc/rc.nfs ; fi | tr -d '\n'</Command>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/grep -q "nfsrgyd startup" /etc/rc.nfs; if [ $? -eq 0 ] ; then /usr/bin/awk 'BEGIN{ rgyd_lines=0; } /# Begin nfsrgyd/ { rgyd_lines=1 ; next; } /# End nfsrgyd/ { rgyd_lines=0 ; next; } { if ( rgyd_lines ) { if ( $0 !~ /#/ ) print 1 ; else print 0 ; exit 0; } }' &lt; /etc/rc.nfs ; fi | tr -d '\n'</Command>
+    </Get>
+
+    <Set type="permanent">
+      <Argument> `if [ %v1 = 1 ]; then echo " -V"; elif [ %v1 = 0 ] ; then echo " -v"; fi`</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Argument> `if [ %v1 = 1 ]; then echo " -V"; elif [ %v1 = 0 ] ; then echo " -v"; fi`</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="v4_root_node" cfgmethod="chnfs" type="string">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="8">Controls the NFS version 4 root location.</NLSCatalog></Description>
+<!--
+    <Get type="current">
+      <Command>/usr/bin/grep -q "# Begin data management" /etc/rc.nfs; if [ $? -eq 0 ] ; then /usr/bin/awk '/nfsd -root/ { print $3 }' &lt; /etc/rc.nfs ; else echo "" ;fi | tr -d '\n'</Command>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/grep -q "# Begin data management" /etc/rc.nfs; if [ $? -eq 0 ] ; then /usr/bin/awk '/nfsd -root/ { print $3 }' &lt; /etc/rc.nfs ; else echo "" ;fi | tr -d '\n'</Command>
+    </Get>
+-->
+    <Get type="current">
+      <Command>/usr/sbin/nfsd -getnodes</Command>
+      <Filter>grep -v "^#" | awk 'BEGIN { FS=":"; } {print $1}' | tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/sbin/nfsd -getnodes</Command>
+      <Filter>grep -v "^#" | awk 'BEGIN { FS=":"; } {print $1}' | tr -d '\n'</Filter>
+    </Get>
+
+    <Set type="permanent">
+      <Argument> -r %v1</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Argument> -r %v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="v4_public_node" cfgmethod="chnfs" type="string">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="9">Controls the NFS version 4 public directory.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/usr/sbin/nfsd -getnodes</Command>
+      <Filter>grep -v "^#" | awk 'BEGIN { FS=":"; } {print $2}' | tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/sbin/nfsd -getnodes</Command>
+      <Filter>grep -v "^#" | awk 'BEGIN { FS=":"; } {print $2}' | tr -d '\n'</Filter>
+    </Get>
+
+    <Set type="permanent">
+      <Argument> -p %v1</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Argument> -p %v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="v4_lease_time" cfgmethod="chnfs" type="integer">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="10">Controls the NFS version 4 lease time.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS="\""; } /cmdargs/ { print $2 }' | /usr/bin/awk 'BEGIN {defval=1} {split($0, A); for (I = 1; I &lt; NF; I++) { if ( A[I] == "-setlease" ) { I++ ; printf "%s", A[I] ; defval=0 ; exit (0); } } } END {if (defval == 1) {printf "120"}}' | tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS="\""; } /cmdargs/ { print $2 }' | /usr/bin/awk 'BEGIN {defval=1} {split($0, A); for (I = 1; I &lt; NF; I++) { if ( A[I] == "-setlease" ) { I++ ; printf "%s", A[I] ; defval=0 ; exit (0); } } } END {if (defval == 1) {printf "120"}}' | tr -d '\n'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> -L %v1</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Argument> -L %v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="replicas" cfgmethod="chnfs" type="string">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="11">Enables or disables NFS version 4 replication.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/usr/sbin/nfsd -getreplicas</Command>
+      <Filter>/usr/bin/sed 's/^replicas=//g' | tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/sbin/nfsd -getreplicas</Command>
+      <Filter>/usr/bin/sed 's/^replicas=//g' | tr -d '\n'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> -R %v1</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Argument> -R %v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="grace_period_enablement" cfgmethod="chnfs" type="boolean">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="12">Controls the NFSv4 Grace Period enablement.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS="\""; } /cmdargs/ { print $2 }' | /usr/bin/awk 'BEGIN {defval=1} {split($0, A); for (I = 1; I &lt; NF; I++) { if ( A[I] == "-gp" ) { I++ ; if ( A[I] == "on" ) { printf "1" ; defval=0 } if ( A[I] == "off" ) { printf "0" ; defval=0 } exit (0); } } } END {if (defval == 1) {printf "0"}}' | tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS="\""; } /cmdargs/ { print $2 }' | /usr/bin/awk 'BEGIN {defval=1} {split($0, A); for (I = 1; I &lt; NF; I++) { if ( A[I] == "-gp" ) { I++ ; if ( A[I] == "on" ) { printf "1" ; defval=0 } if ( A[I] == "off" ) { printf "0" ; defval=0 } exit (0); } } } END {if (defval == 1) {printf "0"}}' | tr -d '\n'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> `if [ %v1 = '0' -o %v1 = '1' ] ; then if [ %v1 = '0' ]; then echo " -g off"; elif [ %v1 = '1' ] ; then echo " -g on" ; fi ; fi`</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Argument> `if [ %v1 = '0' -o %v1 = '1' ] ; then if [ %v1 = '0' ]; then echo " -g off"; elif [ %v1 = '1' ] ; then echo " -g on" ; fi ; fi`</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="gp_xtend_cnt" cfgmethod="chnfs" type="integer">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="13">Controls the NFSv4 Grace Period automatic extension.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS="\""; } /cmdargs/ { print $2 }' | /usr/bin/awk 'BEGIN {defval=1} {split($0, A); for (I = 1; I &lt; NF; I++) { if ( A[I] == "-gpx" ) { I++ ; printf "%s", A[I] ; defval=0 ; exit (0); } } } END {if (defval == 1) {printf "1"}}' | tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS="\""; } /cmdargs/ { print $2 }' | /usr/bin/awk 'BEGIN {defval=1} {split($0, A); for (I = 1; I &lt; NF; I++) { if ( A[I] == "-gpx" ) { I++ ; printf "%s", A[I] ; defval=0 ; exit (0); } } } END {if (defval == 1) {printf "1"}}' | tr -d '\n'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> -x %v1</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Argument> -x %v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="gppath" cfgmethod="chnfs" type="string">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="14">Controls the NFSv4 Grace Period SS path location.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS="\""; } /cmdargs/ { print $2 }' | /usr/bin/awk 'BEGIN {defval=1} {split($0, A); for (I = 1; I &lt; NF; I++) { if ( A[I] == "-P" ) { I++ ; printf "%s", A[I] ; defval=0 ; exit (0); } } } END {if (defval == 1) {printf "/var/adm/nfsv4"}}' | tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS="\""; } /cmdargs/ { print $2 }' | /usr/bin/awk 'BEGIN {defval=1} {split($0, A); for (I = 1; I &lt; NF; I++) { if ( A[I] == "-P" ) { I++ ; printf "%s", A[I] ; defval=0 ; exit (0); } } } END {if (defval == 1) {printf "/var/adm/nfsv4"}}' | tr -d '\n'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> -P %v1</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Argument> -P %v1</Argument>
+    </Set>
+  </ParameterDef>
+
+  <ParameterDef name="gpbypass" cfgmethod="chnfs" type="boolean">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="15">Controls the NFSv4 Grace Period bypass.</NLSCatalog></Description>
+    <Get type="current">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS="\""; gpbypass=0; } /cmdargs/ { print $2 }' | /usr/bin/awk '{ split($0, A); for (I = 1; I &lt; NF; I++) { if ( A[I] == "-gpbypass" ) { gpbypass=1 ; printf "1" ; exit (0); } } } END { if ( gpbypass == 0 ) { printf "0" } }' | tr -d '\n'</Filter>
+    </Get>
+    <Get type="nextboot">
+      <Command>/usr/bin/odmget -q subsysname=nfsd SRCsubsys</Command>
+      <Filter>/usr/bin/awk 'BEGIN { FS="\""; gpbypass=0; } /cmdargs/ { print $2 }' | /usr/bin/awk '{ split($0, A); for (I = 1; I &lt; NF; I++) { if ( A[I] == "-gpbypass" ) { gpbypass=1 ; printf "1" ; exit (0); } } } END { if ( gpbypass == 0 ) { printf "0" } }' | tr -d '\n'</Filter>
+    </Get>
+    <Set type="permanent">
+      <Argument> -G `if [ %v1 = '0' ]; then echo " remove"; elif [ %v1 = '1' ] ; then echo " add" ; fi`</Argument>
+    </Set>
+
+    <Set type="nextboot">
+      <Argument> -G `if [ %v1 = '0' ]; then echo " remove"; elif [ %v1 = '1' ] ; then echo " add" ; fi`</Argument>
+    </Set>
+  </ParameterDef>
+
+
+  <ParameterDef name="nfs_domainname" cfgmethod="chnfsdom" type="string">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="16">Local NFS domain of the system</NLSCatalog></Description>
+  </ParameterDef>
+
+
+  <ParameterDef name="nfs_rtd_mapping" type="string" cfgmethod="chnfsrtd" targetClass="rtd_map">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="17">Local NFS realm-to-domain mapping</NLSCatalog></Description>
+  </ParameterDef>
+
+
+  <ParameterDef name="default_security_flavor" type="string" cfgmethod="chnfssec">
+    <Description><NLSCatalog catalog="artexcat.cat" setNum="31" msgNum="18">Default security flavor used by the NFS client</NLSCatalog></Description>
+  </ParameterDef>
+
+</Catalog>

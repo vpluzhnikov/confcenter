@@ -1,0 +1,550 @@
+# IBM_PROLOG_BEGIN_TAG         
+# This is an automatically generated prolog.  
+#                            
+# $Source: aix71B bos/usr/lib/security/ice/scripts/findpermfiles.sh 2$                         
+#                                                           
+# COPYRIGHT International Business Machines Corp. 2010,2010              
+#                                                                      
+# Pvalue: p2 
+#Licensed Materials - Property of IBM
+#
+#Restricted Materials of IBM
+#
+#US Government Users Restricted Rights - Use, duplication or
+#disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+# Origin: 27
+#
+# sccsid: $Header: @(#) AIX71B_area/2 bos/usr/lib/security/ice/scripts/findpermfiles.sh, libice, aix71B, 1029A_71B 2010-07-14T18:27:00-05:00$
+#
+# IBM_PROLOG_END_TAG
+#!/usr/bin/ksh
+
+# This script generates a listing of files not in compliance with DoD policy
+# guide refers to various GEN Items under UNIX STIG v5r1.
+
+HOMEDIRS=`egrep -v "^\+|^#|^root:|^daemon:|^ident:|^bin:|^sys:|^adm:|^smtp:|^uucp:|^nuucp:|^listen:|^lpd:|^lp:|\
+^ingres:\
+|^apache:|^oracle:|^oracle7:|^oracle8:|^oracle9:|^informix:|^news:|^nobody:|^nobody4:|^noaccess:|^sybase:|^tivo\
+li:|^mqm\
+:|^www:|^ftp:|^tftp:|^hpdb:|^sshd:|^invscout:|^gccs:|^secman:|^sysadmin:|^ins tall:|^staff:|^COE:|^predmail:|^s\
+nmp:|^sm\
+msp:|^sm:|^share:|^BIF:|^GCCS:|^JDISS:|^SA:|^SSO:|^SM:|^ft p:|^gccsrv:|^gtnsmint:|^irc:|^Imadmin:|^netadmin:|^h\
+alt:|^ma\
+il:|^games:|^rpm:|^vcsa:|^nscd:|^rpc:|^rpcuser:|^mailnull:|^pcap:|^xfs:|^ntp:|^gdm:|^sync:|^shutdown:|^halt:|^o\
+perator:\
+|^gopher:|^nfsnobody:|^dbus:|^haldaemon:|^netdump:|^webalizer:|^pvm:|^mysql:|^mailman:|^dovecot:|^cyrus:|^amand\
+a:|^pega\
+sus:|^HPSMH:|^hpsmh:|^webadmind:|^webadmin:|^webservd:|^avahi:|^beagleidx:|^hsqldb:|^postfix:|^svctag:|^postgre\
+s:|^ids:\
+|^IDS:|^distcache:|^DISTCACHE:|^named:|^canna:|^wnn:|^fax:|^quagga:|^htt" /etc/passwd | cut -d":" -f6`
+
+#FSTYPE=`lsfs -c / | grep / | cut -d ':' -f3`
+FSTYPE="procfs"
+#rm fileslist
+#touch fileslist
+if [ -f $GENSPERMS ] ; then
+	rm $GENSPERMS
+	touch $GENSPERMS
+fi
+if [ -f $CFPERROR ] ; then
+	rm $CFPERROR
+	touch $CFPERROR
+fi
+
+#getperms() {
+#	perms=`perl -e 'printf "%o\n",(stat shift)[2] & 07777' $1`
+#	echo "$perms $1" >> fileslist
+#}
+#
+#GEN000920 II 
+rhome=`grep "^root" /etc/passwd | awk -F ":" '{ print $6 }'`
+if [ "$rhome" != "/" ] ; then
+	find $rhome \( ! -fstype $FSTYPE \) \( -type d -prune \) \
+\( -perm -0040 -o -perm -0020 -o -perm -0010 -o -perm -0004 -o -perm -0002 -o -perm -0001 \) \
+-exec $FindLs G0920 0700 {} \; \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN000960 II
+dirs=`echo $PATH | sed "s/:/ /g"`
+find $dirs \( -type d -prune \) \( -perm -o+w \) \
+-exec $FindLs G0960 wwwrite {} \; \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN001140 II
+
+#ROOTSEARCH="/ ( ! ! -fstype nfs3 -a ! ! -fstype procfs ) ( -type f )" 
+ROOTSEARCH="/ ( ! -fstype $FSTYPE ) ( -type f )" 
+#fUnevenFiles="/ ( ! -fstype $FSTYPE ) ( -type f ) ( \
+fUnevenFiles="( \
+( -user -20 -o -group -21 -o -user 0 -o -group 0 ) -a -perm -o+w ) -a ( \
+( ! -perm -u+x -perm -g+x ) -o ( ! -perm -u+w -perm -g+w ) -o \
+( ! -perm -u+r -perm -g+r ) -o ( ! -perm -g+x -perm -o+x ) -o \
+( ! -perm -u+w -perm -o+w ) -o ( ! -perm -u+r -perm -o+r ) -o \
+( ! -perm -g+x -perm -o+x ) -o ( ! -perm -g+w -perm -o+x ) -o \
+( ! -perm -g+r -perm -o+r ) )"
+
+
+find ${ROOTSEARCH} ${fUnevenFiles} -exec $FindLs G1140 NA {} \; \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN001180 II
+#fNetDmnsA="/ ( ! -fstype $FSTYPE ) ( -type f ) \
+fNetDmnsA="\
+( -name inetd -o -name *admind -o -name *fingerd -o -name *ftpd -o \
+-name *httpd -o -name *identd -o -name *lpd -o -name *mountd -o \
+-name *nfsd -o -name *pppd -o -name *remshd -o -name *rexecd -o \
+-name *rlogd -o -name *rlogind -o -name *rquotad -o -name *rshd ) -a \
+( -perm -g+w -o -perm -o+w )"
+
+find ${ROOTSEARCH} ${fNetDmnsA} -exec $FindLs G1180 755 {} \; \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+
+#GEN001180b
+fNetDmnsB="\
+( -name -o -name *rsprayd -o -name *rstatd -o -name *rusersd -o \
+-name *rwalld -o -name *rwhod -o -name *snmpd -o -name *snmptrapd -o \
+-name *talkd -o -name *tcpd -o -name *telnetd -o -name *timed -o -name *pcnfsd \
+) -a ( -perm -g+w -o -perm -o+w )"
+
+find ${ROOTSEARCH} ${fNetDmnsB} -exec $FindLs G1180 755 {} \; \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#find ${ROOTSEARCH} \
+#     ${fNetDmnsA} \
+#     -o ${fNetDmnsB} \
+#     -o ${fUnevenFiles} 
+#
+
+#GEN001200 II
+fSysCmds="/etc /bin /sbin /usr/bin /usr/lbin /usr/sbin ( -type f ) -a \
+( ( -perm -u+x ) -o ( -perm -g+x ) -o ( -perm -o+x ) ) -a \
+( ( -perm -g+w ) -o ( -perm -o+w ! -user 0 ) )"
+
+find ${fSysCmds} -exec $FindLs G1200 755 {} \; \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN001260 II
+fSysLogs="/var ( -type f ) \
+( -name btmp -o -name messages -o -name wtmp -o -name utmp -o -name shutdownlog -o \
+-name cronlog -o -name syslog -o -name loginlog -o -name syslog.log -o \
+-name lastlog -o -name log -o -name sulog ) -a \
+( -perm -u+x -o -perm -g+w -o -perm -g+x -o -perm -o+w -o -perm -o+x )"
+
+
+find ${fSysLogs} -exec $FindLs G1260 640 {} \; \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN001300 II
+fLibFiles="/usr/lib /usr/share/lib /usr/dt/appconfig ( -type f ) \
+( ( -name *.a -o -name llib* -o -name *.so -o -name *.so.[0-9] ) -a \
+( -perm -o+w -o -perm -g+w ) )"
+
+find $fLibFiles -exec $FindLs G1300 755 {} \; \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN001360 II
+fNISypFiles="/usr/lib/netsvc/yp /var/yp /usr/etc/yp ( -type f -o -type d ) -a \
+( -perm -g+w -o -perm -o+w )"
+
+find $fNISypFiles -exec $FindLs G1360 755 {} \; \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN001380 II
+find /etc/passwd \( -type f \) -a \( -perm -0100 -o -perm -0020 -o -perm -0010 \
+-o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G1380 644 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN001420 II
+find /etc/security/passwd \( -type f \) -a \( ! -perm 0400 \) \( -exec $FindLs G1420 400 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN001580 II
+#GEN001620 II
+find /etc \( -type f -o -type d \) -a \( -name rc* \) -a \
+\( -perm -0020 -o -perm -0002 -o -perm -4000 -o -perm -2000 \) \( -exec $FindLs G1580 755 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN1640 I
+list=`find /etc \( -type f \) \( -name rc* \)`
+wwfiles=`find / \( ! -fstype $FSTYPE \) \( -perm -0002 \) \( -type f \)`
+if [ "$wwfiles" != "" ] ; then
+	for i in $list
+	do
+		for j in $wwfiles
+		do
+			if [ `grep -c $j $i` -ne 0 ] ; then
+				$FindLs G1640 wwwrite $j \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+			fi		
+		done
+	done
+fi
+		
+
+
+#GEN001720 II
+#GEN001800 II
+find /etc \( -type f \) \( -name .login -o -name profile -o \
+-name bashrc -o -name environment -o -name environ -o -name .profile \
+\) -a \( -perm -0100 -o -perm -g+w -o -perm -g+x -o -perm -o+w -o -perm -o+x \) \
+-depth \( -exec $FindLs G1720  644 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN001880 II
+#GEN001920 II
+find $HOMEDIRS \( -type f \) \( -name .login -o -name .cshrc -o \
+-name .bashrc -o -name .env -o -name .logout -o -name .profile \
+-name .bash_profile -o -name .bash_logout -o -name .dtprofile -o -name .dispatch -o \
+-name .emacs -o -name .exrc \
+\) -a \( -perm -0100 -o -perm -g+w -o -perm -g+x -o -perm -o+w -o -perm -o+x \
+-o -perm -4000 -o -perm -2000 \) -depth \( -exec $FindLs G1880 640 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN001940 II
+list=`find $HOMEDIRS \( -type f \) \( -name .login -o -name .cshrc -o \
+-name .bashrc -o -name .env -o -name .logout -o -name .profile \
+-name .bash_profile -o -name .bash_logout -o -name .dtprofile -o -name .dispatch -o \
+-name .emacs -o -name .exrc \
+\)`
+if [ "$wwfiles" != "" ] ; then
+        for i in $list
+        do
+                for j in $wwfiles
+                do
+                        if [ `grep -c $j $i` -ne 0 ] ; then
+                                $FindLs G1640 wwwrite $j \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+                        fi
+                done
+        done
+fi
+
+
+#GEN002060 II
+fRhostFiles="( -name hosts.equiv -o -name .netrc -o -name .nodes \
+-name .rhosts -o -name .shosts -o -name .shosts.equiv ) -a \
+( -perm -0040 -o -perm -0020 -o -perm -0001 -o -perm -0004 -o -perm -0002 -o -perm -0001 )"
+
+find ${ROOTSEARCH} ${fRhostFiles} -exec $FindLs G2060 700 {} \; \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN002160 I
+#GEN002180 II
+#GEN002220 II
+shells=`lssec -f /etc/security/login.cfg -s usw -a shells | awk -F '=' '{ print $2 }' | sed -e 's/,/ /g'`
+
+find $shells \( -type f -prune \) -a \( -perm -4000 -o -perm -2000 -o -perm -0020 -o -perm -0002 \) \
+\( -exec $FindLs G2160 755 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN002280 II
+find /dev \( -type d \) -perm -0200 -user +20 \( -exec $FindLs G2280 devwrite {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GE002320
+find /dev \( -type f -o -type c -prune \) -name *aud0 \( -perm -0100 -o -perm -0020 -o -perm -0010 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G2320 644 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN002480 II
+find / \( ! -fstype $FSTYPE \) \( -type f -o -type d \) \( -perm -0002 \) \( ! -name null \) \
+\( -exec $FindLs G2480 wwwrite {} \; \) \
+| egrep -v "/var/adm/ras/conslog|/var/tmp|/dev/screen|d.......w[t,T]|/system/contract/process|/var/mail|/var/preserve|/var/spool|/selinux|/sys|/tmp" \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN002500 III
+find / \( ! -fstype $FSTYPE \) -type d -perm -002 ! -perm -1000 \( -exec $FindLs G2500 sticky {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN002700 II ??? Manual check.
+
+#GEN002980 II
+if [ -f /var/adm/cron/cron.allow ] ; then
+	find /var/adm/cron/cron.allow \( -type f \) -a \( ! -perm 0600 \) \( -exec $FindLs G2980 600 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN003000 II
+list=`find /var/spool/cron/crontabs \( -type f \)`
+if [ "$wwfiles" != "" ] ; then
+        for i in $list
+        do
+                for j in $wwfiles
+                do
+                        if [ `grep -c $j $i` -ne 0 ] ; then
+                                $FindLs G3000 wwwrite $j \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+                        fi
+                done
+        done
+fi
+
+#GEN003020 II
+wwdirs=`find / \( ! -fstype $FSTYPE \) \( -perm -0002 \) \( -type d \)`
+if [ "$wwdirs" != "" ] ; then
+	for cronfile in $list
+	do
+		#cron scripts
+		files=`egrep -v "^#" $cronfile | awk '{ print $6 }'`
+		for file in $files
+		do
+		if [ -f $file ] ; then
+			dir=${file%/*}
+			for wwdir in $wwdirs
+			do
+				if [ "$wwdir" = "$dir" ] ; then
+					$FindLs G3020 wwwrite $dir \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}	
+				fi
+			done
+		fi
+		done
+				
+	done
+fi
+
+#GEN003080 II
+find /var/spool/cron/crontabs -type f \( -perm -0100 -o -perm -0040 -o -perm -0020 -o -perm -0010 -o -perm -0004 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G3080 600 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN003100 II
+find /var/spool/cron /var/spool/cron/crontabs \( -type d -prune \) \( -perm -0020 -o -perm -0002 \) \
+\( -exec $FindLs G3100 755 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN003180 II
+if [ -f /var/adm/cron/log ] ; then
+find /var/adm/cron/log \( -type f \) -a \( ! -perm 0600 \) \( -exec $FindLs G3180 600 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN003200 II
+if [ -f /var/adm/cron/cron.deny ] ; then
+	find /var/adm/cron/cron.deny \( -type f \) -a \( ! -perm 0700 \) \( -exec $FindLs G3200 700 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN003220 II ??? manual check.
+
+#GEN003340 II
+
+find /var/adm/cron \( -type f \) \( -name at.allow -o -name at.deny \) -a \( ! -perm 600 \) \
+\( -exec $FindLs G3340 0600 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN003360 II
+list=`find /var/spool/cron/atjobs \( -type f \)`
+if [ "$wwfiles" != "" ] ; then
+        for i in $list
+        do
+                for j in $wwfiles
+                do
+                        if [ `grep -c $j $i` -ne 0 ] ; then
+                                $FindLs G3360 wwwrite $j \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+                        fi
+                done
+        done
+fi
+
+#GEN003380 II
+wwdirs=`find / \( ! -fstype $FSTYPE \) \( -perm -0002 \) \( -type d \)`
+if [ "$wwdirs" != "" ] ; then
+	for cronfile in $list
+	do
+		#cron scripts
+		files=`egrep -v "^#" $cronfile | awk '{ print $6 }'`
+		for file in $files
+		do
+		if [ -f $file ] ; then
+			dir=${file%/*}
+			for wwdir in $wwdirs
+			do
+				if [ "$wwdir" = "$dir" ] ; then
+					$FindLs G3380 wwwrite $dir \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}	
+				fi
+			done
+		fi
+		done
+				
+	done
+fi
+
+#GEN003400 II
+if [ -d /var/spool/cron/atjobs ] ; then
+	find /var/spool/cron/atjobs \( -type d -prune \) -a \( ! -perm 0755 \) \( -exec $FindLs G3400 755 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN003440 II ??? manual check
+ 
+#GEN003520 III
+if [ -d /var/adm/ras ] ; then
+	find /var/adm/ras \( -type d -prune \) -a \( ! -perm 0700 \) \( -exec $FindLs G3520 700 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN003740 II
+if [ -f /etc/inetd.conf ] ; then
+	find /etc/inetd.conf \( -type f \) -a \( ! -perm 0440 \) \( -exec $FindLs G3740 440 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN003780 II
+if [ -f /etc/services ] ; then
+	find /etc/services \( -type f \) -a \( ! -perm 0644 \) \( -exec $FindLs G3780 644 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN003940 II
+if [ -f /etc/hosts.lpd ] ; then
+	find /etc/hosts.lpd \( -type f \) -a \( -perm -0100 -o -perm -0020 -o -perm 0010 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G3940 644 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN004000 II
+if [ -f /usr/bin/traceroute ] ; then
+	find /usr/bin/traceroute \( -type f \) -a \( -perm -0040 -o -perm -0020 -o -perm -0010 -o \
+-perm -0004 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G4000 700 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN004380 II
+find / \( ! -fstype $FSTYPE \) \( -type f \) -name aliases -depth \( -perm -0100 -o -perm -0020 -o -perm -0010 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G4380 644 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN004420 II
+list=`find / \( ! -fstype $FSTYPE \) \( -type f \) -name aliases`
+for file in $list
+do
+	files=`egrep -v "^#" $file | awk -F ":" '{ print $2 }' | grep "/"`
+	for i in $files
+	do
+		if [ -f $i ] ; then
+			find $i \( -type f \) \( -perm -0020 -o -perm -0002 \) \
+\( -exec $FindLs G4420 755 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+		fi		
+	done
+done
+
+#GEN004500 II 
+list=`egrep -v "^#" /etc/syslog.conf | awk '{ print $2 }' | grep "/"`
+for file in $list
+do
+	if [ -f $file ] ; then
+		find $file \( -type f \) \( -perm 0100 -o -perm -0020 -o -perm -0010 -o \
+-perm -0002 -o -perm -0001 \) \
+\( -exec $FindLs G4500 644 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+	fi
+done
+
+	
+#GEN004940 II
+if [ -f /etc/ftpusers ] ; then
+	find /etc/ftpusers \( -type f \) -a \( -perm -0100 -o -perm -0020 -o -perm 0010 -o -perm -0004 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G4940 640 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN005100 I
+find / \( ! -fstype $FSTYPE \) -name *tftpd \( -perm -4000 -o -perm -2000 \) \( -exec $FindLs G5100 susgid {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN005180 II
+find / \( ! -fstype $FSTYPE \) -name .Xauthority \( -perm -0100 -o -perm -0040 -o -perm -0020 -o -perm -0010 -o -perm -0004 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G5180 600 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN005320 II
+if [ -f /etc/snmpd.conf ] ; then
+	find /etc/snmpd.conf \( -type f \) -a \( -perm -0040 -o -perm -0020 -o -perm 0010 -o -perm -0004 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G5320 700 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN005340 II
+find / \( ! -fstype $FSTYPE \) -name *.mib \( -perm -0100 -o -perm -0020 -o -perm -0010 -o -perm -0004 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G5340 640 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN005400 II
+if [ -f /etc/syslog.conf ] ; then
+	find /etc/syslog.conf \( -type f \) -a \( -perm -0100 -o -perm -0020 -o -perm 0010 -o -perm -0004 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G5400 640 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+fi
+
+#GEN006140 II
+find / \( ! -fstype $FSTYPE \) -type f -name smb.conf \( -perm -0100 -o -perm -0020 -o -perm -0010 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G6140 644 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+
+#GEN006200 II
+find / \( ! -fstype $FSTYPE \) -type f -name smbpasswd \( -perm -0100 -o -perm -0040 -o -perm -0020 -o -perm -0010 -o -perm -0004 -o -perm -0002 -perm -0001 \) \( -exec $FindLs G6200 600 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN006260 II
+#GEN006280 II
+find / \( ! -fstype $FSTYPE \) -name hosts.nntp* \( -perm -0100 -o -perm -0040 -o -perm -0020 -o -perm -0010 -o -perm -0004 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G6260 600 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN006300 II
+find / \( ! -fstype $FSTYPE \) -name nnrp.access \( -perm -0100 -o -perm -0040 -o -perm -0020 -o -perm -0010 -o -perm -0004 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G6300 600 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
+#GEN006320 II
+find / \( ! -fstype $FSTYPE \) -name passwd.nntp \( -perm -0100 -o -perm -0040 -o -perm -0020 -o -perm -0010 -o -perm -0004 -o -perm -0002 -o -perm -0001 \) \( -exec $FindLs G6320 600 {} \; \) \
+1>> ${GENSPERMS} \
+2>> ${CFPERROR}
+
