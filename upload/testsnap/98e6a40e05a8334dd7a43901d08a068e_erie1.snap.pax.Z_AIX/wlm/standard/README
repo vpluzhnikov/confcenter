@@ -1,0 +1,22 @@
+* IBM_PROLOG_BEGIN_TAG 
+* This is an automatically generated prolog. 
+*  
+* bos610 src/bos/etc/wlm/README 1.2 
+*  
+* Licensed Materials - Property of IBM 
+*  
+* COPYRIGHT International Business Machines Corp. 2002 
+* All Rights Reserved 
+*  
+* US Government Users Restricted Rights - Use, duplication or 
+* disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+*  
+* IBM_PROLOG_END_TAG 
+*
+* The /etc/wlm/standard directory may be overwritten by
+* an AIX update.  New configurations should be created
+* in another directory to prevent data loss.
+*
+* Additionally, the /etc/wlm/current link may also be
+* changed.  This link should be checked after an update
+* to ensure that is still points to the desired directory.

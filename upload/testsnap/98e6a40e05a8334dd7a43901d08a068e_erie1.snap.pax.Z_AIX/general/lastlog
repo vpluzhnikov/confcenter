@@ -1,0 +1,58 @@
+*******************************************************************************
+* valid user attributes for /etc/security/lastlog:
+* 
+* time_last_login		The last time that the user
+*				successfully logged into the system.
+*
+* time_last_unsuccessful_login	The time that the last unsuccessful
+*				attempt to log in as the user was made.
+*
+* tty_last_login		The last tty port that the user
+*				successfully logged into.
+*
+* tty_last_unsuccessful_login	The tty port of the last unsuccessful
+*				attempt to log in as the user was
+*				made.
+*
+* host_last_login		The host from which the user logged in
+*				from if the tty was not locally
+*				attached.  This implies that the user
+*				used telnet or rlogin to log into the
+*				system.
+*
+* host_last_unsuccessful_login	The host from which the last
+*				unsuccessful attempt to log in as the
+*				user was made.
+*
+* unsuccessful_login_count	The number of attempts to log in as
+*				the user since the last successful
+*				login.
+*
+*******************************************************************************
+
+root:
+	time_last_login = 1354013940
+	tty_last_login = /dev/pts/6 
+	host_last_login = 10.78.160.134         
+	unsuccessful_login_count = 0 
+	time_last_unsuccessful_login = 1354013938
+	tty_last_unsuccessful_login = ssh      
+	host_last_unsuccessful_login = 10.78.160.134            
+
+oracle:
+	time_last_unsuccessful_login = 1353599954
+	tty_last_unsuccessful_login = ssh
+	host_last_unsuccessful_login = veyron.cgs.sbrf.ru       
+	unsuccessful_login_count = 0
+	time_last_login = 1354014585
+	tty_last_login = ssh        
+	host_last_login = erie1.cgs.sbrf.ru        
+
+dbaosb:
+	unsuccessful_login_count = 9
+	time_last_login = 1343562108
+	tty_last_login = ftp        
+	host_last_login = erie2.cgs.sbrf.ru  
+	time_last_unsuccessful_login = 1353583324
+	tty_last_unsuccessful_login = ssh
+	host_last_unsuccessful_login = 200.44.1.80       

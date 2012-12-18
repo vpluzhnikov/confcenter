@@ -1,0 +1,294 @@
+/* IBM_PROLOG_BEGIN_TAG                                                   */
+/* This is an automatically generated prolog.                             */
+/*                                                                        */
+/* bos61B src/bos/etc/security/privfiles.S 1.6                            */
+/*                                                                        */
+/* Licensed Materials - Property of IBM                                   */
+/*                                                                        */
+/* Restricted Materials of IBM                                            */
+/*                                                                        */
+/* COPYRIGHT International Business Machines Corp. 2006,2007              */
+/* All Rights Reserved                                                    */
+/*                                                                        */
+/* US Government Users Restricted Rights - Use, duplication or            */
+/* disclosure restricted by GSA ADP Schedule Contract with IBM Corp.      */
+/*                                                                        */
+/* IBM_PROLOG_END_TAG                                                     */
+*******************************************************************************
+* VALID ATTRIBUTES FOR /ETC/SECURITY/PRIVFILES:
+*
+* For more information on the following attributes, please read the
+* /etc/security/privfiles documentation
+*
+* readauths     Specifies the authorizations required to use pvi to read
+*               from the file as a comma separated list of authorization
+*               names. A process with any of the specified read 
+* 		authorizations is allowed to read the file in the pvi 
+*		editor.
+*
+* writeauths    Specifies the authorizations required to use pvi to write
+*               to the file as a comma separated list of authorization
+*               names. A process with any of the specified write 
+*		authorizations is allowed to write to the file in the pvi 
+*		editor.
+*
+*******************************************************************************
+/etc/3270.keys:
+	writeauths = aix.network.daemon
+
+/etc/3270_arab_kyb.map:
+	writeauths = aix.network.daemon
+
+/etc/3270keys.dtterm:
+	writeauths = aix.network.daemon
+
+/etc/3270keys.hft:
+	writeauths = aix.network.daemon
+
+/etc/acct/holidays:
+	writeauths = aix.system.config.acct
+
+/etc/bootptab:
+	writeauths = aix.system.boot
+
+/etc/check_config.files:
+	writeauths = aix.system.install
+
+/etc/consdef:
+	writeauths = aix.system.config.console
+
+/etc/cronlog.conf:
+	writeauths = aix.system.config.cron
+
+/etc/csh.cshrc:
+	writeauths = aix.security.user
+
+/etc/csh.login:
+	writeauths = aix.security.user
+
+/etc/dfpd.conf:
+	writeauths = aix.system.config.perf
+
+/etc/dhcpcd.ini:
+	writeauths = aix.network.daemon
+
+/etc/dhcprd.cnf:
+	writeauths = aix.network.daemon
+
+/etc/dhcpsd.cnf:
+	writeauths = aix.network.daemon
+
+/etc/environment:
+	writeauths = aix.security.user
+
+/etc/ewlm/limits:
+	writeauths = aix.system.config.wlm
+
+/etc/gated.conf:
+	writeauths = aix.network.daemon
+
+/etc/inetd.conf:
+	writeauths = aix.network.daemon
+
+/etc/isakmpd.conf:
+	writeauths = aix.security.network.config
+
+/etc/mail/aliases:
+	writeauths = aix.network.config.mail
+
+/etc/mail/sendmail.cf:
+	writeauths = aix.network.config.mail
+
+/etc/map3270:
+	writeauths = aix.network.daemon
+
+/etc/mh/components:
+	writeauths = aix.network.config.mail
+
+/etc/mh/distcomps:
+	writeauths = aix.network.config.mail
+
+/etc/mh/forwcomps:
+	writeauths = aix.network.config.mail
+
+/etc/mh/MailAliases:
+	writeauths = aix.network.config.mail
+
+/etc/mh/maildelivery:
+	writeauths = aix.network.config.mail
+
+/etc/mh/mhl.digest:
+	writeauths = aix.network.config.mail
+
+/etc/mh/mhl.format:
+	writeauths = aix.network.config.mail
+
+/etc/mh/mhl.forward:
+	writeauths = aix.network.config.mail
+
+/etc/mh/mhl.reply:
+	writeauths = aix.network.config.mail
+
+/etc/mh/mtstailor:
+	writeauths = aix.network.config.mail
+
+/etc/motd:
+	writeauths = aix.system.config
+
+/etc/mrouted.conf:
+	writeauths = aix.network.config.mail
+
+/etc/netsvc.conf:
+	writeauths = aix.network.config.host
+
+/etc/pam.conf:
+	writeauths = aix.security.config
+
+/etc/policyd.conf:
+	writeauths = aix.network.daemon
+
+/etc/preserve.list:
+	writeauths = aix.system.install
+
+/etc/profile:
+	writeauths = aix.security.user
+
+/etc/protocols:
+	writeauths = aix.network.config
+
+/etc/pxed.cnf:
+	writeauths = aix.system.boot
+
+/etc/rsvpd.conf:
+	writeauths = aix.network.daemon
+
+/etc/security/.profile:
+	writeauths = aix.security.user
+
+/etc/security/acl:
+	writeauths = aix.security.network
+
+/etc/security/audit/bincmds:
+	readauths = aix.security.audit.list
+	writeauths = aix.security.audit.config
+
+/etc/security/audit/config:
+	readauths = aix.security.audit.list
+	writeauths = aix.security.audit.config
+
+/etc/security/audit/events:
+	readauths = aix.security.audit.list
+	writeauths = aix.security.audit.config
+
+/etc/security/audit/objects:
+	readauths = aix.security.audit.list
+	writeauths = aix.security.audit.config
+
+/etc/security/audit/streamcmds:
+	readauths = aix.security.audit.list
+	writeauths = aix.security.audit.config
+
+/etc/security/ldap/ldap.cfg:
+	writeauths = aix.security.ldap
+
+/etc/security/ldap/ldapid.ldif.template:
+	writeauths = aix.security.ldap
+
+/etc/security/ldap/proxy.ldif.template:
+	writeauths = aix.security.ldap
+
+/etc/security/ldap/sectoldif.cfg:
+	writeauths = aix.security.ldap
+
+/etc/security/osysck.cfg:
+	readauths = aix.security.config
+
+/etc/security/services:
+	writeauths = aix.security.network
+
+/etc/services:
+	writeauths = aix.network.daemon
+
+/etc/shells:
+	writeauths = aix.system.config
+
+/etc/syslog.conf:
+	writeauths = aix.ras.error
+
+/etc/telnet.conf:
+	writeauths = aix.network.daemon
+
+/etc/trcfmt:
+	writeauths = aix.ras.trace
+
+/etc/tsh_profile:
+	writeauths = aix.security.user
+
+/etc/tunables/lastboot:
+	readauths = aix.system.config.perf
+
+/etc/tunables/lastboot.log:
+	readauths = aix.system.config.perf
+
+/etc/uucp/Devices:
+	writeauths = aix.network.daemon
+
+/etc/uucp/Dialcodes:
+	writeauths = aix.network.daemon
+
+/etc/uucp/Dialers:
+	writeauths = aix.network.daemon
+
+/etc/uucp/Maxuuscheds:
+	writeauths = aix.network.daemon
+
+/etc/uucp/Maxuuxqts:
+	writeauths = aix.network.daemon
+
+/etc/uucp/Permissions:
+	writeauths = aix.network.daemon
+
+/etc/uucp/Poll:
+	writeauths = aix.network.daemon
+
+/etc/uucp/Sysfiles:
+	writeauths = aix.network.daemon
+
+/etc/uucp/Systems:
+	writeauths = aix.network.daemon
+
+/etc/wpars/devexports:
+	writeauths = aix.wpar.system.change
+
+/etc/wpars/gconfig:
+	writeauths = aix.wpar.system.change
+
+/etc/wpars/secattrs:
+	writeauths = aix.wpar.system.change
+
+/usr/lib/security/methods.cfg:
+	writeauths = aix.security.config
+
+/usr/lib/security/mkuser.default:
+	writeauths = aix.security.user.create
+
+/var/adm/cron/at.allow:
+	writeauths = aix.system.config.cron
+
+/var/adm/cron/at.deny:
+	writeauths = aix.system.config.cron
+
+/var/adm/cron/queuedefs:
+	writeauths = aix.system.config
+
+/var/adm/invscout/.profile:
+	writeauths = aix.security.user
+
+/var/adm/SRC/active_list:
+	readauths = aix.system.config.src
+
+/var/adm/rolelog:
+	readauths = aix.security.role
+
+/var/adm/sulog:
+	readauths = aix.security.su

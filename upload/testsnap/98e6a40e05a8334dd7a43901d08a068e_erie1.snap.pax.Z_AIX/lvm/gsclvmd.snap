@@ -1,0 +1,19 @@
+
+.....
+.....    ps -ef|grep gsclvmd
+.....
+
+    root 3872082 5313908   0 15:16:12  pts/6  0:00 grep gsclvmd 
+
+.....
+.....    lssrc -ls gsclvmd
+.....
+
+0513-036 The request could not be passed to the gsclvmd subsystem.
+Start the subsystem and try your command again.
+
+.....
+.....    lssrc -ls grpsvcs
+.....
+
+0513-085 The grpsvcs Subsystem is not on file.

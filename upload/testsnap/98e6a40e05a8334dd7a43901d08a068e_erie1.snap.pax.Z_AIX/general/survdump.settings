@@ -1,0 +1,30 @@
+
+********** STO and AIX Dump Settings **********
+
+
+********** STO Settings ***********
+
+* STO Enabled *
+
+string_name is invalid.
+* STO Interval *
+
+string_name is invalid.
+* STO Delay *
+
+string_name is invalid.
+
+********** AIX Dump Device Settings (sysdumpdev -l) **********
+
+primary              /dev/lg_dumplv
+secondary            /dev/sysdumpnull
+copy directory       /var/adm/ras
+forced copy flag     TRUE
+always allow dump    FALSE
+dump compression     ON
+type of dump         fw-assisted
+full memory dump     disallow
+
+********** AIX Estimated Dump Size (sysdumpdev -e) **********
+
+Estimated dump size in bytes: 57625311968

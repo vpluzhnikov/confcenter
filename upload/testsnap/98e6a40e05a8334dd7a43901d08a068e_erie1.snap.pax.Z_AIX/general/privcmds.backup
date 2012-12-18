@@ -1,0 +1,2312 @@
+*******************************************************************************
+* VALID ATTRIBUTES FOR /ETC/SECURITY/PRIVCMDS:
+* 
+* For more information on the following attributes, please read the 
+* /etc/security/privcmds documentation
+*
+* accessauths	Specifies the access authorizations as a comma 
+*		separated list of authorization names. A user whose 
+*		current session has one of the authorizations in the
+*		list is allowed to execute the command. A maximum of 8
+*		authorizations may be specified. 
+*
+*		This attribute also allows three special values, 
+*		ALLOW_OWNER, ALLOW_GROUP and ALLOW_ALL, to allow 
+*		command owner, group and everyone, respectively, to 
+*		execute the command without checking for access 
+*		authorizations. If no value is specified for this 
+*		attribute, DAC is then used to make further decision.
+*
+* authprivs	Specifies the authorized privileges. Privileged
+*	       	authorization and authorized privileges pairs indicating
+*		additional process privileges granted during execution
+*		of the command. The authorization and its corresponding 
+*		privileges are separated by an equal (=) sign, 
+*		individual privileges by a plus (+) sign and the 
+*		authorization/privileges pairs are separated by a comma, 
+*		as shown below: 
+*
+*		auth=priv+priv+...,auth=priv+priv+...,...
+*
+*		The number of authorization/privileges pairs is limited
+*		to 8.
+*
+* egid		Specifies the effective group id to assume during
+*		execution of the command.
+*
+* euid		Specifies the effective user id to assume during 
+*		execution of the command.
+*
+* innateprivs	Specifies a comma separated list of privileges assigned 
+*		to the process during execution of the command. The 
+*		specified privileges are only assigned to the process if 
+*		the command invocation is authorized through the access
+*		authorizations.
+*
+* inheritprivs	Specifies a comma separated list of privileges that are
+*		inherited from the parent process. Specified privileges 
+*		that exist in the parent process maximum privilege set, 
+*		will be assigned to the maximum privilege set of the 
+*		process during command execution.
+*
+* secflags	Specifies a comma separated list of security flags.
+*
+*******************************************************************************
+
+/usr/aix/bin/disable:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_AU_,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/aix/bin/enable:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_AU_,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/bin/qadm:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_AU_,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/bin/qcan:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_AU_,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/bin/qchk:
+	accessauths = aix.device.stat.printer
+	innateprivs = PV_AU_,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/bin/qhld:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_AU_,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/bin/qmov:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_AU_,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/bin/qpri:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_AU_,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/bin/qprt:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_AU_,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/lib/lpd/pio/etc/piodigest:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_DAC_O,PV_TCB,PV_KER_RAC,PV_NET_PORT,PV_PROC_PRIV,PV_KER_ACCT,PV_NET_CNTL,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/lpd/pio/etc/piomkpq:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_KER_RAC
+	secflags = FSF_EPS
+
+/usr/sbin/chvirprt:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_DAC_O,PV_TCB,PV_KER_RAC,PV_PROC_PRIV,PV_KER_ACCT,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/lsvirprt:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_O,PV_KER_ACCT,PV_KER_RAC,PV_PROC_PRIV
+	authprivs = aix.device.config.printer=PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/mkvirprt:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_DAC_O,PV_PROC_PRIV,PV_KER_ACCT,PV_KER_RAC
+	secflags = FSF_EPS
+
+/usr/sbin/pac:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_AU_,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CONFIG,PV_NET_PORT,PV_NET_RAWSOCK,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/sbin/rmvirprt:
+	accessauths = aix.device.config.printer
+	innateprivs = PV_DAC_O,PV_KER_RAC,PV_TCB
+	secflags = FSF_EPS
+
+/usr/sbin/loopmount:
+	accessauths = aix.device.manage.create,aix.device.manage.change
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_MKNOD,PV_AZ_ROOT,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_MOUNT
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_CHOWN,PV_FS_MKNOD,PV_KER_ACCT,PV_KER_CONF,PV_KER_EXTCONF,PV_KER_LVM,PV_KER_RAS,PV_KER_VARS,PV_NET_CNTL,PV_NET_CONFIG,PV_PROC_PRIV,PV_PROC_SIG
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/loopumount:
+	accessauths = aix.device.manage.remove
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_O,PV_DAC_R,PV_DAC_X,PV_DAC_W,PV_FS_MOUNT,PV_AZ_ROOT
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_CHOWN,PV_KER_ACCT,PV_KER_CONF,PV_KER_EXTCONF,PV_KER_LVM,PV_KER_RAS,PV_KER_VARS,PV_NET_CNTL,PV_NET_CONFIG,PV_PROC_PRIV,PV_PROC_SIG
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/ifconfig.ib:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_NET_CNTL,PV_KER_,PV_DEV_QUERY,PV_DEV_LOAD,PV_DEV_CONFIG,PV_NET_RAWSOCK
+	secflags = FSF_EPS
+
+/usr/sbin/entstat:
+	accessauths = aix.network.status
+	innateprivs = PV_NET_CNTL,PV_NET_RAWSOCK
+	secflags = FSF_EPS
+
+/usr/lib/boot/bin/bootinfo_chrp:
+	accessauths = aix.system.boot.info
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DEV_CONFIG,PV_KER_RAS
+	secflags = FSF_EPS
+
+/usr/lib/boot/bin/machstat_chrp:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R,PV_DEV_CONFIG
+	secflags = FSF_EPS
+
+/usr/sbin/bindintcpu:
+	accessauths = aix.system.config.bindintcpu
+	innateprivs = PV_DEV_CONFIG,PV_FS_MKNOD
+	secflags = FSF_EPS
+
+/usr/lib/methods/loadkclic:
+	accessauths = aix.system.config,aix.system.install,aix.security
+	innateprivs = PV_AZ_CHECK,PV_DAC_R,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_KER_RAC
+	secflags = FSF_EPS
+
+/usr/lib/corrals/chroot_cre:
+	accessauths = aix.fs.chroot,aix.wpar.system.create
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHROOT
+	secflags = FSF_EPS
+
+/usr/lib/corrals/ckaccess:
+	accessauths = aix.wpar
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/corrals/ckrootaccess:
+	accessauths = aix.wpar
+	innateprivs = PV_AZ_ROOT,PV_DAC_R
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/corrals/populate:
+	accessauths = aix.wpar
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_X,PV_KER_ACCT,PV_PROC_PRIV,PV_TCB
+	secflags = FSF_EPS
+
+/usr/lib/corrals/removeipc:
+	accessauths = aix.wpar
+	innateprivs = PV_KER_IPC_W,PV_KER_WPAR,PV_PROC_RAC
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/corrals/sm_par:
+	accessauths = aix.wpar.owner,aix.wpar.system
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_X,PV_PROC_PRIV
+	secflags = FSF_EPS
+
+/usr/lib/corrals/vinit:
+	accessauths = aix.wpar.owner
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	authprivs = aix.wpar=PV_KER_WPAR
+	secflags = FSF_EPS
+
+/usr/lib/corrals/wpar_gconfig:
+	accessauths = aix.wpar
+	innateprivs = PV_PROC_SIG
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/corrals/wpardevmgr:
+	accessauths = aix.wpar
+	innateprivs = PV_DAC_R,PV_KER_WPAR
+	inheritprivs = PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD
+	secflags = FSF_EPS
+
+/usr/lib/corrals/wparidata:
+	accessauths = aix.wpar
+	innateprivs = PV_DAC_R,PV_KER_RAC,PV_PROC_PRIV,PV_TP_SET
+	secflags = FSF_EPS
+
+/usr/lib/wpars/ckwpar:
+	accessauths = aix.wpar
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_TCB
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/wpars/loadwpar:
+	accessauths = aix.wpar
+	innateprivs = PV_AZ_ADMIN,PV_DAC_W,PV_FS_CHOWN,PV_KER_WLM,PV_KER_WPAR,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_SU_UID,PV_WPAR_CKPT,PV_NET_RAWSOCK
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/wpars/unloadwpar:
+	accessauths = aix.wpar
+	innateprivs = PV_AZ_ADMIN,PV_FS_CHOWN,PV_KER_WLM,PV_KER_WPAR,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_WPAR_CKPT
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD
+	secflags = FSF_EPS
+
+/usr/lib/wpars/wparinstcmd:
+	accessauths = aix.wpar
+	innateprivs = PV_DAC_R,PV_KER_WPAR
+	inheritprivs = PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_FS_MKNOD
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/lib/wpars/wparkillpids:
+	accessauths = aix.wpar
+	innateprivs = PV_KER_NFS,PV_PROC_SIG,PV_DEV_QUERY
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/wpars/wparlockctl:
+	accessauths = aix.wpar
+	innateprivs = PV_DAC_O,PV_FS_CHOWN,PV_TCB
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/wpars/wparlogevent:
+	accessauths = aix.wpar
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_TCB
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/wpars/wparquery:
+	accessauths = aix.wpar
+	innateprivs = PV_DAC_X,PV_KER_RAC
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/chwpar:
+	accessauths = aix.wpar.system.change,aix.wpar.owner
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_KER_WLM,PV_KER_WPAR,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_SU_ROOT,PV_SU_UID,PV_NET_RAWSOCK
+	inheritprivs = PV_FS_MOUNT,PV_AZ_CHECK
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/clogin:
+	accessauths = aix.wpar.system
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_KER_WPAR,PV_PROC_PRIV,PV_PROC_RAC,PV_PROC_SIG,PV_TCB
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_KER_ACCT,PV_KER_WPAR,PV_PROC_PRIV,PV_PROC_RAC,PV_SU_UID,PV_TCB
+	secflags = FSF_EPS
+
+/usr/sbin/lswpar:
+	accessauths = aix.wpar.owner,aix.wpar.system.change,aix.wpar.system.create,aix.wpar.system.remove,aix.wpar.system.resources,aix.wpar.system.start,aix.wpar.system.stop
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_WPAR,PV_PROC_PRIV
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/mkwpar:
+	accessauths = aix.wpar.system.create
+	innateprivs = PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_RID,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_FS_CHROOT,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_SU_ROOT
+	inheritprivs = PV_AU_ADD,PV_AU_PROC,PV_AZ_CHECK,PV_AZ_ROOT,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_CHOWN,PV_FS_MKNOD,PV_FS_MOUNT,PV_KER_ACCT,PV_KER_LVM,PV_KER_RAC,PV_KER_VARS,PV_KER_WLM,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_PROC_TIMER,PV_ROOT,PV_SU_UID,PV_TCB
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/rebootwpar:
+	accessauths = aix.wpar.system.start,aix.wpar.system.stop
+	innateprivs = PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/sbin/rmwpar:
+	accessauths = aix.wpar.owner,aix.wpar.system.remove
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_KER_RAC,PV_PROC_PRIV,PV_TCB
+	inheritprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_AZ_CHECK,PV_AZ_ROOT,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_CHOWN,PV_FS_MKNOD,PV_FS_MOUNT,PV_KER_ACCT,PV_KER_DR,PV_KER_EXTCONF,PV_KER_LVM,PV_KER_RAC,PV_KER_WLM,PV_KER_WPAR,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_PROC_RAC,PV_PROC_SIG,PV_ROOT,PV_SU_UID,PV_TCB
+	secflags = FSF_EPS
+
+/usr/sbin/startwpar:
+	accessauths = aix.wpar.owner,aix.wpar.system.start
+	innateprivs = PV_AZ_ROOT,PV_DAC_,PV_PROC_PRIV
+	inheritprivs = PV_AZ_ADMIN,PV_AZ_CHECK,PV_DAC_,PV_AZ_ROOT,PV_KER_,PV_DEV_QUERY,PV_FS_MKNOD
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/stopwpar:
+	accessauths = aix.wpar.owner,aix.wpar.system.stop
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_X,PV_PROC_PRIV,PV_TCB
+	inheritprivs = PV_AU_ADMIN,PV_AZ_CHECK,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_CHOWN,PV_FS_MOUNT,PV_KER_ACCT,PV_KER_DR,PV_KER_EXTCONF,PV_KER_RAC,PV_KER_VARS,PV_KER_WLM,PV_KER_WPAR,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_PROC_RAC,PV_PROC_SIG,PV_SU_UID,PV_TCB,PV_FS_MKNOD
+	secflags = FSF_EPS
+
+/usr/sbin/syncwpar:
+	accessauths = aix.wpar.system
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_X,PV_PROC_PRIV
+	inheritprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_LOAD,PV_DEV_CONFIG,PV_DEV_QUERY,PV_FS_CHOWN,PV_FS_RESIZE,PV_FS_MOUNT,PV_KER_ACCT,PV_KER_CONF,PV_KER_WPAR,PV_PROC_PRIV,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/wparerr:
+	accessauths = aix.wpar
+	innateprivs = PV_WPAR_CKPT,PV_DAC_R,PV_DAC_X,PV_KER_RAC
+	secflags = FSF_EPS
+
+/usr/sbin/wparexec:
+	accessauths = aix.wpar.owner
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_PROC_PRIV
+	inheritprivs = PV_AZ_CHECK,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DEV_CONFIG,PV_DEV_LOAD,PV_FS_CHOWN,PV_KER_ACCT,PV_KER_DR,PV_KER_WLM,PV_KER_WPAR,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_PROC_SIG,PV_SU_UID,PV_TCB
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/wparprnterr:
+	accessauths = aix.wpar
+	innateprivs = PV_WPAR_CKPT,PV_DAC_R,PV_DAC_X,PV_KER_RAC
+	secflags = FSF_EPS
+
+/usr/bin/tracesoff:
+	accessauths = aix.system.config.src
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT
+	euid = 0
+	secflags = FSF_EPS
+
+/usr/bin/traceson:
+	accessauths = aix.system.config.src
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT
+	euid = 0
+	secflags = FSF_EPS
+
+/usr/bin/trcevgrp:
+	accessauths = aix.ras.trace
+	innateprivs = PV_DAC_W
+	secflags = FSF_EPS
+
+/usr/bin/trcrpt:
+	accessauths = aix.ras.trace
+	innateprivs = PV_DAC_W,PV_KER_IPC_R,PV_DAC_O,PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/ccs/bin/probevctrl:
+	accessauths = ALLOW_ALL
+	authprivs = aix.ras.probevue.manage=PV_PROBEVUE_MANAGE+PV_DAC_W+PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/ccs/bin/probevue:
+	accessauths = aix.ras.probevue.trace.user.self,aix.ras.probevue.trace.syscall.self
+	authprivs = aix.ras.probevue.trace.user=PV_PROBEVUE_TRC_USER,aix.ras.probevue.trace.user.self=PV_PROBEVUE_TRC_USER_SELF,aix.ras.probevue.trace.syscall=PV_PROBEVUE_TRC_SYSCALL,aix.ras.probevue.trace.syscall.self=PV_PROBEVUE_TRC_SYSCALL_SELF,aix.ras.probevue.trace=PV_PROBEVUE_TRC_USER+PV_PROBEVUE_TRC_SYSCALL+PV_PROBEVUE_TRC_KERNEL,aix.ras.probevue.rase=PV_PROBEVUE_RASE
+	secflags = FSF_EPS
+
+/usr/lib/ras/mtrcsave64:
+	accessauths = aix.ras.trace
+	innateprivs = PV_AU_PROC,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_KER_RAS
+	secflags = FSF_EPS
+
+/usr/lib/trcload:
+	accessauths = aix.ras.trace
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_CHOWN,PV_FS_MKNOD,PV_KER_IPC_O
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/ctctrl:
+	accessauths = aix.ras.trace
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_KER_RAC,PV_KER_RAS,PV_SU_UID,PV_TCB,PV_MAC_R,PV_MAC_W,PV_MIC
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_KER_ACCT,PV_KER_RAC,PV_PROC_PRIV,PV_SU_UID,PV_TCB,PV_TP_SET,PV_MAC_R,PV_MAC_W,PV_MIC
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/sodebug:
+	accessauths = aix.ras.debug
+	innateprivs = PV_DAC_R,PV_KER_ACCT,PV_KER_RAC,PV_KER_VARS,PV_PROC_PRIV,PV_MAC_R,PV_MIC
+	inheritprivs = PV_DAC_O,PV_KER_RAC,PV_TCB,PV_MAC_R,PV_MAC_W,PV_MIC
+	secflags = FSF_EPS
+
+/usr/sbin/trace:
+	accessauths = aix.ras.trace
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_CONF,PV_KER_IPC_R,PV_KER_RAS,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/bin/listvgbackup:
+	accessauths = aix.fs.manage.restore,aix.wpar.system
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	inheritprivs = PV_DAC_X
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/mksysb:
+	accessauths = aix.system.boot.create
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	inheritprivs = PV_AZ_ROOT,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_KER_ACCT,PV_PROC_PRIV,PV_PROC_SIG,PV_SU_UID,PV_TCB,PV_AZ_CHECK
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/mkszfile:
+	accessauths = aix.wpar.system,aix.system.boot.create
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_PROC_PRIV
+	inheritprivs = PV_AZ_ROOT,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_QUERY,PV_FS_CHOWN,PV_FS_MKNOD,PV_KER_ACCT,PV_KER_LVM,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_TCB,PV_TP_SET
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/restvg:
+	accessauths = aix.lvm.manage.create
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_QUERY,PV_FS_MKNOD,PV_KER_IPC_R,PV_KER_LVM,PV_KER_RAS
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/savewpar:
+	accessauths = aix.wpar.system
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	inheritprivs = PV_AZ_ROOT,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_KER_ACCT,PV_PROC_PRIV,PV_PROC_RAC,PV_PROC_SIG,PV_SU_UID,PV_TCB
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/mkcd:
+	accessauths = aix.system.boot.create
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	inheritprivs = PV_AZ_ROOT,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_KER_ACCT,PV_PROC_PRIV,PV_PROC_SIG,PV_SU_UID,PV_TCB
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/restwpar:
+	accessauths = aix.wpar.system
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	inheritprivs = PV_DAC_X
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/chwebconfig:
+	accessauths = aix.system
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_KER_RAC
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/mkprtldap:
+	accessauths = aix.security.ldap
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_PROC_PRIV,PV_SU_UID
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_KER_ACCT,PV_KER_RAC,PV_PROC_PRIV,PV_SU_UID,PV_TP_SET
+	secflags = FSF_EPS
+
+/usr/bin/errclear:
+	accessauths = aix.ras.error
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/errlogger:
+	accessauths = aix.ras.error
+
+/usr/bin/errmsg:
+	accessauths = aix.ras.error
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/posixtrace:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_PROC_PRIO,PV_PROC_RAC,PV_PROC_RSET,PV_PROC_CKPT,PV_PROC_TIMER,PV_PROC_VARS,PV_KER_RAS,PV_DAC_UID,PV_DAC_GID
+	secflags = FSF_EPS
+
+/usr/bin/sysdumpstart:
+	accessauths = aix.ras.dump
+	innateprivs = PV_DAC_R,PV_KER_RAS
+	secflags = FSF_EPS
+
+/usr/bin/truss:
+	accessauths = aix.proc.trace
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_ACCT,PV_PROC_PRIV,PV_PROC_TIMER,PV_AZ_READ
+	secflags = FSF_EPS
+
+/usr/lib/ras/dmprtns/dmpfmt:
+	accessauths = aix.ras.trace
+	innateprivs = PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/lib/ras/dumpcheck:
+	accessauths = aix.ras.dump
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_PROC_PRIV,PV_PROC_TIMER,PV_TCB,PV_TP_SET,PV_KER_RAC,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/errctrl:
+	accessauths = aix.ras.debug
+	innateprivs = PV_DAC_W,PV_KER_RAS
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN
+	secflags = FSF_EPS
+
+/usr/sbin/portmir:
+	accessauths = aix.device.monitor.tty
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_MKNOD,PV_SU_UID
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/pstat:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/edquota:
+	accessauths = aix.fs.manage.quota
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_FS_QUOTA
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/j2edlimit:
+	accessauths = aix.fs.manage.quota
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_QUOTA
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/quot:
+	accessauths = aix.fs.stat
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/quota:
+	accessauths = aix.fs.manage.quota
+	innateprivs = PV_DAC_R,PV_DAC_X,PV_FS_QUOTA
+	secflags = FSF_EPS
+
+/usr/sbin/quotacheck:
+	accessauths = aix.fs.manage.quota
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_FS_QUOTA
+	secflags = FSF_EPS
+
+/usr/sbin/quotaoff:
+	accessauths = aix.fs.manage.quota
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_QUOTA
+	secflags = FSF_EPS
+
+/usr/sbin/quotaon:
+	accessauths = aix.fs.manage.quota
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_QUOTA
+	secflags = FSF_EPS
+
+/usr/sbin/repquota:
+	accessauths = aix.fs.manage.quota
+	innateprivs = PV_DAC_R,PV_DAC_X,PV_FS_QUOTA,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/bin/chlicense:
+	accessauths = aix.system.config
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_IPC_R,PV_KER_IPC_W
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/lslicense:
+	accessauths = aix.system.stat,aix.system.config
+	innateprivs = PV_DAC_R,PV_DAC_X,PV_KER_IPC_R
+	secflags = FSF_EPS
+
+/usr/sbin/monitord:
+	accessauths = aix.system.config
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_SU_UID
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/pmapi/tools/hpmstat:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/bin/amepat:
+	accessauths = aix.system.stat
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_X,PV_DEV_QUERY,PV_KER_ACCT,PV_KER_EXTCONF,PV_KER_RAC,PV_KER_VMM,PV_KER_WPAR,PV_SU_UID,PV_TCB,PV_TP_SET
+	secflags = FSF_EPS
+
+/usr/bin/filemon:
+	accessauths = aix.fs.stat
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_PROC_SIG
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/fileplace:
+	accessauths = aix.fs.stat
+	innateprivs = PV_DAC_X,PV_DEV_QUERY,PV_KER_LVM,PV_FS_MKNOD,PV_DAC_R,PV_DAC_O
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_QUERY,PV_FS_MKNOD,PV_KER_LVM
+	secflags = FSF_EPS
+
+/usr/bin/genld:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/bin/gennames:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/bin/gensyms:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/bin/locktrace:
+	accessauths = aix.ras.trace
+	innateprivs = PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_MOUNT,PV_KER_,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/bin/netpmon:
+	accessauths = aix.network.status
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_PROC_SIG,PV_SU_UID
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/rmss:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_KER_EXTCONF,PV_KER_VMM
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/svmon:
+	accessauths = aix.system.stat
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_X,PV_DEV_QUERY,PV_KER_ACCT,PV_KER_EXTCONF,PV_KER_RAC,PV_KER_VMM,PV_KER_WPAR,PV_SU_UID,PV_TCB,PV_TP_SET
+	secflags = FSF_EPS
+
+/usr/lib/perf/sm_getfield:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_PROC_VARS,PV_KER_RAC
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/lib/perf/sm_getrange:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_PROC_VARS,PV_KER_RAC
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/lib/perf/sm_setcurrent:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_PROC_VARS,PV_KER_RAC
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/ioo:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_DAC_,PV_KER_ACCT,PV_KER_VMM,PV_KER_RAC,PV_PROC_PRIV
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/raso:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_KER_RAC,PV_KER_VARS,PV_PROC_VARS
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/schedo:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_PROC_VARS,PV_KER_RAC
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/tunchange:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_AZ_ROOT,PV_DAC_
+	inheritprivs = PV_DAC_,PV_FS_CHOWN
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/tuncheck:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_AZ_ROOT,PV_DAC_
+	inheritprivs = PV_AZ_ROOT,PV_DAC_,PV_FS_CHOWN,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/tundefault:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_AZ_ROOT,PV_DAC_
+	inheritprivs = PV_DAC_
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/tunrestore:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_AZ_ROOT,PV_DAC_
+	inheritprivs = PV_DAC_
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/tunsave:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_DAC_,PV_FS_CHOWN,PV_KER_ACCT,PV_PROC_PRIV,PV_TCB,PV_AZ_ROOT
+	inheritprivs = PV_DAC_,PV_FS_CHOWN,PV_KER_ACCT,PV_PROC_PRIV,PV_TCB,PV_AZ_ROOT
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/vmo:
+	accessauths = aix.system.config.perf
+	innateprivs = PV_KER_VARS,PV_KER_VMM,PV_KER_RAC
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/ruser:
+	accessauths = aix.network.config
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W
+
+/usr/sbin/chnamsv:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_X,PV_DAC_R,PV_DAC_W
+
+/usr/sbin/chprtsv:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_X,PV_DAC_R,PV_DAC_W
+
+/usr/sbin/chrctcp:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_O,PV_DAC_X,PV_DAC_R,PV_DAC_W
+
+/usr/sbin/mkhosts:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	euid = 0
+	egid = 0
+
+/usr/sbin/mknamsv:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+
+/usr/sbin/mkprtsv:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+
+/usr/sbin/rmprtsv:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+
+/usr/bin/domainname:
+	accessauths = aix.network.config
+	innateprivs = PV_KER_CONF
+	secflags = FSF_EPS
+
+/usr/sbin/kdb_64:
+	accessauths = aix.system.debug
+	innateprivs = PV_DAC_R,PV_DAC_X,PV_KER_RAC
+	secflags = FSF_EPS
+
+/usr/bin/anno:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/burst:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/comp:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_LINKDIR
+	secflags = FSF_EPS
+
+/usr/bin/mark:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/bin/next:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/pick:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/prev:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/prompter:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_LINKDIR
+	secflags = FSF_EPS
+
+/usr/bin/refile:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_LINKDIR
+	secflags = FSF_EPS
+
+/usr/bin/repl:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/rmf:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/rmm:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/scan:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/send:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_LINKDIR
+	secflags = FSF_EPS
+
+/usr/bin/show:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/sortm:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/whatnow:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_LINKDIR
+	secflags = FSF_EPS
+
+/usr/bin/whom:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/mh/spost:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/lsmcode:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_,PV_PROC_PRIV,PV_TCB,PV_KER_ACCT,PV_KER_RAC
+	inheritprivs = PV_AZ_CHECK,PV_AZ_ROOT,PV_DAC_O,PV_DAC_X,PV_DEV_CONFIG,PV_FS_CHOWN,PV_FS_MKNOD,PV_KER_ACCT,PV_KER_RAC,PV_KER_RAS,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK,PV_PROC_PRIV,PV_PROC_TIMER,PV_TCB
+	secflags = FSF_EPS
+
+/usr/lpp/diagnostics/bin/Dctrl:
+	accessauths = aix.system.config.diag
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_FS_CHOWN,PV_PROC_PRIV,PV_SU_UID
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/lpp/diagnostics/bin/diagela:
+	accessauths = aix.system.config.diag
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/alt_disk_copy:
+	accessauths = aix.system.install
+	innateprivs = PV_ROOT,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/alt_disk_mksysb:
+	accessauths = aix.system.install
+	innateprivs = PV_ROOT,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/alt_rootvg_op:
+	accessauths = aix.system.install
+	innateprivs = PV_ROOT,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/aixpert:
+	accessauths = aix.security.aixpert
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	inheritprivs = PV_AZ_CHECK,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_PROC_SIG
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/acctctl:
+	accessauths = aix.system.config.acct
+	innateprivs = PV_AU_ADD,PV_DAC_R,PV_DAC_W,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_KER_ACCT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/bin/acctras:
+	accessauths = aix.system.config.acct
+	innateprivs = PV_KER_ACCT
+	secflags = FSF_EPS
+
+/usr/bin/acctrpt:
+	accessauths = aix.system.config.acct
+	innateprivs = PV_DAC_R,PV_DAC_X,PV_KER_EWLM
+	secflags = FSF_EPS
+
+/usr/bin/iostat:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_KER_VARS
+	authprivs = aix.system.stat=PV_PROC_PRIV
+	secflags = FSF_EPS
+
+/usr/bin/mpstat:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R,PV_DAC_X,PV_KER_WPAR
+	secflags = FSF_EPS
+
+/usr/bin/vmstat:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_KER_VARS,PV_KER_VMM,PV_KER_WPAR
+	secflags = FSF_EPS
+
+/usr/lib/sa/sa1:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/lib/sa/sa2:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R,PV_DAC_W
+	secflags = FSF_EPS
+
+/usr/lib/sa/sadc:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_KER_VARS
+	secflags = FSF_EPS
+
+/usr/sbin/aacct_stat:
+	accessauths = aix.system.config.acct
+
+/usr/sbin/acct/acctcom:
+	accessauths = aix.system.config.acct
+	innateprivs = PV_DAC_R,PV_DAC_X,PV_KER_WPAR
+	secflags = FSF_EPS
+
+/usr/sbin/acct/runacct:
+	accessauths = aix.system.config.acct
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_PROC_PRIV,PV_PROC_TIMER
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_KER_ACCT
+	secflags = FSF_EPS
+
+/usr/sbin/diskusg:
+	accessauths = aix.fs.stat
+	innateprivs = PV_AZ_ROOT,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/mkprojldap:
+	accessauths = aix.security.ldap
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	inheritprivs = PV_AU_ADD,PV_AU_PROC,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_ACCT,PV_KER_RAC,PV_PROC_PRIV,PV_PROC_SIG,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/projdata:
+	accessauths = aix.system.config.acct
+	innateprivs = PV_AZ_ROOT
+	secflags = FSF_EPS
+
+/usr/sbin/sa:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_W
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/sar:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R,PV_DAC_X,PV_KER_WPAR
+	secflags = FSF_EPS
+
+/usr/lpp/X11/bin/Xorg:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_UID,PV_DAC_GID
+	inheritprivs = PV_DAC_W
+
+/usr/lpp/X11/bin/luit:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_O,PV_FS_CHOWN
+
+/usr/sbin/muxatmd:
+	accessauths = aix.network.daemon
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK,PV_PROC_RAC
+	secflags = FSF_EPS
+
+/etc/rc.bsdnet:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/etc/rc.net:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/etc/rc.net.serial:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/etc/rc.tcpip:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/etc/slip.login:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/etc/slip.logout:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/usr/bin/Mail:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_FS_CHOWN,PV_FS_CHROOT,PV_FS_CNTL,PV_FS_LINKDIR,PV_FS_MKNOD,PV_FS_MOUNT,PV_FS_QUOTA,PV_FS_RESIZE
+	secflags = FSF_EPS
+
+/usr/bin/bellmail:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_R,PV_DAC_UID,PV_DAC_GID,PV_DAC_W,PV_NET_CNTL,PV_NET_PORT,PV_PROC_RAC,PV_FS_CHOWN
+	secflags = FSF_EPS
+
+/usr/bin/chauthent:
+	accessauths = aix.system.boot.create
+	innateprivs = PV_DAC_R,PV_DAC_O,PV_DAC_W,PV_PROC_PRIV,PV_KER_ACCT,PV_KER_RAC,PV_SU_UID
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_PROC_PRIV,PV_PROC_SIG,PV_PROC_TIMER,PV_KER_ACCT,PV_KER_RAC
+
+/usr/bin/dig:
+	accessauths = aix.network.config.host
+	innateprivs = PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/ftp:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_AU_ADMIN,PV_AU_ADD,PV_AU_PROC,PV_DAC_R
+
+/usr/bin/mail:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_AZ_ROOT
+	authprivs = aix.network.config.mail=PV_DAC_O+PV_DAC_R+PV_DAC_W+PV_FS_CHOWN+PV_FS_CHROOT+PV_FS_CNTL+PV_FS_LINKDIR+PV_FS_MKNOD+PV_FS_MOUNT+PV_FS_QUOTA+PV_FS_RESIZE
+	secflags = FSF_EPS
+
+/usr/bin/mailx:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_FS_CHOWN,PV_FS_CHROOT,PV_FS_CNTL,PV_FS_LINKDIR,PV_FS_MKNOD,PV_FS_MOUNT,PV_FS_QUOTA,PV_FS_RESIZE
+	secflags = FSF_EPS
+
+/usr/bin/nslookup:
+	accessauths = aix.network.config.host
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_UID
+	secflags = FSF_EPS
+
+/usr/bin/rcp:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_X,PV_DAC_O,PV_PROC_SIG,PV_NET_CNTL,PV_NET_PORT
+
+/usr/bin/remsh:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_NET_PORT
+
+/usr/bin/rexec:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_R,PV_DAC_W,PV_DAC_UID,PV_NET_PORT,PV_PROC_SIG
+
+/usr/bin/rlogin:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_X,PV_DAC_O,PV_PROC_SIG,PV_NET_CNTL,PV_NET_PORT
+
+/usr/bin/rpcinfo:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_KER_EXTCONF,PV_NET_CNTL,PV_NET_PORT
+
+/usr/bin/rsh:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_X,PV_DAC_O,PV_PROC_SIG,PV_NET_CNTL,PV_NET_PORT
+
+/usr/bin/ruptime:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_X,PV_DAC_R,PV_DAC_W
+
+/usr/bin/setclock:
+	accessauths = aix.system.config.date
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_KER_TIME,PV_DAC_UID
+
+/usr/bin/talk:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_NET_PORT,PV_DEV_QUERY,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/tcptraceroute:
+	accessauths = aix.network.config.route
+	innateprivs = PV_NET_RAWSOCK
+	secflags = FSF_EPS
+
+/usr/bin/telnet:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_UID
+
+/usr/bin/tftp:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_UID,PV_NET_PORT,PV_NET_CNTL,PV_DEV_QUERY,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/bin/tn:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_UID
+
+/usr/bin/tn3270:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_UID
+
+/usr/bin/traceroute:
+	accessauths = aix.network.config.route
+	innateprivs = PV_NET_RAWSOCK,PV_NET_CNTL
+
+/usr/bin/utftp:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_UID,PV_NET_PORT,PV_NET_CNTL,PV_DEV_QUERY,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/boot/tftp:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_UID,PV_NET_PORT,PV_NET_CNTL,PV_DEV_QUERY,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/lib/methods/cfgif:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_KER_VARS,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/cfginet:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_KER_ACCT,PV_NET_CNTL,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD
+	inheritprivs = PV_DAC_O,PV_DAC_W,PV_DAC_X,PV_DEV_CONFIG,PV_KER_ACCT,PV_KER_CONF,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK
+	secflags = FSF_EPS
+
+/usr/lib/methods/cfgrcnet:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/chgif:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_X,PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/chginet:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL,PV_NET_RAWSOCK
+	secflags = FSF_EPS
+
+/usr/lib/methods/defif:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/definet:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/deftunnel:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/stpinet:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/sttinet:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/ucfgif:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/ucfginet:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/udefif:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/lib/methods/udefinet:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/sbin/aixmibd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_CONF,PV_NET_CNTL,PV_DEV_QUERY,PV_DEV_CONFIG,PV_DEV_LOAD,PV_PROC_RAC,PV_PROC_SIG,PV_KER_VMM,PV_DAC_UID,PV_FS_MOUNT,PV_KER_VMM
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/arp:
+	accessauths = aix.network.config.arp
+	innateprivs = PV_AU_ADMIN,PV_DAC_UID,PV_DAC_R,PV_DAC_W,PV_KER_,PV_NET_CNTL,PV_SU_UID
+
+/usr/sbin/autoconf6:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_NET_RAWSOCK,PV_DEV_QUERY,PV_DEV_LOAD,PV_DEV_CONFIG,PV_NET_CNTL,PV_KER_,PV_SU_UID
+
+/usr/sbin/bootpd:
+	accessauths = aix.network.daemon
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/chservices:
+	accessauths = aix.network.config.tcpip,ALLOW_OWNER
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/chsubserver:
+	accessauths = aix.network.config.tcpip,ALLOW_OWNER
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/usr/sbin/clsnmpne:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_O,PV_PROC_PRIV,PV_KER_ACCT,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT,PV_SU_UID
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_PROC_PRIV,PV_KER_ACCT,PV_KER_RAC
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/dhcpaction:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/dhcpaction8:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/usr/sbin/dhcpcd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O
+	secflags = FSF_EPS
+
+/usr/sbin/dhcpcd6:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O
+	secflags = FSF_EPS
+
+/usr/sbin/dhcpremove:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/dhcpremove8:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/usr/sbin/dpid2:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_PROC_RAC,PV_PROC_SIG,PV_DAC_UID
+	secflags = FSF_EPS
+
+/usr/sbin/editmap:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_SU_UID,PV_FS_CHOWN,PV_PROC_SIG,PV_PROC_RAC,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD
+	secflags = FSF_EPS
+
+/usr/sbin/ftpd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_R,PV_DAC_W,PV_DAC_UID,PV_DAC_GID,PV_NET_PORT,PV_FS_CHROOT,PV_AU_,PV_PROC_RAC
+
+/usr/sbin/hostent:
+	accessauths = aix.network.config.host
+	innateprivs = PV_DAC_O,PV_DAC_X,PV_DAC_R,PV_DAC_W
+
+/usr/sbin/hostid:
+	accessauths = aix.network.config.host
+	innateprivs = PV_KER_CONF
+
+/usr/sbin/hostmibd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_CONF,PV_NET_CNTL,PV_DEV_QUERY,PV_DEV_CONFIG,PV_DEV_LOAD,PV_PROC_RAC,PV_PROC_SIG,PV_KER_VMM,PV_FS_MOUNT
+	secflags = FSF_EPS
+
+/usr/sbin/ifconfig:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_NET_CNTL,PV_KER_,PV_DEV_QUERY,PV_DEV_LOAD,PV_DEV_CONFIG,PV_NET_RAWSOCK,PV_SU_UID
+
+/usr/sbin/ifconfig.gre:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_NET_CNTL,PV_KER_,PV_DEV_QUERY,PV_DEV_LOAD,PV_DEV_CONFIG,PV_NET_RAWSOCK,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/inetd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_AU_,PV_DAC_,PV_FS_CHOWN,PV_PROC_PRIV,PV_PROC_RAC,PV_PROC_SIG,PV_PROC_TIMER,PV_PROC_VARS,PV_TCB,PV_TP,PV_TP_SET,PV_WPAR_CKPT,PV_KER_ACCT,PV_KER_RAC,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/krlogind:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_GID,PV_DAC_UID,PV_DAC_RID,PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_PROC_,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O,PV_PROC_SIG,PV_PROC_RAC,PV_PROC_CRED,PV_PROC_ENV,PV_FS_CHOWN,PV_NET_PORT,PV_AZ_READ
+	secflags = FSF_EPS
+
+/usr/sbin/krshd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_GID,PV_DAC_UID,PV_DAC_RID,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O,PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_NET_PORT,PV_PROC_RAC,PV_PROC_CRED,PV_PROC_ENV,PV_AZ_READ
+	secflags = FSF_EPS
+
+/usr/sbin/mailq:
+	accessauths = aix.network.config.mail,aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_FS_CHROOT,PV_FS_CNTL,PV_FS_LINKDIR,PV_FS_MKNOD,PV_FS_MOUNT,PV_FS_QUOTA,PV_FS_RESIZE,PV_NET_CNTL,PV_NET_PORT,PV_PROC_RAC,PV_PROC_RSET,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/mailstats:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/makemap:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_SU_UID,PV_FS_CHOWN,PV_PROC_SIG,PV_PROC_RAC,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD
+	secflags = FSF_EPS
+
+/usr/sbin/mktcpip:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/mmtu:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_NET_CNTL,PV_SU_UID
+
+/usr/sbin/mtrace:
+	accessauths = aix.network.config.route
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK
+	secflags = FSF_EPS
+
+/usr/sbin/named-checkconf:
+	accessauths = aix.network.config.host
+	innateprivs = PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/named-checkzone:
+	accessauths = aix.network.config.host
+	innateprivs = PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/namerslv:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	euid = 0
+	egid = 0
+
+/usr/sbin/ndp:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_NET_RAWSOCK,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD
+	secflags = FSF_EPS
+
+/usr/sbin/ndpd-host:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK,PV_PROC_RAC
+	secflags = FSF_EPS
+
+/usr/sbin/ndpd-router:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK,PV_PROC_RAC
+	secflags = FSF_EPS
+
+/usr/sbin/netcd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_UID,PV_DAC_GID,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/netcdctrl:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/netstat:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL,PV_FS_,PV_KER_,PV_PROC_
+	authprivs = aix.network.status=PV_SU_UID
+
+/usr/sbin/newaliases:
+	accessauths = aix.network.config.mail,aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_FS_CHROOT,PV_FS_CNTL,PV_FS_LINKDIR,PV_FS_MKNOD,PV_FS_MOUNT,PV_FS_QUOTA,PV_FS_RESIZE,PV_NET_CNTL,PV_NET_PORT,PV_PROC_RAC,PV_PROC_RSET,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/no:
+	accessauths = aix.network.config.no,aix.system.config.perf
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL,PV_SU_UID
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+
+/usr/sbin/nsupdate9:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL,PV_NET_PORT,PV_PROC_RAC,PV_PROC_RSET,PV_PROC_SIG,PV_PROC_VARS
+	secflags = FSF_EPS
+
+/usr/sbin/ntpdate:
+	accessauths = aix.system.config.date
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_TIME,PV_PROC_TIMER,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIO
+	secflags = FSF_EPS
+
+/usr/sbin/ntpq:
+	accessauths = aix.system.config.date
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/ntptrace:
+	accessauths = aix.system.config.date
+	innateprivs = PV_PROC_TIMER,PV_KER_TIME
+	secflags = FSF_EPS
+
+/usr/sbin/ping:
+	accessauths = ALLOW_ALL
+	innateprivs = PV_NET_RAWSOCK,PV_NET_PORT,PV_NET_CNTL,PV_DAC_X
+	authprivs = aix.network.config.tcpip=PV_SU_UID
+
+/usr/sbin/pmtu:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_KER_ACCT,PV_KER_CONF,PV_KER_DR,PV_KER_EWLM,PV_KER_EXTCONF,PV_KER_IPC,PV_KER_IPC_O,PV_KER_IPC_R,PV_KER_IPC_W,PV_KER_LVM,PV_KER_NFS,PV_KER_RAC,PV_KER_RAS,PV_KER_REBOOT,PV_KER_TIME,PV_KER_VARS,PV_KER_VMM,PV_KER_WLM,PV_NET_CNTL,PV_NET_PORT,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/portmap:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_AU_,PV_AZ_ADMIN,PV_AZ_READ,PV_AZ_CHECK,PV_DAC_,PV_PROBEVUE_,PV_FS_,PV_PROC_,PV_TCB,PV_TP,PV_TP_SET,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_,PV_MIC,PV_LAB_,PV_MAC_
+	secflags = FSF_EPS
+
+/usr/sbin/rexecd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_AU_ADMIN,PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_X,PV_DAC_O,PV_DAC_W,PV_DAC_UID,PV_DAC_GID,PV_DAC_RID,PV_PROC_RAC,PV_PROC_CRED,PV_PROC_ENV,PV_NET_PORT,PV_AZ_READ
+	euid = 0
+	egid = 0
+
+/usr/sbin/rlogind:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_GID,PV_DAC_UID,PV_DAC_RID,PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_PROC_,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O,PV_PROC_SIG,PV_PROC_RAC,PV_PROC_CRED,PV_PROC_ENV,PV_FS_CHOWN,PV_NET_PORT,PV_AZ_READ
+	secflags = FSF_EPS
+
+/usr/sbin/rmsock:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_AU_ADMIN,PV_DAC_UID,PV_NET_CNTL,PV_KER_
+
+/usr/sbin/rmtcpip:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/rndc:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_NET_PORT,PV_NET_CNTL,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/rndc-confgen:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_O,PV_DAC_X,PV_DAC_R,PV_DAC_W,PV_DAC_UID,PV_DAC_GID,PV_FS_
+	secflags = FSF_EPS
+
+/usr/sbin/route:
+	accessauths = aix.network.config.route
+	innateprivs = PV_KER_,PV_NET_CNTL,PV_NET_RAWSOCK,PV_NET_PORT,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/rshd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_GID,PV_DAC_UID,PV_DAC_RID,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O,PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_NET_PORT,PV_PROC_RAC,PV_PROC_CRED,PV_PROC_ENV,PV_AZ_READ
+	secflags = FSF_EPS
+
+/usr/sbin/rwhod:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_X,PV_DAC_R,PV_DAC_W,PV_NET_CNTL,PV_NET_PORT,PV_PROC_RAC
+
+/usr/sbin/sendmail:
+	accessauths = aix.network.config.mail,aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_FS_CHROOT,PV_FS_CNTL,PV_FS_LINKDIR,PV_FS_MKNOD,PV_FS_MOUNT,PV_FS_QUOTA,PV_FS_RESIZE,PV_NET_CNTL,PV_NET_PORT,PV_PROC_RAC,PV_PROC_RSET,PV_SU_UID,PV_KER_VARS
+	secflags = FSF_EPS
+
+/usr/sbin/sendmail_nonssl:
+	accessauths = aix.network.config.mail,aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_FS_CHROOT,PV_FS_CNTL,PV_FS_LINKDIR,PV_FS_MKNOD,PV_FS_MOUNT,PV_FS_QUOTA,PV_FS_RESIZE,PV_NET_CNTL,PV_NET_PORT,PV_PROC_RAC,PV_PROC_RSET,PV_SU_UID,PV_KER_VARS
+	secflags = FSF_EPS
+
+/usr/sbin/sendmail_ssl:
+	accessauths = aix.network.config.mail,aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_FS_CHOWN,PV_FS_CHROOT,PV_FS_CNTL,PV_FS_LINKDIR,PV_FS_MKNOD,PV_FS_MOUNT,PV_FS_QUOTA,PV_FS_RESIZE,PV_NET_CNTL,PV_NET_PORT,PV_PROC_RAC,PV_PROC_RSET,PV_SU_UID,PV_KER_VARS
+	secflags = FSF_EPS
+
+/usr/sbin/slattach:
+	innateprivs = PV_DAC_O,PV_DAC_X,PV_DAC_R,PV_DAC_W,PV_DAC_UID,PV_DAC_GID,PV_PROC_SIG,PV_PROC_RAC,PV_NET_CNTL,PV_NET_PORT,PV_KER_VARS,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_FS_
+	secflags = FSF_EPS
+
+/usr/sbin/slp_srvreg:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT,PV_PROC_RAC
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/smrsh:
+	accessauths = aix.network.config.mail
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_PROC_TIMER,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/sbin/snmpd64v1:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_GID,PV_DAC_UID,PV_KER_CONF,PV_NET_CNTL,PV_DEV_QUERY,PV_DEV_CONFIG,PV_DEV_LOAD,PV_PROC_RAC,PV_KER_IPC
+	secflags = FSF_EPS
+
+/usr/sbin/snmpdv1:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_GID,PV_DAC_UID,PV_KER_CONF,PV_NET_CNTL,PV_DEV_QUERY,PV_DEV_CONFIG,PV_DEV_LOAD,PV_PROC_RAC,PV_KER_IPC
+	secflags = FSF_EPS
+
+/usr/sbin/snmpdv3ne:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_GID,PV_DAC_UID,PV_PROC_RAC
+	secflags = FSF_EPS
+
+/usr/sbin/snmpmibd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_CONF,PV_NET_CNTL,PV_DEV_QUERY,PV_DEV_CONFIG,PV_DEV_LOAD,PV_PROC_RAC
+	secflags = FSF_EPS
+
+/usr/sbin/snmpv3_ssw:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_O,PV_PROC_PRIV,PV_TCB,PV_TP_SET,PV_KER_ACCT,PV_KER_RAC,PV_SU_UID
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_TCB,PV_KER_RAC,PV_SU_UID,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/sntp:
+	accessauths = aix.system.config.date
+	innateprivs = PV_KER_TIME,PV_PROC_TIMER
+	secflags = FSF_EPS
+
+/usr/sbin/syslogd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_,PV_NET_CNTL,PV_NET_PORT,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD
+	secflags = FSF_EPS
+
+/usr/sbin/talkd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/sbin/telnetd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_AU_ADD,PV_AU_ADMIN,PV_AU_PROC,PV_DAC_UID,PV_DAC_GID,PV_DAC_RID,PV_DAC_O,PV_DAC_W,PV_DAC_R,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_QUERY,PV_NET_PORT,PV_PROC_RAC,PV_PROC_CRED,PV_AZ_READ
+
+/usr/sbin/tftpd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_PROC_SIG,PV_DAC_GID,PV_DAC_UID,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/wol:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_CNTL
+
+/usr/sbin/xntpd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_KER_TIME,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_PROC_TIMER
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/xntpdc:
+	accessauths = aix.system.config.date
+	innateprivs = PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/etc/rc.qos:
+	accessauths = aix.network.config.no
+	innateprivs = PV_SU_,PV_ROOT,PV_AZ_ROOT,PV_DAC_X
+	inheritprivs = PV_SU_,PV_ROOT,PV_AZ_ROOT,PV_DAC_X
+	secflags = FSF_EPS
+
+/etc/securetcpip:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/bin/whois:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT
+
+/usr/lib/methods/cfgqos:
+	accessauths = aix.network.config.no
+	innateprivs = PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY
+	secflags = FSF_EPS
+
+/usr/lib/methods/ucfgqos:
+	accessauths = aix.network.config.no
+	innateprivs = PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY
+	secflags = FSF_EPS
+
+/usr/sbin/binld:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/bootptodhcp:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_UID,PV_DAC_W
+	secflags = FSF_EPS
+
+/usr/sbin/dadmin:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W
+	secflags = FSF_EPS
+
+/usr/sbin/dfpd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/dhcprd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/dhcpsconf:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_TCB,PV_FS_,PV_DAC_O
+	secflags = FSF_EPS
+
+/usr/sbin/dhcpsd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O,PV_DAC_UID,PV_DAC_GID
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/dhcpsdv6:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O,PV_DAC_UID,PV_DAC_GID
+	secflags = FSF_EPS
+
+/usr/sbin/dnssec-keygen:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/dnssec-signzone:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/frcactrl:
+	accessauths = aix.system.config.kext
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_UID,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK,PV_PROC_,PV_KER_VARS
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/gated:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_TIME,PV_PROC_TIMER,PV_PROC_RAC,PV_SU_UID
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/gdc:
+	accessauths = aix.network.config.tcpip,aix.network.daemon
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O,PV_DAC_UID,PV_PROC_SIG,PV_PROC_RAC,PV_PROC_PRIV,PV_KER_ACCT
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/gettable:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_NET_PORT
+
+/usr/sbin/htable:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W
+	euid = 0
+	egid = 0
+
+/usr/sbin/ip_auditpr:
+	accessauths = aix.network
+
+/usr/sbin/ipreport:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/sbin/iptrace:
+	accessauths = aix.network.config.tcpip,ALLOW_OWNER
+	innateprivs = PV_DAC_X,PV_DAC_R,PV_DAC_W,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_KER_ACCT,PV_KER_CONF,PV_KER_DR,PV_KER_EWLM,PV_KER_EXTCONF,PV_KER_IPC,PV_KER_IPC_O,PV_KER_IPC_R,PV_KER_IPC_W,PV_KER_LVM,PV_KER_NFS,PV_KER_RAC,PV_KER_RAS,PV_KER_REBOOT,PV_KER_TIME,PV_KER_VARS,PV_KER_VMM,PV_KER_WLM,PV_NET_CNTL,PV_NET_CONFIG,PV_NET_PORT,PV_NET_RAWSOCK,PV_NET_CNTL,PV_PROC_RAC
+	secflags = FSF_EPS
+
+/usr/sbin/mkqos:
+	accessauths = aix.network.config.no
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/usr/sbin/mosy:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_R,PV_DAC_W
+	secflags = FSF_EPS
+
+/usr/sbin/mrouted:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_RAWSOCK,PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_SU_UID
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/named9:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_RAWSOCK,PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O,PV_DAC_UID,PV_DAC_GID,PV_PROC_RAC,PV_PROC_SIG
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/ndb:
+	accessauths = aix.network.debug
+	innateprivs = PV_DAC_R,PV_DAC_W
+
+/usr/sbin/ospf_monitor:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_NET_RAWSOCK,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_UID
+	secflags = FSF_EPS
+
+/usr/sbin/policyd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/sbin/pwchange:
+	accessauths = aix.network.config.tcpip
+
+/usr/sbin/pwtokey:
+	accessauths = aix.network.config.tcpip
+
+/usr/sbin/pxed:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_PROC_RAC
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/qosadd:
+	accessauths = aix.network.config.no
+	innateprivs = PV_DAC_R,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/qoslist:
+	accessauths = aix.network.status,aix.network.config.no
+	innateprivs = PV_DAC_R,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/qosmod:
+	accessauths = aix.network.config.no
+	innateprivs = PV_DAC_R,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/qosremove:
+	accessauths = aix.network.config.no
+	innateprivs = PV_DAC_R,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/qosstat:
+	accessauths = aix.network.status
+	innateprivs = PV_NET_RAWSOCK
+	secflags = FSF_EPS
+
+/usr/sbin/ripquery:
+	accessauths = aix.network.config.tcpip
+
+/usr/sbin/rmqos:
+	accessauths = aix.network.config.no
+	innateprivs = PV_SU_,PV_ROOT
+	inheritprivs = PV_SU_,PV_ROOT
+	secflags = FSF_EPS
+
+/usr/sbin/routed:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_NET_CNTL,PV_NET_PORT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_TIME,PV_PROC_TIMER
+	secflags = FSF_EPS
+
+/usr/sbin/rsvpd:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_NET_CNTL,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/sbin/snmpinfo:
+	accessauths = aix.network.status
+	innateprivs = PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/sbin/tcpdump:
+	accessauths = aix.network.config.tcpip
+	innateprivs = PV_DAC_X,PV_DAC_R,PV_DAC_W,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_KER_ACCT,PV_KER_CONF,PV_KER_DR,PV_KER_EWLM,PV_KER_EXTCONF,PV_KER_IPC,PV_KER_IPC_O,PV_KER_IPC_R,PV_KER_IPC_W,PV_KER_LVM,PV_KER_NFS,PV_KER_RAC,PV_KER_RAS,PV_KER_REBOOT,PV_KER_TIME,PV_KER_VARS,PV_KER_VMM,PV_KER_WLM,PV_NET_CNTL,PV_NET_CONFIG,PV_NET_PORT,PV_NET_RAWSOCK,PV_NET_CNTL,PV_DAC_UID,PV_DAC_GID,PV_FS_MKNOD
+	secflags = FSF_EPS
+
+/usr/sbin/timed:
+	accessauths = aix.network.daemon,ALLOW_OWNER
+	innateprivs = PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK,PV_PROC_RAC,PV_SU_UID
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/timedc:
+	accessauths = aix.network.status
+	innateprivs = PV_AZ_CHECK,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK,PV_PROC_RAC,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/trpt:
+	accessauths = aix.network
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DEV_LOAD,PV_KER_VARS
+	secflags = FSF_EPS
+
+/etc/nfs.clean:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_PROC_PRIV,PV_PROC_TIMER,PV_KER_ACCT,PV_KER_RAC
+	secflags = FSF_EPS
+
+/etc/rc.nfs:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DAC_O,PV_PROC_PRIV,PV_TCB,PV_TP_SET,PV_KER_ACCT,PV_KER_RAC
+	inheritprivs = PV_AZ_CHECK,PV_FS_CHROOT,PV_FS_CNTL,PV_MAC_R
+	secflags = FSF_EPS
+
+/etc/rc.nfs4ss:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_PROC_PRIV,PV_TP_SET,PV_KER_ACCT,PV_KER_RAC
+	inheritprivs = PV_AZ_CHECK
+	secflags = FSF_EPS
+
+/sbin/helpers/nfsmnthelp:
+	accessauths = aix.fs.manage.mount,aix.fs.manage.unmount,aix.network.nfs.mount,ALLOW_OWNER
+	innateprivs = PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_MOUNT,PV_NET_PORT
+	secflags = FSF_EPS
+
+/sbin/helpers/stnfsmnthelp:
+	accessauths = aix.fs.manage.mount,aix.fs.manage.unmount
+	innateprivs = PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_FS_MOUNT,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/autofsmount:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AU_,PV_AZ_ADMIN,PV_AZ_READ,PV_AZ_CHECK,PV_DAC_,PV_PROBEVUE_,PV_FS_,PV_PROC_,PV_TCB,PV_TP,PV_TP_SET,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_,PV_MIC,PV_LAB_,PV_MAC_
+	secflags = FSF_EPS
+
+/usr/sbin/automountd:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AU_,PV_AZ_ADMIN,PV_AZ_READ,PV_AZ_ROOT,PV_AZ_CHECK,PV_DAC_,PV_PROBEVUE_,PV_FS_,PV_FS_MOUNT,PV_PROC_,PV_TCB,PV_TP,PV_TP_SET,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_,PV_MIC,PV_LAB_,PV_MAC_
+	secflags = FSF_EPS
+
+/usr/sbin/biod:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AU_,PV_AZ_ADMIN,PV_AZ_READ,PV_AZ_CHECK,PV_DAC_,PV_PROBEVUE_,PV_FS_,PV_PROC_,PV_TCB,PV_TP,PV_TP_SET,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_,PV_MIC,PV_LAB_,PV_MAC_
+	secflags = FSF_EPS
+
+/usr/sbin/chnfs:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_PROC_TIMER,PV_TCB,PV_KER_ACCT,PV_DAC_R,PV_PROC_PRIV,PV_KER_RAC
+	inheritprivs = PV_FS_CNTL,PV_AZ_CHECK,PV_DAC_O,PV_DAC_W,PV_DAC_X,PV_FS_CHROOT,PV_MIC,PV_MAC_R,PV_TP_SET
+	secflags = FSF_EPS
+
+/usr/sbin/chnfsdom:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_ACCT,PV_PROC_PRIV,PV_TCB,PV_PROC_SIG,PV_AZ_ROOT
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_ACCT
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/chnfsim:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_O,PV_PROC_PRIV,PV_KER_ACCT,PV_TCB,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT
+	inheritprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_ACCT,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_PROC_SIG,PV_TCB,PV_TP_SET
+	secflags = FSF_EPS
+
+/usr/sbin/chnfsrtd:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_KER_ACCT,PV_PROC_PRIV,PV_TCB
+	inheritprivs = PV_DAC_W,PV_DAC_X
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/chnfssec:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_KER_ACCT,PV_PROC_PRIV,PV_TCB
+	inheritprivs = PV_DAC_W,PV_DAC_X
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/exportfs:
+	accessauths = aix.network.nfs.export
+	innateprivs = PV_DAC_R,PV_DAC_O,PV_TCB,PV_FS_CHOWN,PV_FS_CNTL,PV_DAC_W,PV_DEV_LOAD,PV_KER_RAC,PV_DEV_QUERY,PV_KER_NFS
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/gssd:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AU_,PV_AZ_ADMIN,PV_AZ_READ,PV_AZ_CHECK,PV_DAC_,PV_PROBEVUE_,PV_FS_,PV_PROC_,PV_TCB,PV_TP,PV_TP_SET,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_,PV_MIC,PV_LAB_,PV_MAC_
+	secflags = FSF_EPS
+
+/usr/sbin/mknfs:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_PROC_TIMER,PV_TCB,PV_KER_ACCT,PV_DAC_R,PV_PROC_PRIV,PV_KER_RAC
+	inheritprivs = PV_FS_CNTL,PV_AZ_CHECK,PV_DAC_O,PV_DAC_W,PV_DAC_X,PV_FS_CHROOT,PV_MIC,PV_MAC_R,PV_TP_SET
+	secflags = FSF_EPS
+
+/usr/sbin/mknfsexp:
+	accessauths = aix.network.nfs.export
+	innateprivs = PV_DAC_R,PV_DAC_O,PV_FS_CHOWN,PV_TCB,PV_PROC_PRIV,PV_KER_ACCT,PV_DAC_W,PV_AZ_ROOT,PV_KER_RAC,PV_KER_NFS,PV_MIC
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/mknfsmnt:
+	accessauths = aix.network.nfs.mount
+	innateprivs = PV_DAC_R,PV_AZ_ROOT,PV_PROC_PRIV,PV_PROC_TIMER,PV_KER_ACCT,PV_KER_RAC
+	inheritprivs = PV_AZ_CHECK,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_FS_MOUNT,PV_KER_ACCT,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_TCB,PV_PROC_TIMER
+	secflags = FSF_EPS
+
+/usr/sbin/nfs4cl:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_DAC_R,PV_KER_RAC,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY
+	secflags = FSF_EPS
+
+/usr/sbin/nfs4smctl:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_DAC_R,PV_NET_CNTL,PV_NET_PORT,PV_DEV_QUERY,PV_KER_NFS,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY
+	secflags = FSF_EPS
+
+/usr/sbin/nfsd:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_DAC_R,PV_FS_CNTL,PV_FS_CHROOT,PV_PROC_RAC,PV_KER_ACCT,PV_PROC_PRIV,PV_KER_RAC,PV_KER_NFS,PV_DEV_LOAD,PV_DEV_QUERY
+	inheritprivs = PV_DAC_
+	secflags = FSF_EPS
+
+/usr/sbin/nfshostkey:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_AZ_ROOT,PV_DAC_W,PV_DAC_X
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/nfshostmap:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_DAC_W,PV_DAC_X
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_ACCT,PV_PROC_PRIV,PV_PROC_SIG
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/nfso:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_KER_NFS,PV_DAC_R,PV_NET_CNTL,PV_NET_PORT,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_AZ_ROOT
+	inheritprivs = PV_DAC_X,PV_DAC_W,PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/sbin/nfsrgyd:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AU_,PV_AZ_ADMIN,PV_AZ_READ,PV_AZ_CHECK,PV_DAC_,PV_PROBEVUE_,PV_FS_,PV_PROC_,PV_TCB,PV_TP,PV_TP_SET,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_,PV_MIC,PV_LAB_,PV_MAC_
+	secflags = FSF_EPS
+
+/usr/sbin/nfsstat:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_AZ_CHECK,PV_DAC_R,PV_KER_NFS,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY
+	secflags = FSF_EPS
+
+/usr/sbin/rmnfs:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_PROC_TIMER,PV_TCB,PV_KER_ACCT,PV_DAC_R,PV_PROC_PRIV,PV_KER_RAC
+	inheritprivs = PV_FS_CNTL,PV_AZ_CHECK,PV_DAC_O,PV_DAC_W,PV_DAC_X,PV_FS_CHROOT,PV_MIC,PV_MAC_R,PV_TP_SET
+	secflags = FSF_EPS
+
+/usr/sbin/rmnfsmnt:
+	accessauths = aix.network.nfs.mount
+	innateprivs = PV_DAC_R,PV_AZ_ROOT,PV_PROC_PRIV,PV_PROC_TIMER,PV_KER_ACCT,PV_KER_RAC
+	inheritprivs = PV_AZ_CHECK,PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_FS_MOUNT,PV_KER_ACCT,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_TCB,PV_PROC_TIMER
+	secflags = FSF_EPS
+
+/usr/sbin/rpc.lockd:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AU_,PV_AZ_ADMIN,PV_AZ_READ,PV_AZ_CHECK,PV_DAC_,PV_PROBEVUE_,PV_FS_,PV_PROC_,PV_TCB,PV_TP,PV_TP_SET,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_,PV_MIC,PV_LAB_,PV_MAC_,PV_KER_NFS
+	secflags = FSF_EPS
+
+/usr/sbin/rpc.mountd:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AU_,PV_AZ_ADMIN,PV_AZ_READ,PV_AZ_CHECK,PV_DAC_,PV_PROBEVUE_,PV_FS_,PV_PROC_,PV_TCB,PV_TP,PV_TP_SET,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_,PV_MIC,PV_LAB_,PV_MAC_
+	secflags = FSF_EPS
+
+/usr/sbin/rpc.rstatd:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AU_,PV_AZ_ADMIN,PV_AZ_READ,PV_AZ_ROOT,PV_AZ_CHECK,PV_DAC_,PV_PROBEVUE_,PV_FS_,PV_PROC_,PV_TCB,PV_TP,PV_TP_SET,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_,PV_MIC,PV_LAB_,PV_MAC_
+	secflags = FSF_EPS
+
+/usr/sbin/rpc.statd:
+	accessauths = aix.network.nfs.manage
+	innateprivs = PV_AU_,PV_AZ_ADMIN,PV_AZ_READ,PV_AZ_ROOT,PV_AZ_CHECK,PV_DAC_,PV_PROBEVUE_,PV_FS_,PV_PROC_,PV_TCB,PV_TP,PV_TP_SET,PV_KER_,PV_DEV_CONFIG,PV_DEV_QUERY,PV_DEV_LOAD,PV_NET_,PV_MIC,PV_LAB_,PV_MAC_
+	secflags = FSF_EPS
+
+/usr/sbin/stnfso:
+	accessauths = aix.network.nfs.set
+	innateprivs = PV_KER_NFS,PV_DAC_R,PV_NET_CNTL,PV_NET_PORT,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY,PV_AZ_ROOT
+	inheritprivs = PV_DAC_X,PV_DAC_W,PV_DAC_R
+	secflags = FSF_EPS
+
+/usr/sbin/chfilt:
+	accessauths = aix.security.network.filt
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/chtun:
+	accessauths = aix.security.network.vpn
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/ckfilt:
+	accessauths = aix.security.network.filt
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/expfilt:
+	accessauths = aix.security.network.filt
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/exptun:
+	accessauths = aix.security.network.vpn
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/genfilt:
+	accessauths = aix.security.network.filt
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/gentun:
+	accessauths = aix.security.network.vpn
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/impfilt:
+	accessauths = aix.security.network.filt
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/imptun:
+	accessauths = aix.security.network.vpn
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/ipsec_logd:
+	accessauths = aix.security.network
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_QUERY,PV_PROC_SIG,PV_SU_UID
+	secflags = FSF_EPS
+
+/usr/sbin/ipsecstat:
+	accessauths = aix.security.network.stat
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/ipsectrcbuf:
+	accessauths = aix.security.network
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/lsfilt:
+	accessauths = aix.security.network.filt,aix.security.network.stat
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_X,PV_DAC_W,PV_DAC_O,PV_PROC_RAC,PV_KER_RAC,PV_DEV_QUERY,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/lstun:
+	accessauths = aix.security.network.vpn,aix.security.network.stat
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_UID,PV_DAC_W,PV_DAC_X,PV_NET_CNTL
+	secflags = FSF_EPS
+
+/usr/sbin/mkfilt:
+	accessauths = aix.security.network.filt
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_PROC_SIG
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/mktun:
+	accessauths = aix.security.network.vpn
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/mvfilt:
+	accessauths = aix.security.network.filt
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/rmfilt:
+	accessauths = aix.security.network.filt
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/sbin/rmtun:
+	accessauths = aix.security.network.vpn
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_PORT
+	secflags = FSF_EPS
+
+/usr/sbin/skeyd:
+	accessauths = aix.security.network.vpn,aix.security.network.filt
+	innateprivs = PV_AZ_ROOT,PV_DAC_R,PV_DAC_W,PV_NET_PORT,PV_PROC_SIG,PV_PROC_TIMER
+	secflags = FSF_EPS
+
+/usr/sbin/unloadipsec:
+	accessauths = aix.security.network.config
+	innateprivs = PV_AU_ADD,PV_AU_PROC,PV_DAC_R,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_LOAD,PV_DEV_QUERY
+	secflags = FSF_EPS
+
+/usr/sbin/ike:
+	accessauths = aix.security.network.vpn
+	innateprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_NET_CNTL,PV_NET_PORT,PV_PROC_SIG
+	secflags = FSF_EPS
+
+/usr/sbin/ikedb:
+	accessauths = aix.security.network.vpn
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_FS_CHOWN,PV_KER_ACCT,PV_PROC_PRIV,PV_TCB,PV_WPAR_CKPT
+	inheritprivs = PV_DAC_W,PV_KER_ACCT,PV_PROC_PRIV
+	secflags = FSF_EPS
+
+/usr/lib/cluster/caa_snap:
+	accessauths = aix.system.cluster.change
+	inheritprivs = PV_KER_CLUSTER
+
+/usr/lib/cluster/maintcluster:
+	accessauths = aix.system.cluster.change
+	innateprivs = PV_KER_CLUSTER,PV_DAC_,PV_NET_CNTL,PV_NET_PORT
+	euid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/chcluster:
+	accessauths = aix.system.cluster.change
+	innateprivs = PV_KER_CLUSTER,PV_DAC_,PV_NET_CNTL,PV_NET_PORT
+	euid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/lscluster:
+	accessauths = aix.system.cluster.change
+	innateprivs = PV_KER_CLUSTER,PV_DAC_,PV_NET_CNTL,PV_NET_PORT
+	euid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/mkcluster:
+	accessauths = aix.system.cluster.create
+	innateprivs = PV_KER_CLUSTER,PV_DAC_R,PV_DAC_W,PV_FS_MOUNT,PV_PROC_PRIV,PV_KER_CONF,PV_NET_CNTL,PV_FS_CNTL,PV_KER_ACCT,PV_DEV_QUERY,PV_NET_PORT,PV_SU_ROOT
+	secflags = FSF_EPS
+
+/usr/sbin/rmcluster:
+	accessauths = aix.system.cluster.remove
+	innateprivs = PV_KER_CLUSTER,PV_DAC_R,PV_DAC_W,PV_PROC_PRIV,PV_NET_CNTL,PV_KER_ACCT,PV_NET_PORT,PV_FS_MOUNT,PV_SU_ROOT
+	secflags = FSF_EPS
+
+/opt/pconsole/bin/pconsole_exec:
+	accessauths = ALLOW_OWNER
+	innateprivs = PV_AU_ADMIN,PV_AU_PROC,PV_DAC_UID,PV_DAC_GID,PV_PROC_RAC,PV_NET_CNTL,PV_NET_PORT
+	secflags = FSF_EPS
+
+/pconsole/lwi/bin/lwistart_src.sh:
+	accessauths = ALLOW_OWNER
+	innateprivs = PV_ROOT,PV_DAC_R,PV_DAC_X,PV_DAC_O,PV_PROC_PRIV,PV_WPAR_CKPT,PV_KER_ACCT
+	secflags = FSF_EPS
+
+/usr/bin/xmwlm:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_
+	secflags = FSF_EPS
+
+/usr/sbin/nimclient:
+	accessauths = aix.system.install
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_KER_ACCT,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_PROC_SIG,PV_TCB
+	inheritprivs = PV_AZ_CHECK,PV_AZ_ROOT,PV_DAC_O,PV_DAC_W,PV_FS_MOUNT,PV_KER_ACCT,PV_KER_CONF,PV_NET_CNTL,PV_NET_PORT,PV_PROC_PRIV,PV_PROC_TIMER,PV_TCB
+	euid = 0
+	egid = 0
+	secflags = FSF_EPS
+
+/usr/sbin/niminit:
+	accessauths = aix.system.install
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_NET_CNTL,PV_NET_PORT,PV_PROC_SIG
+	inheritprivs = PV_DAC_O,PV_AU_ADMIN,PV_DAC_R,PV_DAC_W
+	secflags = FSF_EPS
+
+/usr/suma/bin/suma:
+	accessauths = aix.system.install
+	innateprivs = PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_RAC,PV_SU_UID
+	inheritprivs = PV_DAC_R,PV_DAC_W,PV_DAC_X
+	secflags = FSF_EPS
+
+/usr/esa/sbin/creatediag:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_O,PV_PROC_PRIV,PV_TCB,PV_KER_ACCT,PV_KER_RAC
+	secflags = FSF_EPS
+
+/usr/esa/sbin/esa_auth:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_R,PV_DAC_X,PV_KER_RAC,PV_NET_CNTL,PV_NET_PORT,PV_AU_ADD,PV_DAC_W
+	secflags = FSF_EPS
+
+/usr/esa/sbin/esa_checkrole:
+	accessauths = aix.system.stat
+	innateprivs = PV_PROC_PRIV,PV_KER_ACCT
+	secflags = FSF_EPS
+
+/usr/esa/sbin/hmcControlled:
+	accessauths = aix.system.stat
+	innateprivs = PV_DAC_W,PV_DAC_O,PV_KER_RAC,PV_DEV_CONFIG
+	secflags = FSF_EPS
+
+/usr/esa/sbin/sa_snap:
+	accessauths = aix.system.stat
+	innateprivs = PV_AZ_ROOT,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_KER_ACCT,PV_KER_RAC,PV_PROC_PRIV,PV_PROC_RAC,PV_FS_CHOWN
+	inheritprivs = PV_AU_PROC,PV_AZ_READ,PV_AZ_ROOT,PV_DAC_,PV_DAC_GID,PV_DAC_O,PV_DAC_R,PV_DAC_W,PV_DAC_X,PV_DEV_CONFIG,PV_DEV_QUERY,PV_FS_CHOWN,PV_FS_MKNOD,PV_KER_ACCT,PV_KER_EXTCONF,PV_KER_LVM,PV_KER_RAC,PV_KER_RAS,PV_KER_VARS,PV_NET_CNTL,PV_NET_PORT,PV_NET_RAWSOCK,PV_PROC_PRIV,PV_PROC_RAC,PV_PROC_TIMER,PV_PROC_VARS
+	secflags = FSF_EPS
+

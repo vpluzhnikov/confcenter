@@ -1,0 +1,485 @@
+{% extends "base.html" %}
+
+{% block title %}Analysys results for snap - {{ snapname }} {% endblock %}
+
+{% block content %}
+    <div id="content">
+    <form enctype="multipart/form-data" action="" method="post">
+
+    {% if sysparams %}
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> Параметры системы
+        </A><DIV style="display:none;" class="hideCont">
+            <table>
+                <tr> <td>Тип/Модель сервера:</td><td>  {{ sysparams.plat_type}} - {{ sysparams.plat_model }} </td> </tr>
+                <tr> <td>Серийный номер сервера:</td><td>  {{ sysparams.plat_serial }} </td> </tr>
+                <tr> <td>Имя раздела в ОС:</td><td>  {{ hostname.hostname }} </td> </tr>
+                <tr></tr>
+                {% ifequal hacmp.hacmp_used 0 %}
+                    <tr> <td>Кластеное ПО IBM PowerHA не используется</td></tr>
+                {% else %}
+                    {% ifequal hacmp.hacmp_used '1' %}
+                        <tr> <td>Кластерное ПО IBM PowerHA используется</td></tr>
+                    {% else %}
+                        <tr> <td>Информации об использовании кластерного ПО IBM PowerHA не обнаружено</td></tr>
+                    {% endifequal %}
+                {% endifequal %}
+            </table>
+        </DIV>
+    {% endif %}
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Конфигурация раздела сервера
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            <tr> <td>Номер раздела в HMC:</td><td>{{ lparinfo.lpar_number}}</td> </tr>
+            <tr> <td>Имя раздела в HMС:</td><td>{{ lparinfo.lpar_name}}</td> </tr>
+            <tr> <td>Тип раздела:</td><td>{{ lparinfo.lpar_type}}</td> </tr>
+            <tr> <td>Режим работы раздела:</td><td>{{ lparinfo.lpar_mode}}</td> </tr>
+            <tr> <td>Текущее кол-во вычислительных ресурсов:</td><td>{{ lparinfo.lpar_capacity}}</td> </tr>
+            <tr></tr>
+            <tr> <td>Минимальное кол-во CPU раздела:</td><td>{{ lparinfo.lpar_min_cpu}}</td> </tr>
+            <tr> <td>Желаемое кол-во CPU раздела:</td><td>{{ lparinfo.lpar_des_cpu}}</td> </tr>
+            <tr> <td>Максимальное кол-во CPU раздела:</td><td>{{ lparinfo.lpar_max_cpu}}</td> </tr>
+            <tr></tr>
+            <tr> <td>Минимальное кол-во памяти раздела:</td><td>{{ lparinfo.lpar_min_mem}}</td> </tr>
+            <tr> <td>Желаемое кол-во памяти раздела:</td><td>{{ lparinfo.lpar_des_mem}}</td> </tr>
+            <tr> <td>Максимальное кол-во памяти раздела:</td><td>{{ lparinfo.lpar_max_mem}}</td> </tr>
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Уровень микропрограммного обеспечения компонентов системы
+    </A><DIV style="display:none;" class="hideCont">
+        {% regroup mcodes by mcode_devname as mcodes_list %}
+        <table>
+            {% for mcode in mcodes %}
+                <tr> <td> Микрокод устройства {{ mcode.mcode_devname }}: </td>  <td> {{ mcode.mcode_level }} </td> </tr>
+            {% endfor %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Уровень операционной системы
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            <tr><td>Уровень обновления ОС:</td> <td> {{ oslevel.oslevel }} </td></tr>
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Параметры системного дампа
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            <tr><td>Первичное устройство для сохранения системного дампа:</td>
+                <td> {{ dumpdev.dumpdev_primary }} </td></tr>
+            <tr><td>Вторичное устройство для сохранения системного дампа:</td>
+                <td> {{ dumpdev.dumpdev_secondary }} </td></tr>
+            <tr><td>Директория для сохранения системного дампа:</td> <td> {{ dumpdev.dumpdev_copypath }} </td></tr>
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Наличие системного дампа
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if dump %}
+                <tr><td>Дата создания дампа:</td> <td> {{ dump.dump_date }} </td></tr>
+                <tr><td>Статус дампа:</td> <td> {{ dump.dump_status }} </td></tr>
+                <tr><td>Размер дампа:</td> <td> {{ dump.dump_size }} bytes</td></tr>
+            {% else %}
+                <tr><td>Информации о системном дампе не обнаружено</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Информация о временных исправлениях (ifix)
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if emgrs %}
+                {% for emgr in emgrs %}
+                    <tr><td>Идентификатор ifix:</td> <td> {{ emgr.emgr_label }} </td></tr>
+                    <tr><td>Дата инсталляции:</td> <td> {{ emgr.emgr_instdate }} </td></tr>
+                    <tr><td>Краткое описание ifix:</td> <td> {{ emgr.emgr_abstruct }}</td></tr>
+                    <tr><td>Статус установки ifix:</td> <td> {{ emgr.emgr_status }}</td></tr>
+                    {% if not forloop.last %} <tr></tr> {% endif %}
+                {% endfor %}
+            {% else %}
+                <tr><td>Информации о временных исправлениях не обнаружено</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Информация об ошибках раздела
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if errors %}
+                <tr><td>Кол-во</td><td>ID</td><td>Первая регистрация</td><td>Последняя регистрация</td><td>Тип</td>
+                    <td>Класс</td> <td>Ресурс</td><td>Описание</td></tr></b>
+                {% for error in errors %}
+                    <tr> <td>{{ error.errpt_errq }}</td> <td>{{ error.errpt_errid }}</td>
+                        <td>{{ error.errpt_errdates }}</td> <td>{{ error.errpt_erridatee }}</td>
+                        <td>{{ error.errpt_errtype }}</td> <td>{{ error.errpt_class }}</td>
+                        <td>{{ error.errpt_errres }}</td> <td>{{ error.errpt_errdesc }}</td> </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информации об ошибках на системе не зафиксированно</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Разрядность ядра ОС
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if bootinfo %}
+                <tr><td>Операционная система загружена в режиме {{ bootinfo.bootinfo_k }}-х бит</td></tr>
+            {% else %}
+                <tr><td>Информация о режиме работы ОС не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Количество потоков на процессорах сервера (SMT)
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if smt %}
+                {% ifequal smt.smt_threads_count '0'%}
+                    <tr><td>В системе для всех процессоров отключены дополнительные потоки</td></tr>
+                {% else %}
+                    <tr><td>В системе для всех процессоров настроено {{ smt.smt_threads_count }} потока</td></tr>
+                {% endifequal %}
+            {% else %}
+                <tr><td>Информация о кол-ве потоков на процессорах не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Информация об изменненых значениях tunable parameters разделов vmo, ioo, schedo
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if tunables %}
+                <tr><td>Название параметра:</td> <td> Значение параметра </td></tr>
+                {% for tun in tunables %}
+                    <tr><td> {{ tun.tun_name }}</td> <td> {{ tun.tun_value }} </td></tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информация о о значениях tunable parameters не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;"> Информация о значениях tunable parameters раздела no
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if no_tunables %}
+                <tr><td>Название параметра:</td> <td> Значение параметра </td></tr>
+                {% for tun in no_tunables %}
+                    <tr><td> {{ tun.tun_name }}</td> <td> {{ tun.tun_value }} </td></tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информация о о значениях tunable parameters не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о дисковых группах
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if vgs %}
+                <thead><td>Имя дисковой группы</td><td> Состояние дисковой группы</td><td>Размер физического блока</td>
+                    <td>Свободный объем в группе</td><td>Общее число дисков</td><td>Число активных дисков</td>
+                    <td>Автоматический импорт</td></thead>
+                {% for vg in vgs %}
+                    <tr><td>{{ vg.name }}</td><td>{{ vg.state }}</td><td>{{ vg.pp_size }}</td>
+                        <td>{{ vg.free_size }}</td><td>{{ vg.totalpv }}</td><td>{{ vg.activepv }}</td>
+                        <td>{{ vg.auto }}</td></tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информация о группах томов не обнаружена</td></tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о логических томах
+    </A><DIV style="display:none;" class="hideCont">
+            {% if lvs %}
+                {%  for lv in lvs %}
+                    <thead>Дисковая группа: {{ lv.volgroup }}</thead>
+                    <table>
+                        <tr><td>Имя тома</td><td>Тип тома</td><td>Кол-во копий</td><td>Состояние тома</td>
+                            <td>Точка монтирования</td><td>Смонтирована?</td><td>% заполнения</td>
+                            <td>% использованных inode</td></tr>
+                        {% for l in lv.volumes %}
+                            <tr><td>{{ l.name }}</td><td>{{ l.type }}</td><td>{{ l.copies }}</td><td>{{ l.state }}</td>
+                            <td>{{ l.mount }}</td><td>{{ l.mounted }}</td><td>{{ l.used }}</td><td>{{ l.iused }}</td></tr>
+                        {% endfor %}
+                    </table>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информация о логических томах не обнаружена</td></tr>
+            {% endif %}
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о файлах и разделах подкачки
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if swaps %}
+                <tr><td>Раздел/Файл</td><td>Активный</td><td>Размер</td><td>Процент использования</td></tr>
+                {% for swap in swaps %}
+                    <tr><td>{{ swap.swap_vol }}</td><td>{{ swap.swap_active }}</td><td>{{ swap.swap_size }}</td>
+                        <td>{{ swap.swap_used }}%</td></tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информация о файлах и разделах подкачки не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о настройках DNS
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if dns %}
+                {% if dns.dns_nameserver_1 %}
+                    <tr><td>Имя сервера DNS (1)</td><td>{{ dns.dns_nameserver_1 }}</td></tr>
+                {% endif %}
+                {% if dns.dns_nameserver_2 %}
+                    <tr><td>Имя сервера DNS (2)</td><td>{{ dns.dns_nameserver_2 }}</td></tr>
+                {% endif %}
+                {% if dns.dns_nameserver_3 %}
+                    <tr><td>Имя сервера DNS (3)</td><td>{{ dns.dns_nameserver_3 }}</td></tr>
+                {% endif %}
+                {% if dns.dns_nameserver_4 %}
+                    <tr><td>Имя сервера DNS (4)</td><td>{{ dns.dns_nameserver_4 }}</td></tr>
+                {% endif %}
+                {% if dns.dns_nameserver_5 %}
+                    <tr><td>Имя сервера DNS (5)</td><td>{{ dns.dns_nameserver_5 }}</td></tr>
+                {% endif %}
+                <tr><td>Домен DNS</td><td>{{ dns.dns_domain }}</td></tr>
+                <tr><td>Поиск по умолчанию</td><td>{{ dns.dns_search }}</td></tr>
+            {% else %}
+                <tr><td>Информация об экспортированных файловых системах не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Записи файла hostequiv
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if hequv %}
+                {% for record in hequv %}
+                    <tr><td>{{ record }}</td></tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Записей в файле hosts.equiv не обнаружено</td></tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об экспортированных файловых системах
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if nfs|length > 1 %}
+                <tr><td>Экспортированные файловые системы</td></tr>
+                {% for fs in nfs %}
+                    <tr><td>{{ fs.exportedfs }}</td></tr>
+                {% endfor %}
+            {% else %}
+                {% for fs in nfs %}
+                    {% ifequal fs.exportedfs "exportfs: nothing exported" %}
+                        <tr><td>Информация об экспортированных файловых системах не обнаружена</td> </tr>
+                    {% else %}
+                        <tr><td>Экспортированные файловые системы</td></tr>
+                        <tr><td>{{ fs.exportedfs }}</td></tr>
+                    {% endifequal %}
+                {% endfor %}
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о пакетах RPM
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if rpms %}
+                <tr><td>Название и версия пакета</td></tr>
+                {% for rpm in rpms %}
+                    <tr><td>{{ rpm.rpmname }}</td></tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информация о пакетах RPM не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о пакетах ПО Symantec
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if vrtslpps %}
+                <tr><td>Название пакета</td><td>Версия пакета</td></tr>
+                {% for lpp in vrtslpps %}
+                    <tr><td>{{ lpp.lppname }}</td><td>{{ lpp.lppver }}</td></tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информация о пакетах ПО Symantec не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о настройках системы (sys0)
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if sysparams %}
+                <tr><td>Название параметра</td><td>Значение парамтера</td></tr>
+                <tr><td>{{ sysparams.atname_1 }}</td><td>{{ sysparams.atval_1 }}</td></tr>
+                <tr><td>{{ sysparams.atname_2 }}</td><td>{{ sysparams.atval_2 }}</td></tr>
+            {% else %}
+                <tr><td>Информация о настройках системы не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об установленных ограничениях для пользователей
+    </A><DIV style="display:none;" class="hideCont">
+        {% if limits %}
+            {% for user in limits %}
+                <h3>{{ user.username }}</h3>
+                <table>
+                    <tr><td>Имя параметра</td><td>Значение параметра</td></tr>
+                    {% for limit in user.limitlist %}
+                        <tr><td>{{ limit.limname }}</td><td>{{ limit.limval }}</td></tr>
+                    {% endfor %}
+                </table>
+            {% endfor %}
+        {% else %}
+            <tr><td>Информация об установленных ограничениях для пользователей не обнаружена</td> </tr>
+        {% endif %}
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об адаптерах, сконфигурированных в раздел
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if adapters %}
+                <tr><td>Имя адаптера</td><td>Опсисание адаптера</td><td>Состояние адаптера</td>
+                    <td>Location Code</td></tr>
+                {% for adapter in adapters %}
+                    <tr><td>{{ adapter.adapter_name }}</td><td>{{ adapter.adapter_desc }}</td>
+                        <td>{{ adapter.adapter_state }}</td><td>{{ adapter.adapter_loc }}</td></tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информация об установленных ограничениях для пользователей не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об адаптерах Gigabit Ethernet
+    </A><DIV style="display:none;" class="hideCont">
+        {% if ent1g_attrs %}
+            {% for ent in ent1g_attrs %}
+                <h3>{{ ent.name }}</h3>
+                <table>
+                <tr><td>Имя параметра</td><td>Значение параметра</td></tr>
+                <tr><td>{{ ent.atname_1 }}</td><td>{{ ent.atval_1 }}</td></tr>
+                <tr><td>{{ ent.atname_2 }}</td><td>{{ ent.atval_2 }}</td></tr>
+                <tr><td>{{ ent.atname_3 }}</td><td>{{ ent.atval_3 }}</td></tr>
+                <tr><td>{{ ent.atname_4 }}</td><td>{{ ent.atval_4 }}</td></tr>
+                </table>
+            {% endfor %}
+        {% else %}
+            <tr><td>Информация об адаптерах Gigabit Ethernet не обнаружена</td> </tr>
+        {% endif %}
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об адаптерах 10 Gigabit Ethernet
+    </A><DIV style="display:none;" class="hideCont">
+        {% if ent10g_attrs %}
+            {% for ent in ent10g_attrs %}
+                <h3>{{ ent.name }}</h3>
+                <table>
+                    <tr><td>Имя параметра</td><td>Значение параметра</td></tr>
+                    <tr><td>{{ ent.atname_1 }}</td><td>{{ ent.atval_1 }}</td></tr>
+                    <tr><td>{{ ent.atname_2 }}</td><td>{{ ent.atval_2 }}</td></tr>
+                    <tr><td>{{ ent.atname_3 }}</td><td>{{ ent.atval_3 }}</td></tr>
+                </table>
+            {% endfor %}
+        {% else %}
+            <tr><td>Информация об адаптерах 10 Gigabit Ethernet не обнаружена</td> </tr>
+        {% endif %}
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о настроенных устройствах EtherChannel
+    </A><DIV style="display:none;" class="hideCont">
+        {% if entec_attrs %}
+            {% for ent in entec_attrs %}
+                <h3>{{ ent.name }}</h3>
+                <table>
+                    <tr><td>Имя параметра</td><td>Значение параметра</td></tr>
+                    <tr><td>{{ ent.atname_1 }}</td><td>{{ ent.atval_1 }}</td></tr>
+                    <tr><td>{{ ent.atname_2 }}</td><td>{{ ent.atval_2 }}</td></tr>
+                    <tr><td>{{ ent.atname_3 }}</td><td>{{ ent.atval_3 }}</td></tr>
+                </table>
+            {% endfor %}
+        {% else %}
+            <tr><td>Информация о настроенных устройствах EtherChannel не обнаружена</td> </tr>
+        {% endif %}
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об адаптерах FibreChannel
+    </A><DIV style="display:none;" class="hideCont">
+        {% if fcs_attrs %}
+            {% for fcs in fcs_attrs %}
+                <h3>{{ fcs.name }}</h3>
+                <table>
+                    <tr><td>Имя параметра</td><td>Значение параметра</td></tr>
+                    <tr><td>{{ fcs.atname_1 }}</td><td>{{ fcs.atval_1 }}</td></tr>
+                    <tr><td>{{ fcs.atname_2 }}</td><td>{{ fcs.atval_2 }}</td></tr>
+                    <tr><td>{{ fcs.atname_3 }}</td><td>{{ fcs.atval_3 }}</td></tr>
+                </table>
+            {% endfor %}
+        {% else %}
+            <tr><td>Информация об адаптерах FibreChannel не обнаружена</td> </tr>
+        {% endif %}
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о настройках fscsi
+    </A><DIV style="display:none;" class="hideCont">
+        {% if fscsi_attrs %}
+            {% for fscsi in fscsi_attrs %}
+                <h3>{{ fscsi.name }}</h3>
+                <table>
+                    <tr><td>Имя параметра</td><td>Значение параметра</td></tr>
+                    <tr><td>{{ fscsi.atname_1 }}</td><td>{{ fscsi.atval_1 }}</td></tr>
+                    <tr><td>{{ fscsi.atname_2 }}</td><td>{{ fscsi.atval_2 }}</td></tr>
+                    <tr><td>{{ fscsi.atname_3 }}</td><td>{{ fscsi.atval_3 }}</td></tr>
+                </table>
+            {% endfor %}
+        {% else %}
+            <tr><td>Информация о настройках fscsi не обнаружена</td> </tr>
+        {% endif %}
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о жестких дисках
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if disks %}
+                <tr><td>Тип устройств</td><td>Кол-во устройств в ОС</td></tr>
+                {% for disk in disks %}
+                    <tr><td>{{ disk.hdisk_type }}</td><td>{{ disk.hdisk_count }}</td></tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информация о жестких дисках не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+    <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о ленточных накопителях
+    </A><DIV style="display:none;" class="hideCont">
+        <table>
+            {% if rmts %}
+                <tr><td>Название устройства в ОС</td><td>Производитель устройства</td><td>Тип устройства</td></tr>
+                {% for rmt in rmts %}
+                    <tr><td>{{ rmt.name }}</td><td>{{ rmt.vendor }}</td><td>{{ rmt.type }}</td></tr>
+                {% endfor %}
+            {% else %}
+                <tr><td>Информация о ленточных накопителях не обнаружена</td> </tr>
+            {% endif %}
+        </table>
+    </DIV>
+
+        <p> <input type="submit" value="Сохранить в базе данных"> </p>
+    </form>
+</div>
+{% endblock %}

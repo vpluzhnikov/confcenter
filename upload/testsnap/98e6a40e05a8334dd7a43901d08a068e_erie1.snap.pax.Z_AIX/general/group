@@ -1,0 +1,79 @@
+
+system:
+	admin = true
+
+staff:
+	admin = false
+
+bin:
+	admin = true
+
+sys:
+	admin = true
+
+adm:
+	admin = true
+
+uucp:
+	admin = true
+
+mail:
+	admin = true
+
+security:
+	admin = true
+
+cron:
+	admin = true
+
+printq:
+	admin = true
+
+audit:
+	admin = true
+
+ecs:
+	admin = true
+
+usr:
+	admin = false
+
+nobody:
+	admin = false
+
+perf:
+	admin = false
+
+shutdown:
+	admin = true
+
+lp:
+	admin = true
+
+invscout:
+	admin = true
+
+snapp:
+	admin = true
+
+ipsec:
+	admin = false
+
+pconsole:
+	admin = true
+
+sshd:
+	admin = false
+
+dba:
+	admin = false
+
+oinstall:
+	admin = true
+
+group:
+	admin = false
+	adms = root
+
+opcgrp:
+	admin = false

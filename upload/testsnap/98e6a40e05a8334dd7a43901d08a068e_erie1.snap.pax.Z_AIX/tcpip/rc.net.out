@@ -1,0 +1,30 @@
+0821-510 ifconfig: error calling entry point for /usr/lib/drivers/if_en: The specified device does not exist.
+0821-103 : The command /usr/sbin/ifconfig en4 inet  10.67.24.153 arp netmask 255.255.254.0 mtu 1500 up failed.
+0821-007 cfgif: ifconfig command failed.
+	The status of"en4" Interface in the current running system is uncertain.
+0821-510 ifconfig: error calling entry point for /usr/lib/drivers/if_en: The specified device does not exist.
+0821-103 : The command /usr/sbin/ifconfig en11 inet  192.168.30.1 arp netmask 255.255.255.0 mtu 1500 up failed.
+0821-007 cfgif: ifconfig command failed.
+	The status of"en11" Interface in the current running system is uncertain.
+CMD: /usr/sbin/ifconfig lo0 rfc1323 1 -tcp_mssdflt -tcp_nodelay tcp_sendspace 131072 tcp_recvspace 131072 
+inet0
+en0 deleted
+et0 deleted
+en0
+et0
+en2 deleted
+et2 deleted
+en2
+et2
+en9 deleted
+et9 deleted
+en9
+et9
+en10 deleted
+et10 deleted
+en10
+et10
+CMD: /usr/sbin/ifconfig en4 rfc1323 0 -tcp_mssdflt -tcp_nodelay tcp_sendspace 131072 tcp_recvspace 65536 
+CMD: /usr/sbin/ifconfig en11 rfc1323 1 -tcp_mssdflt -tcp_nodelay tcp_sendspace 262144 tcp_recvspace 262144 
+erie1
+10.67.25.250 net 0: gateway 10.67.25.250

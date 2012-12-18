@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Upload configuration output{% endblock %}
+
+{% block content %}
+    <div id="content">
+        {% if form.errors %}
+            <p style="color: red;">
+                Please correct the error{{ form.errors|pluralize }} below.
+                {{ form.errors }}
+            </p>
+        {% endif %}
+
+        <form enctype="multipart/form-data" action="" method="post">
+            <table>
+                {{ form.as_table }}
+            </table>
+
+           <p> <input type="submit" value="Загрузить"> </p>
+        </form>
+    </div>
+{% endblock %}

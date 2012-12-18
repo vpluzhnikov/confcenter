@@ -1,0 +1,21 @@
+ent0    Available 01-00    U5803.001.9SS0378-P1-C2-T1  2-Port 10/100/1000 Base-TX PCI-Express Adapter (14104003)
+ent1    Available 01-01    U5803.001.9SS0378-P1-C2-T2  2-Port 10/100/1000 Base-TX PCI-Express Adapter (14104003)
+ent2    Available 05-00    U5803.001.9SS032L-P1-C2-T1  2-Port 10/100/1000 Base-TX PCI-Express Adapter (14104003)
+ent3    Available 05-01    U5803.001.9SS032L-P1-C2-T2  2-Port 10/100/1000 Base-TX PCI-Express Adapter (14104003)
+ent4    Available                                      EtherChannel / IEEE 802.3ad Link Aggregation
+ent9    Available 09-00-00 U5803.001.9SS0378-P2-C10-T1 10 Gigabit Ethernet Adapter (ct3)
+ent10   Available 08-00-00 U5803.001.9SS032L-P2-C10-T1 10 Gigabit Ethernet Adapter (ct3)
+ent11   Available                                      EtherChannel / IEEE 802.3ad Link Aggregation
+fcs0    Available 02-00    U5803.001.9SS0378-P1-C7-T1  8Gb PCI Express Dual Port FC Adapter (df1000f114108a03)
+fcs1    Available 02-01    U5803.001.9SS0378-P1-C7-T2  8Gb PCI Express Dual Port FC Adapter (df1000f114108a03)
+fcs2    Available 03-00    U5803.001.9SS037Y-P1-C7-T1  8Gb PCI Express Dual Port FC Adapter (df1000f114108a03)
+fcs3    Available 03-01    U5803.001.9SS037Y-P1-C7-T2  8Gb PCI Express Dual Port FC Adapter (df1000f114108a03)
+fcs4    Available 07-00    U5803.001.9SS032L-P1-C7-T1  8Gb PCI Express Dual Port FC Adapter (df1000f114108a03)
+fcs5    Available 07-01    U5803.001.9SS032L-P1-C7-T2  8Gb PCI Express Dual Port FC Adapter (df1000f114108a03)
+fcs6    Available 06-00    U5803.001.9SS032L-P2-C7-T1  8Gb PCI Express Dual Port FC Adapter (df1000f114108a03)
+fcs7    Available 06-01    U5803.001.9SS032L-P2-C7-T2  8Gb PCI Express Dual Port FC Adapter (df1000f114108a03)
+hba0    Available 08-00    U5803.001.9SS032L-P2-C10-T1 10 Gigabit Ethernet-SR PCI-Express Host Bus Adapter (2514300014108c03)
+hba1    Available 09-00    U5803.001.9SS0378-P2-C10-T1 10 Gigabit Ethernet-SR PCI-Express Host Bus Adapter (2514300014108c03)
+sissas0 Available 00-00    U5803.001.9SS0378-P1-C1-T1  PCI Express x8 Ext Dual-x4 3Gb SAS Adapter
+sissas1 Available 04-00    U5803.001.9SS032L-P1-C1-T1  PCI Express x8 Ext Dual-x4 3Gb SAS Adapter
+vsa0    Available          U9119.FHB.84D5AF6-V1-C0     LPAR Virtual Serial Adapter

@@ -1,0 +1,145 @@
+*****************************************************************************
+*                          Administrative Roles
+*
+* Valid role attributes for /etc/security/roles:
+*
+* auth_mode      Specifies the authentication required to assume the role via
+*                the swrole command in Enhanced RBAC Mode.  Valid values are:
+*                       NONE    : No authentication required.
+*                       INVOKER : Invoker must enter their own password.
+*                                 This is the default.
+*
+* authorizations Specifies a comma-separated list of authorizations that
+*                are assigned to the role.
+*
+* dfltmsg        Defines the default text description of the role which will
+*                be used if a message catalog is not in use.  The value is
+*                a character string.
+*
+* groups         An informational only field which lists the groups a user
+*                should belong to in order to effectively use the role.
+*
+* id             Defines the role ID number.  This is a required attribute
+*                for Enhanced RBAC Mode.  The value must be a unique integer.
+*
+* msgcat         Defines the message catalog file name that contains the role
+*                description.  The value is a character string.  Specified
+*                value is interpreted according to the catopen subroutine.
+*
+* msgnum         Specifies the message ID number for the role description.
+*
+* msgset         Specifies the message set ID number that contains the role
+*                description in the message catalog specified in msgcat.
+*
+* rolelist       Specifies a comma-separated list of roles whose
+*                authorizations should be included in the role.
+*
+* screens        Specifies a comma-separated list of SMIT screen identifiers
+*                that the role should be allowed to access.  Default value
+*                is '*' which maps to all SMIT screens.
+*
+* visibility     Defines the visibility of the role.  Possible values:
+*                       -1      : Role is disabled.
+*                        0      : Role active but not visible from a GUI.
+*                        1      : Role active and visible. Default value.
+*
+*****************************************************************************
+
+default:
+	auth_mode = INVOKER
+	authorizations =
+	dfltmsg =
+	groups =
+	msgcat =
+	msgnum =
+	msgset =
+	rolelist =
+	screens	= *
+	visibility = 1
+
+isso:
+	id = 1
+	dfltmsg = Information System Security Officer
+	authorizations = aix.device,aix.fs.chroot,aix.fs.manage.export,aix.fs.stat,aix.network,aix.proc.fuser,aix.proc.ipc,aix.proc.status,aix.proc.trace
+	rolelist = DomainAdmin,SecPolicy,SysConfig
+	msgcat = role_desc.cat
+	msgset = 1
+	msgnum = 1
+
+sa:
+	id = 2
+	dfltmsg = System Administrator
+	authorizations = aix.system.config.acct,aix.system.config.cron,aix.system.config.src,aix.system.install
+	rolelist = FSAdmin,AccountAdmin
+	msgcat = role_desc.cat
+	msgset = 1
+	msgnum = 2
+
+so:
+	id = 3
+	dfltmsg = System Operator
+	authorizations = aix.proc.kill,aix.ras,aix.system.config.init,aix.system.config.wlm
+	rolelist = BackupRestore,SysBoot
+	msgcat = role_desc.cat
+	msgset = 1
+	msgnum = 3
+
+AccountAdmin:
+	id = 4
+	dfltmsg = User and Group Account Administration
+	authorizations = aix.security.group,aix.security.user
+	msgcat = role_desc.cat
+	msgset = 1
+	msgnum = 4
+
+BackupRestore:
+	id = 5
+	dfltmsg = Backup and Restore Administration
+	authorizations = aix.fs.manage.backup,aix.fs.manage.restore
+	msgcat = role_desc.cat
+	msgset = 1
+	msgnum = 5
+
+DomainAdmin:
+	id = 6
+	dfltmsg = Remote Domain Administration
+	authorizations = aix.security.kerberos,aix.security.ldap,aix.security.nis,aix.security.pki
+	msgcat = role_desc.cat
+	msgset = 1
+	msgnum = 6
+
+FSAdmin:
+	id = 7
+	dfltmsg = File System Administration
+	authorizations = aix.fs.manage.change,aix.fs.manage.create,aix.fs.manage.debug,aix.fs.manage.defrag,aix.fs.manage.dump,aix.fs.manage.list,aix.fs.manage.mount,aix.fs.manage.quota,aix.fs.manage.recover,aix.fs.manage.remove,aix.fs.manage.snapshot,aix.fs.manage.unmount,aix.fs.object,aix.lvm
+	msgcat = role_desc.cat
+	msgset = 1
+	msgnum = 7
+
+SecPolicy:
+	id = 8
+	dfltmsg = Security Policy Administration
+	authorizations = aix.security.audit,aix.security.auth,aix.security.cmd,aix.security.config,aix.security.device,aix.security.file,aix.security.kst,aix.security.network,aix.security.proc,aix.security.role,aix.security.passwd,aix.security.su,aix.security.tcb,aix.security.tsd
+	msgcat = role_desc.cat
+	msgset = 1
+	msgnum = 8
+
+SysBoot:
+	id = 9
+	dfltmsg = System Boot Administration
+	authorizations = aix.system.boot.create,aix.system.boot.halt,aix.system.boot.info,aix.system.boot.reboot,aix.system.boot.shutdown
+	msgcat = role_desc.cat
+	msgset = 1
+	msgnum = 9
+
+SysConfig:
+	id = 10
+	dfltmsg = System Configuration Administration
+	authorizations = aix.system.boot.create,aix.system.config.bindintcpu,aix.system.config.console,aix.system.config.date,aix.system.config.diag,aix.system.config.dlpar,aix.system.config.inittab,aix.system.config.io,aix.system.config.kext,aix.system.config.mode,aix.system.config.perf,aix.system.config.rset,aix.system.config.uname,aix.system.config.write,aix.system.stat,aix.wpar
+	msgcat = role_desc.cat
+	msgset = 1
+	msgnum = 10
+
+oracle_devmgmt:
+	authorizations = oracle.dev.acfsctl.def,oracle.dev.acfsctl.cfg,oracle.dev.acfsctl.udef,oracle.dev.acfsctl.ucfg,oracle.dev.advmctl.def,oracle.dev.advmctl.udef,oracle.dev.advmctl.cfg,oracle.dev.advmctl.ucfg,oracle.dev.advmvol.cfg,oracle.dev.advmvol.ucfg
+	id = 12

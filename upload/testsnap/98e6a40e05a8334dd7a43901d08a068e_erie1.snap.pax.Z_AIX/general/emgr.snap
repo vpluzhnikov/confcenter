@@ -1,0 +1,131 @@
++-----------------------------------------------------------------------------+
+EFIX ID: 1
+EFIX LABEL: IZ87564s03
++-----------------------------------------------------------------------------+
+LABEL:                  IZ87564s03
+STATE:                  STABLE
+UPDATED BY:             
+ABSTRACT:               Ifix for APAR IZ87564 at TL00 SP03
+VUID:                   00CCCC5B4C00110723113111
+PACKAGER VERSION:       7
+INSTALL DATE:           08/14/12 09:01:38
+EPKG VERSION:           7
+REBOOT REQUIRED:        no
+BUILD BOOT IMAGE:       no
+PACKAGE LOCKS:          no
+SUPERSEDE:              no
+INSTALLP PREREQUISITES: yes
+E2E PREREQUISITES:      no
+FIX TESTED:             no
+FILES:                  2
+
+Install Scripts
+===============
+PRE_INSTALL:            no
+POST_INSTALL:           no
+PRE_REMOVE:             no
+POST_REMOVE:            no
+
+FILE NUMBER:      1
+   LOCATION:      /usr/ccs/lib/libm.a
+   FILE TYPE:     Standard (file or executable)
+   INSTALLER:     installp
+   SIZE:          14932
+   CKSUM:         52061
+   ACL:           DEFAULT
+   PACKAGE:       bos.adt.libm
+   MOUNT INST:    no
+
+FILE NUMBER:      2
+   LOCATION:      /usr/ccs/lib/libmsaa.a
+   FILE TYPE:     Standard (file or executable)
+   INSTALLER:     installp
+   SIZE:          1896
+   CKSUM:         58212
+   ACL:           DEFAULT
+   PACKAGE:       bos.adt.libm
+   MOUNT INST:    no
+
+Installp Prerequisite Information:
+==================================
+PREREQUISITE NUM:      1
+   FILESET:            bos.adt.libm
+   MINIMAL LEVEL:      7.1.0.15
+   MAXIMUM LEVEL:      7.1.0.15
+   TYPE:               PREREQ
+   LEVEL AT INSTALL:   7.1.0.15
+
+Efix to Efix Prerequisite Information:
+======================================
+No efix to efix prerequisites data.
+
+Description:
+============
+========================== EFIX DESCRIPTION =============================
+APAR(s):
+	IZ87564
+	desc - 7.1. POW() SUBROUTINE IN AIX 7100-00-01-1037, BOS.ADT.LIBM 
+	       APPLIES TO AIX 7100-00
+
+FILE(s)/PREREQ(s):
+	/usr/ccs/lib/libm.a
+	bos.adt.libm - 7.1.0.15
+	/usr/ccs/lib/libmsaa.a
+	bos.adt.libm - 7.1.0.15
+
+=========================================================================
+
++-----------------------------------------------------------------------------+
+EFIX ID: 2
+EFIX LABEL: IV26601s03
++-----------------------------------------------------------------------------+
+LABEL:                  IV26601s03
+STATE:                  STABLE
+UPDATED BY:             
+ABSTRACT:               IV26601 for AIX 7.1 TL00 SP03
+VUID:                   00CCCC5B4C00082010085512
+PACKAGER VERSION:       7
+INSTALL DATE:           11/19/12 15:08:17
+EPKG VERSION:           7
+REBOOT REQUIRED:        yes
+BUILD BOOT IMAGE:       yes
+PACKAGE LOCKS:          no
+SUPERSEDE:              no
+INSTALLP PREREQUISITES: yes
+E2E PREREQUISITES:      no
+FIX TESTED:             no
+FILES:                  1
+
+Install Scripts
+===============
+PRE_INSTALL:            no
+POST_INSTALL:           no
+PRE_REMOVE:             no
+POST_REMOVE:            no
+
+FILE NUMBER:      1
+   LOCATION:      /usr/lib/drivers/pse/dlpi
+   FILE TYPE:     Standard (file or executable)
+   INSTALLER:     installp
+   SIZE:          208
+   CKSUM:         28999
+   ACL:           DEFAULT
+   PACKAGE:       bos.rte.tty
+   MOUNT INST:    no
+
+Installp Prerequisite Information:
+==================================
+PREREQUISITE NUM:      1
+   FILESET:            bos.rte.tty
+   MINIMAL LEVEL:      7.1.0.15
+   MAXIMUM LEVEL:      7.1.0.15
+   TYPE:               PREREQ
+   LEVEL AT INSTALL:   7.1.0.15
+
+Efix to Efix Prerequisite Information:
+======================================
+No efix to efix prerequisites data.
+
+Description:
+============
+IV26601: DLPI BIND FAILS ON CT3 ADAPTER

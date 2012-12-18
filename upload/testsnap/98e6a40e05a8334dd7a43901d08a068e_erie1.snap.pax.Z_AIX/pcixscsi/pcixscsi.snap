@@ -1,0 +1,27 @@
+
+.....
+.....    creation date
+.....
+
+Tue Nov 27 15:18:42 MSK 2012
+
+.....
+.....    Operating System Level
+.....
+
+7.1.0.0
+
+.....
+.....    System Software
+.....
+
+/usr/lib/objrepos:devices.pci.14107802.diag:7.1.0.0::COMMITTED:I:PCI-X Dual Channel Ultra320 SCSI RAID Adapter Diagnostics :
+/usr/lib/objrepos:devices.pci.14107802.rte:7.1.0.15::COMMITTED:I:PCI-X Dual Channel Ultra320 SCSI RAID Adapter Software :
+/usr/lib/objrepos:devices.pci.14107802.ucode:7.1.0.0::COMMITTED:I:PCI-X Dual Channel Ultra320 SCSI RAID Adapter Microcode :
+/etc/objrepos:devices.pci.14107802.diag:7.1.0.0::COMMITTED:I:PCI-X Dual Channel Ultra320 SCSI RAID Adapter Diagnostics :
+/etc/objrepos:devices.pci.14107802.rte:7.1.0.15::COMMITTED:I:PCI-X Dual Channel Ultra320 SCSI RAID Adapter Software :
+/usr/lib/objrepos:devices.pci.14106602.diag:7.1.0.0::COMMITTED:I:PCI-X Dual Channel SCSI Adapter Diagnostics :
+/usr/lib/objrepos:devices.pci.14106602.rte:7.1.0.15::COMMITTED:I:PCI-X Dual Channel SCSI Adapter Device Software :
+/usr/lib/objrepos:devices.pci.14106602.ucode:7.1.0.0::COMMITTED:I:PCI-X Dual Channel SCSI Adapter Microcode :
+/etc/objrepos:devices.pci.14106602.diag:7.1.0.0::COMMITTED:I:PCI-X Dual Channel SCSI Adapter Diagnostics :
+/etc/objrepos:devices.pci.14106602.rte:7.1.0.15::COMMITTED:I:PCI-X Dual Channel SCSI Adapter Device Software :

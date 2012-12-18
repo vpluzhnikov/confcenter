@@ -1,0 +1,19 @@
+
+.....
+.....    creation date
+.....
+
+Tue Nov 27 15:13:52 MSK 2012
+
+.....
+.....    enq -AL
+.....
+
+ Queue   Dev   Status    Job     Name           From           To            
+                         Submitted        Rnk Pri       Blks  Cp          PP %
+ ------- ----- --------- ---------        --- ---      ----- ---        ---- --
+
+.....
+.....    lsdev -Ccprinter
+.....
+

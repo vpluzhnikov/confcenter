@@ -1,0 +1,688 @@
+# IBM_PROLOG_BEGIN_TAG 
+# This is an automatically generated prolog. 
+#  
+# tcpip610 src/tcpip/etc/pxed.cnf 1.2 
+#  
+# Licensed Materials - Property of IBM 
+#  
+# Restricted Materials of IBM 
+#  
+# COPYRIGHT International Business Machines Corp. 2000 
+# All Rights Reserved 
+#  
+# US Government Users Restricted Rights - Use, duplication or 
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+#  
+# @(#)22	1.2  src/tcpip/etc/pxed.cnf, dhcp, tcpip610 7/11/00 08:20:27
+# IBM_PROLOG_END_TAG 
+#
+#   pxed.cnf -- Proxy DHCP Server Configuration File for PXE
+#
+#
+#   This file contains directives that can be specified by the
+#   server's administrator to configure the server and enforce
+#   policies.
+#
+#   Do not put any long line without white space in this file.
+#
+#   A line starting with a '#' character is a comment and is ignored.
+#   A '#' on a line which is not part of a quoted string indicates
+#   that anything to the right of this character is a comment and should
+#   be ignored.
+#
+#   A continuation character of '\' is supported.  It must be
+#	the last non-whitespace character on the line prior to
+#	any comments.
+#
+#   The directives are specified in the form of 
+#   <keyword> <value1> ... <valueN>.
+#
+#   Here is a list of all the keywords whose value can be specified  
+#   in this file:
+#
+#   Keyword	                Effect
+#   -------------    ---------------------------------------------------
+#
+#   numLogFiles	     The number of log files desired.
+#   pxeservertype    Indicates the type of pxed server it is. The keyword
+#                    can following value proxy_on_dhcp_server which 
+#                    means dhcpsd server is running on the same machine.
+#                    Default is pdhcp_only ie pxed is running on a separate
+#                    machine.
+#   logFileSize	     The Size of log files in K bytes.
+#   logFileName	     The name of the most recent log file.
+#   logItem	         One item to be logged.
+#
+#   network	         Address of one network managed by this server.
+#   subnet	         Address of one subnet within a network.
+#   option	         One option to enabled and its value specified.
+#
+#   class            Definition of a set of options for a specific class of clients.
+#   client           Definition of a set of options for a specific client or
+#                    or a definition of a client not to be serviced 
+#                    or a definition of an address not to be used.
+#
+#	
+#   The scope of a keyword is limited by a pair of curly brackets ({, })
+#   within which the keyword is located.  If a keyword is located outside
+#   of any pair of curly brackets, its scope is applicable to all the 
+#   entities served by this process.
+#
+#   The presence and values of these parameters are picked up by the
+#   server that is started or restarted.
+#
+
+#
+#  Log files.  This set of parameters specifies the log files that will be
+#  maintained by this server.  Each parameter is identified by a keyword
+#  and followed by its value.
+#
+#  Keyword	Value	      	Definition
+#  --------	------------  	------------------------------------------
+#  numLogFiles	0 to n	      	number of log files.  If 0 is specified, 
+#				no log file will be maintained and no log 
+#				message	is display anywhere.  n is the 
+#				maximum number of log files maintained as 
+#				the size of the most recent log file 
+#				reaches its maximum size and a new log file 
+#				is created.
+#
+#  logFileSize	in K bytes	maximum size of a log file.  When the size 
+#				of the most recent log file reaches this 
+#				value, it is renamed and a new log file is 
+#				created.
+#
+#  logFileName	file path	name of the most recent log file.  Less 
+#				recent log files have the number 1 to 
+#				(n - 1) appended to their names; the larger 
+#				the number, the less recent the file.
+#
+#  logItem			One item that will be logged. 
+#		SYSERR		System error, at the interface to the platform.
+#		OBJERR		Object error, in between objects in the process.
+#		PROTERR		Protocol error, between client and server.
+#		WARNING		Warning, worth of attention from the user.
+#		EVENT		Event occurred to the process.
+#		ACTION		Action taken by the process.
+#		INFO		Information that might be useful.
+#		ACNTING		Who was served when.
+#		TRACE		Code flow, for debugging.
+#
+#
+numLogFiles 	4
+logFileSize 	100
+logFileName	/usr/tmp/pxed.log
+logItem		SYSERR
+logItem		OBJERR
+#logItem		PROTERR
+#logItem		WARNING
+#logItem		EVENT
+#logItem		ACTION
+#logItem		INFO
+#logItem		ACNTING
+#logItem		TRACE
+#
+#  Networks and subnets.  This set of parameters specifies the networks and 
+#  the subnets within the networks, as well as other parameters associated 
+#  with each network or subnet.
+#
+#  Here is a list of the parameters in this set and their definitions:
+#
+#  Keyword   Value		Definition
+#  --------  ---------------	------------------------------------------
+#
+#  network   <Network address> [<Subnet Mask>|<range>]
+#
+#				network statement.  It specifies one 
+#				network administered by this server. 
+#
+#				Network address is the address of this
+#				network.  This address is specified in the
+#				dotted notation (e.g., 9.0.0.0, 128.81.0.0,
+#				or, 192.81.20.0).  Full four-byte value
+#				should be specified (i.e., 9, 128.81, or
+#				192.81.20 is not legal).
+#
+#			        Network address may optionally be followed 
+#				by the subnet mask, a range, or nothing.
+#
+#				If a subnet mask is specified, one or more 
+#				subnet statements should appear in the
+#				succeeding lines within a pair of curly 
+#				brackets.  The subnet mask may be specified
+#				either in the dotted notation (e.g.,
+#				255.255.255.128) or as a number indicating
+#				the number of 1 bits in the mask (e.g., 25,
+#				which is equivalent to 255.255.255.128).
+#
+#				If a range is specified, it determines,
+#				within the network, the range of hosts that
+#				are administered by this server, and it
+#				implies that there is no subnetting.  A range 
+#				is specified by the host addresses, in the
+#				dotted notation, at the lower end and the
+#				higher end of the range, respectively,
+#				separated by a hyphen with no interleaving
+#				space (e.g., 192.81.20.1-129.81.20.128).
+#
+#				If nothing is specified after Network
+#				address, all hosts in that network are
+#				administered by this server.
+#
+#				A network statement may be immediately followed
+#				by a pair of curly brackets, in which parameters
+#				(e.g., options) particular to this network can
+#				be specified.
+#
+#  subnet    <Subnet address> [<range>]
+#  subnet    default
+#
+#				subnet statement.  One or more subnet 
+#				statements are enclosed by a pair of curly 
+#				brackets that immediately follows a network
+#				statement with subnet mask.  A subnet 
+#				statement specifies one subnet within that
+#				network.
+#
+#				Subnet address is the address of this subnet.
+#				This address is specified in the dotted
+#				notation (e.g., 9.17.32.0 or 128.81.22.0).
+#				
+#  				Subnet address may be followed by a range or
+#				nothing.
+#
+#				If a range is specified, it determines,
+#				within the subnet, the range of hosts that
+#				are administered by this server.  A range 
+#				is specified by the host addresses, in the
+#				dotted notation, at the lower end and the
+#				higher end of the range, respectively,
+#				separated by a hyphen with no interleaving
+#				space. A range must encompass all addresses
+#				to be administered since multiple subnet
+#				statements to define the same subnet are
+#				not allowed.  Use the "client" statement to
+#				exclude any addresses in the range which the
+#				server should not administer.
+#
+#				If nothing is specified after Subnet address,
+#				all hosts in that subnet are administered
+#				by this server.
+#
+#			        The ranges in two servers administering the  
+#				the same subnet can not overlap.  Otherwise,
+#				two hosts may be assigned the same address.
+#
+#
+#				A subnet statement may be immediately followed
+#				by a pair of curly brackets, in which parameters
+#				(e.g., options) particular to this subnet can
+#				be specified.
+#           
+#               When the keyword subnet is followed by the word
+#               default. It means this container will be used
+#               to give the options to clients whose address doesnot
+#               fall in any of the subnets specified in the
+#               configuration file. The default subnet is used
+#               only when response is being generated for INFORM
+#               from the client.
+#
+#
+#  class     <class_name>   [<range>]
+#			       Definition of a class.  The class name is a
+# 				simple ascii string.  A class's scope is
+#				determine by the curly brackets in which it
+#				is enclosed.  If it is outside all curly
+#				brackets, then its scope is the entire file.
+#
+#				A class name may be followed by a range or
+#				nothing.  If a range of Ip Addresses is
+#				specified, then only addresses in that range
+#				will be assigned to clients who request this
+#				class.  Note that clients who request this
+#				class, for which the subnet does not match
+#				the range will not be processes.  Bad
+#				addresses will not be given out by the server.
+#				If an address range is not specified, then
+#				addresses will be given to clients using
+#				the usual rules of assignment.
+#
+#				The class statement may be immediately followed
+#				by a pair of curly brackets, in which
+#				the options particular to this class can be
+#				specified.  A class may be defined within
+#				the curly brackets of a subnet, but a subnet
+#				may not be defined within the curly brackets
+#				of a class.
+#
+#				Options set up in the network or subnet
+#				containing a class definition will also
+#				apply to the class.
+#
+#  client   <id_type>  <id_value>  <address>
+#				Definition of client/address processing.
+#
+#				<id_type> is 0 for a string otherwise it
+#				is one of the hardware types defined in
+#				RFC 1340 (i.e. 6 for IEEE 802 networks.)
+#
+#				<id_value> is a character string for <id_type>=0.
+#				Typically, this would be a domain name.
+#				For a non-zero <id_type>, the <id_value> is a
+#				hexadecimal string representing
+#				the hardware address of the client.
+#
+#				Note, an <id_type> of 0 and an <id_value> of
+#				'0' indicates that the <address> specified
+#				should not be distributed by this server.
+#
+#				The <address> can be the string "none" to indicate 
+#				that the client with <id_type> and <id_value> should
+#				should not be serviced by this server.  
+#				The <address> can be the string "any" to
+#				indicate that the server should choose
+#				an appropriate address for this client.
+#				The <address> can be an internet address
+#				in dotted notation (eg. 9.2.15.82).  This
+#				will be the Ip address given to the
+#				particular client specified by <id_type>
+#				and <id_value>.  As mentioned above, an
+#				<id_type> of 0 and an <id_value> of '0'
+#				indicates that the <address> specified
+#				should not be distributed by this server.
+#
+#	Note: If a client is configured in this way on the server,
+#		then any class information requested by the client
+#		will be ignored.  No class specific information
+#		will be processed for these clients.
+#
+#	The client statement may be immediately followed
+#	by a pair of curly brackets, in which the options
+#	particular to this client can be specified.
+#
+#	A client statement with an address specified that is not
+#	part of the address pool specified in a network/subnet
+#	elsewhere in this file must contain the subnet mask option(1)
+#	For all other clients, the server will compute the subnet mask
+#	option to send the client based on the network/subnet definitions.
+#
+#	Note: All clients inherit all globally defined options.
+#		A client defined in a network scope will inherit
+#		options defined for that network.
+#		A client defined in a subnet scope, will inherit
+#		options defined for that subnet and emcompassing network.
+#
+#	A class definition inside a client scope is not allowed.
+#
+#	The client statement may be used to configure bootp clients.
+#	To do this, specify all the bootp options using the option
+#	syntax defined below.  In addition, specify an infinite
+#	lease time in the client scope with "option 51 0xffffffff".
+#	DHCP options will not be served to the bootp client.
+#
+#
+#  Option.  This parameter specifies the value of an option defined in 
+#  "DHCP Options and BOOTP Vendor Extensions" (RFC 1533) and supported by
+#  this server. 
+#
+#  An option is specified by the "option" keyword followed by the option code 
+#  of this option and its data field, in a single line.  One or more of this 
+#  parameter may be specified.
+#
+#  The scope within which an option applies is delimited by a pair of curly 
+#  brackets ({, }) surrounding this parameter.
+#
+#  Two or more options with the same option code may be specified.  Their data
+#  fields are concatenated in a single option in a packet generated by the server
+#  if the options have the same scope or one's scope includes that of another.
+#  
+#  Some of the defined options do not need to be specified by this parameter.
+#  These options are either mandated by the protocol or this implementation 
+#  to be present in proper packets, or only generated by a client.  These 
+#  options are (option code and name):
+#
+#  	0   	Pad Option			
+#  	255	End Option 			
+#  	1	Subnet Mask
+#  	50	Request IP Address       
+#  	51	IP Address Lease Time    
+#  	52	Option Overload 		
+#  	53	DHCP Message Type               
+#  	54	Server Identifier               
+#  	55	Parameter Request List          
+#  	57	Maximum DHCP Message Size
+#  	58	Renewal (T1) Time Value  
+#  	59	Rebinding (T2) Time Value
+#  	60	Class-identifier of client
+#  	61	Client-identifier.
+#
+#   pxebootfile         pxebootfile  <System Arch> <Major Ver> <Minor Ver> <Bootfilename>
+#                       Specifies the bootfile to be given to a client.
+#                       The config file parser generates an error if the number of parameters after
+#                       the keyword is less than 4 and ignore if more than 4.  This keyword can 
+#                       be used only in a container.
+#
+#   vendor              vendor vendor_id
+#                       vendor vendor_id hex""
+#                       vendor vendor_id hex ""
+#                       vendor vendor_id 0xdata
+#                       vendor vendor_id ""
+#                       vendor vendor_id range
+#                       vendor vendor_id range hex""
+#                       vendor vendor_id range hex ""
+#                       vendor vendor_id range 0xdata
+#                       vendor vendor_id range ""
+#                       vendor pxe
+#                       vendor pxeserver
+#                       Specifies a vendor container. Vendor containers are used to return option 43 
+#                       to the client. The vendor id may be specified in a quoted string or a binary 
+#                       string in the form 0xhexdigits or hex"digits". An optional range may be placed 
+#                       after the vendor id. The range is specified as two dotted quads separated by a dash.
+#                       After the optional range, an optional hexstring or ASCII string can be specified as
+#                       the first part of the option 43. If options are in the container, they are appended
+#                       to the option 43 data. After all options are processed an End Of Option List Option
+#                       is appended to the data. To return options outside of an option 43, use a regular 
+#                       expression client that matches all clients to specify normal options to return 
+#                       based on the vendor ID.
+#                       vendor pxe will create a vendor container for PXEClient's and vendor pxeserver
+#                       for PXEServer.
+# 
+#  The other options may be specified by this parameter. 
+#
+#  When specifying an option, its data field takes one of the following
+#  formats:
+#
+#	IP Address	    :	a single IP address.
+#	IP Addresses	    :	One or more IP addresses separated by white 
+#				 space(s).
+#	IP Address Pair     :	two IP addresses separated by a single colon.
+#	IP Address Pairs    :	One or more IP address pairs separated by 
+#				 white space(s).
+#	Boolean		    :	[0, 1]
+#	Byte		    :   [-128, 127]
+#	Unsigned Byte	    :   [0, 255]
+#	Unsigned Bytes	    :   space delimited list of values in range [0, 255]
+#	Short		    :   [-32768, 32767]
+#	Unsigned Short	    :   [0, 65535]
+#	Unsigned Shorts     :   space delimited list of values in range [0, 65535]
+#	Long		    :   [-2147483648, 2147483647]
+#	Unsigned Long	    :   [0, 4294967295]
+#	String		    :   string of characters enclosed between two 
+#				 double quotes.
+#
+#  	Note: All IP addresses are specified in dotted-decimal form.
+#
+#
+#  Each of the defined options is listed below by its code and name, followed
+#  by the format of its data field.
+#
+#  Code Name				Data field format/Notes
+#  ----	-----------------------	        ------------------------------------
+#
+#  RFC 1497 Vendor Extensions
+#
+#  0   	Pad Option			No need to specify
+#  255	End Option 			No need to specify
+#  1	Subnet Mask 			Unsigned Long
+#					Only used in client scope.
+#  2	Time Offset 			Long
+#  3	Router Option		    	IP Addresses
+#  4	Timer Server Option 		IP Addresses
+#  5	Name Server Option 		IP Addresses
+#  6	Domain Name Server Option 	IP Addresses
+#  7	Log Server Option 		IP Addresses
+#  8	Cookie Server Option 	    	IP Addresses
+#  9	LPR Server Option               IP Addresses
+#  10	Impress Server Option           IP Addresses
+#  11   Resource Location Server Option IP Addresses
+#  12	Host Name Option                String
+#  13	Boot File Size Option           Unsigned Short
+#  14	Merit Dump File                 String
+#  15	Domain Name                     String
+#  16	Swap Server                     IP Address
+#  17 	Root Path                       String
+#  18	Extensions Path			String
+#
+#  IP Layer Parameters per Host 
+#
+#  19	IP Forwarding Enable/Disable     
+#           Option   			Boolean, or client class profile file
+#  20   Non-local Source Routing 
+#           Enable/Disable Option 	Boolean, or client class profile file
+#  21	Policy Filter Option 	    	IP Address Pairs
+#  22	Maximum Datagram Reassembly Size 
+#					Unsigned Short, or client class profile file
+#  23	Default IP Time-to-live         Unsigned Byte, or client class profile file
+#  24	Path MTU Aging Timeout Option   Unsigned Long
+#  25	Path MTU Plateau Table          One or more Unsigned Short separated by
+#					 white space(s)
+#
+#  IP Layer Parameters per Interface 
+#
+#  26	Interface MTU Option            Unsigned Short
+#  27	All Subnets are Local Option    Boolean
+#  28	Broadcast Address Option        IP address
+#  29	Perform Mask Discovery Option   Boolean
+#  30	Mask Supplier Option            Boolean
+#  31	Perform Router Discovery Option Boolean
+#  32   Router Solicitation Address 
+#           Option                      IP Address
+#  33	Static Route Option             IP Address Pairs
+#
+#  Link Layer Parameters per Interface 
+#
+#  34	Trailer Encapsulation Option    Boolean
+#  35	ARP Cache Timeout Option        Unsigned Long
+#  36	Ethernet Encapsulation Option   Boolean
+#
+#  TCP Parameters 
+#
+#  37	TCP Default TTL Option          Unsigned Byte
+#  38	TCP Keepalive Interval Option   Unsigned Long
+#  39	TCP Keepalive Garbage Option    Boolean
+#
+#  Application and Service Parameters 
+#
+#  40	NIS Domain Option            	String        
+#  41	NIS Option                      IP Addresses
+#  42	Network Time Protocol Servers 
+#           Option                      IP Addresses
+#  43	Vendor Specific Information     Unsigned Bytes
+#  44   NetBIOS over TCP/IP Name Server 
+#           Option                      IP Addresses 
+#  45   NetBIOS over TCP/IP Datagram 
+#           Distribution Server         IP Addresses
+#  46	NetBIOS over TCP/IP Node 
+#           Type Option                 Unsigned Byte
+#  47	NetBIOS over TCP/IP Scope 
+#           Option                      Unsigned Bytes
+#  48	X Window System Font Server 
+#           Option                      IP Addresses 
+#  49	X Window System Display 
+#           Manager Option              IP Addresses
+# 					
+#  DHCP Extensions 
+#
+#  50	Request IP Address         	No need to specify
+#  51	IP Address Lease Time           Unsigned Long
+#	    May be specified in a network, subnet, class of client definition
+#	    to indicate the lease time to be be used in that scope.
+#	    Use 0xffffffff to indicate an infinite/permanent lease.
+#  52	Option Overload 		No need to specify
+#  53	DHCP Message Type               No need to specify
+#  54	Server Identifier               No need to specify
+#  55	Parameter Request List          No need to specify
+#  56	Message                         String 
+#  57	Maximum DHCP Message Size       No need to specify
+#  58	Renewal (T1) Time Value         No need to specify
+#  59	Rebinding (T2) Time Value       No need to specify
+#  60	Class-identifier of client      Generated by client
+#  61	Client-identifier               Generated by client
+#
+# BOOTP Specific Options
+#
+# These options are only valid on BOOTP requests.  Instead of an option
+# number these have a character sequence.
+#
+# sa   server address for the bootp client to use
+# bf   bootfile for the bootp client to use
+# hd   home directory for the bootp client to look in for the bootfile.
+#
+# sa is type Ip Address.  bf and hd are type String.
+#
+# Example:
+#     option sa 1.1.2.2
+#     option hd "/vikings/native"
+#     option bf "bootfile.asdg"
+#   
+#
+# Other option numbers may be specifed up to 255.  The options not list above
+# will need to be specified with the unsigned bytes type.
+# 
+# Example:
+#     option 178 01 34 53 # Means place tag 178 with value 0x013553.
+#
+#
+#   PXE SUB OPTIONS
+#   ---------------
+# These sub options can be specified only in vendor container of type pxe or pxeserver.
+#
+#Option Number     Default Data Type   Can Specify?                Description
+#-------------     -----------------   ------------   ------------------------------------------------------
+#
+#    6             Decimal Number        Yes          PXE_DISCOVERY_CONTROL Limit 0-16. This is a bit field 
+#                                                     BIT 0 is the least significant bit bit 0 = if set, disable broadcast discovery. 
+#                                                     Bit 1 = if set, disable multicast discovery. 
+#                                                     Bit 2 = if set, only use/accepted servers in PXE_BOOT_SERVERS. 
+#                                                     Bit 3 = if set, and a boot file name is present in the intial PXED offer 
+#                                                     packet, download the boot file (do not prompt/menu/discover boot server). 
+#                                                     Bit 4-7 Must be 0 
+#                                                     If this option is not supplied then client assumes all bits to be = 0. 
+#
+#    7             One dotted quads      Yes          Multicast IP address of Boot server discovery multicast IP address. 
+#                                                     Boot servers capable of multicast discovery must listen on this multicast address.
+#                                                     This option is required if the multicast discovery disable bit (bit 1) in the 
+#                                                     PXE_DISCOVERY_ CONTROL option is not set. 
+#
+#    8       <Boot server type(0-65535)> Yes          PXE_BOOT_SERVERS 
+#            <IP address count (0-256)>               Type 0= Miscrosoft Windows NT Boot Server 
+#            <IP address>......<IP address>           Type 1= Intel LCM Boot Server                                    
+#            < Boot server type> < IP address         Type 3= DOS/UNDI Boot Server 
+#            count > <IP address> ............        Type 3= DOS/UNDI Boot Server 
+#            <IP address>                             Type 4= NEC ESMPRO Boot Server
+#                                                     Type 5= IBM WSoD Boot Server 
+#                                                     Type 6= IBM LCCM Boot Server 
+#                                                     Type 7= CA Unicenter TNG Boot Server. 
+#                                                     Type 8= HP OpenView Boot Server. 
+#                                                     Type 9 through 32767= Reserved 
+#                                                     Type 32768 through 65534 = Vendor use 
+#                                                     Type 65535 = PXE API Test Server. 
+#                                                     If IP address count is zero for a server type then the client may
+#                                                     accept offers from any boot server of that type. Boot Servers 
+#                                                     do not respond to discovery requests of types they do not support. 
+#
+#    9       <Boot server type (0-65535)> Yes         PXE_BOOT_MENU 
+#            < "description"><Boot server             Boot "order" is implicit in the menu order. 
+#            type><"description">.............. 
+#
+#    10      <Timeout in seconds (0-255)> Yes         PXE_MENU_PROMPT 
+#            <"prompt">                               The timeout is the number of seconds to wait before auto- selecting 
+#                                                     the first boot menu item.  On the client system the prompt is displayed 
+#                                                     followed by the number of seconds remaining before the first item in the boot 
+#                                                     menu is auto-selected. If <F8> is pressed on the client system then menu is 
+#                                                     displayed. If this option is provided to the client then the menu is displayed 
+#                                                     without prompt and timeout. If the timeout is 0, then the first item in the menu 
+#                                                     is auto-selected. If the timeout is 255, the menu and prompt is displayed without 
+#                                                     auto-selecting or timeout.
+#
+#
+#
+#
+# Configuring PXED which is running on same machine as DHCP server
+#
+#   pxeservertype       proxy_on_dhcp_server
+#
+#   subnet default
+#   {
+#
+#       vendor pxe
+#       {
+#            option 6    6 # Disable multicast and download the bootfile
+#            option 8    1 2 9.3.4.5 9.3.4.6  2 1  9.3.149.29
+#                          # The above option gives the list of bootservers
+#            option 9    0 "PXE bootstrap server"    1   "Microsoft Windows NT Boot Server"\
+#                        2 "DOS/UNDI Boot Server"
+#                          # The above list the boot menu
+#            option 10   20 "seconds left before the first item in the boot menu is auto-selected"
+#
+#            pxebootfile     1   2   1   window.one
+#            pxebootfile     2   2   1   hello.one
+#            pxebootfile     3   2   1   xyz.one
+#        }
+#        vendor pxeserver
+#        {
+#            option 7    239.0.0.239 # Multicast address
+#        }
+#   }
+#   subnet 12.1.1.0 16  12.1.1.20-12.1.2.200
+#   {
+#
+#       vendor pxe
+#       {
+#            option 6    2 # Disable multicast 
+#            option 8    1 2 9.3.4.5 9.3.4.6  2 1  9.3.149.29
+#                          # The above option gives the list of bootservers
+#            option 9    0 "PXE bootstrap server"    1   "Microsoft Windows NT Boot Server"\
+#                        2 "DOS/UNDI Boot Server"
+#                          # The above list the boot menu
+#            option 10   20 "seconds left before the first item in the boot menu is auto-selected"
+#
+#        }
+#       vendor pxeserver
+#       {
+#            option 7    239.0.0.239 # Multicast address
+#       }
+#   }
+
+#
+# 
+# Configuring PXED which is running on same machine as DHCP server
+#
+#
+#   subnet default
+#   {
+#
+#       vendor pxe
+#       {
+#            option 6    6 # Disable multicast and download the bootfile
+#            option 8    1 2 9.3.4.5 9.3.4.6  2 1  9.3.149.29
+#                          # The above option gives the list of bootservers
+#            option 9    0 "PXE bootstrap server"    1   "Microsoft Windows NT Boot Server"\
+#                        2 "DOS/UNDI Boot Server"
+#                          # The above list the boot menu
+#            option 10   20 "seconds left before the first item in the boot menu is auto-selected"
+#
+#            pxebootfile     1   2   1   window.one
+#            pxebootfile     2   2   1   hello.one
+#            pxebootfile     3   2   1   xyz.one
+#        }
+#  }
+#   subnet 12.1.1.0 16  12.1.1.20-12.1.2.200
+#   {
+#
+#       vendor pxe
+#       {
+#            option 6    2 # Disable multicast 
+#            option 8    1 2 9.3.4.5 9.3.4.6  2 1  9.3.149.29
+#                          # The above option gives the list of bootservers
+#            option 9    0 "PXE bootstrap server"    1   "Microsoft Windows NT Boot Server"\
+#                        2 "DOS/UNDI Boot Server"
+#                          # The above list the boot menu
+#            option 10   20 "seconds left before the first item in the boot menu is auto-selected"
+#
+#        }
+#       vendor pxeserver
+#       {
+#            option 7    239.0.0.239 # Multicast address
+#       }
+#   }
