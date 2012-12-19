@@ -27,24 +27,26 @@
         </DIV>
     {% endif %}
 
-    <A class = "hideBtn" onclick="hideShow(this);return false;"> Конфигурация раздела сервера
-    </A><DIV style="display:none;" class="hideCont">
-        <table>
-            <tr> <td>Номер раздела в HMC:</td><td>{{ lparinfo.lpar_number}}</td> </tr>
-            <tr> <td>Имя раздела в HMС:</td><td>{{ lparinfo.lpar_name}}</td> </tr>
-            <tr> <td>Тип раздела:</td><td>{{ lparinfo.lpar_type}}</td> </tr>
-            <tr> <td>Режим работы раздела:</td><td>{{ lparinfo.lpar_mode}}</td> </tr>
-            <tr> <td>Текущее кол-во вычислительных ресурсов:</td><td>{{ lparinfo.lpar_capacity}}</td> </tr>
-            <tr></tr>
-            <tr> <td>Минимальное кол-во CPU раздела:</td><td>{{ lparinfo.lpar_min_cpu}}</td> </tr>
-            <tr> <td>Желаемое кол-во CPU раздела:</td><td>{{ lparinfo.lpar_des_cpu}}</td> </tr>
-            <tr> <td>Максимальное кол-во CPU раздела:</td><td>{{ lparinfo.lpar_max_cpu}}</td> </tr>
-            <tr></tr>
-            <tr> <td>Минимальное кол-во памяти раздела:</td><td>{{ lparinfo.lpar_min_mem}}</td> </tr>
-            <tr> <td>Желаемое кол-во памяти раздела:</td><td>{{ lparinfo.lpar_des_mem}}</td> </tr>
-            <tr> <td>Максимальное кол-во памяти раздела:</td><td>{{ lparinfo.lpar_max_mem}}</td> </tr>
-        </table>
-    </DIV>
+    {% if lparinfo %}
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> Конфигурация раздела сервера
+        </A><DIV style="display:none;" class="hideCont">
+            <table>
+                <tr> <td>Номер раздела в HMC:</td><td>{{ lparinfo.lpar_number}}</td> </tr>
+                <tr> <td>Имя раздела в HMС:</td><td>{{ lparinfo.lpar_name}}</td> </tr>
+                <tr> <td>Тип раздела:</td><td>{{ lparinfo.lpar_type}}</td> </tr>
+                <tr> <td>Режим работы раздела:</td><td>{{ lparinfo.lpar_mode}}</td> </tr>
+                <tr> <td>Текущее кол-во вычислительных ресурсов:</td><td>{{ lparinfo.lpar_capacity}}</td> </tr>
+                <tr></tr>
+                <tr> <td>Минимальное кол-во CPU раздела:</td><td>{{ lparinfo.lpar_min_cpu}}</td> </tr>
+                <tr> <td>Желаемое кол-во CPU раздела:</td><td>{{ lparinfo.lpar_des_cpu}}</td> </tr>
+                <tr> <td>Максимальное кол-во CPU раздела:</td><td>{{ lparinfo.lpar_max_cpu}}</td> </tr>
+                <tr></tr>
+                <tr> <td>Минимальное кол-во памяти раздела:</td><td>{{ lparinfo.lpar_min_mem}}</td> </tr>
+                <tr> <td>Желаемое кол-во памяти раздела:</td><td>{{ lparinfo.lpar_des_mem}}</td> </tr>
+                <tr> <td>Максимальное кол-во памяти раздела:</td><td>{{ lparinfo.lpar_max_mem}}</td> </tr>
+            </table>
+        </DIV>
+    {% endif %}
 
     <A class = "hideBtn" onclick="hideShow(this);return false;"> Уровень микропрограммного обеспечения компонентов системы
     </A><DIV style="display:none;" class="hideCont">
