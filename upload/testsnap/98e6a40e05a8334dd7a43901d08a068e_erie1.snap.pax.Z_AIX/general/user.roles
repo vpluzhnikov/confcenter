@@ -1,8 +1,0 @@
-default:
-	roles	=	
-
-esaadmin:
-	roles = SysConfig
-
-oracle:
-	roles = oracle_devmgmt

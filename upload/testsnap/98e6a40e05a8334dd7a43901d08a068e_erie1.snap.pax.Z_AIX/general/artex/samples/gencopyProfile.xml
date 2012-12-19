@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Profile origin="reference" version="2.0.0" readOnly="true">
- <Catalog id="gencopyParam" version="2.0">
-  <Parameter name="genericFile"/>
- </Catalog>
-</Profile>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Profile origin="reference" readOnly="true" version="2.0.0">
-	<Catalog id="smtctlParam" version="2.0">
-		<Parameter name="enableSMT"/>
-	</Catalog>
-</Profile>

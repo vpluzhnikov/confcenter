@@ -1,3 +1,0 @@
-default:
-	screens    =    *
-	funcmode   =    roles+acl
