@@ -1,8 +1,13 @@
 # Create your views here.
 # -*- coding: utf-8 -*-
 
-from django.http import  HttpResponse
+from django.http import  HttpResponse, HttpResponseServerError
 from django.shortcuts import render_to_response, redirect
+from django.core.cache import cache
+from django.template import RequestContext
+from confcenter.settings import MEDIA_URL
+from django.core import serializers
+
 
 from forms import ConfUploadForm
 from conffiles import handle_uploaded_file
@@ -61,11 +66,12 @@ def upload_file(request):
                 key = request.session.session_key
             else:
                 key = 'None'
+
             fileattr = handle_uploaded_file(request.FILES['file'], key + '_' +
                                                                     request.FILES['file'].name, UF_FORM['ostype'])
             if not ( fileattr == None ):
-                #return HttpResponse('OK - ' + request.FILES['file'].name + ' - ' + str(request.FILES['file'].size) +
-                #                    ' ' + fileattr['filetype'] + ' -  ' + fileattr['archpath'] )
+#                return HttpResponse('OK - ' + request.FILES['file'].name + ' - ' + str(request.FILES['file'].size) +
+#                                    ' ' + fileattr['filetype'] + ' -  ' + fileattr['archpath'] )
                 request.session['filename'] = request.FILES['file'].name
                 request.session['filesize'] = request.FILES['file'].size
                 request.session['archpath'] = fileattr['archpath']
@@ -75,7 +81,26 @@ def upload_file(request):
                 return HttpResponse('Bad file type or file corrupted')
     else:
         form = ConfUploadForm() # A empty, unbound form
-    return render_to_response('confupload_form.html', {'form': form})
+
+    return render_to_response('confupload_form.html', {'form': form, 'MEDIA_URL' : MEDIA_URL},
+        context_instance=RequestContext(request))
+
+def upload_progress(request):
+    """
+    Return JSON object with information about the progress of an upload.
+    """
+    progress_id = ''
+    if 'X-Progress-ID' in request.GET:
+        progress_id = request.GET['X-Progress-ID']
+    elif 'X-Progress-ID' in request.META:
+        progress_id = request.META['X-Progress-ID']
+    if progress_id:
+        from django.utils import simplejson
+        cache_key = "%s_%s" % (request.META['REMOTE_ADDR'], progress_id)
+        data = cache.get(cache_key)
+        return HttpResponse(simplejson.dumps(data))
+    else:
+        return HttpResponseServerError('Server Error: You must provide X-Progress-ID header or query param.')
 
 def list_values(request):
     values = request.META.items()

@@ -1,4 +1,5 @@
 # Django settings for confcenter project.
+from django.conf import global_settings
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,6 +12,8 @@ AIX_ARCHIVER_ARGS = '-zxf'
 SOLARIS_ARCHIVER = 'tar'
 SOLARIS_ARCHIVER_ARGS = '-zxf'
 FILE_UPLOAD_MAX_MEMORY_SIZE = '104857600'
+FILE_UPLOAD_HANDLERS = ('confcenter.upload_handlers.UploadProgressCachedHandler', ) + \
+                       global_settings.FILE_UPLOAD_HANDLERS
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),

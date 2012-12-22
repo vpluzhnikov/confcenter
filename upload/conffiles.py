@@ -6,15 +6,15 @@ from os import mkdir, access, R_OK, listdir
 from confcenter.settings import UPLOAD_DIR, AIX_ARCHIVER, AIX_ARCHIVER_ARGS, SOLARIS_ARCHIVER, SOLARIS_ARCHIVER_ARGS
 
 
-def handle_uploaded_file(f, name, ostype):
+def handle_uploaded_file(file, name, ostype):
     """
         Function handle_uploaded_file(f, name, ostype) saves file f to UPLOAD_DIR and returns DICT(filetype, archpath, filename)
     """
     with open( UPLOAD_DIR + name, 'wb+') as destination:
-        for chunk in f.chunks():
+        for chunk in file.chunks():
             destination.write(chunk)
     if (ostype == '0'):
-        fileattrs = detect_filetype(f, name)
+        fileattrs = detect_filetype(file, name)
         if not fileattrs == None:
             fileattrs.update({'filename':name})
             return fileattrs

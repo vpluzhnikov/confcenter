@@ -1,4 +1,4 @@
-__author__ = 'vs'
+__author__ = 'vss'
 # -*- coding: utf-8 -*-
 from django import forms
 from upload.models import OsTypes, Oses

@@ -2,6 +2,10 @@
 
 {% block title %}Upload configuration output{% endblock %}
 
+{% block js %}
+    <script src="{{MEDIA_URL}}/js/test.js" type="text/javascript"></script>
+{% endblock %}
+
 {% block content %}
     <div id="content">
         {% if form.errors %}
@@ -16,7 +20,19 @@
                 {{ form.as_table }}
             </table>
 
-           <p> <input type="submit" value="Загрузить"> </p>
+           <p> <input type="submit" id="submbutton" value="Загрузить"> </p>
         </form>
+        <div id="progressbar"></div>
+
     </div>
 {% endblock %}
+
+
+{#{% block footer   %}#}
+{#<div id="progress_container">#}
+{#    <div id="progress_filename"></div>#}
+{#    <div id="progress_bar">#}
+{#        <div id="progress_indicator"></div>#}
+{#    </div>#}
+{#</div>#}
+{#{% endblock %}#}

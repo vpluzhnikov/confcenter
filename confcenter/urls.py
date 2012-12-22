@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from upload.views import upload_file, anal_acc, list_values
+from upload.views import upload_file, anal_acc, list_values, upload_progress
 
 from upload.models import Oses
 
@@ -20,8 +20,11 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^upload/$', upload_file),
+    url(r'^upload/progress', upload_progress, name='upload_progress'),
     url(r'^anal_acc/$', anal_acc),
     url(r'^values/$', list_values),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+
 )
 
 if settings.DEBUG:
