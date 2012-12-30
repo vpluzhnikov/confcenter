@@ -5,14 +5,16 @@ from django.http import  HttpResponse, HttpResponseServerError
 from django.shortcuts import render_to_response, redirect
 from django.core.cache import cache
 from django.template import RequestContext
+from django.utils import simplejson
 from confcenter.settings import MEDIA_URL
-from django.core import serializers
-
+from logging import getLogger
 
 from forms import ConfUploadForm
 from conffiles import handle_uploaded_file
 from aixsnap import AixSnap
+from confcenter.common import whoami
 
+logger = getLogger(__name__)
 
 def anal_acc(request):
     #return HttpResponse('OK - ' + request.session['filename'] + ' - ' + str(request.session['filesize']) +
@@ -61,12 +63,20 @@ def upload_file(request):
     if request.method == 'POST':
         form = ConfUploadForm(request.POST, request.FILES)
         if form.is_valid():
+
+#            values = request.GET.items()
+#            values.sort()
+#            for k, v in values:
+#                logger.info('%s -  %s' % (k, v))
+#            return HttpResponse('<table>%s</table>' % '\n'.join(html))
+#            logger.info("Starting proccessing for %s in %s" % (request.FILES['file'].name, whoami()) )
+#            if 'X-Progress-ID' in request.POST:
+#                logger.info('X_Progress_ID exists and equals = %s' % (request.POST['X-Progress-ID']))
             UF_FORM  = form.cleaned_data
             if request.session.session_key:
                 key = request.session.session_key
             else:
                 key = 'None'
-
             fileattr = handle_uploaded_file(request.FILES['file'], key + '_' +
                                                                     request.FILES['file'].name, UF_FORM['ostype'])
             if not ( fileattr == None ):
@@ -76,10 +86,12 @@ def upload_file(request):
                 request.session['filesize'] = request.FILES['file'].size
                 request.session['archpath'] = fileattr['archpath']
                 request.session['filetype'] = fileattr['filetype']
-                return redirect('anal_acc/')
+                return redirect('/upload/anal_acc/')
             else:
                 return HttpResponse('Bad file type or file corrupted')
+
     else:
+        logger.info("Empty upload form prepared from %s" % (whoami()))
         form = ConfUploadForm() # A empty, unbound form
 
     return render_to_response('confupload_form.html', {'form': form, 'MEDIA_URL' : MEDIA_URL},
@@ -89,16 +101,21 @@ def upload_progress(request):
     """
     Return JSON object with information about the progress of an upload.
     """
+#    logger.info("JSON recieved in %s value %s" % (whoami(),request.GET))
     progress_id = ''
     if 'X-Progress-ID' in request.GET:
         progress_id = request.GET['X-Progress-ID']
     elif 'X-Progress-ID' in request.META:
         progress_id = request.META['X-Progress-ID']
     if progress_id:
-        from django.utils import simplejson
         cache_key = "%s_%s" % (request.META['REMOTE_ADDR'], progress_id)
+#        logger.info('Searching for cache key %s in %s' % (cache_key, whoami()))
         data = cache.get(cache_key)
-        return HttpResponse(simplejson.dumps(data))
+        logger.info('Data retrieved %s', (data))
+        if data:
+            return HttpResponse(simplejson.dumps(data))
+        else:
+            return HttpResponse(simplejson.dumps({'length': 0, 'uploaded' : 0}))
     else:
         return HttpResponseServerError('Server Error: You must provide X-Progress-ID header or query param.')
 

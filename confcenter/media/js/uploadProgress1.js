@@ -9,12 +9,10 @@ function genUUID() {
 
 //to update progress info
 function updateProgressInfo() {
-    alert("Progress");
-
     var progress_url = "/upload/progress/"; // ajax view serving progress info
     var uuid = $('#X-Progress-ID').val();
-    $.getJSON(progress_url, {'X-Progress-ID': uuid}, function(data, status){
-        if (data) {
+//    $.getJSON(progress_url, {'X-Progress-ID': uuid}, function(data, status){
+//        if (data) {
 //             uncomment to check in firebug
 //            console.log("uploaded: " + data.uploaded);
 //            var progress = parseInt(data.uploaded) * 100 / parseInt(data.length);
@@ -35,6 +33,7 @@ function beforeSubmitHandler(formData, jqForm, options) {
 //        barImage: '{{ STATIC_URL }}img/progressbar/progressbg_orange.gif'
     });
     // trigger the 1st one
+
     $("#upload-progress-bar").oneTime(1000, function(){
         updateProgressInfo();
     });
@@ -59,7 +58,7 @@ $(function() {
     alert("Started");
     var uuid = genUUID(); // id for this upload so we can fetch progress info.
 //    save the uuid with the element
-    $('#X-Progress-ID').val(uuid);
+//    $('#X-Progress-ID').val(uuid);
     var options = {
         dataType: "xml",
         url: "/upload/progress/?X-Progress-ID="+$('#X-Progress-ID').val(),

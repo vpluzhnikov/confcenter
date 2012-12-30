@@ -7,24 +7,44 @@ function gen_uuid() {
 }
 
 // Add upload progress for multipart forms.
-$(function() {
-    $().submit(function(){
-//        if ($.data(this, 'submitted')) return false;
+$(function () {
+    $('form[enctype=multipart/form-data]').submit(function(){
+            /* Prevent multiple submits*/
+        if ($.data(this, 'submitted')) return false;
 
-        alert("Submitting")
+        var freq = 1000; // freqency of update in ms
+        var uuid = gen_uuid(); // id for this upload so we can fetch progress info.
+        var progress_url = '/upload/progress/'; // ajax view serving progress info
 
-        $("#upload-progress-bar").fadeIn();
-        $("#upload-progress-bar").progressBar({
-//            boxImage: '/media/upload/img/progressbar/ajax-loader.gif'
-//        barImage: '{{ STATIC_URL }}img/progressbar/progressbg_orange.gif'
-//        });
-        // trigger the 1st one
-//        $("#upload-progress-bar").oneTime(1000, function(){
-//            updateProgressInfo();
-//        });
+//        this.action += (this.action.indexOf('?') == -1 ? '?' : '&') + 'X-Progress-ID=' + uuid;
+        this.action += '?        // Append X-Progress-ID uuid form action
+        X-Progress-ID=' + uuid;
 
+        var $progress = $('<div id="upload-progress" class="upload-progress"></div>').
+            appendTo(document.body).append('<div class="progress-container"><span class="progress-info">uploading 0%</span><div class="progress-bar"></div></div>');
 
+        // progress bar position
+        $progress.css({
+            position: ($.browser.msie && $.browser.version < 7 )? 'absolute' : 'fixed',
+            left: '50%', marginLeft: 0-($progress.width()/2), bottom: '20%'
+        }).show();
 
-//        $.data(this, 'submitted', true); // mark form as submitted.
-    })
+        // Update progress bar
+        function update_progress_info() {
+            $progress.show();
+            $.getJSON(progress_url, {'X-Progress-ID': uuid}, function(data, status){
+                if (data) {
+                    var progress = parseInt(data.uploaded) / parseInt(data.length);
+                    var width = $progress.find('.progress-container').width()
+                    var progress_width = width * progress;
+                    $progress.find('.progress-bar').width(progress_width);
+                    $progress.find('.progress-info').text('uploading ' + parseInt(progress*100) + '%');
+                }
+                window.setTimeout(update_progress_info, freq);
+            });
+        };
+        window.setTimeout(update_progress_info, freq);
+
+        $.data(this, 'submitted', true); // mark form as submitted.
+    });
 });

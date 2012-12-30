@@ -20,8 +20,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^upload/$', upload_file),
-    url(r'^upload/progress', upload_progress, name='upload_progress'),
-    url(r'^anal_acc/$', anal_acc),
+    url(r'^upload/$', upload_file),
+    url(r'^upload/progress/$', upload_progress, name='upload_progress'),
+    url(r'^upload/anal_acc/$', anal_acc),
     url(r'^values/$', list_values),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 
