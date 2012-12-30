@@ -20,6 +20,8 @@ def anal_acc(request):
     #return HttpResponse('OK - ' + request.session['filename'] + ' - ' + str(request.session['filesize']) +
     #                    ' ' + request.session['filetype'] + ' -  ' + request.session['archpath'] )
     snap = AixSnap(request.session['archpath'])
+    cache_key = "%s_%s" % (request.META['REMOTE_ADDR'], request.session['X-Progress-ID'])
+    cache.delete(cache_key)
     context = {"snapname": request.session['filename'],
                "sysparams" : snap.sys0_params(),
                "oslevel" : snap.oslevel_params(),
@@ -63,20 +65,14 @@ def upload_file(request):
     if request.method == 'POST':
         form = ConfUploadForm(request.POST, request.FILES)
         if form.is_valid():
-
-#            values = request.GET.items()
-#            values.sort()
-#            for k, v in values:
-#                logger.info('%s -  %s' % (k, v))
-#            return HttpResponse('<table>%s</table>' % '\n'.join(html))
-#            logger.info("Starting proccessing for %s in %s" % (request.FILES['file'].name, whoami()) )
-#            if 'X-Progress-ID' in request.POST:
-#                logger.info('X_Progress_ID exists and equals = %s' % (request.POST['X-Progress-ID']))
-            UF_FORM  = form.cleaned_data
+            UF_FORM = form.cleaned_data
             if request.session.session_key:
                 key = request.session.session_key
             else:
                 key = 'None'
+            if 'X-Progress-ID' in request.GET:
+                request.session['X-Progress-ID'] = request.GET['X-Progress-ID']
+
             fileattr = handle_uploaded_file(request.FILES['file'], key + '_' +
                                                                     request.FILES['file'].name, UF_FORM['ostype'])
             if not ( fileattr == None ):

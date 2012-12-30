@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/common.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/media/upload/img/ajax-loader.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/media/upload/img/icon_inprogress.gif" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/media/js/test.js" afterPath="$PROJECT_DIR$/confcenter/media/js/test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/media/js/uploadProgress.js" afterPath="$PROJECT_DIR$/confcenter/media/js/uploadProgress.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/media/js/uploadProgress1.js" afterPath="$PROJECT_DIR$/confcenter/media/js/uploadProgress1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/settings.py" afterPath="$PROJECT_DIR$/confcenter/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/base.html" afterPath="$PROJECT_DIR$/confcenter/templates/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/confupload_form.html" afterPath="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/upload_handlers.py" afterPath="$PROJECT_DIR$/confcenter/upload_handlers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/urls.py" afterPath="$PROJECT_DIR$/confcenter/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/forms.py" afterPath="$PROJECT_DIR$/upload/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/views.py" afterPath="$PROJECT_DIR$/upload/views.py" />
     </list>
     <ignored path="confcenter.iws" />
@@ -39,7 +34,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upload/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="20" selection-start="5576" selection-end="5576" vertical-scroll-proportion="0.0">
+            <state line="23" column="17" selection-start="918" selection-end="918" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -54,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload_handlers.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="upload_handlers.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confcenter/upload_handlers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="22" selection-start="1955" selection-end="1955" vertical-scroll-proportion="0.58900523">
+            <state line="55" column="49" selection-start="2378" selection-end="2406" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -65,21 +60,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/confcenter/settings.py">
+      <file leaf-file-name="test.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/confcenter/media/js/test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="66" selection-start="445" selection-end="445" vertical-scroll-proportion="0.0">
+            <state line="54" column="114" selection-start="1681" selection-end="1681" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/confcenter/media/js/test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="41" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
+      <file leaf-file-name="ajax-loader.gif" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/confcenter/media/upload/img/ajax-loader.gif">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -92,19 +85,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="uploadProgress1.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/confcenter/media/js/uploadProgress1.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="2" selection-start="800" selection-end="879" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="confupload_form.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confcenter/templates/confupload_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="29" selection-start="471" selection-end="482" vertical-scroll-proportion="0.0">
+            <state line="29" column="24" selection-start="979" selection-end="986" vertical-scroll-proportion="-18.125">
               <folding />
             </state>
           </provider>
@@ -144,13 +128,13 @@
         <option value="$PROJECT_DIR$/confcenter/settings.py" />
         <option value="$PROJECT_DIR$/confcenter/media/js/uploadProgress1.js" />
         <option value="$PROJECT_DIR$/upload/forms.py" />
-        <option value="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
         <option value="$PROJECT_DIR$/confcenter/media/js/uploadProgress.js" />
         <option value="$PROJECT_DIR$/confcenter/urls.py" />
         <option value="$PROJECT_DIR$/confcenter/templates/base.html" />
-        <option value="$PROJECT_DIR$/upload/views.py" />
-        <option value="$PROJECT_DIR$/confcenter/media/js/test.js" />
         <option value="$PROJECT_DIR$/confcenter/upload_handlers.py" />
+        <option value="$PROJECT_DIR$/upload/views.py" />
+        <option value="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
+        <option value="$PROJECT_DIR$/confcenter/media/js/test.js" />
       </list>
     </option>
   </component>
@@ -267,28 +251,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -564,18 +526,23 @@
       <created>1356213046596</created>
       <updated>1356213046596</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Status bar  for file upload (firefox only version)">
+      <created>1356872758536</created>
+      <updated>1356872758536</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20946915" sideWeight="0.5380774" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20946915" sideWeight="0.5380774" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950064" sideWeight="0.49425286" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950064" sideWeight="0.49784482" order="10" side_tool="true" content_ui="tabs" />
@@ -586,7 +553,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DatabaseBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -629,7 +595,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Status bar draft" />
+    <option name="LAST_COMMIT_MESSAGE" value="Status bar  for file upload (firefox only version)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -647,23 +613,12 @@
     <MESSAGE value="Test for commti" />
     <MESSAGE value="Changed snap_report and removed test snap" />
     <MESSAGE value="Status bar draft" />
+    <MESSAGE value="Status bar  for file upload (firefox only version)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/confcenter/templates/snapreport_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="102" selection-end="102" vertical-scroll-proportion="0.09375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/upload/aixsnap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="0" selection-end="42" vertical-scroll-proportion="0.05952381" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/common.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="0" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
@@ -673,7 +628,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/upload/conffiles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="250" selection-end="250" vertical-scroll-proportion="0.11406844" />
+        <state line="7" column="0" selection-start="250" selection-end="250" vertical-scroll-proportion="0.11406844">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file:///Library/Python/2.7/site-packages/django/forms/widgets.py">
@@ -695,23 +652,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/templates/confupload_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="29" selection-start="471" selection-end="482" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="61" selection-start="412" selection-end="412" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="39" selection-start="908" selection-end="908" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -730,34 +673,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upload/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="20" selection-start="5576" selection-end="5576" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/media/js/uploadProgress1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="2" selection-start="800" selection-end="879" vertical-scroll-proportion="0.0">
+        <state line="23" column="2" selection-start="800" selection-end="879" vertical-scroll-proportion="0.7460733">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/media/js/test.js">
+    <entry file="file://$PROJECT_DIR$/confcenter/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="41" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.0">
+        <state line="24" column="39" selection-start="908" selection-end="908" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/upload_handlers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="22" selection-start="1955" selection-end="1955" vertical-scroll-proportion="0.58900523">
+        <state line="55" column="49" selection-start="2378" selection-end="2406" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="17" selection-start="918" selection-end="918" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/confcenter/media/upload/img/icon_inprogress.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/confcenter/templates/confupload_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="24" selection-start="979" selection-end="986" vertical-scroll-proportion="-18.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/confcenter/media/js/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="114" selection-start="1681" selection-end="1681" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/confcenter/media/upload/img/ajax-loader.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
   </component>

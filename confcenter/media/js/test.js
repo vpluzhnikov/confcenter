@@ -49,13 +49,20 @@ $(window).submit(function () {
 //                alert("succsess");
                 var progress = parseInt(data.uploaded) * 100 / parseInt(data.length);
                 console.log("Progress: " + progress);
-                $( "#progressbar" ).progressbar({ value: progress });
-//                $("#upload-progress-bar").progressBar(progress);
+                if (progress >= 100){
+                    $( "#progressbar" ).progressbar({ value: progress });
+                    $( "#progressbar" ).hide();
+                    $( "#analyze" ).prepend('<img id="analyze_progress" src="/media/upload/img/icon_inprogress.gif" />')
+                    console.log("stopping");
+                    clearInterval(loader);
+                }
+                else {
+                    $( "#progressbar" ).progressbar({ value: progress });
+                }
 
             },
             error: function(data) {
-                $( "#progressbar").progressbar({ value: 20});
-//                alert("error");
+                alert("error");
             }
         });
 

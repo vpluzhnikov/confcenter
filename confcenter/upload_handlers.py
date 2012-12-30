@@ -40,7 +40,7 @@ class UploadProgressCachedHandler(FileUploadHandler):
 
     def receive_data_chunk(self, raw_data, start):
         if self.cache_key:
-            sleep(0.001)
+            sleep(0.002)
             data = cache.get(self.cache_key)
             data['uploaded'] += self.chunk_size
             cache.set(self.cache_key, data)
@@ -52,6 +52,6 @@ class UploadProgressCachedHandler(FileUploadHandler):
 
     def upload_complete(self):
         self.logger.info('Upload complete')
-        if self.cache_key:
-            cache.delete(self.cache_key)
-            self.logger.info('Cache key is deleted')
+#        if self.cache_key:
+        #            cache.delete(self.cache_key)
+#            self.logger.info('Cache key is deleted')
