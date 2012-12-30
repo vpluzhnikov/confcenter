@@ -4,9 +4,6 @@
     <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/media/js/test.js" afterPath="$PROJECT_DIR$/confcenter/media/js/test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/confupload_form.html" afterPath="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/upload_handlers.py" afterPath="$PROJECT_DIR$/confcenter/upload_handlers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/views.py" afterPath="$PROJECT_DIR$/upload/views.py" />
     </list>
     <ignored path="confcenter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,7 +58,7 @@
       <file leaf-file-name="test.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/confcenter/media/js/test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.111386135">
+            <state line="41" column="0" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.6287129">
               <folding />
             </state>
           </provider>
@@ -532,7 +529,11 @@
       <created>1356882238703</created>
       <updated>1356882238703</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Status bar for file upload and analyze animation (firefox only version)">
+      <created>1356899947371</created>
+      <updated>1356899947371</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -728,7 +729,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/media/js/test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.111386135">
+        <state line="41" column="0" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.6287129">
           <folding />
         </state>
       </provider>

@@ -39,32 +39,6 @@ $(window).submit( function () {
                     clearInterval(loader);
                 }
         });
-//        $.ajax({
-//            type: "GET",
-//            url: "/upload/progress",
-//            dataType: "json",
-//            data: { "X-Progress-ID" : uuid },
-//            success: function(data) {
-//                var progress = parseInt(data.uploaded) * 100 / parseInt(data.length);
-//                console.log("Progress: " + progress);
-//                if (progress < 100){
-//                    $( "#progressbar" ).progressbar({ value: progress });
-//                    console.log(progress);
-//                }
-//                else {
-//                    $( "#progressbar" ).progressbar({ value: progress });
-//                    $( "#progressbar" ).hide();
-//                    $( "#analyze" ).show();
-//                    console.log("stopping");
-//                    clearInterval(loader);
-//                }
-//
-//            },
-//            error: function(data) {
-//                alert("error");
-//            }
-//        });
-
 
     }, 500);
 
