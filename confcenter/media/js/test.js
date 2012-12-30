@@ -1,21 +1,10 @@
-var base_url = "http://127.0.0.1:8000"
 var url = "/upload/progress/"
 
 
-//$.ajax({
-//    type: "GET",
-//    url: "http://127.0.0.1:8000/upload/progress",
-//    dataType: "json",
-//    data: { "X-Progress-ID" : uuid },
-//    success: function(data) {
-//        $( "#progressbar" ).progressbar({ value: 70 });
-//        alert("succsess");
-//    },
-//    error: function(data) {
-//        $( "#progressbar").progressbar({ value: 20});
-//        alert("succsess");
-//    }
-//});
+var uuid = gen_uuid();
+$.ajaxSetup({
+    async: false
+});
 
 function gen_uuid() {
     var uuid = ""
@@ -24,10 +13,7 @@ function gen_uuid() {
     }
     return uuid;
 }
-
-$(window).submit(function () {
-
-    var uuid = gen_uuid();
+$(window).submit( function () {
 
     $( "#progressbar" ).progressbar({
         value: 0
@@ -36,51 +22,50 @@ $(window).submit(function () {
     $( "#progressbar" ).fadeIn();
     $( "#progressbar" ).progressbar({ value: 0 });
 
-
     var loader = setInterval(function(){
 
-        $.ajax({
-            type: "GET",
-            url: "http://127.0.0.1:8000/upload/progress",
-            dataType: "json",
-            data: { "X-Progress-ID" : uuid },
-            success: function(data) {
-//                $( "#progressbar" ).progressbar({ value: 70 });
-//                alert("succsess");
+        $.getJSON(url, {"X-Progress-ID" : uuid}, function(data, status){
                 var progress = parseInt(data.uploaded) * 100 / parseInt(data.length);
                 console.log("Progress: " + progress);
-                if (progress >= 100){
+                if (progress < 100){
                     $( "#progressbar" ).progressbar({ value: progress });
-                    $( "#progressbar" ).hide();
-                    $( "#analyze" ).prepend('<img id="analyze_progress" src="/media/upload/img/icon_inprogress.gif" />')
-                    console.log("stopping");
-                    clearInterval(loader);
+                    console.log(progress);
                 }
                 else {
                     $( "#progressbar" ).progressbar({ value: progress });
+                    $( "#progressbar" ).hide();
+                    $( "#analyze" ).show();
+                    console.log("stopping");
+                    clearInterval(loader);
                 }
-
-            },
-            error: function(data) {
-                alert("error");
-            }
         });
+//        $.ajax({
+//            type: "GET",
+//            url: "/upload/progress",
+//            dataType: "json",
+//            data: { "X-Progress-ID" : uuid },
+//            success: function(data) {
+//                var progress = parseInt(data.uploaded) * 100 / parseInt(data.length);
+//                console.log("Progress: " + progress);
+//                if (progress < 100){
+//                    $( "#progressbar" ).progressbar({ value: progress });
+//                    console.log(progress);
+//                }
+//                else {
+//                    $( "#progressbar" ).progressbar({ value: progress });
+//                    $( "#progressbar" ).hide();
+//                    $( "#analyze" ).show();
+//                    console.log("stopping");
+//                    clearInterval(loader);
+//                }
+//
+//            },
+//            error: function(data) {
+//                alert("error");
+//            }
+//        });
 
 
     }, 500);
 
-//        var jsonreq = $.getJSON(base_url + url, {'X-Progress-ID' : uuid}, function(){
-//            alert("succsess");
-//        })
-//        $.ajax({
-//            type: "GET",
-//            url: base_url + url,
-//            dataType: "json",
-//            success: function() {
-//                $( "#progressbar" ).progressbar({ value: 50 });
-//            },
-//            error: function() {
-//                $( "#progressbar").progressbar({ value: 20});
-//            }
-//        });
-})
+});

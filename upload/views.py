@@ -97,7 +97,7 @@ def upload_progress(request):
     """
     Return JSON object with information about the progress of an upload.
     """
-#    logger.info("JSON recieved in %s value %s" % (whoami(),request.GET))
+    logger.info("JSON recieved in %s value %s" % (whoami(),request.GET))
     progress_id = ''
     if 'X-Progress-ID' in request.GET:
         progress_id = request.GET['X-Progress-ID']
