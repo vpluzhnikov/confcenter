@@ -13,6 +13,8 @@ from forms import ConfUploadForm
 from conffiles import handle_uploaded_file
 from aixsnap import AixSnap
 from confcenter.common import whoami
+from django.utils.translation import ugettext as _
+
 
 logger = getLogger(__name__)
 
@@ -84,7 +86,7 @@ def upload_file(request):
                 request.session['filetype'] = fileattr['filetype']
                 return redirect('/upload/anal_acc/')
             else:
-                return HttpResponse('Bad file type or file corrupted')
+                return HttpResponse(_('Bad file type or file corrupted'))
 
     else:
         logger.info("Empty upload form prepared from %s" % (whoami()))
@@ -97,7 +99,7 @@ def upload_progress(request):
     """
     Return JSON object with information about the progress of an upload.
     """
-    logger.info("JSON recieved in %s value %s" % (whoami(),request.GET))
+    logger.debug("JSON recieved in %s value %s" % (whoami(),request.GET))
     progress_id = ''
     if 'X-Progress-ID' in request.GET:
         progress_id = request.GET['X-Progress-ID']

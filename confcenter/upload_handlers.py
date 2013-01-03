@@ -18,22 +18,22 @@ class UploadProgressCachedHandler(FileUploadHandler):
         self.logger = getLogger(__name__)
 
     def handle_raw_input(self, input_data, META, content_length, boundary, encoding=None):
-        self.logger.info("Starting proccessing file with ID = %s in %s" % (self.request.GET['X-Progress-ID'],
+        self.logger.debug("Starting proccessing file with ID = %s in %s" % (self.request.GET['X-Progress-ID'],
                                                                            whoami()) )
         self.content_length = content_length
         if 'X-Progress-ID' in self.request.GET:
             self.progress_id = self.request.GET['X-Progress-ID']
-            self.logger.info('X-Progress-ID exists and equals = %s' % (self.progress_id))
+            self.logger.debug('X-Progress-ID exists and equals = %s' % (self.progress_id))
         elif 'X-Progress-ID' in self.request.META:
             self.progress_id = self.request.META['X-Progress-ID']
-            self.logger.info('X-Progress-ID exists and equals = %s' % (self.progress_id))
+            self.logger.debug('X-Progress-ID exists and equals = %s' % (self.progress_id))
         if self.progress_id:
             self.cache_key = "%s_%s" % (self.request.META['REMOTE_ADDR'], self.progress_id )
             cache.set(self.cache_key, {
                 'length': self.content_length,
                 'uploaded' : 0
             })
-            self.logger.info('Cache key is set to %s and data uploaded 0', self.cache_key)
+            self.logger.debug('Cache key is set to %s and data uploaded 0', self.cache_key)
 
     def new_file(self, field_name, file_name, content_type, content_length, charset=None):
         pass
@@ -51,7 +51,7 @@ class UploadProgressCachedHandler(FileUploadHandler):
         pass
 
     def upload_complete(self):
-        self.logger.info('Upload complete')
+        self.logger.debug('Upload complete')
 #        if self.cache_key:
         #            cache.delete(self.cache_key)
 #            self.logger.info('Cache key is deleted')

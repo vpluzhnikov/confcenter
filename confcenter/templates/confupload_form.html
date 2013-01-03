@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Upload configuration output{% endblock %}
+{% block title %} {% trans "conf_upload_form_title" %} {% endblock %}
 
 {% block js %}
-        <script src="{{MEDIA_URL}}/js/test.js" type="text/javascript"></script>
+    <script src="{{ MEDIA_URL }}/js/test.js" type="text/javascript" xmlns="http://www.w3.org/1999/html"></script>
 {% endblock %}
 
 {% block content %}
@@ -17,17 +18,16 @@
 
         <form id="upload_form" enctype="multipart/form-data" method="post">
             <table>
-{#                <input type="hidden" id="X_Progress_ID" name="X_Progress_ID" value=""/>#}
                 {{ form.as_table }}
             </table>
             <div class="submit-row">
-                <input type="submit" value="Загрузить"" class="default"/>
+                <input type="submit" style="padding: 20" value={% trans "button_submit_upload" %} />
             </div>
 
-{#           <p> <input type="submit" id="submbutton" value="Загрузить"> </p>#}
         </form>
         <div id="progressbar"></div>
-        <div id="analyze" style="display: NONE">
+        <div id="analyze" style="display: NONE" align="center">
+            <p>{% trans "analyze_upload" %}</p>
             <img id="analyze_progress" src="/media/upload/img/icon_inprogress.gif" />
         </div>
 

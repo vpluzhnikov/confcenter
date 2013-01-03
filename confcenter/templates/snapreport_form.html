@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block title %}Analysys results for snap - {{ snapname }} {% endblock %}
 
@@ -7,20 +8,20 @@
     <form enctype="multipart/form-data" action="" method="post">
 
     {% if sysparams %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Параметры системы
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "system_params_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
-                <tr> <td>Тип/Модель сервера:</td><td>  {{ sysparams.plat_type}} - {{ sysparams.plat_model }} </td> </tr>
-                <tr> <td>Серийный номер сервера:</td><td>  {{ sysparams.plat_serial }} </td> </tr>
-                <tr> <td>Имя раздела в ОС:</td><td>  {{ hostname.hostname }} </td> </tr>
+                <tr> <td>{% trans "server_type_model_rep" %}</td><td>  {{ sysparams.plat_type}} - {{ sysparams.plat_model }} </td> </tr>
+                <tr> <td>{% trans "server_serial_rep" %}</td><td>  {{ sysparams.plat_serial }} </td> </tr>
+                <tr> <td>{% trans "server_lparname_rep" %}</td><td>  {{ hostname.hostname }} </td> </tr>
                 <tr></tr>
                 {% ifequal hacmp.hacmp_used 0 %}
-                    <tr> <td>Кластеное ПО IBM PowerHA не используется</td></tr>
+                    <tr> <td>{% trans "hacmp_notused_rep" %}</td></tr>
                 {% else %}
                     {% ifequal hacmp.hacmp_used '1' %}
-                        <tr> <td>Кластерное ПО IBM PowerHA используется</td></tr>
+                        <tr> <td>{% trans "hacmp_used_rep" %}</td></tr>
                     {% else %}
-                        <tr> <td>Информации об использовании кластерного ПО IBM PowerHA не обнаружено</td></tr>
+                        <tr> <td>{% trans "hacmp_notdetected_rep" %}</td></tr>
                     {% endifequal %}
                 {% endifequal %}
             </table>
@@ -28,74 +29,74 @@
     {% endif %}
 
     {% if lparinfo %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Конфигурация раздела сервера
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "lpar_conf_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
-                <tr> <td>Номер раздела в HMC:</td><td>{{ lparinfo.lpar_number}}</td> </tr>
-                <tr> <td>Имя раздела в HMС:</td><td>{{ lparinfo.lpar_name}}</td> </tr>
-                <tr> <td>Тип раздела:</td><td>{{ lparinfo.lpar_type}}</td> </tr>
-                <tr> <td>Режим работы раздела:</td><td>{{ lparinfo.lpar_mode}}</td> </tr>
-                <tr> <td>Текущее кол-во вычислительных ресурсов:</td><td>{{ lparinfo.lpar_capacity}}</td> </tr>
+                <tr> <td>{% trans "lpar_hmcnum_rep" %}</td><td>{{ lparinfo.lpar_number}}</td> </tr>
+                <tr> <td>{% trans "lpar_hmcname_rep" %}</td><td>{{ lparinfo.lpar_name}}</td> </tr>
+                <tr> <td>{% trans "lpar_type_rep" %}</td><td>{{ lparinfo.lpar_type}}</td> </tr>
+                <tr> <td>{% trans "lpar_mode_rep" %}</td><td>{{ lparinfo.lpar_mode}}</td> </tr>
+                <tr> <td>{% trans "lpar_capacity_rep" %}</td><td>{{ lparinfo.lpar_capacity}}</td> </tr>
                 <tr></tr>
-                <tr> <td>Минимальное кол-во CPU раздела:</td><td>{{ lparinfo.lpar_min_cpu}}</td> </tr>
-                <tr> <td>Желаемое кол-во CPU раздела:</td><td>{{ lparinfo.lpar_des_cpu}}</td> </tr>
-                <tr> <td>Максимальное кол-во CPU раздела:</td><td>{{ lparinfo.lpar_max_cpu}}</td> </tr>
+                <tr> <td>{% trans "lpar_mincpu_rep" %}</td><td>{{ lparinfo.lpar_min_cpu}}</td> </tr>
+                <tr> <td>{% trans "lpar_descpu_rep" %}</td><td>{{ lparinfo.lpar_des_cpu}}</td> </tr>
+                <tr> <td>{% trans "lpar_maxcpu_rep" %}</td><td>{{ lparinfo.lpar_max_cpu}}</td> </tr>
                 <tr></tr>
-                <tr> <td>Минимальное кол-во памяти раздела:</td><td>{{ lparinfo.lpar_min_mem}}</td> </tr>
-                <tr> <td>Желаемое кол-во памяти раздела:</td><td>{{ lparinfo.lpar_des_mem}}</td> </tr>
-                <tr> <td>Максимальное кол-во памяти раздела:</td><td>{{ lparinfo.lpar_max_mem}}</td> </tr>
+                <tr> <td>{% trans "lpar_minmem_rep" %}</td><td>{{ lparinfo.lpar_min_mem}}</td> </tr>
+                <tr> <td>{% trans "lpar_desmem_rep" %}</td><td>{{ lparinfo.lpar_des_mem}}</td> </tr>
+                <tr> <td>{% trans "lpar_maxmem_rep" %}</td><td>{{ lparinfo.lpar_max_mem}}</td> </tr>
             </table>
         </DIV>
     {% endif %}
 
     {% if mcodes %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Уровень микропрограммного обеспечения компонентов системы
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "mcode_levels_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             {% regroup mcodes by mcode_devname as mcodes_list %}
             <table>
                 {% for mcode in mcodes %}
-                    <tr> <td> Микрокод устройства {{ mcode.mcode_devname }}: </td>  <td> {{ mcode.mcode_level }} </td> </tr>
+                    <tr> <td> {% trans "mcode_dev_rep" %}{{ mcode.mcode_devname }}: </td>  <td> {{ mcode.mcode_level }} </td> </tr>
                 {% endfor %}
             </table>
         </DIV>
     {% endif %}
 
     {% if oslevel %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Уровень операционной системы
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "oslevel_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
-                <tr><td>Уровень обновления ОС:</td> <td> {{ oslevel.oslevel }} </td></tr>
+                <tr><td></td>{% trans "oslevel_rep" %}<td> {{ oslevel.oslevel }} </td></tr>
             </table>
         </DIV>
     {% endif %}
 
     {% if dumpdev %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Параметры системного дампа
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "dumpdev_conf_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
-                <tr><td>Первичное устройство для сохранения системного дампа:</td>
+                <tr><td>{% trans "primary_dumpdev_rep" %}</td>
                     <td> {{ dumpdev.dumpdev_primary }} </td></tr>
-                <tr><td>Вторичное устройство для сохранения системного дампа:</td>
+                <tr><td>{% trans "secondary_dumpdev_rep" %}</td>
                     <td> {{ dumpdev.dumpdev_secondary }} </td></tr>
-                <tr><td>Директория для сохранения системного дампа:</td> <td> {{ dumpdev.dumpdev_copypath }} </td></tr>
+                <tr><td>{% trans "dumpdev_copypath" %}</td> <td> {{ dumpdev.dumpdev_copypath }} </td></tr>
             </table>
         </DIV>
     {% endif %}
 
     {% if dump %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Наличие системного дампа
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "sysdump_prp_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <tr>
-                    <td>Дата создания дампа:</td>
+                    <td>{% trans "sysdump_date_rep" %}</td>
                     <td> {{ dump.dump_date }} </td>
                 </tr>
                 <tr>
-                    <td>Статус дампа:</td>
+                    <td>{% trans "sysdump_status_rep" %}</td>
                     <td> {{ dump.dump_status }} </td>
                 </tr>
                 <tr>
-                    <td>Размер дампа:</td>
+                    <td>{% trans "sysdump_size_rep" %}</td>
                     <td> {{ dump.dump_size }} bytes</td>
                 </tr>
             </table>
@@ -103,24 +104,24 @@
     {% endif %}
 
     {% if emgrs %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Информация о временных исправлениях (ifix)
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "emgr_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 {% for emgr in emgrs %}
                     <tr>
-                        <td>Идентификатор ifix:</td>
+                        <td>{% trans "emgr_label_rep" %}</td>
                         <td> {{ emgr.emgr_label }} </td>
                     </tr>
                     <tr>
-                        <td>Дата инсталляции:</td>
+                        <td>{% trans "emgr_instdate_rep" %}</td>
                         <td> {{ emgr.emgr_instdate }} </td>
                     </tr>
                     <tr>
-                        <td>Краткое описание ifix:</td>
+                        <td>{% trans "emgr_abstruct_rep" %}</td>
                         <td> {{ emgr.emgr_abstruct }}</td>
                     </tr>
                     <tr>
-                        <td>Статус установки ifix:</td>
+                        <td>{% trans "emgr_status_rep" %}</td>
                         <td> {{ emgr.emgr_status }}</td>
                     </tr>
                     {% if not forloop.last %}

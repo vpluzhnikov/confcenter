@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^upload/anal_acc/$', anal_acc),
     url(r'^values/$', list_values),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 
 )
 

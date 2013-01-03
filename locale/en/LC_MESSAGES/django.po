@@ -1,0 +1,189 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-03 21:49+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: confcenter/templates/confupload_form.html:4
+msgid "conf_upload_form_title"
+msgstr "Upload configuration output file"
+
+#: confcenter/templates/confupload_form.html:24
+msgid "button_submit_upload"
+msgstr " Upload"
+
+#: confcenter/templates/confupload_form.html:30
+msgid "analyze_upload"
+msgstr "Proссessing uploaded file"
+
+#: confcenter/templates/snapreport_form.html:11
+msgid "system_params_rep"
+msgstr "System Parameters"
+
+#: confcenter/templates/snapreport_form.html:14
+msgid "server_type_model_rep"
+msgstr "Server Type/Model"
+
+#: confcenter/templates/snapreport_form.html:15
+msgid "server_serial_rep"
+msgstr "Server serial number"
+
+#: confcenter/templates/snapreport_form.html:16
+msgid "server_lparname_rep"
+msgstr "Hostname in OS"
+
+#: confcenter/templates/snapreport_form.html:19
+msgid "hacmp_notused_rep"
+msgstr "IBM PowerHA is not used"
+
+#: confcenter/templates/snapreport_form.html:22
+msgid "hacmp_used_rep"
+msgstr "IBM PowerHA is used"
+
+#: confcenter/templates/snapreport_form.html:24
+msgid "hacmp_notdetected_rep"
+msgstr "IBM PowerHA configuration is not detected"
+
+#: confcenter/templates/snapreport_form.html:32
+msgid "lpar_conf_rep"
+msgstr "LPAR Configuration"
+
+#: confcenter/templates/snapreport_form.html:35
+msgid "lpar_hmcnum_rep"
+msgstr "LPAR ID number in HMC:"
+
+#: confcenter/templates/snapreport_form.html:36
+msgid "lpar_hmcname_rep"
+msgstr "LPAR name in HMC:"
+
+#: confcenter/templates/snapreport_form.html:37
+msgid "lpar_type_rep"
+msgstr "LPAR type:"
+
+#: confcenter/templates/snapreport_form.html:38
+msgid "lpar_mode_rep"
+msgstr "LPAR running mode:"
+
+#: confcenter/templates/snapreport_form.html:39
+msgid "lpar_capacity_rep"
+msgstr "LPAR capacity:"
+
+#: confcenter/templates/snapreport_form.html:41
+msgid "lpar_mincpu_rep"
+msgstr "Minimum CPU for LPAR"
+
+#: confcenter/templates/snapreport_form.html:42
+msgid "lpar_descpu_rep"
+msgstr "Desired CPU for LPAR"
+
+#: confcenter/templates/snapreport_form.html:43
+msgid "lpar_maxcpu_rep"
+msgstr "Maximum CPU for LPAR"
+
+#: confcenter/templates/snapreport_form.html:45
+msgid "lpar_minmem_rep"
+msgstr "Minimum memmory for LPAR:"
+
+#: confcenter/templates/snapreport_form.html:46
+msgid "lpar_desmem_rep"
+msgstr "Desired memory for LPAR:"
+
+#: confcenter/templates/snapreport_form.html:47
+msgid "lpar_maxmem_rep"
+msgstr "Maximum memory for LPAR:"
+
+#: confcenter/templates/snapreport_form.html:53
+msgid "mcode_levels_rep"
+msgstr "Firmware levels for hardware in LPAR"
+
+#: confcenter/templates/snapreport_form.html:58
+msgid "mcode_dev_rep"
+msgstr "Firmware level for "
+
+#: confcenter/templates/snapreport_form.html:65
+#: confcenter/templates/snapreport_form.html:68
+#, fuzzy
+msgid "oslevel_rep"
+msgstr "OS level"
+
+#: confcenter/templates/snapreport_form.html:74
+msgid "dumpdev_conf_rep"
+msgstr "Dump device configuration"
+
+#: confcenter/templates/snapreport_form.html:77
+msgid "primary_dumpdev_rep"
+msgstr "Primary dump device:"
+
+#: confcenter/templates/snapreport_form.html:79
+#, fuzzy
+msgid "secondary_dumpdev_rep"
+msgstr "Secondary dump device:"
+
+#: confcenter/templates/snapreport_form.html:81
+msgid "dumpdev_copypath"
+msgstr "Dump copypath:"
+
+#: confcenter/templates/snapreport_form.html:87
+msgid "sysdump_prp_rep"
+msgstr "System dump in snap"
+
+#: confcenter/templates/snapreport_form.html:91
+msgid "sysdump_date_rep"
+msgstr "Date of system dump occured:"
+
+#: confcenter/templates/snapreport_form.html:95
+msgid "sysdump_status_rep"
+msgstr "System dump status:"
+
+#: confcenter/templates/snapreport_form.html:99
+msgid "sysdump_size_rep"
+msgstr "System dump size:"
+
+#: confcenter/templates/snapreport_form.html:108
+msgid "emgr_info_rep"
+msgstr "Installed IFIX details"
+
+#: confcenter/templates/snapreport_form.html:114
+msgid "emgr_label_rep"
+msgstr "Ifix label:"
+
+#: confcenter/templates/snapreport_form.html:119
+msgid "emgr_instdate_rep"
+msgstr "Date ifix of installation:"
+
+#: confcenter/templates/snapreport_form.html:124
+msgid "emgr_abstruct_rep"
+msgstr "Ifix abstruct:"
+
+#: confcenter/templates/snapreport_form.html:129
+msgid "emgr_status_rep"
+msgstr "Ifix installation status:"
+
+#: upload/forms.py:14
+msgid "Auto-detect"
+msgstr "Auto-detect"
+
+#: upload/forms.py:23
+msgid "choose_ostype_upload"
+msgstr "Choose operation system type"
+
+#: upload/forms.py:24
+msgid "choose_file_upload"
+msgstr "Choose configuration snap file for upload"
+
+#: upload/views.py:89
+msgid "Bad file type or file corrupted"
+msgstr "Bad file type or file corrupted"
