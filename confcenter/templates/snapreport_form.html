@@ -132,13 +132,18 @@
     {% endif %}
 
     {% if errors %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Информация об ошибках раздела
+{#        #}
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "err_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
-                    <tr><td>Кол-во</td><td>ID</td><td>Первая регистрация</td><td>Последняя регистрация</td><td>Тип</td>
-                        <td>Класс</td>
-                        <td>Ресурс</td>
-                        <td>Описание</td>
+                    <tr><td>{% trans "err_count_rep" %}</td>
+                        <td>{% trans "err_id_rep" %}</td>
+                        <td>{% trans "err_firstocc_rep" %}</td>
+                        <td>{% trans "err_lastocc_rep" %}</td>
+                        <td>{% trans "err_type_rep" %}</td>
+                        <td>{% trans "err_class_rep" %}</td>
+                        <td>{% trans "err_resource_rep" %}</td>
+                        <td>{% trans "err_desc_rep" %}</td>
                     </tr>
                 </b>
                 {% for error in errors %}
@@ -158,29 +163,25 @@
     {% endif %}
 
     {% if bootinfo %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Разрядность ядра ОС
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "bootinfo_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
-                {% if bootinfo %}
-                    <tr><td>Операционная система загружена в режиме {{ bootinfo.bootinfo_k }}-х бит</td></tr>
-                {% else %}
-                    <tr><td>Информация о режиме работы ОС не обнаружена</td> </tr>
-                {% endif %}
+                <tr><td>{% trans "osloaded_rep" %}{{ bootinfo.bootinfo_k }}{% trans "osbits_rep" %}</td></tr>
             </table>
         </DIV>
     {% endif %}
 
     {% if smt %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Количество потоков на процессорах сервера (SMT)
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "smtinfo_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 {% ifequal smt.smt_threads_count '0' %}
                     <tr>
-                        <td>В системе для всех процессоров отключены дополнительные потоки</td>
+                        <td>{% trans "smt0_threads_rep" %}</td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td>В системе для всех процессоров настроено {{ smt.smt_threads_count }} потока</td>
+                        <td> {% trans "smton_rep" %}{{ smt.smt_threads_count }} {% trans "smt_threades_rep" %}</td>
                     </tr>
                 {% endifequal %}
             </table>
@@ -188,12 +189,12 @@
     {% endif %}
 
     {% if tunables %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Информация об изменненых значениях tunable parameters разделов vmo, ioo, schedo
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "tun_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <tr>
-                    <td>Название параметра:</td>
-                    <td> Значение параметра</td>
+                    <td>{% trans "tun_name_rep" %}</td>
+                    <td>{% trans "tun_value_rep" %}</td>
                 </tr>
                 {% for tun in tunables %}
                     <tr>
@@ -206,12 +207,13 @@
     {% endif %}
 
     {% if no_tunables %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;"> Информация о значениях tunable parameters раздела no
+{#        #}
+        <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "notun_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <tr>
-                    <td>Название параметра:</td>
-                    <td> Значение параметра</td>
+                    <td>{% trans "notun_name_rep" %}</td>
+                    <td>{% trans "notun_value_rep" %}</td>
                 </tr>
                 {% for tun in no_tunables %}
                     <tr>
@@ -224,17 +226,17 @@
     {% endif %}
 
     {% if vgs %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о дисковых группах
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "vg_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <thead>
-                <td>Имя дисковой группы</td>
-                <td>Состояние дисковой группы</td>
-                <td>Размер физического блока</td>
-                <td>Свободный объем в группе</td>
-                <td>Общее число дисков</td>
-                <td>Число активных дисков</td>
-                <td>Автоматический импорт</td>
+                <td>{% trans "vgname_rep" %}</td>
+                <td>{% trans "vgstate_rep" %}</td>
+                <td>{% trans "vgblocksize_rep" %}</td>
+                <td>{% trans "vgfreesize_rep" %}</td>
+                <td>{% trans "vgdiskcount_rep" %}</td>
+                <td>{% trans "vgdiskactive_rep" %}</td>
+                <td>{% trans "vgautoimport_rep" %}</td>
                 </thead>
                 {% for vg in vgs %}
                     <tr>
@@ -252,20 +254,21 @@
     {% endif %}
 
     {% if lvs %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о логических томах
+{#        #}
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "lv_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
         {% for lv in lvs %}
-            <thead>Дисковая группа: {{ lv.volgroup }}</thead>
+            <thead>{% trans "vgtitle_rep" %} {{ lv.volgroup }}</thead>
             <table>
                 <tr>
-                    <td>Имя тома</td>
-                    <td>Тип тома</td>
-                    <td>Кол-во копий</td>
-                    <td>Состояние тома</td>
-                    <td>Точка монтирования</td>
-                    <td>Смонтирована?</td>
-                    <td>% заполнения</td>
-                    <td>% использованных inode</td>
+                    <td>{% trans "lvname_rep" %}</td>
+                    <td>{% trans "lvtype_rep" %}</td>
+                    <td>{% trans "lvcopycount_rep" %}</td>
+                    <td>{% trans "lvstate_rep" %}</td>
+                    <td>{% trans "lvmountp_rep" %}</td>
+                    <td>{% trans "lvmounted_rep" %}</td>
+                    <td>{% trans "lvbusy_rep" %}</td>
+                    <td>{% trans "lvinodebusy_rep" %}</td>
                 </tr>
                 {% for l in lv.volumes %}
                     <tr>
@@ -285,14 +288,15 @@
     {% endif %}
 
     {% if swaps %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о файлах и разделах подкачки
+{#        #}
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "swap_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <tr>
-                    <td>Раздел/Файл</td>
-                    <td>Активный</td>
-                    <td>Размер</td>
-                    <td>Процент использования</td>
+                    <td>{% trans "swapname_rep" %}</td>
+                    <td>{% trans "swapactive_rep" %}</td>
+                    <td>{% trans "swapsize_rep" %}</td>
+                    <td>{% trans "swapused_rep"%}</td>
                 </tr>
                 {% for swap in swaps %}
                     <tr>
@@ -307,45 +311,47 @@
     {% endif %}
 
     {% if dns %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о настройках DNS
+{#        #}
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "dns_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 {% if dns.dns_nameserver_1 %}
                     <tr>
-                        <td>Имя сервера DNS (1)</td>
+                        <td>{% trans "dnsname_rep" %} (1)</td>
                         <td>{{ dns.dns_nameserver_1 }}</td>
                     </tr>
                 {% endif %}
                 {% if dns.dns_nameserver_2 %}
                     <tr>
-                        <td>Имя сервера DNS (2)</td>
+                        <td>{% trans "dnsname_rep" %} (2)</td>
                         <td>{{ dns.dns_nameserver_2 }}</td>
                     </tr>
                 {% endif %}
                 {% if dns.dns_nameserver_3 %}
                     <tr>
-                        <td>Имя сервера DNS (3)</td>
+                        <td>{% trans "dnsname_rep" %} (3)</td>
                         <td>{{ dns.dns_nameserver_3 }}</td>
                     </tr>
                 {% endif %}
                 {% if dns.dns_nameserver_4 %}
                     <tr>
-                        <td>Имя сервера DNS (4)</td>
+                        <td>{% trans "dnsname_rep" %} (4)</td>
                         <td>{{ dns.dns_nameserver_4 }}</td>
                     </tr>
                 {% endif %}
                 {% if dns.dns_nameserver_5 %}
                     <tr>
-                        <td>Имя сервера DNS (5)</td>
+                        <td>{% trans "dnsname_rep" %} (5)</td>
                         <td>{{ dns.dns_nameserver_5 }}</td>
                     </tr>
                 {% endif %}
                 <tr>
-                    <td>Домен DNS</td>
+                    <td>{% trans "dnsdomain_rep" %}</td>
                     <td>{{ dns.dns_domain }}</td>
                 </tr>
                 <tr>
-                    <td>Поиск по умолчанию</td>
+{#                    #}
+                    <td>{% trans "dnssearch_rep" %}</td>
                     <td>{{ dns.dns_search }}</td>
                 </tr>
             </table>
@@ -353,7 +359,7 @@
     {% endif %}
 
     {% if hequv %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Записи файла hostequiv
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "hequiv_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 {% for record in hequv %}
@@ -366,20 +372,20 @@
     {% endif %}
 
     {% if nfs %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об экспортированных файловых системах
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "nfsshares_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 {% if nfs|length > 1 %}
-                    <tr><td>Экспортированные файловые системы</td></tr>
+                    <tr>{% trans "nfssharename_rep" %}<td></td></tr>
                     {% for fs in nfs %}
                         <tr><td>{{ fs.exportedfs }}</td></tr>
                     {% endfor %}
                 {% else %}
                     {% for fs in nfs %}
                         {% ifequal fs.exportedfs "exportfs: nothing exported" %}
-                            <tr><td>Информация об экспортированных файловых системах не обнаружена</td> </tr>
+                            <tr><td>{% trans "nonfsshares_rep" %}</td> </tr>
                         {% else %}
-                            <tr><td>Экспортированные файловые системы</td></tr>
+                            <tr><td>{% trans "nfsexported_rep" %}</td></tr>
                             <tr><td>{{ fs.exportedfs }}</td></tr>
                         {% endifequal %}
                     {% endfor %}
@@ -389,11 +395,11 @@
     {% endif %}
 
     {% if rpms %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о пакетах RPM
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "rpms_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <tr>
-                    <td>Название и версия пакета</td>
+                    <td>{% trans "rpmnamever_rep" %}</td>
                 </tr>
                 {% for rpm in rpms %}
                     <tr>
@@ -405,12 +411,13 @@
     {% endif %}
 
     {% if vrtslpps %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о пакетах ПО Symantec
+{#        #}
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "vrtslpps_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <tr>
-                    <td>Название пакета</td>
-                    <td>Версия пакета</td>
+                    <td>{% trans "vrtslppname_rep" %}</td>
+                    <td>{% trans "vrtslppver_rep" %}</td>
                 </tr>
                 {% for lpp in vrtslpps %}
                     <tr>
@@ -423,12 +430,12 @@
     {% endif %}
 
     {% if sysparams %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о настройках системы (sys0)
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "sys0_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <tr>
-                    <td>Название параметра</td>
-                    <td>Значение парамтера</td>
+                    <td>{% trans "atname_rep" %}</td>
+                    <td>{% trans "atval_rep" %}</td>
                 </tr>
                 <tr>
                     <td>{{ sysparams.atname_1 }}</td>
@@ -443,14 +450,14 @@
     {% endif %}
 
     {% if limits %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об установленных ограничениях для пользователей
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "limits_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
         {% for user in limits %}
             <h3>{{ user.username }}</h3>
             <table>
                 <tr>
-                    <td>Имя параметра</td>
-                    <td>Значение параметра</td>
+                    <td>{% trans "atname_rep" %}</td>
+                    <td>{% trans "atval_rep" %}</td>
                 </tr>
                 {% for limit in user.limitlist %}
                     <tr>
@@ -464,14 +471,14 @@
     {% endif %}
 
     {% if adapters %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об адаптерах, сконфигурированных в раздел
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "adapters_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <tr>
-                    <td>Имя адаптера</td>
-                    <td>Опсисание адаптера</td>
-                    <td>Состояние адаптера</td>
-                    <td>Location Code</td>
+                    <td>{% trans "adaptername_rep" %}</td>
+                    <td>{% trans "adapterdesc_rep" %}</td>
+                    <td>{% trans "adaptestate_rep" %}</td>
+                    <td>{% trans "adapterloc_rep" %}</td>
                 </tr>
                 {% for adapter in adapters %}
                     <tr>
@@ -486,14 +493,14 @@
     {% endif %}
 
     {% if ent1g_attrs %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об адаптерах Gigabit Ethernet
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "ent1g_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
         {% for ent in ent1g_attrs %}
             <h3>{{ ent.name }}</h3>
             <table>
                 <tr>
-                    <td>Имя параметра</td>
-                    <td>Значение параметра</td>
+                    <td>{% trans "atname_rep" %}</td>
+                    <td>{% trans "atval_rep" %}</td>
                 </tr>
                 <tr>
                     <td>{{ ent.atname_1 }}</td>
@@ -517,14 +524,14 @@
     {% endif %}
 
     {% if ent10g_attrs %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об адаптерах 10 Gigabit Ethernet
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "ent10g_info_rep"%}
         </A><DIV style="display:none;" class="hideCont">
             {% for ent in ent10g_attrs %}
                 <h3>{{ ent.name }}</h3>
                 <table>
                     <tr>
-                        <td>Имя параметра</td>
-                        <td>Значение параметра</td>
+                        <td>{% trans "atname_rep" %}</td>
+                        <td>{% trans "atval_rep" %}</td>
                     </tr>
                     <tr>
                         <td>{{ ent.atname_1 }}</td>
@@ -544,14 +551,14 @@
     {% endif %}
 
     {% if entec_attrs %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о настроенных устройствах EtherChannel
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "entec_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
         {% for ent in entec_attrs %}
             <h3>{{ ent.name }}</h3>
             <table>
                 <tr>
-                    <td>Имя параметра</td>
-                    <td>Значение параметра</td>
+                    <td>{% trans "atname_rep" %}</td>
+                    <td>{% trans "atval_rep" %}</td>
                 </tr>
                 <tr>
                     <td>{{ ent.atname_1 }}</td>
@@ -571,14 +578,14 @@
     {% endif %}
 
     {% if fcs_attrs %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация об адаптерах FibreChannel
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "fcs_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
         {% for fcs in fcs_attrs %}
             <h3>{{ fcs.name }}</h3>
             <table>
                 <tr>
-                    <td>Имя параметра</td>
-                    <td>Значение параметра</td>
+                    <td>{% trans "atname_rep" %}</td>
+                    <td>{% trans "atval_rep" %}</td>
                 </tr>
                 <tr>
                     <td>{{ fcs.atname_1 }}</td>
@@ -598,14 +605,14 @@
     {% endif %}
 
     {% if fscsi_attrs %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о настройках fscsi
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "fscsi_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
         {% for fscsi in fscsi_attrs %}
             <h3>{{ fscsi.name }}</h3>
             <table>
                 <tr>
-                    <td>Имя параметра</td>
-                    <td>Значение параметра</td>
+                    <td>{% trans "atname_rep" %}</td>
+                    <td>{% trans "atval_rep" %}</td>
                 </tr>
                 <tr>
                     <td>{{ fscsi.atname_1 }}</td>
@@ -625,12 +632,12 @@
     {% endif %}
 
     {% if disks %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о жестких дисках
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "hdisk_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <tr>
-                    <td>Тип устройств</td>
-                    <td>Кол-во устройств в ОС</td>
+                    <td>{% trans "hdisktype_rep" %}</td>
+                    <td>{% trans "hdiskcount_rep" %}</td>
                 </tr>
                 {% for disk in disks %}
                     <tr>
@@ -643,13 +650,13 @@
     {% endif %}
 
     {% if rmts %}
-        <A class = "hideBtn" onclick="hideShow(this);return false;">Информация о ленточных накопителях
+        <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "rmts_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
                 <tr>
-                    <td>Название устройства в ОС</td>
-                    <td>Производитель устройства</td>
-                    <td>Тип устройства</td>
+                    <td>{% trans "rmtname_rep" %}</td>
+                    <td>{% trans "rmtvendor_rep" %}</td>
+                    <td>{% trans "rmttype_rep" %}</td>
                 </tr>
                 {% for rmt in rmts %}
                     <tr>
@@ -662,7 +669,7 @@
         </DIV>
     {% endif %}
 
-        <p> <input type="submit" value="Сохранить в базе данных"> </p>
+        <p> <input type="submit" value={% trans "save_in_db_button" %}> </p>
     </form>
 </div>
 {% endblock %}

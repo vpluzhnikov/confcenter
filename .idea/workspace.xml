@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/confcenter/templates/main.htm" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/settings.py" afterPath="$PROJECT_DIR$/confcenter/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/base.html" afterPath="$PROJECT_DIR$/confcenter/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/confupload_form.html" afterPath="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" afterPath="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/upload_handlers.py" afterPath="$PROJECT_DIR$/confcenter/upload_handlers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/urls.py" afterPath="$PROJECT_DIR$/confcenter/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/forms.py" afterPath="$PROJECT_DIR$/upload/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.mo" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.mo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/views.py" afterPath="$PROJECT_DIR$/upload/views.py" />
     </list>
     <ignored path="confcenter.iws" />
@@ -41,7 +34,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upload/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="17" selection-start="4473" selection-end="4473" vertical-scroll-proportion="0.0">
+            <state line="112" column="16" selection-start="5011" selection-end="5011" vertical-scroll-proportion="-10.884615">
               <folding>
                 <element signature="e#51#113#0" expanded="true" />
               </folding>
@@ -83,16 +76,18 @@
       <file leaf-file-name="snapreport_form.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confcenter/templates/snapreport_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="26" selection-start="5715" selection-end="5715" vertical-scroll-proportion="-8.75">
-              <folding />
+            <state line="674" column="14" selection-start="25996" selection-end="25996" vertical-scroll-proportion="-17.416666">
+              <folding>
+                <element signature="e#8528#8549#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="django.po" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="django.po" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="176" column="8" selection-start="5126" selection-end="5126" vertical-scroll-proportion="0.0">
+            <state line="514" column="31" selection-start="14463" selection-end="14463" vertical-scroll-proportion="0.37172773">
               <folding />
             </state>
           </provider>
@@ -118,10 +113,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="django.po" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="django.po" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="181" column="0" selection-start="4772" selection-end="4772" vertical-scroll-proportion="0.921466">
+            <state line="513" column="23" selection-start="13329" selection-end="13329" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -151,14 +146,14 @@
         <option value="$PROJECT_DIR$/conf/locale/ru/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/confcenter/urls.py" />
         <option value="$PROJECT_DIR$/confcenter/settings.py" />
-        <option value="$PROJECT_DIR$/upload/views.py" />
         <option value="$PROJECT_DIR$/upload/forms.py" />
         <option value="$PROJECT_DIR$/confcenter/upload_handlers.py" />
         <option value="$PROJECT_DIR$/confcenter/templates/base.html" />
         <option value="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
-        <option value="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
+        <option value="$PROJECT_DIR$/upload/views.py" />
         <option value="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" />
         <option value="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
+        <option value="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
       </list>
     </option>
   </component>
@@ -579,7 +574,11 @@
       <created>1356899987476</created>
       <updated>1356899987476</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added support for two main languages RU, EN (preview)">
+      <created>1357235777201</created>
+      <updated>1357235777201</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -644,7 +643,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Status bar for file upload and analyze animation (all bowsers version)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added support for two main languages RU, EN (preview)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -665,6 +664,7 @@
     <MESSAGE value="Status bar  for file upload (firefox only version)" />
     <MESSAGE value="Status bar for file upload and analyze animation (firefox only version)" />
     <MESSAGE value="Status bar for file upload and analyze animation (all bowsers version)" />
+    <MESSAGE value="Added support for two main languages RU, EN (preview)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -690,15 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="16" selection-start="1770" selection-end="1770" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/upload/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="17" selection-start="4473" selection-end="4473" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#51#113#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -729,13 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="535" selection-end="535" vertical-scroll-proportion="-7.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="0" selection-start="1104" selection-end="1104" vertical-scroll-proportion="0.0">
@@ -745,23 +729,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/upload/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="16" selection-start="5011" selection-end="5011" vertical-scroll-proportion="-10.884615">
+          <folding>
+            <element signature="e#51#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/confcenter/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="535" selection-end="535" vertical-scroll-proportion="-7.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/templates/snapreport_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="26" selection-start="5715" selection-end="5715" vertical-scroll-proportion="-8.75">
+        <state line="674" column="14" selection-start="25996" selection-end="25996" vertical-scroll-proportion="-17.416666">
+          <folding>
+            <element signature="e#8528#8549#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="513" column="23" selection-start="13329" selection-end="13329" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="176" column="8" selection-start="5126" selection-end="5126" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="0" selection-start="4772" selection-end="4772" vertical-scroll-proportion="0.921466">
+        <state line="514" column="31" selection-start="14463" selection-end="14463" vertical-scroll-proportion="0.37172773">
           <folding />
         </state>
       </provider>

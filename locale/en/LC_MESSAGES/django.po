@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-03 21:49+0400\n"
+"POT-Creation-Date: 2013-01-09 18:31+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,25 +152,366 @@ msgstr "System dump status:"
 msgid "sysdump_size_rep"
 msgstr "System dump size:"
 
-#: confcenter/templates/snapreport_form.html:108
+#: confcenter/templates/snapreport_form.html:107
 msgid "emgr_info_rep"
 msgstr "Installed IFIX details"
 
-#: confcenter/templates/snapreport_form.html:114
+#: confcenter/templates/snapreport_form.html:112
 msgid "emgr_label_rep"
 msgstr "Ifix label:"
 
-#: confcenter/templates/snapreport_form.html:119
+#: confcenter/templates/snapreport_form.html:116
 msgid "emgr_instdate_rep"
 msgstr "Date ifix of installation:"
 
-#: confcenter/templates/snapreport_form.html:124
+#: confcenter/templates/snapreport_form.html:120
 msgid "emgr_abstruct_rep"
 msgstr "Ifix abstruct:"
 
-#: confcenter/templates/snapreport_form.html:129
+#: confcenter/templates/snapreport_form.html:124
 msgid "emgr_status_rep"
 msgstr "Ifix installation status:"
+
+#: confcenter/templates/snapreport_form.html:136
+msgid "err_info_rep"
+msgstr "Errors registered for LPAR"
+
+#: confcenter/templates/snapreport_form.html:139
+msgid "err_count_rep"
+msgstr "Count"
+
+#: confcenter/templates/snapreport_form.html:140
+msgid "err_id_rep"
+msgstr "ID"
+
+#: confcenter/templates/snapreport_form.html:141
+msgid "err_firstocc_rep"
+msgstr "First time occured"
+
+#: confcenter/templates/snapreport_form.html:142
+msgid "err_lastocc_rep"
+msgstr "Last time occured"
+
+#: confcenter/templates/snapreport_form.html:143
+msgid "err_type_rep"
+msgstr "Type"
+
+#: confcenter/templates/snapreport_form.html:144
+msgid "err_class_rep"
+msgstr "Class"
+
+#: confcenter/templates/snapreport_form.html:145
+msgid "err_resource_rep"
+msgstr "Resource"
+
+#: confcenter/templates/snapreport_form.html:146
+msgid "err_desc_rep"
+msgstr "Description"
+
+#: confcenter/templates/snapreport_form.html:166
+msgid "bootinfo_rep"
+msgstr "OS kernel boot mode"
+
+#: confcenter/templates/snapreport_form.html:169
+msgid "osloaded_rep"
+msgstr "Kernel is loaded in "
+
+#: confcenter/templates/snapreport_form.html:169
+msgid "osbits_rep"
+msgstr " bits mode"
+
+#: confcenter/templates/snapreport_form.html:175
+msgid "smtinfo_rep"
+msgstr "SMT mode"
+
+#: confcenter/templates/snapreport_form.html:180
+msgid "smt0_threads_rep"
+msgstr "No addtional threads configured for proccessors in system"
+
+#: confcenter/templates/snapreport_form.html:184
+msgid "smton_rep"
+msgstr "System runs with "
+
+#: confcenter/templates/snapreport_form.html:184
+msgid "smt_threades_rep"
+msgstr " threads per porccessor"
+
+#: confcenter/templates/snapreport_form.html:192
+msgid "tun_info_rep"
+msgstr "Changed values for tunable parameters in sections vmo, ioo, schedo"
+
+#: confcenter/templates/snapreport_form.html:196
+msgid "tun_name_rep"
+msgstr "Parameter name"
+
+#: confcenter/templates/snapreport_form.html:197
+msgid "tun_value_rep"
+msgstr "Parameter value"
+
+#: confcenter/templates/snapreport_form.html:211
+msgid "notun_info_rep"
+msgstr "Changed values for tunable parameters in section no"
+
+#: confcenter/templates/snapreport_form.html:215
+msgid "notun_name_rep"
+msgstr "Parameter name"
+
+#: confcenter/templates/snapreport_form.html:216
+msgid "notun_value_rep"
+msgstr "Parameter value"
+
+#: confcenter/templates/snapreport_form.html:229
+msgid "vg_info_rep"
+msgstr "Volume groups"
+
+#: confcenter/templates/snapreport_form.html:233
+msgid "vgname_rep"
+msgstr "Name"
+
+#: confcenter/templates/snapreport_form.html:234
+msgid "vgstate_rep"
+msgstr "State"
+
+#: confcenter/templates/snapreport_form.html:235
+msgid "vgblocksize_rep"
+msgstr "Block size"
+
+#: confcenter/templates/snapreport_form.html:236
+msgid "vgfreesize_rep"
+msgstr "Free space"
+
+#: confcenter/templates/snapreport_form.html:237
+msgid "vgdiskcount_rep"
+msgstr "Disk count"
+
+#: confcenter/templates/snapreport_form.html:238
+msgid "vgdiskactive_rep"
+msgstr "Active disks"
+
+#: confcenter/templates/snapreport_form.html:239
+msgid "vgautoimport_rep"
+msgstr "Auto-import"
+
+#: confcenter/templates/snapreport_form.html:258
+#, fuzzy
+msgid "lv_info_rep"
+msgstr "Logical volumes"
+
+#: confcenter/templates/snapreport_form.html:261
+msgid "vgtitle_rep"
+msgstr "Disk group: "
+
+#: confcenter/templates/snapreport_form.html:264
+msgid "lvname_rep"
+msgstr "LV name"
+
+#: confcenter/templates/snapreport_form.html:265
+msgid "lvtype_rep"
+msgstr "LV type"
+
+#: confcenter/templates/snapreport_form.html:266
+msgid "lvcopycount_rep"
+msgstr "Numbers of copies"
+
+#: confcenter/templates/snapreport_form.html:267
+msgid "lvstate_rep"
+msgstr "LV state"
+
+#: confcenter/templates/snapreport_form.html:268
+msgid "lvmountp_rep"
+msgstr "Mount point"
+
+#: confcenter/templates/snapreport_form.html:269
+msgid "lvmounted_rep"
+msgstr "Mounted?"
+
+#: confcenter/templates/snapreport_form.html:270
+msgid "lvbusy_rep"
+msgstr "% used"
+
+#: confcenter/templates/snapreport_form.html:271
+msgid "lvinodebusy_rep"
+msgstr "% indodes used"
+
+#: confcenter/templates/snapreport_form.html:292
+msgid "swap_info_rep"
+msgstr "Paging space"
+
+#: confcenter/templates/snapreport_form.html:296
+msgid "swapname_rep"
+msgstr "LV/File name"
+
+#: confcenter/templates/snapreport_form.html:297
+msgid "swapactive_rep"
+msgstr "Active"
+
+#: confcenter/templates/snapreport_form.html:298
+msgid "swapsize_rep"
+msgstr "Size"
+
+#: confcenter/templates/snapreport_form.html:299
+msgid "swapused_rep"
+msgstr "% used"
+
+#: confcenter/templates/snapreport_form.html:315
+msgid "dns_info_rep"
+msgstr "DNS Configuration"
+
+#: confcenter/templates/snapreport_form.html:320
+#: confcenter/templates/snapreport_form.html:326
+#: confcenter/templates/snapreport_form.html:332
+#: confcenter/templates/snapreport_form.html:338
+#: confcenter/templates/snapreport_form.html:344
+msgid "dnsname_rep"
+msgstr "DNS Server "
+
+#: confcenter/templates/snapreport_form.html:349
+msgid "dnsdomain_rep"
+msgstr "Domain name"
+
+#: confcenter/templates/snapreport_form.html:354
+msgid "dnssearch_rep"
+msgstr "Default search in"
+
+#: confcenter/templates/snapreport_form.html:362
+msgid "hequiv_info_rep"
+msgstr "Records in hostequiv"
+
+#: confcenter/templates/snapreport_form.html:375
+msgid "nfsshares_info_rep"
+msgstr "NFS shares"
+
+#: confcenter/templates/snapreport_form.html:379
+msgid "nfssharename_rep"
+msgstr "Exported file systems"
+
+#: confcenter/templates/snapreport_form.html:386
+msgid "nonfsshares_rep"
+msgstr "No exported file systems found"
+
+#: confcenter/templates/snapreport_form.html:388
+msgid "nfsexported_rep"
+msgstr "Exported file systems"
+
+#: confcenter/templates/snapreport_form.html:398
+msgid "rpms_info_rep"
+msgstr "RPM packets"
+
+#: confcenter/templates/snapreport_form.html:402
+msgid "rpmnamever_rep"
+msgstr "Packet name and version"
+
+#: confcenter/templates/snapreport_form.html:415
+msgid "vrtslpps_info_rep"
+msgstr "Symantec additional packets"
+
+#: confcenter/templates/snapreport_form.html:419
+msgid "vrtslppname_rep"
+msgstr "Packet name"
+
+#: confcenter/templates/snapreport_form.html:420
+msgid "vrtslppver_rep"
+msgstr "Packet version"
+
+#: confcenter/templates/snapreport_form.html:433
+msgid "sys0_info_rep"
+msgstr "System (sys0) configuration"
+
+#: confcenter/templates/snapreport_form.html:437
+#: confcenter/templates/snapreport_form.html:459
+#: confcenter/templates/snapreport_form.html:502
+#: confcenter/templates/snapreport_form.html:533
+#: confcenter/templates/snapreport_form.html:560
+#: confcenter/templates/snapreport_form.html:587
+#: confcenter/templates/snapreport_form.html:614
+msgid "atname_rep"
+msgstr "Attribute name"
+
+#: confcenter/templates/snapreport_form.html:438
+#: confcenter/templates/snapreport_form.html:460
+#: confcenter/templates/snapreport_form.html:503
+#: confcenter/templates/snapreport_form.html:534
+#: confcenter/templates/snapreport_form.html:561
+#: confcenter/templates/snapreport_form.html:588
+#: confcenter/templates/snapreport_form.html:615
+msgid "atval_rep"
+msgstr "Attribute value"
+
+#: confcenter/templates/snapreport_form.html:453
+msgid "limits_info_rep"
+msgstr "Configured limitations (limits)"
+
+#: confcenter/templates/snapreport_form.html:474
+msgid "adapters_info_rep"
+msgstr "Installer adapters"
+
+#: confcenter/templates/snapreport_form.html:478
+msgid "adaptername_rep"
+msgstr "Adapter name"
+
+#: confcenter/templates/snapreport_form.html:479
+msgid "adapterdesc_rep"
+msgstr "Description"
+
+#: confcenter/templates/snapreport_form.html:480
+msgid "adaptestate_rep"
+msgstr "Adapter state"
+
+#: confcenter/templates/snapreport_form.html:481
+msgid "adapterloc_rep"
+msgstr "Location Code"
+
+#: confcenter/templates/snapreport_form.html:496
+msgid "ent1g_info_rep"
+msgstr "Gigabit Ethernet devices"
+
+#: confcenter/templates/snapreport_form.html:527
+msgid "ent10g_info_rep"
+msgstr "10 Gigabit Ethernet devices"
+
+#: confcenter/templates/snapreport_form.html:554
+msgid "entec_info_rep"
+msgstr "Etherchannel devices"
+
+#: confcenter/templates/snapreport_form.html:581
+msgid "fcs_info_rep"
+msgstr "FibreChannel devices"
+
+#: confcenter/templates/snapreport_form.html:608
+msgid "fscsi_info_rep"
+msgstr "FSCSI devices"
+
+#: confcenter/templates/snapreport_form.html:635
+msgid "hdisk_info_rep"
+msgstr "Harddisk drives"
+
+#: confcenter/templates/snapreport_form.html:639
+msgid "hdisktype_rep"
+msgstr "Disk type"
+
+#: confcenter/templates/snapreport_form.html:640
+msgid "hdiskcount_rep"
+msgstr "Disk count"
+
+#: confcenter/templates/snapreport_form.html:653
+msgid "rmts_info_rep"
+msgstr "Tape devices"
+
+#: confcenter/templates/snapreport_form.html:657
+msgid "rmtname_rep"
+msgstr "Tape device name"
+
+#: confcenter/templates/snapreport_form.html:658
+msgid "rmtvendor_rep"
+msgstr "Tape device vendor"
+
+#: confcenter/templates/snapreport_form.html:659
+msgid "rmttype_rep"
+msgstr "Tape device type"
+
+#: confcenter/templates/snapreport_form.html:672
+msgid "save_in_db_button"
+msgstr "Save info in DB"
 
 #: upload/forms.py:14
 msgid "Auto-detect"

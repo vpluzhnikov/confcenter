@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-03 21:49+0400\n"
+"POT-Creation-Date: 2013-01-09 18:31+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,25 +152,367 @@ msgstr "Статус дампа:"
 msgid "sysdump_size_rep"
 msgstr "Размер дампа:"
 
-#: confcenter/templates/snapreport_form.html:108
+#: confcenter/templates/snapreport_form.html:107
 msgid "emgr_info_rep"
 msgstr "Информация о временных исправлениях (ifix)"
 
-#: confcenter/templates/snapreport_form.html:114
+#: confcenter/templates/snapreport_form.html:112
 msgid "emgr_label_rep"
 msgstr "Идентификатор ifix:"
 
-#: confcenter/templates/snapreport_form.html:119
+#: confcenter/templates/snapreport_form.html:116
 msgid "emgr_instdate_rep"
 msgstr "Дата инсталляции:"
 
-#: confcenter/templates/snapreport_form.html:124
+#: confcenter/templates/snapreport_form.html:120
 msgid "emgr_abstruct_rep"
 msgstr "Краткое описание ifix:"
 
-#: confcenter/templates/snapreport_form.html:129
+#: confcenter/templates/snapreport_form.html:124
 msgid "emgr_status_rep"
 msgstr "Статус установки ifix:"
+
+#: confcenter/templates/snapreport_form.html:136
+msgid "err_info_rep"
+msgstr "Информация об ошибках раздела"
+
+#: confcenter/templates/snapreport_form.html:139
+msgid "err_count_rep"
+msgstr "Кол-во"
+
+#: confcenter/templates/snapreport_form.html:140
+msgid "err_id_rep"
+msgstr "ID"
+
+#: confcenter/templates/snapreport_form.html:141
+msgid "err_firstocc_rep"
+msgstr "Первая регистрация"
+
+#: confcenter/templates/snapreport_form.html:142
+msgid "err_lastocc_rep"
+msgstr "Последняя регистрация"
+
+#: confcenter/templates/snapreport_form.html:143
+msgid "err_type_rep"
+msgstr "Тип"
+
+#: confcenter/templates/snapreport_form.html:144
+msgid "err_class_rep"
+msgstr "Класс"
+
+#: confcenter/templates/snapreport_form.html:145
+msgid "err_resource_rep"
+msgstr "Ресурс"
+
+#: confcenter/templates/snapreport_form.html:146
+msgid "err_desc_rep"
+msgstr "Описание"
+
+#: confcenter/templates/snapreport_form.html:166
+msgid "bootinfo_rep"
+msgstr "Разрядность ядра ОС"
+
+#: confcenter/templates/snapreport_form.html:169
+msgid "osloaded_rep"
+msgstr "Операционная система загружена в режиме "
+
+#: confcenter/templates/snapreport_form.html:169
+msgid "osbits_rep"
+msgstr "-х бит"
+
+#: confcenter/templates/snapreport_form.html:175
+msgid "smtinfo_rep"
+msgstr "Количество потоков на процессорах сервера (SMT)"
+
+#: confcenter/templates/snapreport_form.html:180
+msgid "smt0_threads_rep"
+msgstr "В системе для всех процессоров отключены дополнительные потоки"
+
+#: confcenter/templates/snapreport_form.html:184
+msgid "smton_rep"
+msgstr "В системе для всех процессоров настроено "
+
+#: confcenter/templates/snapreport_form.html:184
+msgid "smt_threades_rep"
+msgstr " потока"
+
+#: confcenter/templates/snapreport_form.html:192
+msgid "tun_info_rep"
+msgstr ""
+"Информация об изменненых значениях tunable parameters разделов vmo, ioo, "
+"schedo"
+
+#: confcenter/templates/snapreport_form.html:196
+msgid "tun_name_rep"
+msgstr "Название параметра"
+
+#: confcenter/templates/snapreport_form.html:197
+msgid "tun_value_rep"
+msgstr "Значение параметра"
+
+#: confcenter/templates/snapreport_form.html:211
+msgid "notun_info_rep"
+msgstr "Информация о значениях tunable parameters раздела no"
+
+#: confcenter/templates/snapreport_form.html:215
+msgid "notun_name_rep"
+msgstr "Название параметра"
+
+#: confcenter/templates/snapreport_form.html:216
+msgid "notun_value_rep"
+msgstr "Значение параметра"
+
+#: confcenter/templates/snapreport_form.html:229
+msgid "vg_info_rep"
+msgstr "Информация о дисковых группах"
+
+#: confcenter/templates/snapreport_form.html:233
+msgid "vgname_rep"
+msgstr "Имя дисковой группы"
+
+#: confcenter/templates/snapreport_form.html:234
+msgid "vgstate_rep"
+msgstr "Состояние дисковой группы"
+
+#: confcenter/templates/snapreport_form.html:235
+msgid "vgblocksize_rep"
+msgstr "Размер физического блока"
+
+#: confcenter/templates/snapreport_form.html:236
+msgid "vgfreesize_rep"
+msgstr "Свободный объем в группе"
+
+#: confcenter/templates/snapreport_form.html:237
+msgid "vgdiskcount_rep"
+msgstr "Общее число дисков"
+
+#: confcenter/templates/snapreport_form.html:238
+msgid "vgdiskactive_rep"
+msgstr "Число активных дисков"
+
+#: confcenter/templates/snapreport_form.html:239
+msgid "vgautoimport_rep"
+msgstr "Автоматический импорт"
+
+#: confcenter/templates/snapreport_form.html:258
+msgid "lv_info_rep"
+msgstr "Информация о логических томах"
+
+#: confcenter/templates/snapreport_form.html:261
+msgid "vgtitle_rep"
+msgstr "Дисковая группа: "
+
+#: confcenter/templates/snapreport_form.html:264
+msgid "lvname_rep"
+msgstr "Имя тома"
+
+#: confcenter/templates/snapreport_form.html:265
+msgid "lvtype_rep"
+msgstr "Тип тома"
+
+#: confcenter/templates/snapreport_form.html:266
+msgid "lvcopycount_rep"
+msgstr "Кол-во копий"
+
+#: confcenter/templates/snapreport_form.html:267
+msgid "lvstate_rep"
+msgstr "Состояние тома"
+
+#: confcenter/templates/snapreport_form.html:268
+msgid "lvmountp_rep"
+msgstr "Точка мотирования"
+
+#: confcenter/templates/snapreport_form.html:269
+msgid "lvmounted_rep"
+msgstr "Смонтирована?"
+
+#: confcenter/templates/snapreport_form.html:270
+msgid "lvbusy_rep"
+msgstr "% заполнения"
+
+#: confcenter/templates/snapreport_form.html:271
+msgid "lvinodebusy_rep"
+msgstr "% использованных inode"
+
+#: confcenter/templates/snapreport_form.html:292
+msgid "swap_info_rep"
+msgstr "Информация о файлах и разделах подкачки"
+
+#: confcenter/templates/snapreport_form.html:296
+msgid "swapname_rep"
+msgstr "Раздел/Файл"
+
+#: confcenter/templates/snapreport_form.html:297
+msgid "swapactive_rep"
+msgstr "Активный"
+
+#: confcenter/templates/snapreport_form.html:298
+msgid "swapsize_rep"
+msgstr "Размер"
+
+#: confcenter/templates/snapreport_form.html:299
+msgid "swapused_rep"
+msgstr "Процент использования"
+
+#: confcenter/templates/snapreport_form.html:315
+msgid "dns_info_rep"
+msgstr "Информация о настройках DNS"
+
+#: confcenter/templates/snapreport_form.html:320
+#: confcenter/templates/snapreport_form.html:326
+#: confcenter/templates/snapreport_form.html:332
+#: confcenter/templates/snapreport_form.html:338
+#: confcenter/templates/snapreport_form.html:344
+msgid "dnsname_rep"
+msgstr "Имя сервера DNS"
+
+#: confcenter/templates/snapreport_form.html:349
+msgid "dnsdomain_rep"
+msgstr "Домен DNS"
+
+#: confcenter/templates/snapreport_form.html:354
+msgid "dnssearch_rep"
+msgstr "Поиск по умолчанию"
+
+#: confcenter/templates/snapreport_form.html:362
+msgid "hequiv_info_rep"
+msgstr "Записи файла hostequiv"
+
+#: confcenter/templates/snapreport_form.html:375
+msgid "nfsshares_info_rep"
+msgstr "Информация об экспортированных файловых системах"
+
+#: confcenter/templates/snapreport_form.html:379
+msgid "nfssharename_rep"
+msgstr "Экспортированные файловые системы"
+
+#: confcenter/templates/snapreport_form.html:386
+msgid "nonfsshares_rep"
+msgstr "Информация об экспортированных файловых системах не обнаружена"
+
+#: confcenter/templates/snapreport_form.html:388
+msgid "nfsexported_rep"
+msgstr "Экспортированные файловые системы"
+
+#: confcenter/templates/snapreport_form.html:398
+msgid "rpms_info_rep"
+msgstr "Информация о пакетах RPM"
+
+#: confcenter/templates/snapreport_form.html:402
+msgid "rpmnamever_rep"
+msgstr "Название и версия пакета"
+
+#: confcenter/templates/snapreport_form.html:415
+msgid "vrtslpps_info_rep"
+msgstr "Информация о пакетах ПО Symantec"
+
+#: confcenter/templates/snapreport_form.html:419
+msgid "vrtslppname_rep"
+msgstr "Название пакета"
+
+#: confcenter/templates/snapreport_form.html:420
+msgid "vrtslppver_rep"
+msgstr "Версия пакета"
+
+#: confcenter/templates/snapreport_form.html:433
+msgid "sys0_info_rep"
+msgstr "Информация о настройках системы (sys0)"
+
+#: confcenter/templates/snapreport_form.html:437
+#: confcenter/templates/snapreport_form.html:459
+#: confcenter/templates/snapreport_form.html:502
+#: confcenter/templates/snapreport_form.html:533
+#: confcenter/templates/snapreport_form.html:560
+#: confcenter/templates/snapreport_form.html:587
+#: confcenter/templates/snapreport_form.html:614
+msgid "atname_rep"
+msgstr "Название параметра"
+
+#: confcenter/templates/snapreport_form.html:438
+#: confcenter/templates/snapreport_form.html:460
+#: confcenter/templates/snapreport_form.html:503
+#: confcenter/templates/snapreport_form.html:534
+#: confcenter/templates/snapreport_form.html:561
+#: confcenter/templates/snapreport_form.html:588
+#: confcenter/templates/snapreport_form.html:615
+msgid "atval_rep"
+msgstr "Значение параметра"
+
+#: confcenter/templates/snapreport_form.html:453
+msgid "limits_info_rep"
+msgstr "Информация об установленных ограничениях для пользователей"
+
+#: confcenter/templates/snapreport_form.html:474
+msgid "adapters_info_rep"
+msgstr "Информация об адаптерах, сконфигурированных в раздел"
+
+#: confcenter/templates/snapreport_form.html:478
+msgid "adaptername_rep"
+msgstr "Имя адаптера"
+
+#: confcenter/templates/snapreport_form.html:479
+msgid "adapterdesc_rep"
+msgstr "Опсисание адаптера"
+
+#: confcenter/templates/snapreport_form.html:480
+msgid "adaptestate_rep"
+msgstr "Состояние адаптера"
+
+#: confcenter/templates/snapreport_form.html:481
+msgid "adapterloc_rep"
+msgstr "Location Code"
+
+#: confcenter/templates/snapreport_form.html:496
+msgid "ent1g_info_rep"
+msgstr "Информация об адаптерах Gigabit Ethernet"
+
+#: confcenter/templates/snapreport_form.html:527
+msgid "ent10g_info_rep"
+msgstr "Информация об адаптерах 10 Gigabit Ethernet"
+
+#: confcenter/templates/snapreport_form.html:554
+msgid "entec_info_rep"
+msgstr "Информация о настроенных устройствах EtherChannel"
+
+#: confcenter/templates/snapreport_form.html:581
+msgid "fcs_info_rep"
+msgstr "Информация об адаптерах FibreChannel"
+
+#: confcenter/templates/snapreport_form.html:608
+msgid "fscsi_info_rep"
+msgstr "Информация о настройках fscsi"
+
+#: confcenter/templates/snapreport_form.html:635
+msgid "hdisk_info_rep"
+msgstr "Информация о жестких дисках"
+
+#: confcenter/templates/snapreport_form.html:639
+msgid "hdisktype_rep"
+msgstr "Тип устройств"
+
+#: confcenter/templates/snapreport_form.html:640
+msgid "hdiskcount_rep"
+msgstr "Кол-во устройств в ОС"
+
+#: confcenter/templates/snapreport_form.html:653
+msgid "rmts_info_rep"
+msgstr "Информация о ленточных накопителях"
+
+#: confcenter/templates/snapreport_form.html:657
+msgid "rmtname_rep"
+msgstr "Название устройства в ОС"
+
+#: confcenter/templates/snapreport_form.html:658
+msgid "rmtvendor_rep"
+msgstr "Производитель устройства"
+
+#: confcenter/templates/snapreport_form.html:659
+msgid "rmttype_rep"
+msgstr "Тип устройства"
+
+#: confcenter/templates/snapreport_form.html:672
+msgid "save_in_db_button"
+msgstr "Сохранить в базе данных"
 
 #: upload/forms.py:14
 msgid "Auto-detect"

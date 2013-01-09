@@ -109,7 +109,7 @@ def upload_progress(request):
         cache_key = "%s_%s" % (request.META['REMOTE_ADDR'], progress_id)
 #        logger.info('Searching for cache key %s in %s' % (cache_key, whoami()))
         data = cache.get(cache_key)
-        logger.info('Data retrieved %s', (data))
+#        logger.info('Data retrieved %s', (data))
         if data:
             return HttpResponse(simplejson.dumps(data))
         else:
