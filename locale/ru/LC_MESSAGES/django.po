@@ -29,7 +29,7 @@ msgstr "Загрузить"
 
 #: confcenter/templates/confupload_form.html:30
 msgid "analyze_upload"
-msgstr "Обработка Загруженного файла"
+msgstr "Обработка загруженного файла"
 
 #: confcenter/templates/snapreport_form.html:11
 msgid "system_params_rep"

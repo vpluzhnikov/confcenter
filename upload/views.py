@@ -12,7 +12,7 @@ from logging import getLogger
 from forms import ConfUploadForm
 from conffiles import handle_uploaded_file
 from aixsnap import AixSnap
-from confcenter.common import whoami
+from confcenter.common import whoami, get_client_ip, get_session_key
 from django.utils.translation import ugettext as _
 
 
@@ -58,6 +58,7 @@ def anal_acc(request):
                "lvs" : snap.lv_params(),
                "adapters" : snap.adapters_params(),
                }
+    logger.info("Snap object analyzed for %s and output generated in %s" % (request.session['archpath'], whoami()))
     return render_to_response("snapreport_form.html", context)
 
 def upload_file(request):
@@ -68,14 +69,11 @@ def upload_file(request):
         form = ConfUploadForm(request.POST, request.FILES)
         if form.is_valid():
             UF_FORM = form.cleaned_data
-            if request.session.session_key:
-                key = request.session.session_key
-            else:
-                key = 'None'
             if 'X-Progress-ID' in request.GET:
                 request.session['X-Progress-ID'] = request.GET['X-Progress-ID']
-
-            fileattr = handle_uploaded_file(request.FILES['file'], key + '_' +
+            logger.info("Starting file  %s proccessing in %s for user from %s" % (request.FILES['file'].name, whoami(),
+                                                                               get_client_ip(request)))
+            fileattr = handle_uploaded_file(request.FILES['file'], get_session_key(request) + '_' +
                                                                     request.FILES['file'].name, UF_FORM['ostype'])
             if not ( fileattr == None ):
 #                return HttpResponse('OK - ' + request.FILES['file'].name + ' - ' + str(request.FILES['file'].size) +
@@ -84,12 +82,15 @@ def upload_file(request):
                 request.session['filesize'] = request.FILES['file'].size
                 request.session['archpath'] = fileattr['archpath']
                 request.session['filetype'] = fileattr['filetype']
+                logger.info("Sucsessfully handeled file  %s in %s" % (request.FILES['file'].name, whoami()))
                 return redirect('/upload/anal_acc/')
             else:
+                logger.info("File type %s is not good, reported from %s" % (request.FILES['file'].name, whoami()))
                 return HttpResponse(_('Bad file type or file corrupted'))
 
     else:
-        logger.info("Empty upload form prepared from %s" % (whoami()))
+        logger.info("Empty upload form prepared from %s for user from %s, "
+                    "session id %s" % (whoami(), get_client_ip(request), get_session_key(request)))
         form = ConfUploadForm() # A empty, unbound form
 
     return render_to_response('confupload_form.html', {'form': form, 'MEDIA_URL' : MEDIA_URL},
@@ -107,9 +108,9 @@ def upload_progress(request):
         progress_id = request.META['X-Progress-ID']
     if progress_id:
         cache_key = "%s_%s" % (request.META['REMOTE_ADDR'], progress_id)
-#        logger.info('Searching for cache key %s in %s' % (cache_key, whoami()))
+        logger.debug('Searching for cache key %s in %s' % (cache_key, whoami()))
         data = cache.get(cache_key)
-#        logger.info('Data retrieved %s', (data))
+        logger.debug('Data retrieved %s', (data))
         if data:
             return HttpResponse(simplejson.dumps(data))
         else:

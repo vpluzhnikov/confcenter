@@ -4,28 +4,36 @@ from upload.models import Oses, OsTypes
 from subprocess import Popen
 from os import mkdir, access, R_OK, listdir
 from confcenter.settings import UPLOAD_DIR, AIX_ARCHIVER, AIX_ARCHIVER_ARGS, SOLARIS_ARCHIVER, SOLARIS_ARCHIVER_ARGS
+from logging import getLogger
+from confcenter.common import whoami
 
+logger = getLogger(__name__)
 
 def handle_uploaded_file(file, name, ostype):
     """
         Function handle_uploaded_file(f, name, ostype) saves file f to UPLOAD_DIR and returns DICT(filetype, archpath, filename)
     """
+    logger.info("Starting handling of a file %s in %s" % (name, whoami()))
     with open( UPLOAD_DIR + name, 'wb+') as destination:
         for chunk in file.chunks():
             destination.write(chunk)
     if (ostype == '0'):
         fileattrs = detect_filetype(file, name)
         if not fileattrs == None:
+            logger.info("File type %s is detected as %s" % (name, fileattrs['filetype']))
             fileattrs.update({'filename':name})
             return fileattrs
         else:
+            logger.info("File type %s is not valid" % (name))
             return fileattrs
     else:
         fileattrs = validate_filetype(f, name, ostype)
         if not fileattrs == None:
+            logger.info("File type %s is validated as %s" % (name, fileattrs['filetype']))
             fileattrs.update({'filename':name})
             return fileattrs
         else:
+            logger.info("File type %s is not valid" % (name))
             return fileattrs
 
 

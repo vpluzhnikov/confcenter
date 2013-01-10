@@ -1,0 +1,78 @@
+Empty upload form prepared from upload_file
+INFO     2013-01-10 23:40:24,460 views Empty upload form prepared from upload_file
+INFO     2013-01-10 23:41:08,345 views Empty upload form prepared from upload_file
+INFO     2013-01-10 23:41:18,928 views Empty upload form prepared from upload_file
+INFO     2013-01-10 23:41:53,964 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:42:16,253 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:45:18,136 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:45:26,331 views    Starting file  snap_valday2_060712.pax.Z proccessing in upload_file
+INFO     2013-01-10 23:47:30,884 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:47:35,665 views    Starting file  snap_valday2_060712.pax.Z proccessing in upload_file
+INFO     2013-01-10 23:47:37,202 views    Sucsessfully handeled file  snap_valday2_060712.pax.Z in upload_file
+INFO     2013-01-10 23:47:44,801 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:47:55,106 views    Starting file  Upload configuration output.webarchive proccessing in upload_file
+INFO     2013-01-10 23:47:55,108 views    File type Upload configuration output.webarchive is not good, reported from upload_file
+INFO     2013-01-10 23:49:43,535 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:49:49,804 views    Starting file  snap.pax.Z proccessing in upload_file
+INFO     2013-01-10 23:49:49,960 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+INFO     2013-01-10 23:49:50,289 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-10 23:52:23,486 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:52:36,148 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:54:03,449 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:54:10,002 views    Starting file  snap_valday2_060712.pax.Z proccessing in upload_file
+INFO     2013-01-10 23:54:23,032 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:54:30,086 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:54:36,763 views    Starting file  snap.pax.Z proccessing in upload_file
+INFO     2013-01-10 23:54:36,764 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-10 23:54:36,903 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+INFO     2013-01-10 23:54:37,114 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-10 23:56:21,674 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:56:26,484 views    Starting file  snap.pax.Z proccessing in upload_file
+INFO     2013-01-10 23:56:26,486 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-10 23:56:26,624 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap.pax.Z is detected as AIX
+INFO     2013-01-10 23:56:26,626 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+INFO     2013-01-10 23:56:26,897 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-10 23:57:55,816 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:58:06,373 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:58:11,588 views    Starting file  snap.pax.Z proccessing in upload_file
+INFO     2013-01-10 23:58:11,590 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-10 23:58:11,710 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap.pax.Z is detected as AIX
+INFO     2013-01-10 23:58:11,716 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+INFO     2013-01-10 23:58:11,987 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-10 23:58:24,542 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:58:32,091 views    Starting file  Upload configuration output.webarchive proccessing in upload_file
+INFO     2013-01-10 23:58:32,092 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_Upload configuration output.webarchive in handle_uploaded_file
+INFO     2013-01-10 23:58:32,095 views    File type Upload configuration output.webarchive is not good, reported from upload_file
+INFO     2013-01-10 23:59:08,490 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:59:12,396 views    Starting file  snap.pax.Z proccessing in upload_file
+INFO     2013-01-10 23:59:12,397 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-10 23:59:12,509 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap.pax.Z is detected as AIX
+INFO     2013-01-10 23:59:12,511 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+INFO     2013-01-10 23:59:12,700 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-10 23:59:23,150 views    Empty upload form prepared from upload_file
+INFO     2013-01-10 23:59:30,556 views    Starting file  Upload configuration output.webarchive proccessing in upload_file
+INFO     2013-01-10 23:59:30,557 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_Upload configuration output.webarchive in handle_uploaded_file
+INFO     2013-01-10 23:59:30,557 conffiles File type d32cb43aca57a20d12e246e262d52b01_Upload configuration output.webarchive is not valid
+INFO     2013-01-10 23:59:30,558 views    File type Upload configuration output.webarchive is not good, reported from upload_file
+INFO     2013-01-10 23:59:55,054 views    Empty upload form prepared from upload_file
+INFO     2013-01-11 00:03:01,954 views    Empty upload form prepared from upload_file for user from 127.0.0.1
+INFO     2013-01-11 00:03:04,040 views    Empty upload form prepared from upload_file for user from 127.0.0.1
+INFO     2013-01-11 00:03:49,368 views    Empty upload form prepared from upload_file for user from 127.0.0.1
+INFO     2013-01-11 00:04:19,795 views    Empty upload form prepared from upload_file for user from 127.0.0.1
+INFO     2013-01-11 00:04:26,266 views    Starting file  snap_valday2_060712.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-01-11 00:04:26,269 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z in handle_uploaded_file
+INFO     2013-01-11 00:04:27,596 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z is detected as AIX
+INFO     2013-01-11 00:04:27,607 views    Sucsessfully handeled file  snap_valday2_060712.pax.Z in upload_file
+INFO     2013-01-11 00:04:28,149 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-11 00:08:42,117 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-01-11 00:08:51,871 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-01-11 00:08:51,873 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-11 00:08:52,140 conffiles File type d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z is detected as AIX
+INFO     2013-01-11 00:08:52,144 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-01-11 00:08:53,097 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-11 00:08:58,038 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-01-11 00:09:04,520 views    Starting file  Upload configuration output.webarchive proccessing in upload_file for user from 127.0.0.1
+INFO     2013-01-11 00:09:04,521 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_Upload configuration output.webarchive in handle_uploaded_file
+INFO     2013-01-11 00:09:04,522 conffiles File type d32cb43aca57a20d12e246e262d52b01_Upload configuration output.webarchive is not valid
+INFO     2013-01-11 00:09:04,523 views    File type Upload configuration output.webarchive is not good, reported from upload_file
+INFO     2013-01-11 00:09:15,600 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01

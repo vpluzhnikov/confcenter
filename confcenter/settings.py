@@ -15,6 +15,7 @@ SOLARIS_ARCHIVER_ARGS = '-zxf'
 FILE_UPLOAD_MAX_MEMORY_SIZE = '104857600'
 FILE_UPLOAD_HANDLERS = ('confcenter.upload_handlers.UploadProgressCachedHandler', ) + \
                        global_settings.FILE_UPLOAD_HANDLERS
+LOG = PROJECT_DIR + '/log/'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -132,7 +133,6 @@ WSGI_APPLICATION = 'confcenter.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
-    #'/Users/vs/dev/confcenter/templates',
     )
 
 INSTALLED_APPS = (
@@ -149,60 +149,15 @@ INSTALLED_APPS = (
     'upload',
 )
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
-#LOGGING = {
-#    'version': 1,
-#    'disable_existing_loggers': False,
-#    'formatters': {
-#        'verbose': {
-#            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-#        },
-#        'simple': {
-#            'format': '%(levelname)s %(message)s'
-#        },
-#    },
-#    'filters': {
-#        'require_debug_false': {
-#            '()': 'django.utils.log.RequireDebugFalse'
-#        }
-#    },
-#    'handlers': {
-#        'mail_admins': {
-#            'level': 'ERROR',
-#            'filters': ['require_debug_false'],
-#            'class': 'django.utils.log.AdminEmailHandler'
-#        },
-#        'console' : {
-#            'level' : 'INFO',
-#            'class':'logging.StreamHandler',
-#            'formatter': 'verbose'
-#        }
-#    },
-#    'loggers': {
-#        'django.request': {
-#            'handlers': ['mail_admins'],
-#            'level': 'ERROR',
-#            'propagate': True,
-#        'upload' : {
-#            'handlers' : ['console'],
-#            'level' : ['INFO']
-#        }
-#        },
-#    }
-#}
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(message)s'
+            'format': '%(levelname)-8s %(asctime)-8s %(module)-8s %(message)s'
         },
         'simple': {
-            'format': '%(levelname)s %(message)s'
+            'format': '%(levelname)-8s %(message)s'
         },
         },
     'filters': {
@@ -223,7 +178,15 @@ LOGGING = {
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
-        }
+        },
+        'logfiles': {
+            'level': 'INFO',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': LOG+'/upload.log',
+            'formatter': 'verbose',
+            'maxBytes': 50000,
+            'backupCount': 2
+        },
     },
     'loggers': {
         'django': {
@@ -237,11 +200,11 @@ LOGGING = {
             'propagate': False,
             },
         'upload': {
-            'handlers': ['console'],
+            'handlers': ['console', 'logfiles'],
             'level': 'INFO',
         },
         'confcenter' : {
-            'handlers' : ['console'],
+            'handlers' : ['console', 'logfiles'],
             'level' : 'INFO',
         },
     }
