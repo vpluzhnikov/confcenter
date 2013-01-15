@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-09 18:31+0400\n"
+"POT-Creation-Date: 2013-01-13 23:25+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -513,6 +513,10 @@ msgstr "Tape device type"
 msgid "save_in_db_button"
 msgstr "Save info in DB"
 
+#: confcenter/templates/snapreport_form.html:673
+msgid "save_in_pdf_button"
+msgstr "Save info in PDF"
+
 #: upload/forms.py:14
 msgid "Auto-detect"
 msgstr "Auto-detect"
@@ -525,6 +529,6 @@ msgstr "Choose operation system type"
 msgid "choose_file_upload"
 msgstr "Choose configuration snap file for upload"
 
-#: upload/views.py:89
+#: upload/views.py:154
 msgid "Bad file type or file corrupted"
 msgstr "Bad file type or file corrupted"

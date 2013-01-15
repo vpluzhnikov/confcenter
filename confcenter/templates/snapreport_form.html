@@ -5,7 +5,7 @@
 
 {% block content %}
     <div id="content">
-    <form enctype="multipart/form-data" action="" method="post">
+    <form action="" method="post">
 
     {% if sysparams %}
         <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "system_params_rep" %}
@@ -669,7 +669,9 @@
         </DIV>
     {% endif %}
 
-        <p> <input type="submit" value={% trans "save_in_db_button" %}> </p>
+        <p> <input type="submit" name="db_save" value="{% trans "save_in_db_button" %}">
+        <input type="submit" name="pdf_save" value="{% trans "save_in_pdf_button" %}"> </p>
+
     </form>
 </div>
 {% endblock %}
