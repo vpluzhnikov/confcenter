@@ -177,3 +177,83 @@ INFO     2013-01-15 18:18:32,373 conffiles File type d32cb43aca57a20d12e246e262d
 INFO     2013-01-15 18:18:32,376 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
 INFO     2013-01-15 18:18:32,986 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
 INFO     2013-01-15 18:18:38,014 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:18:39,053 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-01-20 16:18:48,485 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-01-20 16:18:48,486 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-20 16:18:48,735 conffiles File type d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z is detected as AIX
+INFO     2013-01-20 16:18:48,738 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-01-20 16:18:49,397 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-20 16:18:53,691 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:19:17,960 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:21:28,438 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:22:29,089 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:30:00,852 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:30:13,817 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:31:11,977 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:31:31,292 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:32:22,449 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:34:36,232 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:34:55,141 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:35:12,522 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:35:38,477 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:42:11,698 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:43:34,347 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:43:49,941 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:45:00,135 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-01-20 16:45:02,923 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-01-20 16:45:02,924 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-20 16:45:03,140 conffiles File type d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z is detected as AIX
+INFO     2013-01-20 16:45:03,145 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-01-20 16:45:03,689 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-20 16:45:06,525 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:46:00,163 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-01-20 16:46:06,043 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-01-20 16:46:06,044 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-20 16:46:06,248 conffiles File type d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z is detected as AIX
+INFO     2013-01-20 16:46:06,251 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-01-20 16:46:06,812 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-20 16:46:10,290 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:47:30,550 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:49:17,368 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 16:49:46,122 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-01-20 16:49:51,304 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-01-20 16:49:51,305 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-20 16:49:51,505 conffiles File type d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z is detected as AIX
+INFO     2013-01-20 16:49:51,507 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-01-20 16:49:52,047 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-20 16:49:54,812 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 17:00:38,888 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 17:00:59,102 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 17:01:41,319 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 17:06:11,592 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 17:06:25,698 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 17:06:48,216 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-20 17:11:03,168 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 09:24:06,826 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-21 21:52:07,121 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-01-21 21:52:13,939 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-01-21 21:52:13,943 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-21 21:52:14,214 conffiles File type d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z is detected as AIX
+INFO     2013-01-21 21:52:14,217 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-01-21 21:52:14,797 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-21 21:52:19,094 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 21:55:31,528 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 21:56:16,369 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 21:57:21,237 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 22:00:09,896 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 22:00:42,126 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 22:02:34,832 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 22:03:28,013 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 22:05:14,478 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 22:06:47,972 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 22:11:56,745 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 22:15:58,361 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 22:58:39,610 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-01-21 22:58:51,583 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-01-21 22:58:51,585 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z in handle_uploaded_file
+INFO     2013-01-21 22:58:51,838 conffiles File type d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z is detected as AIX
+INFO     2013-01-21 22:58:51,841 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-01-21 22:58:52,394 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-01-21 22:58:55,218 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 23:00:44,445 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-01-21 23:01:21,597 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upload/pdfhandler.py" />
+    <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="Preliminary support for PDF generation for AIX snap">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locale/fonts/Arial.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locale/fonts/Verdana.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/langbuild.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/log/upload.log" afterPath="$PROJECT_DIR$/confcenter/log/upload.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" afterPath="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.mo" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.mo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/views.py" afterPath="$PROJECT_DIR$/upload/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/settings.py" afterPath="$PROJECT_DIR$/confcenter/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/pdfhandler.py" afterPath="$PROJECT_DIR$/upload/pdfhandler.py" />
     </list>
     <ignored path="confcenter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,7 +34,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upload/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="7" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.0">
+            <state line="139" column="48" selection-start="6808" selection-end="6808" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#51#122#0" expanded="true" />
               </folding>
@@ -47,7 +45,7 @@
       <file leaf-file-name="pdfhandler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/upload/pdfhandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="73" selection-start="449" selection-end="461" vertical-scroll-proportion="0.07178218">
+            <state line="52" column="49" selection-start="2465" selection-end="2465" vertical-scroll-proportion="0.55445546">
               <folding>
                 <element signature="e#24#53#0" expanded="true" />
               </folding>
@@ -85,7 +83,7 @@
       <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confcenter/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="64" selection-start="5356" selection-end="5356" vertical-scroll-proportion="0.0">
+            <state line="18" column="23" selection-start="555" selection-end="578" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -94,7 +92,7 @@
       <file leaf-file-name="snapreport_form.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confcenter/templates/snapreport_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="672" column="85" selection-start="26030" selection-end="26030" vertical-scroll-proportion="0.0">
+            <state line="10" column="96" selection-start="300" selection-end="317" vertical-scroll-proportion="-4.375">
               <folding />
             </state>
           </provider>
@@ -133,14 +131,14 @@
         <option value="$PROJECT_DIR$/confcenter/upload_handlers.py" />
         <option value="$PROJECT_DIR$/confcenter/templates/base.html" />
         <option value="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
-        <option value="$PROJECT_DIR$/confcenter/settings.py" />
         <option value="$PROJECT_DIR$/upload/conffiles.py" />
         <option value="$PROJECT_DIR$/confcenter/common.py" />
-        <option value="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" />
         <option value="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
-        <option value="$PROJECT_DIR$/upload/pdfhandler.py" />
         <option value="$PROJECT_DIR$/upload/views.py" />
+        <option value="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
+        <option value="$PROJECT_DIR$/confcenter/settings.py" />
+        <option value="$PROJECT_DIR$/upload/pdfhandler.py" />
       </list>
     </option>
   </component>
@@ -256,6 +254,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="fonts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="confcenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="confcenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locale" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="en" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -340,14 +356,14 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="139" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="141" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="139" />
-    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="139" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="145" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="939" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="939" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="939" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="145" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="141" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -427,17 +443,25 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="PyRemoteDebugConfigurationType" factoryName="Python Remote Debug">
-      <module name="" />
-      <option name="PORT" value="0" />
-      <option name="HOST" value="null" />
-      <PyPathMappingSettings>
-        <option name="pathMappings">
-          <list />
-        </option>
-      </PyPathMappingSettings>
-      <option name="REDIRECT_OUTPUT" value="true" />
-      <option name="SUSPEND_AFTER_CONNECT" value="true" />
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="confcenter" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -459,25 +483,17 @@
       <option name="PUREUNITTEST" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <module name="confcenter" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
+    <configuration default="true" type="PyRemoteDebugConfigurationType" factoryName="Python Remote Debug">
+      <module name="" />
+      <option name="PORT" value="0" />
+      <option name="HOST" value="null" />
+      <PyPathMappingSettings>
+        <option name="pathMappings">
+          <list />
+        </option>
+      </PyPathMappingSettings>
+      <option name="REDIRECT_OUTPUT" value="true" />
+      <option name="SUSPEND_AFTER_CONNECT" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -627,7 +643,11 @@
       <created>1357848636218</created>
       <updated>1357848636218</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Preliminary support for PDF generation for AIX snap">
+      <created>1358259599244</created>
+      <updated>1358259599244</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -638,7 +658,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2123386" sideWeight="0.5380774" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21520804" sideWeight="0.5380774" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950064" sideWeight="0.49425286" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950064" sideWeight="0.49784482" order="10" side_tool="true" content_ui="tabs" />
@@ -692,7 +712,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="All logging is configured for files with rotation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Preliminary support for PDF generation for AIX snap" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -716,6 +736,7 @@
     <MESSAGE value="Added support for two main languages RU, EN (preview)" />
     <MESSAGE value="Full support for two main languages RU, EN" />
     <MESSAGE value="All logging is configured for files with rotation" />
+    <MESSAGE value="Preliminary support for PDF generation for AIX snap" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -723,26 +744,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/confcenter/media/js/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="535" selection-end="535" vertical-scroll-proportion="-7.5" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/log/upload.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/upload_handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="26" selection-start="777" selection-end="777" vertical-scroll-proportion="0.46287128" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/upload/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="39" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0" />
@@ -751,27 +752,6 @@
     <entry file="file://$PROJECT_DIR$/confcenter/templates/confupload_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="98" selection-start="802" selection-end="802" vertical-scroll-proportion="0.6289474" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="64" selection-start="5356" selection-end="5356" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/templates/snapreport_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="672" column="85" selection-start="26030" selection-end="26030" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="517" column="24" selection-start="13432" selection-end="13432" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po">
@@ -809,18 +789,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/reportlab/pdfgen/canvas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="235" column="8" selection-start="8414" selection-end="8414" vertical-scroll-proportion="0.17073171">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/confcenter/templates/snapreport_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="96" selection-start="300" selection-end="317" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/upload/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="7" selection-start="1158" selection-end="1158" vertical-scroll-proportion="0.0">
+        <state line="139" column="48" selection-start="6808" selection-end="6808" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#51#122#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="533" column="7" selection-start="13760" selection-end="13760" vertical-scroll-proportion="0.7050562">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/reportlab/lib/styles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="293" column="42" selection-start="10174" selection-end="10182" vertical-scroll-proportion="0.37398374">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/reportlab/rl_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="2640" selection-end="2640" vertical-scroll-proportion="0.33246073">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/reportlab/platypus/doctemplate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1167" column="46" selection-start="44710" selection-end="44723" vertical-scroll-proportion="24.078716">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/confcenter/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="23" selection-start="555" selection-end="578" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/upload/pdfhandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="73" selection-start="449" selection-end="461" vertical-scroll-proportion="0.07178218">
+        <state line="52" column="49" selection-start="2465" selection-end="2465" vertical-scroll-proportion="0.55445546">
           <folding>
             <element signature="e#24#53#0" expanded="true" />
           </folding>
