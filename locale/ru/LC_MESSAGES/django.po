@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-13 23:25+0400\n"
+"POT-Creation-Date: 2013-01-27 13:10+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr "Загрузить"
 msgid "analyze_upload"
 msgstr "Обработка загруженного файла"
 
-#: confcenter/templates/snapreport_form.html:11
+#: confcenter/templates/snapreport_form.html:11 upload/pdfhandler.py:47
 msgid "system_params_rep"
 msgstr "Параметры системы"
 
@@ -530,6 +530,16 @@ msgstr "Выберете тип операционной системы"
 msgid "choose_file_upload"
 msgstr "Выберете файл для загрузки"
 
-#: upload/views.py:154
+#: upload/pdfhandler.py:39
+msgid "pdf_main_title"
+msgstr "Отчет для системы "
+
+#: upload/pdfhandler.py:40
+msgid "pdf_main_subtitle"
+msgstr ""
+"Информация в данном отчете получена автоматически на основе разбора вывдоа "
+"snap для системы "
+
+#: upload/views.py:136
 msgid "Bad file type or file corrupted"
 msgstr "Неверный тип файла или файл поврежден"
