@@ -9,6 +9,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/pdfhandler.py" afterPath="$PROJECT_DIR$/upload/pdfhandler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/test.py" afterPath="$PROJECT_DIR$/upload/test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/views.py" afterPath="$PROJECT_DIR$/upload/views.py" />
     </list>
     <ignored path="confcenter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +36,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upload/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="19" selection-start="1207" selection-end="1214" vertical-scroll-proportion="0.0">
+            <state line="53" column="46" selection-start="2163" selection-end="2163" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#51#122#0" expanded="true" />
               </folding>
@@ -42,10 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pdfhandler.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="pdfhandler.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/upload/pdfhandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="252" column="0" selection-start="8887" selection-end="8887" vertical-scroll-proportion="0.0">
+            <state line="422" column="76" selection-start="17735" selection-end="17735" vertical-scroll-proportion="0.6287129">
               <folding>
                 <element signature="e#24#53#0" expanded="true" />
               </folding>
@@ -54,18 +56,9 @@
         </entry>
       </file>
       <file leaf-file-name="django.po" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="536" column="8" selection-start="13830" selection-end="13830" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="django.po" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="536" column="8" selection-start="14945" selection-end="14945" vertical-scroll-proportion="0.0">
+            <state line="372" column="17" selection-start="12285" selection-end="12285" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -74,16 +67,16 @@
       <file leaf-file-name="aixsnap.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upload/aixsnap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="630" column="37" selection-start="27644" selection-end="27654" vertical-scroll-proportion="0.0">
+            <state line="710" column="8" selection-start="31683" selection-end="31683" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="snapreport_form.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="snapreport_form.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confcenter/templates/snapreport_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="48" selection-start="5759" selection-end="5770" vertical-scroll-proportion="-0.35526314">
+            <state line="354" column="41" selection-start="14737" selection-end="14747" vertical-scroll-proportion="-17.083334">
               <folding />
             </state>
           </provider>
@@ -105,7 +98,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/upload/locale/en/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/conf/locale/en/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/conf/locale/ru/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/confcenter/urls.py" />
@@ -117,9 +109,10 @@
         <option value="$PROJECT_DIR$/confcenter/common.py" />
         <option value="$PROJECT_DIR$/confcenter/settings.py" />
         <option value="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
-        <option value="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
+        <option value="$PROJECT_DIR$/upload/test.py" />
         <option value="$PROJECT_DIR$/upload/views.py" />
         <option value="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" />
+        <option value="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/upload/pdfhandler.py" />
       </list>
     </option>
@@ -633,7 +626,11 @@
       <created>1358794990077</created>
       <updated>1358794990077</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added styles for PDF generation and few paragrathes in PDF report">
+      <created>1359914663800</created>
+      <updated>1359914663800</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -698,7 +695,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Preliminary support for PDF generation for AIX snap in two main languages (English and Russian)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added styles for PDF generation and few paragrathes in PDF report" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -724,6 +721,7 @@
     <MESSAGE value="All logging is configured for files with rotation" />
     <MESSAGE value="Preliminary support for PDF generation for AIX snap" />
     <MESSAGE value="Preliminary support for PDF generation for AIX snap in two main languages (English and Russian)" />
+    <MESSAGE value="Added styles for PDF generation and few paragrathes in PDF report" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -731,18 +729,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/confcenter/templates/confupload_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="98" selection-start="802" selection-end="802" vertical-scroll-proportion="0.6289474" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1104" selection-end="1104" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/common.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="28" selection-start="338" selection-end="362" vertical-scroll-proportion="0.0">
@@ -764,20 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="536" column="8" selection-start="14945" selection-end="14945" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/upload/aixsnap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="630" column="37" selection-start="27644" selection-end="27654" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="23" selection-start="555" selection-end="578" vertical-scroll-proportion="0.0">
@@ -785,23 +757,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="536" column="8" selection-start="13830" selection-end="13830" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Python/2.7/site-packages/reportlab/rl_config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="0" selection-start="2640" selection-end="2640" vertical-scroll-proportion="0.39267015">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Python/2.7/site-packages/reportlab/platypus/tables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="6" selection-start="2662" selection-end="2662" vertical-scroll-proportion="-2.5364432">
           <folding />
         </state>
       </provider>
@@ -820,28 +778,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/reportlab/platypus/tables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1170" column="8" selection-start="47170" selection-end="47170" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="24" selection-start="1314" selection-end="1329" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/upload/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="19" selection-start="1207" selection-end="1214" vertical-scroll-proportion="0.0">
+        <state line="53" column="46" selection-start="2163" selection-end="2163" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#51#122#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upload/pdfhandler.py">
+    <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="0" selection-start="8887" selection-end="8887" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#24#53#0" expanded="true" />
-          </folding>
+        <state line="536" column="8" selection-start="13830" selection-end="13830" vertical-scroll-proportion="19.90099">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/aixsnap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="710" column="8" selection-start="31683" selection-end="31683" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/templates/snapreport_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="48" selection-start="5759" selection-end="5770" vertical-scroll-proportion="-0.35526314">
+        <state line="354" column="41" selection-start="14737" selection-end="14747" vertical-scroll-proportion="-17.083334">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="372" column="17" selection-start="12285" selection-end="12285" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/pdfhandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="422" column="76" selection-start="17735" selection-end="17735" vertical-scroll-proportion="0.6287129">
+          <folding>
+            <element signature="e#24#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

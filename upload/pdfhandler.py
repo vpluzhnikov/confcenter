@@ -64,6 +64,22 @@ def getReportStyleSheet(font):
         spaceAfter=6),
         alias='title')
 
+    stylesheet.add(ParagraphStyle(name='TableTitle',
+        parent=stylesheet['Normal'],
+        fontName = font,
+        fontSize=10,
+        alignment=TA_CENTER,
+        spaceAfter=6),
+        alias='tabletitle')
+
+    stylesheet.add(ParagraphStyle(name='TableTitleSmall',
+        parent=stylesheet['Normal'],
+        fontName = font,
+        fontSize=8,
+        alignment=TA_CENTER,
+        spaceAfter=6),
+        alias='tabletitlesmall')
+
     stylesheet.add(ParagraphStyle(name='Heading2',
         parent=stylesheet['Normal'],
         fontName = font,
@@ -127,10 +143,11 @@ def getReportStyleSheet(font):
     stylesheet.add(ParagraphStyle(name='Code',
         parent=stylesheet['Normal'],
         fontName='Courier',
-        fontSize=8,
-        leading=8.8,
-        firstLineIndent=0,
-        leftIndent=36))
+        fontSize=7,
+#        leading=8.8,
+        firstLineIndent=0
+#        leftIndent=36
+    ))
 
     return stylesheet
 
@@ -152,6 +169,14 @@ def aix_pdf_generate(AIXSNAP):
     ts = [('GRID', (0,0), (-1,-1), 0.25, colors.black),
           ('ALIGN', (1,1), (-1,-1), 'LEFT'),
           ('FONT', (0,0), (-1,-1), 'Arial')]
+    errptts = [('GRID', (0,0), (-1,-1), 0.25, colors.black),
+          ('ALIGN', (1,1), (-1,-1), 'LEFT'),
+          ('FONT', (0,0), (-1,-1), 'Arial'),
+          ('FONTSIZE', (0,0), (-1,-1), 10)]
+    littlets = [('GRID', (0,0), (-1,-1), 0.25, colors.black),
+               ('ALIGN', (1,1), (-1,-1), 'LEFT'),
+               ('FONT', (0,0), (-1,-1), 'Arial'),
+               ('FONTSIZE', (0,0), (-1,-1), 8)]
 
     #REPORT TITLE
     Title = Paragraph(_('pdf_main_title') + AIXSNAP['hostname']['hostname'], styles["Heading1"])
@@ -179,6 +204,7 @@ def aix_pdf_generate(AIXSNAP):
         else:
             data.append([_('hacmp_notdetected_rep')])
         table = Table(data, style=ts, hAlign='LEFT')
+        print data
         Elements.append(table)
 
     # LPAR PARAMTERS
@@ -259,6 +285,148 @@ def aix_pdf_generate(AIXSNAP):
             ]
             table = Table(data, style=ts, hAlign='LEFT')
             Elements.append(table)
+
+    # ERRPT INFO
+    if AIXSNAP['errors']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('err_info_rep'), styles["Heading2"]))
+        data = [[Paragraph(_('err_count_rep'), styles["TableTitle"]), Paragraph(_('err_id_rep'), styles["TableTitle"]),
+                 Paragraph(_('err_firstocc_rep'), styles["TableTitle"]),
+                 Paragraph(_('err_lastocc_rep'), styles["TableTitle"]),
+                 Paragraph(_('err_type_rep'), styles["TableTitle"]),
+                 Paragraph(_('err_class_rep'), styles["TableTitle"]),
+                 Paragraph(_('err_resource_rep'), styles["TableTitle"]),
+                 Paragraph(_('err_desc_rep'), styles["TableTitle"])
+                 ]]
+        for error in AIXSNAP['errors']:
+            data.append([error['errpt_errq'],
+                Paragraph(error['errpt_errid'], styles["BodyText"]),
+                Paragraph(error['errpt_errdates'], styles["BodyText"]),
+                Paragraph(error['errpt_erridatee'], styles["BodyText"]),
+                Paragraph(error['errpt_errtype'], styles["BodyText"]),
+                Paragraph(error['errpt_class'], styles["BodyText"]),
+                Paragraph(error['errpt_errres'], styles["BodyText"]),
+                Paragraph(error['errpt_errdesc'], styles["BodyText"])])
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
+    # BOOTINFO
+    if AIXSNAP['bootinfo']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('bootinfo_rep'), styles["Heading2"]))
+        Elements.append(Spacer(0, 0.1 * cm))
+        data = [[_('osloaded_rep'), AIXSNAP['bootinfo']['bootinfo_k'] + _('osbits_rep')]]
+        table = Table(data, style=ts, hAlign='LEFT')
+        Elements.append(table)
+
+    # SMTINFO
+    if AIXSNAP['smt']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('smtinfo_rep'), styles["Heading2"]))
+        Elements.append(Spacer(0, 0.1 * cm))
+        if AIXSNAP['smt']['smt_threads_count'] == '0':
+            Elements.append(Paragraph(_('smt0_threads_rep'), styles["BodyText"]))
+        else:
+            Elements.append(Paragraph(_('smton_rep') + AIXSNAP['smt']['smt_threads_count'] + _('smt_threades_rep'),
+                styles["BodyText"]))
+
+    # TUNABLES INFO
+    if AIXSNAP['tunables']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('tun_info_rep'), styles["Heading2"]))
+        data = [[ _('tun_name_rep'), _('tun_value_rep') ]]
+        for tune in AIXSNAP['tunables']:
+            data.append([tune['tun_name'], tune['tun_value'] ])
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
+    # NOYUNABLES INFO
+    if AIXSNAP['no_tunables']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('notun_info_rep'), styles["Heading2"]))
+        data = [[ _('notun_name_rep'), _('notun_value_rep') ]]
+        for tune in AIXSNAP['no_tunables']:
+            data.append([tune['tun_name'], tune['tun_value'] ])
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
+    # VOLGROUP INFO
+    if AIXSNAP['vgs']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('vg_info_rep'), styles["Heading2"]))
+        data = [[Paragraph(_('vgname_rep'), styles["TableTitle"]), Paragraph(_('vgstate_rep'), styles["TableTitle"]),
+                 Paragraph(_('vgblocksize_rep'), styles["TableTitle"]),
+                 Paragraph(_('vgfreesize_rep'), styles["TableTitle"]),
+                 Paragraph(_('vgdiskcount_rep'), styles["TableTitle"]),
+                 Paragraph(_('vgdiskactive_rep'), styles["TableTitle"]),
+                 Paragraph(_('vgautoimport_rep'), styles["TableTitle"])
+                ]]
+        for vg in AIXSNAP['vgs']:
+            data.append([Paragraph(vg['name'], styles["BodyText"]), Paragraph(vg['state'], styles["BodyText"]),
+                         Paragraph(vg['pp_size'], styles["BodyText"]), Paragraph(vg['free_size'], styles["BodyText"]),
+                         Paragraph(vg['totalpv'], styles["BodyText"]), Paragraph(vg['activepv'], styles["BodyText"]),
+                         Paragraph(vg['auto'], styles["BodyText"])])
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
+    # VOLGROUP INFO
+    if AIXSNAP['lvs']:
+        Elements.append(Paragraph(_('lv_info_rep'), styles["Heading2"]))
+        Elements.append(Spacer(0, 0.5 * cm))
+        for lv in AIXSNAP['lvs']:
+            Elements.append(Paragraph(_('vgtitle_rep') + lv['volgroup'], styles["Heading3"]))
+            Elements.append(Spacer(0, 0.1 * cm))
+            data = [[Paragraph(_('lvname_rep'), styles["TableTitleSmall"]),
+                     Paragraph(_('lvtype_rep'), styles["TableTitleSmall"]),
+                     Paragraph(_('lvcopycount_rep'), styles["TableTitleSmall"]),
+                     Paragraph(_('lvstate_rep'), styles["TableTitleSmall"]),
+                     Paragraph(_('lvmountp_rep'), styles["TableTitleSmall"]),
+                     Paragraph(_('lvmounted_rep'), styles["TableTitleSmall"]),
+                     Paragraph(_('lvbusy_rep'), styles["TableTitleSmall"]),
+                     Paragraph(_('lvinodebusy_rep'), styles["TableTitleSmall"])
+                    ]]
+            for l in lv['volumes']:
+                data.append([Paragraph(l['name'], styles["Code"]), Paragraph(l['type'], styles["Code"]),
+                             Paragraph(l['copies'], styles["Code"]), Paragraph(l['state'], styles["Code"]),
+                             Paragraph(l['mount'], styles["Code"]), Paragraph(l['mounted'], styles["Code"]),
+                             Paragraph(l['used'], styles["Code"]), Paragraph(l['iused'], styles["Code"])])
+            table = Table(data, style=littlets, hAlign='CENTRE', repeatRows=1, splitByRow=1)
+            Elements.append(table)
+
+    # SWAP INFO
+    if AIXSNAP['swaps']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('swap_info_rep'), styles["Heading2"]))
+        data = [[ _('swapname_rep'), _('swapactive_rep'), _('swapsize_rep'), _('swapused_rep') ]]
+        for swap in AIXSNAP['swaps']:
+            data.append([swap['swap_vol'], swap['swap_active'], swap['swap_size'], swap['swap_used']])
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
+    # DNS INFO
+    if AIXSNAP['dns']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('dns_info_rep'), styles["Heading2"]))
+        data = []
+        if 'dns_nameserver_1' in AIXSNAP['dns']:
+            data.append([_('dnsname_rep'), AIXSNAP['dns']['dns_nameserver_1']])
+            print data
+        if 'dns_nameserver_2' in AIXSNAP['dns']:
+            data.append([ _('dnsname_rep'), AIXSNAP['dns']['dns_nameserver_2']])
+        if 'dns_nameserver_3' in AIXSNAP['dns']:
+            data.append([ _('dnsname_rep'), AIXSNAP['dns']['dns_nameserver_3']])
+        if 'dns_nameserver_4' in AIXSNAP['dns']:
+            data.append([ _('dnsname_rep'), AIXSNAP['dns']['dns_nameserver_4']])
+        if 'dns_nameserver_5' in AIXSNAP['dns']:
+            data.append([ _('dnsname_rep'), AIXSNAP['dns']['dns_nameserver_5']])
+        if 'dns_domain' in AIXSNAP['dns']:
+            data.append([ _('dnsdomain_rep'), AIXSNAP['dns']['dns_domain']])
+        if 'dns_search' in AIXSNAP['dns']:
+            data.append([ _('dnssearch_rep'), AIXSNAP['dns']['dns_search']])
+
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
 
     doc.build(Elements)
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-27 13:10+0400\n"
+"POT-Creation-Date: 2013-02-07 00:26+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,331 +29,332 @@ msgstr " Upload"
 msgid "analyze_upload"
 msgstr "Proссessing uploaded file"
 
-#: confcenter/templates/snapreport_form.html:11 upload/pdfhandler.py:47
+#: confcenter/templates/snapreport_form.html:11 upload/pdfhandler.py:192
 msgid "system_params_rep"
 msgstr "System Parameters"
 
-#: confcenter/templates/snapreport_form.html:14
+#: confcenter/templates/snapreport_form.html:14 upload/pdfhandler.py:196
 msgid "server_type_model_rep"
 msgstr "Server Type/Model"
 
-#: confcenter/templates/snapreport_form.html:15
+#: confcenter/templates/snapreport_form.html:15 upload/pdfhandler.py:197
 msgid "server_serial_rep"
 msgstr "Server serial number"
 
-#: confcenter/templates/snapreport_form.html:16
+#: confcenter/templates/snapreport_form.html:16 upload/pdfhandler.py:198
 msgid "server_lparname_rep"
 msgstr "Hostname in OS"
 
-#: confcenter/templates/snapreport_form.html:19
+#: confcenter/templates/snapreport_form.html:19 upload/pdfhandler.py:201
 msgid "hacmp_notused_rep"
 msgstr "IBM PowerHA is not used"
 
-#: confcenter/templates/snapreport_form.html:22
+#: confcenter/templates/snapreport_form.html:22 upload/pdfhandler.py:203
 msgid "hacmp_used_rep"
 msgstr "IBM PowerHA is used"
 
-#: confcenter/templates/snapreport_form.html:24
+#: confcenter/templates/snapreport_form.html:24 upload/pdfhandler.py:205
 msgid "hacmp_notdetected_rep"
 msgstr "IBM PowerHA configuration is not detected"
 
-#: confcenter/templates/snapreport_form.html:32
+#: confcenter/templates/snapreport_form.html:32 upload/pdfhandler.py:213
 msgid "lpar_conf_rep"
 msgstr "LPAR Configuration"
 
-#: confcenter/templates/snapreport_form.html:35
+#: confcenter/templates/snapreport_form.html:35 upload/pdfhandler.py:215
 msgid "lpar_hmcnum_rep"
 msgstr "LPAR ID number in HMC:"
 
-#: confcenter/templates/snapreport_form.html:36
+#: confcenter/templates/snapreport_form.html:36 upload/pdfhandler.py:216
 msgid "lpar_hmcname_rep"
 msgstr "LPAR name in HMC:"
 
-#: confcenter/templates/snapreport_form.html:37
+#: confcenter/templates/snapreport_form.html:37 upload/pdfhandler.py:217
 msgid "lpar_type_rep"
 msgstr "LPAR type:"
 
-#: confcenter/templates/snapreport_form.html:38
+#: confcenter/templates/snapreport_form.html:38 upload/pdfhandler.py:218
 msgid "lpar_mode_rep"
 msgstr "LPAR running mode:"
 
-#: confcenter/templates/snapreport_form.html:39
+#: confcenter/templates/snapreport_form.html:39 upload/pdfhandler.py:219
 msgid "lpar_capacity_rep"
 msgstr "LPAR capacity:"
 
-#: confcenter/templates/snapreport_form.html:41
+#: confcenter/templates/snapreport_form.html:41 upload/pdfhandler.py:220
 msgid "lpar_mincpu_rep"
 msgstr "Minimum CPU for LPAR"
 
-#: confcenter/templates/snapreport_form.html:42
+#: confcenter/templates/snapreport_form.html:42 upload/pdfhandler.py:221
 msgid "lpar_descpu_rep"
 msgstr "Desired CPU for LPAR"
 
-#: confcenter/templates/snapreport_form.html:43
+#: confcenter/templates/snapreport_form.html:43 upload/pdfhandler.py:222
 msgid "lpar_maxcpu_rep"
 msgstr "Maximum CPU for LPAR"
 
-#: confcenter/templates/snapreport_form.html:45
+#: confcenter/templates/snapreport_form.html:45 upload/pdfhandler.py:223
 msgid "lpar_minmem_rep"
 msgstr "Minimum memmory for LPAR:"
 
-#: confcenter/templates/snapreport_form.html:46
+#: confcenter/templates/snapreport_form.html:46 upload/pdfhandler.py:224
 msgid "lpar_desmem_rep"
 msgstr "Desired memory for LPAR:"
 
-#: confcenter/templates/snapreport_form.html:47
+#: confcenter/templates/snapreport_form.html:47 upload/pdfhandler.py:225
 msgid "lpar_maxmem_rep"
 msgstr "Maximum memory for LPAR:"
 
-#: confcenter/templates/snapreport_form.html:53
+#: confcenter/templates/snapreport_form.html:53 upload/pdfhandler.py:234
 msgid "mcode_levels_rep"
 msgstr "Firmware levels for hardware in LPAR"
 
-#: confcenter/templates/snapreport_form.html:58
+#: confcenter/templates/snapreport_form.html:58 upload/pdfhandler.py:238
 msgid "mcode_dev_rep"
 msgstr "Firmware level for "
 
 #: confcenter/templates/snapreport_form.html:65
-#: confcenter/templates/snapreport_form.html:68
+#: confcenter/templates/snapreport_form.html:68 upload/pdfhandler.py:245
+#: upload/pdfhandler.py:247
 #, fuzzy
 msgid "oslevel_rep"
 msgstr "OS level"
 
-#: confcenter/templates/snapreport_form.html:74
+#: confcenter/templates/snapreport_form.html:74 upload/pdfhandler.py:254
 msgid "dumpdev_conf_rep"
 msgstr "Dump device configuration"
 
-#: confcenter/templates/snapreport_form.html:77
+#: confcenter/templates/snapreport_form.html:77 upload/pdfhandler.py:256
 msgid "primary_dumpdev_rep"
 msgstr "Primary dump device:"
 
-#: confcenter/templates/snapreport_form.html:79
+#: confcenter/templates/snapreport_form.html:79 upload/pdfhandler.py:257
 #, fuzzy
 msgid "secondary_dumpdev_rep"
 msgstr "Secondary dump device:"
 
-#: confcenter/templates/snapreport_form.html:81
+#: confcenter/templates/snapreport_form.html:81 upload/pdfhandler.py:258
 msgid "dumpdev_copypath"
 msgstr "Dump copypath:"
 
-#: confcenter/templates/snapreport_form.html:87
+#: confcenter/templates/snapreport_form.html:87 upload/pdfhandler.py:266
 msgid "sysdump_prp_rep"
 msgstr "System dump in snap"
 
-#: confcenter/templates/snapreport_form.html:91
+#: confcenter/templates/snapreport_form.html:91 upload/pdfhandler.py:268
 msgid "sysdump_date_rep"
 msgstr "Date of system dump occured:"
 
-#: confcenter/templates/snapreport_form.html:95
+#: confcenter/templates/snapreport_form.html:95 upload/pdfhandler.py:269
 msgid "sysdump_status_rep"
 msgstr "System dump status:"
 
-#: confcenter/templates/snapreport_form.html:99
+#: confcenter/templates/snapreport_form.html:99 upload/pdfhandler.py:270
 msgid "sysdump_size_rep"
 msgstr "System dump size:"
 
-#: confcenter/templates/snapreport_form.html:107
+#: confcenter/templates/snapreport_form.html:107 upload/pdfhandler.py:278
 msgid "emgr_info_rep"
 msgstr "Installed IFIX details"
 
-#: confcenter/templates/snapreport_form.html:112
+#: confcenter/templates/snapreport_form.html:112 upload/pdfhandler.py:281
 msgid "emgr_label_rep"
 msgstr "Ifix label:"
 
-#: confcenter/templates/snapreport_form.html:116
+#: confcenter/templates/snapreport_form.html:116 upload/pdfhandler.py:282
 msgid "emgr_instdate_rep"
 msgstr "Date ifix of installation:"
 
-#: confcenter/templates/snapreport_form.html:120
+#: confcenter/templates/snapreport_form.html:120 upload/pdfhandler.py:283
 msgid "emgr_abstruct_rep"
 msgstr "Ifix abstruct:"
 
-#: confcenter/templates/snapreport_form.html:124
+#: confcenter/templates/snapreport_form.html:124 upload/pdfhandler.py:284
 msgid "emgr_status_rep"
 msgstr "Ifix installation status:"
 
-#: confcenter/templates/snapreport_form.html:136
+#: confcenter/templates/snapreport_form.html:136 upload/pdfhandler.py:292
 msgid "err_info_rep"
 msgstr "Errors registered for LPAR"
 
-#: confcenter/templates/snapreport_form.html:139
+#: confcenter/templates/snapreport_form.html:139 upload/pdfhandler.py:293
 msgid "err_count_rep"
 msgstr "Count"
 
-#: confcenter/templates/snapreport_form.html:140
+#: confcenter/templates/snapreport_form.html:140 upload/pdfhandler.py:293
 msgid "err_id_rep"
 msgstr "ID"
 
-#: confcenter/templates/snapreport_form.html:141
+#: confcenter/templates/snapreport_form.html:141 upload/pdfhandler.py:294
 msgid "err_firstocc_rep"
 msgstr "First time occured"
 
-#: confcenter/templates/snapreport_form.html:142
+#: confcenter/templates/snapreport_form.html:142 upload/pdfhandler.py:295
 msgid "err_lastocc_rep"
 msgstr "Last time occured"
 
-#: confcenter/templates/snapreport_form.html:143
+#: confcenter/templates/snapreport_form.html:143 upload/pdfhandler.py:296
 msgid "err_type_rep"
 msgstr "Type"
 
-#: confcenter/templates/snapreport_form.html:144
+#: confcenter/templates/snapreport_form.html:144 upload/pdfhandler.py:297
 msgid "err_class_rep"
 msgstr "Class"
 
-#: confcenter/templates/snapreport_form.html:145
+#: confcenter/templates/snapreport_form.html:145 upload/pdfhandler.py:298
 msgid "err_resource_rep"
 msgstr "Resource"
 
-#: confcenter/templates/snapreport_form.html:146
+#: confcenter/templates/snapreport_form.html:146 upload/pdfhandler.py:299
 msgid "err_desc_rep"
 msgstr "Description"
 
-#: confcenter/templates/snapreport_form.html:166
+#: confcenter/templates/snapreport_form.html:166 upload/pdfhandler.py:316
 msgid "bootinfo_rep"
 msgstr "OS kernel boot mode"
 
-#: confcenter/templates/snapreport_form.html:169
+#: confcenter/templates/snapreport_form.html:169 upload/pdfhandler.py:318
 msgid "osloaded_rep"
 msgstr "Kernel is loaded in "
 
-#: confcenter/templates/snapreport_form.html:169
+#: confcenter/templates/snapreport_form.html:169 upload/pdfhandler.py:318
 msgid "osbits_rep"
 msgstr " bits mode"
 
-#: confcenter/templates/snapreport_form.html:175
+#: confcenter/templates/snapreport_form.html:175 upload/pdfhandler.py:325
 msgid "smtinfo_rep"
 msgstr "SMT mode"
 
-#: confcenter/templates/snapreport_form.html:180
+#: confcenter/templates/snapreport_form.html:180 upload/pdfhandler.py:328
 msgid "smt0_threads_rep"
 msgstr "No addtional threads configured for proccessors in system"
 
-#: confcenter/templates/snapreport_form.html:184
+#: confcenter/templates/snapreport_form.html:184 upload/pdfhandler.py:330
 msgid "smton_rep"
 msgstr "System runs with "
 
-#: confcenter/templates/snapreport_form.html:184
+#: confcenter/templates/snapreport_form.html:184 upload/pdfhandler.py:330
 msgid "smt_threades_rep"
 msgstr " threads per porccessor"
 
-#: confcenter/templates/snapreport_form.html:192
+#: confcenter/templates/snapreport_form.html:192 upload/pdfhandler.py:336
 msgid "tun_info_rep"
 msgstr "Changed values for tunable parameters in sections vmo, ioo, schedo"
 
-#: confcenter/templates/snapreport_form.html:196
+#: confcenter/templates/snapreport_form.html:196 upload/pdfhandler.py:337
 msgid "tun_name_rep"
 msgstr "Parameter name"
 
-#: confcenter/templates/snapreport_form.html:197
+#: confcenter/templates/snapreport_form.html:197 upload/pdfhandler.py:337
 msgid "tun_value_rep"
 msgstr "Parameter value"
 
-#: confcenter/templates/snapreport_form.html:211
+#: confcenter/templates/snapreport_form.html:211 upload/pdfhandler.py:346
 msgid "notun_info_rep"
 msgstr "Changed values for tunable parameters in section no"
 
-#: confcenter/templates/snapreport_form.html:215
+#: confcenter/templates/snapreport_form.html:215 upload/pdfhandler.py:347
 msgid "notun_name_rep"
 msgstr "Parameter name"
 
-#: confcenter/templates/snapreport_form.html:216
+#: confcenter/templates/snapreport_form.html:216 upload/pdfhandler.py:347
 msgid "notun_value_rep"
 msgstr "Parameter value"
 
-#: confcenter/templates/snapreport_form.html:229
+#: confcenter/templates/snapreport_form.html:229 upload/pdfhandler.py:356
 msgid "vg_info_rep"
 msgstr "Volume groups"
 
-#: confcenter/templates/snapreport_form.html:233
+#: confcenter/templates/snapreport_form.html:233 upload/pdfhandler.py:357
 msgid "vgname_rep"
 msgstr "Name"
 
-#: confcenter/templates/snapreport_form.html:234
+#: confcenter/templates/snapreport_form.html:234 upload/pdfhandler.py:357
 msgid "vgstate_rep"
 msgstr "State"
 
-#: confcenter/templates/snapreport_form.html:235
+#: confcenter/templates/snapreport_form.html:235 upload/pdfhandler.py:358
 msgid "vgblocksize_rep"
 msgstr "Block size"
 
-#: confcenter/templates/snapreport_form.html:236
+#: confcenter/templates/snapreport_form.html:236 upload/pdfhandler.py:359
 msgid "vgfreesize_rep"
 msgstr "Free space"
 
-#: confcenter/templates/snapreport_form.html:237
+#: confcenter/templates/snapreport_form.html:237 upload/pdfhandler.py:360
 msgid "vgdiskcount_rep"
 msgstr "Disk count"
 
-#: confcenter/templates/snapreport_form.html:238
+#: confcenter/templates/snapreport_form.html:238 upload/pdfhandler.py:361
 msgid "vgdiskactive_rep"
 msgstr "Active disks"
 
-#: confcenter/templates/snapreport_form.html:239
+#: confcenter/templates/snapreport_form.html:239 upload/pdfhandler.py:362
 msgid "vgautoimport_rep"
 msgstr "Auto-import"
 
-#: confcenter/templates/snapreport_form.html:258
+#: confcenter/templates/snapreport_form.html:258 upload/pdfhandler.py:374
 #, fuzzy
 msgid "lv_info_rep"
 msgstr "Logical volumes"
 
-#: confcenter/templates/snapreport_form.html:261
+#: confcenter/templates/snapreport_form.html:261 upload/pdfhandler.py:377
 msgid "vgtitle_rep"
 msgstr "Disk group: "
 
-#: confcenter/templates/snapreport_form.html:264
+#: confcenter/templates/snapreport_form.html:264 upload/pdfhandler.py:379
 msgid "lvname_rep"
 msgstr "LV name"
 
-#: confcenter/templates/snapreport_form.html:265
+#: confcenter/templates/snapreport_form.html:265 upload/pdfhandler.py:380
 msgid "lvtype_rep"
 msgstr "LV type"
 
-#: confcenter/templates/snapreport_form.html:266
+#: confcenter/templates/snapreport_form.html:266 upload/pdfhandler.py:381
 msgid "lvcopycount_rep"
 msgstr "Numbers of copies"
 
-#: confcenter/templates/snapreport_form.html:267
+#: confcenter/templates/snapreport_form.html:267 upload/pdfhandler.py:382
 msgid "lvstate_rep"
 msgstr "LV state"
 
-#: confcenter/templates/snapreport_form.html:268
+#: confcenter/templates/snapreport_form.html:268 upload/pdfhandler.py:383
 msgid "lvmountp_rep"
 msgstr "Mount point"
 
-#: confcenter/templates/snapreport_form.html:269
+#: confcenter/templates/snapreport_form.html:269 upload/pdfhandler.py:384
 msgid "lvmounted_rep"
 msgstr "Mounted?"
 
-#: confcenter/templates/snapreport_form.html:270
+#: confcenter/templates/snapreport_form.html:270 upload/pdfhandler.py:385
 msgid "lvbusy_rep"
 msgstr "% used"
 
-#: confcenter/templates/snapreport_form.html:271
+#: confcenter/templates/snapreport_form.html:271 upload/pdfhandler.py:386
 msgid "lvinodebusy_rep"
 msgstr "% indodes used"
 
-#: confcenter/templates/snapreport_form.html:292
+#: confcenter/templates/snapreport_form.html:292 upload/pdfhandler.py:399
 msgid "swap_info_rep"
 msgstr "Paging space"
 
-#: confcenter/templates/snapreport_form.html:296
+#: confcenter/templates/snapreport_form.html:296 upload/pdfhandler.py:400
 msgid "swapname_rep"
 msgstr "LV/File name"
 
-#: confcenter/templates/snapreport_form.html:297
+#: confcenter/templates/snapreport_form.html:297 upload/pdfhandler.py:400
 msgid "swapactive_rep"
 msgstr "Active"
 
-#: confcenter/templates/snapreport_form.html:298
+#: confcenter/templates/snapreport_form.html:298 upload/pdfhandler.py:400
 msgid "swapsize_rep"
 msgstr "Size"
 
-#: confcenter/templates/snapreport_form.html:299
+#: confcenter/templates/snapreport_form.html:299 upload/pdfhandler.py:400
 msgid "swapused_rep"
 msgstr "% used"
 
-#: confcenter/templates/snapreport_form.html:315
+#: confcenter/templates/snapreport_form.html:315 upload/pdfhandler.py:409
 msgid "dns_info_rep"
 msgstr "DNS Configuration"
 
@@ -361,7 +362,8 @@ msgstr "DNS Configuration"
 #: confcenter/templates/snapreport_form.html:326
 #: confcenter/templates/snapreport_form.html:332
 #: confcenter/templates/snapreport_form.html:338
-#: confcenter/templates/snapreport_form.html:344
+#: confcenter/templates/snapreport_form.html:344 upload/pdfhandler.py:412
+#: upload/pdfhandler.py:415
 msgid "dnsname_rep"
 msgstr "DNS Server "
 
@@ -529,11 +531,11 @@ msgstr "Choose operation system type"
 msgid "choose_file_upload"
 msgstr "Choose configuration snap file for upload"
 
-#: upload/pdfhandler.py:39
+#: upload/pdfhandler.py:182
 msgid "pdf_main_title"
 msgstr "AIX Snap Report for "
 
-#: upload/pdfhandler.py:40
+#: upload/pdfhandler.py:183
 msgid "pdf_main_subtitle"
 msgstr "This info was extracted from snap collected on "
 

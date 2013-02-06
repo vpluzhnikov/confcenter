@@ -51,7 +51,7 @@ def anal_acc(request):
            "hostname" : snap.hostname_params(),
            "disks" : snap.hdisk_params(),
            "hacmp" : snap.hacmp_params(),
-           "tunables" : snap.tunables_params,
+           "tunables" : snap.tunables_params(),
            "nfs" : snap.nfs_params(),
            "dns" : snap.dns_params(),
            "no_tunables" : snap.no_params(),

@@ -10,7 +10,7 @@ from django.core.files.uploadhandler import TemporaryFileUploadHandler
 def full_snap_test():
     #current_snap = AixSnap('/Users/vs/dev/confcenter/confcenter/confuploads/08fbb839476f26469c6087121133feae_snap_valday2_060712.pax.Z_AIX/')
     #current_snap = AixSnap('/Users/vs/dev/confcenter/confcenter/confuploads/dac0b33d7b88a2b27b3ba50d0aa0b1a7_snap_valday2_060712.pax.Z_AIX/')
-    snap = AixSnap('/Users/vs/dev/confcenter/confcenter/confuploads/98e6a40e05a8334dd7a43901d08a068e_erie1.snap.pax.Z_AIX/')
+    snap = AixSnap('/Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/')
     #print snap.entec_params()
     snap.sys0_params()
     snap.oslevel_params()
