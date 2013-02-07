@@ -216,3 +216,40 @@ INFO     2013-02-07 00:27:46,145 conffiles File type d32cb43aca57a20d12e246e262d
 INFO     2013-02-07 00:27:46,154 views    Sucsessfully handeled file  snap_valday2_060712.pax.Z in upload_file
 INFO     2013-02-07 00:27:46,666 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ and output generated in anal_acc
 INFO     2013-02-07 00:27:55,461 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 00:29:35,088 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:08:48,241 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-07 21:08:53,992 views    Starting file  snap_valday2_060712.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-07 21:08:53,994 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z in handle_uploaded_file
+INFO     2013-02-07 21:08:55,304 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z is detected as AIX
+INFO     2013-02-07 21:08:55,314 views    Sucsessfully handeled file  snap_valday2_060712.pax.Z in upload_file
+INFO     2013-02-07 21:08:55,881 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-07 21:09:05,661 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:09:48,934 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:10:29,644 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:11:34,214 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:12:15,458 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:14:48,751 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:16:55,560 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:19:31,153 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:25:21,165 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:26:04,390 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:26:44,686 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:30:29,717 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 21:58:53,140 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:01:41,810 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:02:20,327 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:07:57,499 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:09:30,382 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:15:09,074 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:15:50,373 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:17:04,166 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:18:16,167 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:18:45,525 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:20:12,757 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:20:50,679 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:22:07,781 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:25:37,927 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:26:22,761 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:26:42,651 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:29:32,939 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-07 22:29:51,614 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_valday2_060712.pax.Z_AIX/ in anal_acc

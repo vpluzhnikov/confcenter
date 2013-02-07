@@ -358,11 +358,11 @@
         </DIV>
     {% endif %}
 
-    {% if hequv %}
+    {% if hequiv %}
         <A class = "hideBtn" onclick="hideShow(this);return false;">{% trans "hequiv_info_rep" %}
         </A><DIV style="display:none;" class="hideCont">
             <table>
-                {% for record in hequv %}
+                {% for record in hequiv%}
                     <tr>
                         <td>{{ record }}</td>
                     </tr>
@@ -378,15 +378,16 @@
                 {% if nfs|length > 1 %}
                     <tr>{% trans "nfssharename_rep" %}<td></td></tr>
                     {% for fs in nfs %}
-                        <tr><td>{{ fs.exportedfs }}</td></tr>
+                        <tr><td>{% trans "nfsexported_rep" %}</td></tr>
+                        <tr><td>{{ fs  }}</td></tr>
                     {% endfor %}
                 {% else %}
                     {% for fs in nfs %}
-                        {% ifequal fs.exportedfs "exportfs: nothing exported" %}
+                        {% ifequal fs "exportfs: nothing exported" %}
                             <tr><td>{% trans "nonfsshares_rep" %}</td> </tr>
                         {% else %}
                             <tr><td>{% trans "nfsexported_rep" %}</td></tr>
-                            <tr><td>{{ fs.exportedfs }}</td></tr>
+                            <tr><td>{{ fs  }}</td></tr>
                         {% endifequal %}
                     {% endfor %}
                 {% endif %}

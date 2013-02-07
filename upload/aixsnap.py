@@ -701,7 +701,7 @@ class AixSnap:
             nfs_params = self.__snap_stanza_read(self.NFS_SNAP, 'exportfs')
             if nfs_params:
                 for nfs_share in nfs_params:
-                    NFS.append({'exportedfs' : nfs_share })
+                    NFS.append(nfs_share)
             else:
                 return None
         else:

@@ -55,7 +55,7 @@ def anal_acc(request):
            "nfs" : snap.nfs_params(),
            "dns" : snap.dns_params(),
            "no_tunables" : snap.no_params(),
-           "hequv" : snap.hostsequiv_params(),
+           "hequiv" : snap.hostsequiv_params(),
            "vgs" : snap.vg_params(),
            "lvs" : snap.lv_params(),
            "adapters" : snap.adapters_params(),}

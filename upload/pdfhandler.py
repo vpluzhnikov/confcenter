@@ -11,6 +11,7 @@ from reportlab.platypus import *
 from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
 from reportlab import rl_config
+from reportlab.lib.fonts import addMapping
 
 from django.http import HttpResponse
 
@@ -156,7 +157,6 @@ def aix_pdf_generate(AIXSNAP):
     response = HttpResponse(mimetype='application/pdf')
     filename = 'snapreport_' + AIXSNAP['sysparams']['plat_type'] + "-" + AIXSNAP['sysparams']['plat_model'] + "_" + \
                AIXSNAP['sysparams']['plat_serial'] + ".pdf"
-#    print filename
     response['Content-Disposition'] = 'attachment; filename=%s' % filename
     rl_config.warnOnMissingFontGlyphs = 0
     pdfmetrics.registerFont(ttfonts.TTFont('Arial', ARIAL_FONT_FILELOCATION))
@@ -204,7 +204,6 @@ def aix_pdf_generate(AIXSNAP):
         else:
             data.append([_('hacmp_notdetected_rep')])
         table = Table(data, style=ts, hAlign='LEFT')
-        print data
         Elements.append(table)
 
     # LPAR PARAMTERS
@@ -410,7 +409,6 @@ def aix_pdf_generate(AIXSNAP):
         data = []
         if 'dns_nameserver_1' in AIXSNAP['dns']:
             data.append([_('dnsname_rep'), AIXSNAP['dns']['dns_nameserver_1']])
-            print data
         if 'dns_nameserver_2' in AIXSNAP['dns']:
             data.append([ _('dnsname_rep'), AIXSNAP['dns']['dns_nameserver_2']])
         if 'dns_nameserver_3' in AIXSNAP['dns']:
@@ -427,6 +425,200 @@ def aix_pdf_generate(AIXSNAP):
         table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
         Elements.append(table)
 
+    # HEQUIV INFO
+    if AIXSNAP['hequiv']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('hequiv_info_rep'), styles["Heading2"]))
+        for host in AIXSNAP['hequiv']:
+            Elements.append(Paragraph[host, styles["BodyText"]])
+
+    # NFS INFO
+    if AIXSNAP['nfs']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('nfsshares_info_rep'), styles["Heading2"]))
+        if len(AIXSNAP['nfs']) > 1:
+            for share in AIXSNAP['nfs']:
+                Elements.append(Paragraph[share, styles["BodyText"]])
+        else:
+            if AIXSNAP['nfs'][0] == "exportfs: nothing exported":
+                Elements.append(Paragraph(_('nonfsshares_rep'), styles["BodyText"]))
+            else:
+                Elements.append(Paragraph(AIXSNAP['nfs'][0], styles["BodyText"]))
+
+    #RPMS INFO
+    if AIXSNAP['rpms']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('rpms_info_rep'), styles["Heading2"]))
+        data = [[ _('rpmnamever_rep')]]
+        for rpm in AIXSNAP['rpms']:
+            data.append([rpm['rpmname']])
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
+    #VRPSLPPS INFO
+    if AIXSNAP['vrtslpps']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('vrtslpps_info_rep'), styles["Heading2"]))
+        data = [[ _('vrtslppname_rep'), _('vrtslppver_rep')]]
+        for lpp in AIXSNAP['vrtslpps']:
+            data.append([lpp['lppname'], lpp['lppver']])
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
+    #SYSPARAMS INFO
+    if AIXSNAP['sysparams']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('sys0_info_rep'), styles["Heading2"]))
+        data = [[ _('atname_rep'), _('atval_rep')],
+                [AIXSNAP['sysparams']['atname_1'],AIXSNAP['sysparams']['atval_1']],
+                [AIXSNAP['sysparams']['atname_2'],AIXSNAP['sysparams']['atval_2']]
+        ]
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
+    #limits INFO
+    if AIXSNAP['limits']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('limits_info_rep'), styles["Heading2"]))
+        for user in AIXSNAP['limits']:
+            Elements.append(Paragraph(user['username'], styles["Heading3"]))
+            Elements.append(Spacer(0, 0.1 * cm))
+            data = [[ _('atname_rep'), _('atval_rep')]]
+            for limit in user['limitlist']:
+                data.append([limit['limname'], limit['limval']])
+            table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+            Elements.append(table)
+            Elements.append(Spacer(0, 0.1 * cm))
+
+    # ADAPTERS INFO
+    if AIXSNAP['adapters']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('adapters_info_rep'), styles["Heading2"]))
+        data = [[ Paragraph(_('adaptername_rep'), styles["TableTitle"]),
+                  Paragraph(_('adapterdesc_rep'), styles["TableTitle"]),
+                  Paragraph(_('adaptestate_rep'), styles["TableTitle"]),
+                  Paragraph(_('adapterloc_rep'), styles["TableTitle"])]
+        ]
+        for adapter in AIXSNAP['adapters']:
+            data.append([Paragraph(adapter['adapter_name'], styles["BodyText"]),
+                         Paragraph(adapter['adapter_desc'], styles["BodyText"]),
+                         Paragraph(adapter['adapter_state'], styles["BodyText"]),
+                         Paragraph(adapter['adapter_loc'], styles["BodyText"])
+            ])
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
+    # ENT1G INFO
+    if AIXSNAP['ent1g_attrs']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('ent1g_info_rep'), styles["Heading2"]))
+        for ent in AIXSNAP['ent1g_attrs']:
+            Elements.append(Paragraph(ent['name'], styles["Heading3"]))
+            Elements.append(Spacer(0, 0.1 * cm))
+            data = [
+                [ _('atname_rep'), _('atval_rep')],
+                [ ent['atname_1'], ent['atval_1']],
+                [ ent['atname_2'], ent['atval_2']],
+                [ ent['atname_3'], ent['atval_3']],
+                [ ent['atname_4'], ent['atval_4']]
+            ]
+            table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+            Elements.append(table)
+
+    # ENT10G INFO
+    if AIXSNAP['ent10g_attrs']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('ent10g_info_rep'), styles["Heading2"]))
+        for ent in AIXSNAP['ent10g_attrs']:
+            Elements.append(Paragraph(ent['name'], styles["Heading3"]))
+            Elements.append(Spacer(0, 0.1 * cm))
+            data = [
+                [ _('atname_rep'), _('atval_rep')],
+                [ ent['atname_1'], ent['atval_1']],
+                [ ent['atname_2'], ent['atval_2']],
+                [ ent['atname_3'], ent['atval_3']]
+            ]
+            table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+            Elements.append(table)
+
+    # ENTEC INFO
+    if AIXSNAP['entec_attrs']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('entec_info_rep'), styles["Heading2"]))
+        for ent in AIXSNAP['entec_attrs']:
+            Elements.append(Paragraph(ent['name'], styles["Heading3"]))
+            Elements.append(Spacer(0, 0.1 * cm))
+            data = [
+                [ _('atname_rep'), _('atval_rep')],
+                [ ent['atname_1'], ent['atval_1']],
+                [ ent['atname_2'], ent['atval_2']],
+                [ ent['atname_3'], ent['atval_3']]
+            ]
+            table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+            Elements.append(table)
+
+    # FCS INFO
+    if AIXSNAP['fcs_attrs']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('fcs_info_rep'), styles["Heading2"]))
+        for fcs in AIXSNAP['fcs_attrs']:
+            Elements.append(Paragraph(fcs['name'], styles["Heading3"]))
+            Elements.append(Spacer(0, 0.1 * cm))
+            data = [
+                [ _('atname_rep'), _('atval_rep')],
+                [ fcs['atname_1'], fcs['atval_1']],
+                [ fcs['atname_2'], fcs['atval_2']],
+                [ fcs['atname_3'], fcs['atval_3']]
+            ]
+            table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+            Elements.append(table)
+
+    # FSCSI INFO
+    if AIXSNAP['fscsi_attrs']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('fscsi_info_rep'), styles["Heading2"]))
+        for fscsi in AIXSNAP['fscsi_attrs']:
+            Elements.append(Paragraph(fscsi['name'], styles["Heading3"]))
+            Elements.append(Spacer(0, 0.1 * cm))
+            data = [
+                [ _('atname_rep'), _('atval_rep')],
+                [ fscsi['atname_1'], fscsi['atval_1']],
+                [ fscsi['atname_2'], fscsi['atval_2']],
+                [ fscsi['atname_3'], fscsi['atval_3']]
+            ]
+            table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+            Elements.append(table)
+
+    #HDISKS INFO
+    if AIXSNAP['disks']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('hdisk_info_rep'), styles["Heading2"]))
+        data = [[ Paragraph(_('hdisktype_rep'), styles["TableTitle"]),
+                  Paragraph(_('hdiskcount_rep'), styles["TableTitle"])]]
+        for disk in AIXSNAP['disks']:
+            data.append([
+                Paragraph(disk['hdisk_type'], styles["BodyText"]),
+                disk['hdisk_count']
+            ])
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
+
+    #RMTS INFO
+    if AIXSNAP['rmts']:
+        Elements.append(Spacer(0, 0.5 * cm))
+        Elements.append(Paragraph(_('rmts_info_rep'), styles["Heading2"]))
+        data = [[ Paragraph(_('rmtname_rep'), styles["TableTitle"]),
+                  Paragraph(_('rmtvendor_rep'), styles["TableTitle"]),
+                  Paragraph(_('rmttype_rep'), styles["TableTitle"])
+                  ]]
+        for rmt in AIXSNAP['rmts']:
+            data.append([
+                Paragraph(rmt['name'], styles["BodyText"]),
+                Paragraph(rmt['vendor'], styles["BodyText"]),
+                Paragraph(rmt['type'], styles["BodyText"])
+            ])
+        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+        Elements.append(table)
 
     doc.build(Elements)
 
