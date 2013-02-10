@@ -22,6 +22,7 @@ def handle_uploaded_file(file, name, ostype):
         if not fileattrs == None:
             logger.info("File type %s is detected as %s" % (name, fileattrs['filetype']))
             fileattrs.update({'filename':name})
+            fileattrs.update({'dumpfilename' : UPLOAD_DIR + name + "." + fileattrs['filetype'] + ".confdump"})
             return fileattrs
         else:
             logger.info("File type %s is not valid" % (name))

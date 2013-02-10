@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/upload/hostext_ss.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/log/upload.log" afterPath="$PROJECT_DIR$/confcenter/log/upload.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" afterPath="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/aixsnap.py" afterPath="$PROJECT_DIR$/upload/aixsnap.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/conffiles.py" afterPath="$PROJECT_DIR$/upload/conffiles.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/pdfhandler.py" afterPath="$PROJECT_DIR$/upload/pdfhandler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/test.py" afterPath="$PROJECT_DIR$/upload/test.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/views.py" afterPath="$PROJECT_DIR$/upload/views.py" />
     </list>
     <ignored path="confcenter.iws" />
@@ -33,7 +35,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upload/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="37" selection-start="2184" selection-end="2202" vertical-scroll-proportion="0.0">
+            <state line="63" column="67" selection-start="3010" selection-end="3010" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#51#122#0" expanded="true" />
               </folding>
@@ -41,10 +43,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pdfhandler.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="conffiles.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upload/conffiles.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="60" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pdfhandler.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upload/pdfhandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="613" column="32" selection-start="26401" selection-end="26401" vertical-scroll-proportion="0.4430693">
+            <state line="309" column="62" selection-start="11623" selection-end="11623" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#24#53#0" expanded="true" />
               </folding>
@@ -52,20 +63,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="django.po" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po">
+      <file leaf-file-name="test.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upload/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="372" column="17" selection-start="12285" selection-end="12285" vertical-scroll-proportion="0.0">
+            <state line="14" column="10" selection-start="741" selection-end="741" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aixsnap.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="hostext_ss.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upload/hostext_ss.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="21" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aixsnap.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/upload/aixsnap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="486" column="8" selection-start="21290" selection-end="21290" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="110" column="16" selection-start="4272" selection-end="4272" vertical-scroll-proportion="0.40841585">
+              <folding>
+                <element signature="e#42#75#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,7 +95,7 @@
       <file leaf-file-name="snapreport_form.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confcenter/templates/snapreport_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="665" column="39" selection-start="25777" selection-end="25781" vertical-scroll-proportion="-12.083333">
+            <state line="38" column="90" selection-start="1945" selection-end="1958" vertical-scroll-proportion="-11.25">
               <folding />
             </state>
           </provider>
@@ -95,22 +117,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/conf/locale/ru/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/confcenter/urls.py" />
         <option value="$PROJECT_DIR$/upload/forms.py" />
         <option value="$PROJECT_DIR$/confcenter/upload_handlers.py" />
         <option value="$PROJECT_DIR$/confcenter/templates/base.html" />
         <option value="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
-        <option value="$PROJECT_DIR$/upload/conffiles.py" />
         <option value="$PROJECT_DIR$/confcenter/common.py" />
         <option value="$PROJECT_DIR$/confcenter/settings.py" />
         <option value="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
-        <option value="$PROJECT_DIR$/upload/test.py" />
         <option value="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
+        <option value="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" />
+        <option value="$PROJECT_DIR$/upload/test.py" />
+        <option value="$PROJECT_DIR$/upload/hostext_ss.py" />
+        <option value="$PROJECT_DIR$/upload/conffiles.py" />
+        <option value="$PROJECT_DIR$/upload/pdfhandler.py" />
         <option value="$PROJECT_DIR$/upload/views.py" />
         <option value="$PROJECT_DIR$/upload/aixsnap.py" />
-        <option value="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" />
-        <option value="$PROJECT_DIR$/upload/pdfhandler.py" />
       </list>
     </option>
   </component>
@@ -631,7 +653,11 @@
       <created>1360182538318</created>
       <updated>1360182538318</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Full support for PDF save iption for AIX snap configuration output">
+      <created>1360261866103</created>
+      <updated>1360261866103</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -641,19 +667,19 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21520804" sideWeight="0.5380774" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950064" sideWeight="0.49425286" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950064" sideWeight="0.49784482" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4619226" sideWeight="0.5926724" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4619226" sideWeight="0.40530846" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4619226" sideWeight="0.58967" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DatabaseBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -696,7 +722,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added few paragrathes (up to DNS) in PDF report" />
+    <option name="LAST_COMMIT_MESSAGE" value="Full support for PDF save iption for AIX snap configuration output" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -724,6 +750,7 @@
     <MESSAGE value="Preliminary support for PDF generation for AIX snap in two main languages (English and Russian)" />
     <MESSAGE value="Added styles for PDF generation and few paragrathes in PDF report" />
     <MESSAGE value="Added few paragrathes (up to DNS) in PDF report" />
+    <MESSAGE value="Full support for PDF save iption for AIX snap configuration output" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -731,20 +758,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/upload/conffiles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="317" selection-end="346" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Python/2.7/site-packages/reportlab/pdfgen/canvas.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="235" column="8" selection-start="8414" selection-end="8414" vertical-scroll-proportion="0.17073171">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="23" selection-start="555" selection-end="578" vertical-scroll-proportion="0.0">
@@ -773,20 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upload/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/upload/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="24" selection-start="1314" selection-end="1329" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
       <provider selected="true" editor-type-id="text-editor">
         <state line="536" column="8" selection-start="13830" selection-end="13830" vertical-scroll-proportion="19.90099">
@@ -797,13 +796,6 @@
     <entry file="file://$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po">
       <provider selected="true" editor-type-id="text-editor">
         <state line="372" column="17" selection-start="12285" selection-end="12285" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/upload/aixsnap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="486" column="8" selection-start="21290" selection-end="21290" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -822,27 +814,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upload/views.py">
+    <entry file="file://$PROJECT_DIR$/upload/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="37" selection-start="2184" selection-end="2202" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#51#122#0" expanded="true" />
+            <element signature="e#184#216#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="10" selection-start="741" selection-end="741" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/hostext_ss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="21" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/templates/snapreport_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="665" column="39" selection-start="25777" selection-end="25781" vertical-scroll-proportion="-12.083333">
+        <state line="38" column="90" selection-start="1945" selection-end="1958" vertical-scroll-proportion="-11.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/conffiles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="60" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/upload/pdfhandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="613" column="32" selection-start="26401" selection-end="26401" vertical-scroll-proportion="0.4430693">
+        <state line="309" column="62" selection-start="11623" selection-end="11623" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#24#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="67" selection-start="3010" selection-end="3010" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#51#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/aixsnap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="16" selection-start="4272" selection-end="4272" vertical-scroll-proportion="0.40841585">
+          <folding>
+            <element signature="e#42#75#0" expanded="true" />
           </folding>
         </state>
       </provider>

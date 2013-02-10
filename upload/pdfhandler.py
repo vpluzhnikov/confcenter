@@ -289,24 +289,25 @@ def aix_pdf_generate(AIXSNAP):
     if AIXSNAP['errors']:
         Elements.append(Spacer(0, 0.5 * cm))
         Elements.append(Paragraph(_('err_info_rep'), styles["Heading2"]))
-        data = [[Paragraph(_('err_count_rep'), styles["TableTitle"]), Paragraph(_('err_id_rep'), styles["TableTitle"]),
-                 Paragraph(_('err_firstocc_rep'), styles["TableTitle"]),
-                 Paragraph(_('err_lastocc_rep'), styles["TableTitle"]),
-                 Paragraph(_('err_type_rep'), styles["TableTitle"]),
-                 Paragraph(_('err_class_rep'), styles["TableTitle"]),
-                 Paragraph(_('err_resource_rep'), styles["TableTitle"]),
-                 Paragraph(_('err_desc_rep'), styles["TableTitle"])
+        data = [[Paragraph(_('err_count_rep'), styles["TableTitleSmall"]),
+                 Paragraph(_('err_id_rep'), styles["TableTitleSmall"]),
+                 Paragraph(_('err_firstocc_rep'), styles["TableTitleSmall"]),
+                 Paragraph(_('err_lastocc_rep'), styles["TableTitleSmall"]),
+                 Paragraph(_('err_type_rep'), styles["TableTitleSmall"]),
+                 Paragraph(_('err_class_rep'), styles["TableTitleSmall"]),
+                 Paragraph(_('err_resource_rep'), styles["TableTitleSmall"]),
+                 Paragraph(_('err_desc_rep'), styles["TableTitleSmall"])
                  ]]
         for error in AIXSNAP['errors']:
             data.append([error['errpt_errq'],
-                Paragraph(error['errpt_errid'], styles["BodyText"]),
-                Paragraph(error['errpt_errdates'], styles["BodyText"]),
-                Paragraph(error['errpt_erridatee'], styles["BodyText"]),
-                Paragraph(error['errpt_errtype'], styles["BodyText"]),
-                Paragraph(error['errpt_class'], styles["BodyText"]),
-                Paragraph(error['errpt_errres'], styles["BodyText"]),
-                Paragraph(error['errpt_errdesc'], styles["BodyText"])])
-        table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
+                Paragraph(error['errpt_errid'], styles["Code"]),
+                Paragraph(error['errpt_errdates'], styles["Code"]),
+                Paragraph(error['errpt_erridatee'], styles["Code"]),
+                Paragraph(error['errpt_errtype'], styles["Code"]),
+                Paragraph(error['errpt_class'], styles["Code"]),
+                Paragraph(error['errpt_errres'], styles["Code"]),
+                Paragraph(error['errpt_errdesc'], styles["Code"])])
+        table = Table(data, style=littlets, hAlign='LEFT', repeatRows=1, splitByRow=1)
         Elements.append(table)
 
     # BOOTINFO
@@ -368,7 +369,7 @@ def aix_pdf_generate(AIXSNAP):
         table = Table(data, style=errptts, hAlign='LEFT', repeatRows=1, splitByRow=1)
         Elements.append(table)
 
-    # VOLGROUP INFO
+    # LOGICAL VOLUME INFO
     if AIXSNAP['lvs']:
         Elements.append(Paragraph(_('lv_info_rep'), styles["Heading2"]))
         Elements.append(Spacer(0, 0.5 * cm))

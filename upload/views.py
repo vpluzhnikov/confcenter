@@ -23,42 +23,10 @@ from reportlab.pdfgen import canvas
 logger = getLogger(__name__)
 
 def anal_acc(request):
-    #return HttpResponse('OK - ' + request.session['filename'] + ' - ' + str(request.session['filesize']) +
-    #                    ' ' + request.session['filetype'] + ' -  ' + request.session['archpath'] )
-    snap = AixSnap(request.session['archpath'])
-    AIXSNAP = {"snapname": request.session['filename'],
-           "sysparams" : snap.sys0_params(),
-           "oslevel" : snap.oslevel_params(),
-           "mcodes" : snap.mcodes_params(),
-           "dumpdev" : snap.dumpdev_params(),
-           "dump" : snap.dump_params(),
-           "emgrs" : snap.emgr_params(),
-           "errors" : snap.errpt_params(),
-           "bootinfo" : snap.bootinfok_params(),
-           "swaps" : snap.swap_params(),
-           "rpms" : snap.rpm_params(),
-           "ent1g_attrs" : snap.ent1g_params(),
-           "ent10g_attrs" : snap.ent10g_params(),
-           "entec_attrs" : snap.entec_params(),
-           "fcs_attrs" : snap.fcs_params(),
-           "fscsi_attrs" : snap.fscsi_params(),
-           "vrtslpps" : snap.vrtspack_params(),
-           "smt" : snap.smt_params(),
-           "rmts" : snap.rmt_params(),
-           "sys0" : snap.sys0_params(),
-           "limits" : snap.limits_params(),
-           "lparinfo" : snap.lpar_params(),
-           "hostname" : snap.hostname_params(),
-           "disks" : snap.hdisk_params(),
-           "hacmp" : snap.hacmp_params(),
-           "tunables" : snap.tunables_params(),
-           "nfs" : snap.nfs_params(),
-           "dns" : snap.dns_params(),
-           "no_tunables" : snap.no_params(),
-           "hequiv" : snap.hostsequiv_params(),
-           "vgs" : snap.vg_params(),
-           "lvs" : snap.lv_params(),
-           "adapters" : snap.adapters_params(),}
+#    snap = AixSnap(request.session['archpath'])
+#    AIXSNAP = snap.snap_analyze(request.session['filename'])
+#    snap.dump_snap_to_json(request.session['filename'], request.session['dumpfilename'])
+    AIXSNAP = request.session['AIXSNAP']
 
     if request.method == 'POST':
         if 'pdf_save' in request.POST:
@@ -71,40 +39,6 @@ def anal_acc(request):
     else:
         cache_key = "%s_%s" % (request.META['REMOTE_ADDR'], request.session['X-Progress-ID'])
         cache.delete(cache_key)
-#        context = { "snapname": request.session['filename'],
-#                   "sysparams" : snap.sys0_params(),
-#                   "oslevel" : snap.oslevel_params(),
-#                   "mcodes" : snap.mcodes_params(),
-#                   "dumpdev" : snap.dumpdev_params(),
-#                   "dump" : snap.dump_params(),
-#                   "emgrs" : snap.emgr_params(),
-#                   "errors" : snap.errpt_params(),
-#                   "bootinfo" : snap.bootinfok_params(),
-#                   "swaps" : snap.swap_params(),
-#                   "rpms" : snap.rpm_params(),
-#                   "ent1g_attrs" : snap.ent1g_params(),
-#                   "ent10g_attrs" : snap.ent10g_params(),
-#                   "entec_attrs" : snap.entec_params(),
-#                   "fcs_attrs" : snap.fcs_params(),
-#                   "fscsi_attrs" : snap.fscsi_params(),
-#                   "vrtslpps" : snap.vrtspack_params(),
-#                   "smt" : snap.smt_params(),
-#                   "rmts" : snap.rmt_params(),
-#                   "sys0" : snap.sys0_params(),
-#                   "limits" : snap.limits_params(),
-#                   "lparinfo" : snap.lpar_params(),
-#                   "hostname" : snap.hostname_params(),
-#                   "disks" : snap.hdisk_params(),
-#                   "hacmp" : snap.hacmp_params(),
-#                   "tunables" : snap.tunables_params,
-#                   "nfs" : snap.nfs_params(),
-#                   "dns" : snap.dns_params(),
-#                   "no_tunables" : snap.no_params(),
-#                   "hequv" : snap.hostsequiv_params(),
-#                   "vgs" : snap.vg_params(),
-#                   "lvs" : snap.lv_params(),
-#                   "adapters" : snap.adapters_params(),
-#                   }
         logger.info("Snap object analyzed for %s and output generated in %s" % (request.session['archpath'], whoami()))
         return render_to_response("snapreport_form.html", AIXSNAP)
 
@@ -125,11 +59,16 @@ def upload_file(request):
             if not ( fileattr == None ):
 #                return HttpResponse('OK - ' + request.FILES['file'].name + ' - ' + str(request.FILES['file'].size) +
 #                                    ' ' + fileattr['filetype'] + ' -  ' + fileattr['archpath'] )
-                request.session['filename'] = request.FILES['file'].name
-                request.session['filesize'] = request.FILES['file'].size
-                request.session['archpath'] = fileattr['archpath']
-                request.session['filetype'] = fileattr['filetype']
+#                request.session['filename'] = request.FILES['file'].name
+#                request.session['filesize'] = request.FILES['file'].size
+#                request.session['archpath'] = fileattr['archpath']
+#                request.session['filetype'] = fileattr['filetype']
+#                request.session['dumpfilename'] = fileattr['dumpfilename']
                 logger.info("Sucsessfully handeled file  %s in %s" % (request.FILES['file'].name, whoami()))
+                snap = AixSnap(request.session['archpath'])
+                AIXSNAP = snap.snap_analyze(request.FILES['file'].name)
+                snap.dump_snap_to_json(request.FILES['file'].name, fileattr['dumpfilename'])
+                request.session['AIXSNAP'] = AIXSNAP
                 return redirect('/upload/anal_acc/')
             else:
                 logger.info("File type %s is not good, reported from %s" % (request.FILES['file'].name, whoami()))
