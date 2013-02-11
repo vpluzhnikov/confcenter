@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/media/upload/img/back.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/media/upload/img/progressbar.indicator.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/media/upload/img/server15.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/media/upload/img/server18.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/templates/dummy.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/templates/headpiece.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/confcenter.iml" afterPath="$PROJECT_DIR$/.idea/confcenter.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/log/upload.log" afterPath="$PROJECT_DIR$/confcenter/log/upload.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/media/upload/css/style.css" afterPath="$PROJECT_DIR$/confcenter/media/upload/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/settings.py" afterPath="$PROJECT_DIR$/confcenter/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/base.html" afterPath="$PROJECT_DIR$/confcenter/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/confupload_form.html" afterPath="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" afterPath="$PROJECT_DIR$/confcenter/templates/snapreport_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/urls.py" afterPath="$PROJECT_DIR$/confcenter/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/conffiles.py" afterPath="$PROJECT_DIR$/upload/conffiles.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/views.py" afterPath="$PROJECT_DIR$/upload/views.py" />
     </list>
     <ignored path="confcenter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,7 +28,7 @@
       <file leaf-file-name="base.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/confcenter/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="20" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.2949886">
+            <state line="32" column="20" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.546697">
               <folding />
             </state>
           </provider>
@@ -666,13 +649,18 @@
       <created>1355941827711</created>
       <updated>1355941827711</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="General Web design improvments">
+      <created>1360598524992</created>
+      <updated>1360598524992</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32795697" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -688,7 +676,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DatabaseBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -731,7 +718,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some starter changes for local Linux" />
+    <option name="LAST_COMMIT_MESSAGE" value="General Web design improvments" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -747,6 +734,7 @@
     <MESSAGE value="From local to remote commit" />
     <MESSAGE value="All upload files" />
     <MESSAGE value="Some starter changes for local Linux" />
+    <MESSAGE value="General Web design improvments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -845,7 +833,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="20" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.2949886">
+        <state line="32" column="20" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.546697">
           <folding />
         </state>
       </provider>
