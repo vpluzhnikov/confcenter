@@ -112,3 +112,13 @@ def list_values(request):
     for k, v in values:
         html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
     return HttpResponse('<table>%s</table>' % '\n'.join(html))
+
+def headpiece(request):
+    """
+       Function headpiece prints background
+    """
+    return render_to_response('headpiece.html')
+
+def dummy(request):
+
+    return render_to_response('dummy.html')

@@ -36,3 +36,10 @@ INFO     2013-02-10 23:48:51,482 conffiles Starting handling of a file d32cb43ac
 INFO     2013-02-10 23:48:52,360 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z is detected as AIX
 INFO     2013-02-10 23:48:52,368 views    Sucsessfully handeled file  snap_dubna-t3.pax.Z in upload_file
 INFO     2013-02-10 23:48:53,359 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-11 20:58:51,269 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
+INFO     2013-02-11 20:59:08,223 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-11 21:01:52,597 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-11 21:01:52,805 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
+INFO     2013-02-11 21:01:53,579 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-11 21:01:56,582 views    PDF generation requested for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ in anal_acc
+INFO     2013-02-11 21:03:17,754 views    PDF generation requested for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ in anal_acc

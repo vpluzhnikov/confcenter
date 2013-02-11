@@ -6,7 +6,10 @@
 {% block content %}
     <div id="content">
     <form action="" method="post">
-
+    <p> <input type="button" title="Развернуть/Свернуть блоки" class="plusBtn" value="   +   " onclick="hideShowAll('div.hideCont');return false;">
+        <input type="button" title="Свернуть/Развернуть блоки" class="minusBtn" value="   -   " onclick="hideShowAll('div.hideCont');return false;" style="display: none">
+        <input type="submit" name="db_save" value="{% trans "save_in_db_button" %}">
+        <input type="submit" name="pdf_save" value="{% trans "save_in_pdf_button" %}"> </p>
     {% if sysparams %}
         <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "system_params_rep" %}
         </A><DIV style="display:none;" class="hideCont">
@@ -670,7 +673,10 @@
         </DIV>
     {% endif %}
 
-        <p> <input type="submit" name="db_save" value="{% trans "save_in_db_button" %}">
+        <p>
+            <input type="button" title="Развернуть/Свернуть блоки" class="plusBtn" value="   +   " onclick="hideShowAll('div.hideCont');return false;">
+            <input type="button" title="Свернуть/Развернуть блоки" class="minusBtn" value="   -   " onclick="hideShowAll('div.hideCont');return false;" style="display: none">
+        <input type="submit" name="db_save" value="{% trans "save_in_db_button" %}">
         <input type="submit" name="pdf_save" value="{% trans "save_in_pdf_button" %}"> </p>
 
     </form>

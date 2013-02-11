@@ -16,20 +16,34 @@
         function hideShow(el){
             $(el).toggleClass('show').next('div.hideCont').slideToggle('normal');
             return false;
+
+        };
+    </script>
+
+    <script type="text/javascript">
+        var IsVisible=0;
+        function hideShowAll(el){
+            if  (!IsVisible)
+            {$(el).show('slow');
+             $('.plusBtn').hide();
+             $('.minusBtn').show();
+             IsVisible=1;}
+            else {$(el).hide('slow');
+                $('.plusBtn').show();
+                $('.minusBtn').hide();
+                IsVisible=0;}
+
+              return false;
         };
     </script>
 
     <nav id="globalheader">
 
         <ul id="globalnav" role="navigation">
-            <li ><a href="#smth1" onclick="$('#content1').slideToggle('normal');return false"><span>Main</span></a></li>
-            <li id="gn-s"><a href="#smth2"><span>Smth2</span></a></li>
-            <li id="gn-s"><a href="#"><span>Smth3</span></a></li>
-            <li id="gn-s"><a href="#"><span>Smth4</span></a></li>
-            <li id="gn-s"><a href="#"><span>Smth5</span></a></li>
-            <li id="gn-s"><a href="#"><span>Smth6</span></a></li>
-            <li id="gn-s"><a href="#"><span>Smth7</span></a></li>
-            <li id="gn-s"><a href="#"><span>Smth8</span></a></li>
+            <li ><a href="/upload/"><span>Разбор</span></a></li>
+            <li ><a href="/projects/"><span>Проекты</span></a></li>
+            <li ><a href="/plans"><span>Планы</span></a></li>
+            <li ><a href="/about/"><span>О себе...</span></a></li>
         </ul>
     </nav>
 </head>
@@ -39,6 +53,16 @@
 
 {% block content %}{% endblock %}
 {% block footer %}
+    <div id="footer">
+        <hr color="#F9F9F9"/>
+        <ul class="piped">
+            <li ><a href="/upload/"><span>Разбор</span></a></li>
+            <li ><a href="/projects/"><span>Проекты</span></a></li>
+            <li ><a href="/plans"><span>Планы</span></a></li>
+            <li ><a href="/about/"><span>О себе</span></a></li>
+            <li> <a href=""><span>Обратная связь</span></a> </li>
+        </ul>
+    </div>
 {% endblock %}
 
 </body>

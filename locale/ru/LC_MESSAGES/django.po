@@ -526,11 +526,11 @@ msgstr "Автоматически определить"
 
 #: upload/forms.py:23
 msgid "choose_ostype_upload"
-msgstr "Выберете тип операционной системы"
+msgstr "Выберите тип операционной системы"
 
 #: upload/forms.py:24
 msgid "choose_file_upload"
-msgstr "Выберете файл для загрузки"
+msgstr "Выберите файл для загрузки"
 
 #: upload/pdfhandler.py:182
 msgid "pdf_main_title"

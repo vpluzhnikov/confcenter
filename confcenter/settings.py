@@ -12,11 +12,20 @@ AIX_ARCHIVER = 'tar'
 AIX_ARCHIVER_ARGS = '-zxf'
 SOLARIS_ARCHIVER = 'tar'
 SOLARIS_ARCHIVER_ARGS = '-zxf'
+LINUX = 1
+if LINUX:
+    AIX_ARCHIVER = 'pax'
+    AIX_ARCHIVER_ARGS = '-rf'
+else:
+    AIX_ARCHIVER = 'tar'
+    AIX_ARCHIVER_ARGS = '-zxf'
+SOLARIS_ARCHIVER = 'tar'
+SOLARIS_ARCHIVER_ARGS = '-zxf'
 FILE_UPLOAD_MAX_MEMORY_SIZE = '104857600'
 FILE_UPLOAD_HANDLERS = ('confcenter.upload_handlers.UploadProgressCachedHandler', ) + \
                        global_settings.FILE_UPLOAD_HANDLERS
 LOG = PROJECT_DIR + '/log/'
-ARIAL_FONT_FILELOCATION = '/Users/vs/dev/confcenter/locale/fonts/Arial.ttf'
+ARIAL_FONT_FILELOCATION = '/home/vs/dev/confcenter/locale/fonts/Arial.ttf'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -28,7 +37,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'confcenter',                      # Or path to database file if using sqlite3.
-        'USER': 'vs',                      # Not used with sqlite3.
+        'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': 'vsevolod',                  # Not used with sqlite3.
         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
@@ -49,7 +58,7 @@ TIME_ZONE = 'Europe/Moscow'
 LANGUAGE_CODE = 'ru-ru'
 
 LOCALE_PATHS = (
-    '/Users/vs/dev/confcenter/locale',
+    '/home/vs/dev/confcenter/locale',
     )
 
 

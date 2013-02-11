@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    <div id="content">
+    <div id="content_conf">
         {% if form.errors %}
             <p style="color: red;">
                 Please correct the error{{ form.errors|pluralize }} below.
@@ -17,19 +17,27 @@
         {% endif %}
 
         <form id="upload_form" enctype="multipart/form-data" method="post">
-            <table>
-                {{ form.as_table }}
+            <table id="upload_table">
+                <tr><th><label for="id_ostype">Выберите тип операционной системы:</label></th><td><select name="ostype" id="id_ostype">
+                    <optgroup label="Автоматически определить">
+                        <option value="0">Автоматически определить</option>
+                    </optgroup>
+                </select></td></tr>
+                <tr><th><label for="id_file">Выберите файл для загрузки:</label></th><td><input type="file" name="file" id="id_file" /></td></tr>
+                <tr><th></th><td><input type="submit" id="id_submit"  value="Загрузить" /></td></tr>
             </table>
-            <div class="submit-row">
-                <input type="submit" style="padding: 20" value={% trans "button_submit_upload" %} />
-            </div>
+
 
         </form>
-        <div id="progressbar"></div>
+        <div id="progressbar" style="display: NONE">
+            <p style="background: none; position: absolute; left: 450px; font-size: 8pt"> Загрузка... </p>
+        </div>
+
         <div id="analyze" style="display: NONE" align="center">
             <p>{% trans "analyze_upload" %}</p>
-            <img id="analyze_progress" src="/media/upload/img/icon_inprogress.gif" />
+            <img id="analyze_progress" src="/media/upload/img/progressbar.indicator.gif" />
         </div>
 
     </div>
+
 {% endblock %}
