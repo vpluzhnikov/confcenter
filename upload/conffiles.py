@@ -9,6 +9,8 @@ from logging import getLogger
 from confcenter.common import whoami
 from os import remove
 
+logger = getLogger(__name__)
+
 
 def handle_uploaded_file(f, name, ostype):
     """

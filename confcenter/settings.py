@@ -25,7 +25,7 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = '104857600'
 FILE_UPLOAD_HANDLERS = ('confcenter.upload_handlers.UploadProgressCachedHandler', ) + \
                        global_settings.FILE_UPLOAD_HANDLERS
 LOG = PROJECT_DIR + '/log/'
-ARIAL_FONT_FILELOCATION = '/Users/vs/dev/confcenter/locale/fonts/Arial.ttf'
+ARIAL_FONT_FILELOCATION = '/home/vs/dev/confcenter/locale/fonts/Arial.ttf'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
