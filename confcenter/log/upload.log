@@ -1,174 +1,38 @@
-INFO     2013-02-08 15:13:13,381 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:15:43,657 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:15:51,462 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:15:51,665 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:15:52,061 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:15:53,861 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:15:56,752 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:16:04,333 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:16:05,716 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:16:07,280 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:17:06,438 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:17:11,919 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:17:12,131 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:17:12,503 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:17:18,906 views    PDF generation requested for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ in anal_acc
-INFO     2013-02-08 15:18:05,204 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:18:11,715 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:18:11,904 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:18:12,305 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:19:44,703 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:19:49,833 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:19:50,046 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:19:50,430 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:20:05,874 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:20:44,163 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:22:44,026 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:22:51,883 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:22:52,092 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:22:52,478 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:23:45,997 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:28:27,286 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:28:32,967 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:28:33,172 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:28:33,550 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:29:17,130 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:31:32,595 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:31:38,231 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:31:38,436 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:31:38,836 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:38:46,176 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:38:51,935 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:38:52,145 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:38:52,509 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:39:09,065 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:39:48,219 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:39:55,809 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:39:56,002 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:39:56,373 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:40:42,390 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:43:17,521 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:43:22,820 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:43:23,014 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:43:23,406 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:44:37,141 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:44:43,436 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:44:43,641 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:44:44,006 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:46:12,300 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:46:20,651 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:46:20,846 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:46:21,254 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 15:49:08,251 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 15:49:13,699 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 15:49:13,898 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 15:49:14,298 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:03:08,282 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:03:13,982 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:03:14,181 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:03:14,568 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:03:45,809 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:04:39,204 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:06:07,692 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:06:14,510 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:06:14,718 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:06:15,136 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:07:55,128 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:08:01,124 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:08:01,312 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:08:01,719 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:08:19,224 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:08:26,388 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:10:06,412 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:10:14,421 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:10:14,648 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:10:15,048 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:11:19,273 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:11:25,112 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:11:25,313 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:11:25,722 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:12:01,227 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:12:07,853 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:12:08,057 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:12:08,443 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:12:45,273 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:12:51,350 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:12:51,534 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:12:51,889 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:16:16,223 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:16:21,778 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:16:21,989 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:16:22,448 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:17:47,029 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:17:54,722 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:17:54,914 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:17:55,334 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:18:18,133 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:18:24,145 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:18:24,337 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:18:24,739 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:18:55,247 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:18:59,871 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:19:00,078 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:19:00,447 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:20:30,544 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:20:35,888 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:20:36,080 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:20:36,448 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:20:56,797 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:21:01,627 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:21:01,839 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:21:16,717 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:21:22,681 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:21:22,877 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:21:23,319 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:21:36,913 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:21:46,276 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:21:46,464 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:21:46,855 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:22:11,148 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:22:16,979 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:22:17,178 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:22:17,557 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:22:30,409 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:22:35,761 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:22:35,945 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:22:36,331 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:23:00,280 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:23:16,117 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:23:33,985 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:23:39,588 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:23:39,799 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:23:40,206 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:23:58,874 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:24:04,246 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:24:04,435 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:24:04,863 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:24:40,863 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:24:47,068 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:24:47,276 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:24:47,645 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:25:03,492 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:25:09,381 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:25:09,581 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:25:09,953 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:28:42,587 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:28:49,179 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:28:49,372 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:28:49,745 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:29:07,885 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:29:08,073 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:29:08,478 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 16:29:20,156 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:32:10,721 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 16:32:20,343 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 16:32:20,525 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 16:32:20,887 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 17:01:59,892 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 17:02:06,036 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 17:02:06,234 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 17:02:06,655 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-02-08 17:03:38,821 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id a7057600598d513834f6fc4000eb03fb
-INFO     2013-02-08 17:03:43,820 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-02-08 17:03:44,033 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
-INFO     2013-02-08 17:03:44,397 views    Snap object analyzed for /home/vs/dev/confcenter/confcenter/confuploads/a7057600598d513834f6fc4000eb03fb_test.snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-10 23:27:49,618 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-10 23:31:57,684 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-10 23:32:03,863 views    Starting file  snap_dubna-t4.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-10 23:32:03,865 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_dubna-t4.pax.Z in handle_uploaded_file
+INFO     2013-02-10 23:32:04,723 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_dubna-t4.pax.Z is detected as AIX
+INFO     2013-02-10 23:32:04,730 views    Sucsessfully handeled file  snap_dubna-t4.pax.Z in upload_file
+INFO     2013-02-10 23:32:31,624 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-10 23:32:37,978 views    Starting file  snap_dubna-t3.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-10 23:32:37,981 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z in handle_uploaded_file
+INFO     2013-02-10 23:32:39,093 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z is detected as AIX
+INFO     2013-02-10 23:32:39,100 views    Sucsessfully handeled file  snap_dubna-t3.pax.Z in upload_file
+INFO     2013-02-10 23:32:40,227 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-10 23:32:51,688 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ in anal_acc
+INFO     2013-02-10 23:35:07,788 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ in anal_acc
+INFO     2013-02-10 23:36:31,406 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ in anal_acc
+INFO     2013-02-10 23:38:08,377 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-10 23:38:14,422 views    Starting file  snap_dubna-t4.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-10 23:38:14,425 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_dubna-t4.pax.Z in handle_uploaded_file
+INFO     2013-02-10 23:38:15,369 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_dubna-t4.pax.Z is detected as AIX
+INFO     2013-02-10 23:38:15,376 views    Sucsessfully handeled file  snap_dubna-t4.pax.Z in upload_file
+INFO     2013-02-10 23:38:16,180 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-10 23:38:24,793 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ in anal_acc
+INFO     2013-02-10 23:43:57,655 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-10 23:44:03,946 views    Starting file  snap_dubna-t3.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-10 23:44:03,948 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z in handle_uploaded_file
+INFO     2013-02-10 23:44:04,921 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z is detected as AIX
+INFO     2013-02-10 23:44:04,927 views    Sucsessfully handeled file  snap_dubna-t3.pax.Z in upload_file
+INFO     2013-02-10 23:44:05,691 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-10 23:46:53,219 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-10 23:46:59,174 views    Starting file  snap_dubna-t3.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-10 23:46:59,175 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z in handle_uploaded_file
+INFO     2013-02-10 23:47:00,009 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z is detected as AIX
+INFO     2013-02-10 23:48:30,205 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-10 23:48:51,481 views    Starting file  snap_dubna-t3.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-10 23:48:51,482 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z in handle_uploaded_file
+INFO     2013-02-10 23:48:52,360 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z is detected as AIX
+INFO     2013-02-10 23:48:52,368 views    Sucsessfully handeled file  snap_dubna-t3.pax.Z in upload_file
+INFO     2013-02-10 23:48:53,359 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc

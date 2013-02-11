@@ -1,8 +1,9 @@
 __author__ = 'vs'
 # -*- coding: utf-8 -*-
-from os import access, path, R_OK, lseek, SEEK_SET
-import os
+from os import access, path, R_OK
 from string import lstrip, replace
+from json import dump, load
+from shutil import rmtree
 
 
 class AixSnap:
@@ -104,6 +105,56 @@ class AixSnap:
             self.FS_SNAP = open(self.CWD + 'filesys/filesys.snap')
         except IOError:
             self.FS_SNAP = None
+
+    def snap_destroy(self):
+        rmtree(self.CWD)
+        del self
+
+    def snap_analyze(self, snapname):
+        """
+        Prepare full DICT with all attributes
+        """
+        AIXSNAP = {"snapname": snapname,
+                   "sysparams" : self.sys0_params(),
+                   "oslevel" : self.oslevel_params(),
+                   "mcodes" : self.mcodes_params(),
+                   "dumpdev" : self.dumpdev_params(),
+                   "dump" : self.dump_params(),
+                   "emgrs" : self.emgr_params(),
+                   "errors" : self.errpt_params(),
+                   "bootinfo" : self.bootinfok_params(),
+                   "swaps" : self.swap_params(),
+                   "rpms" : self.rpm_params(),
+                   "ent1g_attrs" : self.ent1g_params(),
+                   "ent10g_attrs" : self.ent10g_params(),
+                   "entec_attrs" : self.entec_params(),
+                   "fcs_attrs" : self.fcs_params(),
+                   "fscsi_attrs" : self.fscsi_params(),
+                   "vrtslpps" : self.vrtspack_params(),
+                   "smt" : self.smt_params(),
+                   "rmts" : self.rmt_params(),
+                   "sys0" : self.sys0_params(),
+                   "limits" : self.limits_params(),
+                   "lparinfo" : self.lpar_params(),
+                   "hostname" : self.hostname_params(),
+                   "disks" : self.hdisk_params(),
+                   "hacmp" : self.hacmp_params(),
+                   "tunables" : self.tunables_params(),
+                   "nfs" : self.nfs_params(),
+                   "dns" : self.dns_params(),
+                   "no_tunables" : self.no_params(),
+                   "hequiv" : self.hostsequiv_params(),
+                   "vgs" : self.vg_params(),
+                   "lvs" : self.lv_params(),
+                   "adapters" : self.adapters_params()}
+        return AIXSNAP
+
+    def dump_snap_to_json(self, snapname, filename):
+        """
+        Dumps whole snap into JSON
+        """
+        with open(filename, 'w') as outfile:
+            dump(self.snap_analyze(snapname), outfile)
 
     def dumpdev_params(self):
         """
@@ -701,7 +752,7 @@ class AixSnap:
             nfs_params = self.__snap_stanza_read(self.NFS_SNAP, 'exportfs')
             if nfs_params:
                 for nfs_share in nfs_params:
-                    NFS.append({'exportedfs' : nfs_share })
+                    NFS.append(nfs_share)
             else:
                 return None
         else:
@@ -887,8 +938,10 @@ class AixSnap:
                     else:
                         SMTLIST.append(CUR_SMT)
                     cpucount += 1
-            if (cpucount == len(self.__snap_proc_list())) and (len(SMTLIST) == 1):
-                if SMTLIST[0]['smt_enabled'] == True:
+#            (cpucount == len(self.__snap_proc_list())) and
+
+            if (len(SMTLIST) == 1):
+                if SMTLIST[0]['smt_enabled'] == 'true':
                     SMT.update({'smt_threads_count' : SMTLIST[0]['smt_threads']})
                 else:
                     SMT.update({'smt_threads_count' : '0'})
