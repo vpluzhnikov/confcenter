@@ -20,3 +20,19 @@ INFO     2013-02-10 23:38:15,369 conffiles File type d32cb43aca57a20d12e246e262d
 INFO     2013-02-10 23:38:15,376 views    Sucsessfully handeled file  snap_dubna-t4.pax.Z in upload_file
 INFO     2013-02-10 23:38:16,180 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc
 INFO     2013-02-10 23:38:24,793 views    PDF generation requested for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ in anal_acc
+INFO     2013-02-10 23:43:57,655 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-10 23:44:03,946 views    Starting file  snap_dubna-t3.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-10 23:44:03,948 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z in handle_uploaded_file
+INFO     2013-02-10 23:44:04,921 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z is detected as AIX
+INFO     2013-02-10 23:44:04,927 views    Sucsessfully handeled file  snap_dubna-t3.pax.Z in upload_file
+INFO     2013-02-10 23:44:05,691 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-10 23:46:53,219 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-10 23:46:59,174 views    Starting file  snap_dubna-t3.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-10 23:46:59,175 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z in handle_uploaded_file
+INFO     2013-02-10 23:47:00,009 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z is detected as AIX
+INFO     2013-02-10 23:48:30,205 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-10 23:48:51,481 views    Starting file  snap_dubna-t3.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-10 23:48:51,482 conffiles Starting handling of a file d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z in handle_uploaded_file
+INFO     2013-02-10 23:48:52,360 conffiles File type d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z is detected as AIX
+INFO     2013-02-10 23:48:52,368 views    Sucsessfully handeled file  snap_dubna-t3.pax.Z in upload_file
+INFO     2013-02-10 23:48:53,359 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc

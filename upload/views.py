@@ -68,6 +68,7 @@ def upload_file(request):
                 snap = AixSnap(request.session['archpath'])
                 AIXSNAP = snap.snap_analyze(request.FILES['file'].name)
                 snap.dump_snap_to_json(request.FILES['file'].name, fileattr['dumpfilename'])
+                snap.snap_destroy()
                 request.session['AIXSNAP'] = AIXSNAP
                 return redirect('/upload/anal_acc/')
             else:

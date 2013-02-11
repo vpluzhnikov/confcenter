@@ -6,6 +6,7 @@ from os import mkdir, access, R_OK, listdir
 from confcenter.settings import UPLOAD_DIR, AIX_ARCHIVER, AIX_ARCHIVER_ARGS, SOLARIS_ARCHIVER, SOLARIS_ARCHIVER_ARGS
 from logging import getLogger
 from confcenter.common import whoami
+from os import remove
 
 logger = getLogger(__name__)
 
@@ -23,18 +24,22 @@ def handle_uploaded_file(file, name, ostype):
             logger.info("File type %s is detected as %s" % (name, fileattrs['filetype']))
             fileattrs.update({'filename':name})
             fileattrs.update({'dumpfilename' : UPLOAD_DIR + name + "." + fileattrs['filetype'] + ".confdump"})
+            remove(UPLOAD_DIR + name)
             return fileattrs
         else:
             logger.info("File type %s is not valid" % (name))
+            remove(UPLOAD_DIR + name)
             return fileattrs
     else:
         fileattrs = validate_filetype(f, name, ostype)
         if not fileattrs == None:
             logger.info("File type %s is validated as %s" % (name, fileattrs['filetype']))
             fileattrs.update({'filename':name})
+            remove(UPLOAD_DIR + name)
             return fileattrs
         else:
             logger.info("File type %s is not valid" % (name))
+            remove(UPLOAD_DIR + name)
             return fileattrs
 
 
