@@ -3,37 +3,30 @@ __author__ = 'vs'
 from upload.models import Oses, OsTypes
 from subprocess import Popen
 from os import mkdir, access, R_OK, listdir
-from confcenter.settings import UPLOAD_DIR, AIX_ARCHIVER, AIX_ARCHIVER_ARGS, SOLARIS_ARCHIVER, SOLARIS_ARCHIVER_ARGS
-from logging import getLogger
-from confcenter.common import whoami
+from confcenter.settings import UPLOAD_DIR, AIX_ARCHIVER, AIX_ARCHIVER_ARGS, SOLARIS_ARCHIVER, SOLARIS_ARCHIVER_ARGS,\
+    LINUX
 
-logger = getLogger(__name__)
 
-def handle_uploaded_file(file, name, ostype):
+def handle_uploaded_file(f, name, ostype):
     """
         Function handle_uploaded_file(f, name, ostype) saves file f to UPLOAD_DIR and returns DICT(filetype, archpath, filename)
     """
-    logger.info("Starting handling of a file %s in %s" % (name, whoami()))
     with open( UPLOAD_DIR + name, 'wb+') as destination:
-        for chunk in file.chunks():
+        for chunk in f.chunks():
             destination.write(chunk)
     if (ostype == '0'):
-        fileattrs = detect_filetype(file, name)
+        fileattrs = detect_filetype(f, name)
         if not fileattrs == None:
-            logger.info("File type %s is detected as %s" % (name, fileattrs['filetype']))
             fileattrs.update({'filename':name})
             return fileattrs
         else:
-            logger.info("File type %s is not valid" % (name))
             return fileattrs
     else:
         fileattrs = validate_filetype(f, name, ostype)
         if not fileattrs == None:
-            logger.info("File type %s is validated as %s" % (name, fileattrs['filetype']))
             fileattrs.update({'filename':name})
             return fileattrs
         else:
-            logger.info("File type %s is not valid" % (name))
             return fileattrs
 
 
@@ -120,11 +113,20 @@ def try_unpack_file(f, type, name):
             else:
                 return None
     if ( type == 'AIX' ):
-        tarlist = Popen([AIX_ARCHIVER, AIX_ARCHIVER_ARGS, UPLOAD_DIR + name], cwd=CWD, stdout=0, stderr=0)
+        if LINUX:
+#            print "Trying uncomres " + CWD + " " + name
+            uncompress = Popen(['gunzip','-d',name], cwd=UPLOAD_DIR, stdout=0, stderr=0)
+            uncompress.wait()
+            name_pax = name.split('.Z')[0]
+            tarlist = Popen([AIX_ARCHIVER, AIX_ARCHIVER_ARGS, UPLOAD_DIR + name_pax], cwd=CWD, stdout=0, stderr=0)
+        else:
+            tarlist = Popen([AIX_ARCHIVER, AIX_ARCHIVER_ARGS, UPLOAD_DIR + name], cwd=CWD, stdout=0, stderr=0)
         if not tarlist.wait():
             if access(CWD + '/general/general.snap', R_OK):
+                print "Access OK"
                 return CWD
             else:
+                print "Access error"
                 return None
         else:
             return None
