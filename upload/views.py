@@ -122,3 +122,7 @@ def headpiece(request):
 def dummy(request):
 
     return render_to_response('dummy.html')
+
+def projects(request):
+
+    return render_to_response('projects.html')
