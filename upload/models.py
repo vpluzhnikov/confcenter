@@ -4,6 +4,15 @@ from django.db import models
 
 # Create your models here.
 
+class News(models.Model):
+    add_date = models.DateField('Дата добавления', auto_now_add=True)
+    news_lang = models.CharField('Язык новости', max_length=10, blank=False)
+    news_text = models.CharField('Новость', max_length=400, blank=False)
+    def __unicode__(self):
+        return self.news_text
+    class Meta(object):
+        verbose_name_plural = "Новости"
+
 class Orgs(models.Model):
     name = models.CharField('Наименование', max_length=135, blank=True)
     fullname = models.CharField('Полное наименование', max_length=750, blank=True)

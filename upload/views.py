@@ -61,11 +61,11 @@ def upload_file(request):
 #                                    ' ' + fileattr['filetype'] + ' -  ' + fileattr['archpath'] )
 #                request.session['filename'] = request.FILES['file'].name
 #                request.session['filesize'] = request.FILES['file'].size
-#                request.session['archpath'] = fileattr['archpath']
+                request.session['archpath'] = fileattr['archpath']
 #                request.session['filetype'] = fileattr['filetype']
 #                request.session['dumpfilename'] = fileattr['dumpfilename']
                 logger.info("Sucsessfully handeled file  %s in %s" % (request.FILES['file'].name, whoami()))
-                snap = AixSnap(request.session['archpath'])
+                snap = AixSnap(fileattr['archpath'])
                 AIXSNAP = snap.snap_analyze(request.FILES['file'].name)
                 snap.dump_snap_to_json(request.FILES['file'].name, fileattr['dumpfilename'])
                 snap.snap_destroy()
