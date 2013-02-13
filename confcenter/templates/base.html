@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
     {% block js %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
+    <style type="text/css">{% block style %}{% endblock %}</style>
     <script type="text/javascript">
         function hideShow(el){
             $(el).toggleClass('show').next('div.hideCont').slideToggle('normal');
@@ -40,8 +41,9 @@
     <nav id="globalheader">
 
         <ul id="globalnav" role="navigation">
-            <li ><a href="/upload/"><span>Разбор</span></a></li>
-            <li ><a href="/projects/"><span>Проекты</span></a></li>
+            <li ><a href="/"><span>Главная</span></a></li>
+            <li class="nav_upload"><a href="/upload/"><span>Анализ архитектуры</span></a></li>
+            <li class="nav_projects"><a href="/projects/"><span>Проекты</span></a></li>
             <li ><a href="/plans"><span>Планы</span></a></li>
             <li ><a href="/about/"><span>О себе...</span></a></li>
         </ul>
@@ -56,7 +58,7 @@
     <div id="footer">
         <hr color="#F9F9F9"/>
         <ul class="piped">
-            <li ><a href="/upload/"><span>Разбор</span></a></li>
+            <li ><a href="/upload/"><span>Анализ архитектуры</span></a></li>
             <li ><a href="/projects/"><span>Проекты</span></a></li>
             <li ><a href="/plans"><span>Планы</span></a></li>
             <li ><a href="/about/"><span>О себе</span></a></li>

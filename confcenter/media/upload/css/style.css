@@ -70,7 +70,7 @@ body {
 
 /*��������� �������� ����*/
 #globalheader #globalnav li a {
-	float:left; width:243px; height:30px; overflow:hidden; text-indent:10px;
+	float:left; width:194px; height:30px; overflow:hidden; text-indent:10px;
 	outline: none;
 	position: relative;
 	cursor: pointer;
@@ -110,6 +110,7 @@ body {
 	box-shadow: inset 0 1px 2px #779441;
 }
 
+
 #globalnav a:link {font: 15px "Trebuchet MS", Tahoma, Arial, sans-serif; text-align: center; padding-top: 10px; text-shadow: 1px 1px #D0E5A4; text-decoration: none;}
 
 /*���� ���� ������� � ������ ����� �����*/
@@ -142,7 +143,7 @@ body {
 
 #id_ostype, #id_file {
     font: 15px "Trebuchet MS", Tahoma, Arial, sans-serif;
-    padding:10px;
+    padding:5px;
     margin:10px;
     border-radius: 3px;
     border: 1px solid #F9F9F9;
@@ -151,9 +152,9 @@ body {
 
 #id_submit {
     font: 15px "Trebuchet MS", Tahoma, Arial, sans-serif;
-    margin-left:20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-left:15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     }
 
 
@@ -177,3 +178,5 @@ body {
 }
 #footer .piped li a:visited { font: 10px "Trebuchet MS", Tahoma, Arial, sans-serif; color:rgba(172, 172, 172, 0.99); text-align: center; padding-top: 10px; text-decoration: none;
 }
+
+.about {font: 15px "Trebuchet MS", Tahoma, Arial, sans-serif; text-align: justify; padding-top: 15px; text-decoration: none;}
