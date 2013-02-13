@@ -10,6 +10,11 @@
 {% block content %}
 <div id="content">
    <img src="/media/upload/img/server18.png"/>
+    <table>
+        {% for item in news %}
+            <tr><td>{{ item.date }}</td><td> - {{ item.text }}</td></tr>
+        {% endfor %}
+    </table>
 </div>
 
 {% endblock %}

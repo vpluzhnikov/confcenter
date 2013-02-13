@@ -2,7 +2,12 @@ __author__ = 'vs'
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from upload.models import Orgs, Contacts, OsTypes, Oses, PlatformTypes
+from upload.models import Orgs, Contacts, OsTypes, Oses, PlatformTypes, News
+
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('add_date', 'news_lang', 'news_text')
+    search_fields = ('add_date', 'news_lang', 'news_text')
+    ordering = ('add_date',)
 
 class OrgsAdmin(admin.ModelAdmin):
     list_display = ('name', 'fullname', 'city')
@@ -34,6 +39,7 @@ class OsPlatformTypes(admin.ModelAdmin):
     list_display = ('vendor_name', 'type_name', 'model_name')
     search_fields = ('vendor_name', 'type_name', 'model_name')
 
+admin.site.register(News, NewsAdmin)
 admin.site.register(Orgs, OrgsAdmin)
 admin.site.register(Contacts, ContactsAdmin)
 admin.site.register(OsTypes, OsTypesAdmin)

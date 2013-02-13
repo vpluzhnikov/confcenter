@@ -9,23 +9,19 @@ from django.utils import simplejson
 from confcenter.settings import MEDIA_URL
 from logging import getLogger
 from pdfhandler import aix_pdf_generate
+from models import News
 
 from forms import ConfUploadForm
 from conffiles import handle_uploaded_file
 from aixsnap import AixSnap
 from confcenter.common import whoami, get_client_ip, get_session_key
 from django.utils.translation import ugettext as _
-from io import BytesIO
-from reportlab.pdfgen import canvas
 
 
 
 logger = getLogger(__name__)
 
 def anal_acc(request):
-#    snap = AixSnap(request.session['archpath'])
-#    AIXSNAP = snap.snap_analyze(request.session['filename'])
-#    snap.dump_snap_to_json(request.session['filename'], request.session['dumpfilename'])
     AIXSNAP = request.session['AIXSNAP']
 
     if request.method == 'POST':
@@ -57,13 +53,7 @@ def upload_file(request):
             fileattr = handle_uploaded_file(request.FILES['file'], get_session_key(request) + '_' +
                                                                     request.FILES['file'].name, UF_FORM['ostype'])
             if not ( fileattr == None ):
-#                return HttpResponse('OK - ' + request.FILES['file'].name + ' - ' + str(request.FILES['file'].size) +
-#                                    ' ' + fileattr['filetype'] + ' -  ' + fileattr['archpath'] )
-#                request.session['filename'] = request.FILES['file'].name
-#                request.session['filesize'] = request.FILES['file'].size
                 request.session['archpath'] = fileattr['archpath']
-#                request.session['filetype'] = fileattr['filetype']
-#                request.session['dumpfilename'] = fileattr['dumpfilename']
                 logger.info("Sucsessfully handeled file  %s in %s" % (request.FILES['file'].name, whoami()))
                 snap = AixSnap(fileattr['archpath'])
                 AIXSNAP = snap.snap_analyze(request.FILES['file'].name)
@@ -117,7 +107,11 @@ def headpiece(request):
     """
        Function headpiece prints background
     """
-    return render_to_response('headpiece.html')
+    AllNews= News.objects.filter(news_lang=request.LANGUAGE_CODE).order_by("-add_date")[0:5]
+    NEWS = []
+    for news in AllNews:
+        NEWS.append({'date' : news.add_date, 'text' : news.news_text})
+    return render_to_response('headpiece.html', {'news' : NEWS})
 
 def dummy(request):
 

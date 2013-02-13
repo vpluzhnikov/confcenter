@@ -158,3 +158,12 @@ INFO     2013-02-13 22:12:55,129 views    Empty upload form prepared from upload
 INFO     2013-02-13 22:13:01,082 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id None
 INFO     2013-02-13 22:31:37,565 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id None
 INFO     2013-02-13 22:33:48,880 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id None
+INFO     2013-02-13 22:56:17,064 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-13 22:56:29,089 views    Starting file  snap_dubna-t3.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-13 22:56:30,053 views    Sucsessfully handeled file  snap_dubna-t3.pax.Z in upload_file
+INFO     2013-02-13 22:56:30,849 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/d32cb43aca57a20d12e246e262d52b01_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-13 22:57:56,701 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id d32cb43aca57a20d12e246e262d52b01
+INFO     2013-02-13 22:58:24,393 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 30589aff7f17b6527e538a9a442efbce
+INFO     2013-02-13 22:58:30,657 views    Starting file  snap_dubna-t3.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-13 22:58:31,616 views    Sucsessfully handeled file  snap_dubna-t3.pax.Z in upload_file
+INFO     2013-02-13 22:58:32,465 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/30589aff7f17b6527e538a9a442efbce_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc

@@ -18,8 +18,9 @@ class UploadProgressCachedHandler(FileUploadHandler):
         self.logger = getLogger(__name__)
 
     def handle_raw_input(self, input_data, META, content_length, boundary, encoding=None):
-        self.logger.debug("Starting proccessing file with ID = %s in %s" % (self.request.GET['X-Progress-ID'],
-                                                                           whoami()) )
+        if 'X-Progress-ID' in self.request.GET:
+            self.logger.debug("Starting proccessing file with ID = %s in %s" % (self.request.GET['X-Progress-ID'],
+                                                                                whoami()) )
         self.content_length = content_length
         if 'X-Progress-ID' in self.request.GET:
             self.progress_id = self.request.GET['X-Progress-ID']
