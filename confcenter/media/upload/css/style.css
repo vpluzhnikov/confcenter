@@ -137,13 +137,10 @@ body {
  }
 
 .news {font: 20px "Trebuchet MS", Tahoma, Arial,
-        sans-serif; color: white; display:block;
+        sans-serif; color: white; display:none;
         padding-left: 50px; padding-top: 100px; text-shadow: #8a8a8a 0.1em 0.1em 0.2em; text-decoration: none; overflow: hidden;
 
         }
-.news .fst {display: none; 	padding-left: 100px;     }
-.news .scnd {padding-left: 150px;padding-top: 25px; display: none;}
-.news .thrd {padding-left: 200px;padding-top: 25px; display: none;}
 
 
 #content_conf {
