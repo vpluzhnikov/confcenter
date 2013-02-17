@@ -114,7 +114,7 @@ body {
 #globalnav a:link {font: 15px "Trebuchet MS", Tahoma, Arial, sans-serif; text-align: center; padding-top: 10px; text-shadow: 1px 1px #D0E5A4; text-decoration: none;}
 
 /*���� ���� ������� � ������ ����� �����*/
-#content, #target {
+#content {
         position:relative;
         display:block;
 	width: 980px;
@@ -125,6 +125,26 @@ body {
     height: 100%;
 	background: #FFFFFF;
     }
+
+#headpiece {position:relative;
+    display:block;
+    width: 980px;
+    height: 800px;
+    margin: 20px auto;
+    padding: 0px;
+    background: #FFFFFF;
+    background-image: url(../img/server18.png);
+ }
+
+.news {font: 20px "Trebuchet MS", Tahoma, Arial,
+        sans-serif; color: white; display:block;
+        padding-left: 50px; padding-top: 100px; text-shadow: #8a8a8a 0.1em 0.1em 0.2em; text-decoration: none; overflow: hidden;
+
+        }
+.news .fst {display: none; 	padding-left: 100px;     }
+.news .scnd {padding-left: 150px;padding-top: 25px; display: none;}
+.news .thrd {padding-left: 200px;padding-top: 25px; display: none;}
+
 
 #content_conf {
     position:relative;
@@ -174,9 +194,7 @@ body {
     color:#F9F9F9;
    }
 
-#footer .piped li a:link { font: 10px "Trebuchet MS", Tahoma, Arial, sans-serif; color: rgba(172, 172, 172, 0.99); text-align: center; padding-top: 10px; text-decoration: none;
-}
-#footer .piped li a:visited { font: 10px "Trebuchet MS", Tahoma, Arial, sans-serif; color:rgba(172, 172, 172, 0.99); text-align: center; padding-top: 10px; text-decoration: none;
+#footer .piped li a:link, #footer .piped li a:visited { font: 10px "Trebuchet MS", Tahoma, Arial, sans-serif; color: rgba(172, 172, 172, 0.99); text-align: center; padding-top: 10px; text-decoration: none;
 }
 
-.about {font: 15px "Trebuchet MS", Tahoma, Arial, sans-serif; text-align: justify; padding-top: 15px; text-decoration: none;}
+.about {font: 15px "Trebuchet MS", Tahoma, Arial, sans-serif; text-align: justify; padding-top: 15px; text-decoration: none; line-height: 1.5;}
