@@ -126,3 +126,7 @@ def dummy(request):
 def projects(request):
 
     return render_to_response('projects.html')
+
+def plans(request):
+
+    return render_to_response('plans.html')

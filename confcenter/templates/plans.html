@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Планы{% endblock %}
+
+{% block js %}
+    <script src="{{ MEDIA_URL }}/js/test.js" type="text/javascript" xmlns="http://www.w3.org/1999/html"></script>
+{% endblock %}
+{%  block style %}
+    #globalheader #globalnav li.nav_plans a {
+    background: #98B85B;
+    color: #cae285;
+    text-shadow: 1px 1px #6E883F;
+    }
+
+
+{% endblock %}
+{% block content %}
+    <div id="content_conf">
+        <p class="about"> Анализ конфигураций </p>
+            <ol class="about">
+
+               <li>Добавить поддержку ОС Solaris (осуществлять разбор выводов утилиты explorer)</li>
+                <li>Добавить поддержку ОС RHEL (осуществлять разбор конфигурационных файлов explorer)</li>
+                 <li>Добавить поддержку выводов VRTSexplorer по различным платформам</li>
+        <li> Добавить базовые модули анализа полученной конфигурации оборудования</li>
+
+    </div>
+{% endblock %}

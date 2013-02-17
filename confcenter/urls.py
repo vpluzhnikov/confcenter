@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from upload.views import upload_file, anal_acc, list_values, upload_progress, headpiece, dummy, projects
+from upload.views import upload_file, anal_acc, list_values, upload_progress, headpiece, dummy, projects, plans
 
 from upload.models import Oses
 
@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     url(r'^upload/$', upload_file),
     url(r'^upload/$', upload_file),
     url(r'^projects/$', projects),
-    url(r'^plans/$', dummy),
+    url(r'^plans/$', plans),
     url(r'^about/$', dummy),
     url(r'^upload/progress/$', upload_progress, name='upload_progress'),
     url(r'^upload/anal_acc/$', anal_acc),

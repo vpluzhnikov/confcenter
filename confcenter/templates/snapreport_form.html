@@ -2,7 +2,14 @@
 {% load i18n %}
 
 {% block title %}Analysys results for snap - {{ snapname }} {% endblock %}
+{%  block style %}
+    #globalheader #globalnav li.nav_upload a {
+    background: #98B85B;
+    color: #cae285;
+    text-shadow: 1px 1px #6E883F;
+    }
 
+{% endblock %}
 {% block content %}
     <div id="content">
     <form action="" method="post">
