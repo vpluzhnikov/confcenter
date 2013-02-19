@@ -70,7 +70,7 @@ body {
 
 /*��������� �������� ����*/
 #globalheader #globalnav li a {
-	float:left; width:194px; height:30px; overflow:hidden; text-indent:10px;
+	float:left; width:243px; height:30px; overflow:hidden; text-indent:10px;
 	outline: none;
 	position: relative;
 	cursor: pointer;
@@ -137,11 +137,12 @@ body {
  }
 
 .news {font: 20px "Trebuchet MS", Tahoma, Arial,
-        sans-serif; color: white; display:none;
-        padding-left: 50px; padding-top: 100px; text-shadow: #8a8a8a 0.1em 0.1em 0.2em; text-decoration: none; overflow: hidden;
+        sans-serif; color: white;
+        padding-left: 50px; padding-top: 75px; text-shadow: #8a8a8a 0.1em 0.1em 0.2em; text-decoration: none; overflow: hidden;
 
         }
 
+.news .newsDD {padding-top: 25px;  display:none;}
 
 #content_conf {
     position:relative;
@@ -178,6 +179,8 @@ body {
     margin-bottom: 5px;
     }
 
+h1
+{padding-top: 25px;}
 
 #footer {
     display:block;
@@ -187,12 +190,7 @@ body {
     text-align:center;
     }
 
-#footer .piped li{ display:inline;
-    float:left; width:186px; margin-bottom:20px;overflow: hidden;
-    outline: none;
-    position: relative;
-    cursor: pointer;
-    color:#F9F9F9;
+#footer .piped{  font: 10px "Trebuchet MS", Tahoma, Arial, sans-serif; color: rgba(172, 172, 172, 0.99); text-align: right; padding-top: 10px; text-decoration: none;
    }
 
 #footer .piped li a:link, #footer .piped li a:visited { font: 10px "Trebuchet MS", Tahoma, Arial, sans-serif; color: rgba(172, 172, 172, 0.99); text-align: center; padding-top: 10px; text-decoration: none;
