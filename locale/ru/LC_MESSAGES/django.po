@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-19 13:16+0400\n"
+"POT-Creation-Date: 2013-02-19 22:02+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: confcenter/templates/base.html:50
+#: confcenter/templates/base.html:51
 msgid "Main"
 msgstr "Главная"
 
-#: confcenter/templates/base.html:51 confcenter/templates/base.html.py:67
+#: confcenter/templates/base.html:52
 msgid "configuration_analysis"
 msgstr "Анализ конфигураций"
 
-#: confcenter/templates/base.html:52 confcenter/templates/base.html.py:68
+#: confcenter/templates/base.html:53
 msgid "projects"
 msgstr "Проекты"
 
-#: confcenter/templates/base.html:53 confcenter/templates/base.html.py:69
+#: confcenter/templates/base.html:54
 msgid "plans"
 msgstr "Планы"
 
