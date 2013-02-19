@@ -25,19 +25,19 @@
 
         <form id="upload_form" enctype="multipart/form-data" method="post">
             <table id="upload_table">
-                <tr><th><label for="id_ostype">Выберите тип операционной системы:</label></th><td><select name="ostype" id="id_ostype">
-                    <optgroup label="Автоматически определить">
-                        <option value="0">Автоматически определить</option>
+                <tr><th><label for="id_ostype">{% trans "choose_ostype_upload" %}</label></th><td><select name="ostype" id="id_ostype">
+                    <optgroup label={% trans "Auto-detect" %}>
+                        <option value="0">{% trans "Auto-detect" %}</option>
                     </optgroup>
                 </select></td></tr>
-                <tr><th><label for="id_file">Выберите файл для загрузки:</label></th><td><input type="file" name="file" id="id_file" /></td></tr>
-                <tr><th></th><td><input type="submit" id="id_submit"  value="Загрузить" /></td></tr>
+                <tr><th><label for="id_file">{% trans "choose_file_upload" %}</label></th><td><input type="file" name="file" id="id_file" /></td></tr>
+                <tr><th></th><td><input type="submit" id="id_submit"  value={% trans "button_submit_upload" %} /></td></tr>
             </table>
 
 
         </form>
         <div id="progressbar" style="display: NONE">
-            <p style="background: none; position: absolute; left: 450px; font-size: 8pt"> Загрузка... </p>
+            <p style="background: none; position: absolute; left: 450px; font-size: 8pt"> {% trans "Loading" %} </p>
         </div>
 
         <div id="analyze" style="display: NONE" align="center">

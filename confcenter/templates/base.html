@@ -40,7 +40,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            $('.news').show('clip', 2000);
+            $('.newsDD').show('clip', 2000);
         });
 
     </script>
@@ -48,11 +48,11 @@
     <nav id="globalheader">
 
         <ul id="globalnav" role="navigation">
-            <li ><a href="/"><span>Главная</span></a></li>
-            <li class="nav_upload"><a href="/upload/"><span>Анализ конфигураций</span></a></li>
-            <li class="nav_projects"><a href="/projects/"><span>Проекты</span></a></li>
-            <li class="nav_plans"><a href="/plans"><span>Планы</span></a></li>
-            <li ><a href="/about/"><span>О себе...</span></a></li>
+            <li ><a href="/"><span>{% trans "Main" %}</span></a></li>
+            <li class="nav_upload"><a href="/upload/"><span>{% trans "configuration_analysis" %}</span></a></li>
+            <li class="nav_projects"><a href="/projects/"><span>{% trans "projects" %}</span></a></li>
+            <li class="nav_plans"><a href="/plans"><span>{% trans "plans" %}</span></a></li>
+
         </ul>
     </nav>
 </head>
@@ -64,13 +64,10 @@
 {% block footer %}
     <div id="footer">
         <hr color="#F9F9F9"/>
-        <ul class="piped">
-            <li ><a href="/upload/"><span>Анализ конфигураций</span></a></li>
-            <li ><a href="/projects/"><span>Проекты</span></a></li>
-            <li ><a href="/plans"><span>Планы</span></a></li>
-            <li ><a href="/about/"><span>О себе</span></a></li>
-            <li> <a href=""><span>Обратная связь</span></a> </li>
-        </ul>
+        <p class="piped">
+           Powered by Django. NixConf.com
+
+        </p>
     </div>
 {% endblock %}
 

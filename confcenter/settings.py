@@ -12,7 +12,7 @@ AIX_ARCHIVER = 'tar'
 AIX_ARCHIVER_ARGS = '-zxf'
 SOLARIS_ARCHIVER = 'tar'
 SOLARIS_ARCHIVER_ARGS = '-zxf'
-LINUX = 0
+LINUX = 1
 if LINUX:
     AIX_ARCHIVER = 'pax'
     AIX_ARCHIVER_ARGS = '-rf'
@@ -25,7 +25,7 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = '104857600'
 FILE_UPLOAD_HANDLERS = ('confcenter.upload_handlers.UploadProgressCachedHandler', ) + \
                        global_settings.FILE_UPLOAD_HANDLERS
 LOG = PROJECT_DIR + '/log/'
-ARIAL_FONT_FILELOCATION = '/Users/vs/dev/confcenter/locale/fonts/Arial.ttf'
+ARIAL_FONT_FILELOCATION = '/home/vs/dev/confcenter/locale/fonts/Arial.ttf'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -58,7 +58,7 @@ TIME_ZONE = 'Europe/Moscow'
 LANGUAGE_CODE = 'ru-ru'
 
 LOCALE_PATHS = (
-    '/Users/vs/dev/confcenter/locale',
+    '/home/vs/dev/confcenter/locale',
     )
 
 
