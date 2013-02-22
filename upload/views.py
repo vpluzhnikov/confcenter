@@ -111,7 +111,7 @@ def headpiece(request):
     NEWS = []
     for news in AllNews:
         NEWS.append({'date' : news.add_date, 'text' : news.news_text})
-    return render_to_response('headpiece.html', {'news' : NEWS})
+    return render_to_response('headpiece.html', {'news' : NEWS, 'MEDIA_URL' : MEDIA_URL})
 
 def dummy(request):
 

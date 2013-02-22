@@ -1,1 +1,201 @@
 INFO     2013-02-19 22:03:34,873 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 493954485ae5e120547fa206297fc9e5
+INFO     2013-02-19 22:12:21,653 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id None
+INFO     2013-02-19 22:12:40,214 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id None
+INFO     2013-02-19 22:14:17,763 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-19 22:16:02,587 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id a244d3713574375b8633a9b591fda125
+INFO     2013-02-19 22:17:03,518 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id None
+INFO     2013-02-19 22:17:23,824 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-19 22:18:58,677 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-19 22:26:18,469 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id a244d3713574375b8633a9b591fda125
+INFO     2013-02-19 22:28:28,572 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id c8e4f62e9093c7fa14994667941e1b52
+INFO     2013-02-19 22:34:48,191 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id c8e4f62e9093c7fa14994667941e1b52
+INFO     2013-02-19 22:36:18,697 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-19 22:45:28,483 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id c8e4f62e9093c7fa14994667941e1b52
+INFO     2013-02-19 22:47:06,162 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-19 22:47:06,221 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-02-19 22:47:07,107 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/c8e4f62e9093c7fa14994667941e1b52_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-19 22:48:50,448 views    PDF generation requested for /home/vs/www/confcenter/confcenter/confuploads/c8e4f62e9093c7fa14994667941e1b52_valday2_test_gc_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-02-19 22:50:09,302 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id None
+INFO     2013-02-19 22:50:12,144 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id None
+INFO     2013-02-19 22:51:01,912 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id c8e4f62e9093c7fa14994667941e1b52
+INFO     2013-02-19 22:59:52,710 views    Starting file  valday2_test_gLifkc_snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-19 22:59:53,616 views    Sucsessfully handeled file  valday2_test_gLifkc_snap.pax.Z in upload_file
+INFO     2013-02-19 22:59:54,787 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/c8e4f62e9093c7fa14994667941e1b52_valday2_test_gLifkc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-19 23:11:05,419 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-19 23:11:06,358 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
+INFO     2013-02-19 23:11:07,398 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/None_test.snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-19 23:15:31,386 views    Starting file  snap_dubna-t3.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-19 23:15:32,059 views    Sucsessfully handeled file  snap_dubna-t3.pax.Z in upload_file
+INFO     2013-02-19 23:15:32,693 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/None_snap_dubna-t3.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-19 23:27:11,556 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id dab733179cf5010cc00778b51daf38a9
+INFO     2013-02-19 23:28:38,161 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-19 23:28:38,345 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-02-19 23:28:39,106 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/dab733179cf5010cc00778b51daf38a9_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-19 23:30:47,610 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id c8e4f62e9093c7fa14994667941e1b52
+INFO     2013-02-19 23:31:24,037 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id c8e4f62e9093c7fa14994667941e1b52
+INFO     2013-02-19 23:33:48,429 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-19 23:33:48,704 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-02-19 23:33:49,682 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/c8e4f62e9093c7fa14994667941e1b52_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-20 10:00:58,715 views    Empty upload form prepared from upload_file for user from 213.87.133.80, session id None
+INFO     2013-02-20 10:03:02,417 views    Empty upload form prepared from upload_file for user from 213.87.133.80, session id None
+INFO     2013-02-20 10:03:19,824 views    Empty upload form prepared from upload_file for user from 213.87.129.136, session id None
+INFO     2013-02-20 10:03:34,849 views    Starting file  image.jpg proccessing in upload_file for user from 213.87.129.136
+INFO     2013-02-20 10:03:34,850 conffiles File type None_image.jpg is not valid
+INFO     2013-02-20 10:03:35,033 views    File type image.jpg is not good, reported from upload_file
+INFO     2013-02-20 12:47:04,597 views    Empty upload form prepared from upload_file for user from 213.87.142.213, session id None
+INFO     2013-02-20 16:21:21,980 views    Empty upload form prepared from upload_file for user from 178.176.1.15, session id None
+INFO     2013-02-20 16:22:28,967 views    Empty upload form prepared from upload_file for user from 178.176.1.15, session id dab733179cf5010cc00778b51daf38a9
+INFO     2013-02-20 16:22:42,310 views    Starting file  snap.pax.Z proccessing in upload_file for user from 178.176.1.15
+INFO     2013-02-20 16:22:42,425 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+INFO     2013-02-20 16:22:42,676 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/dab733179cf5010cc00778b51daf38a9_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-20 16:22:50,607 views    Saving in DB requester for /home/vs/www/confcenter/confcenter/confuploads/dab733179cf5010cc00778b51daf38a9_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-02-20 16:26:21,845 views    Empty upload form prepared from upload_file for user from 178.176.1.15, session id dab733179cf5010cc00778b51daf38a9
+DEBUG    2013-02-20 16:26:28,054 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'd277d5345d9fcdc30c1fc7000867d119']}>
+DEBUG    2013-02-20 16:26:28,055 views    Searching for cache key 178.176.1.15_d277d5345d9fcdc30c1fc7000867d119 in upload_progress
+DEBUG    2013-02-20 16:26:28,056 views    Data retrieved None
+DEBUG    2013-02-20 16:26:35,783 upload_handlers Starting proccessing file with ID = d277d5345d9fcdc30c1fc7000867d119 in handle_raw_input
+DEBUG    2013-02-20 16:26:35,784 upload_handlers X-Progress-ID exists and equals = d277d5345d9fcdc30c1fc7000867d119
+DEBUG    2013-02-20 16:26:35,784 upload_handlers Cache key is set to 178.176.1.15_d277d5345d9fcdc30c1fc7000867d119 and data uploaded 0
+DEBUG    2013-02-20 16:26:35,795 upload_handlers Upload complete
+INFO     2013-02-20 16:26:35,797 views    Starting file  snap.pax.Z proccessing in upload_file for user from 178.176.1.15
+INFO     2013-02-20 16:26:35,903 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+INFO     2013-02-20 16:26:36,249 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/dab733179cf5010cc00778b51daf38a9_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-20 16:27:36,894 views    Empty upload form prepared from upload_file for user from 178.176.1.15, session id c8e4f62e9093c7fa14994667941e1b52
+DEBUG    2013-02-20 16:27:44,920 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'a98b91ee53e451c37f159d8ca63dce6b']}>
+DEBUG    2013-02-20 16:27:44,921 views    Searching for cache key 178.176.1.15_a98b91ee53e451c37f159d8ca63dce6b in upload_progress
+DEBUG    2013-02-20 16:27:44,922 views    Data retrieved None
+DEBUG    2013-02-20 16:27:55,651 upload_handlers Starting proccessing file with ID = a98b91ee53e451c37f159d8ca63dce6b in handle_raw_input
+DEBUG    2013-02-20 16:27:55,651 upload_handlers X-Progress-ID exists and equals = a98b91ee53e451c37f159d8ca63dce6b
+DEBUG    2013-02-20 16:27:55,652 upload_handlers Cache key is set to 178.176.1.15_a98b91ee53e451c37f159d8ca63dce6b and data uploaded 0
+DEBUG    2013-02-20 16:27:55,662 upload_handlers Upload complete
+INFO     2013-02-20 16:27:55,664 views    Starting file  snap.pax.Z proccessing in upload_file for user from 178.176.1.15
+INFO     2013-02-20 16:27:55,757 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+INFO     2013-02-20 16:27:56,099 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/c8e4f62e9093c7fa14994667941e1b52_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-20 16:28:29,317 views    Empty upload form prepared from upload_file for user from 178.176.1.15, session id c8e4f62e9093c7fa14994667941e1b52
+DEBUG    2013-02-20 16:28:49,923 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'afcedf7fb4ade6d493f50a3146415894']}>
+DEBUG    2013-02-20 16:28:49,924 views    Searching for cache key 178.176.1.15_afcedf7fb4ade6d493f50a3146415894 in upload_progress
+DEBUG    2013-02-20 16:28:49,924 views    Data retrieved None
+INFO     2013-02-20 16:33:13,781 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id None
+INFO     2013-02-20 16:33:22,839 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id None
+DEBUG    2013-02-20 16:33:46,363 upload_handlers Starting proccessing file with ID = 5606ed473f0f877af553725887465650 in handle_raw_input
+DEBUG    2013-02-20 16:33:46,364 upload_handlers X-Progress-ID exists and equals = 5606ed473f0f877af553725887465650
+DEBUG    2013-02-20 16:33:46,364 upload_handlers Cache key is set to 188.123.248.4_5606ed473f0f877af553725887465650 and data uploaded 0
+DEBUG    2013-02-20 16:33:46,365 upload_handlers Upload complete
+DEBUG    2013-02-20 16:34:45,633 upload_handlers Starting proccessing file with ID = afcedf7fb4ade6d493f50a3146415894 in handle_raw_input
+DEBUG    2013-02-20 16:34:45,633 upload_handlers X-Progress-ID exists and equals = afcedf7fb4ade6d493f50a3146415894
+DEBUG    2013-02-20 16:34:45,634 upload_handlers Cache key is set to 178.176.1.15_afcedf7fb4ade6d493f50a3146415894 and data uploaded 0
+DEBUG    2013-02-20 16:34:45,851 upload_handlers Upload complete
+INFO     2013-02-20 16:34:45,852 views    Starting file  snap_valday2_060712.pax.Z proccessing in upload_file for user from 178.176.1.15
+INFO     2013-02-20 16:34:46,746 views    Sucsessfully handeled file  snap_valday2_060712.pax.Z in upload_file
+INFO     2013-02-20 16:34:47,854 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/c8e4f62e9093c7fa14994667941e1b52_snap_valday2_060712.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-20 16:50:45,812 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id None
+INFO     2013-02-20 16:50:52,439 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id None
+INFO     2013-02-20 17:09:17,466 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/None_test.snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-20 17:09:20,731 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id 2be71fbcd51eba2e1a07165fe981abd1
+DEBUG    2013-02-20 17:09:33,680 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'789d9d0a37272b274d1428689521cc5a']}>
+DEBUG    2013-02-20 17:09:33,682 views    Searching for cache key 188.123.248.4_789d9d0a37272b274d1428689521cc5a in upload_progress
+DEBUG    2013-02-20 17:09:33,682 views    Data retrieved None
+INFO     2013-02-21 11:20:06,593 views    Empty upload form prepared from upload_file for user from 194.186.207.106, session id c8e4f62e9093c7fa14994667941e1b52
+INFO     2013-02-21 11:20:21,456 views    Empty upload form prepared from upload_file for user from 194.186.207.106, session id c8e4f62e9093c7fa14994667941e1b52
+DEBUG    2013-02-21 11:20:28,320 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'c921f0851823b53d475dd194f3c30dfe']}>
+DEBUG    2013-02-21 11:20:28,321 views    Searching for cache key 194.186.207.106_c921f0851823b53d475dd194f3c30dfe in upload_progress
+DEBUG    2013-02-21 11:20:28,322 views    Data retrieved None
+DEBUG    2013-02-21 11:20:29,396 upload_handlers Starting proccessing file with ID = c921f0851823b53d475dd194f3c30dfe in handle_raw_input
+DEBUG    2013-02-21 11:20:29,397 upload_handlers X-Progress-ID exists and equals = c921f0851823b53d475dd194f3c30dfe
+DEBUG    2013-02-21 11:20:29,397 upload_handlers Cache key is set to 194.186.207.106_c921f0851823b53d475dd194f3c30dfe and data uploaded 0
+DEBUG    2013-02-21 11:20:29,430 upload_handlers Upload complete
+INFO     2013-02-21 11:20:29,432 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 194.186.207.106
+INFO     2013-02-21 11:20:29,669 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-02-21 11:20:30,514 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/c8e4f62e9093c7fa14994667941e1b52_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-21 11:20:37,613 views    Empty upload form prepared from upload_file for user from 194.186.207.106, session id c8e4f62e9093c7fa14994667941e1b52
+DEBUG    2013-02-21 11:20:46,135 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'f448c911c94deb23d1770a4960477cb6']}>
+DEBUG    2013-02-21 11:20:46,137 views    Searching for cache key 194.186.207.106_f448c911c94deb23d1770a4960477cb6 in upload_progress
+DEBUG    2013-02-21 11:20:46,137 views    Data retrieved None
+DEBUG    2013-02-21 11:20:48,343 upload_handlers Starting proccessing file with ID = f448c911c94deb23d1770a4960477cb6 in handle_raw_input
+DEBUG    2013-02-21 11:20:48,343 upload_handlers X-Progress-ID exists and equals = f448c911c94deb23d1770a4960477cb6
+DEBUG    2013-02-21 11:20:48,343 upload_handlers Cache key is set to 194.186.207.106_f448c911c94deb23d1770a4960477cb6 and data uploaded 0
+DEBUG    2013-02-21 11:20:48,377 upload_handlers Upload complete
+INFO     2013-02-21 11:20:48,380 views    Starting file  valday2_test_gLiftkc_snap.pax.Z proccessing in upload_file for user from 194.186.207.106
+INFO     2013-02-21 11:20:48,926 views    Sucsessfully handeled file  valday2_test_gLiftkc_snap.pax.Z in upload_file
+INFO     2013-02-21 11:20:49,837 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/c8e4f62e9093c7fa14994667941e1b52_valday2_test_gLiftkc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-21 11:20:56,435 views    Empty upload form prepared from upload_file for user from 194.186.207.106, session id c8e4f62e9093c7fa14994667941e1b52
+DEBUG    2013-02-21 11:21:15,884 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'50fc3ff3f248fb235d337755a867e026']}>
+DEBUG    2013-02-21 11:21:15,886 views    Searching for cache key 194.186.207.106_50fc3ff3f248fb235d337755a867e026 in upload_progress
+DEBUG    2013-02-21 11:21:15,886 views    Data retrieved None
+DEBUG    2013-02-21 11:21:34,518 upload_handlers Starting proccessing file with ID = 50fc3ff3f248fb235d337755a867e026 in handle_raw_input
+DEBUG    2013-02-21 11:21:34,518 upload_handlers X-Progress-ID exists and equals = 50fc3ff3f248fb235d337755a867e026
+DEBUG    2013-02-21 11:21:34,518 upload_handlers Cache key is set to 194.186.207.106_50fc3ff3f248fb235d337755a867e026 and data uploaded 0
+DEBUG    2013-02-21 11:21:34,724 upload_handlers Upload complete
+INFO     2013-02-21 11:21:34,725 views    Starting file  snap_valday2_060712.pax.Z proccessing in upload_file for user from 194.186.207.106
+INFO     2013-02-21 11:21:36,030 views    Sucsessfully handeled file  snap_valday2_060712.pax.Z in upload_file
+INFO     2013-02-21 11:21:37,523 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/c8e4f62e9093c7fa14994667941e1b52_snap_valday2_060712.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-21 11:21:44,170 views    Empty upload form prepared from upload_file for user from 194.186.207.106, session id dab733179cf5010cc00778b51daf38a9
+DEBUG    2013-02-21 11:22:03,840 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'fd978b2b7a1a2b47755cb3615e5c4e26']}>
+DEBUG    2013-02-21 11:22:03,842 views    Searching for cache key 194.186.207.106_fd978b2b7a1a2b47755cb3615e5c4e26 in upload_progress
+DEBUG    2013-02-21 11:22:03,842 views    Data retrieved None
+DEBUG    2013-02-21 11:22:21,418 upload_handlers Starting proccessing file with ID = fd978b2b7a1a2b47755cb3615e5c4e26 in handle_raw_input
+DEBUG    2013-02-21 11:22:21,419 upload_handlers X-Progress-ID exists and equals = fd978b2b7a1a2b47755cb3615e5c4e26
+DEBUG    2013-02-21 11:22:21,419 upload_handlers Cache key is set to 194.186.207.106_fd978b2b7a1a2b47755cb3615e5c4e26 and data uploaded 0
+DEBUG    2013-02-21 11:22:21,637 upload_handlers Upload complete
+INFO     2013-02-21 11:22:21,639 views    Starting file  snap_valday2_060712.pax.Z proccessing in upload_file for user from 194.186.207.106
+INFO     2013-02-21 11:22:22,599 views    Sucsessfully handeled file  snap_valday2_060712.pax.Z in upload_file
+INFO     2013-02-21 11:22:23,535 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/dab733179cf5010cc00778b51daf38a9_snap_valday2_060712.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-21 11:22:58,323 views    Empty upload form prepared from upload_file for user from 194.186.207.106, session id dab733179cf5010cc00778b51daf38a9
+INFO     2013-02-21 11:23:01,055 views    Empty upload form prepared from upload_file for user from 194.186.207.106, session id dab733179cf5010cc00778b51daf38a9
+INFO     2013-02-21 11:27:33,696 views    Empty upload form prepared from upload_file for user from 194.186.207.106, session id dab733179cf5010cc00778b51daf38a9
+DEBUG    2013-02-21 11:27:47,376 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'bed48f184f1a2d45ac66daee082e8324']}>
+DEBUG    2013-02-21 11:27:47,378 views    Searching for cache key 194.186.207.106_bed48f184f1a2d45ac66daee082e8324 in upload_progress
+DEBUG    2013-02-21 11:27:47,378 views    Data retrieved None
+DEBUG    2013-02-21 11:28:06,856 upload_handlers Starting proccessing file with ID = bed48f184f1a2d45ac66daee082e8324 in handle_raw_input
+DEBUG    2013-02-21 11:28:06,856 upload_handlers X-Progress-ID exists and equals = bed48f184f1a2d45ac66daee082e8324
+DEBUG    2013-02-21 11:28:06,857 upload_handlers Cache key is set to 194.186.207.106_bed48f184f1a2d45ac66daee082e8324 and data uploaded 0
+DEBUG    2013-02-21 11:28:07,066 upload_handlers Upload complete
+INFO     2013-02-21 11:28:07,068 views    Starting file  snap_valday2_060712.pax.Z proccessing in upload_file for user from 194.186.207.106
+INFO     2013-02-21 11:28:07,917 views    Sucsessfully handeled file  snap_valday2_060712.pax.Z in upload_file
+INFO     2013-02-21 11:28:08,855 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/dab733179cf5010cc00778b51daf38a9_snap_valday2_060712.pax.Z_AIX/ and output generated in anal_acc
+DEBUG    2013-02-21 11:28:37,623 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'517268b459e24ef4b77617bd3140feea']}>
+DEBUG    2013-02-21 11:28:37,625 views    Searching for cache key 194.186.207.106_517268b459e24ef4b77617bd3140feea in upload_progress
+DEBUG    2013-02-21 11:28:37,626 views    Data retrieved None
+DEBUG    2013-02-21 11:28:54,886 upload_handlers Starting proccessing file with ID = 517268b459e24ef4b77617bd3140feea in handle_raw_input
+DEBUG    2013-02-21 11:28:54,886 upload_handlers X-Progress-ID exists and equals = 517268b459e24ef4b77617bd3140feea
+DEBUG    2013-02-21 11:28:54,886 upload_handlers Cache key is set to 194.186.207.106_517268b459e24ef4b77617bd3140feea and data uploaded 0
+DEBUG    2013-02-21 11:28:55,092 upload_handlers Upload complete
+INFO     2013-02-21 11:28:55,093 views    Starting file  snap_valday2_060712.pax.Z proccessing in upload_file for user from 194.186.207.106
+INFO     2013-02-21 11:28:55,987 views    Sucsessfully handeled file  snap_valday2_060712.pax.Z in upload_file
+INFO     2013-02-21 11:28:58,511 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/dab733179cf5010cc00778b51daf38a9_snap_valday2_060712.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-21 11:29:29,128 views    PDF generation requested for /home/vs/www/confcenter/confcenter/confuploads/dab733179cf5010cc00778b51daf38a9_snap_valday2_060712.pax.Z_AIX/ in anal_acc
+INFO     2013-02-22 14:38:21,428 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id 2be71fbcd51eba2e1a07165fe981abd1
+DEBUG    2013-02-22 14:38:27,531 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'999edf593b062eb1cb70ecaa8338cdf1']}>
+DEBUG    2013-02-22 14:38:27,532 views    Searching for cache key 188.123.248.4_999edf593b062eb1cb70ecaa8338cdf1 in upload_progress
+DEBUG    2013-02-22 14:38:27,532 views    Data retrieved None
+DEBUG    2013-02-22 14:51:29,967 upload_handlers Starting proccessing file with ID = 999edf593b062eb1cb70ecaa8338cdf1 in handle_raw_input
+DEBUG    2013-02-22 14:51:29,967 upload_handlers X-Progress-ID exists and equals = 999edf593b062eb1cb70ecaa8338cdf1
+DEBUG    2013-02-22 14:51:29,967 upload_handlers Cache key is set to 188.123.248.4_999edf593b062eb1cb70ecaa8338cdf1 and data uploaded 0
+DEBUG    2013-02-22 14:51:30,211 upload_handlers Upload complete
+INFO     2013-02-22 14:51:30,214 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-22 14:51:31,372 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
+INFO     2013-02-22 14:51:32,688 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/2be71fbcd51eba2e1a07165fe981abd1_test.snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-22 14:51:54,875 views    Saving in DB requester for /home/vs/www/confcenter/confcenter/confuploads/2be71fbcd51eba2e1a07165fe981abd1_test.snap.pax.Z_AIX/ in anal_acc
+INFO     2013-02-22 14:52:03,943 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id 2be71fbcd51eba2e1a07165fe981abd1
+DEBUG    2013-02-22 14:52:10,452 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'd3d3f64c845ca60821cc636dea2a17de']}>
+DEBUG    2013-02-22 14:52:10,454 views    Searching for cache key 188.123.248.4_d3d3f64c845ca60821cc636dea2a17de in upload_progress
+DEBUG    2013-02-22 14:52:10,454 views    Data retrieved None
+DEBUG    2013-02-22 15:05:11,366 upload_handlers Starting proccessing file with ID = d3d3f64c845ca60821cc636dea2a17de in handle_raw_input
+DEBUG    2013-02-22 15:05:11,409 upload_handlers X-Progress-ID exists and equals = d3d3f64c845ca60821cc636dea2a17de
+DEBUG    2013-02-22 15:05:11,409 upload_handlers Cache key is set to 188.123.248.4_d3d3f64c845ca60821cc636dea2a17de and data uploaded 0
+DEBUG    2013-02-22 15:05:11,616 upload_handlers Upload complete
+INFO     2013-02-22 15:05:11,618 views    Starting file  test.snap.pax.Z proccessing in upload_file for user from 188.123.248.4
+INFO     2013-02-22 15:05:16,960 views    Sucsessfully handeled file  test.snap.pax.Z in upload_file
+INFO     2013-02-22 15:05:18,362 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/2be71fbcd51eba2e1a07165fe981abd1_test.snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-22 17:10:16,933 views    Empty upload form prepared from upload_file for user from 194.186.207.105, session id None
+DEBUG    2013-02-22 17:10:32,801 views    JSON recieved in upload_progress value <QueryDict: {u'X-Progress-ID': [u'170c1703e7aac17aeb5e33a7b35f0c77']}>
+DEBUG    2013-02-22 17:10:32,803 views    Searching for cache key 194.186.207.105_170c1703e7aac17aeb5e33a7b35f0c77 in upload_progress
+DEBUG    2013-02-22 17:10:32,803 views    Data retrieved None
+DEBUG    2013-02-22 17:10:34,690 upload_handlers Starting proccessing file with ID = 170c1703e7aac17aeb5e33a7b35f0c77 in handle_raw_input
+DEBUG    2013-02-22 17:10:34,690 upload_handlers X-Progress-ID exists and equals = 170c1703e7aac17aeb5e33a7b35f0c77
+DEBUG    2013-02-22 17:10:34,691 upload_handlers Cache key is set to 194.186.207.105_170c1703e7aac17aeb5e33a7b35f0c77 and data uploaded 0
+DEBUG    2013-02-22 17:10:34,730 upload_handlers Upload complete
+INFO     2013-02-22 17:10:34,731 views    Starting file  valday2_test_gLifkc_snap.pax.Z proccessing in upload_file for user from 194.186.207.105
+INFO     2013-02-22 17:10:35,034 views    Sucsessfully handeled file  valday2_test_gLifkc_snap.pax.Z in upload_file
+INFO     2013-02-22 17:10:35,647 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/None_valday2_test_gLifkc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-22 17:10:42,220 views    PDF generation requested for /home/vs/www/confcenter/confcenter/confuploads/None_valday2_test_gLifkc_snap.pax.Z_AIX/ in anal_acc

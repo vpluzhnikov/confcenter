@@ -1,3 +1,4 @@
+from django.http import  HttpResponse
 from django.conf.urls import patterns, include, url
 from upload.views import upload_file, anal_acc, list_values, upload_progress, headpiece, dummy, projects, plans
 
@@ -29,6 +30,7 @@ urlpatterns = patterns('',
     url(r'^values/$', list_values),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^robots.txt', lambda r: HttpResponse("User-agent: *\nDisallow: /upload", mimetype="text/plain")),
 
 )
 
