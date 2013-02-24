@@ -37,6 +37,7 @@ class UploadProgressCachedHandler(FileUploadHandler):
             self.logger.debug('Cache key is set to %s and data uploaded 0', self.cache_key)
 
     def new_file(self, field_name, file_name, content_type, content_length, charset=None):
+	self.logger.debug('NEW FILE')
         pass
 
     def receive_data_chunk(self, raw_data, start):
@@ -44,7 +45,7 @@ class UploadProgressCachedHandler(FileUploadHandler):
             data = cache.get(self.cache_key)
             data['uploaded'] += self.chunk_size
             cache.set(self.cache_key, data)
-#            self.logger.info('Data is now equals %s' % (data_new['uploaded']))
+            self.logger.debug('Data is now equals %s' % (data['uploaded']))
         return raw_data
 
     def file_complete(self, file_size):
