@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="Merge branch 'production' of https://github.com/vpluzhnikov/confcenter&#10;&#10;">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/confcenter/media/js/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/confcenter/templates/plans_eng.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/confcenter/templates/projects_eng.html" afterPath="" />
+    <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="Merge branch 'production' of https://github.com/vpluzhnikov/confcenter&#10;&#10;Conflicts:&#10;&#9;confcenter/log/upload.log&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/media/js/general_upload.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/confcenter/media/js/nginx_upload.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/log/upload.log.1" afterPath="$PROJECT_DIR$/confcenter/log/upload.log.1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/log/upload.log.2" afterPath="$PROJECT_DIR$/confcenter/log/upload.log.2" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/log/upload.log" afterPath="$PROJECT_DIR$/confcenter/log/upload.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/settings.py" afterPath="$PROJECT_DIR$/confcenter/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/confupload_form.html" afterPath="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/templates/headpiece.html" afterPath="$PROJECT_DIR$/confcenter/templates/headpiece.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/upload_handlers.py" afterPath="$PROJECT_DIR$/confcenter/upload_handlers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/urls.py" afterPath="$PROJECT_DIR$/confcenter/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/conffiles.py" afterPath="$PROJECT_DIR$/upload/conffiles.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/views.py" afterPath="$PROJECT_DIR$/upload/views.py" />
     </list>
     <ignored path="confcenter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,10 +50,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confcenter/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="18" selection-start="2111" selection-end="2111" vertical-scroll-proportion="2.0470297">
+            <state line="60" column="18" selection-start="2111" selection-end="2111" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload.log" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/confcenter/log/upload.log">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="0" selection-start="361" selection-end="361" vertical-scroll-proportion="0.11508951">
               <folding />
             </state>
           </provider>
@@ -124,8 +125,8 @@
         <option value="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/upload/views.py" />
-        <option value="$PROJECT_DIR$/confcenter/log/upload.log" />
         <option value="$PROJECT_DIR$/confcenter/settings.py" />
+        <option value="$PROJECT_DIR$/confcenter/log/upload.log" />
       </list>
     </option>
   </component>
@@ -282,6 +283,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="confcenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="confcenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="confcenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -660,7 +683,11 @@
       <created>1361901399102</created>
       <updated>1361901399103</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Merge branch 'production' of https://github.com/vpluzhnikov/confcenter&#10;&#10;">
+      <created>1361901767064</created>
+      <updated>1361901767064</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -685,14 +712,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.49426112" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23672883" sideWeight="0.5380774" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23672883" sideWeight="0.5380774" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950064" sideWeight="0.49425286" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4619226" sideWeight="0.41606885" order="10" side_tool="true" content_ui="tabs" />
@@ -745,7 +772,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'webdesign' of https://github.com/vpluzhnikov/confcenter&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'production' of https://github.com/vpluzhnikov/confcenter&#10;&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -782,6 +809,7 @@
     <MESSAGE value="Merging with webdesign&#10;" />
     <MESSAGE value="Bug fixes" />
     <MESSAGE value="Merge branch 'webdesign' of https://github.com/vpluzhnikov/confcenter&#10;" />
+    <MESSAGE value="Merge branch 'production' of https://github.com/vpluzhnikov/confcenter&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -876,13 +904,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/confcenter/log/upload.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="156" selection-end="156" vertical-scroll-proportion="0.07672634">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/upload/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="116" column="0" selection-start="5117" selection-end="5117" vertical-scroll-proportion="0.0">
@@ -894,7 +915,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="18" selection-start="2111" selection-end="2111" vertical-scroll-proportion="2.0470297">
+        <state line="60" column="18" selection-start="2111" selection-end="2111" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/confcenter/log/upload.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="361" selection-end="361" vertical-scroll-proportion="0.11508951">
           <folding />
         </state>
       </provider>

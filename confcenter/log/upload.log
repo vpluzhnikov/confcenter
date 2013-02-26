@@ -1,4 +1,3 @@
 
-INFO     2013-02-26 22:01:15,593 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 64847ad68922b22afc69937d6bb73177
-INFO     2013-02-26 22:01:22,107 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 64847ad68922b22afc69937d6bb73177
-INFO     2013-02-26 22:02:27,648 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 64847ad68922b22afc69937d6bb73177
+INFO     2013-02-26 15:14:04,837 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id 2be71fbcd51eba2e1a07165fe981abd1
+INFO     2013-02-26 15:19:15,141 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/2be71fbcd51eba2e1a07165fe981abd1_test.snap.pax.Z_AIX/ and output generated in anal_acc
