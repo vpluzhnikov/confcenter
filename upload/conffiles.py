@@ -24,7 +24,11 @@ def handle_uploaded_file(f, name, ostype):
         if not fileattrs == None:
             fileattrs.update({'filename':name})
             fileattrs.update({'dumpfilename' : UPLOAD_DIR + name + "." + fileattrs['filetype'] + ".confdump"})
-            remove(UPLOAD_DIR + name)
+            if LINUX:
+		name_pax = name.split('.Z')[0]
+		remove(UPLOAD_DIR + name_pax)
+	    else:
+		remove(UPLOAD_DIR + name)
             return fileattrs
         else:
             logger.info("File type %s is not valid" % (name))

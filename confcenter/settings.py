@@ -37,7 +37,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'confcenter',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
+        'USER': 'vs',                      # Not used with sqlite3.
         'PASSWORD': 'vsevolod',                  # Not used with sqlite3.
         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
@@ -190,7 +190,7 @@ LOGGING = {
             'class': 'django.utils.log.AdminEmailHandler',
         },
         'logfiles': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
             'filename': LOG+'/upload.log',
             'formatter': 'verbose',
@@ -211,11 +211,11 @@ LOGGING = {
             },
         'upload': {
             'handlers': ['console', 'logfiles'],
-            'level': 'INFO',
+            'level': 'DEBUG',
         },
         'confcenter' : {
             'handlers' : ['console', 'logfiles'],
-            'level' : 'INFO',
+            'level' : 'DEBUG',
         },
     }
 }

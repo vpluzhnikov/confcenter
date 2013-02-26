@@ -1,3 +1,4 @@
+from django.http import  HttpResponse
 from django.conf.urls import patterns, include, url
 from upload.views import upload_file, anal_acc, list_values, upload_progress, headpiece, dummy, projects, plans
 

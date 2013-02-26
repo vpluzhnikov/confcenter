@@ -92,7 +92,7 @@ def upload_progress(request):
         if data:
             return HttpResponse(simplejson.dumps(data))
         else:
-            return HttpResponse(simplejson.dumps({'length': 0, 'uploaded' : 0}))
+            return HttpResponse(simplejson.dumps({'size': 0, 'received' : 0}))
     else:
         return HttpResponseServerError('Server Error: You must provide X-Progress-ID header or query param.')
 
@@ -113,7 +113,7 @@ def headpiece(request):
     print get_language()
     for news in AllNews:
         NEWS.append({'date' : news.add_date, 'text' : news.news_text})
-        return render_to_response('headpiece.html', {'news' : NEWS, 'MEDIA_URL' : MEDIA_URL})
+    return render_to_response('headpiece.html', {'news' : NEWS, 'MEDIA_URL' : MEDIA_URL})
 
 def dummy(request):
 
