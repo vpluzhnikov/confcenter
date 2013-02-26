@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Plans{% endblock %}
+
+{% block js %}
+    <script src="{{ MEDIA_URL }}/js/test.js" type="text/javascript" xmlns="http://www.w3.org/1999/html"></script>
+{% endblock %}
+{%  block style %}
+    #globalheader #globalnav li.nav_plans a {
+    background: #98B85B;
+    color: #cae285;
+    text-shadow: 1px 1px #6E883F;
+    }
+
+
+{% endblock %}
+{% block content %}
+    <div id="content_conf">
+        <h1> Configuration Analysis: </h1>
+        <ol class="about">
+            <li>To add OS Solaris support (to create explorer output analysis).</li>
+            <li>To add OS RHEL support (to create explorer configuration files analysis).</li>
+            <li>To add VRTSexplorer output support in different platforms.</li>
+            <li>To add basic modules for configuration analysis.</li>
+        </ol>
+    </div>
+{% endblock %}
