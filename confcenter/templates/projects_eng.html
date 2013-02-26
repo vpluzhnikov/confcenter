@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Projects{% endblock %}
+
+{% block js %}
+    <script src="{{ MEDIA_URL }}/js/test.js" type="text/javascript" xmlns="http://www.w3.org/1999/html"></script>
+{% endblock %}
+{%  block style %}
+    #globalheader #globalnav li.nav_projects a {
+    background: #98B85B;
+    color: #cae285;
+    text-shadow: 1px 1px #6E883F;
+    }
+
+
+{% endblock %}
+{% block content %}
+    <div id="content_conf">
+
+        <h1>Configuration Analysis: </h1>
+        <p class="about">   The main purpose of this project is to create automatic processing for server configuration output.
+            Now, in this project processing and analysis for IBM Power snap are realized.
+            As a result the page with server data (server partitions) is displayed.  You can export data in PDF as well.</p>
+    </div>
+{% endblock %}

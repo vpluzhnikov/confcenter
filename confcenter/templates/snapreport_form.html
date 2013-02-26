@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}Analysys results for snap - {{ snapname }} {% endblock %}
+{% block title %}Analysis results for snap - {{ snapname }} {% endblock %}
 {%  block style %}
     #globalheader #globalnav li.nav_upload a {
     background: #98B85B;
@@ -13,8 +13,8 @@
 {% block content %}
     <div id="content">
     <form action="" method="post">
-    <p> <input type="button" title="Развернуть/Свернуть блоки" class="plusBtn" value="   +   " onclick="hideShowAll('div.hideCont');return false;">
-        <input type="button" title="Свернуть/Развернуть блоки" class="minusBtn" value="   -   " onclick="hideShowAll('div.hideCont');return false;" style="display: none">
+    <p> <input type="button" title="{% trans "hide_show_all" %}" class="plusBtn" value="   +   " onclick="hideShowAll('div.hideCont');return false;">
+        <input type="button" title="{% trans "hide_show_all" %}" class="minusBtn" value="   -   " onclick="hideShowAll('div.hideCont');return false;" style="display: none">
         <input type="submit" name="db_save" value="{% trans "save_in_db_button" %}">
         <input type="submit" name="pdf_save" value="{% trans "save_in_pdf_button" %}"> </p>
     {% if sysparams %}
@@ -681,8 +681,8 @@
     {% endif %}
 
         <p>
-            <input type="button" title="Развернуть/Свернуть блоки" class="plusBtn" value="   +   " onclick="hideShowAll('div.hideCont');return false;">
-            <input type="button" title="Свернуть/Развернуть блоки" class="minusBtn" value="   -   " onclick="hideShowAll('div.hideCont');return false;" style="display: none">
+            <input type="button" title="{% trans "hide_show_all" %}" class="plusBtn" value="   +   " onclick="hideShowAll('div.hideCont');return false;">
+            <input type="button" title="{% trans "hide_show_all" %}" class="minusBtn" value="   -   " onclick="hideShowAll('div.hideCont');return false;" style="display: none">
         <input type="submit" name="db_save" value="{% trans "save_in_db_button" %}">
         <input type="submit" name="pdf_save" value="{% trans "save_in_pdf_button" %}"> </p>
 

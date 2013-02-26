@@ -16,6 +16,7 @@ from conffiles import handle_uploaded_file
 from aixsnap import AixSnap
 from confcenter.common import whoami, get_client_ip, get_session_key
 from django.utils.translation import ugettext as _
+from django.utils.translation import get_language
 
 
 
@@ -109,6 +110,7 @@ def headpiece(request):
     """
     AllNews= News.objects.filter(news_lang=request.LANGUAGE_CODE).order_by("-add_date")[0:5]
     NEWS = []
+    print get_language()
     for news in AllNews:
         NEWS.append({'date' : news.add_date, 'text' : news.news_text})
         return render_to_response('headpiece.html', {'news' : NEWS, 'MEDIA_URL' : MEDIA_URL})
@@ -118,9 +120,13 @@ def dummy(request):
     return render_to_response('dummy.html')
 
 def projects(request):
-
-    return render_to_response('projects.html')
+    lang = get_language()
+    if lang not in ['en', 'ru']:
+        lang = 'en'
+    return render_to_response('projects_'+lang+'.html')
 
 def plans(request):
-
-    return render_to_response('plans.html')
+    lang = get_language()
+    if lang not in ['en', 'ru']:
+        lang = 'en'
+    return render_to_response('plans_'+lang+'.html')

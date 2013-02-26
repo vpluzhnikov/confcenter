@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-19 22:02+0400\n"
+"POT-Creation-Date: 2013-02-26 21:46+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,9 +34,8 @@ msgid "plans"
 msgstr "Plans"
 
 #: confcenter/templates/confupload_form.html:4
-#: confcenter/templates/headpiece.html:4
 msgid "conf_upload_form_title"
-msgstr "Upload configuration output file"
+msgstr "Uploading configuration output file"
 
 #: confcenter/templates/confupload_form.html:28 upload/forms.py:23
 msgid "choose_ostype_upload"
@@ -61,7 +60,14 @@ msgstr "Loading..."
 
 #: confcenter/templates/confupload_form.html:44
 msgid "analyze_upload"
-msgstr "Proссessing uploaded file"
+msgstr "Proсessing uploaded file"
+
+#: confcenter/templates/snapreport_form.html:16
+#: confcenter/templates/snapreport_form.html:17
+#: confcenter/templates/snapreport_form.html:684
+#: confcenter/templates/snapreport_form.html:685
+msgid "hide_show_all"
+msgstr "Hide/Show contents"
 
 #: confcenter/templates/snapreport_form.html:18
 #: confcenter/templates/snapreport_form.html:686
@@ -139,7 +145,7 @@ msgstr "Maximum CPU for LPAR"
 
 #: confcenter/templates/snapreport_form.html:55 upload/pdfhandler.py:222
 msgid "lpar_minmem_rep"
-msgstr "Minimum memmory for LPAR:"
+msgstr "Minimum memory for LPAR:"
 
 #: confcenter/templates/snapreport_form.html:56 upload/pdfhandler.py:223
 msgid "lpar_desmem_rep"
@@ -271,7 +277,7 @@ msgstr "SMT mode"
 
 #: confcenter/templates/snapreport_form.html:190 upload/pdfhandler.py:328
 msgid "smt0_threads_rep"
-msgstr "No addtional threads configured for proccessors in system"
+msgstr "No additional threads configured for processors in system"
 
 #: confcenter/templates/snapreport_form.html:194 upload/pdfhandler.py:330
 msgid "smton_rep"
@@ -279,7 +285,7 @@ msgstr "System runs with "
 
 #: confcenter/templates/snapreport_form.html:194 upload/pdfhandler.py:330
 msgid "smt_threades_rep"
-msgstr " threads per porccessor"
+msgstr " threads per processor"
 
 #: confcenter/templates/snapreport_form.html:202 upload/pdfhandler.py:336
 msgid "tun_info_rep"

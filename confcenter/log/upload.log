@@ -24,3 +24,8 @@ INFO     2013-02-23 23:38:29,924 views    Starting file  valday2_test_gc_snap.pa
 INFO     2013-02-23 23:38:30,179 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
 INFO     2013-02-23 23:38:31,675 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/None_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
 INFO     2013-02-23 23:38:34,328 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 734c2c65c9d4cdb9f74d00176405ab1c
+INFO     2013-02-26 21:45:06,588 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 64847ad68922b22afc69937d6bb73177
+INFO     2013-02-26 21:45:17,167 views    Starting file  valday2_test_gc_snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-02-26 21:45:17,410 views    Sucsessfully handeled file  valday2_test_gc_snap.pax.Z in upload_file
+INFO     2013-02-26 21:45:18,710 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-02-26 21:56:06,522 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 64847ad68922b22afc69937d6bb73177

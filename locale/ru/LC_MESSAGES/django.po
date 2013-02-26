@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-19 22:02+0400\n"
+"POT-Creation-Date: 2013-02-26 21:46+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,9 +36,8 @@ msgid "plans"
 msgstr "Планы"
 
 #: confcenter/templates/confupload_form.html:4
-#: confcenter/templates/headpiece.html:4
 msgid "conf_upload_form_title"
-msgstr "Загрузите файл с конфигурацией системы"
+msgstr "Загрузка файла с конфигурацией системы"
 
 #: confcenter/templates/confupload_form.html:28 upload/forms.py:23
 msgid "choose_ostype_upload"
@@ -64,6 +63,13 @@ msgstr "Загрузка..."
 #: confcenter/templates/confupload_form.html:44
 msgid "analyze_upload"
 msgstr "Обработка загруженного файла"
+
+#: confcenter/templates/snapreport_form.html:16
+#: confcenter/templates/snapreport_form.html:17
+#: confcenter/templates/snapreport_form.html:684
+#: confcenter/templates/snapreport_form.html:685
+msgid "hide_show_all"
+msgstr "Свернуть/Развернуть блоки"
 
 #: confcenter/templates/snapreport_form.html:18
 #: confcenter/templates/snapreport_form.html:686
@@ -97,7 +103,7 @@ msgstr "Кластерное ПО IBM PowerHA не используется"
 
 #: confcenter/templates/snapreport_form.html:32 upload/pdfhandler.py:203
 msgid "hacmp_used_rep"
-msgstr "Кластерное ПО IBM PowerHA не используется"
+msgstr "Кластерное ПО IBM PowerHA используется"
 
 #: confcenter/templates/snapreport_form.html:34 upload/pdfhandler.py:205
 msgid "hacmp_notdetected_rep"
