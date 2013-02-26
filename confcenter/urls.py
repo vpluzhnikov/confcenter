@@ -6,6 +6,7 @@ from upload.models import Oses
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from confcenter import settings
+from django.http import  HttpResponse
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -29,6 +30,7 @@ urlpatterns = patterns('',
     url(r'^values/$', list_values),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^robots.txt', lambda r: HttpResponse("User-agent: *\nDisallow: /upload", mimetype="text/plain")),
 
 )
 
