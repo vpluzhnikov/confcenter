@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-26 21:46+0400\n"
+"POT-Creation-Date: 2013-02-26 22:37+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,7 +166,6 @@ msgstr "Firmware level for "
 #: confcenter/templates/snapreport_form.html:75
 #: confcenter/templates/snapreport_form.html:78 upload/pdfhandler.py:244
 #: upload/pdfhandler.py:246
-#, fuzzy
 msgid "oslevel_rep"
 msgstr "OS level"
 
@@ -179,7 +178,6 @@ msgid "primary_dumpdev_rep"
 msgstr "Primary dump device:"
 
 #: confcenter/templates/snapreport_form.html:89 upload/pdfhandler.py:256
-#, fuzzy
 msgid "secondary_dumpdev_rep"
 msgstr "Secondary dump device:"
 
@@ -344,7 +342,6 @@ msgid "vgautoimport_rep"
 msgstr "Auto-import"
 
 #: confcenter/templates/snapreport_form.html:268 upload/pdfhandler.py:374
-#, fuzzy
 msgid "lv_info_rep"
 msgstr "Logical volumes"
 
@@ -575,6 +572,6 @@ msgstr "AIX Snap Report for "
 msgid "pdf_main_subtitle"
 msgstr "This info was extracted from snap collected on "
 
-#: upload/views.py:66
+#: upload/views.py:67
 msgid "Bad file type or file corrupted"
 msgstr "Bad file type or file corrupted"
