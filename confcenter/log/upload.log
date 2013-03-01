@@ -1,3 +1,143 @@
 
 INFO     2013-02-26 15:14:04,837 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id 2be71fbcd51eba2e1a07165fe981abd1
 INFO     2013-02-26 15:19:15,141 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/2be71fbcd51eba2e1a07165fe981abd1_test.snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-03-01 10:55:35,461 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-01 10:55:57,872 upload_handlers Starting proccessing file with ID = 663512af1b2485d211983c08634ae886 in handle_raw_input
+DEBUG    2013-03-01 10:55:57,872 upload_handlers X-Progress-ID exists and equals = 663512af1b2485d211983c08634ae886
+DEBUG    2013-03-01 10:55:57,872 upload_handlers Cache key is set to 127.0.0.1_663512af1b2485d211983c08634ae886 and data uploaded 0
+DEBUG    2013-03-01 10:55:57,874 upload_handlers NEW FILE
+DEBUG    2013-03-01 10:55:57,874 upload_handlers Data is now equals 65536
+DEBUG    2013-03-01 10:55:57,875 upload_handlers Data is now equals 131072
+DEBUG    2013-03-01 10:55:57,875 upload_handlers Data is now equals 196608
+DEBUG    2013-03-01 10:55:57,875 upload_handlers Data is now equals 262144
+DEBUG    2013-03-01 10:55:57,876 upload_handlers Data is now equals 327680
+DEBUG    2013-03-01 10:55:57,876 upload_handlers Data is now equals 393216
+DEBUG    2013-03-01 10:55:57,877 upload_handlers Data is now equals 458752
+DEBUG    2013-03-01 10:55:57,878 upload_handlers Data is now equals 524288
+DEBUG    2013-03-01 10:55:57,878 upload_handlers Data is now equals 589824
+DEBUG    2013-03-01 10:55:57,879 upload_handlers Data is now equals 655360
+DEBUG    2013-03-01 10:55:57,880 upload_handlers Data is now equals 720896
+DEBUG    2013-03-01 10:55:57,881 upload_handlers Data is now equals 786432
+DEBUG    2013-03-01 10:55:57,881 upload_handlers Data is now equals 851968
+DEBUG    2013-03-01 10:55:57,882 upload_handlers Data is now equals 917504
+DEBUG    2013-03-01 10:55:57,882 upload_handlers Data is now equals 983040
+DEBUG    2013-03-01 10:55:57,883 upload_handlers Data is now equals 1048576
+DEBUG    2013-03-01 10:55:57,883 upload_handlers Data is now equals 1114112
+DEBUG    2013-03-01 10:55:57,883 upload_handlers Data is now equals 1179648
+DEBUG    2013-03-01 10:55:57,884 upload_handlers Data is now equals 1245184
+DEBUG    2013-03-01 10:55:57,885 upload_handlers Data is now equals 1310720
+DEBUG    2013-03-01 10:55:57,886 upload_handlers Data is now equals 1376256
+DEBUG    2013-03-01 10:55:57,887 upload_handlers Data is now equals 1441792
+DEBUG    2013-03-01 10:55:57,888 upload_handlers Data is now equals 1507328
+DEBUG    2013-03-01 10:55:57,889 upload_handlers Data is now equals 1572864
+DEBUG    2013-03-01 10:55:57,890 upload_handlers Data is now equals 1638400
+DEBUG    2013-03-01 10:55:57,890 upload_handlers Upload complete
+INFO     2013-03-01 10:55:57,892 views    Starting file  snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-01 10:55:58,059 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+INFO     2013-03-01 11:11:18,890 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-01 11:11:27,262 upload_handlers Starting proccessing file with ID = 32d79819465e08b2f4508a05bb1913c0 in handle_raw_input
+DEBUG    2013-03-01 11:11:27,263 upload_handlers X-Progress-ID exists and equals = 32d79819465e08b2f4508a05bb1913c0
+DEBUG    2013-03-01 11:11:27,264 upload_handlers Cache key is set to 127.0.0.1_32d79819465e08b2f4508a05bb1913c0 and data uploaded 0
+DEBUG    2013-03-01 11:11:27,267 upload_handlers NEW FILE
+DEBUG    2013-03-01 11:11:27,267 upload_handlers Data is now equals 65536
+DEBUG    2013-03-01 11:11:27,268 upload_handlers Data is now equals 131072
+DEBUG    2013-03-01 11:11:27,268 upload_handlers Data is now equals 196608
+DEBUG    2013-03-01 11:11:27,269 upload_handlers Data is now equals 262144
+DEBUG    2013-03-01 11:11:27,270 upload_handlers Data is now equals 327680
+DEBUG    2013-03-01 11:11:27,271 upload_handlers Data is now equals 393216
+DEBUG    2013-03-01 11:11:27,271 upload_handlers Data is now equals 458752
+DEBUG    2013-03-01 11:11:27,272 upload_handlers Data is now equals 524288
+DEBUG    2013-03-01 11:11:27,272 upload_handlers Data is now equals 589824
+DEBUG    2013-03-01 11:11:27,273 upload_handlers Data is now equals 655360
+DEBUG    2013-03-01 11:11:27,273 upload_handlers Data is now equals 720896
+DEBUG    2013-03-01 11:11:27,274 upload_handlers Data is now equals 786432
+DEBUG    2013-03-01 11:11:27,275 upload_handlers Data is now equals 851968
+DEBUG    2013-03-01 11:11:27,275 upload_handlers Data is now equals 917504
+DEBUG    2013-03-01 11:11:27,276 upload_handlers Data is now equals 983040
+DEBUG    2013-03-01 11:11:27,276 upload_handlers Data is now equals 1048576
+DEBUG    2013-03-01 11:11:27,277 upload_handlers Data is now equals 1114112
+DEBUG    2013-03-01 11:11:27,277 upload_handlers Data is now equals 1179648
+DEBUG    2013-03-01 11:11:27,278 upload_handlers Data is now equals 1245184
+DEBUG    2013-03-01 11:11:27,279 upload_handlers Data is now equals 1310720
+DEBUG    2013-03-01 11:11:27,279 upload_handlers Data is now equals 1376256
+DEBUG    2013-03-01 11:11:27,280 upload_handlers Data is now equals 1441792
+DEBUG    2013-03-01 11:11:27,281 upload_handlers Data is now equals 1507328
+DEBUG    2013-03-01 11:11:27,282 upload_handlers Data is now equals 1572864
+DEBUG    2013-03-01 11:11:27,283 upload_handlers Data is now equals 1638400
+DEBUG    2013-03-01 11:11:27,284 upload_handlers Upload complete
+INFO     2013-03-01 11:11:27,286 views    Starting file  snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-01 11:11:27,441 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+DEBUG    2013-03-01 11:11:27,757 views    JSON recieved in upload_progress value <QueryDict: {}>
+INFO     2013-03-01 11:11:28,206 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/7c2c63c36e0d8f24a2d25d15d5b4c5e5_snap.pax.Z_AIX/ and output generated in anal_acc
+DEBUG    2013-03-01 11:11:28,325 views    JSON recieved in upload_progress value <QueryDict: {}>
+INFO     2013-03-01 11:13:22,120 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/7c2c63c36e0d8f24a2d25d15d5b4c5e5_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-03-01 11:13:31,963 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-01 11:13:36,311 upload_handlers Starting proccessing file with ID = dbb22d49303c49469199244aa22b741f in handle_raw_input
+DEBUG    2013-03-01 11:13:36,311 upload_handlers X-Progress-ID exists and equals = dbb22d49303c49469199244aa22b741f
+DEBUG    2013-03-01 11:13:36,311 upload_handlers Cache key is set to 127.0.0.1_dbb22d49303c49469199244aa22b741f and data uploaded 0
+DEBUG    2013-03-01 11:13:36,313 upload_handlers NEW FILE
+DEBUG    2013-03-01 11:13:36,313 upload_handlers Data is now equals 65536
+DEBUG    2013-03-01 11:13:36,314 upload_handlers Data is now equals 131072
+DEBUG    2013-03-01 11:13:36,314 upload_handlers Data is now equals 196608
+DEBUG    2013-03-01 11:13:36,315 upload_handlers Data is now equals 262144
+DEBUG    2013-03-01 11:13:36,315 upload_handlers Data is now equals 327680
+DEBUG    2013-03-01 11:13:36,315 upload_handlers Data is now equals 393216
+DEBUG    2013-03-01 11:13:36,316 upload_handlers Data is now equals 458752
+DEBUG    2013-03-01 11:13:36,316 upload_handlers Data is now equals 524288
+DEBUG    2013-03-01 11:13:36,317 upload_handlers Data is now equals 589824
+DEBUG    2013-03-01 11:13:36,317 upload_handlers Data is now equals 655360
+DEBUG    2013-03-01 11:13:36,318 upload_handlers Data is now equals 720896
+DEBUG    2013-03-01 11:13:36,318 upload_handlers Data is now equals 786432
+DEBUG    2013-03-01 11:13:36,319 upload_handlers Data is now equals 851968
+DEBUG    2013-03-01 11:13:36,319 upload_handlers Data is now equals 917504
+DEBUG    2013-03-01 11:13:36,320 upload_handlers Data is now equals 983040
+DEBUG    2013-03-01 11:13:36,321 upload_handlers Data is now equals 1048576
+DEBUG    2013-03-01 11:13:36,322 upload_handlers Data is now equals 1114112
+DEBUG    2013-03-01 11:13:36,322 upload_handlers Data is now equals 1179648
+DEBUG    2013-03-01 11:13:36,323 upload_handlers Data is now equals 1245184
+DEBUG    2013-03-01 11:13:36,324 upload_handlers Data is now equals 1310720
+DEBUG    2013-03-01 11:13:36,324 upload_handlers Data is now equals 1376256
+DEBUG    2013-03-01 11:13:36,325 upload_handlers Data is now equals 1441792
+DEBUG    2013-03-01 11:13:36,325 upload_handlers Data is now equals 1507328
+DEBUG    2013-03-01 11:13:36,326 upload_handlers Data is now equals 1572864
+DEBUG    2013-03-01 11:13:36,326 upload_handlers Data is now equals 1638400
+DEBUG    2013-03-01 11:13:36,327 upload_handlers Upload complete
+INFO     2013-03-01 11:13:36,329 views    Starting file  snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-01 11:13:36,470 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+DEBUG    2013-03-01 11:13:36,806 views    JSON recieved in upload_progress value <QueryDict: {}>
+INFO     2013-03-01 11:13:37,182 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/7c2c63c36e0d8f24a2d25d15d5b4c5e5_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-03-01 11:14:22,943 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id None
+DEBUG    2013-03-01 11:14:26,436 upload_handlers Starting proccessing file with ID = e84a1fa9a9095089fc7fb9004b773ece in handle_raw_input
+DEBUG    2013-03-01 11:14:26,436 upload_handlers X-Progress-ID exists and equals = e84a1fa9a9095089fc7fb9004b773ece
+DEBUG    2013-03-01 11:14:26,437 upload_handlers Cache key is set to 127.0.0.1_e84a1fa9a9095089fc7fb9004b773ece and data uploaded 0
+DEBUG    2013-03-01 11:14:26,438 upload_handlers NEW FILE
+DEBUG    2013-03-01 11:14:26,439 upload_handlers Data is now equals 65536
+DEBUG    2013-03-01 11:14:26,439 upload_handlers Data is now equals 131072
+DEBUG    2013-03-01 11:14:26,440 upload_handlers Data is now equals 196608
+DEBUG    2013-03-01 11:14:26,440 upload_handlers Data is now equals 262144
+DEBUG    2013-03-01 11:14:26,442 upload_handlers Data is now equals 327680
+DEBUG    2013-03-01 11:14:26,443 upload_handlers Data is now equals 393216
+DEBUG    2013-03-01 11:14:26,445 upload_handlers Data is now equals 458752
+DEBUG    2013-03-01 11:14:26,446 upload_handlers Data is now equals 524288
+DEBUG    2013-03-01 11:14:26,448 upload_handlers Data is now equals 589824
+DEBUG    2013-03-01 11:14:26,450 upload_handlers Data is now equals 655360
+DEBUG    2013-03-01 11:14:26,451 upload_handlers Data is now equals 720896
+DEBUG    2013-03-01 11:14:26,453 upload_handlers Data is now equals 786432
+DEBUG    2013-03-01 11:14:26,454 upload_handlers Data is now equals 851968
+DEBUG    2013-03-01 11:14:26,456 upload_handlers Data is now equals 917504
+DEBUG    2013-03-01 11:14:26,457 upload_handlers Data is now equals 983040
+DEBUG    2013-03-01 11:14:26,459 upload_handlers Data is now equals 1048576
+DEBUG    2013-03-01 11:14:26,461 upload_handlers Data is now equals 1114112
+DEBUG    2013-03-01 11:14:26,462 upload_handlers Data is now equals 1179648
+DEBUG    2013-03-01 11:14:26,464 upload_handlers Data is now equals 1245184
+DEBUG    2013-03-01 11:14:26,466 upload_handlers Data is now equals 1310720
+DEBUG    2013-03-01 11:14:26,467 upload_handlers Data is now equals 1376256
+DEBUG    2013-03-01 11:14:26,469 upload_handlers Data is now equals 1441792
+DEBUG    2013-03-01 11:14:26,470 upload_handlers Data is now equals 1507328
+DEBUG    2013-03-01 11:14:26,472 upload_handlers Data is now equals 1572864
+DEBUG    2013-03-01 11:14:26,473 upload_handlers Data is now equals 1638400
+DEBUG    2013-03-01 11:14:26,473 upload_handlers Upload complete
+INFO     2013-03-01 11:14:26,475 views    Starting file  snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-01 11:14:26,637 views    Sucsessfully handeled file  snap.pax.Z in upload_file
+DEBUG    2013-03-01 11:14:26,924 views    JSON recieved in upload_progress value <QueryDict: {}>
+INFO     2013-03-01 11:14:27,330 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/None_snap.pax.Z_AIX/ and output generated in anal_acc

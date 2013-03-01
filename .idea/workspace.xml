@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="">
+    <list default="true" id="a16bcc43-2e5c-4d3c-bd45-a492448093da" name="Default" comment="Merge branch 'production' of https://github.com/vpluzhnikov/confcenter&#10;&#10;Conflicts:&#10;&#9;confcenter/log/upload.log&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/confcenter/log/upload.log" afterPath="$PROJECT_DIR$/confcenter/log/upload.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.mo" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.mo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/fonts/LC_MESSAGES/django.mo" afterPath="$PROJECT_DIR$/locale/fonts/LC_MESSAGES/django.mo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/fonts/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/locale/fonts/LC_MESSAGES/django.po" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload/aixsnap.py" afterPath="$PROJECT_DIR$/upload/aixsnap.py" />
     </list>
     <ignored path="confcenter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,9 +37,7 @@
         <entry file="file://$PROJECT_DIR$/upload/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="116" column="0" selection-start="5117" selection-end="5117" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#51#122#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -45,10 +51,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confcenter/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="18" selection-start="2111" selection-end="2111" vertical-scroll-proportion="0.6361386">
+            <state line="14" column="9" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aixsnap.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upload/aixsnap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="502" column="0" selection-start="21786" selection-end="21786" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="django.po" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="168" column="8" selection-start="5159" selection-end="5159" vertical-scroll-proportion="7.078652">
               <folding />
             </state>
           </provider>
@@ -57,7 +81,7 @@
       <file leaf-file-name="upload.log" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/confcenter/log/upload.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0">
+            <state line="143" column="0" selection-start="12533" selection-end="12533" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -76,7 +100,9 @@
         <entry file="file://$PROJECT_DIR$/confcenter/upload_handlers.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="43" column="20" selection-start="2018" selection-end="2018" vertical-scroll-proportion="0.0">
-              <folding />
+              <folding>
+                <marker date="1361901559000" expanded="true" signature="2223:2261" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,7 +133,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/upload/pdfhandler.py" />
-        <option value="$PROJECT_DIR$/upload/aixsnap.py" />
         <option value="$PROJECT_DIR$/upload/conffiles.py" />
         <option value="$PROJECT_DIR$/upload/models.py" />
         <option value="$PROJECT_DIR$/upload/admin.py" />
@@ -118,10 +143,11 @@
         <option value="$PROJECT_DIR$/confcenter/templates/confupload_form.html" />
         <option value="$PROJECT_DIR$/confcenter/upload_handlers.py" />
         <option value="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po" />
-        <option value="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
         <option value="$PROJECT_DIR$/upload/views.py" />
         <option value="$PROJECT_DIR$/confcenter/settings.py" />
         <option value="$PROJECT_DIR$/confcenter/log/upload.log" />
+        <option value="$PROJECT_DIR$/upload/aixsnap.py" />
+        <option value="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" />
       </list>
     </option>
   </component>
@@ -155,6 +181,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files" />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -170,6 +199,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="confcenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="confcenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="confcenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="upload" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -231,60 +274,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confcenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files" />
       </pane>
     </panes>
   </component>
@@ -673,22 +663,22 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.49426112" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23672883" sideWeight="0.5380774" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24390244" sideWeight="0.5380774" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39950064" sideWeight="0.49425286" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4619226" sideWeight="0.41606885" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4619226" sideWeight="0.57890964" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4619226" sideWeight="0.41965568" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4619226" sideWeight="0.5753228" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32958803" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DatabaseBrowser" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -776,11 +766,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/upload/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="27" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/upload/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="12" selection-start="137" selection-end="145" vertical-scroll-proportion="0.0" />
@@ -788,16 +773,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/upload/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="42" selection-start="222" selection-end="231" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="7" column="42" selection-start="222" selection-end="231" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/media/upload/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="0" selection-start="4969" selection-end="4969" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="145" column="0" selection-start="4969" selection-end="4969" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/urls.py">
@@ -816,9 +797,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.po">
@@ -828,17 +807,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="279" column="45" selection-start="8583" selection-end="8583" vertical-scroll-proportion="10.366492">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/upload_handlers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="20" selection-start="2018" selection-end="2018" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1361901559000" expanded="true" signature="2223:2261" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -866,22 +840,34 @@
     <entry file="file://$PROJECT_DIR$/upload/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="116" column="0" selection-start="5117" selection-end="5117" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#51#122#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/log/upload.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0">
+        <state line="143" column="0" selection-start="12533" selection-end="12533" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/confcenter/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="18" selection-start="2111" selection-end="2111" vertical-scroll-proportion="0.6361386">
+        <state line="14" column="9" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload/aixsnap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="502" column="0" selection-start="21786" selection-end="21786" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="168" column="8" selection-start="5159" selection-end="5159" vertical-scroll-proportion="7.078652">
           <folding />
         </state>
       </provider>
