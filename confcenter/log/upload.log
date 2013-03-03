@@ -141,3 +141,263 @@ INFO     2013-03-01 11:14:26,475 views    Starting file  snap.pax.Z proccessing 
 INFO     2013-03-01 11:14:26,637 views    Sucsessfully handeled file  snap.pax.Z in upload_file
 DEBUG    2013-03-01 11:14:26,924 views    JSON recieved in upload_progress value <QueryDict: {}>
 INFO     2013-03-01 11:14:27,330 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/None_snap.pax.Z_AIX/ and output generated in anal_acc
+INFO     2013-03-03 22:53:53,416 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 22:54:08,306 upload_handlers Starting proccessing file with ID = 9ea8b3cf6e966c992edf2d492d5d9e14 in handle_raw_input
+DEBUG    2013-03-03 22:54:08,307 upload_handlers X-Progress-ID exists and equals = 9ea8b3cf6e966c992edf2d492d5d9e14
+DEBUG    2013-03-03 22:54:08,307 upload_handlers Cache key is set to 127.0.0.1_9ea8b3cf6e966c992edf2d492d5d9e14 and data uploaded 0
+DEBUG    2013-03-03 22:54:08,309 upload_handlers NEW FILE
+DEBUG    2013-03-03 22:54:08,309 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 22:54:08,310 upload_handlers Upload complete
+INFO     2013-03-03 22:54:08,311 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 22:55:19,793 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 22:55:21,390 upload_handlers Starting proccessing file with ID = ece104b60a90c1b41c621389bc313e96 in handle_raw_input
+DEBUG    2013-03-03 22:55:21,390 upload_handlers X-Progress-ID exists and equals = ece104b60a90c1b41c621389bc313e96
+DEBUG    2013-03-03 22:55:21,390 upload_handlers Cache key is set to 127.0.0.1_ece104b60a90c1b41c621389bc313e96 and data uploaded 0
+DEBUG    2013-03-03 22:55:21,392 upload_handlers NEW FILE
+DEBUG    2013-03-03 22:55:21,392 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 22:55:21,392 upload_handlers Upload complete
+INFO     2013-03-03 22:55:21,394 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 22:56:26,622 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 22:56:28,104 upload_handlers Starting proccessing file with ID = d72b9dd9197756cdecad74416938b77d in handle_raw_input
+DEBUG    2013-03-03 22:56:28,105 upload_handlers X-Progress-ID exists and equals = d72b9dd9197756cdecad74416938b77d
+DEBUG    2013-03-03 22:56:28,105 upload_handlers Cache key is set to 127.0.0.1_d72b9dd9197756cdecad74416938b77d and data uploaded 0
+DEBUG    2013-03-03 22:56:28,107 upload_handlers NEW FILE
+DEBUG    2013-03-03 22:56:28,107 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 22:56:28,107 upload_handlers Upload complete
+INFO     2013-03-03 22:56:28,109 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 22:58:00,928 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 22:58:02,441 upload_handlers Starting proccessing file with ID = cc7e63860d41e7891567602f311f7a3e in handle_raw_input
+DEBUG    2013-03-03 22:58:02,441 upload_handlers X-Progress-ID exists and equals = cc7e63860d41e7891567602f311f7a3e
+DEBUG    2013-03-03 22:58:02,442 upload_handlers Cache key is set to 127.0.0.1_cc7e63860d41e7891567602f311f7a3e and data uploaded 0
+DEBUG    2013-03-03 22:58:02,443 upload_handlers NEW FILE
+DEBUG    2013-03-03 22:58:02,444 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 22:58:02,444 upload_handlers Upload complete
+INFO     2013-03-03 22:58:02,446 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:00:39,236 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:00:41,003 upload_handlers Starting proccessing file with ID = 18ffae921eb42746793fc54ec907effe in handle_raw_input
+DEBUG    2013-03-03 23:00:41,003 upload_handlers X-Progress-ID exists and equals = 18ffae921eb42746793fc54ec907effe
+DEBUG    2013-03-03 23:00:41,003 upload_handlers Cache key is set to 127.0.0.1_18ffae921eb42746793fc54ec907effe and data uploaded 0
+DEBUG    2013-03-03 23:00:41,005 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:00:41,005 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:00:41,005 upload_handlers Upload complete
+INFO     2013-03-03 23:00:41,007 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:02:59,928 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:03:01,562 upload_handlers Starting proccessing file with ID = afb78ee206333402f97ca87d3c3a2385 in handle_raw_input
+DEBUG    2013-03-03 23:03:01,562 upload_handlers X-Progress-ID exists and equals = afb78ee206333402f97ca87d3c3a2385
+DEBUG    2013-03-03 23:03:01,562 upload_handlers Cache key is set to 127.0.0.1_afb78ee206333402f97ca87d3c3a2385 and data uploaded 0
+DEBUG    2013-03-03 23:03:01,563 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:03:01,564 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:03:01,564 upload_handlers Upload complete
+INFO     2013-03-03 23:03:01,566 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:03:47,185 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:03:49,353 upload_handlers Starting proccessing file with ID = 62fd71d395d88bf0389b0be8819ac7a1 in handle_raw_input
+DEBUG    2013-03-03 23:03:49,353 upload_handlers X-Progress-ID exists and equals = 62fd71d395d88bf0389b0be8819ac7a1
+DEBUG    2013-03-03 23:03:49,353 upload_handlers Cache key is set to 127.0.0.1_62fd71d395d88bf0389b0be8819ac7a1 and data uploaded 0
+DEBUG    2013-03-03 23:03:49,355 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:03:49,355 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:03:49,356 upload_handlers Upload complete
+INFO     2013-03-03 23:03:49,357 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:05:07,936 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:05:12,321 upload_handlers Starting proccessing file with ID = ad78aacfdf62f3b27164acff61b4dd3f in handle_raw_input
+DEBUG    2013-03-03 23:05:12,321 upload_handlers X-Progress-ID exists and equals = ad78aacfdf62f3b27164acff61b4dd3f
+DEBUG    2013-03-03 23:05:12,321 upload_handlers Cache key is set to 127.0.0.1_ad78aacfdf62f3b27164acff61b4dd3f and data uploaded 0
+DEBUG    2013-03-03 23:05:12,323 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:05:12,323 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:05:12,323 upload_handlers Upload complete
+INFO     2013-03-03 23:05:12,325 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:06:02,057 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:06:03,509 upload_handlers Starting proccessing file with ID = f95ca2888fc0e2a3e2143fd4208efacc in handle_raw_input
+DEBUG    2013-03-03 23:06:03,510 upload_handlers X-Progress-ID exists and equals = f95ca2888fc0e2a3e2143fd4208efacc
+DEBUG    2013-03-03 23:06:03,510 upload_handlers Cache key is set to 127.0.0.1_f95ca2888fc0e2a3e2143fd4208efacc and data uploaded 0
+DEBUG    2013-03-03 23:06:03,511 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:06:03,512 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:06:03,512 upload_handlers Upload complete
+INFO     2013-03-03 23:06:03,514 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:09:04,788 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:09:06,615 upload_handlers Starting proccessing file with ID = cb8b13db7a072b8008eda51cfb511acb in handle_raw_input
+DEBUG    2013-03-03 23:09:06,616 upload_handlers X-Progress-ID exists and equals = cb8b13db7a072b8008eda51cfb511acb
+DEBUG    2013-03-03 23:09:06,616 upload_handlers Cache key is set to 127.0.0.1_cb8b13db7a072b8008eda51cfb511acb and data uploaded 0
+DEBUG    2013-03-03 23:09:06,617 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:09:06,617 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:09:06,618 upload_handlers Upload complete
+INFO     2013-03-03 23:09:06,620 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:10:51,960 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:10:53,579 upload_handlers Starting proccessing file with ID = a96bfd0389b6096b4cfbe17e44873f89 in handle_raw_input
+DEBUG    2013-03-03 23:10:53,580 upload_handlers X-Progress-ID exists and equals = a96bfd0389b6096b4cfbe17e44873f89
+DEBUG    2013-03-03 23:10:53,580 upload_handlers Cache key is set to 127.0.0.1_a96bfd0389b6096b4cfbe17e44873f89 and data uploaded 0
+DEBUG    2013-03-03 23:10:53,583 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:10:53,583 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:10:53,584 upload_handlers Upload complete
+INFO     2013-03-03 23:10:53,587 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:10:53,615 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:13:28,520 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:13:29,918 upload_handlers Starting proccessing file with ID = 25262f21e307a5461119b483b290f31a in handle_raw_input
+DEBUG    2013-03-03 23:13:29,918 upload_handlers X-Progress-ID exists and equals = 25262f21e307a5461119b483b290f31a
+DEBUG    2013-03-03 23:13:29,919 upload_handlers Cache key is set to 127.0.0.1_25262f21e307a5461119b483b290f31a and data uploaded 0
+DEBUG    2013-03-03 23:13:29,921 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:13:29,921 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:13:29,922 upload_handlers Upload complete
+INFO     2013-03-03 23:13:29,925 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:13:29,938 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:14:58,822 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:15:00,254 upload_handlers Starting proccessing file with ID = eb8fdd4dac3695a536679d0e62dc13d9 in handle_raw_input
+DEBUG    2013-03-03 23:15:00,254 upload_handlers X-Progress-ID exists and equals = eb8fdd4dac3695a536679d0e62dc13d9
+DEBUG    2013-03-03 23:15:00,254 upload_handlers Cache key is set to 127.0.0.1_eb8fdd4dac3695a536679d0e62dc13d9 and data uploaded 0
+DEBUG    2013-03-03 23:15:00,255 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:15:00,256 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:15:00,256 upload_handlers Upload complete
+INFO     2013-03-03 23:15:00,257 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:15:00,270 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:17:55,954 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:18:02,223 upload_handlers Starting proccessing file with ID = 9b5ed8500251dbf54eb4a7ee6863dda2 in handle_raw_input
+DEBUG    2013-03-03 23:18:02,223 upload_handlers X-Progress-ID exists and equals = 9b5ed8500251dbf54eb4a7ee6863dda2
+DEBUG    2013-03-03 23:18:02,223 upload_handlers Cache key is set to 127.0.0.1_9b5ed8500251dbf54eb4a7ee6863dda2 and data uploaded 0
+DEBUG    2013-03-03 23:18:02,226 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:18:02,226 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:18:02,227 upload_handlers Upload complete
+INFO     2013-03-03 23:18:02,229 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:18:02,242 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:18:02,289 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:19:51,890 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:19:53,521 upload_handlers Starting proccessing file with ID = cf3ab58de8bf5fe5fa9ca236a297116b in handle_raw_input
+DEBUG    2013-03-03 23:19:53,522 upload_handlers X-Progress-ID exists and equals = cf3ab58de8bf5fe5fa9ca236a297116b
+DEBUG    2013-03-03 23:19:53,522 upload_handlers Cache key is set to 127.0.0.1_cf3ab58de8bf5fe5fa9ca236a297116b and data uploaded 0
+DEBUG    2013-03-03 23:19:53,523 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:19:53,524 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:19:53,524 upload_handlers Upload complete
+INFO     2013-03-03 23:19:53,526 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:19:53,531 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:19:53,560 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:22:44,677 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:22:48,785 upload_handlers Starting proccessing file with ID = dfce2eb25f2b5314d541eada8c813d6d in handle_raw_input
+DEBUG    2013-03-03 23:22:48,786 upload_handlers X-Progress-ID exists and equals = dfce2eb25f2b5314d541eada8c813d6d
+DEBUG    2013-03-03 23:22:48,786 upload_handlers Cache key is set to 127.0.0.1_dfce2eb25f2b5314d541eada8c813d6d and data uploaded 0
+DEBUG    2013-03-03 23:22:48,787 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:22:48,787 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:22:48,788 upload_handlers Upload complete
+INFO     2013-03-03 23:22:48,789 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:22:48,792 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:22:48,813 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:23:05,275 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:23:48,743 upload_handlers Starting proccessing file with ID = b6b389c8efa5d130f8ca126ac06779a3 in handle_raw_input
+DEBUG    2013-03-03 23:23:48,744 upload_handlers X-Progress-ID exists and equals = b6b389c8efa5d130f8ca126ac06779a3
+DEBUG    2013-03-03 23:23:48,744 upload_handlers Cache key is set to 127.0.0.1_b6b389c8efa5d130f8ca126ac06779a3 and data uploaded 0
+DEBUG    2013-03-03 23:23:48,745 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:23:48,745 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:23:48,746 upload_handlers Upload complete
+INFO     2013-03-03 23:23:48,747 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:23:48,752 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:23:48,769 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:24:15,783 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:24:52,983 upload_handlers Starting proccessing file with ID = 279d891fbcca3fcc2b78454a787b584d in handle_raw_input
+DEBUG    2013-03-03 23:24:52,984 upload_handlers X-Progress-ID exists and equals = 279d891fbcca3fcc2b78454a787b584d
+DEBUG    2013-03-03 23:24:52,984 upload_handlers Cache key is set to 127.0.0.1_279d891fbcca3fcc2b78454a787b584d and data uploaded 0
+DEBUG    2013-03-03 23:24:52,985 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:24:52,985 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:24:52,986 upload_handlers Upload complete
+INFO     2013-03-03 23:24:52,988 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:24:52,992 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:24:53,009 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:25:12,260 views    PDF generation requested for counfdump none in anal_acc
+INFO     2013-03-03 23:28:47,355 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:28:48,903 upload_handlers Starting proccessing file with ID = 56a5d82dd5eedd76f0f0daba9c1424ac in handle_raw_input
+DEBUG    2013-03-03 23:28:48,903 upload_handlers X-Progress-ID exists and equals = 56a5d82dd5eedd76f0f0daba9c1424ac
+DEBUG    2013-03-03 23:28:48,904 upload_handlers Cache key is set to 127.0.0.1_56a5d82dd5eedd76f0f0daba9c1424ac and data uploaded 0
+DEBUG    2013-03-03 23:28:48,905 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:28:48,905 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:28:48,905 upload_handlers Upload complete
+INFO     2013-03-03 23:28:48,907 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:28:48,911 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:28:48,929 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:28:51,426 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:31:08,060 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:31:11,776 upload_handlers Starting proccessing file with ID = 4cd0caea92fb95dc5d0d25c0c86e2260 in handle_raw_input
+DEBUG    2013-03-03 23:31:11,776 upload_handlers X-Progress-ID exists and equals = 4cd0caea92fb95dc5d0d25c0c86e2260
+DEBUG    2013-03-03 23:31:11,776 upload_handlers Cache key is set to 127.0.0.1_4cd0caea92fb95dc5d0d25c0c86e2260 and data uploaded 0
+DEBUG    2013-03-03 23:31:11,778 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:31:11,779 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:31:11,779 upload_handlers Upload complete
+INFO     2013-03-03 23:31:11,780 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:31:11,785 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:31:11,810 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:31:14,093 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:32:32,296 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:32:40,528 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:32:44,964 upload_handlers Starting proccessing file with ID = 055afb688442a9355b90d13a31b06948 in handle_raw_input
+DEBUG    2013-03-03 23:32:44,964 upload_handlers X-Progress-ID exists and equals = 055afb688442a9355b90d13a31b06948
+DEBUG    2013-03-03 23:32:44,964 upload_handlers Cache key is set to 127.0.0.1_055afb688442a9355b90d13a31b06948 and data uploaded 0
+DEBUG    2013-03-03 23:32:44,967 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:32:44,967 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:32:44,968 upload_handlers Upload complete
+INFO     2013-03-03 23:32:44,970 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:32:44,974 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:32:45,003 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:33:05,185 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:33:08,822 upload_handlers Starting proccessing file with ID = 9eab28cd5c2d100484adaed3aa998c05 in handle_raw_input
+DEBUG    2013-03-03 23:33:08,823 upload_handlers X-Progress-ID exists and equals = 9eab28cd5c2d100484adaed3aa998c05
+DEBUG    2013-03-03 23:33:08,823 upload_handlers Cache key is set to 127.0.0.1_9eab28cd5c2d100484adaed3aa998c05 and data uploaded 0
+DEBUG    2013-03-03 23:33:08,825 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:33:08,826 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:33:08,826 upload_handlers Upload complete
+INFO     2013-03-03 23:33:08,828 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:33:08,832 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:33:08,855 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:33:11,108 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:33:23,567 views    PDF generation requested for counfdump none in anal_acc
+INFO     2013-03-03 23:44:50,714 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:44:53,097 upload_handlers Starting proccessing file with ID = 1f8f429a081b3093e23ad5d21a088d95 in handle_raw_input
+DEBUG    2013-03-03 23:44:53,097 upload_handlers X-Progress-ID exists and equals = 1f8f429a081b3093e23ad5d21a088d95
+DEBUG    2013-03-03 23:44:53,097 upload_handlers Cache key is set to 127.0.0.1_1f8f429a081b3093e23ad5d21a088d95 and data uploaded 0
+DEBUG    2013-03-03 23:44:53,099 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:44:53,099 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:44:53,100 upload_handlers Upload complete
+INFO     2013-03-03 23:44:53,101 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:44:53,105 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:44:53,125 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:44:57,163 views    Saving in site-format requested for counfdump none in anal_acc
+INFO     2013-03-03 23:49:46,708 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+INFO     2013-03-03 23:49:55,377 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:49:59,737 upload_handlers Starting proccessing file with ID = 3cc9191e472de82caadc73322a596170 in handle_raw_input
+DEBUG    2013-03-03 23:49:59,738 upload_handlers X-Progress-ID exists and equals = 3cc9191e472de82caadc73322a596170
+DEBUG    2013-03-03 23:49:59,738 upload_handlers Cache key is set to 127.0.0.1_3cc9191e472de82caadc73322a596170 and data uploaded 0
+DEBUG    2013-03-03 23:49:59,740 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:49:59,740 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:49:59,740 upload_handlers Upload complete
+INFO     2013-03-03 23:49:59,742 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:49:59,744 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:49:59,764 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:50:01,438 views    Saving in site-format requested for counfdump none in anal_acc
+INFO     2013-03-03 23:53:49,005 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:53:53,260 upload_handlers Starting proccessing file with ID = f8ca5dcce8a0f4777798131365f93be5 in handle_raw_input
+DEBUG    2013-03-03 23:53:53,260 upload_handlers X-Progress-ID exists and equals = f8ca5dcce8a0f4777798131365f93be5
+DEBUG    2013-03-03 23:53:53,260 upload_handlers Cache key is set to 127.0.0.1_f8ca5dcce8a0f4777798131365f93be5 and data uploaded 0
+DEBUG    2013-03-03 23:53:53,261 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:53:53,262 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:53:53,262 upload_handlers Upload complete
+INFO     2013-03-03 23:53:53,263 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:53:53,266 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:53:53,287 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:53:55,189 views    Saving in site-format requested for counfdump none in anal_acc
+INFO     2013-03-03 23:54:15,877 views    Saving in site-format requested for counfdump none in anal_acc
+INFO     2013-03-03 23:58:52,612 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:58:58,128 upload_handlers Starting proccessing file with ID = b3e1b2f49a9c53146a7f59ce7ef83a4f in handle_raw_input
+DEBUG    2013-03-03 23:58:58,128 upload_handlers X-Progress-ID exists and equals = b3e1b2f49a9c53146a7f59ce7ef83a4f
+DEBUG    2013-03-03 23:58:58,128 upload_handlers Cache key is set to 127.0.0.1_b3e1b2f49a9c53146a7f59ce7ef83a4f and data uploaded 0
+DEBUG    2013-03-03 23:58:58,130 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:58:58,130 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:58:58,131 upload_handlers Upload complete
+INFO     2013-03-03 23:58:58,132 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:58:58,137 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
+INFO     2013-03-03 23:58:58,157 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:58:59,690 views    Saving in site-format requested for counfdump none in anal_acc
+INFO     2013-03-03 23:59:41,884 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-03 23:59:51,079 upload_handlers Starting proccessing file with ID = 859796ad52cecd811e76a6ca8556b7f8 in handle_raw_input
+DEBUG    2013-03-03 23:59:51,079 upload_handlers X-Progress-ID exists and equals = 859796ad52cecd811e76a6ca8556b7f8
+DEBUG    2013-03-03 23:59:51,080 upload_handlers Cache key is set to 127.0.0.1_859796ad52cecd811e76a6ca8556b7f8 and data uploaded 0
+DEBUG    2013-03-03 23:59:51,081 upload_handlers NEW FILE
+DEBUG    2013-03-03 23:59:51,081 upload_handlers Data is now equals 65536
+DEBUG    2013-03-03 23:59:51,082 upload_handlers Upload complete
+INFO     2013-03-03 23:59:51,083 views    Starting file  snapreport_XXXX-XXX_XXXXXXXX.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-03 23:59:51,087 views    Sucsessfully handeled file  snapreport_XXXX-XXX_XXXXXXXX.AIX.confdump in upload_file
+INFO     2013-03-03 23:59:51,103 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-03 23:59:57,434 views    Saving in site-format requested for counfdump none in anal_acc
