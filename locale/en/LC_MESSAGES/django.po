@@ -178,7 +178,6 @@ msgid "primary_dumpdev_rep"
 msgstr "Primary dump device:"
 
 #: confcenter/templates/snapreport_form.html:89 upload/pdfhandler.py:256
-#, fuzzy
 msgid "secondary_dumpdev_rep"
 msgstr "Secondary dump device:"
 
@@ -343,7 +342,6 @@ msgid "vgautoimport_rep"
 msgstr "Auto-import"
 
 #: confcenter/templates/snapreport_form.html:268 upload/pdfhandler.py:374
-#, fuzzy
 msgid "lv_info_rep"
 msgstr "Logical volumes"
 
