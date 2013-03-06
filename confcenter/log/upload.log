@@ -1,403 +1,449 @@
-
-INFO     2013-02-26 15:14:04,837 views    Empty upload form prepared from upload_file for user from 188.123.248.4, session id 2be71fbcd51eba2e1a07165fe981abd1
-INFO     2013-02-26 15:19:15,141 views    Snap object analyzed for /home/vs/www/confcenter/confcenter/confuploads/2be71fbcd51eba2e1a07165fe981abd1_test.snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-03-01 10:55:35,461 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-01 10:55:57,872 upload_handlers Starting proccessing file with ID = 663512af1b2485d211983c08634ae886 in handle_raw_input
-DEBUG    2013-03-01 10:55:57,872 upload_handlers X-Progress-ID exists and equals = 663512af1b2485d211983c08634ae886
-DEBUG    2013-03-01 10:55:57,872 upload_handlers Cache key is set to 127.0.0.1_663512af1b2485d211983c08634ae886 and data uploaded 0
-DEBUG    2013-03-01 10:55:57,874 upload_handlers NEW FILE
-DEBUG    2013-03-01 10:55:57,874 upload_handlers Data is now equals 65536
-DEBUG    2013-03-01 10:55:57,875 upload_handlers Data is now equals 131072
-DEBUG    2013-03-01 10:55:57,875 upload_handlers Data is now equals 196608
-DEBUG    2013-03-01 10:55:57,875 upload_handlers Data is now equals 262144
-DEBUG    2013-03-01 10:55:57,876 upload_handlers Data is now equals 327680
-DEBUG    2013-03-01 10:55:57,876 upload_handlers Data is now equals 393216
-DEBUG    2013-03-01 10:55:57,877 upload_handlers Data is now equals 458752
-DEBUG    2013-03-01 10:55:57,878 upload_handlers Data is now equals 524288
-DEBUG    2013-03-01 10:55:57,878 upload_handlers Data is now equals 589824
-DEBUG    2013-03-01 10:55:57,879 upload_handlers Data is now equals 655360
-DEBUG    2013-03-01 10:55:57,880 upload_handlers Data is now equals 720896
-DEBUG    2013-03-01 10:55:57,881 upload_handlers Data is now equals 786432
-DEBUG    2013-03-01 10:55:57,881 upload_handlers Data is now equals 851968
-DEBUG    2013-03-01 10:55:57,882 upload_handlers Data is now equals 917504
-DEBUG    2013-03-01 10:55:57,882 upload_handlers Data is now equals 983040
-DEBUG    2013-03-01 10:55:57,883 upload_handlers Data is now equals 1048576
-DEBUG    2013-03-01 10:55:57,883 upload_handlers Data is now equals 1114112
-DEBUG    2013-03-01 10:55:57,883 upload_handlers Data is now equals 1179648
-DEBUG    2013-03-01 10:55:57,884 upload_handlers Data is now equals 1245184
-DEBUG    2013-03-01 10:55:57,885 upload_handlers Data is now equals 1310720
-DEBUG    2013-03-01 10:55:57,886 upload_handlers Data is now equals 1376256
-DEBUG    2013-03-01 10:55:57,887 upload_handlers Data is now equals 1441792
-DEBUG    2013-03-01 10:55:57,888 upload_handlers Data is now equals 1507328
-DEBUG    2013-03-01 10:55:57,889 upload_handlers Data is now equals 1572864
-DEBUG    2013-03-01 10:55:57,890 upload_handlers Data is now equals 1638400
-DEBUG    2013-03-01 10:55:57,890 upload_handlers Upload complete
-INFO     2013-03-01 10:55:57,892 views    Starting file  snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-01 10:55:58,059 views    Sucsessfully handeled file  snap.pax.Z in upload_file
-INFO     2013-03-01 11:11:18,890 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-01 11:11:27,262 upload_handlers Starting proccessing file with ID = 32d79819465e08b2f4508a05bb1913c0 in handle_raw_input
-DEBUG    2013-03-01 11:11:27,263 upload_handlers X-Progress-ID exists and equals = 32d79819465e08b2f4508a05bb1913c0
-DEBUG    2013-03-01 11:11:27,264 upload_handlers Cache key is set to 127.0.0.1_32d79819465e08b2f4508a05bb1913c0 and data uploaded 0
-DEBUG    2013-03-01 11:11:27,267 upload_handlers NEW FILE
-DEBUG    2013-03-01 11:11:27,267 upload_handlers Data is now equals 65536
-DEBUG    2013-03-01 11:11:27,268 upload_handlers Data is now equals 131072
-DEBUG    2013-03-01 11:11:27,268 upload_handlers Data is now equals 196608
-DEBUG    2013-03-01 11:11:27,269 upload_handlers Data is now equals 262144
-DEBUG    2013-03-01 11:11:27,270 upload_handlers Data is now equals 327680
-DEBUG    2013-03-01 11:11:27,271 upload_handlers Data is now equals 393216
-DEBUG    2013-03-01 11:11:27,271 upload_handlers Data is now equals 458752
-DEBUG    2013-03-01 11:11:27,272 upload_handlers Data is now equals 524288
-DEBUG    2013-03-01 11:11:27,272 upload_handlers Data is now equals 589824
-DEBUG    2013-03-01 11:11:27,273 upload_handlers Data is now equals 655360
-DEBUG    2013-03-01 11:11:27,273 upload_handlers Data is now equals 720896
-DEBUG    2013-03-01 11:11:27,274 upload_handlers Data is now equals 786432
-DEBUG    2013-03-01 11:11:27,275 upload_handlers Data is now equals 851968
-DEBUG    2013-03-01 11:11:27,275 upload_handlers Data is now equals 917504
-DEBUG    2013-03-01 11:11:27,276 upload_handlers Data is now equals 983040
-DEBUG    2013-03-01 11:11:27,276 upload_handlers Data is now equals 1048576
-DEBUG    2013-03-01 11:11:27,277 upload_handlers Data is now equals 1114112
-DEBUG    2013-03-01 11:11:27,277 upload_handlers Data is now equals 1179648
-DEBUG    2013-03-01 11:11:27,278 upload_handlers Data is now equals 1245184
-DEBUG    2013-03-01 11:11:27,279 upload_handlers Data is now equals 1310720
-DEBUG    2013-03-01 11:11:27,279 upload_handlers Data is now equals 1376256
-DEBUG    2013-03-01 11:11:27,280 upload_handlers Data is now equals 1441792
-DEBUG    2013-03-01 11:11:27,281 upload_handlers Data is now equals 1507328
-DEBUG    2013-03-01 11:11:27,282 upload_handlers Data is now equals 1572864
-DEBUG    2013-03-01 11:11:27,283 upload_handlers Data is now equals 1638400
-DEBUG    2013-03-01 11:11:27,284 upload_handlers Upload complete
-INFO     2013-03-01 11:11:27,286 views    Starting file  snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-01 11:11:27,441 views    Sucsessfully handeled file  snap.pax.Z in upload_file
-DEBUG    2013-03-01 11:11:27,757 views    JSON recieved in upload_progress value <QueryDict: {}>
-INFO     2013-03-01 11:11:28,206 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/7c2c63c36e0d8f24a2d25d15d5b4c5e5_snap.pax.Z_AIX/ and output generated in anal_acc
-DEBUG    2013-03-01 11:11:28,325 views    JSON recieved in upload_progress value <QueryDict: {}>
-INFO     2013-03-01 11:13:22,120 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/7c2c63c36e0d8f24a2d25d15d5b4c5e5_snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-03-01 11:13:31,963 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-01 11:13:36,311 upload_handlers Starting proccessing file with ID = dbb22d49303c49469199244aa22b741f in handle_raw_input
-DEBUG    2013-03-01 11:13:36,311 upload_handlers X-Progress-ID exists and equals = dbb22d49303c49469199244aa22b741f
-DEBUG    2013-03-01 11:13:36,311 upload_handlers Cache key is set to 127.0.0.1_dbb22d49303c49469199244aa22b741f and data uploaded 0
-DEBUG    2013-03-01 11:13:36,313 upload_handlers NEW FILE
-DEBUG    2013-03-01 11:13:36,313 upload_handlers Data is now equals 65536
-DEBUG    2013-03-01 11:13:36,314 upload_handlers Data is now equals 131072
-DEBUG    2013-03-01 11:13:36,314 upload_handlers Data is now equals 196608
-DEBUG    2013-03-01 11:13:36,315 upload_handlers Data is now equals 262144
-DEBUG    2013-03-01 11:13:36,315 upload_handlers Data is now equals 327680
-DEBUG    2013-03-01 11:13:36,315 upload_handlers Data is now equals 393216
-DEBUG    2013-03-01 11:13:36,316 upload_handlers Data is now equals 458752
-DEBUG    2013-03-01 11:13:36,316 upload_handlers Data is now equals 524288
-DEBUG    2013-03-01 11:13:36,317 upload_handlers Data is now equals 589824
-DEBUG    2013-03-01 11:13:36,317 upload_handlers Data is now equals 655360
-DEBUG    2013-03-01 11:13:36,318 upload_handlers Data is now equals 720896
-DEBUG    2013-03-01 11:13:36,318 upload_handlers Data is now equals 786432
-DEBUG    2013-03-01 11:13:36,319 upload_handlers Data is now equals 851968
-DEBUG    2013-03-01 11:13:36,319 upload_handlers Data is now equals 917504
-DEBUG    2013-03-01 11:13:36,320 upload_handlers Data is now equals 983040
-DEBUG    2013-03-01 11:13:36,321 upload_handlers Data is now equals 1048576
-DEBUG    2013-03-01 11:13:36,322 upload_handlers Data is now equals 1114112
-DEBUG    2013-03-01 11:13:36,322 upload_handlers Data is now equals 1179648
-DEBUG    2013-03-01 11:13:36,323 upload_handlers Data is now equals 1245184
-DEBUG    2013-03-01 11:13:36,324 upload_handlers Data is now equals 1310720
-DEBUG    2013-03-01 11:13:36,324 upload_handlers Data is now equals 1376256
-DEBUG    2013-03-01 11:13:36,325 upload_handlers Data is now equals 1441792
-DEBUG    2013-03-01 11:13:36,325 upload_handlers Data is now equals 1507328
-DEBUG    2013-03-01 11:13:36,326 upload_handlers Data is now equals 1572864
-DEBUG    2013-03-01 11:13:36,326 upload_handlers Data is now equals 1638400
-DEBUG    2013-03-01 11:13:36,327 upload_handlers Upload complete
-INFO     2013-03-01 11:13:36,329 views    Starting file  snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-01 11:13:36,470 views    Sucsessfully handeled file  snap.pax.Z in upload_file
-DEBUG    2013-03-01 11:13:36,806 views    JSON recieved in upload_progress value <QueryDict: {}>
-INFO     2013-03-01 11:13:37,182 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/7c2c63c36e0d8f24a2d25d15d5b4c5e5_snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-03-01 11:14:22,943 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id None
-DEBUG    2013-03-01 11:14:26,436 upload_handlers Starting proccessing file with ID = e84a1fa9a9095089fc7fb9004b773ece in handle_raw_input
-DEBUG    2013-03-01 11:14:26,436 upload_handlers X-Progress-ID exists and equals = e84a1fa9a9095089fc7fb9004b773ece
-DEBUG    2013-03-01 11:14:26,437 upload_handlers Cache key is set to 127.0.0.1_e84a1fa9a9095089fc7fb9004b773ece and data uploaded 0
-DEBUG    2013-03-01 11:14:26,438 upload_handlers NEW FILE
-DEBUG    2013-03-01 11:14:26,439 upload_handlers Data is now equals 65536
-DEBUG    2013-03-01 11:14:26,439 upload_handlers Data is now equals 131072
-DEBUG    2013-03-01 11:14:26,440 upload_handlers Data is now equals 196608
-DEBUG    2013-03-01 11:14:26,440 upload_handlers Data is now equals 262144
-DEBUG    2013-03-01 11:14:26,442 upload_handlers Data is now equals 327680
-DEBUG    2013-03-01 11:14:26,443 upload_handlers Data is now equals 393216
-DEBUG    2013-03-01 11:14:26,445 upload_handlers Data is now equals 458752
-DEBUG    2013-03-01 11:14:26,446 upload_handlers Data is now equals 524288
-DEBUG    2013-03-01 11:14:26,448 upload_handlers Data is now equals 589824
-DEBUG    2013-03-01 11:14:26,450 upload_handlers Data is now equals 655360
-DEBUG    2013-03-01 11:14:26,451 upload_handlers Data is now equals 720896
-DEBUG    2013-03-01 11:14:26,453 upload_handlers Data is now equals 786432
-DEBUG    2013-03-01 11:14:26,454 upload_handlers Data is now equals 851968
-DEBUG    2013-03-01 11:14:26,456 upload_handlers Data is now equals 917504
-DEBUG    2013-03-01 11:14:26,457 upload_handlers Data is now equals 983040
-DEBUG    2013-03-01 11:14:26,459 upload_handlers Data is now equals 1048576
-DEBUG    2013-03-01 11:14:26,461 upload_handlers Data is now equals 1114112
-DEBUG    2013-03-01 11:14:26,462 upload_handlers Data is now equals 1179648
-DEBUG    2013-03-01 11:14:26,464 upload_handlers Data is now equals 1245184
-DEBUG    2013-03-01 11:14:26,466 upload_handlers Data is now equals 1310720
-DEBUG    2013-03-01 11:14:26,467 upload_handlers Data is now equals 1376256
-DEBUG    2013-03-01 11:14:26,469 upload_handlers Data is now equals 1441792
-DEBUG    2013-03-01 11:14:26,470 upload_handlers Data is now equals 1507328
-DEBUG    2013-03-01 11:14:26,472 upload_handlers Data is now equals 1572864
-DEBUG    2013-03-01 11:14:26,473 upload_handlers Data is now equals 1638400
-DEBUG    2013-03-01 11:14:26,473 upload_handlers Upload complete
-INFO     2013-03-01 11:14:26,475 views    Starting file  snap.pax.Z proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-01 11:14:26,637 views    Sucsessfully handeled file  snap.pax.Z in upload_file
-DEBUG    2013-03-01 11:14:26,924 views    JSON recieved in upload_progress value <QueryDict: {}>
-INFO     2013-03-01 11:14:27,330 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/None_snap.pax.Z_AIX/ and output generated in anal_acc
-INFO     2013-03-03 22:53:53,416 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 22:54:08,306 upload_handlers Starting proccessing file with ID = 9ea8b3cf6e966c992edf2d492d5d9e14 in handle_raw_input
-DEBUG    2013-03-03 22:54:08,307 upload_handlers X-Progress-ID exists and equals = 9ea8b3cf6e966c992edf2d492d5d9e14
-DEBUG    2013-03-03 22:54:08,307 upload_handlers Cache key is set to 127.0.0.1_9ea8b3cf6e966c992edf2d492d5d9e14 and data uploaded 0
-DEBUG    2013-03-03 22:54:08,309 upload_handlers NEW FILE
-DEBUG    2013-03-03 22:54:08,309 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 22:54:08,310 upload_handlers Upload complete
-INFO     2013-03-03 22:54:08,311 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 22:55:19,793 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 22:55:21,390 upload_handlers Starting proccessing file with ID = ece104b60a90c1b41c621389bc313e96 in handle_raw_input
-DEBUG    2013-03-03 22:55:21,390 upload_handlers X-Progress-ID exists and equals = ece104b60a90c1b41c621389bc313e96
-DEBUG    2013-03-03 22:55:21,390 upload_handlers Cache key is set to 127.0.0.1_ece104b60a90c1b41c621389bc313e96 and data uploaded 0
-DEBUG    2013-03-03 22:55:21,392 upload_handlers NEW FILE
-DEBUG    2013-03-03 22:55:21,392 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 22:55:21,392 upload_handlers Upload complete
-INFO     2013-03-03 22:55:21,394 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 22:56:26,622 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 22:56:28,104 upload_handlers Starting proccessing file with ID = d72b9dd9197756cdecad74416938b77d in handle_raw_input
-DEBUG    2013-03-03 22:56:28,105 upload_handlers X-Progress-ID exists and equals = d72b9dd9197756cdecad74416938b77d
-DEBUG    2013-03-03 22:56:28,105 upload_handlers Cache key is set to 127.0.0.1_d72b9dd9197756cdecad74416938b77d and data uploaded 0
-DEBUG    2013-03-03 22:56:28,107 upload_handlers NEW FILE
-DEBUG    2013-03-03 22:56:28,107 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 22:56:28,107 upload_handlers Upload complete
-INFO     2013-03-03 22:56:28,109 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 22:58:00,928 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 22:58:02,441 upload_handlers Starting proccessing file with ID = cc7e63860d41e7891567602f311f7a3e in handle_raw_input
-DEBUG    2013-03-03 22:58:02,441 upload_handlers X-Progress-ID exists and equals = cc7e63860d41e7891567602f311f7a3e
-DEBUG    2013-03-03 22:58:02,442 upload_handlers Cache key is set to 127.0.0.1_cc7e63860d41e7891567602f311f7a3e and data uploaded 0
-DEBUG    2013-03-03 22:58:02,443 upload_handlers NEW FILE
-DEBUG    2013-03-03 22:58:02,444 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 22:58:02,444 upload_handlers Upload complete
-INFO     2013-03-03 22:58:02,446 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:00:39,236 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:00:41,003 upload_handlers Starting proccessing file with ID = 18ffae921eb42746793fc54ec907effe in handle_raw_input
-DEBUG    2013-03-03 23:00:41,003 upload_handlers X-Progress-ID exists and equals = 18ffae921eb42746793fc54ec907effe
-DEBUG    2013-03-03 23:00:41,003 upload_handlers Cache key is set to 127.0.0.1_18ffae921eb42746793fc54ec907effe and data uploaded 0
-DEBUG    2013-03-03 23:00:41,005 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:00:41,005 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:00:41,005 upload_handlers Upload complete
-INFO     2013-03-03 23:00:41,007 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:02:59,928 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:03:01,562 upload_handlers Starting proccessing file with ID = afb78ee206333402f97ca87d3c3a2385 in handle_raw_input
-DEBUG    2013-03-03 23:03:01,562 upload_handlers X-Progress-ID exists and equals = afb78ee206333402f97ca87d3c3a2385
-DEBUG    2013-03-03 23:03:01,562 upload_handlers Cache key is set to 127.0.0.1_afb78ee206333402f97ca87d3c3a2385 and data uploaded 0
-DEBUG    2013-03-03 23:03:01,563 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:03:01,564 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:03:01,564 upload_handlers Upload complete
-INFO     2013-03-03 23:03:01,566 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:03:47,185 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:03:49,353 upload_handlers Starting proccessing file with ID = 62fd71d395d88bf0389b0be8819ac7a1 in handle_raw_input
-DEBUG    2013-03-03 23:03:49,353 upload_handlers X-Progress-ID exists and equals = 62fd71d395d88bf0389b0be8819ac7a1
-DEBUG    2013-03-03 23:03:49,353 upload_handlers Cache key is set to 127.0.0.1_62fd71d395d88bf0389b0be8819ac7a1 and data uploaded 0
-DEBUG    2013-03-03 23:03:49,355 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:03:49,355 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:03:49,356 upload_handlers Upload complete
-INFO     2013-03-03 23:03:49,357 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:05:07,936 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:05:12,321 upload_handlers Starting proccessing file with ID = ad78aacfdf62f3b27164acff61b4dd3f in handle_raw_input
-DEBUG    2013-03-03 23:05:12,321 upload_handlers X-Progress-ID exists and equals = ad78aacfdf62f3b27164acff61b4dd3f
-DEBUG    2013-03-03 23:05:12,321 upload_handlers Cache key is set to 127.0.0.1_ad78aacfdf62f3b27164acff61b4dd3f and data uploaded 0
-DEBUG    2013-03-03 23:05:12,323 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:05:12,323 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:05:12,323 upload_handlers Upload complete
-INFO     2013-03-03 23:05:12,325 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:06:02,057 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:06:03,509 upload_handlers Starting proccessing file with ID = f95ca2888fc0e2a3e2143fd4208efacc in handle_raw_input
-DEBUG    2013-03-03 23:06:03,510 upload_handlers X-Progress-ID exists and equals = f95ca2888fc0e2a3e2143fd4208efacc
-DEBUG    2013-03-03 23:06:03,510 upload_handlers Cache key is set to 127.0.0.1_f95ca2888fc0e2a3e2143fd4208efacc and data uploaded 0
-DEBUG    2013-03-03 23:06:03,511 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:06:03,512 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:06:03,512 upload_handlers Upload complete
-INFO     2013-03-03 23:06:03,514 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:09:04,788 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:09:06,615 upload_handlers Starting proccessing file with ID = cb8b13db7a072b8008eda51cfb511acb in handle_raw_input
-DEBUG    2013-03-03 23:09:06,616 upload_handlers X-Progress-ID exists and equals = cb8b13db7a072b8008eda51cfb511acb
-DEBUG    2013-03-03 23:09:06,616 upload_handlers Cache key is set to 127.0.0.1_cb8b13db7a072b8008eda51cfb511acb and data uploaded 0
-DEBUG    2013-03-03 23:09:06,617 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:09:06,617 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:09:06,618 upload_handlers Upload complete
-INFO     2013-03-03 23:09:06,620 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:10:51,960 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:10:53,579 upload_handlers Starting proccessing file with ID = a96bfd0389b6096b4cfbe17e44873f89 in handle_raw_input
-DEBUG    2013-03-03 23:10:53,580 upload_handlers X-Progress-ID exists and equals = a96bfd0389b6096b4cfbe17e44873f89
-DEBUG    2013-03-03 23:10:53,580 upload_handlers Cache key is set to 127.0.0.1_a96bfd0389b6096b4cfbe17e44873f89 and data uploaded 0
-DEBUG    2013-03-03 23:10:53,583 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:10:53,583 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:10:53,584 upload_handlers Upload complete
-INFO     2013-03-03 23:10:53,587 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:10:53,615 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:13:28,520 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:13:29,918 upload_handlers Starting proccessing file with ID = 25262f21e307a5461119b483b290f31a in handle_raw_input
-DEBUG    2013-03-03 23:13:29,918 upload_handlers X-Progress-ID exists and equals = 25262f21e307a5461119b483b290f31a
-DEBUG    2013-03-03 23:13:29,919 upload_handlers Cache key is set to 127.0.0.1_25262f21e307a5461119b483b290f31a and data uploaded 0
-DEBUG    2013-03-03 23:13:29,921 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:13:29,921 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:13:29,922 upload_handlers Upload complete
-INFO     2013-03-03 23:13:29,925 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:13:29,938 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:14:58,822 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:15:00,254 upload_handlers Starting proccessing file with ID = eb8fdd4dac3695a536679d0e62dc13d9 in handle_raw_input
-DEBUG    2013-03-03 23:15:00,254 upload_handlers X-Progress-ID exists and equals = eb8fdd4dac3695a536679d0e62dc13d9
-DEBUG    2013-03-03 23:15:00,254 upload_handlers Cache key is set to 127.0.0.1_eb8fdd4dac3695a536679d0e62dc13d9 and data uploaded 0
-DEBUG    2013-03-03 23:15:00,255 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:15:00,256 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:15:00,256 upload_handlers Upload complete
-INFO     2013-03-03 23:15:00,257 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:15:00,270 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:17:55,954 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:18:02,223 upload_handlers Starting proccessing file with ID = 9b5ed8500251dbf54eb4a7ee6863dda2 in handle_raw_input
-DEBUG    2013-03-03 23:18:02,223 upload_handlers X-Progress-ID exists and equals = 9b5ed8500251dbf54eb4a7ee6863dda2
-DEBUG    2013-03-03 23:18:02,223 upload_handlers Cache key is set to 127.0.0.1_9b5ed8500251dbf54eb4a7ee6863dda2 and data uploaded 0
-DEBUG    2013-03-03 23:18:02,226 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:18:02,226 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:18:02,227 upload_handlers Upload complete
-INFO     2013-03-03 23:18:02,229 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:18:02,242 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:18:02,289 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:19:51,890 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:19:53,521 upload_handlers Starting proccessing file with ID = cf3ab58de8bf5fe5fa9ca236a297116b in handle_raw_input
-DEBUG    2013-03-03 23:19:53,522 upload_handlers X-Progress-ID exists and equals = cf3ab58de8bf5fe5fa9ca236a297116b
-DEBUG    2013-03-03 23:19:53,522 upload_handlers Cache key is set to 127.0.0.1_cf3ab58de8bf5fe5fa9ca236a297116b and data uploaded 0
-DEBUG    2013-03-03 23:19:53,523 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:19:53,524 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:19:53,524 upload_handlers Upload complete
-INFO     2013-03-03 23:19:53,526 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:19:53,531 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:19:53,560 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:22:44,677 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:22:48,785 upload_handlers Starting proccessing file with ID = dfce2eb25f2b5314d541eada8c813d6d in handle_raw_input
-DEBUG    2013-03-03 23:22:48,786 upload_handlers X-Progress-ID exists and equals = dfce2eb25f2b5314d541eada8c813d6d
-DEBUG    2013-03-03 23:22:48,786 upload_handlers Cache key is set to 127.0.0.1_dfce2eb25f2b5314d541eada8c813d6d and data uploaded 0
-DEBUG    2013-03-03 23:22:48,787 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:22:48,787 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:22:48,788 upload_handlers Upload complete
-INFO     2013-03-03 23:22:48,789 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:22:48,792 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:22:48,813 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:23:05,275 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:23:48,743 upload_handlers Starting proccessing file with ID = b6b389c8efa5d130f8ca126ac06779a3 in handle_raw_input
-DEBUG    2013-03-03 23:23:48,744 upload_handlers X-Progress-ID exists and equals = b6b389c8efa5d130f8ca126ac06779a3
-DEBUG    2013-03-03 23:23:48,744 upload_handlers Cache key is set to 127.0.0.1_b6b389c8efa5d130f8ca126ac06779a3 and data uploaded 0
-DEBUG    2013-03-03 23:23:48,745 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:23:48,745 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:23:48,746 upload_handlers Upload complete
-INFO     2013-03-03 23:23:48,747 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:23:48,752 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:23:48,769 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:24:15,783 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:24:52,983 upload_handlers Starting proccessing file with ID = 279d891fbcca3fcc2b78454a787b584d in handle_raw_input
-DEBUG    2013-03-03 23:24:52,984 upload_handlers X-Progress-ID exists and equals = 279d891fbcca3fcc2b78454a787b584d
-DEBUG    2013-03-03 23:24:52,984 upload_handlers Cache key is set to 127.0.0.1_279d891fbcca3fcc2b78454a787b584d and data uploaded 0
-DEBUG    2013-03-03 23:24:52,985 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:24:52,985 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:24:52,986 upload_handlers Upload complete
-INFO     2013-03-03 23:24:52,988 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:24:52,992 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:24:53,009 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:25:12,260 views    PDF generation requested for counfdump none in anal_acc
-INFO     2013-03-03 23:28:47,355 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:28:48,903 upload_handlers Starting proccessing file with ID = 56a5d82dd5eedd76f0f0daba9c1424ac in handle_raw_input
-DEBUG    2013-03-03 23:28:48,903 upload_handlers X-Progress-ID exists and equals = 56a5d82dd5eedd76f0f0daba9c1424ac
-DEBUG    2013-03-03 23:28:48,904 upload_handlers Cache key is set to 127.0.0.1_56a5d82dd5eedd76f0f0daba9c1424ac and data uploaded 0
-DEBUG    2013-03-03 23:28:48,905 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:28:48,905 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:28:48,905 upload_handlers Upload complete
-INFO     2013-03-03 23:28:48,907 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:28:48,911 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:28:48,929 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:28:51,426 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:31:08,060 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:31:11,776 upload_handlers Starting proccessing file with ID = 4cd0caea92fb95dc5d0d25c0c86e2260 in handle_raw_input
-DEBUG    2013-03-03 23:31:11,776 upload_handlers X-Progress-ID exists and equals = 4cd0caea92fb95dc5d0d25c0c86e2260
-DEBUG    2013-03-03 23:31:11,776 upload_handlers Cache key is set to 127.0.0.1_4cd0caea92fb95dc5d0d25c0c86e2260 and data uploaded 0
-DEBUG    2013-03-03 23:31:11,778 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:31:11,779 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:31:11,779 upload_handlers Upload complete
-INFO     2013-03-03 23:31:11,780 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:31:11,785 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:31:11,810 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:31:14,093 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:32:32,296 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:32:40,528 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:32:44,964 upload_handlers Starting proccessing file with ID = 055afb688442a9355b90d13a31b06948 in handle_raw_input
-DEBUG    2013-03-03 23:32:44,964 upload_handlers X-Progress-ID exists and equals = 055afb688442a9355b90d13a31b06948
-DEBUG    2013-03-03 23:32:44,964 upload_handlers Cache key is set to 127.0.0.1_055afb688442a9355b90d13a31b06948 and data uploaded 0
-DEBUG    2013-03-03 23:32:44,967 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:32:44,967 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:32:44,968 upload_handlers Upload complete
-INFO     2013-03-03 23:32:44,970 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:32:44,974 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:32:45,003 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:33:05,185 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:33:08,822 upload_handlers Starting proccessing file with ID = 9eab28cd5c2d100484adaed3aa998c05 in handle_raw_input
-DEBUG    2013-03-03 23:33:08,823 upload_handlers X-Progress-ID exists and equals = 9eab28cd5c2d100484adaed3aa998c05
-DEBUG    2013-03-03 23:33:08,823 upload_handlers Cache key is set to 127.0.0.1_9eab28cd5c2d100484adaed3aa998c05 and data uploaded 0
-DEBUG    2013-03-03 23:33:08,825 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:33:08,826 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:33:08,826 upload_handlers Upload complete
-INFO     2013-03-03 23:33:08,828 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:33:08,832 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:33:08,855 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:33:11,108 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:33:23,567 views    PDF generation requested for counfdump none in anal_acc
-INFO     2013-03-03 23:44:50,714 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:44:53,097 upload_handlers Starting proccessing file with ID = 1f8f429a081b3093e23ad5d21a088d95 in handle_raw_input
-DEBUG    2013-03-03 23:44:53,097 upload_handlers X-Progress-ID exists and equals = 1f8f429a081b3093e23ad5d21a088d95
-DEBUG    2013-03-03 23:44:53,097 upload_handlers Cache key is set to 127.0.0.1_1f8f429a081b3093e23ad5d21a088d95 and data uploaded 0
-DEBUG    2013-03-03 23:44:53,099 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:44:53,099 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:44:53,100 upload_handlers Upload complete
-INFO     2013-03-03 23:44:53,101 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:44:53,105 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:44:53,125 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:44:57,163 views    Saving in site-format requested for counfdump none in anal_acc
-INFO     2013-03-03 23:49:46,708 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-INFO     2013-03-03 23:49:55,377 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:49:59,737 upload_handlers Starting proccessing file with ID = 3cc9191e472de82caadc73322a596170 in handle_raw_input
-DEBUG    2013-03-03 23:49:59,738 upload_handlers X-Progress-ID exists and equals = 3cc9191e472de82caadc73322a596170
-DEBUG    2013-03-03 23:49:59,738 upload_handlers Cache key is set to 127.0.0.1_3cc9191e472de82caadc73322a596170 and data uploaded 0
-DEBUG    2013-03-03 23:49:59,740 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:49:59,740 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:49:59,740 upload_handlers Upload complete
-INFO     2013-03-03 23:49:59,742 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:49:59,744 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:49:59,764 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:50:01,438 views    Saving in site-format requested for counfdump none in anal_acc
-INFO     2013-03-03 23:53:49,005 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:53:53,260 upload_handlers Starting proccessing file with ID = f8ca5dcce8a0f4777798131365f93be5 in handle_raw_input
-DEBUG    2013-03-03 23:53:53,260 upload_handlers X-Progress-ID exists and equals = f8ca5dcce8a0f4777798131365f93be5
-DEBUG    2013-03-03 23:53:53,260 upload_handlers Cache key is set to 127.0.0.1_f8ca5dcce8a0f4777798131365f93be5 and data uploaded 0
-DEBUG    2013-03-03 23:53:53,261 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:53:53,262 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:53:53,262 upload_handlers Upload complete
-INFO     2013-03-03 23:53:53,263 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:53:53,266 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:53:53,287 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:53:55,189 views    Saving in site-format requested for counfdump none in anal_acc
-INFO     2013-03-03 23:54:15,877 views    Saving in site-format requested for counfdump none in anal_acc
-INFO     2013-03-03 23:58:52,612 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:58:58,128 upload_handlers Starting proccessing file with ID = b3e1b2f49a9c53146a7f59ce7ef83a4f in handle_raw_input
-DEBUG    2013-03-03 23:58:58,128 upload_handlers X-Progress-ID exists and equals = b3e1b2f49a9c53146a7f59ce7ef83a4f
-DEBUG    2013-03-03 23:58:58,128 upload_handlers Cache key is set to 127.0.0.1_b3e1b2f49a9c53146a7f59ce7ef83a4f and data uploaded 0
-DEBUG    2013-03-03 23:58:58,130 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:58:58,130 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:58:58,131 upload_handlers Upload complete
-INFO     2013-03-03 23:58:58,132 views    Starting file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:58:58,137 views    Sucsessfully handeled file  64847ad68922b22afc69937d6bb73177_valday2_test_gc_snap.pax.Z.AIX.confdump in upload_file
-INFO     2013-03-03 23:58:58,157 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:58:59,690 views    Saving in site-format requested for counfdump none in anal_acc
-INFO     2013-03-03 23:59:41,884 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
-DEBUG    2013-03-03 23:59:51,079 upload_handlers Starting proccessing file with ID = 859796ad52cecd811e76a6ca8556b7f8 in handle_raw_input
-DEBUG    2013-03-03 23:59:51,079 upload_handlers X-Progress-ID exists and equals = 859796ad52cecd811e76a6ca8556b7f8
-DEBUG    2013-03-03 23:59:51,080 upload_handlers Cache key is set to 127.0.0.1_859796ad52cecd811e76a6ca8556b7f8 and data uploaded 0
-DEBUG    2013-03-03 23:59:51,081 upload_handlers NEW FILE
-DEBUG    2013-03-03 23:59:51,081 upload_handlers Data is now equals 65536
-DEBUG    2013-03-03 23:59:51,082 upload_handlers Upload complete
-INFO     2013-03-03 23:59:51,083 views    Starting file  snapreport_XXXX-XXX_XXXXXXXX.AIX.confdump proccessing in upload_file for user from 127.0.0.1
-INFO     2013-03-03 23:59:51,087 views    Sucsessfully handeled file  snapreport_XXXX-XXX_XXXXXXXX.AIX.confdump in upload_file
-INFO     2013-03-03 23:59:51,103 views    Snap object analyzed for counfdump none and output generated in anal_acc
-INFO     2013-03-03 23:59:57,434 views    Saving in site-format requested for counfdump none in anal_acc
+DEBUG    2013-03-05 21:44:18,408 upload_handlers Data is now equals 3342336
+DEBUG    2013-03-05 21:44:18,413 upload_handlers Data is now equals 3407872
+DEBUG    2013-03-05 21:44:18,413 upload_handlers Data is now equals 3473408
+DEBUG    2013-03-05 21:44:18,419 upload_handlers Data is now equals 3538944
+DEBUG    2013-03-05 21:44:18,420 upload_handlers Data is now equals 3604480
+DEBUG    2013-03-05 21:44:18,426 upload_handlers Data is now equals 3670016
+DEBUG    2013-03-05 21:44:18,426 upload_handlers Data is now equals 3735552
+DEBUG    2013-03-05 21:44:18,432 upload_handlers Data is now equals 3801088
+DEBUG    2013-03-05 21:44:18,432 upload_handlers Data is now equals 3866624
+DEBUG    2013-03-05 21:44:18,438 upload_handlers Data is now equals 3932160
+DEBUG    2013-03-05 21:44:18,438 upload_handlers Data is now equals 3997696
+DEBUG    2013-03-05 21:44:18,444 upload_handlers Data is now equals 4063232
+DEBUG    2013-03-05 21:44:18,445 upload_handlers Data is now equals 4128768
+DEBUG    2013-03-05 21:44:18,451 upload_handlers Data is now equals 4194304
+DEBUG    2013-03-05 21:44:18,452 upload_handlers Data is now equals 4259840
+DEBUG    2013-03-05 21:44:18,457 upload_handlers Data is now equals 4325376
+DEBUG    2013-03-05 21:44:18,458 upload_handlers Data is now equals 4390912
+DEBUG    2013-03-05 21:44:18,463 upload_handlers Data is now equals 4456448
+DEBUG    2013-03-05 21:44:18,464 upload_handlers Data is now equals 4521984
+DEBUG    2013-03-05 21:44:18,469 upload_handlers Data is now equals 4587520
+DEBUG    2013-03-05 21:44:18,470 upload_handlers Data is now equals 4653056
+DEBUG    2013-03-05 21:44:18,476 upload_handlers Data is now equals 4718592
+DEBUG    2013-03-05 21:44:18,476 upload_handlers Data is now equals 4784128
+DEBUG    2013-03-05 21:44:18,482 upload_handlers Data is now equals 4849664
+DEBUG    2013-03-05 21:44:18,482 upload_handlers Data is now equals 4915200
+DEBUG    2013-03-05 21:44:18,488 upload_handlers Data is now equals 4980736
+DEBUG    2013-03-05 21:44:18,489 upload_handlers Data is now equals 5046272
+DEBUG    2013-03-05 21:44:18,494 upload_handlers Data is now equals 5111808
+DEBUG    2013-03-05 21:44:18,495 upload_handlers Data is now equals 5177344
+DEBUG    2013-03-05 21:44:18,501 upload_handlers Data is now equals 5242880
+DEBUG    2013-03-05 21:44:18,501 upload_handlers Data is now equals 5308416
+DEBUG    2013-03-05 21:44:18,507 upload_handlers Data is now equals 5373952
+DEBUG    2013-03-05 21:44:18,508 upload_handlers Data is now equals 5439488
+DEBUG    2013-03-05 21:44:18,513 upload_handlers Data is now equals 5505024
+DEBUG    2013-03-05 21:44:18,514 upload_handlers Data is now equals 5570560
+DEBUG    2013-03-05 21:44:18,519 upload_handlers Data is now equals 5636096
+DEBUG    2013-03-05 21:44:18,520 upload_handlers Data is now equals 5701632
+DEBUG    2013-03-05 21:44:18,526 upload_handlers Data is now equals 5767168
+DEBUG    2013-03-05 21:44:18,526 upload_handlers Data is now equals 5832704
+DEBUG    2013-03-05 21:44:18,532 upload_handlers Data is now equals 5898240
+DEBUG    2013-03-05 21:44:18,532 upload_handlers Data is now equals 5963776
+DEBUG    2013-03-05 21:44:18,538 upload_handlers Data is now equals 6029312
+DEBUG    2013-03-05 21:44:18,539 upload_handlers Data is now equals 6094848
+DEBUG    2013-03-05 21:44:18,545 upload_handlers Data is now equals 6160384
+DEBUG    2013-03-05 21:44:18,545 upload_handlers Data is now equals 6225920
+DEBUG    2013-03-05 21:44:18,551 upload_handlers Data is now equals 6291456
+DEBUG    2013-03-05 21:44:18,551 upload_handlers Data is now equals 6356992
+DEBUG    2013-03-05 21:44:18,558 upload_handlers Data is now equals 6422528
+DEBUG    2013-03-05 21:44:18,558 upload_handlers Data is now equals 6488064
+DEBUG    2013-03-05 21:44:18,563 upload_handlers Data is now equals 6553600
+DEBUG    2013-03-05 21:44:18,564 upload_handlers Data is now equals 6619136
+DEBUG    2013-03-05 21:44:18,570 upload_handlers Data is now equals 6684672
+DEBUG    2013-03-05 21:44:18,570 upload_handlers Data is now equals 6750208
+DEBUG    2013-03-05 21:44:18,576 upload_handlers Data is now equals 6815744
+DEBUG    2013-03-05 21:44:18,577 upload_handlers Data is now equals 6881280
+DEBUG    2013-03-05 21:44:18,582 upload_handlers Data is now equals 6946816
+DEBUG    2013-03-05 21:44:18,583 upload_handlers Data is now equals 7012352
+DEBUG    2013-03-05 21:44:18,589 upload_handlers Data is now equals 7077888
+DEBUG    2013-03-05 21:44:18,589 upload_handlers Data is now equals 7143424
+DEBUG    2013-03-05 21:44:18,595 upload_handlers Data is now equals 7208960
+DEBUG    2013-03-05 21:44:18,596 upload_handlers Data is now equals 7274496
+DEBUG    2013-03-05 21:44:18,602 upload_handlers Data is now equals 7340032
+DEBUG    2013-03-05 21:44:18,602 upload_handlers Data is now equals 7405568
+DEBUG    2013-03-05 21:44:18,608 upload_handlers Data is now equals 7471104
+DEBUG    2013-03-05 21:44:18,609 upload_handlers Data is now equals 7536640
+DEBUG    2013-03-05 21:44:18,615 upload_handlers Data is now equals 7602176
+DEBUG    2013-03-05 21:44:18,615 upload_handlers Data is now equals 7667712
+DEBUG    2013-03-05 21:44:18,621 upload_handlers Data is now equals 7733248
+DEBUG    2013-03-05 21:44:18,621 upload_handlers Data is now equals 7798784
+DEBUG    2013-03-05 21:44:18,627 upload_handlers Data is now equals 7864320
+DEBUG    2013-03-05 21:44:18,628 upload_handlers Data is now equals 7929856
+DEBUG    2013-03-05 21:44:18,634 upload_handlers Data is now equals 7995392
+DEBUG    2013-03-05 21:44:18,634 upload_handlers Data is now equals 8060928
+DEBUG    2013-03-05 21:44:18,640 upload_handlers Data is now equals 8126464
+DEBUG    2013-03-05 21:44:18,640 upload_handlers Data is now equals 8192000
+DEBUG    2013-03-05 21:44:18,646 upload_handlers Data is now equals 8257536
+DEBUG    2013-03-05 21:44:18,647 upload_handlers Data is now equals 8323072
+DEBUG    2013-03-05 21:44:18,653 upload_handlers Data is now equals 8388608
+DEBUG    2013-03-05 21:44:18,654 upload_handlers Data is now equals 8454144
+DEBUG    2013-03-05 21:44:18,659 upload_handlers Data is now equals 8519680
+DEBUG    2013-03-05 21:44:18,660 upload_handlers Data is now equals 8585216
+DEBUG    2013-03-05 21:44:18,665 upload_handlers Data is now equals 8650752
+DEBUG    2013-03-05 21:44:18,666 upload_handlers Data is now equals 8716288
+DEBUG    2013-03-05 21:44:18,672 upload_handlers Data is now equals 8781824
+DEBUG    2013-03-05 21:44:18,672 upload_handlers Data is now equals 8847360
+DEBUG    2013-03-05 21:44:18,678 upload_handlers Data is now equals 8912896
+DEBUG    2013-03-05 21:44:18,679 upload_handlers Data is now equals 8978432
+DEBUG    2013-03-05 21:44:18,684 upload_handlers Data is now equals 9043968
+DEBUG    2013-03-05 21:44:18,685 upload_handlers Data is now equals 9109504
+DEBUG    2013-03-05 21:44:18,690 upload_handlers Data is now equals 9175040
+DEBUG    2013-03-05 21:44:18,691 upload_handlers Data is now equals 9240576
+DEBUG    2013-03-05 21:44:18,697 upload_handlers Data is now equals 9306112
+DEBUG    2013-03-05 21:44:18,697 upload_handlers Data is now equals 9371648
+DEBUG    2013-03-05 21:44:18,703 upload_handlers Data is now equals 9437184
+DEBUG    2013-03-05 21:44:18,704 upload_handlers Data is now equals 9502720
+DEBUG    2013-03-05 21:44:18,710 upload_handlers Data is now equals 9568256
+DEBUG    2013-03-05 21:44:18,710 upload_handlers Data is now equals 9633792
+DEBUG    2013-03-05 21:44:18,716 upload_handlers Data is now equals 9699328
+DEBUG    2013-03-05 21:44:18,716 upload_handlers Data is now equals 9764864
+DEBUG    2013-03-05 21:44:18,722 upload_handlers Data is now equals 9830400
+DEBUG    2013-03-05 21:44:18,723 upload_handlers Data is now equals 9895936
+DEBUG    2013-03-05 21:44:18,729 upload_handlers Data is now equals 9961472
+DEBUG    2013-03-05 21:44:18,729 upload_handlers Data is now equals 10027008
+DEBUG    2013-03-05 21:44:18,735 upload_handlers Data is now equals 10092544
+DEBUG    2013-03-05 21:44:18,736 upload_handlers Data is now equals 10158080
+DEBUG    2013-03-05 21:44:18,741 upload_handlers Data is now equals 10223616
+DEBUG    2013-03-05 21:44:18,742 upload_handlers Data is now equals 10289152
+DEBUG    2013-03-05 21:44:18,748 upload_handlers Data is now equals 10354688
+DEBUG    2013-03-05 21:44:18,749 upload_handlers Data is now equals 10420224
+DEBUG    2013-03-05 21:44:18,754 upload_handlers Data is now equals 10485760
+DEBUG    2013-03-05 21:44:18,755 upload_handlers Data is now equals 10551296
+DEBUG    2013-03-05 21:44:18,760 upload_handlers Data is now equals 10616832
+DEBUG    2013-03-05 21:44:18,761 upload_handlers Data is now equals 10682368
+DEBUG    2013-03-05 21:44:18,767 upload_handlers Data is now equals 10747904
+DEBUG    2013-03-05 21:44:18,767 upload_handlers Data is now equals 10813440
+DEBUG    2013-03-05 21:44:18,773 upload_handlers Data is now equals 10878976
+DEBUG    2013-03-05 21:44:18,774 upload_handlers Data is now equals 10944512
+DEBUG    2013-03-05 21:44:18,780 upload_handlers Data is now equals 11010048
+DEBUG    2013-03-05 21:44:18,780 upload_handlers Data is now equals 11075584
+DEBUG    2013-03-05 21:44:18,786 upload_handlers Data is now equals 11141120
+DEBUG    2013-03-05 21:44:18,787 upload_handlers Data is now equals 11206656
+DEBUG    2013-03-05 21:44:18,793 upload_handlers Data is now equals 11272192
+DEBUG    2013-03-05 21:44:18,793 upload_handlers Data is now equals 11337728
+DEBUG    2013-03-05 21:44:18,799 upload_handlers Data is now equals 11403264
+DEBUG    2013-03-05 21:44:18,799 upload_handlers Data is now equals 11468800
+DEBUG    2013-03-05 21:44:18,806 upload_handlers Data is now equals 11534336
+DEBUG    2013-03-05 21:44:18,806 upload_handlers Data is now equals 11599872
+DEBUG    2013-03-05 21:44:18,812 upload_handlers Data is now equals 11665408
+DEBUG    2013-03-05 21:44:18,812 upload_handlers Data is now equals 11730944
+DEBUG    2013-03-05 21:44:18,818 upload_handlers Data is now equals 11796480
+DEBUG    2013-03-05 21:44:18,819 upload_handlers Data is now equals 11862016
+DEBUG    2013-03-05 21:44:18,825 upload_handlers Data is now equals 11927552
+DEBUG    2013-03-05 21:44:18,825 upload_handlers Data is now equals 11993088
+DEBUG    2013-03-05 21:44:18,831 upload_handlers Data is now equals 12058624
+DEBUG    2013-03-05 21:44:18,831 upload_handlers Data is now equals 12124160
+DEBUG    2013-03-05 21:44:18,837 upload_handlers Data is now equals 12189696
+DEBUG    2013-03-05 21:44:18,838 upload_handlers Data is now equals 12255232
+DEBUG    2013-03-05 21:44:18,844 upload_handlers Data is now equals 12320768
+DEBUG    2013-03-05 21:44:18,844 upload_handlers Data is now equals 12386304
+DEBUG    2013-03-05 21:44:18,850 upload_handlers Data is now equals 12451840
+DEBUG    2013-03-05 21:44:18,851 upload_handlers Data is now equals 12517376
+DEBUG    2013-03-05 21:44:18,857 upload_handlers Data is now equals 12582912
+DEBUG    2013-03-05 21:44:18,857 upload_handlers Data is now equals 12648448
+DEBUG    2013-03-05 21:44:18,863 upload_handlers Data is now equals 12713984
+DEBUG    2013-03-05 21:44:18,864 upload_handlers Data is now equals 12779520
+DEBUG    2013-03-05 21:44:18,870 upload_handlers Data is now equals 12845056
+DEBUG    2013-03-05 21:44:18,870 upload_handlers Data is now equals 12910592
+DEBUG    2013-03-05 21:44:18,876 upload_handlers Data is now equals 12976128
+DEBUG    2013-03-05 21:44:18,876 upload_handlers Data is now equals 13041664
+DEBUG    2013-03-05 21:44:18,882 upload_handlers Data is now equals 13107200
+DEBUG    2013-03-05 21:44:18,882 upload_handlers Data is now equals 13172736
+DEBUG    2013-03-05 21:44:18,888 upload_handlers Data is now equals 13238272
+DEBUG    2013-03-05 21:44:18,889 upload_handlers Data is now equals 13303808
+DEBUG    2013-03-05 21:44:18,894 upload_handlers Data is now equals 13369344
+DEBUG    2013-03-05 21:44:18,895 upload_handlers Data is now equals 13434880
+DEBUG    2013-03-05 21:44:18,901 upload_handlers Data is now equals 13500416
+DEBUG    2013-03-05 21:44:18,901 upload_handlers Data is now equals 13565952
+DEBUG    2013-03-05 21:44:18,907 upload_handlers Data is now equals 13631488
+DEBUG    2013-03-05 21:44:18,907 upload_handlers Data is now equals 13697024
+DEBUG    2013-03-05 21:44:18,913 upload_handlers Data is now equals 13762560
+DEBUG    2013-03-05 21:44:18,914 upload_handlers Data is now equals 13828096
+DEBUG    2013-03-05 21:44:18,919 upload_handlers Data is now equals 13893632
+DEBUG    2013-03-05 21:44:18,920 upload_handlers Data is now equals 13959168
+DEBUG    2013-03-05 21:44:18,925 upload_handlers Data is now equals 14024704
+DEBUG    2013-03-05 21:44:18,926 upload_handlers Data is now equals 14090240
+DEBUG    2013-03-05 21:44:18,932 upload_handlers Data is now equals 14155776
+DEBUG    2013-03-05 21:44:18,932 upload_handlers Data is now equals 14221312
+DEBUG    2013-03-05 21:44:18,938 upload_handlers Data is now equals 14286848
+DEBUG    2013-03-05 21:44:18,939 upload_handlers Data is now equals 14352384
+DEBUG    2013-03-05 21:44:18,944 upload_handlers Data is now equals 14417920
+DEBUG    2013-03-05 21:44:18,945 upload_handlers Data is now equals 14483456
+DEBUG    2013-03-05 21:44:18,951 upload_handlers Data is now equals 14548992
+DEBUG    2013-03-05 21:44:18,951 upload_handlers Data is now equals 14614528
+DEBUG    2013-03-05 21:44:18,957 upload_handlers Data is now equals 14680064
+DEBUG    2013-03-05 21:44:18,958 upload_handlers Data is now equals 14745600
+DEBUG    2013-03-05 21:44:18,963 upload_handlers Data is now equals 14811136
+DEBUG    2013-03-05 21:44:18,964 upload_handlers Data is now equals 14876672
+DEBUG    2013-03-05 21:44:18,970 upload_handlers Data is now equals 14942208
+DEBUG    2013-03-05 21:44:18,970 upload_handlers Data is now equals 15007744
+DEBUG    2013-03-05 21:44:18,976 upload_handlers Data is now equals 15073280
+DEBUG    2013-03-05 21:44:18,977 upload_handlers Data is now equals 15138816
+DEBUG    2013-03-05 21:44:18,983 upload_handlers Data is now equals 15204352
+DEBUG    2013-03-05 21:44:18,983 upload_handlers Data is now equals 15269888
+DEBUG    2013-03-05 21:44:18,989 upload_handlers Data is now equals 15335424
+DEBUG    2013-03-05 21:44:18,989 upload_handlers Data is now equals 15400960
+DEBUG    2013-03-05 21:44:18,995 upload_handlers Data is now equals 15466496
+DEBUG    2013-03-05 21:44:18,996 upload_handlers Data is now equals 15532032
+DEBUG    2013-03-05 21:44:19,002 upload_handlers Data is now equals 15597568
+DEBUG    2013-03-05 21:44:19,002 upload_handlers Data is now equals 15663104
+DEBUG    2013-03-05 21:44:19,008 upload_handlers Data is now equals 15728640
+DEBUG    2013-03-05 21:44:19,009 upload_handlers Data is now equals 15794176
+DEBUG    2013-03-05 21:44:19,015 upload_handlers Data is now equals 15859712
+DEBUG    2013-03-05 21:44:19,015 upload_handlers Data is now equals 15925248
+DEBUG    2013-03-05 21:44:19,021 upload_handlers Data is now equals 15990784
+DEBUG    2013-03-05 21:44:19,021 upload_handlers Data is now equals 16056320
+DEBUG    2013-03-05 21:44:19,027 upload_handlers Data is now equals 16121856
+DEBUG    2013-03-05 21:44:19,027 upload_handlers Data is now equals 16187392
+DEBUG    2013-03-05 21:44:19,034 upload_handlers Data is now equals 16252928
+DEBUG    2013-03-05 21:44:19,034 upload_handlers Data is now equals 16318464
+DEBUG    2013-03-05 21:44:19,040 upload_handlers Data is now equals 16384000
+DEBUG    2013-03-05 21:44:19,040 upload_handlers Data is now equals 16449536
+DEBUG    2013-03-05 21:44:19,046 upload_handlers Data is now equals 16515072
+DEBUG    2013-03-05 21:44:19,046 upload_handlers Data is now equals 16580608
+DEBUG    2013-03-05 21:44:19,052 upload_handlers Data is now equals 16646144
+DEBUG    2013-03-05 21:44:19,053 upload_handlers Data is now equals 16711680
+DEBUG    2013-03-05 21:44:19,059 upload_handlers Data is now equals 16777216
+DEBUG    2013-03-05 21:44:19,060 upload_handlers Data is now equals 16842752
+DEBUG    2013-03-05 21:44:19,065 upload_handlers Data is now equals 16908288
+DEBUG    2013-03-05 21:44:19,066 upload_handlers Data is now equals 16973824
+DEBUG    2013-03-05 21:44:19,072 upload_handlers Data is now equals 17039360
+DEBUG    2013-03-05 21:44:19,072 upload_handlers Data is now equals 17104896
+DEBUG    2013-03-05 21:44:19,078 upload_handlers Data is now equals 17170432
+DEBUG    2013-03-05 21:44:19,078 upload_handlers Data is now equals 17235968
+DEBUG    2013-03-05 21:44:19,084 upload_handlers Data is now equals 17301504
+DEBUG    2013-03-05 21:44:19,085 upload_handlers Data is now equals 17367040
+DEBUG    2013-03-05 21:44:19,090 upload_handlers Data is now equals 17432576
+DEBUG    2013-03-05 21:44:19,091 upload_handlers Data is now equals 17498112
+DEBUG    2013-03-05 21:44:19,097 upload_handlers Data is now equals 17563648
+DEBUG    2013-03-05 21:44:19,097 upload_handlers Data is now equals 17629184
+DEBUG    2013-03-05 21:44:19,103 upload_handlers Data is now equals 17694720
+DEBUG    2013-03-05 21:44:19,103 upload_handlers Data is now equals 17760256
+DEBUG    2013-03-05 21:44:19,109 upload_handlers Data is now equals 17825792
+DEBUG    2013-03-05 21:44:19,109 upload_handlers Data is now equals 17891328
+DEBUG    2013-03-05 21:44:19,115 upload_handlers Data is now equals 17956864
+DEBUG    2013-03-05 21:44:19,116 upload_handlers Data is now equals 18022400
+DEBUG    2013-03-05 21:44:19,122 upload_handlers Data is now equals 18087936
+DEBUG    2013-03-05 21:44:19,122 upload_handlers Data is now equals 18153472
+DEBUG    2013-03-05 21:44:19,128 upload_handlers Data is now equals 18219008
+DEBUG    2013-03-05 21:44:19,129 upload_handlers Data is now equals 18284544
+DEBUG    2013-03-05 21:44:19,135 upload_handlers Data is now equals 18350080
+DEBUG    2013-03-05 21:44:19,135 upload_handlers Data is now equals 18415616
+DEBUG    2013-03-05 21:44:19,141 upload_handlers Data is now equals 18481152
+DEBUG    2013-03-05 21:44:19,141 upload_handlers Data is now equals 18546688
+DEBUG    2013-03-05 21:44:19,147 upload_handlers Data is now equals 18612224
+DEBUG    2013-03-05 21:44:19,148 upload_handlers Data is now equals 18677760
+DEBUG    2013-03-05 21:44:19,154 upload_handlers Data is now equals 18743296
+DEBUG    2013-03-05 21:44:19,154 upload_handlers Data is now equals 18808832
+DEBUG    2013-03-05 21:44:19,160 upload_handlers Data is now equals 18874368
+DEBUG    2013-03-05 21:44:19,160 upload_handlers Data is now equals 18939904
+DEBUG    2013-03-05 21:44:19,166 upload_handlers Data is now equals 19005440
+DEBUG    2013-03-05 21:44:19,167 upload_handlers Data is now equals 19070976
+DEBUG    2013-03-05 21:44:19,173 upload_handlers Data is now equals 19136512
+DEBUG    2013-03-05 21:44:19,173 upload_handlers Data is now equals 19202048
+DEBUG    2013-03-05 21:44:19,179 upload_handlers Data is now equals 19267584
+DEBUG    2013-03-05 21:44:19,179 upload_handlers Data is now equals 19333120
+DEBUG    2013-03-05 21:44:19,185 upload_handlers Data is now equals 19398656
+DEBUG    2013-03-05 21:44:19,186 upload_handlers Data is now equals 19464192
+DEBUG    2013-03-05 21:44:19,192 upload_handlers Data is now equals 19529728
+DEBUG    2013-03-05 21:44:19,192 upload_handlers Data is now equals 19595264
+DEBUG    2013-03-05 21:44:19,198 upload_handlers Data is now equals 19660800
+DEBUG    2013-03-05 21:44:19,199 upload_handlers Data is now equals 19726336
+DEBUG    2013-03-05 21:44:19,205 upload_handlers Data is now equals 19791872
+DEBUG    2013-03-05 21:44:19,205 upload_handlers Data is now equals 19857408
+DEBUG    2013-03-05 21:44:19,211 upload_handlers Data is now equals 19922944
+DEBUG    2013-03-05 21:44:19,212 upload_handlers Data is now equals 19988480
+DEBUG    2013-03-05 21:44:19,218 upload_handlers Data is now equals 20054016
+DEBUG    2013-03-05 21:44:19,218 upload_handlers Data is now equals 20119552
+DEBUG    2013-03-05 21:44:19,224 upload_handlers Data is now equals 20185088
+DEBUG    2013-03-05 21:44:19,224 upload_handlers Data is now equals 20250624
+DEBUG    2013-03-05 21:44:19,231 upload_handlers Data is now equals 20316160
+DEBUG    2013-03-05 21:44:19,231 upload_handlers Data is now equals 20381696
+DEBUG    2013-03-05 21:44:19,237 upload_handlers Data is now equals 20447232
+DEBUG    2013-03-05 21:44:19,237 upload_handlers Data is now equals 20512768
+DEBUG    2013-03-05 21:44:19,243 upload_handlers Data is now equals 20578304
+DEBUG    2013-03-05 21:44:19,244 upload_handlers Data is now equals 20643840
+DEBUG    2013-03-05 21:44:19,250 upload_handlers Data is now equals 20709376
+DEBUG    2013-03-05 21:44:19,250 upload_handlers Data is now equals 20774912
+DEBUG    2013-03-05 21:44:19,256 upload_handlers Data is now equals 20840448
+DEBUG    2013-03-05 21:44:19,257 upload_handlers Data is now equals 20905984
+DEBUG    2013-03-05 21:44:19,263 upload_handlers Data is now equals 20971520
+DEBUG    2013-03-05 21:44:19,263 upload_handlers Data is now equals 21037056
+DEBUG    2013-03-05 21:44:19,269 upload_handlers Data is now equals 21102592
+DEBUG    2013-03-05 21:44:19,270 upload_handlers Data is now equals 21168128
+DEBUG    2013-03-05 21:44:19,276 upload_handlers Data is now equals 21233664
+DEBUG    2013-03-05 21:44:19,276 upload_handlers Data is now equals 21299200
+DEBUG    2013-03-05 21:44:19,282 upload_handlers Data is now equals 21364736
+DEBUG    2013-03-05 21:44:19,283 upload_handlers Data is now equals 21430272
+DEBUG    2013-03-05 21:44:19,288 upload_handlers Data is now equals 21495808
+DEBUG    2013-03-05 21:44:19,288 upload_handlers Data is now equals 21561344
+DEBUG    2013-03-05 21:44:19,294 upload_handlers Data is now equals 21626880
+DEBUG    2013-03-05 21:44:19,295 upload_handlers Data is now equals 21692416
+DEBUG    2013-03-05 21:44:19,301 upload_handlers Data is now equals 21757952
+DEBUG    2013-03-05 21:44:19,302 upload_handlers Data is now equals 21823488
+DEBUG    2013-03-05 21:44:19,307 upload_handlers Data is now equals 21889024
+DEBUG    2013-03-05 21:44:19,308 upload_handlers Data is now equals 21954560
+DEBUG    2013-03-05 21:44:19,314 upload_handlers Data is now equals 22020096
+DEBUG    2013-03-05 21:44:19,314 upload_handlers Data is now equals 22085632
+DEBUG    2013-03-05 21:44:19,320 upload_handlers Data is now equals 22151168
+DEBUG    2013-03-05 21:44:19,321 upload_handlers Data is now equals 22216704
+DEBUG    2013-03-05 21:44:19,326 upload_handlers Data is now equals 22282240
+DEBUG    2013-03-05 21:44:19,327 upload_handlers Data is now equals 22347776
+DEBUG    2013-03-05 21:44:19,333 upload_handlers Data is now equals 22413312
+DEBUG    2013-03-05 21:44:19,333 upload_handlers Data is now equals 22478848
+DEBUG    2013-03-05 21:44:19,339 upload_handlers Data is now equals 22544384
+DEBUG    2013-03-05 21:44:19,340 upload_handlers Data is now equals 22609920
+DEBUG    2013-03-05 21:44:19,345 upload_handlers Data is now equals 22675456
+DEBUG    2013-03-05 21:44:19,346 upload_handlers Data is now equals 22740992
+DEBUG    2013-03-05 21:44:19,352 upload_handlers Data is now equals 22806528
+DEBUG    2013-03-05 21:44:19,353 upload_handlers Data is now equals 22872064
+DEBUG    2013-03-05 21:44:19,358 upload_handlers Data is now equals 22937600
+DEBUG    2013-03-05 21:44:19,359 upload_handlers Data is now equals 23003136
+DEBUG    2013-03-05 21:44:19,365 upload_handlers Data is now equals 23068672
+DEBUG    2013-03-05 21:44:19,366 upload_handlers Data is now equals 23134208
+DEBUG    2013-03-05 21:44:19,371 upload_handlers Data is now equals 23199744
+DEBUG    2013-03-05 21:44:19,371 upload_handlers Data is now equals 23265280
+DEBUG    2013-03-05 21:44:19,377 upload_handlers Data is now equals 23330816
+DEBUG    2013-03-05 21:44:19,378 upload_handlers Data is now equals 23396352
+DEBUG    2013-03-05 21:44:19,383 upload_handlers Data is now equals 23461888
+DEBUG    2013-03-05 21:44:19,383 upload_handlers Data is now equals 23527424
+DEBUG    2013-03-05 21:44:19,389 upload_handlers Data is now equals 23592960
+DEBUG    2013-03-05 21:44:19,390 upload_handlers Data is now equals 23658496
+DEBUG    2013-03-05 21:44:19,396 upload_handlers Data is now equals 23724032
+DEBUG    2013-03-05 21:44:19,396 upload_handlers Data is now equals 23789568
+DEBUG    2013-03-05 21:44:19,402 upload_handlers Data is now equals 23855104
+DEBUG    2013-03-05 21:44:19,402 upload_handlers Data is now equals 23920640
+DEBUG    2013-03-05 21:44:19,408 upload_handlers Data is now equals 23986176
+DEBUG    2013-03-05 21:44:19,409 upload_handlers Data is now equals 24051712
+DEBUG    2013-03-05 21:44:19,415 upload_handlers Data is now equals 24117248
+DEBUG    2013-03-05 21:44:19,415 upload_handlers Data is now equals 24182784
+DEBUG    2013-03-05 21:44:19,421 upload_handlers Data is now equals 24248320
+DEBUG    2013-03-05 21:44:19,422 upload_handlers Data is now equals 24313856
+DEBUG    2013-03-05 21:44:19,427 upload_handlers Data is now equals 24379392
+DEBUG    2013-03-05 21:44:19,428 upload_handlers Data is now equals 24444928
+DEBUG    2013-03-05 21:44:19,434 upload_handlers Data is now equals 24510464
+DEBUG    2013-03-05 21:44:19,434 upload_handlers Data is now equals 24576000
+DEBUG    2013-03-05 21:44:19,440 upload_handlers Data is now equals 24641536
+DEBUG    2013-03-05 21:44:19,440 upload_handlers Data is now equals 24707072
+DEBUG    2013-03-05 21:44:19,447 upload_handlers Data is now equals 24772608
+DEBUG    2013-03-05 21:44:19,448 upload_handlers Data is now equals 24838144
+DEBUG    2013-03-05 21:44:19,453 upload_handlers Data is now equals 24903680
+DEBUG    2013-03-05 21:44:19,454 upload_handlers Data is now equals 24969216
+DEBUG    2013-03-05 21:44:19,459 upload_handlers Data is now equals 25034752
+DEBUG    2013-03-05 21:44:19,460 upload_handlers Data is now equals 25100288
+DEBUG    2013-03-05 21:44:19,465 upload_handlers Data is now equals 25165824
+DEBUG    2013-03-05 21:44:19,466 upload_handlers Data is now equals 25231360
+DEBUG    2013-03-05 21:44:19,472 upload_handlers Data is now equals 25296896
+DEBUG    2013-03-05 21:44:19,472 upload_handlers Data is now equals 25362432
+DEBUG    2013-03-05 21:44:19,478 upload_handlers Data is now equals 25427968
+DEBUG    2013-03-05 21:44:19,479 upload_handlers Data is now equals 25493504
+DEBUG    2013-03-05 21:44:19,485 upload_handlers Data is now equals 25559040
+DEBUG    2013-03-05 21:44:19,486 upload_handlers Data is now equals 25624576
+DEBUG    2013-03-05 21:44:19,491 upload_handlers Data is now equals 25690112
+DEBUG    2013-03-05 21:44:19,492 upload_handlers Data is now equals 25755648
+DEBUG    2013-03-05 21:44:19,498 upload_handlers Data is now equals 25821184
+DEBUG    2013-03-05 21:44:19,498 upload_handlers Data is now equals 25886720
+DEBUG    2013-03-05 21:44:19,504 upload_handlers Data is now equals 25952256
+DEBUG    2013-03-05 21:44:19,504 upload_handlers Data is now equals 26017792
+DEBUG    2013-03-05 21:44:19,510 upload_handlers Data is now equals 26083328
+DEBUG    2013-03-05 21:44:19,511 upload_handlers Data is now equals 26148864
+DEBUG    2013-03-05 21:44:19,517 upload_handlers Data is now equals 26214400
+DEBUG    2013-03-05 21:44:19,517 upload_handlers Data is now equals 26279936
+DEBUG    2013-03-05 21:44:19,523 upload_handlers Data is now equals 26345472
+DEBUG    2013-03-05 21:44:19,524 upload_handlers Data is now equals 26411008
+DEBUG    2013-03-05 21:44:19,529 upload_handlers Data is now equals 26476544
+DEBUG    2013-03-05 21:44:19,530 upload_handlers Data is now equals 26542080
+DEBUG    2013-03-05 21:44:19,536 upload_handlers Data is now equals 26607616
+DEBUG    2013-03-05 21:44:19,536 upload_handlers Data is now equals 26673152
+DEBUG    2013-03-05 21:44:19,542 upload_handlers Data is now equals 26738688
+DEBUG    2013-03-05 21:44:19,542 upload_handlers Data is now equals 26804224
+DEBUG    2013-03-05 21:44:19,548 upload_handlers Data is now equals 26869760
+DEBUG    2013-03-05 21:44:19,549 upload_handlers Data is now equals 26935296
+DEBUG    2013-03-05 21:44:19,555 upload_handlers Data is now equals 27000832
+DEBUG    2013-03-05 21:44:19,555 upload_handlers Data is now equals 27066368
+DEBUG    2013-03-05 21:44:19,561 upload_handlers Data is now equals 27131904
+DEBUG    2013-03-05 21:44:19,562 upload_handlers Data is now equals 27197440
+DEBUG    2013-03-05 21:44:19,567 upload_handlers Data is now equals 27262976
+DEBUG    2013-03-05 21:44:19,568 upload_handlers Data is now equals 27328512
+DEBUG    2013-03-05 21:44:19,574 upload_handlers Data is now equals 27394048
+DEBUG    2013-03-05 21:44:19,574 upload_handlers Data is now equals 27459584
+DEBUG    2013-03-05 21:44:19,580 upload_handlers Data is now equals 27525120
+DEBUG    2013-03-05 21:44:19,580 upload_handlers Data is now equals 27590656
+DEBUG    2013-03-05 21:44:19,586 upload_handlers Data is now equals 27656192
+DEBUG    2013-03-05 21:44:19,587 upload_handlers Data is now equals 27721728
+DEBUG    2013-03-05 21:44:19,592 upload_handlers Data is now equals 27787264
+DEBUG    2013-03-05 21:44:19,595 upload_handlers Data is now equals 27852800
+DEBUG    2013-03-05 21:44:19,596 upload_handlers Data is now equals 27918336
+DEBUG    2013-03-05 21:44:19,597 upload_handlers Upload complete
+INFO     2013-03-05 21:44:19,599 views    Starting file  black-sea_ac_snap.pax.Z proccessing in upload_file for user from 127.0.0.1
+DEBUG    2013-03-05 21:44:19,621 views    JSON recieved in upload_progress value <QueryDict: {}>
+DEBUG    2013-03-05 21:44:19,629 views    JSON recieved in upload_progress value <QueryDict: {}>
+DEBUG    2013-03-05 21:44:20,135 views    JSON recieved in upload_progress value <QueryDict: {}>
+INFO     2013-03-05 21:44:20,448 views    Sucsessfully handeled file  black-sea_ac_snap.pax.Z in upload_file
+INFO     2013-03-05 21:44:20,604 views    Snap object analyzed for /Users/vs/dev/confcenter/confcenter/confuploads/7c2c63c36e0d8f24a2d25d15d5b4c5e5_black-sea_ac_snap.pax.Z_AIX/ and output generated in anal_acc
+DEBUG    2013-03-05 21:44:20,682 views    JSON recieved in upload_progress value <QueryDict: {}>
+INFO     2013-03-05 21:44:23,292 views    Saving in site-format requested for /Users/vs/dev/confcenter/confcenter/confuploads/7c2c63c36e0d8f24a2d25d15d5b4c5e5_black-sea_ac_snap.pax.Z_AIX/ in anal_acc
+INFO     2013-03-05 21:52:22,959 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-05 21:52:35,332 upload_handlers Starting proccessing file with ID = b0e34d4c37e5216900f0058cd93c1dab in handle_raw_input
+DEBUG    2013-03-05 21:52:35,332 upload_handlers X-Progress-ID exists and equals = b0e34d4c37e5216900f0058cd93c1dab
+DEBUG    2013-03-05 21:52:35,332 upload_handlers Cache key is set to 127.0.0.1_b0e34d4c37e5216900f0058cd93c1dab and data uploaded 0
+DEBUG    2013-03-05 21:52:35,333 upload_handlers NEW FILE
+DEBUG    2013-03-05 21:52:35,334 upload_handlers Data is now equals 65536
+DEBUG    2013-03-05 21:52:35,335 upload_handlers Upload complete
+INFO     2013-03-05 21:52:35,337 views    Starting file  snapreport_XXXX-XXX_XXXXXXXXX_gc.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-05 21:52:35,340 views    Sucsessfully handeled file  snapreport_XXXX-XXX_XXXXXXXXX_gc.AIX.confdump in upload_file
+INFO     2013-03-05 21:52:35,376 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-05 21:53:05,024 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-05 21:53:14,149 upload_handlers Starting proccessing file with ID = 92c9210d8409c2b9cb4e3da9755f004b in handle_raw_input
+DEBUG    2013-03-05 21:53:14,149 upload_handlers X-Progress-ID exists and equals = 92c9210d8409c2b9cb4e3da9755f004b
+DEBUG    2013-03-05 21:53:14,149 upload_handlers Cache key is set to 127.0.0.1_92c9210d8409c2b9cb4e3da9755f004b and data uploaded 0
+DEBUG    2013-03-05 21:53:14,150 upload_handlers NEW FILE
+DEBUG    2013-03-05 21:53:14,151 upload_handlers Data is now equals 65536
+DEBUG    2013-03-05 21:53:14,151 upload_handlers Upload complete
+INFO     2013-03-05 21:53:14,153 views    Starting file  snapreport_XXXX-XXX_XXXXXXXXX_gc.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-05 21:53:14,158 views    Sucsessfully handeled file  snapreport_XXXX-XXX_XXXXXXXXX_gc.AIX.confdump in upload_file
+INFO     2013-03-05 21:53:14,176 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-05 21:53:43,298 views    PDF generation requested for counfdump none in anal_acc
+INFO     2013-03-05 21:54:44,583 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-05 21:54:53,104 upload_handlers Starting proccessing file with ID = 5bed82a741bca0bfa8262c8018073d70 in handle_raw_input
+DEBUG    2013-03-05 21:54:53,105 upload_handlers X-Progress-ID exists and equals = 5bed82a741bca0bfa8262c8018073d70
+DEBUG    2013-03-05 21:54:53,105 upload_handlers Cache key is set to 127.0.0.1_5bed82a741bca0bfa8262c8018073d70 and data uploaded 0
+DEBUG    2013-03-05 21:54:53,106 upload_handlers NEW FILE
+DEBUG    2013-03-05 21:54:53,106 upload_handlers Data is now equals 65536
+DEBUG    2013-03-05 21:54:53,107 upload_handlers Upload complete
+INFO     2013-03-05 21:54:53,108 views    Starting file  snapreport_XXXX-XXX_XXXXXXXXX_ac.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-05 21:54:53,112 views    Sucsessfully handeled file  snapreport_XXXX-XXX_XXXXXXXXX_ac.AIX.confdump in upload_file
+INFO     2013-03-05 21:54:53,128 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-05 21:57:23,349 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-05 21:57:25,382 upload_handlers Starting proccessing file with ID = c90d3d37b591739c49938115afcfc9a3 in handle_raw_input
+DEBUG    2013-03-05 21:57:25,382 upload_handlers X-Progress-ID exists and equals = c90d3d37b591739c49938115afcfc9a3
+DEBUG    2013-03-05 21:57:25,383 upload_handlers Cache key is set to 127.0.0.1_c90d3d37b591739c49938115afcfc9a3 and data uploaded 0
+DEBUG    2013-03-05 21:57:25,384 upload_handlers NEW FILE
+DEBUG    2013-03-05 21:57:25,384 upload_handlers Data is now equals 65536
+DEBUG    2013-03-05 21:57:25,384 upload_handlers Upload complete
+INFO     2013-03-05 21:57:25,386 views    Starting file  snapreport_XXXX-XXX_XXXXXXXXX_ac.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-05 21:57:25,388 views    Sucsessfully handeled file  snapreport_XXXX-XXX_XXXXXXXXX_ac.AIX.confdump in upload_file
+INFO     2013-03-05 21:57:25,404 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-05 21:58:24,499 views    PDF generation requested for counfdump none in anal_acc
+INFO     2013-03-05 21:59:29,663 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-05 21:59:36,426 upload_handlers Starting proccessing file with ID = b93ac30e080d88bee0292fe3eeaf6903 in handle_raw_input
+DEBUG    2013-03-05 21:59:36,426 upload_handlers X-Progress-ID exists and equals = b93ac30e080d88bee0292fe3eeaf6903
+DEBUG    2013-03-05 21:59:36,427 upload_handlers Cache key is set to 127.0.0.1_b93ac30e080d88bee0292fe3eeaf6903 and data uploaded 0
+DEBUG    2013-03-05 21:59:36,428 upload_handlers NEW FILE
+DEBUG    2013-03-05 21:59:36,429 upload_handlers Data is now equals 65536
+DEBUG    2013-03-05 21:59:36,429 upload_handlers Upload complete
+INFO     2013-03-05 21:59:36,431 views    Starting file  snapreport_XXXX-XXX_XXXXXXXXX_gc.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-05 21:59:36,435 views    Sucsessfully handeled file  snapreport_XXXX-XXX_XXXXXXXXX_gc.AIX.confdump in upload_file
+INFO     2013-03-05 21:59:36,463 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-05 21:59:56,934 views    PDF generation requested for counfdump none in anal_acc
+INFO     2013-03-05 22:00:15,391 views    Empty upload form prepared from upload_file for user from 127.0.0.1, session id 7c2c63c36e0d8f24a2d25d15d5b4c5e5
+DEBUG    2013-03-05 22:00:22,878 upload_handlers Starting proccessing file with ID = 5b03ff2a714419def38b71e5771bfd4c in handle_raw_input
+DEBUG    2013-03-05 22:00:22,878 upload_handlers X-Progress-ID exists and equals = 5b03ff2a714419def38b71e5771bfd4c
+DEBUG    2013-03-05 22:00:22,878 upload_handlers Cache key is set to 127.0.0.1_5b03ff2a714419def38b71e5771bfd4c and data uploaded 0
+DEBUG    2013-03-05 22:00:22,879 upload_handlers NEW FILE
+DEBUG    2013-03-05 22:00:22,879 upload_handlers Data is now equals 65536
+DEBUG    2013-03-05 22:00:22,880 upload_handlers Upload complete
+INFO     2013-03-05 22:00:22,882 views    Starting file  snapreport_XXXX-XXX_XXXXXXXXX_ac.AIX.confdump proccessing in upload_file for user from 127.0.0.1
+INFO     2013-03-05 22:00:22,887 views    Sucsessfully handeled file  snapreport_XXXX-XXX_XXXXXXXXX_ac.AIX.confdump in upload_file
+INFO     2013-03-05 22:00:22,905 views    Snap object analyzed for counfdump none and output generated in anal_acc
+INFO     2013-03-05 22:00:58,789 views    PDF generation requested for counfdump none in anal_acc

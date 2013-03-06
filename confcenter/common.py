@@ -27,5 +27,4 @@ def return_file(infile, name):
         content = f.read()
     response = HttpResponse(content, content_type='text/plain')
     response['Content-Disposition'] = 'attachment; filename=' + name
-#    response['Content-Length'] = open()infile.tell()
     return response

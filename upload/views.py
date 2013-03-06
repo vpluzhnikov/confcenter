@@ -131,7 +131,7 @@ def projects(request):
     lang = get_language()
     if lang not in ['en', 'ru']:
         lang = 'en'
-    return render_to_response('projects_'+lang+'.html')
+    return render_to_response('projects_'+lang+'.html', {'MEDIA_URL' : MEDIA_URL})
 
 def plans(request):
     lang = get_language()
