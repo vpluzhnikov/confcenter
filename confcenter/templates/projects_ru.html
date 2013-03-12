@@ -21,6 +21,20 @@
             <h1>Анализ конфигураций: </h1>
         <p class="about">    Цель проекта - создать инструмент автоматической обработки конфигурационных выводов с оборудования.
             Сейчас в данном проекте реализована обработка и разбор выводов утилиты snap с серверов IBM Power.
-            Результатом разбора является страница с данными о сервере (разделе сервера). Существует возможность выполнить экспорт конфигурации в PDF файл.</p>
+            Результатом разбора является страница с данными о сервере (разделе сервера). Существует возможность выполнить экспорт конфигурации в PDF файл.
+            <p class="about"> Примеры создаваемых отчетов: </p>
+            <ul class="about">
+                <li> <a href="{{ MEDIA_URL }}/upload/datafiles/snapreport_XXXX-XXX_XXXXXXXXX_gc_ru.pdf">
+                    Отчет из вывода snap с ключами gc (general information only)</a></li>
+                <li><a href="{{ MEDIA_URL }}/upload/datafiles/snapreport_XXXX-XXX_XXXXXXXXX_ac_ru.pdf">
+                    Отчет из вывода snap с ключами ac (all information)</a></li>
+                <li><a href="{{ MEDIA_URL }}/upload/datafiles/snapreport_XXXX-XXX_XXXXXXXXX_gc.AIX.confdump">
+                    Промежуточный вывод в формате сайта для snap с ключами gc</a></li>
+                <li>
+                    <a href="{{ MEDIA_URL }}/upload/datafiles/snapreport_XXXX-XXX_XXXXXXXXX_ac.AIX.confdump">
+                        Промежуточный вывод в формате сайта для snap с ключами ac</a>
+                </li>
+            </ul>
+        </p>
     </div>
 {% endblock %}

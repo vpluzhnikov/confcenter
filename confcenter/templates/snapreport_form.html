@@ -15,7 +15,7 @@
     <form action="" method="post">
     <p> <input type="button" title="{% trans "hide_show_all" %}" class="plusBtn" value="   +   " onclick="hideShowAll('div.hideCont');return false;">
         <input type="button" title="{% trans "hide_show_all" %}" class="minusBtn" value="   -   " onclick="hideShowAll('div.hideCont');return false;" style="display: none">
-        <input type="submit" style="display:none" name="db_save" value="{% trans "save_in_db_button" %}">
+        <input type="submit" name="ccoutput_save" value="{% trans "save_ccoutput_file" %}">
         <input type="submit" name="pdf_save" value="{% trans "save_in_pdf_button" %}"> </p>
     {% if sysparams %}
         <A class = "hideBtn" onclick="hideShow(this);return false;"> {% trans "system_params_rep" %}
@@ -683,8 +683,8 @@
         <p>
             <input type="button" title="{% trans "hide_show_all" %}" class="plusBtn" value="   +   " onclick="hideShowAll('div.hideCont');return false;">
             <input type="button" title="{% trans "hide_show_all" %}" class="minusBtn" value="   -   " onclick="hideShowAll('div.hideCont');return false;" style="display: none">
-        <input type="submit" style="display:none" name="db_save" value="{% trans "save_in_db_button" %}">
-        <input type="submit" name="pdf_save" value="{% trans "save_in_pdf_button" %}"> </p>
+            <input type="submit" name="ccoutput_save" value="{% trans "save_ccoutput_file" %}">
+            <input type="submit" name="pdf_save" value="{% trans "save_in_pdf_button" %}"> </p>
 
     </form>
 </div>

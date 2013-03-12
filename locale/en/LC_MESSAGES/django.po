@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-01 11:34+0400\n"
+"POT-Creation-Date: 2013-03-12 23:19+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,8 +71,8 @@ msgstr "Hide/Show contents"
 
 #: confcenter/templates/snapreport_form.html:18
 #: confcenter/templates/snapreport_form.html:686
-msgid "save_in_db_button"
-msgstr "Save info in DB"
+msgid "save_ccoutput_file"
+msgstr "Save into site-format file"
 
 #: confcenter/templates/snapreport_form.html:19
 #: confcenter/templates/snapreport_form.html:687
@@ -572,6 +572,9 @@ msgstr "AIX Snap Report for "
 msgid "pdf_main_subtitle"
 msgstr "This info was extracted from snap collected on "
 
-#: upload/views.py:67
+#: upload/views.py:75
 msgid "Bad file type or file corrupted"
 msgstr "Bad file type or file corrupted"
+
+#~ msgid "save_in_db_button"
+#~ msgstr "Save info in DB"

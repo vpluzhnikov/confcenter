@@ -19,8 +19,24 @@
     <div id="content_conf">
 
         <h1>Configuration Analysis: </h1>
-        <p class="about">   The main purpose of this project is to perform automatic analysis for server configuration output.
-            At this stage only processing and analysis for IBM AIX snap output is supported.
-            As a result the page with information about configuration of server partition is displayed.  You can export data in PDF as well.</p>
+        <p class="about">   The main purpose of this project is to create automatic processing for server configuration output.
+            Now, in this project processing and analysis for IBM Power snap are realized.
+            As a result the page with server data (server partitions) is displayed.  You can export data in PDF as well.
+        <p class="about"> Reports examples: </p>
+        <ul class="about">
+            <li> <a href="{{ MEDIA_URL }}/upload/datafiles/snapreport_XXXX-XXX_XXXXXXXXX_gc_en.pdf">
+                Report generated for snap collected with gc keys (general information only)</a></li>
+            <li><a href="{{ MEDIA_URL }}/upload/datafiles/snapreport_XXXX-XXX_XXXXXXXXX_ac_en   .pdf">
+                Report generated for snap collected with ac keys (all information)</a></li>
+            <li><a href="{{ MEDIA_URL }}/upload/datafiles/snapreport_XXXX-XXX_XXXXXXXXX_gc.AIX.confdump">
+                Report generated in site-format for snap collected with gc keys</a></li>
+            <li>
+                <a href="{{ MEDIA_URL }}/upload/datafiles/snapreport_XXXX-XXX_XXXXXXXXX_ac.AIX.confdump">
+                    Report generated in site-format for snap collected with ac keys</a>
+            </li>
+        </ul>
+
+
+        </p>
     </div>
 {% endblock %}
