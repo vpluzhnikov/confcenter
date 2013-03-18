@@ -164,11 +164,7 @@ body {
     padding:5px;
     margin:10px;
     border-radius: 3px;
-    border: 1px solid #F9F9F9;#	.idea/workspace.xml
-#	confcenter/confuploads/
-#	confcenter/log/upload.log.1
-#	confcenter/log/upload.log.2
-
+    border: 1px solid #F9F9F9;
     background:#F9F9F9;
     }
 
@@ -197,3 +193,5 @@ h1
 }
 
 .about {font: 15px "Trebuchet MS", Tahoma, Arial, sans-serif; text-align: justify; padding-top: 15px; text-decoration: none; line-height: 1.5;}
+.about li a, .about li a:visited {font: 15px "Trebuchet MS", Tahoma, Arial, sans-serif; text-align: justify; text-decoration: none; cursor: pointer; color: #5e5e5e;}
+.about li a:hover {color: #cbcbcb;}

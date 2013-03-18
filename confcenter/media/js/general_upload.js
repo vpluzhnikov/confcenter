@@ -25,7 +25,10 @@ $(window).submit( function () {
     var loader = setInterval(function(){
 
         $.getJSON(url, {"X-Progress-ID" : uuid}, function(data, status){
-                var progress = parseInt(data.uploaded) * 100 / parseInt(data.length);
+                var progress = 0
+		if (parseInt(data.size) > 0) {
+		    progress = parseInt(data.received) * 100 / parseInt(data.size);
+		}
                 console.log("Progress: " + progress);
                 if (progress < 100){
                     $( "#progressbar" ).progressbar({ value: progress });

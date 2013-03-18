@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-26 15:42+0400\n"
+"POT-Creation-Date: 2013-03-12 23:19+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: confcenter/templates/base.html:50
+#: confcenter/templates/base.html:51
 msgid "Main"
 msgstr "Главная"
 
-#: confcenter/templates/base.html:51
+#: confcenter/templates/base.html:52
 msgid "configuration_analysis"
 msgstr "Анализ конфигураций"
 
-#: confcenter/templates/base.html:52
+#: confcenter/templates/base.html:53
 msgid "projects"
 msgstr "Проекты"
 
-#: confcenter/templates/base.html:53
+#: confcenter/templates/base.html:54
 msgid "plans"
 msgstr "Планы"
 
@@ -73,8 +73,8 @@ msgstr "Свернуть/Развернуть блоки"
 
 #: confcenter/templates/snapreport_form.html:18
 #: confcenter/templates/snapreport_form.html:686
-msgid "save_in_db_button"
-msgstr "Сохранить в базе данных"
+msgid "save_ccoutput_file"
+msgstr "Сохранить в промежуточном формате"
 
 #: confcenter/templates/snapreport_form.html:19
 #: confcenter/templates/snapreport_form.html:687
@@ -578,6 +578,9 @@ msgstr ""
 "Информация в данном отчете получена автоматически на основе разбора вывдоа "
 "snap для системы "
 
-#: upload/views.py:66
+#: upload/views.py:75
 msgid "Bad file type or file corrupted"
 msgstr "Неверный тип файла или файл поврежден"
+
+#~ msgid "save_in_db_button"
+#~ msgstr "Сохранить в базе данных"

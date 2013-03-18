@@ -501,13 +501,18 @@ class AixSnap:
         if self.GENERAL_SNAP:
             sys0_out = self.__snap_stanza_read(self.GENERAL_SNAP, 'lsattr -El sys0')
             if sys0_out:
-                SYS0.update({'plat_type' : sys0_out[27].split()[1].split(',')[1].split('-')[0]})
-                SYS0.update({'plat_model' : sys0_out[27].split()[1].split(',')[1].split('-')[1]})
-                SYS0.update({'plat_serial' : sys0_out[36].split()[1].split(',')[1]})
-                SYS0.update({'atname_1' : sys0_out[24].split()[0]})
-                SYS0.update({'atname_2' : sys0_out[28].split()[0]})
-                SYS0.update({'atval_1' : sys0_out[24].split()[1]})
-                SYS0.update({'atval_2' : sys0_out[28].split()[1]})
+                for key in sys0_out:
+                    if 'modelname' in key:
+                        SYS0.update({'plat_type' : key.split()[1].split(',')[1].split('-')[0]})
+                        SYS0.update({'plat_model' : key.split()[1].split(',')[1].split('-')[1]})
+                    if 'systemid' in key:
+                        SYS0.update({'plat_serial' : key.split()[1].split(',')[1]})
+                    if 'maxuproc' in key:
+                        SYS0.update({'atname_1' : key.split()[0]})
+                        SYS0.update({'atval_1' : key.split()[1]})
+                    if 'ncargs' in key:
+                        SYS0.update({'atname_2' : key.split()[0]})
+                        SYS0.update({'atval_2' : key.split()[1]})
             else:
                 return None
         else:

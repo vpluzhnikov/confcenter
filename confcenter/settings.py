@@ -190,7 +190,7 @@ LOGGING = {
             'class': 'django.utils.log.AdminEmailHandler',
         },
         'logfiles': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
             'filename': LOG+'/upload.log',
             'formatter': 'verbose',
@@ -211,11 +211,11 @@ LOGGING = {
             },
         'upload': {
             'handlers': ['console', 'logfiles'],
-            'level': 'INFO',
+            'level': 'DEBUG',
         },
         'confcenter' : {
             'handlers' : ['console', 'logfiles'],
-            'level' : 'INFO',
+            'level' : 'DEBUG',
         },
     }
 }

@@ -8,6 +8,7 @@ from confcenter.settings import UPLOAD_DIR, AIX_ARCHIVER, AIX_ARCHIVER_ARGS, SOL
 from logging import getLogger
 from confcenter.common import whoami
 from os import remove
+from json import dump, load
 
 logger = getLogger(__name__)
 
@@ -23,8 +24,15 @@ def handle_uploaded_file(f, name, ostype):
         fileattrs = detect_filetype(f, name)
         if not fileattrs == None:
             fileattrs.update({'filename':name})
-            fileattrs.update({'dumpfilename' : UPLOAD_DIR + name + "." + fileattrs['filetype'] + ".confdump"})
-            remove(UPLOAD_DIR + name)
+            if fileattrs['archpath'] == 'counfdump none':
+                fileattrs.update({'dumpfilename' : UPLOAD_DIR + name})
+            else:
+                fileattrs.update({'dumpfilename' : UPLOAD_DIR + name + "." + fileattrs['filetype'] + ".confdump"})
+                if LINUX:
+                    name_pax = name.split('.Z')[0]
+                    remove(UPLOAD_DIR + name_pax)
+                else:
+                    remove(UPLOAD_DIR + name)
             return fileattrs
         else:
             logger.info("File type %s is not valid" % (name))
@@ -54,7 +62,11 @@ def detect_filetype(f, name):
         if not SysType == None:
             return {'filetype' : 'AIX', 'archpath' : SysType}
         else:
-            return None
+            SysType = is_ConfDumpAix(f, name)
+            if not SysType == None:
+                return {'filetype': 'AIX', 'archpath': SysType}
+            else:
+                return None
 
 
 def validate_filetype(f, name, ostype):
@@ -81,6 +93,22 @@ def validate_filetype(f, name, ostype):
             return None
 
 
+def is_ConfDumpAix(f, name):
+    """
+        Function is_ConfDump(f, name) tries to validate if file f is "configuration analyzed" saved output
+        output and set arcpath to 'counfdump none'
+    """
+    if ('AIX.confdump' in name):
+        with open(UPLOAD_DIR + name, 'r') as infile:
+            testsnap = load(infile)
+        if not testsnap == None:
+            return 'counfdump none'
+        else:
+            return None
+    else:
+        return None
+
+
 def is_Solaris(f, name):
     """
         Function is_Solaris(f, name) tries to validate if file f is Solaris configuration
@@ -97,7 +125,7 @@ def is_AIX(f, name):
         Function is_AIX(f, name) tries to validate if file f is AIX configuration
         output and returns CWD for archive
     """
-    if ( 'snap' in name) or ( 'pax' in name ):
+    if (( 'snap' in name) or ( 'pax' in name )) and not ('AIX.confdump' in name):
         return try_unpack_file(f, 'AIX', name)
     else:
         return None

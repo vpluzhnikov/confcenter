@@ -14,8 +14,10 @@ from models import News
 from forms import ConfUploadForm
 from conffiles import handle_uploaded_file
 from aixsnap import AixSnap
-from confcenter.common import whoami, get_client_ip, get_session_key
+from confcenter.common import whoami, get_client_ip, get_session_key, return_file
 from django.utils.translation import ugettext as _
+from django.utils.translation import get_language
+from json import load
 
 
 
@@ -23,15 +25,16 @@ logger = getLogger(__name__)
 
 def anal_acc(request):
     AIXSNAP = request.session['AIXSNAP']
-
     if request.method == 'POST':
         if 'pdf_save' in request.POST:
             logger.info("PDF generation requested for %s in %s" % (request.session['archpath'], whoami()))
             return aix_pdf_generate(AIXSNAP)
 
-    if 'db_save'in request.POST:
-            logger.info("Saving in DB requester for %s in %s" % (request.session['archpath'], whoami()))
-            raise Http404
+    if 'ccoutput_save'in request.POST:
+            logger.info("Saving in site-format requested for %s in %s" % (request.session['archpath'], whoami()))
+            return return_file(request.session['dumpfilename'], 'snapreport_' + AIXSNAP['sysparams']['plat_type'] + "-"
+                                                                + AIXSNAP['sysparams']['plat_model'] + "_" + \
+                                                                AIXSNAP['sysparams']['plat_serial'] + ".AIX.confdump")
     else:
         cache_key = "%s_%s" % (request.META['REMOTE_ADDR'], request.session['X-Progress-ID'])
         cache.delete(cache_key)
@@ -55,11 +58,17 @@ def upload_file(request):
             if not ( fileattr == None ):
                 request.session['archpath'] = fileattr['archpath']
                 logger.info("Sucsessfully handeled file  %s in %s" % (request.FILES['file'].name, whoami()))
-                snap = AixSnap(fileattr['archpath'])
-                AIXSNAP = snap.snap_analyze(request.FILES['file'].name)
-                snap.dump_snap_to_json(request.FILES['file'].name, fileattr['dumpfilename'])
-                snap.snap_destroy()
+                if fileattr['archpath'] == 'counfdump none':
+                    with open(fileattr['dumpfilename']) as infile:
+                        AIXSNAP = load(infile)
+                else:
+                    snap = AixSnap(fileattr['archpath'])
+                    AIXSNAP = snap.snap_analyze(request.FILES['file'].name)
+                    snap.dump_snap_to_json(request.FILES['file'].name, fileattr['dumpfilename'])
+                    snap.snap_destroy()
                 request.session['AIXSNAP'] = AIXSNAP
+                request.session['dumpfilename'] = fileattr['dumpfilename']
+
                 return redirect('/upload/anal_acc/')
             else:
                 logger.info("File type %s is not good, reported from %s" % (request.FILES['file'].name, whoami()))
@@ -91,7 +100,7 @@ def upload_progress(request):
         if data:
             return HttpResponse(simplejson.dumps(data))
         else:
-            return HttpResponse(simplejson.dumps({'length': 0, 'uploaded' : 0}))
+            return HttpResponse(simplejson.dumps({'size': 0, 'received' : 0}))
     else:
         return HttpResponseServerError('Server Error: You must provide X-Progress-ID header or query param.')
 
@@ -109,18 +118,23 @@ def headpiece(request):
     """
     AllNews= News.objects.filter(news_lang=request.LANGUAGE_CODE).order_by("-add_date")[0:5]
     NEWS = []
+    print get_language()
     for news in AllNews:
         NEWS.append({'date' : news.add_date, 'text' : news.news_text})
-    return render_to_response('headpiece.html', {'news' : NEWS})
+    return render_to_response('headpiece.html', {'news' : NEWS, 'MEDIA_URL' : MEDIA_URL})
 
 def dummy(request):
 
     return render_to_response('dummy.html')
 
 def projects(request):
-
-    return render_to_response('projects.html')
+    lang = get_language()
+    if lang not in ['en', 'ru']:
+        lang = 'en'
+    return render_to_response('projects_'+lang+'.html', {'MEDIA_URL' : MEDIA_URL})
 
 def plans(request):
-
-    return render_to_response('plans.html')
+    lang = get_language()
+    if lang not in ['en', 'ru']:
+        lang = 'en'
+    return render_to_response('plans_'+lang+'.html')

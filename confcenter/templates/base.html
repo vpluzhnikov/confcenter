@@ -40,8 +40,15 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
+            var browser = navigator.appName;
+            if (browser =="Microsoft Internet Explorer") {
+                $('.news').css ('color',"#ACACAC");
+
+            }
+            else {$('.news').css ('color',"white");}
             $('.newsDD').show('clip', 2000);
         });
+
     </script>
 
     <nav id="globalheader">
